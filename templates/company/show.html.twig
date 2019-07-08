@@ -1,0 +1,43 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Show {{ company.name }}{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+            <h1 class="h3 mb-4 text-gray-800 float-left">Company Index</h1>
+            <a class="btn btn-success float-right" href="{{ path('company_new') }}">Create new</a>
+        </div>
+        <div class="card-body">
+            <h1>Company</h1>
+
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dateTable" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ company.id }}</td>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th>Name</th>
+                        <td>{{ company.name }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <a href="{{ path('company_index') }}">back to list</a>
+
+                <a class="btn btn-primary" href="{{ path('company_edit', {'id': company.id}) }}">edit</a>
+
+                {{ include('company/_delete_form.html.twig') }}
+            </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}

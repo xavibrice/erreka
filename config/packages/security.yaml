@@ -19,7 +19,13 @@ security:
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
-
+#            form_login:
+#                check_path: app_login
+#                login_path: admin
+#                csrf_token_generator: security.csrf.token_manager
+#                default_target_path: admin
+            logout:
+                path: app_logout
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
 
