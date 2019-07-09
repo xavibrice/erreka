@@ -26,6 +26,21 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
             </li>
+            <li class="nav-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('company_index') }}">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Empresas</span></a>
+            </li>
+            <li class="nav-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('news_index') }}">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Noticias</span></a>
+            </li>
+            <li class="nav-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('user_index') }}">
+                    <i class="fas fa-fw fa-wrench"></i>
+                    <span>Usuarios</span></a>
+            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider">

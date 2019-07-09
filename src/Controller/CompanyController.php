@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/company")
+ * @Route("/admin/company")
  */
 class CompanyController extends AbstractController
 {
@@ -20,7 +20,7 @@ class CompanyController extends AbstractController
      */
     public function index(CompanyRepository $companyRepository): Response
     {
-        return $this->render('company/index.html.twig', [
+        return $this->render('admin/company/index.html.twig', [
             'companies' => $companyRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class CompanyController extends AbstractController
             return $this->redirectToRoute('company_index');
         }
 
-        return $this->render('company/new.html.twig', [
+        return $this->render('admin/company/new.html.twig', [
             'company' => $company,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class CompanyController extends AbstractController
      */
     public function show(Company $company): Response
     {
-        return $this->render('company/show.html.twig', [
+        return $this->render('admin/company/show.html.twig', [
             'company' => $company,
         ]);
     }
@@ -74,7 +74,7 @@ class CompanyController extends AbstractController
             ]);
         }
 
-        return $this->render('company/edit.html.twig', [
+        return $this->render('admin/company/edit.html.twig', [
             'company' => $company,
             'form' => $form->createView(),
         ]);

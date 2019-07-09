@@ -41,6 +41,11 @@ class Owner
      */
     private $mobile;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\News", inversedBy="owner")
+     */
+    private $news;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -102,6 +107,18 @@ class Owner
     public function setMobile(string $mobile): self
     {
         $this->mobile = $mobile;
+
+        return $this;
+    }
+
+    public function getNews(): ?News
+    {
+        return $this->news;
+    }
+
+    public function setNews(?News $news): self
+    {
+        $this->news = $news;
 
         return $this;
     }

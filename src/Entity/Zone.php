@@ -21,6 +21,11 @@ class Zone
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\News", inversedBy="zone")
+     */
+    private $news;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -34,6 +39,18 @@ class Zone
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getNews(): ?News
+    {
+        return $this->news;
+    }
+
+    public function setNews(?News $news): self
+    {
+        $this->news = $news;
 
         return $this;
     }
