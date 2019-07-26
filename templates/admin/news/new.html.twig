@@ -1,10 +1,18 @@
 {% extends 'admin/layout.html.twig' %}
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
 
 {% block title %}New News{% endblock %}
 
 {% block content %}
-    <h1>Create new News</h1>
+    <h1>Crear Noticia</h1>
 
+{#    {{ form_start(form) }}#}
+{#    {{ form_row(form.price) }}#}
+{#    {{ form_row(form.comment) }}#}
+{#    {% for ow in form.owner %}
+        {{ form_row(ow.email) }}
+    {% endfor %}#}
+{#    {{ form_end(form) }}#}
     {{ include('admin/_form.html.twig') }}
 
     <a href="{{ path('news_index') }}">back to list</a>

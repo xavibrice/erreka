@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -22,9 +24,14 @@ class Zone
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\News", inversedBy="zone")
+     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="zone")
      */
     private $news;
+
+    public function __construct()
+    {
+        $this->news = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -43,14 +50,39 @@ class Zone
         return $this;
     }
 
-    public function getNews(): ?News
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->name;
+    }
+
+    /**
+     * @return Collection|News[]
+     */
+    public function getNews(): Collection
     {
         return $this->news;
     }
 
-    public function setNews(?News $news): self
+    public function addNews(News $news): self
     {
-        $this->news = $news;
+        if (!$this->news->contains($news)) {
+            $this->news[] = $news;
+            $news->setZone($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNews(News $news): self
+    {
+        if ($this->news->contains($news)) {
+            $this->news->removeElement($news);
+            // set the owning side to null (unless already changed)
+            if ($news->getZone() === $this) {
+                $news->setZone(null);
+            }
+        }
 
         return $this;
     }

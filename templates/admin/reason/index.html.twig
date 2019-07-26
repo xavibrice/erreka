@@ -1,0 +1,41 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Reason index{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+            <h1 class="h3 mb-4 text-gray-800 float-left">Lista de propietarios</h1>
+            <a class="btn btn-success float-right" href="{{ path('reason_new') }}">Create razón</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th>Nombre Acción</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for reason in reasons %}
+                        <tr>
+                            <td>{{ reason.name }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ path('reason_show', {'id': reason.id}) }}">show</a>
+                                <a class="btn btn-info" href="{{ path('reason_edit', {'id': reason.id}) }}">edit</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

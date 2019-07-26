@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/owner")
+ * @Route("/admin2/owner")
  */
 class OwnerController extends AbstractController
 {
@@ -20,7 +20,7 @@ class OwnerController extends AbstractController
      */
     public function index(OwnerRepository $ownerRepository): Response
     {
-        return $this->render('owner/index.html.twig', [
+        return $this->render('admin/owner/index.html.twig', [
             'owners' => $ownerRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class OwnerController extends AbstractController
             return $this->redirectToRoute('owner_index');
         }
 
-        return $this->render('owner/new.html.twig', [
+        return $this->render('admin/owner/new.html.twig', [
             'owner' => $owner,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class OwnerController extends AbstractController
      */
     public function show(Owner $owner): Response
     {
-        return $this->render('owner/show.html.twig', [
+        return $this->render('admin/owner/show.html.twig', [
             'owner' => $owner,
         ]);
     }
@@ -74,7 +74,7 @@ class OwnerController extends AbstractController
             ]);
         }
 
-        return $this->render('owner/edit.html.twig', [
+        return $this->render('admin/owner/edit.html.twig', [
             'owner' => $owner,
             'form' => $form->createView(),
         ]);

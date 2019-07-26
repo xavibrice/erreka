@@ -5,33 +5,42 @@
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-            <h1 class="h3 mb-4 text-gray-800 float-left">Company Index</h1>
-            <a class="btn btn-success float-right" href="{{ path('company_new') }}">Create new</a>
+            <h1 class="h3 mb-4 text-gray-800 float-left">Detalles Compañia</h1>
+            <a class="btn btn-success float-right" href="{{ path('company_new') }}">Crear Compañia</a>
         </div>
         <div class="card-body">
-            <h1>Company</h1>
-
             <div class="table-responsive">
                 <table class="table table-bordered" id="dateTable" width="100%" cellpadding="0">
-                    <thead>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ company.id }}</td>
-                    </tr>
-                    </thead>
                     <tbody>
-                    <tr>
-                        <th>Name</th>
-                        <td>{{ company.name }}</td>
-                    </tr>
+                        <tr>
+                            <th>Acciones</th>
+                            <td>
+                                <a class="btn btn-primary float-left mr-1" href="{{ path('company_edit', {'id': company.id}) }}">Editar</a>
+                                {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company}) }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Nombre compañía</th>
+                            <td>{{ company.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nº Trabajadores</th>
+                            <td>
+                                <ul>
+                                    {% for user in company.users %}
+                                        <li>
+                                            <a href="{{ path('user_show', {'id': user.id}) }}">
+                                                {{ user.firstName }} {{ user.lastName }}
+                                            </a>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
+                <a class="btn btn-link" href="{{ path('company_index') }}">Volver a la lista</a>
 
-                <a href="{{ path('company_index') }}">back to list</a>
-
-                <a class="btn btn-primary" href="{{ path('company_edit', {'id': company.id}) }}">edit</a>
-                {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company}) }}
             </div>
 
         </div>

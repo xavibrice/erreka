@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/zone")
+ * @Route("/admin2/zone")
  */
 class ZoneController extends AbstractController
 {
@@ -20,7 +20,7 @@ class ZoneController extends AbstractController
      */
     public function index(ZoneRepository $zoneRepository): Response
     {
-        return $this->render('zone/index.html.twig', [
+        return $this->render('admin/zone/index.html.twig', [
             'zones' => $zoneRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class ZoneController extends AbstractController
             return $this->redirectToRoute('zone_index');
         }
 
-        return $this->render('zone/new.html.twig', [
+        return $this->render('admin/zone/new.html.twig', [
             'zone' => $zone,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class ZoneController extends AbstractController
      */
     public function show(Zone $zone): Response
     {
-        return $this->render('zone/show.html.twig', [
+        return $this->render('admin/zone/show.html.twig', [
             'zone' => $zone,
         ]);
     }
@@ -74,7 +74,7 @@ class ZoneController extends AbstractController
             ]);
         }
 
-        return $this->render('zone/edit.html.twig', [
+        return $this->render('admin/zone/edit.html.twig', [
             'zone' => $zone,
             'form' => $form->createView(),
         ]);

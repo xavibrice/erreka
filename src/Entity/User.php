@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 
@@ -37,6 +38,8 @@ class User implements UserInterface
      */
     private $password;
 
+    private $plainPassword;
+
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="users")
      */
@@ -46,6 +49,21 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="commercial")
      */
     private $news;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $first_name;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $last_name;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $username;
 
     public function __construct()
     {
@@ -86,7 +104,9 @@ class User implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        if (empty($roles)) {
+            $roles[] = 'ROLE_COMMERCIAL';
+        }
 
         return array_unique($roles);
     }
@@ -111,6 +131,22 @@ class User implements UserInterface
         $this->password = $password;
 
         return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param mixed $plainPassword
+     */
+    public function setPlainPassword($plainPassword): void
+    {
+        $this->plainPassword = $plainPassword;
     }
 
     /**
@@ -173,4 +209,40 @@ class User implements UserInterface
         return $this;
     }
 
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->email;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->first_name;
+    }
+
+    public function setFirstName(string $first_name): self
+    {
+        $this->first_name = $first_name;
+
+        return $this;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->last_name;
+    }
+
+    public function setLastName(string $last_name): self
+    {
+        $this->last_name = $last_name;
+
+        return $this;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
 }

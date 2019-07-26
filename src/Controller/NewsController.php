@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/news")
+ * @Route("/admin2/news")
  */
 class NewsController extends AbstractController
 {
@@ -31,6 +31,7 @@ class NewsController extends AbstractController
     public function new(Request $request): Response
     {
         $news = new News();
+        $news->setCommercial($this->getUser());
         $form = $this->createForm(NewsType::class, $news);
         $form->handleRequest($request);
 

@@ -24,7 +24,7 @@
             <li class="nav-item {% if app.request.get('_route') == 'admin' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('admin') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Inicio</span></a>
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('company_index') }}">
@@ -33,15 +33,29 @@
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('news_index') }}">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-newspaper"></i>
                     <span>Noticias</span></a>
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('user_index') }}">
-                    <i class="fas fa-fw fa-wrench"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>Usuarios</span></a>
             </li>
-
+            <li class="nav-item {% if app.request.get('_route') == 'owner_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('owner_index') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Propietario</span></a>
+            </li>
+            <li class="nav-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('zone_index') }}">
+                    <i class="fas fa-fw fa-city"></i>
+                    <span>Zona</span></a>
+            </li>
+            <li class="nav-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('reason_index') }}">
+                    <i class="fas fa-fw fa-city"></i>
+                    <span>Razón</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider">
 

@@ -19,7 +19,7 @@ class News
     private $id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="decimal", scale=2)
      */
     private $price;
 
@@ -29,25 +29,24 @@ class News
     private $comment;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Owner", mappedBy="news")
-     */
-    private $owner;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="news")
      */
     private $commercial;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Zone", mappedBy="news")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Owner", inversedBy="news")
+     */
+    private $owner;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="news")
      */
     private $zone;
 
-    public function __construct()
-    {
-        $this->owner = new ArrayCollection();
-        $this->zone = new ArrayCollection();
-    }
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Reason", inversedBy="news")
+     */
+    private $reason;
 
     public function getId(): ?int
     {
@@ -78,37 +77,6 @@ class News
         return $this;
     }
 
-    /**
-     * @return Collection|Owner[]
-     */
-    public function getOwner(): Collection
-    {
-        return $this->owner;
-    }
-
-    public function addOwner(Owner $owner): self
-    {
-        if (!$this->owner->contains($owner)) {
-            $this->owner[] = $owner;
-            $owner->setNews($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOwner(Owner $owner): self
-    {
-        if ($this->owner->contains($owner)) {
-            $this->owner->removeElement($owner);
-            // set the owning side to null (unless already changed)
-            if ($owner->getNews() === $this) {
-                $owner->setNews(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getCommercial(): ?User
     {
         return $this->commercial;
@@ -121,35 +89,45 @@ class News
         return $this;
     }
 
-    /**
-     * @return Collection|Zone[]
-     */
-    public function getZone(): Collection
+    public function getOwner(): ?Owner
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(?Owner $owner): self
+    {
+        $this->owner = $owner;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->price;
+    }
+
+    public function getZone(): ?Zone
     {
         return $this->zone;
     }
 
-    public function addZone(Zone $zone): self
+    public function setZone(?Zone $zone): self
     {
-        if (!$this->zone->contains($zone)) {
-            $this->zone[] = $zone;
-            $zone->setNews($this);
-        }
+        $this->zone = $zone;
 
         return $this;
     }
 
-    public function removeZone(Zone $zone): self
+    public function getReason(): ?Reason
     {
-        if ($this->zone->contains($zone)) {
-            $this->zone->removeElement($zone);
-            // set the owning side to null (unless already changed)
-            if ($zone->getNews() === $this) {
-                $zone->setNews(null);
-            }
-        }
+        return $this->reason;
+    }
+
+    public function setReason(?Reason $reason): self
+    {
+        $this->reason = $reason;
 
         return $this;
     }
-
 }
