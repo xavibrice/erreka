@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\News;
 use App\Form\NewsType;
 use App\Repository\NewsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

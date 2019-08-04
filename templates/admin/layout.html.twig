@@ -3,6 +3,7 @@
 {% block class %}page-top{% endblock %}
 
 {% block body %}
+
     <!-- Page Wrapper -->
     <div id="wrapper">
 
@@ -14,11 +15,16 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Erreka Admin <sup>2</sup></div>
+                <div class="sidebar-brand-text mx-3">E Admin <sup>2</sup></div>
             </a>
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0">
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Resumen
+            </div>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item {% if app.request.get('_route') == 'admin' %}active{% endif %}">
@@ -26,6 +32,10 @@
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Inicio</span></a>
             </li>
+
+ {#           <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
             <li class="nav-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('company_index') }}">
                     <i class="fas fa-fw fa-wrench"></i>
@@ -57,23 +67,28 @@
                     <span>Razón</span></a>
             </li>
             <!-- Divider -->
-            <hr class="sidebar-divider">
+            <hr class="sidebar-divider">#}
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Administración
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Company</span>
+                    <span>Admin</span>
                 </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse {% if app.request.get('_route') == 'company_index' or app.request.get('_route') == 'news_index' or app.request.get('_route') == 'user_index' or app.request.get('_route') == 'owner_index' or app.request.get('_route') == 'zone_index' or app.request.get('_route') == 'reason_index' %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="{{ path('company_index') }}">Company List</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}" href="{{ path('company_index') }}">Empresas </a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}" href="{{ path('user_index') }}">Usuarios</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'owner_index' %}active{% endif %}" href="{{ path('owner_index') }}">Propietarios</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Razón</a>
                     </div>
                 </div>
             </li>
@@ -325,10 +340,10 @@
                                     Activity Log
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                {#<a class="dropdown-item" href="{{ path('app_logout') }}" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{{ path('app_logout') }}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
-                                </a>#}
+                                </a>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}" >
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -391,4 +406,5 @@
             </div>
         </div>
     </div>
+
 {% endblock %}

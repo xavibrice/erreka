@@ -6,19 +6,12 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h1 class="h3 mb-4 text-gray-800 float-left">Ver {{ user.email }}</h1>
-            <a class="btn btn-link float-right" href="{{ path('user_index') }}">Volver a lista</a>
+{#            <a class="btn btn-link float-right" href="{{ path('user_index') }}">Volver a lista</a>#}
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <tbody>
-                        <tr>
-                            <th>Acciones</th>
-                            <td>
-                                <a class="btn btn-primary float-left mr-1" href="{{ path('user_edit', {'id': user.id}) }}">Editar</a>
-                                {{ include('admin/_delete_form.html.twig', {'route': 'user_delete', 'entity': user}) }}
-                            </td>
-                        </tr>
                         <tr>
                             <th>Email</th>
                             <td>{{ user.email }}</td>
@@ -31,12 +24,30 @@
                             <th>Empresa</th>
                             <td>{{ user.company.name }}</td>
                         </tr>
+                        <tr>
+                            <th>Noticias</th>
+                            <td>
+                                {% if user.news.count > 0 %}
+                                    <ul>
+                                        {% for new in user.news %}
+                                            <li>
+                                                {{ new.price }}
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    No hay noticias
+                                {% endif %}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+        <div class="card-footer">
+            <a class="btn btn-link" href="{{ path('user_index') }}">Volver a la lista</a>
+        </div>
     </div>
-
 {#    {{ include('user/_delete_form.html.twig') }}#}
 
 {% endblock %}

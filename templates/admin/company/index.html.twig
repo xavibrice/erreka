@@ -1,5 +1,7 @@
 {% extends 'admin/layout.html.twig' %}
 
+{% block title %} Listado Empresas {% endblock %}
+
 {% block content %}
     <!-- Page Heading -->
 {#    <h1 class="h3 mb-4 text-gray-800 float-left">Company Index</h1>#}
@@ -9,17 +11,19 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
     {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-            <h1 class="h3 mb-4 text-gray-800 float-left">Listado Compañias</h1>
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de empresas</h1>
             <a class="btn btn-success float-right" href="{{ path('company_new') }}">Crear Empresa</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellpadding="0">
+                <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
-                        <th>Nombre Empresa</th>
+                        <th>Empresa</th>
                         <th>Nº Trabajadores</th>
-                        <th colspan="2">Acciones</th>
+                        <th>Ver</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -33,15 +37,13 @@
 {#                                {% endfor %}#}
                             </td>
                             <td>
-                                <a class="btn btn-primary" href="{{ path('company_show', {'id': company.id}) }}">Ver</a>
-                                <a class="btn btn-info" href="{{ path('company_edit', {'id': company.id}) }}">Editar</a>
+                                <a class="btn btn-primary" href="{{ path('company_show', {'id': company.id}) }}"><i class="fas fa-eye"></i></a>
                             </td>
                             <td>
-                                {% if company.users|length > 0 %}
-                                    Empresa en uso.
-                                {% else %}
-                                    {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company}) }}
-                                {% endif %}
+                                <a class="btn btn-info" href="{{ path('company_edit', {'id': company.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                            </td>
+                            <td>
+                                {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company, 'count': company.users.count}) }}
                             </td>
                         </tr>
                     {% else %}

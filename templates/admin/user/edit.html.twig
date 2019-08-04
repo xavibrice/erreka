@@ -1,22 +1,20 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}Edit User{% endblock %}
+{% block title %}Editar {{ user.firstName }} {{ user.lastName }}{% endblock %}
 
 {% block content %}
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-        <h1 class="h3 mb-4 text-gray-800 float-left">Company Index</h1>
-        <a class="btn btn-success float-right" href="{{ path('company_new') }}">Create new</a>
+        <h1 class="h3 mb-4 text-gray-800 float-left">Editar {{ user.firstName }} {{ user.lastName }}</h1>
+{#        <a class="btn btn-success float-right" href="{{ path('company_new') }}">Create new</a>#}
     </div>
     <div class="card-body">
-
-        <h1>Edit User</h1>
-
         {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
-
+{#        {{ include('admin/_delete_form.html.twig', {'route': 'user_delete', 'entity': user, 'count': user.news.count}) }}#}
+    </div>
+    <div class="card-footer">
         <a class="btn btn-link float-left mr-1" href="{{ path('user_index') }}">Volver a la lista</a>
-        {{ include('admin/_delete_form.html.twig', {'route': 'user_delete', 'entity': user}) }}
     </div>
 </div>
 {% endblock %}

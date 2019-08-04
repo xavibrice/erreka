@@ -1,11 +1,36 @@
 {% extends 'admin/layout.html.twig' %}
+{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
 
 {% block title %}New Owner{% endblock %}
 
 {% block content %}
-    <h1>Create new Owner</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Crear Nuevo Propietario</h1>
+            {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
+        </div>
+        <div class="card-body">
+{#            {{ include('admin/_form.html.twig') }}#}
+            {{ form_start(form) }}
+            {{ form_row(form.first_name) }}
+            {{ form_row(form.last_name) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.phone) }}
+            {{ form_row(form.mobile) }}
+            <ul class="news" data-prototype="{{ form_widget(form.news.vars.prototype)|e('html_attr') }}">
+            {% for new in form.news %}
+{#                {{ form_widget(form.tags.vars.prototype.name)|e }}#}
 
-    {{ include('admin/_form.html.twig') }}
+{#                {{ form_widget(new) }}#}
+                <li>{{ form_row(new) }}</li>
+                {% endfor %}
+            </ul>
 
-    <a href="{{ path('owner_index') }}">back to list</a>
+            <button class="btn btn-success float-left">{{ button_label|default('Guardar') }}</button>
+            {{ form_end(form) }}
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-link" href="{{ path('owner_index') }}">Volver a la lista</a>
+        </div>
+    </div>
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Owner;
 use App\Form\OwnerType;
 use App\Repository\OwnerRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,10 +32,19 @@ class OwnerController extends AbstractController
     public function new(Request $request): Response
     {
         $owner = new Owner();
+        $originalOwner = new ArrayCollection();
+        foreach ($owner->getNews() as $o) {
+            $originalOwner->add($o);
+        }
         $form = $this->createForm(OwnerType::class, $owner);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            foreach ($originalOwner as $ow) {
+                if ($owner->getNews()->contains($ow) === false) {
+                    $this->getDoctrine()->getManager()->remove($ow);
+                }
+            }
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($owner);
             $entityManager->flush();

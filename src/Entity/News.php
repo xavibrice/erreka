@@ -34,7 +34,7 @@ class News
     private $commercial;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Owner", inversedBy="news")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Owner", inversedBy="news", cascade={"persist"})
      */
     private $owner;
 

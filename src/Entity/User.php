@@ -209,12 +209,6 @@ class User implements UserInterface
         return $this;
     }
 
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->email;
-    }
-
     public function getFirstName(): ?string
     {
         return $this->first_name;
@@ -244,5 +238,11 @@ class User implements UserInterface
         $this->username = $username;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->first_name . ' ' . $this->last_name;
     }
 }

@@ -9,6 +9,6 @@
 
     <a href="{{ path('news_index') }}">back to list</a>
 
-    {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news}) }}
+    {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news, 'count': 0}) }}
 
 {% endblock %}

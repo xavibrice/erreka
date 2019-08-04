@@ -14,10 +14,10 @@ class CompanyType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nombre Compañia',
-                'attr' => [
-                    'placeholder' => 'Erreka'
-                ]
+                'label' => 'Nombre Empresa',
+//                'attr' => [
+//                    'placeholder' => 'Escribe el nombre de la empresa'
+//                ]
             ])
         ;
     }

@@ -1,25 +1,27 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}User index{% endblock %}
+{% block title %}Lista de usuarios{% endblock %}
 
 {% block content %}
 
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-        <h1 class="h3 mb-4 text-gray-800 float-left">Lista Usuarios</h1>
-        <a class="btn btn-success float-right" href="{{ path('user_new') }}">Crear Usuario</a>
+        <h1 class="h3 mb-4 text-gray-800 float-left">Lista de usuarios</h1>
+{#        <a class="btn btn-success float-right" href="{{ path('user_new') }}">Crear Usuario</a>#}
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-striped">
                 <thead>
                 <tr>
 {#                    <th>Id</th>#}
                     <th>Correo</th>
                     <th>Empresa</th>
                     <th>Roles</th>
-                    <th>Acciones</th>
+                    <th>Ver</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -30,8 +32,13 @@
                         <td>{{ user.company.name }}</td>
                         <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                         <td>
-                            <a class="btn btn-primary" href="{{ path('user_show', {'id': user.id}) }}">show</a>
-                            <a class="btn btn-info" href="{{ path('user_edit', {'id': user.id}) }}">edit</a>
+                            <a class="btn btn-primary" href="{{ path('user_show', {'id': user.id}) }}"><i class="fas fa-eye"></i></a>
+                        </td>
+                        <td>
+                            <a class="btn btn-info" href="{{ path('user_edit', {'id': user.id}) }}"><i class="fas fa-pencil-alt"></i></a>
+                        </td>
+                        <td>
+                            {{ include('admin/_delete_form.html.twig', {'route': 'user_delete', 'entity': user, 'count': user.news.count}) }}
                         </td>
                     </tr>
                 {% else %}
