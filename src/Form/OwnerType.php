@@ -2,8 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\News;
 use App\Entity\Owner;
+use App\Form\Collection\NewsOwnerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
@@ -34,13 +34,15 @@ class OwnerType extends AbstractType
             ])
             ->add('news', CollectionType::class, [
                 'label' => 'Noticias',
-                'entry_type' => NewsType::class,
+                'entry_type' => NewsOwnerType::class,
                 'entry_options' => [
                     'label' => false
                 ],
-                'by_reference' => true,
+                'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true,
+//                'prototype' => true,
+//                'mapped' => false
             ])
         ;
     }

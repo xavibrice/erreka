@@ -1,5 +1,5 @@
 {% extends 'admin/layout.html.twig' %}
-{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+{#{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}#}
 
 {% block title %}New Owner{% endblock %}
 
@@ -11,23 +11,51 @@
         </div>
         <div class="card-body">
 {#            {{ include('admin/_form.html.twig') }}#}
+{#            {{ form_start(form) }}
+            {{ form_row(form.first_name) }}
+            {{ form_row(form.last_name) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.phone) }}
+            {{ form_row(form.mobile) }}
+#}{#            <div class="hide">{{ form_row(form.news) }}</div>#}{#
+            <ul class="news" id="new_list" data-prototype="{{ form_widget(form.news.vars.prototype)|e('html_attr') }}">
+                {% for row in form.news %}
+                    <h1>{{ row.vars.value.title }}</h1>
+                    <li>
+                        {{ form_errors(row) }}
+                        {{ form_row(row) }}
+                    </li>
+                {% endfor %}
+            </ul>
+
+            <button class="btn btn-success float-left">{{ button_label|default('Guardar') }}</button>
+            {{ form_end(form) }}#}
+
+
             {{ form_start(form) }}
             {{ form_row(form.first_name) }}
             {{ form_row(form.last_name) }}
             {{ form_row(form.email) }}
             {{ form_row(form.phone) }}
             {{ form_row(form.mobile) }}
-            <ul class="news" data-prototype="{{ form_widget(form.news.vars.prototype)|e('html_attr') }}">
-            {% for new in form.news %}
-{#                {{ form_widget(form.tags.vars.prototype.name)|e }}#}
-
-{#                {{ form_widget(new) }}#}
-                <li>{{ form_row(new) }}</li>
+            <div class="col-sm-8 col-sm-offset-2" id="new_list" data-prototype="{{ form_widget(form.news.vars.prototype)|e('html_attr') }}">
+                {% for row in form.news %}
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <strong>{{ dump(row.vars.value.first_name) }}</strong>
+                        </div>
+                        <div class="panel-body">
+                            {{ form_row(row) }}
+                        </div>
+                    </div>
                 {% endfor %}
-            </ul>
-
+            </div>
+            <br>
             <button class="btn btn-success float-left">{{ button_label|default('Guardar') }}</button>
+
             {{ form_end(form) }}
+
+
         </div>
         <div class="card-footer">
             <a class="btn btn-link" href="{{ path('owner_index') }}">Volver a la lista</a>

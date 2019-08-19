@@ -20,9 +20,9 @@
                         <td>
 
                             {% if company.users.count > 0 %}
-                                <ul>
+                                <ul class="list-group">
                                     {% for user in company.users %}
-                                        <li>
+                                        <li class="list-group-item">
                                             <a href="{{ path('user_show', {'id': user.id}) }}">
                                                 {{ user.firstName }} {{ user.lastName }}
                                             </a>

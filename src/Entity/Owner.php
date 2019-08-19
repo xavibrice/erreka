@@ -44,7 +44,7 @@ class Owner
     private $mobile;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="owner")
+     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="owner", cascade={"persist"})
      */
     private $news;
 

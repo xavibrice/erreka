@@ -10,11 +10,13 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered">
+            <table class="table table-striped">
         <thead>
             <tr>
                 <th>Name</th>
-                <th>actions</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
             </tr>
         </thead>
         <tbody>
@@ -22,8 +24,13 @@
             <tr>
                 <td>{{ zone.name }}</td>
                 <td>
-                    <a class="btn btn-primary" href="{{ path('zone_show', {'id': zone.id}) }}">show</a>
-                    <a class="btn btn-info" href="{{ path('zone_edit', {'id': zone.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('zone_show', {'id': zone.id}) }}">Ver</a>
+                </td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('zone_edit', {'id': zone.id}) }}">Editar</a>
+                </td>
+                <td>
+                    {{ include('admin/_delete_form.html.twig', {'route': 'zone_delete', 'entity': zone, 'count': zone.news.count}) }}
                 </td>
             </tr>
         {% else %}
