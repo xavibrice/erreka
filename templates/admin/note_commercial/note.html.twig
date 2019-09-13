@@ -1,0 +1,67 @@
+<li class="nav-item dropdown no-arrow mx-1">
+    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <i class="fas fa-bell fa-fw"></i>
+        <!-- Counter - Alerts -->
+        <span class="badge badge-danger badge-counter">{{ note_commercials|length }}</span>
+    </a>
+    <!-- Dropdown - Alerts -->
+    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
+        <h6 class="dropdown-header">
+            Alerta Notas
+        </h6>
+{#        <a class="dropdown-item d-flex align-items-center" href="#">
+            <div class="mr-3">
+                <div class="icon-circle bg-primary">
+                    <i class="fas fa-file-alt text-white"></i>
+                </div>
+            </div>
+            <div>
+                <div class="small text-gray-500">December 12, 2019</div>
+                <span class="font-weight-bold">A new monthly report is ready to download!</span>
+            </div>
+        </a>
+        <a class="dropdown-item d-flex align-items-center" href="#">
+            <div class="mr-3">
+                <div class="icon-circle bg-success">
+                    <i class="fas fa-donate text-white"></i>
+                </div>
+            </div>
+            <div>
+                <div class="small text-gray-500">December 7, 2019</div>
+                $290.29 has been deposited into your account!
+            </div>
+        </a>#}
+        {% if note_commercials|length > 0 %}
+            {% for note in note_commercials %}
+                <div class="dropdown-item d-flex align-items-center">
+                    <div class="mr-3">
+                        {#                    <a class="btn btn-circle btn-danger" href="{{ path('note_delete', { 'id': note.id }) }}"><i class="fa fa-trash"></i></a>#}
+                        <form method="post" action="{{ path('note_commercial_delete', {'id': note.id}) }}" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este elemento?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ note.id) }}">
+                            <button class="btn btn-danger"><i class="fas fa-trash"></i></button>
+                        </form>
+                    </div>
+                    <div>
+                        {#                    <a href="{{ path('note_commercial_index') }}">#}
+                        <div class="small text-gray-500">{{ note.noticeData|date('m/d/Y') }}</div>
+                        {{ note.note }}
+                        {#                    </a>#}
+                    </div>
+                    {#<div class="mr-3">
+                        <div class="icon-circle bg-warning">
+                            <i class="fas fa-exclamation-triangle text-white"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="small text-gray-500">{{ note.noticeData|date }}</div>
+                        {{ note.note }}
+                    </div>#}
+                </div>
+            {% endfor %}
+                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+            {% else %}
+                <p class="mt-2 text-center small text-gray-500">No hay notas</p>
+        {% endif %}
+    </div>
+</li>

@@ -8,6 +8,7 @@
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // import  $ from 'jquery';
 require('bootstrap');
+require('datatables.net');
 const $ = require('jquery');
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
@@ -18,6 +19,34 @@ require('../css/app.css');
 
 // console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
+$(document).ready(function() {
+    $('#dataTable').DataTable( {
+        "language": {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+    });
+} );
 
 /*
 var $collectionHolder;
@@ -165,3 +194,7 @@ function addRemoveButton ($panel) {
     // append the footer to the panel
     $panel.append($panelFooter);
 }
+
+$(document).ready(function() {
+    $('#dataTable').DataTable();
+});

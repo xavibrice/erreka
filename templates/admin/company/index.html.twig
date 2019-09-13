@@ -2,6 +2,11 @@
 
 {% block title %} Listado Empresas {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTable') }}
+{% endblock %}
+
 {% block content %}
     <!-- Page Heading -->
 {#    <h1 class="h3 mb-4 text-gray-800 float-left">Company Index</h1>#}

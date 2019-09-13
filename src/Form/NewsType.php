@@ -3,15 +3,13 @@
 namespace App\Form;
 
 use App\Entity\News;
-use App\Entity\Owner;
 use App\Entity\User;
 use App\Entity\Zone;
-use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,13 +18,43 @@ class NewsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('firstName', TextType::class, [
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Nombres',
+                ]
+            ])
+            ->add('lastName', TextType::class, [
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Apellidos',
+                ]
+            ])
+            ->add('mobile', TextType::class, [
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Móvil',
+                ]
+            ])
+            ->add('phone', TextType::class, [
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Teléfono',
+                ]
+            ])
+            ->add('email', TextType::class, [
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Correo',
+                ]
+            ])
             ->add('price', MoneyType::class, [
-                'label' => 'Precio'
+                'label' => ' ',
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Comentario'
+                'label' => ' '
             ])
-            ->add('owner', EntityType::class, [
+            /*->add('owner', EntityType::class, [
                 'label' => 'Propietarios',
                 'class' => Owner::class,
                 'query_builder' => function(EntityRepository $er) {
@@ -36,15 +64,15 @@ class NewsType extends AbstractType
                 'choice_label' => 'first_name',
                 'placeholder' => 'Selecciona propietario',
                 'required' => false,
-            ])
+            ])*/
             ->add('zone', EntityType::class, [
-                'label' => 'Zona',
+                'label' => ' ',
                 'class' => Zone::class,
                 'placeholder' => 'Selecciona zona',
                 'required' => false
             ])
             ->add('commercial', EntityType::class, [
-                'label' => 'Comercial',
+                'label' => ' ',
                 'class' => User::class,
                 'placeholder' => 'Selecciona un comercial',
                 'required' => false

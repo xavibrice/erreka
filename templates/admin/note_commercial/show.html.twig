@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NoteCommercial{% endblock %}
+
+{% block body %}
+    <h1>NoteCommercial</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ note_commercial.id }}</td>
+            </tr>
+            <tr>
+                <th>Note</th>
+                <td>{{ note_commercial.note }}</td>
+            </tr>
+            <tr>
+                <th>Notice_data</th>
+                <td>{{ note_commercial.noticeData ? note_commercial.noticeData|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('note_commercial_index') }}">back to list</a>
+
+    <a href="{{ path('note_commercial_edit', {'id': note_commercial.id}) }}">edit</a>
+
+    {{ include('note_commercial/_delete_form.html.twig') }}
+{% endblock %}

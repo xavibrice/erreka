@@ -5,7 +5,7 @@
 {% block content %}
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h1 class="h3 mb-4 text-gray-800 float-left">Lista de zonas</h1>
+        <h1 class="h3 mb-4 text-gray-800 float-left">Lista de zonas </h1>
         <a class="btn btn-success float-right" href="{{ path('zone_new') }}">Crear Zona</a>
     </div>
     <div class="card-body">
@@ -14,6 +14,7 @@
         <thead>
             <tr>
                 <th>Name</th>
+                <th>Nº Noticias</th>
                 <th>Ver</th>
                 <th>Editar</th>
                 <th>Eliminar</th>
@@ -23,6 +24,7 @@
         {% for zone in zones %}
             <tr>
                 <td>{{ zone.name }}</td>
+                <td>{{ zone.news.count }}</td>
                 <td>
                     <a class="btn btn-primary" href="{{ path('zone_show', {'id': zone.id}) }}">Ver</a>
                 </td>

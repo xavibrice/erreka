@@ -65,9 +65,15 @@ class User implements UserInterface
      */
     private $username;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial")
+     */
+    private $noteCommercials;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
+        $this->noteCommercials = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -244,5 +250,36 @@ class User implements UserInterface
     {
         // TODO: Implement __toString() method.
         return $this->first_name . ' ' . $this->last_name;
+    }
+
+    /**
+     * @return Collection|NoteCommercial[]
+     */
+    public function getNoteCommercials(): Collection
+    {
+        return $this->noteCommercials;
+    }
+
+    public function addNoteCommercial(NoteCommercial $noteCommercial): self
+    {
+        if (!$this->noteCommercials->contains($noteCommercial)) {
+            $this->noteCommercials[] = $noteCommercial;
+            $noteCommercial->setCommercial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNoteCommercial(NoteCommercial $noteCommercial): self
+    {
+        if ($this->noteCommercials->contains($noteCommercial)) {
+            $this->noteCommercials->removeElement($noteCommercial);
+            // set the owning side to null (unless already changed)
+            if ($noteCommercial->getCommercial() === $this) {
+                $noteCommercial->setCommercial(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -26,7 +26,10 @@ class UserType extends AbstractType
                 'label' => 'Apellidos'
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Correo'
+                'label' => 'Correo',
+                'attr' => [
+                    'placeholder' => "Correo"
+                ]
             ])
             ->add('username', TextType::class, [
                 'label' => 'Nombre usuario'

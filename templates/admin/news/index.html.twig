@@ -1,19 +1,22 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}News index{% endblock %}
+{% block title %} Listado noticias {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTable') }}
+{% endblock %}
 
 {% block content %}
-{#    <h1>News index</h1>#}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-            <h1 class="h3 mb-4 text-gray-800 float-left">News Index</h1>
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de noticias</h1>
             <a class="btn btn-success float-right" href="{{ path('news_new') }}">Create new</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-
-                <table class="table table-bordered">
+                <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                         <tr>
                             <th>Zona</th>
@@ -30,24 +33,18 @@
                         <tr>
                             <td>{{ news.zone }}</td>
                             <td>{{ news.commercial }}</td>
-                            <td>
-                                {% if news.owner|length > 0 %}
-                                    <a href="{{ path('user_show', {'id': news.owner.id}) }}">{{ news.owner }}</a>
-                                {% else %}
-                                    Sin propietario
-                                {% endif %}
-                            </td>
-                            <td>{{ news.owner.mobile|default }}</td>
+                            <td>{{ news.firstName }} {{ news.lastName }}</td>
+                            <td>{{ news.mobile }} {{ news.phone }}</td>
                             <td>{{ news.price|number_format(2, '.', ',') }} €</td>
                             <td>{{ news.comment }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ path('news_show', {'id': news.id}) }}">show</a>
-                                <a class="btn btn-info" href="{{ path('news_edit', {'id': news.id}) }}">edit</a>
+                                <a class="btn btn-primary" href="{{ path('news_show', {'id': news.id}) }}">Ver</a>
+                                <a class="btn btn-info" href="{{ path('news_edit', {'id': news.id}) }}">Editar</a>
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="4">no records found</td>
+                            <td colspan="4">No hay datos</td>
                         </tr>
                     {% endfor %}
                     </tbody>

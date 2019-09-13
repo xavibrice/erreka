@@ -2,30 +2,26 @@
 
 namespace App\Form;
 
-use App\Entity\Reason;
+use App\Entity\NoteCommercial;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ReasonType extends AbstractType
+class NoteCommercialType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class, [
-                'label' => ' ',
-                'attr' => [
-                    'placeholder' => 'Nombre'
-                ]
-            ])
+            ->add('note')
+            ->add('notice_data')
+            ->add('commercial')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Reason::class,
+            'data_class' => NoteCommercial::class,
         ]);
     }
 }
