@@ -6,6 +6,7 @@ use App\Entity\Company;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
@@ -19,32 +20,56 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('company', EntityType::class, [
+                'label' => ' ',
+                'class' => Company::class,
+                'empty_data' => false,
+                'placeholder' => 'Selecciona una empresa',
+            ])
             ->add('firstName', TextType::class, [
-                'label' => 'Nombres'
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Nombres'
+                ]
             ])
             ->add('lastName', TextType::class, [
-                'label' => 'Apellidos'
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Contraseña'
+                ]
             ])
             ->add('email', EmailType::class, [
-                'label' => 'Correo',
+                'label' => ' ',
                 'attr' => [
                     'placeholder' => "Correo"
                 ]
             ])
             ->add('username', TextType::class, [
-                'label' => 'Nombre usuario'
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => "Nombre Usuario"
+                ]
+            ])
+            ->add('active', CheckboxType::class, [
+                'attr' => [
+                    'checked'   => 'checked'
+                ]
             ])
             ->add('roles', ChoiceType::class, [
+                'label' => ' ',
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
                     'Empresa' => 'ROLE_COMPANY',
                     'Comercial' => 'ROLE_COMMERCIAL'
                 ],
                 'expanded' => true,
-                'multiple' => true
+                'multiple' => true,
+                'attr' => [
+                    'placeholder' => 'Selecciona un rol'
+                ]
             ])
             ->add('plainPassword', PasswordType::class, [
-                'label' => 'Contraseña',
+                'label' => ' ',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
@@ -53,13 +78,10 @@ class UserType extends AbstractType
                         'minMessage' => 'Su contraseña debe tener al menos {{ limit }} caracteres.',
                         'max' => 4096,
                     ])
+                ],
+                'attr' => [
+                    'placeholder' => 'Contraseña'
                 ]
-            ])
-            ->add('company', EntityType::class, [
-                'label' => 'Compañia',
-                'class' => Company::class,
-                'empty_data' => false,
-                'placeholder' => 'Selecciona una empresa',
             ])
         ;
     }

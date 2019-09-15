@@ -1,37 +1,64 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/layout.html.twig' %}
 
-{% block title %}NoteCommercial index{% endblock %}
+{% block title %}Listado Notas Comercial index{% endblock %}
 
-{% block body %}
-    <h1>NoteCommercial index</h1>
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTable') }}
+{% endblock %}
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Note</th>
-                <th>Notice_data</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for note_commercial in note_commercials %}
-            <tr>
-                <td>{{ note_commercial.id }}</td>
-                <td>{{ note_commercial.note }}</td>
-                <td>{{ note_commercial.noticeData ? note_commercial.noticeData|date('Y-m-d') : '' }}</td>
-                <td>
-                    <a href="{{ path('note_commercial_show', {'id': note_commercial.id}) }}">show</a>
-                    <a href="{{ path('note_commercial_edit', {'id': note_commercial.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+{% block content %}
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+        <h1 class="h3 mb-4 text-gray-800 float-left">Listado de notas</h1>
+        <a class="btn btn-success float-right" href="{{ path('note_commercial_new') }}">Crear Nota</a>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
+            <thead>
+                <tr>
+{#                    <th>Id</th>#}
+                    <th>Nota</th>
+                    <th>Fecha Nota</th>
+                    <th>Comercial</th>
+                    <th>Ver</th>
+                    <th>Editar</th>
+                    <th>Eliminar</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for note_commercial in note_commercials %}
+                <tr>
+{#                    <td>{{ note_commercial.id }}</td>#}
+                    <td>{{ note_commercial.note }}</td>
+                    <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('Y-m-d') : '' }}</td>
+                    <td>
+                        <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">
+                            {{ note_commercial.commercial.firstName }} {{ note_commercial.commercial.lastName }}
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ path('note_commercial_show', {'id': note_commercial.id}) }}">Ver</a>
+                    </td>
+                    <td>
+                        <a class="btn btn-info" href="{{ path('note_commercial_edit', {'id': note_commercial.id}) }}">Editar</a>
+                    </td>
+                    <td>
+                        {{ include('admin/_delete_form.html.twig', {'route': 'note_commercial_delete', 'entity': note_commercial, 'count': 0}) }}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{#    <div class="card-footer">#}
+{#        <a href="{{ path('note_commercial_new') }}">Create new</a>#}
+{#    </div>#}
+</div>
 
-    <a href="{{ path('note_commercial_new') }}">Create new</a>
 {% endblock %}

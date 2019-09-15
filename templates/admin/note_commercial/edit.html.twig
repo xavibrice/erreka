@@ -1,13 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'admin/layout.html.twig' %}
 
-{% block title %}Edit NoteCommercial{% endblock %}
+{% block title %}Editar Nota Comercial{% endblock %}
 
-{% block body %}
-    <h1>Edit NoteCommercial</h1>
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Editar noticia</h1>
+            {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
+        </div>
+        <div class="card-body">
+            <h1>Editar Nota Comercial</h1>
 
-    {{ include('note_commercial/_form.html.twig', {'button_label': 'Update'}) }}
+            {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        </div>
+        <div class="card-footer">
+            <a href="{{ path('note_commercial_index') }}">Volver a lista</a>
+        </div>
+    </div>
 
-    <a href="{{ path('note_commercial_index') }}">back to list</a>
-
-    {{ include('note_commercial/_delete_form.html.twig') }}
+{#    {{ include('note_commercial/_delete_form.html.twig') }}#}
 {% endblock %}

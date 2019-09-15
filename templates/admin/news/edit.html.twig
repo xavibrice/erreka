@@ -3,58 +3,58 @@
 {% block title %}Edit News{% endblock %}
 
 {% block content %}
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h1 class="h3 mb-4 text-gray-800 float-left">Editar noticia</h1>
-        {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
-    </div>
-    <div class="card-body">
-        {{ form_start(form) }}
-        <div class="row">
-            <div class="col-md-2">
-                {{ form_row(form.firstName) }}
-            </div>
-            <div class="col-md-3">
-                {{ form_row(form.lastName) }}
-            </div>
-            <div class="col-md-2">
-                {{ form_row(form.mobile) }}
-            </div>
-            <div class="col-md-2">
-                {{ form_row(form.phone) }}
-            </div>
-            <div class="col-md-2">
-                {{ form_row(form.email) }}
-            </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Editar noticia</h1>
+            {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
         </div>
+        <div class="card-body">
+            {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-2">
+                    {{ form_row(form.firstName) }}
+                </div>
+                <div class="col-md-3">
+                    {{ form_row(form.lastName) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_row(form.mobile) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_row(form.phone) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_row(form.email) }}
+                </div>
+            </div>
 
-        <div class="row">
-            <div class="col-md-2">
-                {{ form_row(form.zone) }}
+            <div class="row">
+                <div class="col-md-2">
+                    {{ form_row(form.zone) }}
+                </div>
+                <div class="col-md-2">
+                    {{ form_row(form.commercial) }}
+                </div>
             </div>
-            <div class="col-md-2">
-                {{ form_row(form.commercial) }}
-            </div>
+            {{ form_row(form.price, {
+                attr: { placeholder: 'Precio' }
+            }) }}
+            {{ form_row(form.comment, {
+                attr: { placeholder: 'Comentario' }
+            }) }}
+            {#    {% for ow in form.owner %}#}
+            {#        {{ form_row(ow.email) }}#}
+            {#    {% endfor %}#}
+            {{ form_end(form) }}
+            {#    {{ include('admin/_form.html.twig') }}#}
+
+
+    {#        {{ include('admin/_form.html.twig', {'button_label': 'Update'}) }}#}
+
+            <a href="{{ path('news_index') }}">back to list</a>
+
+            {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news, 'count': 0}) }}
+
         </div>
-        {{ form_row(form.price, {
-            attr: { placeholder: 'Precio' }
-        }) }}
-        {{ form_row(form.comment, {
-            attr: { placeholder: 'Comentario' }
-        }) }}
-        {#    {% for ow in form.owner %}#}
-        {#        {{ form_row(ow.email) }}#}
-        {#    {% endfor %}#}
-        {{ form_end(form) }}
-        {#    {{ include('admin/_form.html.twig') }}#}
-
-
-{#        {{ include('admin/_form.html.twig', {'button_label': 'Update'}) }}#}
-
-        <a href="{{ path('news_index') }}">back to list</a>
-
-        {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news, 'count': 0}) }}
-
     </div>
-</div>
 {% endblock %}

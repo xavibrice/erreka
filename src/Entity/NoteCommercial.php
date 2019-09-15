@@ -17,14 +17,14 @@ class NoteCommercial
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="text")
      */
     private $note;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $notice_data;
+    private $notice_date;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="noteCommercials")
@@ -48,14 +48,14 @@ class NoteCommercial
         return $this;
     }
 
-    public function getNoticeData(): ?\DateTimeInterface
+    public function getNoticeDate(): ?\DateTimeInterface
     {
-        return $this->notice_data;
+        return $this->notice_date;
     }
 
-    public function setNoticeData(\DateTimeInterface $notice_data): self
+    public function setNoticeDate(\DateTimeInterface $notice_date): self
     {
-        $this->notice_data = $notice_data;
+        $this->notice_date = $notice_date;
 
         return $this;
     }

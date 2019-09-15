@@ -12,7 +12,9 @@
         <div class="card-body">
             {{ include('admin/_form.html.twig') }}
         </div>
+        <div class="card-footer">
+            <a href="{{ path('zone_index') }}">Volver a la lista</a>
+        </div>
     </div>
-    <a href="{{ path('zone_index') }}">back to list</a>
 
 {% endblock %}

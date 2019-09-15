@@ -39,7 +39,7 @@ class News
     private $zone;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Reason", mappedBy="news")
+     * @ORM\OneToMany(targetEntity="App\Entity\Reason", mappedBy="news", orphanRemoval=true, cascade={"persist"})
      */
     private $reason;
 

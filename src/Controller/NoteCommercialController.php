@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Constraints\Date;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 /**
  * @Route("/admin2/note/commercial")
@@ -21,7 +23,7 @@ class NoteCommercialController extends AbstractController
     public function notes(NoteCommercialRepository $noteCommercialRepository): Response
     {
         return $this->render('admin/note_commercial/note.html.twig', [
-            'note_commercials' => $noteCommercialRepository->findAll(),
+            'note_commercials' => $noteCommercialRepository->findBy(['notice_date' => new \DateTime(), 'commercial' => $this->getUser()]),
         ]);
     }
 
@@ -53,7 +55,7 @@ class NoteCommercialController extends AbstractController
             return $this->redirectToRoute('note_commercial_index');
         }
 
-        return $this->render('note_commercial/new.html.twig', [
+        return $this->render('admin/note_commercial/new.html.twig', [
             'note_commercial' => $noteCommercial,
             'form' => $form->createView(),
         ]);
@@ -64,7 +66,7 @@ class NoteCommercialController extends AbstractController
      */
     public function show(NoteCommercial $noteCommercial): Response
     {
-        return $this->render('note_commercial/show.html.twig', [
+        return $this->render('admin/note_commercial/show.html.twig', [
             'note_commercial' => $noteCommercial,
         ]);
     }
@@ -85,7 +87,7 @@ class NoteCommercialController extends AbstractController
             ]);
         }
 
-        return $this->render('note_commercial/edit.html.twig', [
+        return $this->render('admin/note_commercial/edit.html.twig', [
             'note_commercial' => $noteCommercial,
             'form' => $form->createView(),
         ]);

@@ -1,10 +1,7 @@
 {% extends 'admin/layout.html.twig' %}
-{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}
+{#{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}#}
 
 {% block title %}New News{% endblock %}
-
-
-
 
 {% block content %}
 <div class="card shadow mb-4">
@@ -15,42 +12,55 @@
     <div class="card-body">
         {{ form_start(form) }}
         <div class="row">
-            <div class="col-md-2">
+{#            <div class="col-lg-2">#}
                 {{ form_row(form.firstName) }}
-            </div>
-            <div class="col-md-3">
+{#            </div>#}
+{#            <div class="col-lg-3">#}
                 {{ form_row(form.lastName) }}
-            </div>
-            <div class="col-md-2">
+{#            </div>#}
+{#            <div class="col-lg-2">#}
                 {{ form_row(form.mobile) }}
-            </div>
-            <div class="col-md-2">
+{#            </div>#}
+{#            <div class="col-lg-2">#}
                 {{ form_row(form.phone) }}
-            </div>
-            <div class="col-md-2">
+{#            </div>#}
+{#            <div class="col-lg-2">#}
                 {{ form_row(form.email) }}
-            </div>
+{#            </div>#}
+            {{ form_row(form.zone) }}
+            {{ form_row(form.commercial) }}
+            {{ form_row(form.price) }}
+
         </div>
 
+{#        <div class="row">#}
+{#            <div class="col-lg-6">#}
+{#                {{ form_row(form.zone) }}#}
+{#            </div>#}
+{#            <div class="col-lg-6">#}
+{#                {{ form_row(form.commercial) }}#}
+{#            </div>#}
+{#        </div>#}
+        <hr>
         <div class="row">
-            <div class="col-md-2">
-                {{ form_row(form.zone) }}
-            </div>
-            <div class="col-md-2">
-                {{ form_row(form.commercial) }}
-            </div>
+            {{ form_row(form.comment) }}
+{#            <div class="col-lg-12">#}
+{#                {{ form_row(form.price, {#}
+{#                    attr: { placeholder: 'Precio' }#}
+{#                }) }}#}
+{#                {{ form_row(form.comment, {#}
+{#                    attr: { placeholder: 'Comentario' }#}
+{#                }) }}#}
+{#            </div>#}
         </div>
-        {{ form_row(form.price, {
-            attr: { placeholder: 'Precio' }
-        }) }}
-        {{ form_row(form.comment, {
-            attr: { placeholder: 'Comentario' }
-        }) }}
         {#    {% for ow in form.owner %}#}
         {#        {{ form_row(ow.email) }}#}
         {#    {% endfor %}#}
+
+        <button class="btn btn-success float-left">Guardar</button>
+
         {{ form_end(form) }}
-        {#    {{ include('admin/_form.html.twig') }}#}
+{#            {{ include('admin/_form.html.twig') }}#}
 
     </div>
 </div>

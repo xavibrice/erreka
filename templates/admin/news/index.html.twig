@@ -12,7 +12,7 @@
         <div class="card-header py-3">
             {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
             <h1 class="h3 mb-4 text-gray-800 float-left">Listado de noticias</h1>
-            <a class="btn btn-success float-right" href="{{ path('news_new') }}">Create new</a>
+            <a class="btn btn-success float-right" href="{{ path('news_new') }}">Crear Noticia</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -23,23 +23,42 @@
                             <th>Comercial</th>
                             <th>Propietario</th>
                             <th>Móvil</th>
+                            <th>Teléfono</th>
                             <th>Precio</th>
                             <th>Comentario</th>
-                            <th>Acciones</th>
+                            <th>Ver</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
                         </tr>
                     </thead>
                     <tbody>
                     {% for news in news %}
                         <tr>
-                            <td>{{ news.zone }}</td>
-                            <td>{{ news.commercial }}</td>
-                            <td>{{ news.firstName }} {{ news.lastName }}</td>
-                            <td>{{ news.mobile }} {{ news.phone }}</td>
+                            <td>
+                                <a href="{{ path('zone_show', {'id': news.zone.id}) }}">
+                                    {{ news.zone }}
+                                </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('user_show', {'id': news.commercial.id}) }}">
+                                    {{ news.commercial }}
+                                </a>
+                            </td>
+                            <td>
+                                {{ news.firstName }} {{ news.lastName }}
+                            </td>
+                            <td>{{ news.mobile }} </td>
+                            <td>{{ news.phone }} </td>
                             <td>{{ news.price|number_format(2, '.', ',') }} €</td>
                             <td>{{ news.comment }}</td>
                             <td>
                                 <a class="btn btn-primary" href="{{ path('news_show', {'id': news.id}) }}">Ver</a>
+                            </td>
+                            <td>
                                 <a class="btn btn-info" href="{{ path('news_edit', {'id': news.id}) }}">Editar</a>
+                            </td>
+                            <td>
+                                {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news, 'count': 0}) }}
                             </td>
                         </tr>
                     {% else %}

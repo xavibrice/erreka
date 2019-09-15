@@ -70,6 +70,11 @@ class User implements UserInterface
      */
     private $noteCommercials;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $active;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
@@ -279,6 +284,18 @@ class User implements UserInterface
                 $noteCommercial->setCommercial(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

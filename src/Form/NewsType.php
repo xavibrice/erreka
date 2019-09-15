@@ -50,9 +50,17 @@ class NewsType extends AbstractType
             ])
             ->add('price', MoneyType::class, [
                 'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Precio'
+                ]
             ])
             ->add('comment', TextareaType::class, [
-                'label' => ' '
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Comentario',
+                    'cols' => 100,
+                    'rows' => 5
+                ]
             ])
             /*->add('owner', EntityType::class, [
                 'label' => 'Propietarios',

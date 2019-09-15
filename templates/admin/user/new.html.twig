@@ -3,9 +3,38 @@
 {% block title %}New User{% endblock %}
 
 {% block content %}
-    <h1>Create new User</h1>
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h1 class="h3 mb-4 text-gray-800 float-left">Crear nuevo usuario</h1>
+        {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
+    </div>
+    <div class="card-body">
+        {{ form_start(form) }}
+        <div class="row">
+            <div class="col-md-3">
+                {{ form_widget(form) }}
+            </div>
+{#            {{ form_row(form.firstName) }}
+            {{ form_row(form.lastName) }}
+            {{ form_row(form.email) }}
+            {{ form_row(form.username) }}
+            {{ form_row(form.plainPassword) }}
+            {{ form_row(form.company) }}#}
+        </div>
 
-    {{ include('admin/_form.html.twig') }}
+        {#        <div class="row ml-4">#}
+{#            <div class="col-md-2">#}
+{#                {{ form_row(form.roles) }}#}
+{#            </div>#}
 
-    <a href="{{ path('user_index') }}">Volver a la lista</a>
+{#        </div>#}
+        <button class="btn btn-success float-left">{{ button_label|default('Guardar') }}</button>
+        {{ form_end(form) }}
+        {#        {{ include('admin/_form.html.twig') }}#}
+    </div>
+    <div class="card-footer">
+        <a href="{{ path('user_index') }}">Volver a la lista</a>
+    </div>
+</div>
+
 {% endblock %}

@@ -32,7 +32,7 @@
             </div>
         </a>#}
         {% if note_commercials|length > 0 %}
-            {% for note in note_commercials %}
+            {% for note in note_commercials|slice(0, 5) %}
                 <div class="dropdown-item d-flex align-items-center">
                     <div class="mr-3">
                         {#                    <a class="btn btn-circle btn-danger" href="{{ path('note_delete', { 'id': note.id }) }}"><i class="fa fa-trash"></i></a>#}
@@ -44,7 +44,7 @@
                     </div>
                     <div>
                         {#                    <a href="{{ path('note_commercial_index') }}">#}
-                        <div class="small text-gray-500">{{ note.noticeData|date('m/d/Y') }}</div>
+                        <div class="small text-gray-500">{{ note.noticeDate|date('m/d/Y') }}</div>
                         {{ note.note }}
                         {#                    </a>#}
                     </div>
@@ -59,7 +59,7 @@
                     </div>#}
                 </div>
             {% endfor %}
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                <a class="dropdown-item text-center small text-gray-500" href="{{ path('note_commercial_index') }}">Ver todas las notas</a>
             {% else %}
                 <p class="mt-2 text-center small text-gray-500">No hay notas</p>
         {% endif %}
