@@ -3,44 +3,31 @@
 {% block title %}Noticia{% endblock %}
 
 {% block content %}
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-        <h1 class="h3 mb-4 text-gray-800 float-left">New Show</h1>
-        <a class="btn btn-success float-right" href="{{ path('company_new') }}">Crear Noticia</a>
-    </div>
-    <div class="card-body">
-        <div class="table-responsive">
-            <table class="table table-bordered">
-                <tbody>
-                    <tr>
-                        <th>Acción</th>
-                        <td>
-                            <a class="btn btn-info float-left mr-2" href="{{ path('news_edit', {'id': news.id}) }}">Editar</a>
-
-                            {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news, 'count': 0}) }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Precio</th>
-                        <td>{{ news.price }}</td>
-                    </tr>
-                    <tr>
-                        <th>Comentario</th>
-                        <td>{{ news.comment }}</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+            <h1 class="h3 mb-4 text-gray-800 float-left">Detalles</h1>
+            <a class="btn btn-success float-right" href="{{ path('news_new') }}">Crear Noticia</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tbody>
+                        <tr>
+                            <th>Precio</th>
+                            <td>{{ news.price }}</td>
+                        </tr>
+                        <tr>
+                            <th>Comentario</th>
+                            <td>{{ news.comment }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'news_index'}) }}
+            {{ include('admin/_edit_link.html.twig', {'route': 'news_edit', 'id': news.id, 'button_label': 'Editar'}) }}
         </div>
     </div>
-    <div class="card-footer">
-        <a class="btn btn-link" href="{{ path('news_index') }}">Volver a la lista</a>
-{#        <a class="btn btn-info" href="{{ path('news_edit', {'id': news.id}) }}">Editar</a>#}
-    </div>
-</div>
-
-
-
-{#    {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news}) }}#}
-
 {% endblock %}

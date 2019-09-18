@@ -9,52 +9,11 @@
             {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
         </div>
         <div class="card-body">
-            {{ form_start(form) }}
-            <div class="row">
-                <div class="col-md-2">
-                    {{ form_row(form.firstName) }}
-                </div>
-                <div class="col-md-3">
-                    {{ form_row(form.lastName) }}
-                </div>
-                <div class="col-md-2">
-                    {{ form_row(form.mobile) }}
-                </div>
-                <div class="col-md-2">
-                    {{ form_row(form.phone) }}
-                </div>
-                <div class="col-md-2">
-                    {{ form_row(form.email) }}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-2">
-                    {{ form_row(form.zone) }}
-                </div>
-                <div class="col-md-2">
-                    {{ form_row(form.commercial) }}
-                </div>
-            </div>
-            {{ form_row(form.price, {
-                attr: { placeholder: 'Precio' }
-            }) }}
-            {{ form_row(form.comment, {
-                attr: { placeholder: 'Comentario' }
-            }) }}
-            {#    {% for ow in form.owner %}#}
-            {#        {{ form_row(ow.email) }}#}
-            {#    {% endfor %}#}
-            {{ form_end(form) }}
-            {#    {{ include('admin/_form.html.twig') }}#}
-
-
-    {#        {{ include('admin/_form.html.twig', {'button_label': 'Update'}) }}#}
-
-            <a href="{{ path('news_index') }}">back to list</a>
-
-            {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news, 'count': 0}) }}
-
+            {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
+{#            {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news, 'count': 0}) }}#}
+        </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'news_index'}) }}
         </div>
     </div>
 {% endblock %}

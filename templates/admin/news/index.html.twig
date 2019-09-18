@@ -20,7 +20,12 @@
                     <thead>
                         <tr>
                             <th>Zona</th>
-                            <th>Comercial</th>
+                            <th>Asesor</th>
+                            <th>Situación</th>
+                            <th>Motivo</th>
+                            <th>Calle</th>
+                            <th>Portal</th>
+                            <th>Piso</th>
                             <th>Propietario</th>
                             <th>Móvil</th>
                             <th>Teléfono</th>
@@ -32,38 +37,48 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for news in news %}
+                    {% for new in news %}
                         <tr>
                             <td>
-                                <a href="{{ path('zone_show', {'id': news.zone.id}) }}">
-                                    {{ news.zone }}
+                                <a href="{{ path('zone_show', {'id': new.zone.id}) }}">
+                                    {{ new.zone }}
                                 </a>
                             </td>
                             <td>
-                                <a href="{{ path('user_show', {'id': news.commercial.id}) }}">
-                                    {{ news.commercial }}
+                                <a href="{{ path('user_show', {'id': new.commercial.id}) }}">
+                                    {{ new.commercial.firstName }} {{ new.commercial.lastName }}
                                 </a>
                             </td>
+                            <td> {{ new.situation }} </td>
+                            <td> {{ new.reason }} </td>
                             <td>
-                                {{ news.firstName }} {{ news.lastName }}
+                                {% if new.street %}
+                                    {{ new.street.name }}
+                                {% endif %}
                             </td>
-                            <td>{{ news.mobile }} </td>
-                            <td>{{ news.phone }} </td>
-                            <td>{{ news.price|number_format(2, '.', ',') }} €</td>
-                            <td>{{ news.comment }}</td>
+                            <td>{{ new.portal }}</td>
+                            <td>{{ new.floor }}</td>
                             <td>
-                                <a class="btn btn-primary" href="{{ path('news_show', {'id': news.id}) }}">Ver</a>
+                                {{ new.firstName }} {{ new.lastName }}
+                            </td>
+                            <td>{{ new.mobile }} </td>
+                            <td>{{ new.phone }} </td>
+                            <td>{{ new.price|number_format(2, '.', ',') }} €</td>
+                            <td>{{ new.comment }}</td>
+                            <td>
+                                {{ include('admin/_show_link.html.twig', {'route': 'news_show', 'id': new.id }) }}
+                                {#<a class="btn btn-primary btn-circle" href="{{ path('news_show', {'id': new.id}) }}"><i class="fas fa-eye"></i></a>#}
                             </td>
                             <td>
-                                <a class="btn btn-info" href="{{ path('news_edit', {'id': news.id}) }}">Editar</a>
+                                {{ include('admin/_edit_link.html.twig', {'route': 'news_edit', 'id': new.id }) }}
                             </td>
                             <td>
-                                {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': news, 'count': 0}) }}
+                                {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': new, 'count': 0}) }}
                             </td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="4">No hay datos</td>
+                            <td colspan="13">No hay datos</td>
                         </tr>
                     {% endfor %}
                     </tbody>

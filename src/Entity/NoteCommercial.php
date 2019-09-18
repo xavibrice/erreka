@@ -27,7 +27,7 @@ class NoteCommercial
     private $notice_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="noteCommercials")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="noteCommercials", cascade={"REMOVE"})
      */
     private $commercial;
 

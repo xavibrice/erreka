@@ -10,7 +10,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped" id="dateTable" width="100%" cellpadding="0">
+                <table class="table table-striped">
                     <tr>
                         <th>Nombre compañía</th>
                         <td>{{ company.name }}</td>
@@ -18,7 +18,6 @@
                     <tr>
                         <th>Nº Trabajadores</th>
                         <td>
-
                             {% if company.users.count > 0 %}
                                 <ul class="list-group">
                                     {% for user in company.users %}
@@ -38,7 +37,8 @@
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-link" href="{{ path('company_index') }}">Volver a la lista</a>
+            {{ include('admin/_back_link.html.twig', {'route': 'company_index'}) }}
+            {{ include('admin/_edit_link.html.twig', {'route': 'company_edit', 'id': company.id, 'button_label': 'Editar'}) }}
         </div>
     </div>
 {% endblock %}

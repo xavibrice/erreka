@@ -1,0 +1,18 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Edit Situation{% endblock %}
+
+{% block content %}
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Editar {{ situation.name }}</h1>
+        </div>
+        <div class="card-body">
+            {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'situation_index'}) }}
+        </div>
+    </div>
+    {#    {{ include('situation/_delete_form.html.twig') }}#}
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %} Ver {{ situation.name }} {% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left"> Detalles de situación </h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tbody>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ situation.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nombre</th>
+                            <td>{{ situation.name }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'situation_index'}) }}
+            {{ include('admin/_edit_link.html.twig', {'route': 'situation_edit', 'id': situation.id, 'button_label': 'Editar'}) }}
+        </div>
+    </div>
+{#    {{ include('situation/_delete_form.html.twig') }}#}
+{% endblock %}

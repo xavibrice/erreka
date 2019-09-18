@@ -80,7 +80,18 @@
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Admin</span>
                 </a>
-                <div id="collapseTwo" class="collapse {% if app.request.get('_route') == 'company_index' or app.request.get('_route') == 'news_index' or app.request.get('_route') == 'user_index' or app.request.get('_route') == 'owner_index' or app.request.get('_route') == 'zone_index' or app.request.get('_route') == 'reason_index' %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                <div id="collapseTwo" class="collapse
+                {% if
+                    app.request.get('_route') == 'company_index' or
+                    app.request.get('_route') == 'news_index' or
+                    app.request.get('_route') == 'user_index' or
+                    app.request.get('_route') == 'owner_index' or
+                    app.request.get('_route') == 'zone_index' or
+                    app.request.get('_route') == 'reason_index' or
+                    app.request.get('_route') == 'note_commercial_index' or
+                    app.request.get('_route') == 'street_index' or
+                    app.request.get('_route') == 'situation_index'
+                %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}" href="{{ path('company_index') }}">Empresas </a>
@@ -89,6 +100,8 @@
                         <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}" href="{{ path('note_commercial_index') }}">Nota Comercial</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'street_index' %}active{% endif %}" href="{{ path('street_index') }}">Calles</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'situation_index' %}active{% endif %}" href="{{ path('situation_index') }}">Situaciones</a>
                     </div>
                 </div>
             </li>
@@ -284,7 +297,6 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user.firstName }} {{ app.user.lastName }}</span>
-                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

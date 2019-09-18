@@ -14,7 +14,7 @@
     {#        {{ include('admin/_delete_form.html.twig', {'route': 'user_delete', 'entity': user, 'count': user.news.count}) }}#}
         </div>
         <div class="card-footer">
-            <a class="btn btn-link float-left mr-1" href="{{ path('user_index') }}">Volver a la lista</a>
+            {{ include('admin/_back_link.html.twig', {'route': 'user_index'}) }}
         </div>
     </div>
 {% endblock %}

@@ -35,7 +35,7 @@ class UserType extends AbstractType
             ->add('lastName', TextType::class, [
                 'label' => ' ',
                 'attr' => [
-                    'placeholder' => 'Contraseña'
+                    'placeholder' => 'Apellidos'
                 ]
             ])
             ->add('email', EmailType::class, [

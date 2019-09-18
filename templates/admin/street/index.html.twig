@@ -1,0 +1,57 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Listado Calles{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTable') }}
+{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de calles</h1>
+            <a class="btn btn-success float-right" href="{{ path('street_new') }}">Crear Calle</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Ver</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for street in streets %}
+                        <tr>
+                            <td>{{ street.id }}</td>
+                            <td>{{ street.name }}</td>
+                            <td>
+                                {{ include('admin/_show_link.html.twig', {'route': 'street_show', 'id': street.id }) }}
+                            </td>
+                            <td>
+                                {{ include('admin/_edit_link.html.twig', {'route': 'street_edit', 'id': street.id }) }}
+                            </td>
+                            <td>
+                                {{ include('admin/_delete_form.html.twig', {'route': 'street_delete', 'entity': street, 'count': street.news.count}) }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">No se encontraron registros</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+{#    <a href="{{ path('street_new') }}">Create new</a>#}
+{% endblock %}

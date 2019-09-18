@@ -13,33 +13,29 @@
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <tbody>
-{#                    <tr>#}
-{#                        <th>Id</th>#}
-{#                        <td>{{ note_commercial.id }}</td>#}
-{#                    </tr>#}
-                    <tr>
-                        <th>Nota</th>
-                        <td>{{ note_commercial.note }}</td>
-                    </tr>
-                    <tr>
-                        <th>Nota Fecha</th>
-                        <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('Y-m-d') : '' }}</td>
-                    </tr>
-                    <tr>
-                        <th>Comercial</th>
-                        <td>
-                            <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">
-                                {{ note_commercial.commercial.firstName }} {{ note_commercial.commercial.lastName }}
-                            </a>
-                        </td>
-                    </tr>
-
+                        <tr>
+                            <th>Nota</th>
+                            <td>{{ note_commercial.note }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nota Fecha</th>
+                            <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('Y-m-d') : '' }}</td>
+                        </tr>
+                        <tr>
+                            <th>Comercial</th>
+                            <td>
+                                <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">
+                                    {{ note_commercial.commercial.firstName }} {{ note_commercial.commercial.lastName }}
+                                </a>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-link" href="{{ path('note_commercial_index') }}">Volver a la lista</a>
+            {{ include('admin/_back_link.html.twig', {'route': 'note_commercial_index'}) }}
+            {{ include('admin/_edit_link.html.twig', {'route': 'note_commercial_edit', 'id': note_commercial.id, 'button_label': 'Editar'}) }}
         </div>
     </div>
 

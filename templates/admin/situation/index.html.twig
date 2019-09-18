@@ -1,0 +1,57 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Situation index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTable') }}
+{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de situaciones</h1>
+            <a class="btn btn-success float-right" href="{{ path('situation_new') }}">Crear Situación</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                        <tr>
+{#                            <th>Id</th>#}
+                            <th>Nombre</th>
+                            <th>Nº Noticias</th>
+                            <th>Ver</th>
+                            <th>Editar</th>
+                            <th>Eliminar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for situation in situations %}
+                        <tr>
+{#                            <td>{{ situation.id }}</td>#}
+                            <td>{{ situation.name }}</td>
+                            <td>{{ situation.news.count }}</td>
+                            <td>
+                                {{ include('admin/_show_link.html.twig', {'route': 'situation_show', 'id': situation.id }) }}
+                            </td>
+                            <td>
+                                {{ include('admin/_edit_link.html.twig', {'route': 'situation_edit', 'id': situation.id }) }}
+                            </td>
+                            <td>
+                                {{ include('admin/_delete_form.html.twig', {'route': 'situation_delete', 'entity': situation, 'count': situation.news.count}) }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">No se encontraron registros</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

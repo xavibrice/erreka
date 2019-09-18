@@ -3,6 +3,9 @@
 namespace App\Form;
 
 use App\Entity\News;
+use App\Entity\Reason;
+use App\Entity\Situation;
+use App\Entity\Street;
 use App\Entity\User;
 use App\Entity\Zone;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -18,6 +21,46 @@ class NewsType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('zone', EntityType::class, [
+                'label' => ' ',
+                'class' => Zone::class,
+                'placeholder' => 'Selecciona zona',
+                'required' => false
+            ])
+            ->add('commercial', EntityType::class, [
+                'label' => ' ',
+                'class' => User::class,
+                'placeholder' => 'Selecciona un comercial',
+                'required' => false
+            ])
+            ->add('situation', EntityType::class, [
+                'label' => ' ',
+                'class' => Situation::class,
+                'placeholder' => 'Selecciona una situación'
+            ])
+            ->add('reason', EntityType::class, [
+                'label' => ' ',
+                'class' => Reason::class,
+                'placeholder' => 'Selecciona un motivo'
+            ])
+            ->add('street', EntityType::class, [
+                'label' => ' ',
+                'class' => Street::class,
+                'placeholder' => 'Selecciona una calle',
+                'required' => false
+            ])
+            ->add('portal', TextType::class, [
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Nº Portal',
+                ]
+            ])
+            ->add('floor', TextType::class, [
+                'label' => ' ',
+                'attr' => [
+                    'placeholder' => 'Piso',
+                ]
+            ])
             ->add('firstName', TextType::class, [
                 'label' => ' ',
                 'attr' => [
@@ -73,18 +116,6 @@ class NewsType extends AbstractType
                 'placeholder' => 'Selecciona propietario',
                 'required' => false,
             ])*/
-            ->add('zone', EntityType::class, [
-                'label' => ' ',
-                'class' => Zone::class,
-                'placeholder' => 'Selecciona zona',
-                'required' => false
-            ])
-            ->add('commercial', EntityType::class, [
-                'label' => ' ',
-                'class' => User::class,
-                'placeholder' => 'Selecciona un comercial',
-                'required' => false
-            ])
         ;
     }
 

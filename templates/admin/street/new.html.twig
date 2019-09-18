@@ -1,0 +1,17 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}New Street{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Crear nueva calle</h1>
+        </div>
+        <div class="card-body">
+            {{ include('admin/_form.html.twig') }}
+        </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'street_index'}) }}
+        </div>
+    </div>
+{% endblock %}

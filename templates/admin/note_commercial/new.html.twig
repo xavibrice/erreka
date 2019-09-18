@@ -3,17 +3,17 @@
 {% block title %}Nueva Nota Comercial{% endblock %}
 
 {% block content %}
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h1 class="h3 mb-4 text-gray-800 float-left">Crear nota comercial</h1>
-        {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Crear nota comercial</h1>
+            {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
+        </div>
+        <div class="card-body">
+            {{ include('admin/_form.html.twig') }}
+        </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'note_commercial_index'}) }}
+        </div>
     </div>
-    <div class="card-body">
-        {{ include('admin/_form.html.twig') }}
-    </div>
-    <div class="card-footer">
-        <a href="{{ path('note_commercial_index') }}">Volver a la lista</a>
-    </div>
-</div>
 
 {% endblock %}

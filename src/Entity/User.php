@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -46,7 +46,7 @@ class User implements UserInterface
     private $company;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="commercial")
+     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="commercial", orphanRemoval=true)
      */
     private $news;
 
@@ -66,7 +66,7 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial")
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial", orphanRemoval=true)
      */
     private $noteCommercials;
 
@@ -74,6 +74,7 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $active;
+
 
     public function __construct()
     {
@@ -299,4 +300,5 @@ class User implements UserInterface
 
         return $this;
     }
+
 }

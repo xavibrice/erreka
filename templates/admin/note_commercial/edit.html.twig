@@ -14,7 +14,7 @@
             {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
         </div>
         <div class="card-footer">
-            <a href="{{ path('note_commercial_index') }}">Volver a lista</a>
+            {{ include('admin/_back_link.html.twig', {'route': 'note_commercial_index'}) }}
         </div>
     </div>
 

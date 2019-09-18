@@ -29,7 +29,7 @@ class News
     private $comment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="news")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="news", cascade={"REMOVE"})
      */
     private $commercial;
 
@@ -37,11 +37,6 @@ class News
      * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="news")
      */
     private $zone;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Reason", mappedBy="news", orphanRemoval=true, cascade={"persist"})
-     */
-    private $reason;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -68,10 +63,30 @@ class News
      */
     private $email;
 
-    public function __construct()
-    {
-        $this->reason = new ArrayCollection();
-    }
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $portal;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $floor;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Street", inversedBy="news")
+     */
+    private $street;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Reason", inversedBy="news")
+     */
+    private $reason;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="news")
+     */
+    private $situation;
 
     public function getId(): ?int
     {
@@ -128,37 +143,6 @@ class News
     public function setZone(?Zone $zone): self
     {
         $this->zone = $zone;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Reason[]
-     */
-    public function getReason(): Collection
-    {
-        return $this->reason;
-    }
-
-    public function addReason(Reason $reason): self
-    {
-        if (!$this->reason->contains($reason)) {
-            $this->reason[] = $reason;
-            $reason->setNews($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReason(Reason $reason): self
-    {
-        if ($this->reason->contains($reason)) {
-            $this->reason->removeElement($reason);
-            // set the owning side to null (unless already changed)
-            if ($reason->getNews() === $this) {
-                $reason->setNews(null);
-            }
-        }
 
         return $this;
     }
@@ -222,4 +206,65 @@ class News
 
         return $this;
     }
+
+    public function getPortal(): ?string
+    {
+        return $this->portal;
+    }
+
+    public function setPortal(string $portal): self
+    {
+        $this->portal = $portal;
+
+        return $this;
+    }
+
+    public function getFloor(): ?string
+    {
+        return $this->floor;
+    }
+
+    public function setFloor(string $floor): self
+    {
+        $this->floor = $floor;
+
+        return $this;
+    }
+
+    public function getStreet(): ?Street
+    {
+        return $this->street;
+    }
+
+    public function setStreet(?Street $street): self
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    public function getReason(): ?Reason
+    {
+        return $this->reason;
+    }
+
+    public function setReason(?Reason $reason): self
+    {
+        $this->reason = $reason;
+
+        return $this;
+    }
+
+    public function getSituation(): ?Situation
+    {
+        return $this->situation;
+    }
+
+    public function setSituation(?Situation $situation): self
+    {
+        $this->situation = $situation;
+
+        return $this;
+    }
+
 }

@@ -13,7 +13,7 @@
             {{ include('admin/_form.html.twig') }}
         </div>
         <div class="card-footer">
-            <a href="{{ path('zone_index') }}">Volver a la lista</a>
+            {{ include('admin/_back_link.html.twig', {'route': 'zone_index'}) }}
         </div>
     </div>
 

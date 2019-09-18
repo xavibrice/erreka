@@ -13,6 +13,13 @@
                 <table class="table table-bordered">
                     <tbody>
                         <tr>
+                            <th>Foto perfil</th>
+                            <td>
+{#                                <img class="img-thumbnail" src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.firstName }}" width="300px"/>#}
+                                foto
+                            </td>
+                        </tr>
+                        <tr>
                             <th>Nombre y Apellidos</th>
                             <td>{{ user.firstName }} {{ user.lastName }}</td>
                         </tr>
@@ -49,7 +56,8 @@
             </div>
         </div>
         <div class="card-footer">
-            <a class="btn btn-link" href="{{ path('user_index') }}">Volver a la lista</a>
+            {{ include('admin/_back_link.html.twig', {'route': 'user_index'}) }}
+            {{ include('admin/_edit_link.html.twig', {'route': 'user_edit', 'id': user.id, 'button_label': 'Editar'}) }}
         </div>
     </div>
 {#    {{ include('user/_delete_form.html.twig') }}#}

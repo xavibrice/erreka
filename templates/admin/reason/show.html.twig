@@ -8,31 +8,46 @@
         <div class="card-header py-3">
             {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
             <h1 class="h3 mb-4 text-gray-800 float-left">Ver razón</h1>
-            <a class="btn btn-success float-right" href="{{ path('reason_new') }}">Crear razón</a>
+            <a class="btn btn-success float-right" href="{{ path('reason_new') }}">Crear motivo</a>
         </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table class="table table-bordered">
                     <tbody>
-                    <tr>
-                        <th>Id</th>
-                        <td>{{ reason.id }}</td>
-                    </tr>
-                    <tr>
-                        <th>Name</th>
-                        <td>{{ reason.name }}</td>
-                    </tr>
+                        <tr>
+                            <th>Id</th>
+                            <td>{{ reason.id }}</td>
+                        </tr>
+                        <tr>
+                            <th>Name</th>
+                            <td>{{ reason.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Noticias</th>
+                            <td>
+                                {% if reason.news.count > 0 %}
+                                    <ul class="list-group">
+                                        {% for new in reason.news %}
+                                            <li class="list-group-item">
+                                                <a href="{{ path('news_show', {'id': new.id}) }}">
+                                                    {{ new.price }} - {{ new.firstName }}
+                                                </a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    Motivo sin noticias
+                                {% endif %}
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
         </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'reason_index'}) }}
+            {{ include('admin/_edit_link.html.twig', {'route': 'reason_edit', 'id': reason.id, 'button_label': 'Editar'}) }}
+        </div>
     </div>
-
-
-
-    <a href="{{ path('reason_index') }}">back to list</a>
-
-    <a class="btn btn-primary" href="{{ path('reason_edit', {'id': reason.id}) }}">edit</a>
-
 {#    {{ include('admin/_delete_form.html.twig', {'route': 'reason_delete', 'entity': reason}) }}#}
 {% endblock %}
