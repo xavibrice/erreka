@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\File\File;
-
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
@@ -69,12 +70,15 @@ class User implements UserInterface
      * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial", orphanRemoval=true)
      */
     private $noteCommercials;
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imageFilename;
 
     /**
      * @ORM\Column(type="boolean")
      */
     private $active;
-
 
     public function __construct()
     {
@@ -300,5 +304,24 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getImageFilename()
+    {
+//        return $this->imageFilename;
+        return UploaderHelper::USER_IMAGE.'/'.$this->imageFilename;
+    }
+
+    /**
+     * @param mixed $imageFilename
+     */
+    public function setImageFilename($imageFilename): void
+    {
+        $this->imageFilename = $imageFilename;
+    }
+
+
 
 }

@@ -24,14 +24,9 @@ class Street
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="street")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="streets")
      */
-    private $news;
-
-    public function __construct()
-    {
-        $this->news = new ArrayCollection();
-    }
+    private $zone;
 
     public function getId(): ?int
     {
@@ -50,40 +45,22 @@ class Street
         return $this;
     }
 
-    /**
-     * @return Collection|News[]
-     */
-    public function getNews(): Collection
-    {
-        return $this->news;
-    }
-
-    public function addNews(News $news): self
-    {
-        if (!$this->news->contains($news)) {
-            $this->news[] = $news;
-            $news->setStreet($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNews(News $news): self
-    {
-        if ($this->news->contains($news)) {
-            $this->news->removeElement($news);
-            // set the owning side to null (unless already changed)
-            if ($news->getStreet() === $this) {
-                $news->setStreet(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         // TODO: Implement __toString() method.
         return $this->getName();
     }
+
+    public function getZone(): ?Zone
+    {
+        return $this->zone;
+    }
+
+    public function setZone(?Zone $zone): self
+    {
+        $this->zone = $zone;
+
+        return $this;
+    }
+
 }

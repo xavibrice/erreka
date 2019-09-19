@@ -329,11 +329,11 @@
                 </nav>
                 <!-- End of Topbar -->
 
+                {{ include('admin/_flash_messages.html.twig') }}
+
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
-
                     {% block content %}{% endblock %}
-
                 </div>
                 <!-- /.container-fluid -->
 

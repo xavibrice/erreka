@@ -28,9 +28,15 @@ class Zone
      */
     private $news;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Street", mappedBy="zone", cascade={"persist"})
+     */
+    private $streets;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
+        $this->streets = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -86,4 +92,36 @@ class Zone
 
         return $this;
     }
+
+    /**
+     * @return Collection|Street[]
+     */
+    public function getStreets(): Collection
+    {
+        return $this->streets;
+    }
+
+    public function addStreet(Street $street): self
+    {
+        if (!$this->streets->contains($street)) {
+            $this->streets[] = $street;
+            $street->setZone($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStreet(Street $street): self
+    {
+        if ($this->streets->contains($street)) {
+            $this->streets->removeElement($street);
+            // set the owning side to null (unless already changed)
+            if ($street->getZone() === $this) {
+                $street->setZone(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

@@ -5,7 +5,10 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\UserRepository;
+use App\Service\UploaderHelper;
+use Gedmo\Sluggable\Util\Urlizer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,7 +66,7 @@ class UserController extends AbstractController
     /**
      * @Route("/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder): Response
+    public function edit(Request $request, User $user, UserPasswordEncoderInterface $passwordEncoder, UploaderHelper $uploaderHelper): Response
     {
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -73,7 +76,16 @@ class UserController extends AbstractController
                 $user->setPassword($passwordEncoder->encodePassword($user, $form->get('plainPassword')->getData()));
             }
 
+            /** @var UploadedFile $uploadedFile */
+            $uploadedFile = $form['imageFile']->getData();
+            if ($uploadedFile) {
+                $newFilename = $uploaderHelper->uploadUserImage($uploadedFile);
+                $user->setImageFilename($newFilename);
+            }
+
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Usuario actualizado correctamente');
 
             return $this->redirectToRoute('user_index', [
                 'id' => $user->getId(),

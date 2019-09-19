@@ -9,22 +9,51 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\Length;
+use Symfony\Component\Validator\Constraints\NotNull;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        /** @var User|null $user */
+        $user = $options['data'] ?? null;
+        $isEdit = $user && $user->getId();
+
+        $imageContrains = [
+            new Image([
+                'maxSize' => '5M'
+            ]),
+        ];
+
+        if (!$isEdit || !$user->getImageFilename()) {
+            $imageContrains[] = new NotNull([
+                'message' => 'Por favor subir una foto'
+            ]);
+        }
+
         $builder
+            ->add('imageFile', FileType::class, [
+                'mapped' => false,
+                'required' => false,
+                'constraints' => $imageContrains,
+                'attr' => [
+                    'placeholder' => 'Selecciona una imagen'
+                ],
+            ])
             ->add('company', EntityType::class, [
                 'label' => ' ',
+                'required' => false,
                 'class' => Company::class,
-                'empty_data' => false,
-                'placeholder' => 'Selecciona una empresa',
+                'empty_data' => true,
+//                'placeholder' => 'Selecciona una empresa',
             ])
             ->add('firstName', TextType::class, [
                 'label' => ' ',
@@ -71,7 +100,7 @@ class UserType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 'label' => ' ',
                 'mapped' => false,
-                'required' => false,
+                'required' => true,
                 'constraints' => [
                     new Length([
                         'min' => 6,

@@ -74,11 +74,6 @@ class News
     private $floor;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Street", inversedBy="news")
-     */
-    private $street;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Reason", inversedBy="news")
      */
     private $reason;
@@ -227,18 +222,6 @@ class News
     public function setFloor(string $floor): self
     {
         $this->floor = $floor;
-
-        return $this;
-    }
-
-    public function getStreet(): ?Street
-    {
-        return $this->street;
-    }
-
-    public function setStreet(?Street $street): self
-    {
-        $this->street = $street;
 
         return $this;
     }

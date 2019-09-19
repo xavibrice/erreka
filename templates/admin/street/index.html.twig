@@ -38,7 +38,7 @@
                                 {{ include('admin/_edit_link.html.twig', {'route': 'street_edit', 'id': street.id }) }}
                             </td>
                             <td>
-                                {{ include('admin/_delete_form.html.twig', {'route': 'street_delete', 'entity': street, 'count': street.news.count}) }}
+                                {{ include('admin/_delete_form.html.twig', {'route': 'street_delete', 'entity': street, 'count': 0}) }}
                             </td>
                         </tr>
                     {% else %}

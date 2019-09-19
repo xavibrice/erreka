@@ -48,6 +48,15 @@ $(document).ready(function() {
     });
 } );
 
+
+$('.custom-file-input').on('change', function (event) {
+    var inputFile = event.currentTarget;
+    $(inputFile).parent()
+        .find('.custom-file-label')
+        .html(inputFile.files[0].name);
+});
+
+
 /*
 var $collectionHolder;
 
@@ -103,23 +112,82 @@ function addTagFormDeleteLink($tagFormLi) {
 */
 
 
+/*
+var $collectionHolder;
 
+// setup an "add a tag" link
+var $addTagButton = $('<button type="button" class="btn btn-success">Añadir un calle</button>');
+var $newLinkLi = $('<li></li>').append($addTagButton);
 
+jQuery(document).ready(function() {
+    // Get the ul that holds the collection of tags
+    $collectionHolder = $('ul.streets');
 
+    // add a delete link to all of the existing tag form li elements
+    $collectionHolder.find('li').each(function() {
+        addTagFormDeleteLink($(this));
+    });
 
+    // add the "add a tag" anchor and li to the tags ul
+    $collectionHolder.append($newLinkLi);
 
+    // count the current form inputs we have (e.g. 2), use that as the new
+    // index when inserting a new item (e.g. 2)
+    $collectionHolder.data('index', $collectionHolder.find(':input').length);
 
+    $addTagButton.on('click', function(e) {
+        // add a new tag form (see next code block)
+        addTagForm($collectionHolder, $newLinkLi);
+    });
+});
 
+function addTagForm($collectionHolder, $newLinkLi) {
+    // Get the data-prototype explained earlier
+    var prototype = $collectionHolder.data('prototype');
+
+    // get the new index
+    var index = $collectionHolder.data('index');
+
+    var newForm = prototype;
+    // You need this only if you didn't set 'label' => false in your tags field in TaskType
+    // Replace '__name__label__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    // newForm = newForm.replace(/__name__label__/g, index);
+
+    // Replace '__name__' in the prototype's HTML to
+    // instead be a number based on how many items we have
+    newForm = newForm.replace(/__name__/g, index);
+
+    // increase the index with one for the next item
+    $collectionHolder.data('index', index + 1);
+
+    // Display the form in the page in an li, before the "Add a tag" link li
+    var $newFormLi = $('<li></li>').append(newForm);
+    $newLinkLi.before($newFormLi);
+
+    // add a delete link to the new form
+    addTagFormDeleteLink($newFormLi);
+}
+
+function addTagFormDeleteLink($tagFormLi) {
+    var $removeFormButton = $('<button class="btn btn-danger" type="button">Eliminar calle</button>');
+    $tagFormLi.append($removeFormButton);
+
+    $removeFormButton.on('click', function(e) {
+        // remove the li for the tag form
+        $tagFormLi.remove();
+    });
+}*/
 
 
 // this variable is the list in the dom, it's initiliazed when the document is ready
 var $collectionHolder;
 // the link which we click on to add new items
-var $addNewItem = $('<a href="#" class="btn btn-info">Añadir noticia</a>');
+var $addNewItem = $('<a href="#" class="btn btn-info">Añadir calle</a>');
 // when the page is loaded and ready
 $(document).ready(function () {
     // get the collectionHolder, initilize the var by getting the list;
-    $collectionHolder = $('#new_list');
+    $collectionHolder = $('#streets');
     // append the add new item link to the collectionHolder
     $collectionHolder.append($addNewItem);
     // add an index property to the collectionHolder which helps track the count of forms we have in the list
@@ -179,7 +247,7 @@ function addNewForm() {
  */
 function addRemoveButton ($panel) {
     // create remove button
-    var $removeButton = $('<a href="#" class="btn btn-danger">Remove</a>');
+    var $removeButton = $('<a href="#" class="btn btn-danger">Eliminar</a>');
     // appending the removebutton to the panel footer
     var $panelFooter = $('<div class="panel-footer"></div>').append($removeButton);
     // handle the click event of the remove button
@@ -195,6 +263,3 @@ function addRemoveButton ($panel) {
     $panel.append($panelFooter);
 }
 
-$(document).ready(function() {
-    $('#dataTable').DataTable();
-});

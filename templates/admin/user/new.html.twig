@@ -3,38 +3,35 @@
 {% block title %}New User{% endblock %}
 
 {% block content %}
-<div class="card shadow mb-4">
-    <div class="card-header py-3">
-        <h1 class="h3 mb-4 text-gray-800 float-left">Crear nuevo usuario</h1>
-        {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
-    </div>
-    <div class="card-body">
-        {{ form_start(form) }}
-        <div class="row">
-            <div class="col-md-12">
-                {{ form_widget(form) }}
-            </div>
-{#            {{ form_row(form.firstName) }}
-            {{ form_row(form.lastName) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.username) }}
-            {{ form_row(form.plainPassword) }}
-            {{ form_row(form.company) }}#}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Crear nuevo usuario</h1>
+            {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
         </div>
-
-        {#        <div class="row ml-4">#}
-{#            <div class="col-md-2">#}
-{#                {{ form_row(form.roles) }}#}
-{#            </div>#}
-
-{#        </div>#}
-        <button class="btn btn-success float-left">{{ button_label|default('Guardar') }}</button>
-        {{ form_end(form) }}
-        {#        {{ include('admin/_form.html.twig') }}#}
+        <div class="card-body">
+    {#        <form method="post" action="{{ path('upload_test') }}" enctype="multipart/form-data">
+                <label for="image"> Image </label>
+                <input id="image" type="file" name="image">
+                <button type="submit" class="btn btn-success">Subir</button>
+            </form>#}
+            {{ include('admin/_form.html.twig') }}
+        </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'user_index'}) }}
+        </div>
     </div>
-    <div class="card-footer">
-        {{ include('admin/_back_link.html.twig', {'route': 'user_index'}) }}
-    </div>
-</div>
 
 {% endblock %}
+
+{#
+{% block stylesheets %}
+    {{ parent() }}
+    <script>
+        $('.custom-file-input').on('change', function (event) {
+            var inputFile = event.currentTarget;
+            $(inputFile).parent()
+                .find('.custom-file-label')
+                .html(inputFile.files[0].name);
+        });
+    </script>
+{% endblock %}#}

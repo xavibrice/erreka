@@ -1,6 +1,6 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}New Zone{% endblock %}
+{% block title %} Nueva Zona {% endblock %}
 
 {% block content %}
 
@@ -10,7 +10,25 @@
             {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
         </div>
         <div class="card-body">
-            {{ include('admin/_form.html.twig') }}
+{#            {{ include('admin/_form.html.twig') }}#}
+            {{ form_start(form) }}
+            {{ form_row(form.name) }}
+            <div class="col-sm-8 col-sm-offset-2" id="streets" data-prototype="{{ form_widget(form.streets.vars.prototype)|e('html_attr') }}">
+                {% for row in form.streets %}
+                    {{ dump(form_row(row)) }}
+                    {#<div class="panel panel-warning">
+                        <div class="panel-heading">
+                            <strong>{{ row.vars.value.title }}</strong>
+                        </div>
+                        <div class="panel-body">
+                            {{ form_row(st) }}
+                        </div>
+                    </div>#}
+                {% endfor %}
+            </div>
+
+            <button class="btn btn-success float-left">{{ button_label|default('Guardar') }}</button>
+            {{ form_end(form) }}
         </div>
         <div class="card-footer">
             {{ include('admin/_back_link.html.twig', {'route': 'zone_index'}) }}

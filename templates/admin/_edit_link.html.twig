@@ -1,4 +1,6 @@
 <a class="btn btn-info" href="{{ path(route, {'id': id}) }}">
-    {{ button_label|default('') }}
-    <i class="fas fa-pencil-alt"></i>
+    <span class="icon text-white-50">
+        <i class="fas fa-pencil-alt"></i>
+    </span>
+    <span class="text"> {{ button_label|default('') }} </span>
 </a>

@@ -23,7 +23,7 @@ class NoteCommercialController extends AbstractController
     public function notes(NoteCommercialRepository $noteCommercialRepository): Response
     {
         return $this->render('admin/note_commercial/note.html.twig', [
-            'note_commercials' => $noteCommercialRepository->findBy(['notice_date' => new \DateTime(), 'commercial' => $this->getUser()]),
+            'note_commercials' => $noteCommercialRepository->findBy(['notice_date' => new \DateTime()]),
         ]);
     }
 

@@ -43,12 +43,6 @@ class NewsType extends AbstractType
                 'class' => Reason::class,
                 'placeholder' => 'Selecciona un motivo'
             ])
-            ->add('street', EntityType::class, [
-                'label' => ' ',
-                'class' => Street::class,
-                'placeholder' => 'Selecciona una calle',
-                'required' => false
-            ])
             ->add('portal', TextType::class, [
                 'label' => ' ',
                 'attr' => [
