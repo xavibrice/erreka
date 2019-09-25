@@ -20,7 +20,8 @@
                     <thead>
                         <tr>
                             <th>Id</th>
-                            <th>Nombre</th>
+                            <th>Calle</th>
+                            <th>Zona</th>
                             <th>Ver</th>
                             <th>Editar</th>
                             <th>Eliminar</th>
@@ -31,6 +32,11 @@
                         <tr>
                             <td>{{ street.id }}</td>
                             <td>{{ street.name }}</td>
+                            <td>
+                                <a href="{{ path('street_show', {'id': street.zone.id}) }}">
+                                    {{ street.zone.name }}
+                                </a>
+                            </td>
                             <td>
                                 {{ include('admin/_show_link.html.twig', {'route': 'street_show', 'id': street.id }) }}
                             </td>

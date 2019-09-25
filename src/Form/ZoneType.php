@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Zone;
+use App\Form\Collection\StreetZoneType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -19,7 +20,7 @@ class ZoneType extends AbstractType
             ])
             ->add('streets', CollectionType::class, [
                 'label' => 'Calles',
-                'entry_type' => StreetType::class,
+                'entry_type' => StreetZoneType::class,
                 'entry_options' => [
                     'label' => false
                 ],

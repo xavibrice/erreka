@@ -74,14 +74,19 @@ class News
     private $floor;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Reason", inversedBy="news")
-     */
-    private $reason;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="news")
      */
     private $situation;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteNew", mappedBy="new")
+     */
+    private $noteNews;
+
+    public function __construct()
+    {
+        $this->noteNews = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -122,12 +127,6 @@ class News
         $this->commercial = $commercial;
 
         return $this;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->price;
     }
 
     public function getZone(): ?Zone
@@ -226,18 +225,6 @@ class News
         return $this;
     }
 
-    public function getReason(): ?Reason
-    {
-        return $this->reason;
-    }
-
-    public function setReason(?Reason $reason): self
-    {
-        $this->reason = $reason;
-
-        return $this;
-    }
-
     public function getSituation(): ?Situation
     {
         return $this->situation;
@@ -246,6 +233,43 @@ class News
     public function setSituation(?Situation $situation): self
     {
         $this->situation = $situation;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return $this->price;
+    }
+
+    /**
+     * @return Collection|NoteNew[]
+     */
+    public function getNoteNews(): Collection
+    {
+        return $this->noteNews;
+    }
+
+    public function addNoteNews(NoteNew $noteNews): self
+    {
+        if (!$this->noteNews->contains($noteNews)) {
+            $this->noteNews[] = $noteNews;
+            $noteNews->setNew($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNoteNews(NoteNew $noteNews): self
+    {
+        if ($this->noteNews->contains($noteNews)) {
+            $this->noteNews->removeElement($noteNews);
+            // set the owning side to null (unless already changed)
+            if ($noteNews->getNew() === $this) {
+                $noteNews->setNew(null);
+            }
+        }
 
         return $this;
     }

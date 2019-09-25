@@ -33,14 +33,29 @@ class UserType extends AbstractType
             ]),
         ];
 
-        if (!$isEdit || !$user->getImageFilename()) {
-            $imageContrains[] = new NotNull([
-                'message' => 'Por favor subir una foto'
+        $passwordContrains = [
+            new Length([
+                'min' => 6,
+                'minMessage' => 'Su contraseña debe tener al menos {{ limit }} caracteres.',
+                'max' => 4096,
+            ])
+        ];
+
+        if (!$isEdit || !$user->getPassword()) {
+            $passwordContrains[] = new NotNull([
+                'message' => 'Por favor poner una contraseña'
             ]);
         }
 
+/*        if (!$isEdit || !$user->getImageFilename()) {
+            $imageContrains[] = new NotNull([
+                'message' => 'Por favor subir una foto'
+            ]);
+        }*/
+
         $builder
             ->add('imageFile', FileType::class, [
+                'label' => ' ',
                 'mapped' => false,
                 'required' => false,
                 'constraints' => $imageContrains,
@@ -100,14 +115,8 @@ class UserType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 'label' => ' ',
                 'mapped' => false,
-                'required' => true,
-                'constraints' => [
-                    new Length([
-                        'min' => 6,
-                        'minMessage' => 'Su contraseña debe tener al menos {{ limit }} caracteres.',
-                        'max' => 4096,
-                    ])
-                ],
+                'required' => false,
+                'constraints' => $passwordContrains,
                 'attr' => [
                     'placeholder' => 'Contraseña'
                 ]

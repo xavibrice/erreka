@@ -23,21 +23,27 @@
                             <td>{{ reason.name }}</td>
                         </tr>
                         <tr>
-                            <th>Noticias</th>
+                            <th>Situación</th>
                             <td>
-                                {% if reason.news.count > 0 %}
-                                    <ul class="list-group">
-                                        {% for new in reason.news %}
-                                            <li class="list-group-item">
-                                                <a href="{{ path('news_show', {'id': new.id}) }}">
-                                                    {{ new.price }} - {{ new.firstName }}
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
+                                {% if reason.situation %}
+                                    {{ reason.situation.name }}
                                 {% else %}
-                                    Motivo sin noticias
+                                    Sin situación
                                 {% endif %}
+
+{#                                {% if reason.news.count > 0 %}#}
+{#                                    <ul class="list-group">#}
+{#                                        {% for new in reason.news %}#}
+{#                                            <li class="list-group-item">#}
+{#                                                <a href="{{ path('news_show', {'id': new.id}) }}">#}
+{#                                                    {{ new.price }} - {{ new.firstName }}#}
+{#                                                </a>#}
+{#                                            </li>#}
+{#                                        {% endfor %}#}
+{#                                    </ul>#}
+{#                                {% else %}#}
+{#                                    Motivo sin noticias#}
+{#                                {% endif %}#}
                             </td>
                         </tr>
                     </tbody>

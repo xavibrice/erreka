@@ -12,8 +12,10 @@ require('datatables.net');
 const $ = require('jquery');
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
+const routes = require('../../public/js/fos_js_routes');
+// const Routing = require('./Components/Routing');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router';
 // require('@fortawesome/fontawesome-free/js/all');
-
 
 // global.$ = global.jQuery = $;
 
@@ -57,141 +59,43 @@ $('.custom-file-input').on('change', function (event) {
 });
 
 
-/*
-var $collectionHolder;
+$("#appbundle_news_zone").change(function () {
+    const data = {
+        zone_id: $(this).val()
+    };
+    $.ajax({
+        type: 'post',
+        url: '/admin2/news/zone_street',
+        data: data,
+        success: function (data) {
+            if (data.length > 0) {
+                const $street_selector = $('#appbundle_news_streets');
+                $street_selector.html('<option> Selecciona una calle</option>');
+                for (let i = 0, total = data.length; i < total; i++) {
+                    $street_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+                }
+                console.log(data);
+            } else {
+                const $street_selector = $('#appbundle_news_streets');
+                $street_selector.html('<option> Selecciona primero una zona </option>');
+            }
 
-var $addTagButton = $('<button type="button" class="add_tag_link btn btn-primary">Añadir noticia</button>');
-var $newLinkLi = $('<li></li>').append($addTagButton);
-jQuery(document).ready(function() {
-    // Get the ul that holds the collection of tags
-    $collectionHolder = $('ul.news');
-
-    // add a delete link to all of the existing tag form li elements
-    $collectionHolder.find('li').each(function() {
-        addTagFormDeleteLink($(this));
-    });
-
-    // add the "add a tag" anchor and li to the tags ul
-    $collectionHolder.append($newLinkLi);
-
-    // count the current form inputs we have (e.g. 2), use that as the new
-    // index when inserting a new item (e.g. 2)
-    $collectionHolder.data('index', $collectionHolder.find(':input').length);
-
-    $addTagButton.on('click', function(e) {
-        // add a new tag form (see next code block)
-        addTagForm($collectionHolder, $newLinkLi);
+        },
     });
 });
-
-function addTagForm($collectionHolder, $newLinkLi) {
-    var prototype = $collectionHolder.data('prototype');
-
-    var index = $collectionHolder.data('index');
-    var newForm = prototype;
-
-    newForm = newForm.replace(/__name__/g, index);
-    $collectionHolder.data('index', index + 1);
-
-    // Display the form in the page in an li, before the "Add a tag" link li
-    var $newFormLi = $('<li></li>').append(newForm);
-    $newLinkLi.before($newFormLi);
-
-    addTagFormDeleteLink($newFormLi);
-}
-
-function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormButton = $('<button class="btn btn-danger mb-1" type="button">Eliminar noticia</button>');
-    $tagFormLi.append($removeFormButton);
-
-    $removeFormButton.on('click', function(e) {
-        // remove the li for the tag form
-        $tagFormLi.remove();
-    });
-}
-*/
-
-
-/*
-var $collectionHolder;
-
-// setup an "add a tag" link
-var $addTagButton = $('<button type="button" class="btn btn-success">Añadir un calle</button>');
-var $newLinkLi = $('<li></li>').append($addTagButton);
-
-jQuery(document).ready(function() {
-    // Get the ul that holds the collection of tags
-    $collectionHolder = $('ul.streets');
-
-    // add a delete link to all of the existing tag form li elements
-    $collectionHolder.find('li').each(function() {
-        addTagFormDeleteLink($(this));
-    });
-
-    // add the "add a tag" anchor and li to the tags ul
-    $collectionHolder.append($newLinkLi);
-
-    // count the current form inputs we have (e.g. 2), use that as the new
-    // index when inserting a new item (e.g. 2)
-    $collectionHolder.data('index', $collectionHolder.find(':input').length);
-
-    $addTagButton.on('click', function(e) {
-        // add a new tag form (see next code block)
-        addTagForm($collectionHolder, $newLinkLi);
-    });
-});
-
-function addTagForm($collectionHolder, $newLinkLi) {
-    // Get the data-prototype explained earlier
-    var prototype = $collectionHolder.data('prototype');
-
-    // get the new index
-    var index = $collectionHolder.data('index');
-
-    var newForm = prototype;
-    // You need this only if you didn't set 'label' => false in your tags field in TaskType
-    // Replace '__name__label__' in the prototype's HTML to
-    // instead be a number based on how many items we have
-    // newForm = newForm.replace(/__name__label__/g, index);
-
-    // Replace '__name__' in the prototype's HTML to
-    // instead be a number based on how many items we have
-    newForm = newForm.replace(/__name__/g, index);
-
-    // increase the index with one for the next item
-    $collectionHolder.data('index', index + 1);
-
-    // Display the form in the page in an li, before the "Add a tag" link li
-    var $newFormLi = $('<li></li>').append(newForm);
-    $newLinkLi.before($newFormLi);
-
-    // add a delete link to the new form
-    addTagFormDeleteLink($newFormLi);
-}
-
-function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormButton = $('<button class="btn btn-danger" type="button">Eliminar calle</button>');
-    $tagFormLi.append($removeFormButton);
-
-    $removeFormButton.on('click', function(e) {
-        // remove the li for the tag form
-        $tagFormLi.remove();
-    });
-}*/
-
 
 // this variable is the list in the dom, it's initiliazed when the document is ready
 var $collectionHolder;
 // the link which we click on to add new items
-var $addNewItem = $('<a href="#" class="btn btn-info">Añadir calle</a>');
+var $addNewItem = $('<a href="#" class="btn btn-info">Añadir</a>');
 // when the page is loaded and ready
 $(document).ready(function () {
     // get the collectionHolder, initilize the var by getting the list;
-    $collectionHolder = $('#streets');
+    $collectionHolder = $('#collectionInput');
     // append the add new item link to the collectionHolder
     $collectionHolder.append($addNewItem);
     // add an index property to the collectionHolder which helps track the count of forms we have in the list
-    $collectionHolder.data('index', $collectionHolder.find('.panel').length)
+    $collectionHolder.data('index', $collectionHolder.find('.panel').length);
     // finds all the panels in the list and foreach one of them we add a remove button to it
     // add remove button to existing items
     $collectionHolder.find('.panel').each(function () {
@@ -262,4 +166,3 @@ function addRemoveButton ($panel) {
     // append the footer to the panel
     $panel.append($panelFooter);
 }
-

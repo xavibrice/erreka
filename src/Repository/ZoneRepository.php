@@ -19,11 +19,12 @@ class ZoneRepository extends ServiceEntityRepository
         parent::__construct($registry, Zone::class);
     }
 
+
     // /**
     //  * @return Zone[] Returns an array of Zone objects
     //  */
-    /*
-    public function findByExampleField($value)
+
+/*    public function findByExampleField($value)
     {
         return $this->createQueryBuilder('z')
             ->andWhere('z.exampleField = :val')
@@ -33,8 +34,7 @@ class ZoneRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult()
         ;
-    }
-    */
+    }*/
 
     /*
     public function findOneBySomeField($value): ?Zone

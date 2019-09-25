@@ -3,10 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\News;
+use App\Entity\Street;
+use App\Entity\Zone;
 use App\Form\NewsType;
 use App\Repository\NewsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,8 +24,13 @@ class NewsController extends AbstractController
      */
     public function index(NewsRepository $newsRepository): Response
     {
+        $news = $newsRepository->findBy(['commercial' => $this->getUser()]);
+        if ($this->isGranted('ROLE_ADMIN')) {
+            $news = $newsRepository->findAll();
+        }
+
         return $this->render('admin/news/index.html.twig', [
-            'news' => $newsRepository->findAll(),
+            'news' => $news,
         ]);
     }
 
@@ -41,6 +49,7 @@ class NewsController extends AbstractController
             $entityManager->persist($news);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Noticia creada correctamente');
             return $this->redirectToRoute('news_index');
         }
 
@@ -71,6 +80,8 @@ class NewsController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
+            $this->addFlash('success', 'Noticia editada correctamente');
+
             return $this->redirectToRoute('news_index', [
                 'id' => $news->getId(),
             ]);
@@ -94,5 +105,17 @@ class NewsController extends AbstractController
         }
 
         return $this->redirectToRoute('news_index');
+    }
+
+    /**
+     * @Route("/zone_street", name="zone_by_street", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+     */
+    public function zoneByStreet(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $zone_id = $request->request->get('zone_id');
+        $zones = $em->getRepository(Street::class)->findByStreets($zone_id);
+
+        return new JsonResponse($zones);
     }
 }

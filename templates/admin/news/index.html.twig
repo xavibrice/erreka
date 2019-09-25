@@ -22,7 +22,7 @@
                             <th>Zona</th>
                             <th>Asesor</th>
                             <th>Situación</th>
-                            <th>Motivo</th>
+{#                            <th>Motivo</th>#}
                             <th>Calle</th>
                             <th>Portal</th>
                             <th>Piso</th>
@@ -50,10 +50,10 @@
                                 </a>
                             </td>
                             <td> {{ new.situation }} </td>
-                            <td> {{ new.reason }} </td>
+{#                            <td> {{ new.reason }} </td>#}
                             <td>
-                                {% if new.street %}
-                                    {{ new.street.name }}
+                                {% if new.zone.streets %}
+                                    {{ new.zone.streets.count }}
                                 {% endif %}
                             </td>
                             <td>{{ new.portal }}</td>

@@ -16,7 +16,11 @@
                             <th>Foto perfil</th>
                             <td>
 {#                                <img class="img-thumbnail" src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.firstName }}" width="300px"/>#}
-                                foto
+                                {% if user.imageFilename %}
+                                    <img src="{{ asset(uploaded_asset(user.imagePath)|imagine_filter('squared_thumbnail_medium')) }}" alt="{{ user.firstName }}">
+                                {% else %}
+                                    Sin Foto
+                                {% endif %}
                             </td>
                         </tr>
                         <tr>

@@ -1,6 +1,6 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}New User{% endblock %}
+{% block title %} Nuevo Usuario {% endblock %}
 
 {% block content %}
     <div class="card shadow mb-4">
@@ -14,7 +14,7 @@
                 <input id="image" type="file" name="image">
                 <button type="submit" class="btn btn-success">Subir</button>
             </form>#}
-            {{ include('admin/_form.html.twig') }}
+            {{ include('admin/user/_form_user.html.twig') }}
         </div>
         <div class="card-footer">
             {{ include('admin/_back_link.html.twig', {'route': 'user_index'}) }}

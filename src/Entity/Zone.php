@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ZoneRepository")
@@ -29,7 +30,8 @@ class Zone
     private $news;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Street", mappedBy="zone", cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\Street", mappedBy="zone", cascade={"persist"}, orphanRemoval=true)
+     * @Assert\NotBlank()
      */
     private $streets;
 

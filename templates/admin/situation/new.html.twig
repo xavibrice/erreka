@@ -9,7 +9,8 @@
             {#        <a class="btn btn-link float-right" href="{{ path('company_index') }}">Volver a la lista</a>#}
         </div>
         <div class="card-body">
-            {{ include('admin/_form.html.twig') }}
+{#            {{ include('admin/_form.html.twig') }}#}
+            {{ include('admin/situation/_form_situation.html.twig') }}
         </div>
         <div class="card-footer">
             {{ include('admin/_back_link.html.twig', {'route': 'situation_index'}) }}

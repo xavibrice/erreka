@@ -8,7 +8,8 @@
             <h1 class="h3 mb-4 text-gray-800 float-left">Editar {{ situation.name }}</h1>
         </div>
         <div class="card-body">
-            {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
+{#            {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}#}
+            {{ include('admin/situation/_form_situation.html.twig', {'button_label': 'Actualizar'}) }}
         </div>
         <div class="card-footer">
             {{ include('admin/_back_link.html.twig', {'route': 'situation_index'}) }}

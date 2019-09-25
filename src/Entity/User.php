@@ -8,11 +8,11 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
-use Symfony\Component\HttpFoundation\File\File;
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Correo ya existe")
+ * @UniqueEntity(fields={"username"}, message="Nombre usuario ya existe")
  */
 class User implements UserInterface
 {
@@ -308,10 +308,14 @@ class User implements UserInterface
     /**
      * @return mixed
      */
-    public function getImageFilename()
+    public function getImageFilename(): ?string
     {
-//        return $this->imageFilename;
-        return UploaderHelper::USER_IMAGE.'/'.$this->imageFilename;
+        return $this->imageFilename;
+    }
+
+    public function getImagePath()
+    {
+        return UploaderHelper::USER_IMAGE.'/'.$this->getImageFilename();
     }
 
     /**

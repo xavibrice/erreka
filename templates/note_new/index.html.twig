@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NoteNew index{% endblock %}
+
+{% block body %}
+    <h1>NoteNew index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Note</th>
+                <th>Notice_date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for note_new in note_news %}
+            <tr>
+                <td>{{ note_new.id }}</td>
+                <td>{{ note_new.note }}</td>
+                <td>{{ note_new.noticeDate ? note_new.noticeDate|date('Y-m-d') : '' }}</td>
+                <td>
+                    <a href="{{ path('note_new_show', {'id': note_new.id}) }}">show</a>
+                    <a href="{{ path('note_new_edit', {'id': note_new.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('note_new_new') }}">Create new</a>
+{% endblock %}

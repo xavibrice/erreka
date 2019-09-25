@@ -19,6 +19,16 @@ class StreetRepository extends ServiceEntityRepository
         parent::__construct($registry, Street::class);
     }
 
+    public function findByStreets($zone_id)
+    {
+        return $this->createQueryBuilder('s')
+            ->andWhere('s.zone = :zone')
+            ->setParameter('zone', $zone_id)
+            ->getQuery()
+            ->getArrayResult()
+            ;
+    }
+
     // /**
     //  * @return Street[] Returns an array of Street objects
     //  */

@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Street;
+use App\Entity\Zone;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,6 +15,11 @@ class StreetType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('zone', EntityType::class, [
+                'class' => Zone::class,
+                'choice_label' => 'name',
+                'placeholder' => 'Selecciona una zona'
+            ])
             ->add('name', TextType::class, [
                 'label' => 'Nombre Calle',
                 'attr' => [

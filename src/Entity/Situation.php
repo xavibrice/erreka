@@ -28,9 +28,15 @@ class Situation
      */
     private $news;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Reason", mappedBy="situation", cascade={"persist"}, orphanRemoval=true)
+     */
+    private $reasons;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
+        $this->reasons = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -85,5 +91,36 @@ class Situation
     {
         // TODO: Implement __toString() method.
         return $this->getName();
+    }
+
+    /**
+     * @return Collection|Reason[]
+     */
+    public function getReasons(): Collection
+    {
+        return $this->reasons;
+    }
+
+    public function addReason(Reason $reason): self
+    {
+        if (!$this->reasons->contains($reason)) {
+            $this->reasons[] = $reason;
+            $reason->setSituation($this);
+        }
+
+        return $this;
+    }
+
+    public function removeReason(Reason $reason): self
+    {
+        if ($this->reasons->contains($reason)) {
+            $this->reasons->removeElement($reason);
+            // set the owning side to null (unless already changed)
+            if ($reason->getSituation() === $this) {
+                $reason->setSituation(null);
+            }
+        }
+
+        return $this;
     }
 }

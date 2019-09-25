@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+            {{ form_row(form.name) }}
+{#            {{ form_row(form.streets) }}#}
+<div class="col-sm-8 col-sm-offset-2" id="collectionInput" data-prototype="{{ form_widget(form.streets.vars.prototype)|e('html_attr') }}">
+    {% for row in form.streets %}
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <strong>
+                    {#                    {{ dump(row.vars.value.name) }}#}
+                    {{ row.vars.value.name }}
+                </strong>
+            </div>
+            <div class="panel-body">
+                {{ form_row(row.name) }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<button class="btn btn-success float-left">{{ button_label|default('Guardar') }}</button>
+{{ form_end(form) }}

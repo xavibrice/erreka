@@ -95,13 +95,13 @@
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}" href="{{ path('company_index') }}">Empresas </a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}" href="{{ path('user_index') }}">Usuarios</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}" href="{{ path('note_commercial_index') }}">Nota Comercial</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'street_index' %}active{% endif %}" href="{{ path('street_index') }}">Calles</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'situation_index' %}active{% endif %}" href="{{ path('situation_index') }}">Situaciones</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
                     </div>
                 </div>
             </li>

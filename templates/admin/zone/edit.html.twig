@@ -10,7 +10,7 @@
         <a class="btn btn-success float-right" href="{{ path('reason_new') }}">Crear razón</a>
     </div>
     <div class="card-body">
-        {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        {{ include('admin/zone/_form_zone.html.twig', {'button_label': 'Actualizar'}) }}
         {{ include('admin/_back_link.html.twig', {'route': 'zone_index'}) }}
 
         {#        {{ include('admin/_delete_form.html.twig', {'route': 'zone_delete', 'entity': zone }) }}#}

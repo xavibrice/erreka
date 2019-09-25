@@ -19,6 +19,7 @@
                 <thead>
                     <tr>
                         <th>Name</th>
+                        <th>Nº Calles</th>
                         <th>Nº Noticias</th>
                         <th>Ver</th>
                         <th>Editar</th>
@@ -29,6 +30,7 @@
                 {% for zone in zones %}
                     <tr>
                         <td>{{ zone.name }}</td>
+                        <td>{{ zone.streets.count }}</td>
                         <td>{{ zone.news.count }}</td>
                         <td>
                             {{ include('admin/_show_link.html.twig', {'route': 'zone_show', 'id': zone.id }) }}
