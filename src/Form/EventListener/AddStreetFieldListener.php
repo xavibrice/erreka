@@ -27,7 +27,7 @@ class AddStreetFieldListener implements EventSubscriberInterface
     private function addStreetForm($form, $zone_id = null)
     {
         $formOptions = [
-            'label' => 'Selecciona Calle',
+            'label' => ' ',
             'class' => Street::class,
             'query_builder' => function (EntityRepository $repository) use ($zone_id) {
             return $repository

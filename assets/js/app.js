@@ -9,6 +9,8 @@
 // import  $ from 'jquery';
 require('bootstrap');
 require('datatables.net');
+require('bootstrap-datepicker');
+
 const $ = require('jquery');
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
@@ -50,14 +52,12 @@ $(document).ready(function() {
     });
 } );
 
-
 $('.custom-file-input').on('change', function (event) {
     var inputFile = event.currentTarget;
     $(inputFile).parent()
         .find('.custom-file-label')
         .html(inputFile.files[0].name);
 });
-
 
 $("#appbundle_news_zone").change(function () {
     const data = {
@@ -70,7 +70,7 @@ $("#appbundle_news_zone").change(function () {
         success: function (data) {
             if (data.length > 0) {
                 const $street_selector = $('#appbundle_news_streets');
-                $street_selector.html('<option> Selecciona una calle</option>');
+                $street_selector.html('<option> Selecciona Calle </option>');
                 for (let i = 0, total = data.length; i < total; i++) {
                     $street_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
                 }
@@ -78,6 +78,31 @@ $("#appbundle_news_zone").change(function () {
             } else {
                 const $street_selector = $('#appbundle_news_streets');
                 $street_selector.html('<option> Selecciona primero una zona </option>');
+            }
+
+        },
+    });
+});
+
+$("#appbundle_news_situation").change(function () {
+    const data = {
+        situation_id: $(this).val()
+    };
+    $.ajax({
+        type: 'post',
+        url: '/admin2/news/situation_reason',
+        data: data,
+        success: function (data) {
+            if (data.length > 0) {
+                const $street_selector = $('#appbundle_news_reasons');
+                $street_selector.html('<option>Selecciona un Motivo </option>');
+                for (let i = 0, total = data.length; i < total; i++) {
+                    $street_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+                }
+                console.log(data);
+            } else {
+                const $street_selector = $('#appbundle_news_reasons');
+                $street_selector.html('<option> Selecciona primero una situación </option>');
             }
 
         },
@@ -115,6 +140,7 @@ $(document).ready(function () {
         addNewForm();
     })
 });
+
 /*
  * creates a new form and appends it to the collectionHolder
  */
@@ -166,3 +192,47 @@ function addRemoveButton ($panel) {
     // append the footer to the panel
     $panel.append($panelFooter);
 }
+
+var date = new Date();
+var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+$(document).ready(function() {
+    // you may need to change this code if you are not using Bootstrap Datepicker
+    $('.js-datepicker').datepicker({
+        format: 'd-mm-yyyy',
+        todayHighlight: true,
+        autoclose: true,
+    });
+    $('.js-datepicker').datepicker('setDate', today);
+});
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    var calendarEl = document.getElementById('calendar-holder');
+
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        defaultView: 'dayGridMonth',
+        selectable: true,
+        editable: true,
+        locale: 'es',
+        eventSources: [
+            {
+                url: "/fc-load-events",
+                method: "POST",
+                extraParams: {
+                    filters: JSON.stringify({})
+                },
+                failure: () => {
+                    // alert("There was an error while fetching FullCalendar!");
+                },
+            },
+        ],
+        header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay',
+        },
+        plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+        timeZone: 'UTC',
+    });
+    calendar.render();
+});

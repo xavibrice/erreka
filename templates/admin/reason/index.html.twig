@@ -19,8 +19,8 @@
                 <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
-                        <th>Nombre Acción</th>
                         <th>Situación</th>
+                        <th>Motivo</th>
                         <th>Ver</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
@@ -29,8 +29,8 @@
                     <tbody>
                     {% for reason in reasons %}
                         <tr>
-                            <td>{{ reason.name }}</td>
                             <td>{{ reason.situation.name }}</td>
+                            <td>{{ reason.name }}</td>
                             <td>
                                 {{ include('admin/_show_link.html.twig', {'route': 'reason_show', 'id': reason.id }) }}
                             </td>

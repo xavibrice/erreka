@@ -11,7 +11,6 @@ use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @UniqueEntity(fields={"email"}, message="Correo ya existe")
  * @UniqueEntity(fields={"username"}, message="Nombre usuario ya existe")
  */
 class User implements UserInterface
@@ -22,11 +21,6 @@ class User implements UserInterface
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $email;
 
     /**
      * @ORM\Column(type="json")
@@ -67,7 +61,7 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial", cascade={"persist"}, orphanRemoval=true)
      */
     private $noteCommercials;
     /**
@@ -80,6 +74,11 @@ class User implements UserInterface
      */
     private $active;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $mobile;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
@@ -91,18 +90,6 @@ class User implements UserInterface
         return $this->id;
     }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -110,7 +97,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**
@@ -324,6 +311,18 @@ class User implements UserInterface
     public function setImageFilename($imageFilename): void
     {
         $this->imageFilename = $imageFilename;
+    }
+
+    public function getMobile(): ?string
+    {
+        return $this->mobile;
+    }
+
+    public function setMobile(string $mobile): self
+    {
+        $this->mobile = $mobile;
+
+        return $this;
     }
 
 

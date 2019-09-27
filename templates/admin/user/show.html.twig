@@ -5,7 +5,7 @@
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="h3 mb-4 text-gray-800 float-left">Ver {{ user.email }}</h1>
+            <h1 class="h3 mb-4 text-gray-800 float-left">Ver {{ user.firstName }} {{ user.lastName }}</h1>
 {#            <a class="btn btn-link float-right" href="{{ path('user_index') }}">Volver a lista</a>#}
         </div>
         <div class="card-body">
@@ -28,8 +28,8 @@
                             <td>{{ user.firstName }} {{ user.lastName }}</td>
                         </tr>
                         <tr>
-                            <th>Email</th>
-                            <td>{{ user.email }}</td>
+                            <th>Móvil</th>
+                            <td>{{ user.mobile }}</td>
                         </tr>
                         <tr>
                             <th>Roles</th>
@@ -46,7 +46,11 @@
                                     <ul>
                                         {% for new in user.news %}
                                             <li>
-                                                {{ new.price }}
+                                                <a href="{{ path('news_show', {'id': new.id}) }}">
+                                                    <p>
+                                                        {{ new.firstName }} {{ new.lastName }} calle {{ new.portal }}
+                                                    </p>
+                                                </a>
                                             </li>
                                         {% endfor %}
                                     </ul>

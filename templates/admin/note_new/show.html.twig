@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Nota Noticia {% endblock %}
+
+{% block body %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Detalles de nota de noticia</h1>
+            {#            <a class="btn btn-success float-right" href="{{ path('company_new') }}">Crear Empresa</a>#}
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <tbody>
+                <tr>
+                    <th>Id</th>
+                    <td>{{ note_new.id }}</td>
+                </tr>
+                <tr>
+                    <th>Note</th>
+                    <td>{{ note_new.note }}</td>
+                </tr>
+                <tr>
+                    <th>Notice_date</th>
+                    <td>{{ note_new.noticeDate ? note_new.noticeDate|date('Y-m-d') : '' }}</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </div>
+
+        <div class="card-footer">
+            <a href="{{ path('note_new_index') }}">back to list</a>
+
+            <a href="{{ path('note_new_edit', {'id': note_new.id}) }}">edit</a>
+            {{ include('note_new/_delete_form.html.twig') }}
+
+        </div>
+    </div>
+{% endblock %}

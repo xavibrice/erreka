@@ -30,3 +30,7 @@ services:
     # please note that last definitions always *replace* previous ones
 
     Symfony\Component\Asset\Context\RequestStackContext: '@assets.context'
+
+    App\EventListener\CalendarListener:
+        tags:
+            - { name: 'kernel.event_listener', event: 'calendar.set_data', method: load }

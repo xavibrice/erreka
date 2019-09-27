@@ -21,7 +21,9 @@
                     <tr>
     {#                    <th>Id</th>#}
                         <th>Foto</th>
-                        <th>Correo</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Móvil</th>
                         <th>Empresa</th>
                         <th>Estado</th>
                         <th>Roles</th>
@@ -43,7 +45,9 @@
                                     Sin Foto
                                 {% endif %}
                             </td>
-                            <td>{{ user.email }}</td>
+                            <td>{{ user.firstName }}</td>
+                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.mobile }}</td>
                             <td>
                                 {% if user.company %}
                                     <a href="{{ path('company_edit', {'id': user.company.id}) }}">

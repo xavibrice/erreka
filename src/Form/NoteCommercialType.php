@@ -22,7 +22,10 @@ class NoteCommercialType extends AbstractType
             ->add('notice_date', DateType::class, [
                 'label' => 'Selecciona Fecha',
                 'widget' => 'single_text',
-//                'input'  => 'datetime_immutable'
+                'html5' => false,
+                'attr' => [
+                    'class' => 'js-datepicker',
+                ],
             ])
             ->add('commercial', EntityType::class, [
                 'label' => "Selecciona un Comercial",

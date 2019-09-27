@@ -25,10 +25,10 @@
                                             <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                                         {% endif %}
                                         <div class="form-group">
-                                            <input type="text" name="email" value="{{ last_username }}" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Enter Email Address..." required autofocus>
+                                            <input type="text" name="username" value="{{ last_username }}" class="form-control form-control-user" id="exampleInputEmail" aria-describedby="emailHelp" placeholder="Nombre Usuario" required autofocus>
                                         </div>
                                         <div class="form-group">
-                                            <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Password">
+                                            <input type="password" name="password" class="form-control form-control-user" id="exampleInputPassword" placeholder="Contraseña">
                                         </div>
                                         <input type="hidden" name="_csrf_token"
                                                value="{{ csrf_token('authenticate') }}"

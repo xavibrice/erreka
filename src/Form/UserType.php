@@ -11,6 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -82,10 +83,10 @@ class UserType extends AbstractType
                     'placeholder' => 'Apellidos'
                 ]
             ])
-            ->add('email', EmailType::class, [
+            ->add('mobile', TelType::class, [
                 'label' => ' ',
                 'attr' => [
-                    'placeholder' => "Correo"
+                    'placeholder' => "+34 666 666 666"
                 ]
             ])
             ->add('username', TextType::class, [
@@ -103,7 +104,7 @@ class UserType extends AbstractType
                 'label' => ' ',
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
-                    'Empresa' => 'ROLE_COMPANY',
+                    'Agencia' => 'ROLE_AGENCY',
                     'Comercial' => 'ROLE_COMMERCIAL'
                 ],
                 'expanded' => true,

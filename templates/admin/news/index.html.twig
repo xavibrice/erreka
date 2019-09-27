@@ -22,14 +22,14 @@
                             <th>Zona</th>
                             <th>Asesor</th>
                             <th>Situación</th>
-{#                            <th>Motivo</th>#}
+                            <th>Motivo</th>
                             <th>Calle</th>
                             <th>Portal</th>
                             <th>Piso</th>
                             <th>Propietario</th>
                             <th>Móvil</th>
-                            <th>Teléfono</th>
                             <th>Precio</th>
+                            <th>Últ Llamada</th>
                             <th>Comentario</th>
                             <th>Ver</th>
                             <th>Editar</th>
@@ -50,7 +50,13 @@
                                 </a>
                             </td>
                             <td> {{ new.situation }} </td>
-{#                            <td> {{ new.reason }} </td>#}
+                            <td>
+{#                                {{ dump(new.situation.reasons.first) }}#}
+{#                                {% for reason in new.situation.reasons %}#}
+{#                                    {{ reason.name }} <br>#}
+{#                                {% endfor %}#}
+                                Mostrar Motivo
+                            </td>
                             <td>
                                 {% if new.zone.streets %}
                                     {{ new.zone.streets.count }}
@@ -62,8 +68,14 @@
                                 {{ new.firstName }} {{ new.lastName }}
                             </td>
                             <td>{{ new.mobile }} </td>
-                            <td>{{ new.phone }} </td>
                             <td>{{ new.price|number_format(2, '.', ',') }} €</td>
+                            <td>
+
+                                {{ new.noteNews.last }}
+                        {#        {% for noteNew in new.noteNews %}
+                                    {{ noteNew.noticeDate|date }}
+                                {% endfor %}#}
+                            </td>
                             <td>{{ new.comment }}</td>
                             <td>
                                 {{ include('admin/_show_link.html.twig', {'route': 'news_show', 'id': new.id }) }}

@@ -19,6 +19,15 @@ class ReasonRepository extends ServiceEntityRepository
         parent::__construct($registry, Reason::class);
     }
 
+    public function findByReasons($situation_id)
+    {
+        return $this->createQueryBuilder('r')
+            ->andWhere('r.situation = :situation')
+            ->setParameter('situation', $situation_id)
+            ->getQuery()
+            ->getArrayResult()
+            ;
+    }
     // /**
     //  * @return Reason[] Returns an array of Reason objects
     //  */

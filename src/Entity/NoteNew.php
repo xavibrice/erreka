@@ -31,6 +31,11 @@ class NoteNew
      */
     private $new;
 
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $next_call;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,25 @@ class NoteNew
     public function setNew(?News $new): self
     {
         $this->new = $new;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return (string)$this->getNextCall()->format('d-m-Y');
+    }
+
+
+    public function getNextCall(): ?\DateTimeInterface
+    {
+        return $this->next_call;
+    }
+
+    public function setNextCall(\DateTimeInterface $next_call): self
+    {
+        $this->next_call = $next_call;
 
         return $this;
     }

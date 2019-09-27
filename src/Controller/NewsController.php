@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\News;
+use App\Entity\Reason;
 use App\Entity\Street;
 use App\Entity\Zone;
 use App\Form\NewsType;
@@ -117,5 +118,17 @@ class NewsController extends AbstractController
         $zones = $em->getRepository(Street::class)->findByStreets($zone_id);
 
         return new JsonResponse($zones);
+    }
+
+    /**
+     * @Route("/situation_reason", name="situation_by_reason", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+     */
+    public function situationByReason(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $situation_id = $request->request->get('situation_id');
+        $situations = $em->getRepository(Reason::class)->findByReasons($situation_id);
+
+        return new JsonResponse($situations);
     }
 }

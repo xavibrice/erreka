@@ -5,6 +5,8 @@ namespace App\Form;
 use App\Entity\News;
 use App\Entity\Situation;
 use App\Entity\User;
+use App\Form\EventListener\AddReasonFieldListener;
+use App\Form\EventListener\AddSituationFieldListener;
 use App\Form\EventListener\AddStreetFieldListener;
 use App\Form\EventListener\AddZoneFieldListener;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -21,75 +23,68 @@ class NewsType extends AbstractType
     {
         $builder
             ->add('commercial', EntityType::class, [
-                'label' => 'Comercial',
+                'label' => ' ',
                 'class' => User::class,
                 'placeholder' => 'Selecciona un comercial',
                 'required' => false
             ])
             ->addEventSubscriber(new AddZoneFieldListener())
             ->addEventSubscriber(new AddStreetFieldListener())
-            ->add('situation', EntityType::class, [
-                'label' => 'Situación',
-                'class' => Situation::class,
-                'placeholder' => 'Selecciona una situación'
-            ])
-/*            ->add('reason', EntityType::class, [
-                'label' => ' ',
-                'class' => Reason::class,
-                'placeholder' => 'Selecciona un motivo'
-            ])*/
+            ->addEventSubscriber(new AddSituationFieldListener())
+            ->addEventSubscriber(new AddReasonFieldListener())
             ->add('portal', TextType::class, [
-                'label' => 'Portal',
+                'label' => ' ',
+                'required' => false,
                 'attr' => [
                     'placeholder' => 'Nº Portal',
                 ]
             ])
             ->add('floor', TextType::class, [
-                'label' => 'Piso',
+                'label' => ' ',
                 'attr' => [
                     'placeholder' => 'Piso',
                 ]
             ])
             ->add('firstName', TextType::class, [
-                'label' => 'Nombres',
+                'label' => ' ',
                 'attr' => [
-                    'placeholder' => 'Nombres',
+                    'placeholder' => 'Nombre del propietario',
                 ]
             ])
             ->add('lastName', TextType::class, [
-                'label' => 'Apellidos',
+                'label' => ' ',
                 'attr' => [
                     'placeholder' => 'Apellidos',
                 ]
             ])
             ->add('mobile', TextType::class, [
-                'label' => 'Móvil',
+                'label' => ' ',
                 'attr' => [
                     'placeholder' => 'Móvil',
                 ]
             ])
             ->add('phone', TextType::class, [
-                'label' => 'Teléfono',
+                'label' => ' ',
                 'attr' => [
                     'placeholder' => 'Teléfono',
                 ]
             ])
             ->add('email', TextType::class, [
-                'label' => 'Correo',
+                'label' => ' ',
                 'attr' => [
                     'placeholder' => 'Correo',
                 ]
             ])
             ->add('price', MoneyType::class, [
-                'label' => 'Precio',
+                'label' => ' ',
                 'attr' => [
                     'placeholder' => 'Precio'
                 ]
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Comentario',
+                'label' => ' ',
                 'attr' => [
-                    'placeholder' => 'Comentario',
+                    'placeholder' => 'Comentario del propietario',
                     'cols' => 100,
                     'rows' => 5
                 ]

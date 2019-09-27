@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/note/new")
+ * @Route("/admin2/note/new")
  */
 class NoteNewController extends AbstractController
 {
@@ -20,7 +20,7 @@ class NoteNewController extends AbstractController
      */
     public function index(NoteNewRepository $noteNewRepository): Response
     {
-        return $this->render('note_new/index.html.twig', [
+        return $this->render('admin/note_new/index.html.twig', [
             'note_news' => $noteNewRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class NoteNewController extends AbstractController
             return $this->redirectToRoute('note_new_index');
         }
 
-        return $this->render('note_new/new.html.twig', [
+        return $this->render('admin/note_new/new.html.twig', [
             'note_new' => $noteNew,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class NoteNewController extends AbstractController
      */
     public function show(NoteNew $noteNew): Response
     {
-        return $this->render('note_new/show.html.twig', [
+        return $this->render('admin/note_new/show.html.twig', [
             'note_new' => $noteNew,
         ]);
     }
@@ -74,7 +74,7 @@ class NoteNewController extends AbstractController
             ]);
         }
 
-        return $this->render('note_new/edit.html.twig', [
+        return $this->render('admin/note_new/edit.html.twig', [
             'note_new' => $noteNew,
             'form' => $form->createView(),
         ]);

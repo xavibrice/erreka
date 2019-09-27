@@ -15,10 +15,11 @@
         <a class="btn btn-success float-right" href="{{ path('note_commercial_new') }}">Crear Nota</a>
     </div>
     <div class="card-body">
-        <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
-            <thead>
+        <div class="table-responsive">
+            <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
+                <thead>
                 <tr>
-{#                    <th>Id</th>#}
+                    {#                    <th>Id</th>#}
                     <th>Nota</th>
                     <th>Fecha Nota</th>
                     <th>Comercial</th>
@@ -26,35 +27,38 @@
                     <th>Editar</th>
                     <th>Eliminar</th>
                 </tr>
-            </thead>
-            <tbody>
-            {% for note_commercial in note_commercials %}
-                <tr>
-{#                    <td>{{ note_commercial.id }}</td>#}
-                    <td>{{ note_commercial.note }}</td>
-                    <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('Y-m-d') : '' }}</td>
-                    <td>
-                        <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">
-                            {{ note_commercial.commercial.firstName }} {{ note_commercial.commercial.lastName }}
-                        </a>
-                    </td>
-                    <td>
-                        {{ include('admin/_show_link.html.twig', {'route': 'note_commercial_show', 'id': note_commercial.id }) }}
-                    </td>
-                    <td>
-                        {{ include('admin/_edit_link.html.twig', {'route': 'note_commercial_edit', 'id': note_commercial.id }) }}
-                    </td>
-                    <td>
-                        {{ include('admin/_delete_form.html.twig', {'route': 'note_commercial_delete', 'entity': note_commercial, 'count': 0}) }}
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="4">no records found</td>
-                </tr>
-            {% endfor %}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {% for note_commercial in note_commercials %}
+                    <tr>
+                        {#                    <td>{{ note_commercial.id }}</td>#}
+                        <td>{{ note_commercial.note }}</td>
+                        <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('Y-m-d') : '' }}</td>
+                        <td>
+                            <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">
+                                {{ note_commercial.commercial.firstName }} {{ note_commercial.commercial.lastName }}
+                            </a>
+                        </td>
+                        <td>
+                            {{ include('admin/_show_link.html.twig', {'route': 'note_commercial_show', 'id': note_commercial.id }) }}
+                        </td>
+                        <td>
+                            {{ include('admin/_edit_link.html.twig', {'route': 'note_commercial_edit', 'id': note_commercial.id }) }}
+                        </td>
+                        <td>
+                            {{ include('admin/_delete_form.html.twig', {'route': 'note_commercial_delete', 'entity': note_commercial, 'count': 0}) }}
+                            {#                        {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company, 'count': company.users.count}) }}#}
+
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4">no records found</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 {#    <div class="card-footer">#}
 {#        <a href="{{ path('note_commercial_new') }}">Create new</a>#}

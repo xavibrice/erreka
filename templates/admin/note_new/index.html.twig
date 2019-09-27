@@ -1,0 +1,58 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %} Listado de notas de noticias {% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTable') }}
+{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de notas de noticias</h1>
+            <a class="btn btn-success float-right" href="{{ path('note_new_new') }}">Crear Nota Noticia</a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>Nota </th>
+                        <th>Fecha de llamada</th>
+                        <th>Proxima llamada</th>
+                        <th>Ver</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for note_new in note_news %}
+                        <tr>
+                            <td>{{ note_new.note }}</td>
+                            <td>{{ note_new.noticeDate ? note_new.noticeDate|date('d-m-Y') : '' }}</td>
+                            <td>{{ note_new.nextCall ? note_new.nextCall|date('d-m-Y') : '' }}</td>
+                            <td>
+                                <a href="{{ path('note_new_show', {'id': note_new.id}) }}">Ver</a>
+                            </td>
+                            <td>
+                                <a href="{{ path('note_new_edit', {'id': note_new.id}) }}">Editar</a>
+                            </td>
+                            <td>
+                                {{ include('admin/_delete_form.html.twig', {'route': 'note_new_delete', 'entity': note_new, 'count': 0}) }}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6"> No se encontraron registros </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{#    <a href="{{ path('note_new_new') }}">Create new</a>#}
+{% endblock %}

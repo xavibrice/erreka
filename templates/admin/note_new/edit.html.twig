@@ -1,0 +1,19 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %} Editar Nota Noticia {% endblock %}
+
+{% block content %}
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left"> Editar </h1>
+            {#            <a class="btn btn-success float-right" href="{{ path('company_new') }}">Crear Empresa</a>#}
+        </div>
+        <div class="card-body">
+            {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
+        </div>
+        <div class="card-footer">
+            {{ include('admin/_back_link.html.twig', {'route': 'note_new_index'}) }}
+        </div>
+    </div>
+{#    {{ include('note_new/_delete_form.html.twig') }}#}
+{% endblock %}

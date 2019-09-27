@@ -16,14 +16,15 @@ class StreetType extends AbstractType
     {
         $builder
             ->add('zone', EntityType::class, [
+                'label' => ' ',
                 'class' => Zone::class,
                 'choice_label' => 'name',
                 'placeholder' => 'Selecciona una zona'
             ])
             ->add('name', TextType::class, [
-                'label' => 'Nombre Calle',
+                'label' => ' ',
                 'attr' => [
-                    'placeholder' => 'Ejemplo: Alameda Urquijo'
+                    'placeholder' => 'Nombre Calle'
                 ]
             ])
         ;
