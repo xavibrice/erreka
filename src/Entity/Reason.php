@@ -24,9 +24,19 @@ class Reason
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="reasons")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="reason")
      */
     private $situation;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="reason")
+     */
+    private $news;
+
+    public function __construct()
+    {
+        $this->news = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -45,12 +55,6 @@ class Reason
         return $this;
     }
 
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->name;
-    }
-
     public function getSituation(): ?Situation
     {
         return $this->situation;
@@ -63,4 +67,40 @@ class Reason
         return $this;
     }
 
+    /**
+     * @return Collection|News[]
+     */
+    public function getNews(): Collection
+    {
+        return $this->news;
+    }
+
+    public function addNews(News $news): self
+    {
+        if (!$this->news->contains($news)) {
+            $this->news[] = $news;
+            $news->setReason($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNews(News $news): self
+    {
+        if ($this->news->contains($news)) {
+            $this->news->removeElement($news);
+            // set the owning side to null (unless already changed)
+            if ($news->getReason() === $this) {
+                $news->setReason(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return (string)$this->name;
+    }
 }

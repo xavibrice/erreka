@@ -40,27 +40,23 @@
                     {% for new in news %}
                         <tr>
                             <td>
-                                <a href="{{ path('zone_show', {'id': new.zone.id}) }}">
-                                    {{ new.zone }}
-                                </a>
+{#                                <a href="{{ path('zone_show', {'id': new.zone.id}) }}">#}
+{#                                    {{ new.zone }}#}
+{#                                </a>#}
                             </td>
                             <td>
                                 <a href="{{ path('user_show', {'id': new.commercial.id}) }}">
                                     {{ new.commercial.firstName }} {{ new.commercial.lastName }}
                                 </a>
                             </td>
-                            <td> {{ new.situation }} </td>
+                            <td> {{ new.reason.situation.name }} </td>
                             <td>
-{#                                {{ dump(new.situation.reasons.first) }}#}
-{#                                {% for reason in new.situation.reasons %}#}
-{#                                    {{ reason.name }} <br>#}
-{#                                {% endfor %}#}
-                                Mostrar Motivo
+                                {{ new.reason.name }}
                             </td>
                             <td>
-                                {% if new.zone.streets %}
-                                    {{ new.zone.streets.count }}
-                                {% endif %}
+{#                                {% if new.zone.streets %}#}
+{#                                    {{ new.zone.streets.count }}#}
+{#                                {% endif %}#}
                             </td>
                             <td>{{ new.portal }}</td>
                             <td>{{ new.floor }}</td>

@@ -24,23 +24,6 @@ class Zone
      */
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="zone")
-     */
-    private $news;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Street", mappedBy="zone", cascade={"persist"}, orphanRemoval=true)
-     * @Assert\NotBlank()
-     */
-    private $streets;
-
-    public function __construct()
-    {
-        $this->news = new ArrayCollection();
-        $this->streets = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -54,74 +37,6 @@ class Zone
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->name;
-    }
-
-    /**
-     * @return Collection|News[]
-     */
-    public function getNews(): Collection
-    {
-        return $this->news;
-    }
-
-    public function addNews(News $news): self
-    {
-        if (!$this->news->contains($news)) {
-            $this->news[] = $news;
-            $news->setZone($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNews(News $news): self
-    {
-        if ($this->news->contains($news)) {
-            $this->news->removeElement($news);
-            // set the owning side to null (unless already changed)
-            if ($news->getZone() === $this) {
-                $news->setZone(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Street[]
-     */
-    public function getStreets(): Collection
-    {
-        return $this->streets;
-    }
-
-    public function addStreet(Street $street): self
-    {
-        if (!$this->streets->contains($street)) {
-            $this->streets[] = $street;
-            $street->setZone($this);
-        }
-
-        return $this;
-    }
-
-    public function removeStreet(Street $street): self
-    {
-        if ($this->streets->contains($street)) {
-            $this->streets->removeElement($street);
-            // set the owning side to null (unless already changed)
-            if ($street->getZone() === $this) {
-                $street->setZone(null);
-            }
-        }
 
         return $this;
     }

@@ -19,6 +19,7 @@ class SituationRepository extends ServiceEntityRepository
         parent::__construct($registry, Situation::class);
     }
 
+
     // /**
     //  * @return Situation[] Returns an array of Situation objects
     //  */

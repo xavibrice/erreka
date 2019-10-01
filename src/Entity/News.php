@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NewsRepository")
@@ -32,11 +33,6 @@ class News
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="news", cascade={"REMOVE"})
      */
     private $commercial;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="news")
-     */
-    private $zone;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -74,14 +70,14 @@ class News
     private $floor;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="news")
-     */
-    private $situation;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\NoteNew", mappedBy="new")
      */
     private $noteNews;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Reason", inversedBy="news")
+     */
+    private $reason;
 
     public function __construct()
     {
@@ -125,18 +121,6 @@ class News
     public function setCommercial(?User $commercial): self
     {
         $this->commercial = $commercial;
-
-        return $this;
-    }
-
-    public function getZone(): ?Zone
-    {
-        return $this->zone;
-    }
-
-    public function setZone(?Zone $zone): self
-    {
-        $this->zone = $zone;
 
         return $this;
     }
@@ -225,24 +209,6 @@ class News
         return $this;
     }
 
-    public function getSituation(): ?Situation
-    {
-        return $this->situation;
-    }
-
-    public function setSituation(?Situation $situation): self
-    {
-        $this->situation = $situation;
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->price;
-    }
-
     /**
      * @return Collection|NoteNew[]
      */
@@ -270,6 +236,18 @@ class News
                 $noteNews->setNew(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getReason(): ?Reason
+    {
+        return $this->reason;
+    }
+
+    public function setReason(?Reason $reason): self
+    {
+        $this->reason = $reason;
 
         return $this;
     }

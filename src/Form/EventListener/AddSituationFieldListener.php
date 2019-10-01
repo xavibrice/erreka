@@ -22,16 +22,17 @@ class AddSituationFieldListener implements EventSubscriberInterface
 
     private function addSituationForm($form, $situation = null)
     {
-        $formOptions = [
-            'label' => ' ',
+        $formOptions = array(
+            'label' => 'Situación',
             'class' => Situation::class,
-            'placeholder' => 'Selecciona situación'
-        ];
+            'placeholder' => 'Seleciona una situación',
+            'mapped' => false,
+            'choice_label' => 'name'
+        );
 
         if ($situation) {
             $formOptions['data'] = $situation;
         }
-
         $form->add('situation', EntityType::class, $formOptions);
     }
 
@@ -39,15 +40,13 @@ class AddSituationFieldListener implements EventSubscriberInterface
     {
         $data = $event->getData();
         $form = $event->getForm();
-
         if (null === $data) {
             return;
         }
-
         $accessor = PropertyAccess::createPropertyAccessor();
-        $situation = $accessor->getValue($data, 'situation');
-        $reason = ($situation) ? $situation->getReasons() : null;
-        $this->addSituationForm($form, $reason);
+        $reason = $accessor->getValue($data, 'reason');
+        $situation = ($reason) ? $reason->getSituation() : null;
+        $this->addSituationForm($form, $situation);
     }
 
     public function preSubmit(FormEvent $event)
@@ -55,43 +54,4 @@ class AddSituationFieldListener implements EventSubscriberInterface
         $form = $event->getForm();
         $this->addSituationForm($form);
     }
-
-
-/*    private function addZoneForm($form, $zone = null)
-    {
-        $formOptions = [
-            'class' => Zone::class,
-            'placeholder' => 'Selecciona una zona',
-            'mapped' => false,
-            'choice_label' => 'name'
-        ];
-
-        if ($zone) {
-            $formOptions['data'] = $zone;
-        }
-
-        $form->add('zone', EntityType::class, $formOptions);
-    }
-
-    public function preSetData(FormEvent $event)
-    {
-        $data = $event->getData();
-        $form = $event->getForm();
-        if (null === $data) {
-            return;
-        }
-
-        $accessor = PropertyAccess::createPropertyAccessor();
-        $zone = $accessor->getValue($data, 'zone');
-        $street = ($zone) ? $zone->getZone() : null;
-        $this->addZoneForm($form, $street);
-    }
-
-    public function preSubmit(FormEvent $event)
-    {
-        $form = $event->getForm();
-        $this->addZoneForm($form);
-
-    }*/
-
 }

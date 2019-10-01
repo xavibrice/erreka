@@ -24,12 +24,6 @@ class Street
      */
     private $name;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="streets")
-     * @Assert\NotBlank()
-     */
-    private $zone;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -43,24 +37,6 @@ class Street
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return $this->getName();
-    }
-
-    public function getZone(): ?Zone
-    {
-        return $this->zone;
-    }
-
-    public function setZone(?Zone $zone): self
-    {
-        $this->zone = $zone;
 
         return $this;
     }

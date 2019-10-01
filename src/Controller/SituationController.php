@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Reason;
 use App\Entity\Situation;
 use App\Form\SituationType;
 use App\Repository\SituationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -92,5 +94,17 @@ class SituationController extends AbstractController
         }
 
         return $this->redirectToRoute('situation_index');
+    }
+
+    /**
+     * @Route("/situation_reason", name="reasons_by_situation", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+     */
+    public function reasonsBySituation(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $situation_id = $request->request->get('situation_id');
+        $reasons = $em->getRepository(Reason::class)->findByReason($situation_id);
+
+        return new JsonResponse($reasons);
     }
 }

@@ -28,7 +28,7 @@ class AddReasonFieldListener implements EventSubscriberInterface
     private function addReasonForm($form, $situation_id = null)
     {
         $formOptions = [
-            'label' => ' ',
+            'label' => 'Razón',
             'class' => Reason::class,
             'query_builder' => function (EntityRepository $repository) use ($situation_id) {
             return $repository
@@ -42,18 +42,19 @@ class AddReasonFieldListener implements EventSubscriberInterface
             'placeholder' => 'Selecciona primero una situación'
         ];
 
-        $form->add('reasons', EntityType::class, $formOptions);
+        $form->add('reason', EntityType::class, $formOptions);
     }
 
     public function preSetData(FormEvent $event) {
         $data = $event->getData();
         $form = $event->getForm();
+
         if (null === $data) {
             return;
         }
 
         $accessor = PropertyAccess::createPropertyAccessor();
-        $reason = $accessor->getValue($data, 'situation');
+        $reason = $accessor->getValue($data, 'reason');
         $situation_id = ($reason) ? $reason->getId() : null;
 
         $this->addReasonForm($form, $situation_id);

@@ -84,7 +84,7 @@ $("#appbundle_news_zone").change(function () {
     });
 });
 
-$("#appbundle_news_situation").change(function () {
+/*$("#appbundle_news_situation").change(function () {
     const data = {
         situation_id: $(this).val()
     };
@@ -107,7 +107,7 @@ $("#appbundle_news_situation").change(function () {
 
         },
     });
-});
+});*/
 
 // this variable is the list in the dom, it's initiliazed when the document is ready
 var $collectionHolder;
@@ -236,3 +236,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     calendar.render();
 });
+
+
+/*
+$("#app_news_situation").change(function () {
+    const data = {
+        situation_id: $(this).val()
+    };
+    $.ajax({
+        type: 'post',
+        url: '/admin2/situation/situation_reason',
+        data: data,
+        success: function (data) {
+            const $reason_selector = $('#app_news_reason');
+            $reason_selector.html('<option> Selecciona...</option>');
+            for (let i = 0, total = data.length; i < total; i++) {
+                $reason_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+            }
+        }
+    });
+
+});*/

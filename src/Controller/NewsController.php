@@ -108,27 +108,27 @@ class NewsController extends AbstractController
         return $this->redirectToRoute('news_index');
     }
 
-    /**
-     * @Route("/zone_street", name="zone_by_street", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
-     */
-    public function zoneByStreet(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $zone_id = $request->request->get('zone_id');
-        $zones = $em->getRepository(Street::class)->findByStreets($zone_id);
+//    /**
+//     * @Route("/zone_street", name="zone_by_street", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+//     */
+//    public function zoneByStreet(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $zone_id = $request->request->get('zone_id');
+//        $zones = $em->getRepository(Street::class)->findByStreets($zone_id);
+//
+//        return new JsonResponse($zones);
+//    }
 
-        return new JsonResponse($zones);
-    }
-
-    /**
-     * @Route("/situation_reason", name="situation_by_reason", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
-     */
-    public function situationByReason(Request $request)
-    {
-        $em = $this->getDoctrine()->getManager();
-        $situation_id = $request->request->get('situation_id');
-        $situations = $em->getRepository(Reason::class)->findByReasons($situation_id);
-
-        return new JsonResponse($situations);
-    }
+//    /**
+//     * @Route("/situation_reason", name="situation_by_reason", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+//     */
+//    public function situationByReason(Request $request)
+//    {
+//        $em = $this->getDoctrine()->getManager();
+//        $situation_id = $request->request->get('situation_id');
+//        $situations = $em->getRepository(Reason::class)->findByReasons($situation_id);
+//
+//        return new JsonResponse($situations);
+//    }
 }

@@ -24,19 +24,13 @@ class Situation
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="situation")
+     * @ORM\OneToMany(targetEntity="App\Entity\Reason", mappedBy="situation")
      */
-    private $news;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Reason", mappedBy="situation", cascade={"persist"}, orphanRemoval=true)
-     */
-    private $reasons;
+    private $reason;
 
     public function __construct()
     {
-        $this->news = new ArrayCollection();
-        $this->reasons = new ArrayCollection();
+        $this->reason = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -57,30 +51,30 @@ class Situation
     }
 
     /**
-     * @return Collection|News[]
+     * @return Collection|Reason[]
      */
-    public function getNews(): Collection
+    public function getReason(): Collection
     {
-        return $this->news;
+        return $this->reason;
     }
 
-    public function addNews(News $news): self
+    public function addReason(Reason $reason): self
     {
-        if (!$this->news->contains($news)) {
-            $this->news[] = $news;
-            $news->setSituation($this);
+        if (!$this->reason->contains($reason)) {
+            $this->reason[] = $reason;
+            $reason->setSituation($this);
         }
 
         return $this;
     }
 
-    public function removeNews(News $news): self
+    public function removeReason(Reason $reason): self
     {
-        if ($this->news->contains($news)) {
-            $this->news->removeElement($news);
+        if ($this->reason->contains($reason)) {
+            $this->reason->removeElement($reason);
             // set the owning side to null (unless already changed)
-            if ($news->getSituation() === $this) {
-                $news->setSituation(null);
+            if ($reason->getSituation() === $this) {
+                $reason->setSituation(null);
             }
         }
 
@@ -90,37 +84,6 @@ class Situation
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return $this->getName();
-    }
-
-    /**
-     * @return Collection|Reason[]
-     */
-    public function getReasons(): Collection
-    {
-        return $this->reasons;
-    }
-
-    public function addReason(Reason $reason): self
-    {
-        if (!$this->reasons->contains($reason)) {
-            $this->reasons[] = $reason;
-            $reason->setSituation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeReason(Reason $reason): self
-    {
-        if ($this->reasons->contains($reason)) {
-            $this->reasons->removeElement($reason);
-            // set the owning side to null (unless already changed)
-            if ($reason->getSituation() === $this) {
-                $reason->setSituation(null);
-            }
-        }
-
-        return $this;
+        return (string)$this->name;
     }
 }
