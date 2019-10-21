@@ -1,0 +1,7 @@
+template 2
+
+{#{{ form_start(form, {'action': path('template_new', {'template': template, 'idTypeProperty': idTypeProperty}), 'method': 'POST'}) }}#}
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button type="submit">Crear</button>
+{{ form_end(form) }}

@@ -69,7 +69,7 @@ class UserType extends AbstractType
                 'required' => false,
                 'class' => Company::class,
                 'empty_data' => true,
-//                'placeholder' => 'Selecciona una empresa',
+                'placeholder' => 'Selecciona una empresa',
             ])
             ->add('firstName', TextType::class, [
                 'label' => ' ',

@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RateHousing index{% endblock %}
+
+{% block body %}
+    <h1>RateHousing index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Visited</th>
+                <th>Comment</th>
+                <th>Min_price</th>
+                <th>Max_price</th>
+                <th>Pets</th>
+                <th>Bedrooms</th>
+                <th>Bathrooms</th>
+                <th>Approx_meters</th>
+                <th>Real_meters</th>
+                <th>Living_room</th>
+                <th>Balcony</th>
+                <th>Terrace</th>
+                <th>Suit_bathroom</th>
+                <th>Video_intercom</th>
+                <th>Storage_room</th>
+                <th>Pantry</th>
+                <th>Fitted_wardrobes</th>
+                <th>Direct_garage</th>
+                <th>Disabled_access</th>
+                <th>Zero_dimension</th>
+                <th>Security_door</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rate_housing in rate_housings %}
+            <tr>
+                <td>{{ rate_housing.id }}</td>
+                <td>{{ rate_housing.visited ? rate_housing.visited|date('Y-m-d') : '' }}</td>
+                <td>{{ rate_housing.comment }}</td>
+                <td>{{ rate_housing.minPrice }}</td>
+                <td>{{ rate_housing.maxPrice }}</td>
+                <td>{{ rate_housing.pets ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.bedrooms }}</td>
+                <td>{{ rate_housing.bathrooms }}</td>
+                <td>{{ rate_housing.approxMeters }}</td>
+                <td>{{ rate_housing.realMeters }}</td>
+                <td>{{ rate_housing.livingRoom ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.balcony ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.terrace ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.suitBathroom ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.videoIntercom ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.storageRoom ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.pantry ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.fittedWardrobes ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.directGarage ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.disabledAccess ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.zeroDimension ? 'Yes' : 'No' }}</td>
+                <td>{{ rate_housing.securityDoor ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('rate_housing_show', {'id': rate_housing.id}) }}">show</a>
+                    <a href="{{ path('rate_housing_edit', {'id': rate_housing.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="23">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('rate_housing_new') }}">Create new</a>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Edit RateHousing{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalle Noticia </h6>
+                </div>
+                <div class="card-body">
+                    <strong>Nombre y Apellido: </strong> {{ rate_housing.new.firstName }}
+                    {{ rate_housing.new.lastName }}
+                    <br>
+                    <strong>Correo: </strong> {{ rate_housing.new.email }}
+                    <br>
+                    <strong>Móvil: </strong> {{ rate_housing.new.mobile }}
+                    <br>
+                    <strong>Comentario: </strong> {{ rate_housing.new.comment }}
+{#                    <div class="m-2">
+                        {{ include('admin/_form.html.twig') }}
+                    </div>
+                    <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
+                        {% for noteNew in news.noteNews|reverse %}
+                            <div class="col-md-12 mb-4">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-sm-left font-weight-bold text-primary text-uppercase mb-1"><strong>{{ noteNew.noticeDate|date('d-m-Y') }} </strong></div>
+                                                <div class="h5 mb-0 text-gray-800" data-toggle="tooltip" data-placement="top" title="{{ noteNew.note }}">
+                                                    {{ noteNew.note|slice(0, 50) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-sticky-note fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>#}
+                </div>
+                <div class="card-footer">
+                    <a href="{{ path('news_show', {'id': rate_housing.new.id }) }}">Atras</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-8 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h1 class="h3 mb-4 text-gray-800 float-left">Editar Valoración</h1>
+                </div>
+                <div class="card-body">
+{#                    <div class="table-responsive">#}
+                        {{ include('admin/rate_housing/rate_housing_form.html.twig', {'button_label': 'Actualizar'}) }}
+{#                    </div>#}
+                </div>
+                <div class="card-footer">
+                    {#            {{ include('admin/_back_link.html.twig', {'route': 'company_index'}) }}#}
+                    <a href="{{ path('news_show', {'id': rate_housing.new.id }) }}">Atras</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

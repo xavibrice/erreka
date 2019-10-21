@@ -14,6 +14,7 @@ require('bootstrap-datepicker');
 const $ = require('jquery');
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
+
 const routes = require('../../public/js/fos_js_routes');
 // const Routing = require('./Components/Routing');
 import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router';
@@ -59,7 +60,7 @@ $('.custom-file-input').on('change', function (event) {
         .html(inputFile.files[0].name);
 });
 
-$("#appbundle_news_zone").change(function () {
+/*$("#appbundle_news_zone").change(function () {
     const data = {
         zone_id: $(this).val()
     };
@@ -82,37 +83,12 @@ $("#appbundle_news_zone").change(function () {
 
         },
     });
-});
-
-/*$("#appbundle_news_situation").change(function () {
-    const data = {
-        situation_id: $(this).val()
-    };
-    $.ajax({
-        type: 'post',
-        url: '/admin2/news/situation_reason',
-        data: data,
-        success: function (data) {
-            if (data.length > 0) {
-                const $street_selector = $('#appbundle_news_reasons');
-                $street_selector.html('<option>Selecciona un Motivo </option>');
-                for (let i = 0, total = data.length; i < total; i++) {
-                    $street_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
-                }
-                console.log(data);
-            } else {
-                const $street_selector = $('#appbundle_news_reasons');
-                $street_selector.html('<option> Selecciona primero una situación </option>');
-            }
-
-        },
-    });
 });*/
 
 // this variable is the list in the dom, it's initiliazed when the document is ready
 var $collectionHolder;
 // the link which we click on to add new items
-var $addNewItem = $('<a href="#" class="btn btn-info">Añadir</a>');
+var $addNewItem = $('<a href="#" class="btn btn-info"> Añadir </a>');
 // when the page is loaded and ready
 $(document).ready(function () {
     // get the collectionHolder, initilize the var by getting the list;
@@ -193,18 +169,43 @@ function addRemoveButton ($panel) {
     $panel.append($panelFooter);
 }
 
+(function($){
+    $.fn.datepicker.dates['es'] = {
+        days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+        daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+        today: "Hoy",
+        monthsTitle: "Meses",
+        clear: "Borrar",
+        weekStart: 1,
+        format: "dd/mm/yyyy"
+    };
+}(jQuery));
+
 var date = new Date();
 var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 $(document).ready(function() {
     // you may need to change this code if you are not using Bootstrap Datepicker
     $('.js-datepicker').datepicker({
-        format: 'd-mm-yyyy',
+        language: 'es',
+        format: 'dd-mm-yyyy',
         todayHighlight: true,
         autoclose: true,
     });
     $('.js-datepicker').datepicker('setDate', today);
 });
 
+$(document).ready(function() {
+    // you may need to change this code if you are not using Bootstrap Datepicker
+    $('.js-datepicker-empty').datepicker({
+        language: 'es',
+        format: 'dd-mm-yyyy',
+        todayHighlight: true,
+        autoclose: true,
+    });
+});
 
 document.addEventListener('DOMContentLoaded', () => {
     var calendarEl = document.getElementById('calendar-holder');
@@ -238,8 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/*
-$("#app_news_situation").change(function () {
+$("#property_situation").change(function () {
     const data = {
         situation_id: $(this).val()
     };
@@ -248,12 +248,113 @@ $("#app_news_situation").change(function () {
         url: '/admin2/situation/situation_reason',
         data: data,
         success: function (data) {
-            const $reason_selector = $('#app_news_reason');
-            $reason_selector.html('<option> Selecciona...</option>');
-            for (let i = 0, total = data.length; i < total; i++) {
-                $reason_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+            if (data.length) {
+                const $reason_selector = $('#property_reason');
+                $reason_selector.html('<option> Selecciona...</option>');
+                for (let i = 0, total = data.length; i < total; i++) {
+                    $reason_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+                }
+            } else {
+                const $reason_selector = $('#property_reason');
+                $reason_selector.html('<option> Selecciona primero una situación</option>');
             }
         }
     });
 
-});*/
+});
+
+$("#property_to_developer_situation").change(function () {
+    const data = {
+        situation_id: $(this).val()
+    };
+    $.ajax({
+        type: 'post',
+        url: '/admin2/situation/situation_reason',
+        data: data,
+        success: function (data) {
+            if (data.length) {
+                const $reason_selector = $('#property_to_developer_reason');
+                $reason_selector.html('<option> Selecciona...</option>');
+                for (let i = 0, total = data.length; i < total; i++) {
+                    $reason_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+                }
+            } else {
+                const $reason_selector = $('#property_to_developer_reason');
+                $reason_selector.html('<option> Selecciona primero una situación</option>');
+            }
+        }
+    });
+
+});
+
+$("#property_to_developer_zone").change(function () {
+    const data = {
+        zone_id: $(this).val()
+    };
+    $.ajax({
+        type: 'post',
+        url: '/admin2/zone/zone_street',
+        data: data,
+        success: function (data) {
+            if (data.length) {
+                const $reason_selector = $('#property_to_developer_street');
+                $reason_selector.html('<option> Selecciona...</option>');
+                for (let i = 0, total = data.length; i < total; i++) {
+                    $reason_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+                }
+            } else {
+                const $reason_selector = $('#property_to_developer_street');
+                $reason_selector.html('<option> Selecciona primero una zona</option>');
+            }
+        }
+    });
+
+});
+
+$("#property_zone").change(function () {
+    const data = {
+        zone_id: $(this).val()
+    };
+    $.ajax({
+        type: 'post',
+        url: '/admin2/zone/zone_street',
+        data: data,
+        success: function (data) {
+            if (data.length) {
+                const $reason_selector = $('#property_street');
+                $reason_selector.html('<option> Selecciona...</option>');
+                for (let i = 0, total = data.length; i < total; i++) {
+                    $reason_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+                }
+            } else {
+                const $reason_selector = $('#property_street');
+                $reason_selector.html('<option> Selecciona primero una zona</option>');
+            }
+        }
+    });
+
+});
+
+$("#property_charge_two_zone").change(function () {
+    const data = {
+        zone_id: $(this).val()
+    };
+    $.ajax({
+        type: 'post',
+        url: '/admin2/zone/zone_street',
+        data: data,
+        success: function (data) {
+            if (data.length) {
+                const $reason_selector = $('#property_charge_two_street');
+                $reason_selector.html('<option> Selecciona...</option>');
+                for (let i = 0, total = data.length; i < total; i++) {
+                    $reason_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
+                }
+            } else {
+                const $reason_selector = $('#property_charge_two_street');
+                $reason_selector.html('<option> Selecciona primero una zona</option>');
+            }
+        }
+    });
+
+});

@@ -3,10 +3,16 @@
 namespace App\Controller;
 
 use App\Entity\News;
+use App\Entity\NoteNew;
+use App\Entity\RateHousing;
 use App\Entity\Reason;
 use App\Entity\Street;
 use App\Entity\Zone;
+use App\Form\NewsToDevelopType;
 use App\Form\NewsType;
+use App\Form\NewType;
+use App\Form\NoteNewType;
+use App\Form\RateHousingType;
 use App\Repository\NewsRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,57 +22,225 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin2/news")
+ * @Route("/admin/noticia")
  */
 class NewsController extends AbstractController
 {
     /**
-     * @Route("/", name="news_index", methods={"GET"})
+     * @Route("/alquilado", name="news_rented", methods={"GET", "POST"})
      */
-    public function index(NewsRepository $newsRepository): Response
+    public function newsRented(Request $request, NewsRepository $newsRepository): Response
     {
-        $news = $newsRepository->findBy(['commercial' => $this->getUser()]);
-        if ($this->isGranted('ROLE_ADMIN')) {
-            $news = $newsRepository->findAll();
-        }
+        $news = $newsRepository->findBySituation('noticia', $this->getUser());
 
-        return $this->render('admin/news/index.html.twig', [
+        return $this->render('admin/news/news_rented.html.twig', [
             'news' => $news,
         ]);
     }
 
     /**
-     * @Route("/new", name="news_new", methods={"GET","POST"})
+     * @Route("/noticia", name="news", methods={"GET", "POST"})
      */
-    public function new(Request $request): Response
+    public function news(Request $request, NewsRepository $newsRepository): Response
     {
-        $news = new News();
-        $news->setCommercial($this->getUser());
-        $form = $this->createForm(NewsType::class, $news);
+        $new = new News();
+        $new->setCommercial($this->getUser());
+        $form = $this->createForm(NewsType::class, $new);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($news);
+            $entityManager->persist($new);
             $entityManager->flush();
 
             $this->addFlash('success', 'Noticia creada correctamente');
-            return $this->redirectToRoute('news_index');
+            return $this->redirectToRoute('news');
         }
 
-        return $this->render('admin/news/new.html.twig', [
+        $news = $newsRepository->findBySituation('noticia', $this->getUser());
+
+        return $this->render('admin/news/news.html.twig', [
+            'news' => $news,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/noticia-a-desarrollar", name="news_to_develop", methods={"GET", "POST"})
+     */
+    public function newsToDevelop(Request $request, NewsRepository $newsRepository): Response
+    {
+        $news = $newsRepository->findBySituation('noticia-a-desarrollar', $this->getUser());
+
+        $new = new News();
+        $new->setCommercial($this->getUser());
+        $form = $this->createForm(NewsToDevelopType::class, $new);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($new);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Noticia a desarrollar creada correctamente');
+            return $this->redirectToRoute('news_to_develop');
+        }
+
+        return $this->render('admin/news/news_to_develop.html.twig', [
+            'news' => $news,
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/noticia-a-desarrollar/{id}/edit", name="news_edit_new", methods={"GET","POST"})
+     */
+    public function editNewsNew(Request $request, News $news): Response
+    {
+        $form = $this->createForm(NewsToDevelopType::class, $news);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Noticia editada correctamente');
+
+            return $this->redirectToRoute('news_to_develop');
+        }
+
+        return $this->render('admin/news/news_to_develop_edit.html.twig', [
             'news' => $news,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="news_show", methods={"GET"})
+     * @Route("/noticia-a-desarrollar/{id}", name="news_to_develop_show", methods={"GET", "POST"})
      */
-    public function show(News $news): Response
+    public function showNewToDevelop(Request $request, News $news): Response
     {
+        $noteNew = new NoteNew();
+        $noteNew->setNew($news);
+        $form = $this->createForm(NoteNewType::class, $noteNew);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($noteNew);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Nota creada correctamente');
+            return $this->redirectToRoute('news_to_develop_show', ['id' => $news->getId()]);
+        }
+
+        return $this->render('admin/news/news_to_develop_show.html.twig', [
+            'news' => $news,
+            'form' => $form->createView(),
+        ]);
+    }
+
+//    /**
+//     * @Route("/", name="news_index", methods={"GET", "POST"})
+//     */
+//    public function index(Request $request, NewsRepository $newsRepository): Response
+//    {
+//        $news = $newsRepository->findBy(['commercial' => $this->getUser()], ['created' => 'ASC']);
+//        if ($this->isGranted('ROLE_ADMIN')) {
+//            $news = $newsRepository->findAll();
+//        }
+//
+//        $new = new News();
+//        $new->setCreated(new \DateTime());
+//        $new->setCommercial($this->getUser());
+//        $form = $this->createForm(NewsType::class, $new);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->persist($new);
+//            $entityManager->flush();
+//
+//            $this->addFlash('success', 'Noticia creada correctamente');
+//            return $this->redirectToRoute('news_index');
+//        }
+//
+//        return $this->render('admin/news/index.html.twig', [
+//            'news' => $news,
+////            'form' => $form->createView(),
+//        ]);
+//    }
+//
+//    /**
+//     * @Route("/new", name="news_new", methods={"GET","POST"})
+//     */
+//    public function new(Request $request): Response
+//    {
+//        $news = new News();
+//        $news->setCommercial($this->getUser());
+//        $form = $this->createForm(NewType::class, $news);
+//        $form->handleRequest($request);
+//
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $entityManager = $this->getDoctrine()->getManager();
+//            $entityManager->persist($news);
+//            $entityManager->flush();
+//
+//            $this->addFlash('success', 'Noticia creada correctamente');
+//            return $this->redirectToRoute('news_index');
+//        }
+//
+//        return $this->render('admin/news/new.html.twig', [
+//            'news' => $news,
+//            'form' => $form->createView(),
+//        ]);
+//    }
+//
+//    public function newForm(): Response
+//    {
+//        $news = new News();
+//        $news->setCommercial($this->getUser());
+//        $form = $this->createForm(NewType::class, $news);
+//
+//        return $this->render('admin/news/new_form.html.twig', [
+//            'form' => $form->createView()
+//        ]);
+//    }
+
+    /**
+     * @Route("/{id}", name="news_show", methods={"GET", "POST"})
+     */
+    public function show(Request $request, News $news): Response
+    {
+        $noteNew = new NoteNew();
+        $noteNew->setNew($news);
+        $form = $this->createForm(NoteNewType::class, $noteNew);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($noteNew);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Nota creada correctamente');
+            return $this->redirectToRoute('news_show', ['id' => $news->getId()]);
+        }
+
+        $rateHousing = new RateHousing();
+        $rateHousing->setNew($news);
+        $formRate = $this->createForm(RateHousingType::class, $rateHousing);
+        $formRate->handleRequest($request);
+        if ($formRate->isSubmitted() && $formRate->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($rateHousing);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Valoración creada correctamente');
+            return $this->redirectToRoute('news_show', ['id' => $news->getId()]);
+//                    return $this->redirectToRoute('news_index');
+        }
+
         return $this->render('admin/news/show.html.twig', [
             'news' => $news,
+            'form' => $form->createView(),
+            'formRate' => $formRate->createView(),
         ]);
     }
 
@@ -83,7 +257,7 @@ class NewsController extends AbstractController
 
             $this->addFlash('success', 'Noticia editada correctamente');
 
-            return $this->redirectToRoute('news_index', [
+            return $this->redirectToRoute('news', [
                 'id' => $news->getId(),
             ]);
         }
@@ -95,9 +269,9 @@ class NewsController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="news_delete", methods={"DELETE"})
+     * @Route("/delete/{id}", name="news_delete", methods={"DELETE"})
      */
-    public function delete(Request $request, News $news): Response
+    public function deleteNew(Request $request, News $news): Response
     {
         if ($this->isCsrfTokenValid('delete'.$news->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
@@ -105,7 +279,21 @@ class NewsController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('news_index');
+        return $this->redirectToRoute('news');
+    }
+
+    /**
+     * @Route("/delete-to-develop/{id}", name="news_to_develop_delete", methods={"DELETE"})
+     */
+    public function deleteNewToDevelop(Request $request, News $news): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$news->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($news);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('news_to_develop');
     }
 
 //    /**

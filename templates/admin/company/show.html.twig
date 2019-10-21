@@ -23,7 +23,7 @@
                                     {% for user in company.users %}
                                         <li class="list-group-item">
                                             <a href="{{ path('user_show', {'id': user.id}) }}">
-                                                {{ user.firstName }} {{ user.lastName }}
+                                                {{ user.firstName }} {{ user.lastName }} - {{ user.username }}
                                             </a>
                                         </li>
                                     {% endfor %}

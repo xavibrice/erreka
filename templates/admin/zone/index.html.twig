@@ -20,7 +20,6 @@
                     <tr>
                         <th>Name</th>
                         <th>Nº Calles</th>
-                        <th>Nº Noticias</th>
                         <th>Ver</th>
                         <th>Editar</th>
                         <th>Eliminar</th>
@@ -31,7 +30,6 @@
                     <tr>
                         <td>{{ zone.name }}</td>
                         <td>{{ zone.streets.count }}</td>
-                        <td>{{ zone.news.count }}</td>
                         <td>
                             {{ include('admin/_show_link.html.twig', {'route': 'zone_show', 'id': zone.id }) }}
                         </td>
@@ -39,7 +37,7 @@
                             {{ include('admin/_edit_link.html.twig', {'route': 'zone_edit', 'id': zone.id }) }}
                         </td>
                         <td>
-                            {{ include('admin/_delete_form.html.twig', {'route': 'zone_delete', 'entity': zone, 'count': zone.news.count}) }}
+                            {{ include('admin/_delete_form.html.twig', {'route': 'zone_delete', 'entity': zone, 'count': zone.streets.count}) }}
                         </td>
                     </tr>
                 {% else %}

@@ -19,7 +19,7 @@ class StreetRepository extends ServiceEntityRepository
         parent::__construct($registry, Street::class);
     }
 
-    public function findByStreets($zone_id)
+    public function findByStreet($zone_id)
     {
         return $this->createQueryBuilder('s')
             ->andWhere('s.zone = :zone')

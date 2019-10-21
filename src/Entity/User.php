@@ -41,19 +41,9 @@ class User implements UserInterface
     private $company;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="commercial", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="commercial")
      */
     private $news;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $first_name;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $last_name;
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
@@ -61,7 +51,7 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial", cascade={"persist"}, orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial", orphanRemoval=true, cascade={"persist"})
      */
     private $noteCommercials;
     /**
@@ -79,10 +69,26 @@ class User implements UserInterface
      */
     private $mobile;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $full_name;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Agency", inversedBy="users")
+     */
+    private $agency;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="commercial")
+     */
+    private $properties;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
         $this->noteCommercials = new ArrayCollection();
+        $this->properties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -246,7 +252,7 @@ class User implements UserInterface
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return $this->first_name . ' ' . $this->last_name;
+        return (string)$this->full_name;
     }
 
     /**
@@ -325,6 +331,59 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getFullName(): ?string
+    {
+        return $this->full_name;
+    }
 
+    public function setFullName(string $full_name): self
+    {
+        $this->full_name = $full_name;
+
+        return $this;
+    }
+
+    public function getAgency(): ?Agency
+    {
+        return $this->agency;
+    }
+
+    public function setAgency(?Agency $agency): self
+    {
+        $this->agency = $agency;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Property[]
+     */
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->properties->contains($property)) {
+            $this->properties[] = $property;
+            $property->setCommercial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProperty(Property $property): self
+    {
+        if ($this->properties->contains($property)) {
+            $this->properties->removeElement($property);
+            // set the owning side to null (unless already changed)
+            if ($property->getCommercial() === $this) {
+                $property->setCommercial(null);
+            }
+        }
+
+        return $this;
+    }
 
 }

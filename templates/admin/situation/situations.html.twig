@@ -1,0 +1,9 @@
+{% for situation in situations %}
+{#    <li class="nav-item {% if app.request.get('_route') == 'admin' %}active{% endif %}">#}
+    <li class="nav-item">
+        <a class="nav-link" href="{{ path('situation_for_new', {'situation': situation.nameSlug}) }}">
+{#        <a class="nav-link" href="#">#}
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>{{ situation.name }}</span></a>
+    </li>
+{% endfor %}

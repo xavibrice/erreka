@@ -1,0 +1,90 @@
+{{ form_start(form) }}
+<div class="form-group row">
+    <div class="col-sm-auto mb-3 mb-sm-0">
+        {{ form_row(form.visited) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.approx_meters) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.real_meters) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.min_price) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.max_price) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.bedrooms) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.bathrooms) }}
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-auto mb-3 mb-sm-0">
+        {{ form_row(form.pets) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.balcony) }}
+    </div>
+    <div class="col-sm-auto mb-3">
+        {{ form_row(form.suit_bathroom) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.video_intercom) }}
+    </div>
+    <div class="col-sm-auto mb-3 mb-sm-0">
+        {{ form_row(form.living_room) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.terrace) }}
+    </div>
+    <div class="col-sm-auto mb-3">
+        {{ form_row(form.storage_room) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.pantry) }}
+    </div>
+    <div class="col-sm-auto mb-3 mb-sm-0">
+        {{ form_row(form.fitted_wardrobes) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.disabled_access) }}
+    </div>
+    <div class="col-sm-auto mb-3">
+        {{ form_row(form.direct_garage) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.zero_dimension) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.security_door) }}
+    </div>
+</div>
+<div class="form-group row">
+    <div class="col-sm-auto">
+        {{ form_row(form.bathroomState) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.beenCooking) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.windowsState) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.beenWalls) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.doorsState) }}
+    </div>
+    <div class="col-sm-auto">
+        {{ form_row(form.groundState) }}
+    </div>
+</div>
+<div class="form-group">
+    {{ form_row(form.comment) }}
+</div>
+<button class="btn btn-success m-3">{{ button_label|default('Guardar') }}</button>
+{{ form_end(form) }}

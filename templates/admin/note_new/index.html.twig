@@ -34,13 +34,14 @@
                             <td>{{ note_new.noticeDate ? note_new.noticeDate|date('d-m-Y') : '' }}</td>
                             <td>{{ note_new.nextCall ? note_new.nextCall|date('d-m-Y') : '' }}</td>
                             <td>
-                                <a href="{{ path('note_new_show', {'id': note_new.id}) }}">Ver</a>
+                                {{ include('admin/_show_link.html.twig', {'route': 'note_new_show', 'id': note_new.id }) }}
                             </td>
                             <td>
-                                <a href="{{ path('note_new_edit', {'id': note_new.id}) }}">Editar</a>
+                                {{ include('admin/_edit_link.html.twig', {'route': 'note_new_edit', 'id': note_new.id }) }}
                             </td>
                             <td>
                                 {{ include('admin/_delete_form.html.twig', {'route': 'note_new_delete', 'entity': note_new, 'count': 0}) }}
+
                             </td>
                         </tr>
                     {% else %}

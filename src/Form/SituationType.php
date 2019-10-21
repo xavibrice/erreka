@@ -18,8 +18,8 @@ class SituationType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Nombre'
             ])
-            ->add('reasons', CollectionType::class, [
-                'label' => 'Motivos',
+            ->add('reason', CollectionType::class, [
+                'label' => ' ',
                 'entry_type' => ReasonSituationType::class,
                 'entry_options' => [
                     'label' => false

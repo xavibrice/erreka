@@ -17,8 +17,36 @@
                             <td>{{ street.id }}</td>
                         </tr>
                         <tr>
-                            <th>Nombre calle</th>
+                            <th>Zona</th>
+                            <td>
+                                <a href="{{ path('zone_show', {'id': street.zone.id }) }}">{{ street.zone.name }}</a>
+                            </td>
+
+                        </tr>
+                        <tr>
+                            <th>Calle</th>
                             <td>{{ street.name }}</td>
+                        </tr>
+                        <tr>
+                            <th>Nº Noticias</th>
+                            <td>
+                                {% if street.news.count > 0 %}
+                                    <ul class="list-group">
+                                        {% for new in street.news %}
+                                            <li class="list-group-item">
+                                                <strong>Nº - Portal:</strong>
+                                                <a href="{{ path('news_show', {'id': new.id }) }}">{{ new.portal }} - {{ new.floor }}</a>
+                                                <strong>Agencia:</strong>
+                                                <a href="{{ path('company_show', {'id': new.commercial.company.id }) }}">{{ new.commercial.company.name }}</a>
+                                                <strong>Comercial:</strong>
+                                                <a href="{{ path('user_show', {'id': new.commercial.id }) }}">{{ new.commercial.firstName }} {{ new.commercial.lastName }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% else %}
+                                    Calle sin noticias
+                                {% endif %}
+                            </td>
                         </tr>
                     </tbody>
                 </table>

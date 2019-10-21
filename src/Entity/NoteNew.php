@@ -27,7 +27,7 @@ class NoteNew
     private $notice_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\News", inversedBy="noteNews")
+     * @ORM\ManyToOne(targetEntity="App\Entity\News", inversedBy="noteNews", cascade={"REMOVE"})
      */
     private $new;
 
@@ -35,6 +35,11 @@ class NoteNew
      * @ORM\Column(type="date")
      */
     private $next_call;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="note_new")
+     */
+    private $property;
 
     public function getId(): ?int
     {
@@ -92,6 +97,18 @@ class NoteNew
     public function setNextCall(\DateTimeInterface $next_call): self
     {
         $this->next_call = $next_call;
+
+        return $this;
+    }
+
+    public function getProperty(): ?Property
+    {
+        return $this->property;
+    }
+
+    public function setProperty(?Property $property): self
+    {
+        $this->property = $property;
 
         return $this;
     }

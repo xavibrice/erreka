@@ -24,7 +24,7 @@ class Reason
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="reason")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Situation", inversedBy="reason", cascade={"persist"})
      */
     private $situation;
 
@@ -33,9 +33,15 @@ class Reason
      */
     private $news;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="reason")
+     */
+    private $properties;
+
     public function __construct()
     {
         $this->news = new ArrayCollection();
+        $this->properties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -102,5 +108,36 @@ class Reason
     {
         // TODO: Implement __toString() method.
         return (string)$this->name;
+    }
+
+    /**
+     * @return Collection|Property[]
+     */
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->properties->contains($property)) {
+            $this->properties[] = $property;
+            $property->setReason($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProperty(Property $property): self
+    {
+        if ($this->properties->contains($property)) {
+            $this->properties->removeElement($property);
+            // set the owning side to null (unless already changed)
+            if ($property->getReason() === $this) {
+                $property->setReason(null);
+            }
+        }
+
+        return $this;
     }
 }

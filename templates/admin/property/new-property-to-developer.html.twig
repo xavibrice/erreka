@@ -1,0 +1,10 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block body %}
+
+    {{ form_start(form, {'action': path('property_to_developer_new'), 'method': 'POST'}) }}
+    {{ form_widget(form) }}
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -2,10 +2,12 @@
 
 namespace App\Controller;
 
+use App\Entity\Street;
 use App\Entity\Zone;
 use App\Form\ZoneType;
 use App\Repository\ZoneRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -92,5 +94,17 @@ class ZoneController extends AbstractController
         }
 
         return $this->redirectToRoute('zone_index');
+    }
+
+    /**
+     * @Route("/zone_street", name="streets_by_zone", condition="request.headers.get('X-Requested-With') == 'XMLHttpRequest'")
+     */
+    public function streetsByZone(Request $request)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $zone_id = $request->request->get('zone_id');
+        $reasons = $em->getRepository(Street::class)->findByStreet($zone_id);
+
+        return new JsonResponse($reasons);
     }
 }

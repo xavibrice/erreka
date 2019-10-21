@@ -1,0 +1,207 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Detalles Noticia{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-auto mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles noticias</h6>
+                    {#<h6 class="m-0 font-weight-bold text-primary float-right">
+                        <a class="btn btn-success" href="">Crear Noticia</a>
+                    </h6>#}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ property.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Comercial</th>
+                                <td>{{ property.commercial }}</td>
+                            </tr>
+                            <tr>
+                                <th>Habilitado</th>
+                                <td>{{ property.enabled }}</td>
+                            </tr>
+                            <tr>
+                                <th>Full_name</th>
+                                <td>{{ property.fullName }}</td>
+                            </tr>
+                            <tr>
+                                <th>Mobile</th>
+                                <td>{{ property.mobile }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ property.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Price</th>
+                                <td>{{ property.price }}</td>
+                            </tr>
+                            <tr>
+                                <th>Rebaja de precios</th>
+                                <td>
+                                    {% if property.propertyReductions %}
+                                        {#                        {{ property.propertyReductions }}#}
+                                        {% for reduction in property.propertyReductions %}
+                                            {{ reduction.price }} <br>
+                                        {% endfor %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tipo de propiedad</th>
+                                <td>
+                                    {# {% if property.typeProperty.name is not null %}
+                                         {{ property.typeProperty.name }}
+                                     {% endif %}#}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Estado de propiedad</th>
+                                <td>
+                                    {% if property.stateProperty %}
+                                        {{ property.stateProperty.name }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-link" href="{{ path('situation_for_property', {'situation': 'noticia'}) }}">
+                        Volver a la lista
+                    </a>
+                    {#                                        {{ include('admin/_back_link.html.twig', {'route': ''}) }}#}
+                    {{ include('admin/_edit_link.html.twig', {'route': 'property_to_developer_edit', 'id': property.id, 'button_label': 'Editar'}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-auto mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Notas noticia a desarrollar (#{{ property.noteNew.count }}) - </h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-right">- Proxima llamada: {{ property.noteNew.last }}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+                        {{ include('admin/_form.html.twig') }}
+                    </div>
+                    <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
+                        {% for noteProperty in property.noteNew|reverse %}
+                            <div class="col-md-12 mb-4">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-sm-left font-weight-bold text-primary text-uppercase mb-1"><strong>{{ noteProperty.noticeDate|date('d-m-Y') }} </strong></div>
+                                                <div class="h5 mb-0 text-gray-800" data-toggle="tooltip" data-placement="top" title="{{ noteProperty.note }}">
+                                                    {{ noteProperty.note|slice(0, 50) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-sticky-note fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-auto col-md-12 col-sm-12 mb-4">
+            <!-- Project Card Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Valoración</h6>
+                </div>
+                <div class="card-body">
+                    {% if property.rateHousing %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <th>Visitado</th>
+                                    <td>
+                                        {{ property.rateHousing.visited|date('d-m-Y') }}
+                                    </td>
+                                    <th>Comercial</th>
+                                    <td>
+                                        <a href="{{ path('user_show', {'id': property.commercial.id }) }}">
+                                            {{ property.commercial.fullName }}
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Zona</th>
+                                    <td>
+                                        <a href="{{ path('zone_show', {'id': property.street.zone.id }) }}">
+                                            {{ property.street.zone.name }}
+                                        </a>
+                                    </td>
+                                    <th>Calle</th>
+                                    <td>{{ property.street.name }} {{ property.portal }} - {{ property.floor }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Propietario</th>
+                                    <td>{{ property.fullName }}</td>
+                                    <th>Contacto</th>
+                                    <td>{{ property.mobile }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Situación</th>
+                                    <td>{{ property.reason.situation.name }}</td>
+                                    <th>Motivo</th>
+                                    <td>{{ property.reason.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Balcón</th>
+                                    <td>
+                                        {% if property.rateHousing.balcony %}
+                                            Si
+                                        {% else %}
+                                            No
+                                        {% endif %}
+                                    </td>
+                                    <th>Cuarto de baño</th>
+                                    <td>{{ property.rateHousing.bathrooms }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+                        {{ include('admin/rate_housing/_form_rate_housing.html.twig', {'form': formRate}) }}
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    {#                    {% if news.reason == 'Alquilado' %}#}
+                    {#                        {{ include('admin/_back_link.html.twig', {'route': 'news_rented'}) }}#}
+                    {#                    {% else %}#}
+                    {#                        {{ include('admin/_back_link.html.twig', {'route': 'news'}) }}#}
+                    {#                    {% endif %}#}
+                    {#                    {% if news.rateHousing %}#}
+                    {#                        {{ include('admin/_edit_link.html.twig', {'route': 'rate_housing_edit', 'id': news.rateHousing.id, 'button_label': 'Editar'}) }}#}
+                    {#                    {% endif %}#}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{#    <a href="{{ path('property_index') }}">back to list</a>#}
+
+{#    <a href="{{ path('property_edit', {'id': property.id}) }}">edit</a>#}
+
+{#    {{ include('admin/property/_delete_form.html.twig') }}#}
+{% endblock %}

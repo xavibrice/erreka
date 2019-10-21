@@ -30,7 +30,7 @@ class News
     private $comment;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="news", cascade={"REMOVE"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="news")
      */
     private $commercial;
 
@@ -70,7 +70,7 @@ class News
     private $floor;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NoteNew", mappedBy="new")
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteNew", mappedBy="new", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $noteNews;
 
@@ -78,6 +78,46 @@ class News
      * @ORM\ManyToOne(targetEntity="App\Entity\Reason", inversedBy="news")
      */
     private $reason;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Street", inversedBy="news")
+     */
+    private $street;
+
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\RateHousing", mappedBy="new", cascade={"persist", "remove"})
+     */
+    private $rate_housing;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $created;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $url;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $state;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Historical", inversedBy="news")
+     */
+    private $historical;
+
+    /**
+     * @ORM\Column(type="decimal", scale=2, nullable=true)
+     */
+    private $sale_price;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $sale_date;
 
     public function __construct()
     {
@@ -248,6 +288,108 @@ class News
     public function setReason(?Reason $reason): self
     {
         $this->reason = $reason;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return (string)$this->first_name . ' ' . $this->getPortal();
+    }
+
+    public function getStreet(): ?Street
+    {
+        return $this->street;
+    }
+
+    public function setStreet(?Street $street): self
+    {
+        $this->street = $street;
+
+        return $this;
+    }
+
+    public function getRateHousing(): ?RateHousing
+    {
+        return $this->rate_housing;
+    }
+
+    public function setRateHousing(?RateHousing $rate_housing): self
+    {
+        $this->rate_housing = $rate_housing;
+
+        return $this;
+    }
+
+    public function getCreated(): ?\DateTimeInterface
+    {
+        return $this->created;
+    }
+
+    public function setCreated(\DateTimeInterface $created): self
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getUrl(): ?string
+    {
+        return $this->url;
+    }
+
+    public function setUrl(?string $url): self
+    {
+        $this->url = $url;
+
+        return $this;
+    }
+
+    public function getState(): ?bool
+    {
+        return $this->state;
+    }
+
+    public function setState(bool $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getHistorical(): ?Historical
+    {
+        return $this->historical;
+    }
+
+    public function setHistorical(?Historical $historical): self
+    {
+        $this->historical = $historical;
+
+        return $this;
+    }
+
+    public function getSalePrice(): ?int
+    {
+        return $this->sale_price;
+    }
+
+    public function setSalePrice(?int $sale_price): self
+    {
+        $this->sale_price = $sale_price;
+
+        return $this;
+    }
+
+    public function getSaleDate(): ?\DateTimeInterface
+    {
+        return $this->sale_date;
+    }
+
+    public function setSaleDate(?\DateTimeInterface $sale_date): self
+    {
+        $this->sale_date = $sale_date;
 
         return $this;
     }

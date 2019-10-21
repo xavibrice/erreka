@@ -20,20 +20,20 @@
                         <td>{{ zone.name }}</td>
                     </tr>
                     <tr>
-                        <th>Noticias</th>
+                        <th>Calles</th>
                         <td>
-                            {% if zone.news.count > 0 %}
+                            {% if zone.streets.count > 0 %}
                                 <ul class="list-group">
-                                    {% for zone in zone.news %}
+                                    {% for street in zone.streets %}
                                         <li class="list-group-item">
-                                            <a href="{{ path('news_show', {'id': zone.id}) }}">
-                                                {{ zone }} €
+                                            <a href="{{ path('street_show', {'id': street.id}) }}">
+                                                {{ street }}
                                             </a>
                                         </li>
                                     {% endfor %}
                                 </ul>
                             {% else %}
-                                Empresa sin noticias
+                                Zona sin calles
                             {% endif %}
                         </td>
                     </tr>

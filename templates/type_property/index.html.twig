@@ -1,0 +1,48 @@
+{#
+{% extends 'base.html.twig' %}
+
+{% block title %}TypeProperty index{% endblock %}
+
+{% block body %}
+    <h1>TypeProperty index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Is_property</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for type_property in type_properties %}
+            <tr>
+                <td>{{ type_property.id }}</td>
+                <td>{{ type_property.name }}</td>
+                <td>{{ type_property.isProperty ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('type_property_show', {'id': type_property.id}) }}">show</a>
+                    <a href="{{ path('type_property_edit', {'id': type_property.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('type_property_new') }}">Create new</a>
+{% endblock %}
+#}
+
+                <div id="collapseUtilities" class="collapse show" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        {#                        <h6 class="collapse-header">Custom Utilities:</h6>#}
+                        {% for tp in type_properties %}
+                            <a class="collapse-item" href="{{ path('charge_for_property', {'charge': 'exclusiva', 'property': tp.nameSlug}) }}">{{ tp.name }}</a>
+                        {% endfor %}
+                    </div>
+                </div>

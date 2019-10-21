@@ -20,6 +20,7 @@
                     <thead>
                         <tr>
                             <th>Id</th>
+                            <th>Nº Noticias</th>
                             <th>Calle</th>
                             <th>Zona</th>
                             <th>Ver</th>
@@ -31,9 +32,10 @@
                     {% for street in streets %}
                         <tr>
                             <td>{{ street.id }}</td>
+                            <td>{{ street.news.count }}</td>
                             <td>{{ street.name }}</td>
                             <td>
-                                <a href="{{ path('street_show', {'id': street.zone.id}) }}">
+                                <a href="{{ path('zone_show', {'id': street.zone.id}) }}">
                                     {{ street.zone.name }}
                                 </a>
                             </td>

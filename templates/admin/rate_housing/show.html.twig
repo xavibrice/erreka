@@ -1,0 +1,106 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}RateHousing{% endblock %}
+
+{% block body %}
+    <h1>RateHousing</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ rate_housing.id }}</td>
+            </tr>
+            <tr>
+                <th>Visited</th>
+                <td>{{ rate_housing.visited ? rate_housing.visited|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Comment</th>
+                <td>{{ rate_housing.comment }}</td>
+            </tr>
+            <tr>
+                <th>Min_price</th>
+                <td>{{ rate_housing.minPrice }}</td>
+            </tr>
+            <tr>
+                <th>Max_price</th>
+                <td>{{ rate_housing.maxPrice }}</td>
+            </tr>
+            <tr>
+                <th>Pets</th>
+                <td>{{ rate_housing.pets ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Bedrooms</th>
+                <td>{{ rate_housing.bedrooms }}</td>
+            </tr>
+            <tr>
+                <th>Bathrooms</th>
+                <td>{{ rate_housing.bathrooms }}</td>
+            </tr>
+            <tr>
+                <th>Approx_meters</th>
+                <td>{{ rate_housing.approxMeters }}</td>
+            </tr>
+            <tr>
+                <th>Real_meters</th>
+                <td>{{ rate_housing.realMeters }}</td>
+            </tr>
+            <tr>
+                <th>Living_room</th>
+                <td>{{ rate_housing.livingRoom ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Balcony</th>
+                <td>{{ rate_housing.balcony ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Terrace</th>
+                <td>{{ rate_housing.terrace ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Suit_bathroom</th>
+                <td>{{ rate_housing.suitBathroom ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Video_intercom</th>
+                <td>{{ rate_housing.videoIntercom ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Storage_room</th>
+                <td>{{ rate_housing.storageRoom ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Pantry</th>
+                <td>{{ rate_housing.pantry ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Fitted_wardrobes</th>
+                <td>{{ rate_housing.fittedWardrobes ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Direct_garage</th>
+                <td>{{ rate_housing.directGarage ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Disabled_access</th>
+                <td>{{ rate_housing.disabledAccess ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Zero_dimension</th>
+                <td>{{ rate_housing.zeroDimension ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Security_door</th>
+                <td>{{ rate_housing.securityDoor ? 'Yes' : 'No' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('rate_housing_index') }}">back to list</a>
+
+    <a href="{{ path('rate_housing_edit', {'id': rate_housing.id}) }}">edit</a>
+
+    {{ include('rate_housing/_delete_form.html.twig') }}
+{% endblock %}

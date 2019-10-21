@@ -19,7 +19,7 @@ class StreetZoneType extends AbstractType
 //                'placeholder' => 'Selecciona una zona'
 //            ])
             ->add('name', TextType::class, [
-                'label' => 'Nombre Calle',
+                'label' => 'Calle',
                 'attr' => [
                     'placeholder' => 'Ejemplo: Alameda Urquijo'
                 ]

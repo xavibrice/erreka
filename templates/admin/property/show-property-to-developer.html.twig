@@ -1,0 +1,130 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Detalles Noticia a Desarrollar{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-auto mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles noticias a desarrollar</h6>
+                    {#<h6 class="m-0 font-weight-bold text-primary float-right">
+                        <a class="btn btn-success" href="">Crear Noticia</a>
+                    </h6>#}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Id</th>
+                                <td>{{ property.id }}</td>
+                            </tr>
+                            <tr>
+                                <th>Comercial</th>
+                                <td>{{ property.commercial }}</td>
+                            </tr>
+                            <tr>
+                                <th>Habilitado</th>
+                                <td>{{ property.enabled }}</td>
+                            </tr>
+                            <tr>
+                                <th>Full_name</th>
+                                <td>{{ property.fullName }}</td>
+                            </tr>
+                            <tr>
+                                <th>Mobile</th>
+                                <td>{{ property.mobile }}</td>
+                            </tr>
+                            <tr>
+                                <th>Email</th>
+                                <td>{{ property.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Price</th>
+                                <td>{{ property.price }}</td>
+                            </tr>
+                            <tr>
+                                <th>Rebaja de precios</th>
+                                <td>
+                                    {% if property.propertyReductions %}
+                                        {#                        {{ property.propertyReductions }}#}
+                                        {% for reduction in property.propertyReductions %}
+                                            {{ reduction.price }} <br>
+                                        {% endfor %}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Tipo de propiedad</th>
+                                <td>
+                                    {# {% if property.typeProperty.name is not null %}
+                                         {{ property.typeProperty.name }}
+                                     {% endif %}#}
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Estado de propiedad</th>
+                                <td>
+                                    {% if property.stateProperty %}
+                                        {{ property.stateProperty.name }}
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-link" href="{{ path('situation_for_property', {'situation': 'noticia-a-desarrollar'}) }}">
+                        Volver a la lista
+                    </a>
+{#                                        {{ include('admin/_back_link.html.twig', {'route': ''}) }}#}
+                    {{ include('admin/_edit_link.html.twig', {'route': 'property_to_developer_edit', 'id': property.id, 'button_label': 'Editar'}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-auto mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Notas noticia a desarrollar (#{{ property.noteNew.count }})</h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-right">Proxima llamada: {{ property.noteNew.last }}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+                        {{ include('admin/_form.html.twig') }}
+                    </div>
+                    <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
+                        {% for noteProperty in property.noteNew|reverse %}
+                            <div class="col-md-12 mb-4">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-sm-left font-weight-bold text-primary text-uppercase mb-1"><strong>{{ noteProperty.noticeDate|date('d-m-Y') }} </strong></div>
+                                                <div class="h5 mb-0 text-gray-800" data-toggle="tooltip" data-placement="top" title="{{ noteProperty.note }}">
+                                                    {{ noteProperty.note|slice(0, 50) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-sticky-note fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+{#    <a href="{{ path('property_index') }}">back to list</a>#}
+
+{#    <a href="{{ path('property_edit', {'id': property.id}) }}">edit</a>#}
+
+{#    {{ include('admin/property/_delete_form.html.twig') }}#}
+{% endblock %}

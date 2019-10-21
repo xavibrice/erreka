@@ -5,9 +5,12 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SituationRepository")
+ * @UniqueEntity("name", message="Situación ya existe, crea otra.")
  */
 class Situation
 {
@@ -19,14 +22,20 @@ class Situation
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @Assert\Unique(message="Ya existe una situación con ese nombre.")
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Reason", mappedBy="situation")
+     * @ORM\OneToMany(targetEntity="App\Entity\Reason", mappedBy="situation", orphanRemoval=true, cascade={"persist"}))
      */
     private $reason;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name_slug;
 
     public function __construct()
     {
@@ -85,5 +94,17 @@ class Situation
     {
         // TODO: Implement __toString() method.
         return (string)$this->name;
+    }
+
+    public function getNameSlug(): ?string
+    {
+        return $this->name_slug;
+    }
+
+    public function setNameSlug(string $name_slug): self
+    {
+        $this->name_slug = $name_slug;
+
+        return $this;
     }
 }

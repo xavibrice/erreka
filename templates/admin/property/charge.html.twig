@@ -1,0 +1,92 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTable') }}
+{% endblock %}
+
+
+{% block content %}
+
+    {% for tp in typeProperty %}
+        {% if tp.isProperty == 0 %}
+            <a class="btn btn-success" href="#" data-toggle="modal" data-target="#createNewModal">
+                Crear {{ tp.name|title }}
+            </a>
+        {% endif %}
+    {% endfor %}
+
+    <div class="table-responsive">
+        <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
+            <thead>
+            <tr>
+                <th>Precio</th>
+                <th>Motivo</th>
+                <th>Nombre</th>
+                <th>Ver</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for charge in charges %}
+                <tr>
+                    <td>{{ charge.price }}</td>
+                    <td>
+                        {{ charge.reason.name }}
+                    </td>
+                    <td>
+                        {{ charge.fullName }}
+                    </td>
+                    <td>
+{#                        {{ include('admin/_show_link.html.twig', {'route': 'company_show', 'id': company.id }) }}#}
+                    </td>
+                    <td>
+{#                        {{ include('admin/_edit_link.html.twig', {'route': 'company_edit', 'id': company.id }) }}#}
+                    </td>
+                    <td>
+{#                        {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company, 'count': company.users.count}) }}#}
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">No se encontraron registros</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <div class="modal fade" id="createNewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear </h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {% for tp in typeProperty %}
+{#                        {% if tp.template == 1 %}#}
+{#                            {{ render_esi(controller('App\\Controller\\PropertyController::templateCharge', {'template': tp.template})) }}#}
+                        {% if tp.template == 2 %}
+                            {{ render_esi(controller('App\\Controller\\PropertyController::templateCharge', {'template': tp.template, 'idTypeProperty': tp.id})) }}
+                        {% elseif tp.template == 3 %}
+                            {{ render_esi(controller('App\\Controller\\PropertyController::templateCharge', {'template': tp.template, 'idTypeProperty': tp.id})) }}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block title %}
+
+{% endblock %}
+

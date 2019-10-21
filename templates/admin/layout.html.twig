@@ -35,6 +35,22 @@
                     <span>Agenda</span></a>
             </li>
 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('situation_for_property', {'situation': 'noticia'}) }}">
+                    {#        <a class="nav-link" href="#">#}
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Noticia</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('situation_for_property', {'situation': 'noticia-a-desarrollar'}) }}">
+                    {#        <a class="nav-link" href="#">#}
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Noticia a desarrollar</span></a>
+            </li>
+{#            {% block situations %}#}
+{#                {{ render_esi(controller('App\\Controller\\SituationController::situations')) }}#}
+{#            {% endblock %}#}
+
  {#           <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
@@ -85,7 +101,6 @@
                 <div id="collapseTwo" class="collapse
                 {% if
                     app.request.get('_route') == 'company_index' or
-                    app.request.get('_route') == 'news_index' or
                     app.request.get('_route') == 'user_index' or
                     app.request.get('_route') == 'owner_index' or
                     app.request.get('_route') == 'zone_index' or
@@ -99,7 +114,7 @@
                         <h6 class="collapse-header">Custom Components:</h6>
                         <a class="collapse-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}" href="{{ path('company_index') }}">Empresas </a>
                         <a class="collapse-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}" href="{{ path('user_index') }}">Usuarios</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>
+{#                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>#}
                         <a class="collapse-item {% if app.request.get('_route') == 'note_new_index' %}active{% endif %}" href="{{ path('note_new_index') }}">Nota Noticia</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}" href="{{ path('note_commercial_index') }}">Nota Comercial</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
@@ -114,17 +129,10 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
+                    <span>Encargo</span>
                 </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="utilities-color.html">Colors</a>
-                        <a class="collapse-item" href="utilities-border.html">Borders</a>
-                        <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a class="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
+                {{ render_esi(controller('App\\Controller\\TypePropertyController::index')) }}
+
             </li>
 
             <!-- Divider -->
@@ -346,7 +354,7 @@
                         </li>
                         
                         <li class="nav-item dropdown no-arrow mx-1">
-                            <a class="nav-link" href="{{ path('news_new') }}">
+                            <a class="nav-link" href="">
                                 <i class="fas fa-newspaper fa-fw"></i>
                             </a>
                         </li>
@@ -355,7 +363,10 @@
                         <!-- Nav Item - User Information -->
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user.firstName }} {{ app.user.lastName }}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
+                                    <i class="fas fa-user"></i>
+                                    {{ app.user.fullName }}
+                                </span>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -372,10 +383,10 @@
                                     Nuevo Pedido
                                 </a>
                                 <div class="dropdown-divider"></div>
-{#                                <a class="dropdown-item" href="{{ path('app_logout') }}" data-toggle="modal" data-target="#logoutModal">
+                                <a class="dropdown-item" href="{{ path('app_logout') }}" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
-                                </a>#}
+                                </a>
                                 <a class="dropdown-item" href="{{ path('app_logout') }}" >
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Logout
@@ -420,7 +431,7 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
-{#    <!-- Logout Modal-->
+    <!-- Logout Modal-->
     <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -437,6 +448,6 @@
                 </div>
             </div>
         </div>
-    </div>#}
+    </div>
 
 {% endblock %}

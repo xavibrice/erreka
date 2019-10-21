@@ -37,15 +37,20 @@
                         </tr>
                         <tr>
                             <th>Empresa</th>
-                            <td>{{ user.company.name }}</td>
+                            <td>
+                                <a href="{{ path('company_show', {'id': user.company.id}) }}">{{ user.company.name }}</a>
+                            </td>
                         </tr>
                         <tr>
-                            <th>Noticias</th>
+                            <th>Noticias ({{ user.news.count }})</th>
                             <td>
+                                {#<div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-width: 260px; max-height: 100px;">
+                                    This is an example of using <code>.overflow-auto</code> on an element with set width and height dimensions. By design, this content will vertically scroll.
+                                </div>#}
                                 {% if user.news.count > 0 %}
-                                    <ul>
-                                        {% for new in user.news %}
-                                            <li>
+                                    <ul class="list-group overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-width: 400px; max-height: 100px;">
+                                        {% for new in user.news|slice(0, 5) %}
+                                            <li class="list-group-item">
                                                 <a href="{{ path('news_show', {'id': new.id}) }}">
                                                     <p>
                                                         {{ new.firstName }} {{ new.lastName }} calle {{ new.portal }}

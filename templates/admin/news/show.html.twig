@@ -3,31 +3,230 @@
 {% block title %}Noticia{% endblock %}
 
 {% block content %}
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-            <h1 class="h3 mb-4 text-gray-800 float-left">Detalles</h1>
-            <a class="btn btn-success float-right" href="{{ path('news_new') }}">Crear Noticia</a>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered">
-                    <tbody>
-                        <tr>
-                            <th>Precio</th>
-                            <td>{{ news.price }}</td>
-                        </tr>
-                        <tr>
-                            <th>Comentario</th>
-                            <td>{{ news.comment }}</td>
-                        </tr>
-                    </tbody>
-                </table>
+{#    <div class="row">
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Nota de noticias</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ news.noteNews.count }}</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="card-footer">
-            {{ include('admin/_back_link.html.twig', {'route': 'news_index'}) }}
-            {{ include('admin/_edit_link.html.twig', {'route': 'news_edit', 'id': news.id, 'button_label': 'Editar'}) }}
+    </div>#}
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles</h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-right">
+                        <a class="btn btn-success" href="">Crear Noticia</a>
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Agencia</th>
+                                <td>
+                                    <a href="{{ path('company_show', {'id': news.commercial.company.id }) }}">
+                                        {{ news.commercial.company.name }}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Comercial</th>
+                                <td>
+                                    <a href="{{ path('user_show', {'id': news.commercial.id }) }}">
+                                        {{ news.commercial.firstName }} {{ news.commercial.lastName }}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Zona</th>
+                                <td>
+                                    <a href="{{ path('zone_show', {'id': news.street.zone.id }) }}">
+                                        {{ news.street.zone.name }}
+                                    </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Calle</th>
+                                <td>{{ news.street.name }} {{ news.portal }} - {{ news.floor }}</td>
+                            </tr>
+                            <tr>
+                                <th>Propietario</th>
+                                <td>{{ news.firstName }} {{ news.lastName }}</td>
+                            </tr>
+                            <tr>
+                                <th>Contacto</th>
+                                <td>{{ news.mobile }} - {{ news.phone }}</td>
+                            </tr>
+                            <tr>
+                                <th>Correo</th>
+                                <td>{{ news.email }}</td>
+                            </tr>
+                            <tr>
+                                <th>Situación</th>
+                                <td>{{ news.reason.situation.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>Motivo</th>
+                                <td>{{ news.reason.name }}</td>
+                            </tr>
+                            <tr>
+                                <th>URL</th>
+                                <td>{{ news.url }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    {% if news.reason == 'Alquilado' %}
+                        {{ include('admin/_back_link.html.twig', {'route': 'news_rented'}) }}
+                    {% else %}
+                        {{ include('admin/_back_link.html.twig', {'route': 'news'}) }}
+                    {% endif %}
+                    {{ include('admin/_edit_link.html.twig', {'route': 'news_edit', 'id': news.id, 'button_label': 'Editar'}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-6 col-md-6 col-sm-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Notas Noticia (#{{ news.noteNews.count }}) </h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-right">Proxima llamada: {{ news.noteNews.last }}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+                        {{ include('admin/_form.html.twig') }}
+                    </div>
+                    <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
+                        {% for noteNew in news.noteNews|reverse %}
+                            <div class="col-md-12 mb-4">
+                                <div class="card border-left-info shadow h-100 py-2">
+                                    <div class="card-body">
+                                        <div class="row no-gutters align-items-center">
+                                            <div class="col mr-2">
+                                                <div class="text-sm-left font-weight-bold text-primary text-uppercase mb-1"><strong>{{ noteNew.noticeDate|date('d-m-Y') }} </strong></div>
+                                                <div class="h5 mb-0 text-gray-800" data-toggle="tooltip" data-placement="top" title="{{ noteNew.note }}">
+                                                    {{ noteNew.note|slice(0, 50) }}
+                                                </div>
+                                            </div>
+                                            <div class="col-auto">
+                                                <i class="fas fa-sticky-note fa-2x text-gray-300"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="col-xl-4 col-lg-auto col-md-12 col-sm-12 mb-4">
+            <!-- Project Card Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Valoración</h6>
+                </div>
+                <div class="card-body">
+                    {% if news.rateHousing %}
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tbody>
+                                <tr>
+                                    <th>Visitado</th>
+                                    <td>
+                                        {{ news.rateHousing.visited|date('d-m-Y') }}
+                                    </td>
+                                    <th>Comercial</th>
+                                    <td>
+                                        <a href="{{ path('user_show', {'id': news.commercial.id }) }}">
+                                            {{ news.commercial.firstName }} {{ news.commercial.lastName }}
+                                        </a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Zona</th>
+                                    <td>
+                                        <a href="{{ path('zone_show', {'id': news.street.zone.id }) }}">
+                                            {{ news.street.zone.name }}
+                                        </a>
+                                    </td>
+                                    <th>Calle</th>
+                                    <td>{{ news.street.name }} {{ news.portal }} - {{ news.floor }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Propietario</th>
+                                    <td>{{ news.firstName }} {{ news.lastName }}</td>
+                                    <th>Contacto</th>
+                                    <td>{{ news.mobile }} - {{ news.phone }}</td>
+                                </tr>
+
+                                <tr>
+                                    <th>Situación</th>
+                                    <td>{{ news.reason.situation.name }}</td>
+                                    <th>Motivo</th>
+                                    <td>{{ news.reason.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Balcón</th>
+                                    <td>
+                                        {% if news.rateHousing.balcony %}
+                                            Si
+                                            {% else %}
+                                            No
+                                        {% endif %}
+                                    </td>
+                                    <th>Cuarto de baño</th>
+                                    <td>{{ news.rateHousing.bathrooms }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% else %}
+{#                        <div class="card bg-info text-white shadow">#}
+{#                            <div class="card-body">#}
+{#                                <p>#}
+{#                                    Está noticia no tiene valoración.#}
+{#                                </p>#}
+{#                                <a class="btn btn-primary" href="#">Crear valoración</a>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        {{ render_esi(controller('App\\Controller\\RateHousingController::newForm')) }}#}
+
+                        {{ include('admin/rate_housing/_form_rate_housing.html.twig', {'form': formRate}) }}
+{#                        {{ form_start(formRate) }}#}
+{#                        {{ form_widget(formRate) }}#}
+{#                        {{ form_row(formRate.visited) }}#}
+{#                        {{ form_row(formRate.comment) }}#}
+{#                        <button class="btn btn-success" type="submit">Guardar</button>#}
+{#                        {{ form_end(formRate) }}#}
+                    {% endif %}
+                </div>
+                <div class="card-footer">
+                    {% if news.reason == 'Alquilado' %}
+                        {{ include('admin/_back_link.html.twig', {'route': 'news_rented'}) }}
+                    {% else %}
+                        {{ include('admin/_back_link.html.twig', {'route': 'news'}) }}
+                    {% endif %}
+                    {% if news.rateHousing %}
+                        {{ include('admin/_edit_link.html.twig', {'route': 'rate_housing_edit', 'id': news.rateHousing.id, 'button_label': 'Editar'}) }}
+                    {% endif %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

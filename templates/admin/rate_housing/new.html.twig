@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New RateHousing{% endblock %}
+
+{% block body %}
+    <h1>Create new RateHousing</h1>
+
+    {{ include('rate_housing/_form.html.twig') }}
+
+    <a href="{{ path('rate_housing_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}ValuationStatus index{% endblock %}
+
+{% block body %}
+    <h1>ValuationStatus index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for valuation_status in valuation_statuses %}
+            <tr>
+                <td>{{ valuation_status.id }}</td>
+                <td>{{ valuation_status.name }}</td>
+                <td>
+                    <a href="{{ path('valuation_status_show', {'id': valuation_status.id}) }}">show</a>
+                    <a href="{{ path('valuation_status_edit', {'id': valuation_status.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('valuation_status_new') }}">Create new</a>
+{% endblock %}

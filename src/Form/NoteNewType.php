@@ -17,30 +17,30 @@ class NoteNewType extends AbstractType
     {
         $builder
             ->add('notice_date', DateType::class, [
-                'label' => 'Selecciona Fecha',
+                'label' => 'Fecha',
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy',
                 'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
                 ],
+            ])
+//            ->add('new', EntityType::class, [
+//                'label' => 'Noticia',
+//                'class' => News::class,
+//                'placeholder' => 'Selecciona una noticia'
+//            ])
+            ->add('note', TextareaType::class, [
+                'label' => 'Nota'
             ])
             ->add('nextCall', DateType::class, [
-                'label' => 'Siguiente Llamada',
+                'label' => 'Proxima Llamada',
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy',
                 'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
                 ],
-            ])
-            ->add('new', EntityType::class, [
-                'label' => 'Noticia',
-                'class' => News::class,
-                'placeholder' => 'Selecciona una noticia'
-            ])
-            ->add('note', TextareaType::class, [
-                'label' => 'Nota para noticia'
             ])
         ;
     }

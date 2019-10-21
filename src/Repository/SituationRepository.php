@@ -19,6 +19,38 @@ class SituationRepository extends ServiceEntityRepository
         parent::__construct($registry, Situation::class);
     }
 
+    public function propertyForSituation(string $situation, $commercial)
+    {
+        return $this->createQueryBuilder('s')
+            ->innerJoin('s.reason', 'r')
+            ->innerJoin('r.properties', 'p')
+            ->andWhere('p.enabled = :state')
+            ->andWhere('p.commercial = :commercial')
+            ->andWhere('s.name_slug = :situation')
+            ->setParameter('state', true)
+            ->setParameter('situation', $situation)
+            ->setParameter('commercial', $commercial)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+//    public function newForSituation(string $situation, $user = null)
+//    {
+//        return $this->createQueryBuilder('n')
+//            ->innerJoin('n.reason', 'r')
+//            ->innerJoin('r.situation', 's')
+//            ->andWhere('s.name_slug = :situation')
+//            ->andWhere('n.state = :state')
+//            ->andWhere('n.commercial = :commercial')
+//            ->setParameter('state', true)
+//            ->setParameter('situation', $situation)
+//            ->setParameter('commercial', $user)
+//            ->getQuery()
+//            ->getResult()
+//            ;
+//    }
+
 
     // /**
     //  * @return Situation[] Returns an array of Situation objects

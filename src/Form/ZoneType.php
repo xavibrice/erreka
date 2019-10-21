@@ -16,10 +16,10 @@ class ZoneType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nombre Zona'
+                'label' => 'Zona'
             ])
             ->add('streets', CollectionType::class, [
-                'label' => 'Calles',
+                'label' => ' ',
                 'entry_type' => StreetZoneType::class,
                 'entry_options' => [
                     'label' => false
