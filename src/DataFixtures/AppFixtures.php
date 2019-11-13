@@ -31,6 +31,7 @@ class AppFixtures extends Fixture
         foreach ($this->getNameSituation() as $name) {
             $situation = new Situation();
             $situation->setName($name);
+            $situation->setNameSlug($name);
             $manager->persist($situation);
         }
         $manager->flush();
@@ -57,17 +58,16 @@ class AppFixtures extends Fixture
     private function loadUser(ObjectManager $manager):void
     {
 
-        foreach ($this->getUserData() as [$first_name, $last_name, $username, $state, $role, $mobile, $pass]) {
+        foreach ($this->getUserData() as [$full_name, $username, $state, $role, $mobile, $pass]) {
             $user = new User();
-            $user->setFirstName($first_name);
-            $user->setLastName($last_name);
+            $user->setFullName($full_name);
             $user->setRoles($role);
             $user->setMobile($mobile);
 
             $password = $this->encoder->encodePassword($user, $pass);
             $user->setPassword($password);
 
-            $user->setCompany(null);
+            $user->setAgency(null);
             $user->setActive($state);
             $user->setUsername($username);
             $manager->persist($user);
@@ -79,8 +79,8 @@ class AppFixtures extends Fixture
     private function getUserData(): array
     {
         return [
-            ['Xavier', 'Briceño', 'admin', true, ['ROLE_ADMIN'], '666666664', 'Almi123'],
-            ['Fernando', 'Sanchez', 'user', true, ['ROLE_USER'], '999999393', 'Almi123'],
+            ['Jon Erreka', 'jon', true, ['ROLE_ADMIN'], '666666664', 'Jon2014'],
+            ['Nekane Bilbao', 'nekane', true, ['ROLE_USER'], '999999393', 'nekane'],
         ];
     }
 }
