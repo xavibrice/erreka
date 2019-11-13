@@ -2,11 +2,6 @@
 
 {% block title %} Listado de notas de noticias {% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('dataTable') }}
-{% endblock %}
-
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -56,4 +51,9 @@
     </div>
 
 {#    <a href="{{ path('note_new_new') }}">Create new</a>#}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
 {% endblock %}
