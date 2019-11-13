@@ -22,8 +22,12 @@ class NoteCommercialController extends AbstractController
      */
     public function notes(NoteCommercialRepository $noteCommercialRepository): Response
     {
+//        $today = new \DateTime('now');
+
+//        $a = \DateTime::createFromFormat('Y-m-d', $today);
+//        dd($a);
         return $this->render('admin/note_commercial/note.html.twig', [
-            'note_commercials' => $noteCommercialRepository->findBy(['notice_date' => new \DateTime()]),
+            'note_commercials' => $noteCommercialRepository->findBy(['commercial' => $this->getUser()]),
         ]);
     }
 
@@ -44,7 +48,7 @@ class NoteCommercialController extends AbstractController
     public function new(Request $request): Response
     {
         $noteCommercial = new NoteCommercial();
-        $form = $this->createForm(NoteCommercialType::class, $noteCommercial);
+        $form = $this->createForm(NoteCommercialType::class, $noteCommercial, ['agency' => $this->getUser()->getAgency()->getName()]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

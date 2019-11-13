@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/client")
+ * @Route("/admin/cliente")
  */
 class ClientController extends AbstractController
 {
@@ -20,7 +20,7 @@ class ClientController extends AbstractController
      */
     public function index(ClientRepository $clientRepository): Response
     {
-        return $this->render('client/index.html.twig', [
+        return $this->render('admin/client/index.html.twig', [
             'clients' => $clientRepository->findAll(),
         ]);
     }
@@ -42,9 +42,19 @@ class ClientController extends AbstractController
             return $this->redirectToRoute('client_index');
         }
 
-        return $this->render('client/new.html.twig', [
+        return $this->render('admin/client/new.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
+        ]);
+    }
+
+    public function newForm(): Response
+    {
+        $client = new Client();
+        $form = $this->createForm(ClientType::class, $client);
+
+        return $this->render('admin/client/_new.html.twig', [
+            'form' => $form->createView()
         ]);
     }
 
@@ -53,7 +63,7 @@ class ClientController extends AbstractController
      */
     public function show(Client $client): Response
     {
-        return $this->render('client/show.html.twig', [
+        return $this->render('admin/client/show.html.twig', [
             'client' => $client,
         ]);
     }
@@ -74,7 +84,7 @@ class ClientController extends AbstractController
             ]);
         }
 
-        return $this->render('client/edit.html.twig', [
+        return $this->render('admin/client/edit.html.twig', [
             'client' => $client,
             'form' => $form->createView(),
         ]);

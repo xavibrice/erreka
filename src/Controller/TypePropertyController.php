@@ -11,17 +11,17 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/type/property")
+ * @Route("/tipo/propiedad")
  */
 class TypePropertyController extends AbstractController
 {
     /**
      * @Route("/", name="type_property_index", methods={"GET"})
      */
-    public function index(TypePropertyRepository $typePropertyRepository): Response
+    public function index(TypePropertyRepository $typePropertyRepository, Request $request): Response
     {
         return $this->render('type_property/index.html.twig', [
-            'type_properties' => $typePropertyRepository->findAll(),
+            'type_properties' => $typePropertyRepository->findBy(['name' => $request->get('name')]),
         ]);
     }
 

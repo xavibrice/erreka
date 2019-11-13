@@ -4,7 +4,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_script_tags('dataTable') }}
+    {{ encore_entry_script_tags('dataTableCss') }}
 {% endblock %}
 
 {% block content %}
@@ -32,7 +32,7 @@
                     {% for street in streets %}
                         <tr>
                             <td>{{ street.id }}</td>
-                            <td>{{ street.news.count }}</td>
+                            <td>{{ street.properties.count }}</td>
                             <td>{{ street.name }}</td>
                             <td>
                                 <a href="{{ path('zone_show', {'id': street.zone.id}) }}">
@@ -62,4 +62,9 @@
 
 
 {#    <a href="{{ path('street_new') }}">Create new</a>#}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
 {% endblock %}

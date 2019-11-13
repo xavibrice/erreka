@@ -2,8 +2,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -39,11 +37,6 @@ class RateHousing
     private $max_price;
 
     /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $pets;
-
-    /**
      * @ORM\Column(type="integer", nullable=true)
      */
     private $bedrooms;
@@ -56,27 +49,7 @@ class RateHousing
     /**
      * @ORM\Column(type="integer", nullable=true)
      */
-    private $approx_meters;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
     private $real_meters;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $living_room;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $balcony;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $terrace;
 
     /**
      * @ORM\Column(type="boolean")
@@ -96,16 +69,6 @@ class RateHousing
     /**
      * @ORM\Column(type="boolean")
      */
-    private $pantry;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $fitted_wardrobes;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
     private $direct_garage;
 
     /**
@@ -117,17 +80,6 @@ class RateHousing
      * @ORM\Column(type="boolean")
      */
     private $zero_dimension;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $security_door;
-
-    /**
-     * @ORM\OneToOne(targetEntity="App\Entity\News", inversedBy="rate_housing")
-     * @ORM\JoinColumn(name="new_id", referencedColumnName="id")
-     */
-    private $new;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Property", inversedBy="rate_housing")
@@ -164,6 +116,91 @@ class RateHousing
      * @ORM\ManyToOne(targetEntity="App\Entity\ValuationStatus", inversedBy="ground_state")
      */
     private $groundState;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Heating", inversedBy="rateHousings")
+     */
+    private $heating;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Window", inversedBy="rateHousings")
+     */
+    private $window;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Door", inversedBy="rateHousings")
+     */
+    private $door;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $elevator;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $terrace;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $alarm_system;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $automatic_door;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $air_conditioning;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $antiquity;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $community_expenses;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $pending_spills;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $amount_pending_spills;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $spills_future;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $administrator;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $mobile_administrator;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Orientation", inversedBy="rateHousings")
+     */
+    private $orientation;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\EnergyCertificate", inversedBy="rateHousings")
+     */
+    private $energy_certificate;
 
     public function getId(): ?int
     {
@@ -218,18 +255,6 @@ class RateHousing
         return $this;
     }
 
-    public function getPets(): ?bool
-    {
-        return $this->pets;
-    }
-
-    public function setPets(bool $pets): self
-    {
-        $this->pets = $pets;
-
-        return $this;
-    }
-
     public function getBedrooms(): ?int
     {
         return $this->bedrooms;
@@ -254,18 +279,6 @@ class RateHousing
         return $this;
     }
 
-    public function getApproxMeters(): ?int
-    {
-        return $this->approx_meters;
-    }
-
-    public function setApproxMeters(?int $approx_meters): self
-    {
-        $this->approx_meters = $approx_meters;
-
-        return $this;
-    }
-
     public function getRealMeters(): ?int
     {
         return $this->real_meters;
@@ -274,42 +287,6 @@ class RateHousing
     public function setRealMeters(?int $real_meters): self
     {
         $this->real_meters = $real_meters;
-
-        return $this;
-    }
-
-    public function getLivingRoom(): ?bool
-    {
-        return $this->living_room;
-    }
-
-    public function setLivingRoom(bool $living_room): self
-    {
-        $this->living_room = $living_room;
-
-        return $this;
-    }
-
-    public function getBalcony(): ?bool
-    {
-        return $this->balcony;
-    }
-
-    public function setBalcony(bool $balcony): self
-    {
-        $this->balcony = $balcony;
-
-        return $this;
-    }
-
-    public function getTerrace(): ?bool
-    {
-        return $this->terrace;
-    }
-
-    public function setTerrace(bool $terrace): self
-    {
-        $this->terrace = $terrace;
 
         return $this;
     }
@@ -350,30 +327,6 @@ class RateHousing
         return $this;
     }
 
-    public function getPantry(): ?bool
-    {
-        return $this->pantry;
-    }
-
-    public function setPantry(bool $pantry): self
-    {
-        $this->pantry = $pantry;
-
-        return $this;
-    }
-
-    public function getFittedWardrobes(): ?bool
-    {
-        return $this->fitted_wardrobes;
-    }
-
-    public function setFittedWardrobes(bool $fitted_wardrobes): self
-    {
-        $this->fitted_wardrobes = $fitted_wardrobes;
-
-        return $this;
-    }
-
     public function getDirectGarage(): ?bool
     {
         return $this->direct_garage;
@@ -408,34 +361,6 @@ class RateHousing
         $this->zero_dimension = $zero_dimension;
 
         return $this;
-    }
-
-    public function getSecurityDoor(): ?bool
-    {
-        return $this->security_door;
-    }
-
-    public function setSecurityDoor(bool $security_door): self
-    {
-        $this->security_door = $security_door;
-
-        return $this;
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNew()
-    {
-        return $this->new;
-    }
-
-    /**
-     * @param mixed $new
-     */
-    public function setNew($new): void
-    {
-        $this->new = $new;
     }
 
     public function __toString()
@@ -530,6 +455,210 @@ class RateHousing
     public function setProperty($property): void
     {
         $this->property = $property;
+    }
+
+    public function getHeating(): ?Heating
+    {
+        return $this->heating;
+    }
+
+    public function setHeating(?Heating $heating): self
+    {
+        $this->heating = $heating;
+
+        return $this;
+    }
+
+    public function getWindow(): ?Window
+    {
+        return $this->window;
+    }
+
+    public function setWindow(?Window $window): self
+    {
+        $this->window = $window;
+
+        return $this;
+    }
+
+    public function getDoor(): ?Door
+    {
+        return $this->door;
+    }
+
+    public function setDoor(?Door $door): self
+    {
+        $this->door = $door;
+
+        return $this;
+    }
+
+    public function getElevator(): ?bool
+    {
+        return $this->elevator;
+    }
+
+    public function setElevator(?bool $elevator): self
+    {
+        $this->elevator = $elevator;
+
+        return $this;
+    }
+
+    public function getTerrace(): ?bool
+    {
+        return $this->terrace;
+    }
+
+    public function setTerrace(?bool $terrace): self
+    {
+        $this->terrace = $terrace;
+
+        return $this;
+    }
+
+    public function getAlarmSystem(): ?bool
+    {
+        return $this->alarm_system;
+    }
+
+    public function setAlarmSystem(?bool $alarm_system): self
+    {
+        $this->alarm_system = $alarm_system;
+
+        return $this;
+    }
+
+    public function getAutomaticDoor(): ?bool
+    {
+        return $this->automatic_door;
+    }
+
+    public function setAutomaticDoor(?bool $automatic_door): self
+    {
+        $this->automatic_door = $automatic_door;
+
+        return $this;
+    }
+
+    public function getAirConditioning(): ?bool
+    {
+        return $this->air_conditioning;
+    }
+
+    public function setAirConditioning(?bool $air_conditioning): self
+    {
+        $this->air_conditioning = $air_conditioning;
+
+        return $this;
+    }
+
+    public function getAntiquity(): ?int
+    {
+        return $this->antiquity;
+    }
+
+    public function setAntiquity(?int $antiquity): self
+    {
+        $this->antiquity = $antiquity;
+
+        return $this;
+    }
+
+    public function getCommunityExpenses()
+    {
+        return $this->community_expenses;
+    }
+
+    public function setCommunityExpenses($community_expenses): self
+    {
+        $this->community_expenses = $community_expenses;
+
+        return $this;
+    }
+
+    public function getPendingSpills(): ?string
+    {
+        return $this->pending_spills;
+    }
+
+    public function setPendingSpills(?string $pending_spills): self
+    {
+        $this->pending_spills = $pending_spills;
+
+        return $this;
+    }
+
+    public function getAmountPendingSpills()
+    {
+        return $this->amount_pending_spills;
+    }
+
+    public function setAmountPendingSpills($amount_pending_spills): self
+    {
+        $this->amount_pending_spills = $amount_pending_spills;
+
+        return $this;
+    }
+
+    public function getSpillsFuture(): ?string
+    {
+        return $this->spills_future;
+    }
+
+    public function setSpillsFuture(?string $spills_future): self
+    {
+        $this->spills_future = $spills_future;
+
+        return $this;
+    }
+
+    public function getAdministrator(): ?string
+    {
+        return $this->administrator;
+    }
+
+    public function setAdministrator(?string $administrator): self
+    {
+        $this->administrator = $administrator;
+
+        return $this;
+    }
+
+    public function getMobileAdministrator(): ?string
+    {
+        return $this->mobile_administrator;
+    }
+
+    public function setMobileAdministrator(?string $mobile_administrator): self
+    {
+        $this->mobile_administrator = $mobile_administrator;
+
+        return $this;
+    }
+
+    public function getOrientation(): ?Orientation
+    {
+        return $this->orientation;
+    }
+
+    public function setOrientation(?Orientation $orientation): self
+    {
+        $this->orientation = $orientation;
+
+        return $this;
+    }
+
+    public function getEnergyCertificate(): ?EnergyCertificate
+    {
+        return $this->energy_certificate;
+    }
+
+    public function setEnergyCertificate(?EnergyCertificate $energy_certificate): self
+    {
+        $this->energy_certificate = $energy_certificate;
+
+        return $this;
     }
 
 }

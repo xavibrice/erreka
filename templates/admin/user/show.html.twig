@@ -5,7 +5,7 @@
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="h3 mb-4 text-gray-800 float-left">Ver {{ user.firstName }} {{ user.lastName }}</h1>
+            <h1 class="h3 mb-4 text-gray-800 float-left">Ver {{ user.fullName }} </h1>
 {#            <a class="btn btn-link float-right" href="{{ path('user_index') }}">Volver a lista</a>#}
         </div>
         <div class="card-body">
@@ -17,7 +17,9 @@
                             <td>
 {#                                <img class="img-thumbnail" src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.firstName }}" width="300px"/>#}
                                 {% if user.imageFilename %}
-                                    <img src="{{ asset(uploaded_asset(user.imagePath)|imagine_filter('squared_thumbnail_medium')) }}" alt="{{ user.firstName }}">
+                                    <a target="_blank" href="{{ asset(uploaded_asset(user.imagePath)) }}">
+                                        <img src="{{ asset(uploaded_asset(user.imagePath)|imagine_filter('squared_thumbnail_medium')) }}" alt="{{ user.fullName }}">
+                                    </a>
                                 {% else %}
                                     Sin Foto
                                 {% endif %}
@@ -25,7 +27,7 @@
                         </tr>
                         <tr>
                             <th>Nombre y Apellidos</th>
-                            <td>{{ user.firstName }} {{ user.lastName }}</td>
+                            <td>{{ user.fullName }} </td>
                         </tr>
                         <tr>
                             <th>Móvil</th>
@@ -38,32 +40,32 @@
                         <tr>
                             <th>Empresa</th>
                             <td>
-                                <a href="{{ path('company_show', {'id': user.company.id}) }}">{{ user.company.name }}</a>
+                                <a href="{{ path('agency_show', {'id': user.agency.id}) }}">{{ user.agency.name }}</a>
                             </td>
                         </tr>
-                        <tr>
-                            <th>Noticias ({{ user.news.count }})</th>
-                            <td>
-                                {#<div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-width: 260px; max-height: 100px;">
-                                    This is an example of using <code>.overflow-auto</code> on an element with set width and height dimensions. By design, this content will vertically scroll.
-                                </div>#}
-                                {% if user.news.count > 0 %}
-                                    <ul class="list-group overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-width: 400px; max-height: 100px;">
-                                        {% for new in user.news|slice(0, 5) %}
-                                            <li class="list-group-item">
-                                                <a href="{{ path('news_show', {'id': new.id}) }}">
-                                                    <p>
-                                                        {{ new.firstName }} {{ new.lastName }} calle {{ new.portal }}
-                                                    </p>
-                                                </a>
-                                            </li>
-                                        {% endfor %}
-                                    </ul>
-                                {% else %}
-                                    No hay noticias
-                                {% endif %}
-                            </td>
-                        </tr>
+{#                        <tr>#}
+{#                            <th>Noticias ({{ user.properties.count }})</th>#}
+{#                            <td>#}
+{#                                #}{#<div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-width: 260px; max-height: 100px;">#}
+{#                                    This is an example of using <code>.overflow-auto</code> on an element with set width and height dimensions. By design, this content will vertically scroll.#}
+{#                                </div>#}
+{#                                {% if user.properties.count > 0 %}#}
+{#                                    <ul class="list-group overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-width: 400px; max-height: 300px;">#}
+{#                                        {% for property in user.properties|slice(0, 5) %}#}
+{#                                            <li class="list-group-item">#}
+{#                                                <a href="{{ path('property_show', {'id': property.id}) }}">#}
+{#                                                    <p>#}
+{#                                                        {{ property.fullName }} calle {{ property.portal }}#}
+{#                                                    </p>#}
+{#                                                </a>#}
+{#                                            </li>#}
+{#                                        {% endfor %}#}
+{#                                    </ul>#}
+{#                                {% else %}#}
+{#                                    No hay noticias#}
+{#                                {% endif %}#}
+{#                            </td>#}
+{#                        </tr>#}
                     </tbody>
                 </table>
             </div>

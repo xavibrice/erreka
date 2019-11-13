@@ -1,0 +1,11 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Hello PenthouseController!{% endblock %}
+
+{% block content %}
+    <h1>Listado Ático {{ properties|length }}</h1>
+    {% for property in properties %}
+        {{ property.price }}
+    {% endfor %}
+{% endblock %}
+

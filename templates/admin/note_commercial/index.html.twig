@@ -2,11 +2,6 @@
 
 {% block title %}Listado Notas Comercial index{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('dataTable') }}
-{% endblock %}
-
 {% block content %}
 <div class="card shadow mb-4">
     <div class="card-header py-3">
@@ -19,7 +14,7 @@
             <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
                 <thead>
                 <tr>
-                    {#                    <th>Id</th>#}
+                                        <th>Id</th>
                     <th>Nota</th>
                     <th>Fecha Nota</th>
                     <th>Comercial</th>
@@ -31,12 +26,12 @@
                 <tbody>
                 {% for note_commercial in note_commercials %}
                     <tr>
-                        {#                    <td>{{ note_commercial.id }}</td>#}
+                                            <td>{{ note_commercial.id }}</td>
                         <td>{{ note_commercial.note }}</td>
-                        <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('Y-m-d') : '' }}</td>
+                        <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('d-m-Y') : '' }}</td>
                         <td>
                             <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">
-                                {{ note_commercial.commercial.firstName }} {{ note_commercial.commercial.lastName }}
+                                {{ note_commercial.commercial.fullName }}
                             </a>
                         </td>
                         <td>
@@ -48,7 +43,6 @@
                         <td>
                             {{ include('admin/_delete_form.html.twig', {'route': 'note_commercial_delete', 'entity': note_commercial, 'count': 0}) }}
                             {#                        {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company, 'count': company.users.count}) }}#}
-
                         </td>
                     </tr>
                 {% endfor %}
@@ -61,4 +55,9 @@
 {#    </div>#}
 </div>
 
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
 {% endblock %}

@@ -1,0 +1,195 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Detalles Noticia{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+{% endblock %}
+
+{% block content %}
+
+    {{ include('admin/property/type_property/_tab.html.twig') }}
+
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-md-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles noticias</h6>
+                    {#<h6 class="m-0 font-weight-bold text-primary float-right">
+                        <a class="btn btn-success" href="">Crear Noticia</a>
+                    </h6>#}
+                </div>
+                <div class="card-body">
+                    <p>id {{ property.id }} | activado {{ property.enabled }} | {{ property.commercial }}</p>
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Situacion</th>
+                                <td>{{ property.reason.situation.name }}</td>
+                                <th>Motivo</th>
+                                <td>{{ property.reason.name }}</td>
+                                <th>Creado</th>
+                                <td>{{ property.created|date('d/m/Y') }}</td>
+                                <th>Precio</th>
+                                <td>{{ property.price }}</td>
+                            </tr>
+                            <tr>
+                                <th>Propietario</th>
+                                <td>{{ property.fullName }}</td>
+                                <th>Tipo de propiedad</th>
+                                <td>
+                                    {% if property.typeProperty is not empty %}
+                                        {{ property.typeProperty.name }}
+                                    {% endif %}
+                                </td>
+                                <th>Zona</th>
+                                <td>{{ property.street.zone.name }}</td>
+                                <th>Calle</th>
+                                <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
+                            </tr>
+                            <tr>
+
+                                <th>Móvil/Teléfono</th>
+                                <td>{{ property.mobile }}</td>
+                                <th>Correo</th>
+                                <td>{{ property.email }}</td>
+                            </tr>
+                            <tr>
+
+                            </tr>
+                            <tr>
+                                <th>URL</th>
+                                <td colspan="7">
+                                    <a target="_blank" href="{{ property.url }}">{{ property.url }}</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Comentario</th>
+                                <td colspan="7">{{ property.comment }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                    <div class="compact-gallery">
+                        <div class="row">
+                            {% for image in property.image %}
+                                <div class="col-2">
+                                    <div class="card-body">
+                                        <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                            <img src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_small') }}" alt="">
+                                        </a>
+                                    </div>
+                                    <div class="card-footer text-center">
+                                        {{ include('admin/_delete_form.html.twig', {'route': 'image_delete', 'entity': image, 'count': 0}) }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="card-footer">
+                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
+                    {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}
+                </div>
+            </div>
+        </div>
+        {#<div class="col-auto mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Precio Rebajado </h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+                        {% set date = property.propertyReductions.last %}
+                        {{ form_start(formReduction) }}
+                        {{ form_row(formReduction.price) }}
+                        {{ form_row(formReduction.reductionDate) }}
+                        {{ form_row(formReduction.reductionNextDate, { 'attr': {'value': date.reductionNextDate|date('d-m-Y')} }) }}
+                        <button class="btn btn-success">Guardar</button>
+                        {{ form_end(formReduction) }}
+                    </div>
+                    <div>
+                        {% if property.propertyReductions %}
+                            <ul class="list-group">
+                                {% for reduction in property.propertyReductions %}
+                                    <li class="list-group-item">
+                                        {{ reduction.price }}
+                                        <a class="btn float-right btn-danger btn-sm" href="">Eliminar</a>
+                                    </li>
+                                {% else %}
+                                    <div class="alert alert-info" role="alert">
+                                        No hay rebajas
+                                    </div>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>#}
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Notas noticia a desarrollar </h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-right">Proxima llamada: {{ property.noteNew.last }}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+                        {{ include('admin/_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mb-4">
+            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
+                {% for noteProperty in property.noteNew|reverse %}
+                    <div class="col-md-12 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-sm-left font-weight-bold text-primary text-uppercase mb-1"><strong>{{ noteProperty.noticeDate|date('d-m-Y') }} </strong></div>
+                                        <div class="h5 mb-0 text-gray-800" data-toggle="tooltip" data-placement="top" title="{{ noteProperty.note }}">
+                                            {{ noteProperty.note|slice(0, 50) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-sticky-note fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        No hay notas
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+{#    <a href="{{ path('property_index') }}">back to list</a>#}
+
+{#    <a href="{{ path('property_edit', {'id': property.id}) }}">edit</a>#}
+
+{#    {{ include('admin/property/_delete_form.html.twig') }}#}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.compact-gallery', { animation: 'slideIn'});
+    </script>
+{% endblock %}

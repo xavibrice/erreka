@@ -47,7 +47,7 @@
                     </div>
                     <div>
                         {#                    <a href="{{ path('note_commercial_index') }}">#}
-                        <div class="small text-gray-500">{{ note.noticeDate|date('m/d/Y') }} - {{ note.commercial.firstName }} {{ note.commercial.lastName }}</div>
+                        <div class="small text-gray-500">{{ note.noticeDate|date('d-m-Y') }} - {{ note.commercial.fullName }}</div>
                         {{ note.note }}
                         {#                    </a>#}
                     </div>

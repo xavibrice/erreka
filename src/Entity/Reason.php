@@ -29,18 +29,12 @@ class Reason
     private $situation;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="reason")
-     */
-    private $news;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="reason")
      */
     private $properties;
 
     public function __construct()
     {
-        $this->news = new ArrayCollection();
         $this->properties = new ArrayCollection();
     }
 
@@ -69,37 +63,6 @@ class Reason
     public function setSituation(?Situation $situation): self
     {
         $this->situation = $situation;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|News[]
-     */
-    public function getNews(): Collection
-    {
-        return $this->news;
-    }
-
-    public function addNews(News $news): self
-    {
-        if (!$this->news->contains($news)) {
-            $this->news[] = $news;
-            $news->setReason($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNews(News $news): self
-    {
-        if ($this->news->contains($news)) {
-            $this->news->removeElement($news);
-            // set the owning side to null (unless already changed)
-            if ($news->getReason() === $this) {
-                $news->setReason(null);
-            }
-        }
 
         return $this;
     }

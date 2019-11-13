@@ -2,10 +2,10 @@
 
 namespace App\Form;
 
-use App\Entity\News;
+use App\Entity\Heating;
 use App\Entity\RateHousing;
 use App\Entity\ValuationStatus;
-use Doctrine\ORM\EntityRepository;
+use App\Entity\Window;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -42,10 +42,6 @@ class RateHousingType extends AbstractType
                 'label' => 'Precio Máximo',
                 'required' => false
             ])
-            ->add('pets', CheckboxType::class, [
-                'label' => 'Mascotas',
-                'required' => false
-            ])
             ->add('bedrooms', IntegerType::class, [
                 'label' => 'Dormitorios',
                 'required' => false,
@@ -60,27 +56,12 @@ class RateHousingType extends AbstractType
                     'min' => 0
                 ]
             ])
-            ->add('approx_meters', IntegerType::class, [
-                'label' => 'Metros Aproximados',
-                'required' => false,
-                'attr' => [
-                    'min' => 0
-                ]
-            ])
             ->add('real_meters', IntegerType::class, [
                 'label' => 'Metros Reales',
                 'required' => false,
                 'attr' => [
                     'min' => 0
                 ]
-            ])
-            ->add('living_room', CheckboxType::class, [
-                'label' => 'Sala',
-                'required' => false
-            ])
-            ->add('balcony', CheckboxType::class, [
-                'label' => 'Balcón',
-                'required' => false
             ])
             ->add('terrace', CheckboxType::class, [
                 'label' => 'Terraza',
@@ -98,14 +79,6 @@ class RateHousingType extends AbstractType
                 'label' => 'Trastero',
                 'required' => false
             ])
-            ->add('pantry', CheckboxType::class, [
-                'label' => 'Despensa',
-                'required' => false
-            ])
-            ->add('fitted_wardrobes', CheckboxType::class, [
-                'label' => 'Armarios Empotrados',
-                'required' => false
-            ])
             ->add('direct_garage', CheckboxType::class, [
                 'label' => 'Garaje Directo',
                 'required' => false
@@ -118,10 +91,22 @@ class RateHousingType extends AbstractType
                 'label' => 'Cota Cero',
                 'required' => false
             ])
-            ->add('security_door', CheckboxType::class, [
-                'label' => 'Puerta de Seguridad',
+            ->add('elevator', CheckboxType::class, [
+                'label' => 'Ascensor',
                 'required' => false
             ])
+            /*->add('alarmSystem', CheckboxType::class, [
+                'label' => 'Sistema de alarmas',
+                'required' => false
+            ])
+            ->add('automaticDoor', CheckboxType::class, [
+                'label' => 'Puerta Automática',
+                'required' => false
+            ])
+            ->add('airConditioning', CheckboxType::class, [
+                'label' => 'Aire Acondicionado',
+                'required' => false
+            ])*/
             ->add('bathroomState', EntityType::class, [
                 'required' => false,
                 'label' => false,
@@ -157,6 +142,18 @@ class RateHousingType extends AbstractType
                 'label' => false,
                 'placeholder' => 'Estado Suelo',
                 'class' => ValuationStatus::class
+            ])
+            ->add('window', EntityType::class, [
+                'required' => false,
+                'label' => false,
+                'placeholder' => 'Tipo Ventana',
+                'class' => Window::class
+            ])
+            ->add('heating', EntityType::class, [
+                'required' => false,
+                'label' => false,
+                'placeholder' => 'Tipo Calefacción',
+                'class' => Heating::class
             ])
         ;
     }

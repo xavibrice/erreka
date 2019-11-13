@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin2/zone")
+ * @Route("/admin/zone")
  */
 class ZoneController extends AbstractController
 {

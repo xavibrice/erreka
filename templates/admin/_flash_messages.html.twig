@@ -1,17 +1,16 @@
-<div class="container">
-    <div class="row">
-        <div class="col-lg-12">
-            {% if app.request.hasPreviousSession %}
-                {% for type, messages in app.flashes %}
-                    {% for message in messages %}
-                        <div class="card bg-{{ type }} text-white shadow">
-                            <div class="card-body">
-                                {{ message }}
-                            </div>
+
+<div class="row mb-3">
+    <div class="col-lg-12">
+        {% if app.request.hasPreviousSession %}
+            {% for type, messages in app.flashes %}
+                {% for message in messages %}
+                    <div class="card bg-{{ type }} text-white shadow">
+                        <div class="card-body">
+                            {{ message }}
                         </div>
-                    {% endfor %}
+                    </div>
                 {% endfor %}
-            {% endif %}
-        </div>
+            {% endfor %}
+        {% endif %}
     </div>
 </div>

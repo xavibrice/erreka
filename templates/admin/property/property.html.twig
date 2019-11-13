@@ -1,0 +1,132 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %} Listado Noticias {% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de noticias</h1>
+            {#            <a class="btn btn-success float-right" href="{{ path('news_new') }}">Crear Noticia</a>#}
+            <a class="btn btn-success float-right" href="#" data-toggle="modal" data-target="#createNewModal">
+                Crear Noticia
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+{#                        <th>Id</th>#}
+                        <th>Creado</th>
+                        <th>Zona</th>
+                        <th>Situación</th>
+                        <th>Motivo</th>
+                        <th>Calle</th>
+                        <th>Portal</th>
+                        <th>Piso</th>
+                        <th>Propietario</th>
+                        <th>Móvil</th>
+                        <th>Precio</th>
+                        <th>Val</th>
+                        <th>Dorm</th>
+                        <th>WC</th>
+                        <th>M²</th>
+                        <th>Últ Llamada</th>
+                        <th>Comentario</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for property in properties %}
+                        {% if property.enabled %}
+                            <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
+{#                                <td>{{ property.id }}</td>#}
+                                <td>{{ property.created|date('d/m/Y') }}</td>
+                                <td>
+                                    {% if property.street is not empty and property.street.zone is not empty %}
+                                        {{ property.street.zone.name }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if property.reason is not empty and property.reason.situation is not empty %}
+                                        {{ property.reason.situation.name }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if property.reason is not empty %}
+                                        {{ property.reason.name }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if property.street is not empty %}
+                                        {{ property.street.name }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ property.portal }}</td>
+                                <td>{{ property.floor }}</td>
+                                <td>{{ property.fullName }}</td>
+                                <td>{{ property.mobile }}</td>
+                                <td>{{ property.price|number_format(0, '.', ',') }}€</td>
+                                <td>
+                                    {% if property.rateHousing %}
+                                        Si
+                                    {% else %}
+                                        No
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if property.rateHousing %}
+                                        {{ property.rateHousing.bedrooms }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if property.rateHousing %}
+                                        {{ property.rateHousing.bathrooms }}
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if property.rateHousing %}
+                                        {{ property.rateHousing.realMeters }} M²
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    {% if property.noteNew %}
+                                        {{ property.noteNew.last }}
+                                    {% endif %}
+                                </td>
+                                <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
+                                    {{ property.comment|slice(0, 25) }}
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="createNewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Nueva Noticia</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ render_esi(controller('App\\Controller\\PropertyController::property')) }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}

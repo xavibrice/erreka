@@ -1,0 +1,121 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Detalles Noticia a Desarrollar{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-md-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles Noticias a Desarrollar</h6>
+                    {#<h6 class="m-0 font-weight-bold text-primary float-right">
+                        <a class="btn btn-success" href="">Crear Noticia</a>
+                    </h6>#}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th>Situacion</th>
+                                <td>{{ property.reason.situation.name }}</td>
+                                <th>Motivo</th>
+                                <td>{{ property.reason.name }}</td>
+                                <th>Creado</th>
+                                <td>{{ property.created|date('d/m/Y') }}</td>
+                                <th>Precio</th>
+                                <td>{{ property.price }}</td>
+                            </tr>
+                            <tr>
+                                <th>Propietario</th>
+                                <td>{{ property.fullName }}</td>
+                                <th>Tipo de propiedad</th>
+                                <td>
+                                    {% if property.typeProperty is not empty %}
+                                        {{ property.typeProperty.name }}
+                                    {% endif %}
+                                </td>
+                                <th>Zona</th>
+                                <td>{{ property.street.zone.name }}</td>
+                                <th>Calle</th>
+                                <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
+                            </tr>
+                            <tr>
+
+                                <th>Móvil/Teléfono</th>
+                                <td>{{ property.mobile }}</td>
+                                <th>Correo</th>
+                                <td>{{ property.email }}</td>
+                            </tr>
+                            <tr>
+
+                            </tr>
+                            <tr>
+                                <th>URL</th>
+                                <td colspan="7">
+                                    <a target="_blank" href="{{ property.url }}">{{ property.url }}</a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Comentario</th>
+                                <td colspan="7">{{ property.comment }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+                <div class="card-footer">
+                    {{ include('admin/_back_link.html.twig', {'route': 'property_to_developer_index'}) }}
+                    {{ include('admin/_edit_link.html.twig', {'route': 'property_to_developer_edit', 'id': property.id, 'button_label': 'Editar'}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md4 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Notas </h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-right">Proxima Llamada: {{ property.noteNew.last }}</h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+                        {{ include('admin/_form.html.twig') }}
+                    </div>
+                </div>
+                <div class="card-footer">
+                    {{ include('admin/_back_link.html.twig', {'route': 'property_to_developer_index'}) }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
+                {% for noteProperty in property.noteNew|reverse %}
+                    <div class="col-md-12 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="row no-gutters align-items-center">
+                                    <div class="col mr-2">
+                                        <div class="text-sm-left font-weight-bold text-primary text-uppercase mb-1"><strong>{{ noteProperty.noticeDate|date('d-m-Y') }} </strong></div>
+                                        <div class="h5 mb-0 text-gray-800" data-toggle="tooltip" data-placement="top" title="{{ noteProperty.note }}">
+                                            {{ noteProperty.note|slice(0, 50) }}
+                                        </div>
+                                    </div>
+                                    <div class="col-auto">
+                                        <i class="fas fa-sticky-note fa-2x text-gray-300"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{#    <a href="{{ path('property_index') }}">back to list</a>#}
+
+{#    <a href="{{ path('property_edit', {'id': property.id}) }}">edit</a>#}
+
+{#    {{ include('admin/property/_delete_form.html.twig') }}#}
+{% endblock %}

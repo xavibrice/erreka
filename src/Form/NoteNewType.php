@@ -17,7 +17,7 @@ class NoteNewType extends AbstractType
     {
         $builder
             ->add('notice_date', DateType::class, [
-                'label' => 'Fecha',
+                'label' => 'Fecha creación',
                 'widget' => 'single_text',
                 'format' => 'dd-MM-yyyy',
                 'html5' => false,

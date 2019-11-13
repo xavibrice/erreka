@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block class %}page-top{% endblock %}
-
 {% block body %}
 
     <!-- Page Wrapper -->
@@ -15,7 +13,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3"> Erreka {#<sup>2</sup>#}</div>
+                <div class="sidebar-brand-text mx-3"> {{ app.user.agency.name }} {#<sup>2</sup>#}</div>
             </a>
 
             <!-- Divider -->
@@ -29,63 +27,28 @@
 #}
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item {% if app.request.get('_route') == 'admin' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('admin') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Agenda</span></a>
-            </li>
-
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('situation_for_property', {'situation': 'noticia'}) }}">
+                <a class="nav-link {% if app.request.get('_route') == 'property_index' %}active{% endif %}" href="{{ path('property_index') }}">
                     {#        <a class="nav-link" href="#">#}
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Noticia</span></a>
+                    <span>Noticia</span>
+                </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('situation_for_property', {'situation': 'noticia-a-desarrollar'}) }}">
-                    {#        <a class="nav-link" href="#">#}
+                <a class="nav-link {% if app.request.get('_route') == 'property_to_developer_index' %}active{% endif %}" href="{{ path('property_to_developer_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Noticia a desarrollar</span></a>
+                    <span>Noticia a Desarrollar</span>
+                </a>
             </li>
-{#            {% block situations %}#}
-{#                {{ render_esi(controller('App\\Controller\\SituationController::situations')) }}#}
-{#            {% endblock %}#}
+            <li class="nav-item">
+                <a class="nav-link {% if app.request.get('_route') == 'client_index' %}active{% endif %}" href="{{ path('client_index') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Pedido</span>
+                </a>
+            </li>
 
- {#           <!-- Divider -->
-            <hr class="sidebar-divider my-0">
-
-            <li class="nav-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('company_index') }}">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Empresas</span></a>
-            </li>
-            <li class="nav-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('news_index') }}">
-                    <i class="fas fa-fw fa-newspaper"></i>
-                    <span>Noticias</span></a>
-            </li>
-            <li class="nav-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('user_index') }}">
-                    <i class="fas fa-fw fa-users"></i>
-                    <span>Usuarios</span></a>
-            </li>
-            <li class="nav-item {% if app.request.get('_route') == 'owner_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('owner_index') }}">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Propietario</span></a>
-            </li>
-            <li class="nav-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('zone_index') }}">
-                    <i class="fas fa-fw fa-city"></i>
-                    <span>Zona</span></a>
-            </li>
-            <li class="nav-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('reason_index') }}">
-                    <i class="fas fa-fw fa-city"></i>
-                    <span>Razón</span></a>
-            </li>
             <!-- Divider -->
-            <hr class="sidebar-divider">#}
+            <hr class="sidebar-divider">
 
             <!-- Heading -->
             <div class="sidebar-heading">
@@ -100,7 +63,7 @@
                 </a>
                 <div id="collapseTwo" class="collapse
                 {% if
-                    app.request.get('_route') == 'company_index' or
+                    app.request.get('_route') == 'agency_index' or
                     app.request.get('_route') == 'user_index' or
                     app.request.get('_route') == 'owner_index' or
                     app.request.get('_route') == 'zone_index' or
@@ -112,7 +75,7 @@
                 %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item {% if app.request.get('_route') == 'company_index' %}active{% endif %}" href="{{ path('company_index') }}">Empresas </a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'agency_index' %}active{% endif %}" href="{{ path('agency_index') }}">Empresas </a>
                         <a class="collapse-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}" href="{{ path('user_index') }}">Usuarios</a>
 {#                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>#}
                         <a class="collapse-item {% if app.request.get('_route') == 'note_new_index' %}active{% endif %}" href="{{ path('note_new_index') }}">Nota Noticia</a>
@@ -129,9 +92,9 @@
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-wrench"></i>
-                    <span>Encargo</span>
+                    <span>Utilities</span>
                 </a>
-                {{ render_esi(controller('App\\Controller\\TypePropertyController::index')) }}
+{#                {{ render_esi(controller('App\\Controller\\TypePropertyController::index')) }}#}
 
             </li>
 
@@ -242,7 +205,7 @@
                             {{ render_esi(controller('App\\Controller\\NoteCommercialController::notes')) }}
                         {% endblock %}
 
-                        <!-- Nav Item - Messages -->
+                        <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">
                             <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-envelope fa-fw"></i>
@@ -399,10 +362,11 @@
                 </nav>
                 <!-- End of Topbar -->
 
-                {{ include('admin/_flash_messages.html.twig') }}
-
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
+
+                    {{ include('admin/_flash_messages.html.twig') }}
+
                     {% block content %}{% endblock %}
                 </div>
                 <!-- /.container-fluid -->
@@ -414,7 +378,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2019</span>
+                        <span>Copyright &copy; Erreka 2019</span>
                     </div>
                 </div>
             </footer>
@@ -449,5 +413,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

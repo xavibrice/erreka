@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -34,7 +35,7 @@ class Property
     private $email;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
      */
     private $price;
 
@@ -52,11 +53,6 @@ class Property
      * @ORM\ManyToOne(targetEntity="App\Entity\TypeProperty", inversedBy="property")
      */
     private $typeProperty;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\StateProperty", inversedBy="property")
-     */
-    private $stateProperty;
 
     /**
      * @ORM\ManyToMany(targetEntity="App\Entity\Client", inversedBy="properties")
@@ -113,11 +109,17 @@ class Property
      */
     private $rate_housing;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="property", cascade={"persist"})
+     */
+    private $image;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
         $this->propertyReductions = new ArrayCollection();
         $this->note_new = new ArrayCollection();
+        $this->image = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -205,18 +207,6 @@ class Property
     public function setTypeProperty(?TypeProperty $typeProperty): self
     {
         $this->typeProperty = $typeProperty;
-
-        return $this;
-    }
-
-    public function getStateProperty(): ?StateProperty
-    {
-        return $this->stateProperty;
-    }
-
-    public function setStateProperty(?StateProperty $stateProperty): self
-    {
-        $this->stateProperty = $stateProperty;
 
         return $this;
     }
@@ -409,5 +399,36 @@ class Property
     {
         // TODO: Implement __toString() method.
         return (string)$this->getFullName();
+    }
+
+    /**
+     * @return Collection|Images[]
+     */
+    public function getImage(): Collection
+    {
+        return $this->image;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->image->contains($image)) {
+            $this->image[] = $image;
+            $image->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->image->contains($image)) {
+            $this->image->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getProperty() === $this) {
+                $image->setProperty(null);
+            }
+        }
+
+        return $this;
     }
 }

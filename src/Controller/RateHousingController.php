@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\News;
 use App\Entity\RateHousing;
 use App\Form\RateHousingType;
 use App\Repository\RateHousingRepository;
@@ -32,7 +31,7 @@ class RateHousingController extends AbstractController
     public function new(Request $request): Response
     {
         $rateHousing = new RateHousing();
-        $rateHousing->setNew();
+        $rateHousing->setProperty();
         $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
 

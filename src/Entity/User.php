@@ -36,16 +36,6 @@ class User implements UserInterface
     private $plainPassword;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Company", inversedBy="users")
-     */
-    private $company;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="commercial")
-     */
-    private $news;
-
-    /**
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $username;
@@ -86,7 +76,6 @@ class User implements UserInterface
 
     public function __construct()
     {
-        $this->news = new ArrayCollection();
         $this->noteCommercials = new ArrayCollection();
         $this->properties = new ArrayCollection();
     }
@@ -173,73 +162,6 @@ class User implements UserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
-    }
-
-    public function getCompany(): ?Company
-    {
-        return $this->company;
-    }
-
-    public function setCompany(?Company $company): self
-    {
-        $this->company = $company;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|News[]
-     */
-    public function getNews(): Collection
-    {
-        return $this->news;
-    }
-
-    public function addNews(News $news): self
-    {
-        if (!$this->news->contains($news)) {
-            $this->news[] = $news;
-            $news->setCommercial($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNews(News $news): self
-    {
-        if ($this->news->contains($news)) {
-            $this->news->removeElement($news);
-            // set the owning side to null (unless already changed)
-            if ($news->getCommercial() === $this) {
-                $news->setCommercial(null);
-            }
-        }
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->first_name;
-    }
-
-    public function setFirstName(string $first_name): self
-    {
-        $this->first_name = $first_name;
-
-        return $this;
-    }
-
-    public function getLastName(): ?string
-    {
-        return $this->last_name;
-    }
-
-    public function setLastName(string $last_name): self
-    {
-        $this->last_name = $last_name;
-
-        return $this;
     }
 
     public function setUsername(string $username): self

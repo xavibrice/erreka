@@ -2,9 +2,5 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import "sb-admin-2.min.css";
 @import "panel.css";
-@import "dataTables.bootstrap4.min.css";
 @import "~bootstrap-datepicker/dist/css/bootstrap-datepicker3.standalone.css";
-
-body {
-    background-color: lightgray;
-}
+@import "dataTables.bootstrap4.min.css";

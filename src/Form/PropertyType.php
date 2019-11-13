@@ -16,7 +16,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
@@ -25,18 +30,63 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class PropertyType extends AbstractType
 {
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $roles = $options['role'];
+        $role = implode(',', $roles);
+
+
+        if ($role == 'ROLE_ADMIN') {
+            $builder
+                ->add('commercial', EntityType::class, [
+                    'label' => 'Comercial',
+                    'class' => User::class,
+                ]);
+
+        }
         $property = $options['data'] ?? null;
         $isEdit = $property && $property->getId();
 
         if ($isEdit) {
-            $builder->add('situation', EntityType::class, [
-                'label' => false,
-                'class' => Situation::class,
-                'placeholder' => 'Selecciona una situación',
-                'mapped' => false
-            ]);
+            /*$builder->add('propertyReductions', CollectionType::class, [
+                'label' => 'Rebajar Precio',
+                'entry_type' => PropertyReductionType::class,
+                'entry_options' => [
+                    'label' => true
+                ],
+                'by_reference' => false,
+                'allow_add' => true,
+                'allow_delete' => true
+            ]);*/
+
+            if (!$property->getRateHousing()) {
+                $builder->add('situation', EntityType::class, [
+                    'label' => 'Situación',
+                    'class' => Situation::class,
+                    'placeholder' => 'Selecciona una situación',
+                    'mapped' => false,
+                    'query_builder' => function(EntityRepository $s) {
+                        return $s->createQueryBuilder('s')
+                            ->where('s.name <> :name')
+                            ->setParameter('name', 'noticia a desarrollar')
+                            ;
+                    }
+                ]);
+            } else {
+                $builder->add('situation', EntityType::class, [
+                    'label' => 'Situación',
+                    'class' => Situation::class,
+                    'placeholder' => 'Selecciona una situación',
+                    'mapped' => false,
+                    'query_builder' => function(EntityRepository $s) {
+                        return $s->createQueryBuilder('s')
+                            ->where('s.name != :name')
+                            ->setParameter('name', 'noticia a desarrollar')
+                            ;
+                    }
+                ]);
+            }
 
             $builder->get('situation')->addEventListener(
                 FormEvents::POST_SUBMIT,
@@ -44,6 +94,7 @@ class PropertyType extends AbstractType
                 {
                     $form = $event->getForm();
                     $form->getParent()->add('reason', EntityType::class, [
+                        'label' => 'Motivo',
                         'class' => Reason::class,
                         'placeholder' => 'Selecciona una razón',
                         'choices' => $form->getData()->getReason()
@@ -61,7 +112,7 @@ class PropertyType extends AbstractType
                     if ($reason) {
                         $form->get('situation')->setData($reason->getSituation());
                         $form->add('reason', EntityType::class, [
-                            'label' => false,
+                            'label' => 'Motivo',
                             'required' => true,
                             'class' => Reason::class,
                             'placeholder' => 'Selecciona primero una situación',
@@ -69,7 +120,7 @@ class PropertyType extends AbstractType
                         ]);
                     } else {
                         $form->add('reason', EntityType::class, [
-                            'label' => false,
+                            'label' => 'Motivo',
                             'required' => true,
                             'class' => Reason::class,
                             'placeholder' => 'Selecciona primero una situación',
@@ -80,23 +131,33 @@ class PropertyType extends AbstractType
             );
         } else {
             $builder->add('reason', EntityType::class, [
-                    'label' => false,
-                    'class' => Reason::class,
-                    'query_builder' => function(EntityRepository $er) {
-                        return $er->createQueryBuilder('r')
-                            ->innerJoin('r.situation', 's')
-                            ->where('s.name_slug = :situation_name_slug')
-                            ->setParameter('situation_name_slug', 'noticia')
-                            ;
+                'label' => 'Motivo',
+                'class' => Reason::class,
+                'placeholder' => 'Selecciona un motivo',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('r')
+                        ->innerJoin('r.situation', 's')
+                        ->where('s.name = :name')
+                        ->setParameter('name', 'noticia')
+                         ;
                     }
                 ])
             ;
         }
 
         $builder
+            ->add('image', FileType::class, [
+                'label' => 'Subir fotos',
+                'mapped' => false,
+                'required' => false,
+                'multiple' => true,
+                'attr' => [
+                    'accept' => 'image/*'
+                ]
+            ])
             ->add('created', DateType::class, [
                 'required' => true,
-                'label' => false,
+                'label' => 'Fecha creación',
                 'widget' => 'single_text',
                 'format' => 'dd-mm-yyyy',
                 'html5' => false,
@@ -104,38 +165,40 @@ class PropertyType extends AbstractType
                     'class' => 'js-datepicker',
                 ],
             ])
-            ->add('commercial', EntityType::class, [
-                'class' => User::class
+            ->add('fullName', TextType::class, [
+                'label' => 'Propietario',
+                'required' => false,
             ])
-/*            ->add('enabled', ChoiceType::class, [
-                'placeholder' => '¿Propiedad Disponible|Habilitada?',
-                'choices' => [
-                    'Si' => true,
-                    'No' => false,
-                ],
-                'empty_data' => true
-            ])*/
-            ->add('full_name')
-            ->add('mobile')
-            ->add('email')
-            ->add('url', UrlType::class, [
+            ->add('portal', TextType::class, [
+                'label' => 'Portal',
+                'required' => false
+            ])
+            ->add('floor', TextType::class, [
+                'label' => 'Piso',
+                'required' => false
+            ])
+            ->add('mobile', TelType::class, [
+                'label' => 'Móvil',
+                'required' => false
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Correo',
                 'required' => false
             ])
             ->add('comment', TextareaType::class, [
+                'label' => 'Comentario',
                 'required' => false
             ])
-            //            ->add('price')
-//            ->add('propertyReductions', CollectionType::class, [
-//                'label' => 'Rebajar Precio',
-//                'entry_type' => PropertyReductionType::class,
-//                'entry_options' => [
-//                    'label' => true
-//                ],
-//                'by_reference' => false,
-//                'allow_add' => true,
-//                'allow_delete' => true
-//            ])
+            ->add('price', MoneyType::class, [
+                'label' => 'Precio',
+                'required' => false
+            ])
+            ->add('url', UrlType::class, [
+                'label' => 'URL',
+                'required' => false
+            ])
             ->add('typeProperty', EntityType::class, [
+                'label' => 'Tipo de propiedad',
                 'placeholder' => 'Selecciona un tipo de propiedad',
                 'class' => TypeProperty::class,
                 'query_builder' => function(EntityRepository $er) {
@@ -150,7 +213,7 @@ class PropertyType extends AbstractType
         ;
 
         $builder->add('zone', EntityType::class, [
-            'label' => false,
+            'label' => 'Zona',
             'class' => Zone::class,
             'placeholder' => 'Selecciona una zona',
             'mapped' => false
@@ -162,6 +225,7 @@ class PropertyType extends AbstractType
             {
                 $form = $event->getForm();
                 $form->getParent()->add('street', EntityType::class, [
+                    'label' => 'Calle',
                     'class' => Street::class,
                     'placeholder' => 'Selecciona una calle',
                     'choices' => $form->getData()->getStreets()
@@ -179,7 +243,7 @@ class PropertyType extends AbstractType
                 if ($street) {
                     $form->get('zone')->setData($street->getZone());
                     $form->add('street', EntityType::class, [
-                        'label' => false,
+                        'label' => 'Calle',
                         'required' => true,
                         'class' => Street::class,
                         'placeholder' => 'Selecciona primero una zona',
@@ -187,7 +251,7 @@ class PropertyType extends AbstractType
                     ]);
                 } else {
                     $form->add('street', EntityType::class, [
-                        'label' => false,
+                        'label' => 'Calle',
                         'required' => true,
                         'class' => Street::class,
                         'placeholder' => 'Selecciona primero una zona',
@@ -202,6 +266,7 @@ class PropertyType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Property::class,
+            'role' => null
         ]);
     }
 

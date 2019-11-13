@@ -1,0 +1,11 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Hello GroundController!{% endblock %}
+
+{% block content %}
+    <h1>Listado Terreno {{ properties|length }}</h1>
+    {% for property in properties %}
+        {{ property.price }}
+    {% endfor %}
+{% endblock %}
+

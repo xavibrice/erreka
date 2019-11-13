@@ -24,65 +24,17 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 class PropertyChargeTwoType extends AbstractType
 {
 
-    private $idTypeProperty;
+    private $nameTypeProperty;
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $this->idTypeProperty = $options['idTypeProperty'];
+        $this->nameTypeProperty = $options['nameTypeProperty'];
 
         $property = $options['data'] ?? null;
         $isEdit = $property && $property->getId();
 
-        if ($isEdit) {
-            $builder->add('situation', EntityType::class, [
-                'label' => false,
-                'class' => Situation::class,
-                'placeholder' => 'Selecciona una situación',
-                'mapped' => false
-            ]);
-
-            $builder->get('situation')->addEventListener(
-                FormEvents::POST_SUBMIT,
-                function (FormEvent $event)
-                {
-                    $form = $event->getForm();
-                    $form->getParent()->add('reason', EntityType::class, [
-                        'class' => Reason::class,
-                        'placeholder' => 'Selecciona una razón',
-                        'choices' => $form->getData()->getReason()
-                    ]);
-                }
-            );
-
-            $builder->addEventListener(
-                FormEvents::POST_SET_DATA,
-                function (FormEvent $event)
-                {
-                    $form = $event->getForm();
-                    $data = $event->getData();
-                    $reason = $data->getReason();
-                    if ($reason) {
-                        $form->get('situation')->setData($reason->getSituation());
-                        $form->add('reason', EntityType::class, [
-                            'label' => false,
-                            'required' => true,
-                            'class' => Reason::class,
-                            'placeholder' => 'Selecciona primero una situación',
-                            'choices' => $reason->getSituation()->getReason()
-                        ]);
-                    } else {
-                        $form->add('reason', EntityType::class, [
-                            'label' => false,
-                            'required' => true,
-                            'class' => Reason::class,
-                            'placeholder' => 'Selecciona primero una situación',
-                            'choices' => []
-                        ]);
-                    }
-                }
-            );
-        } else {
-            $builder->add('reason', ChoiceType::class, [
+        $builder
+            ->add('reason', ChoiceType::class, [
                 'label' => false,
                 'mapped' => false,
                 'placeholder' => 'Seleciona Motivo',
@@ -91,10 +43,6 @@ class PropertyChargeTwoType extends AbstractType
                     'Alquiler' => 'alquiler',
                 ]
             ])
-            ;
-        }
-
-        $builder
             ->add('created', DateType::class, [
                 'required' => true,
                 'label' => false,
@@ -113,14 +61,12 @@ class PropertyChargeTwoType extends AbstractType
                 'class' => TypeProperty::class,
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('tp')
-                        ->where('tp.id = :idTypeProperty')
-                        ->setParameter('idTypeProperty', $this->idTypeProperty)
+                        ->where('tp.name = :nameTypeProperty')
+                        ->setParameter('nameTypeProperty', $this->nameTypeProperty)
                         ;
                 }
             ])
-        ;
-
-        $builder->add('zone', EntityType::class, [
+            ->add('zone', EntityType::class, [
             'label' => false,
             'class' => Zone::class,
             'placeholder' => 'Selecciona una zona',
@@ -173,7 +119,7 @@ class PropertyChargeTwoType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Property::class,
-            'idTypeProperty' => null
+            'nameTypeProperty' => null
         ]);
     }
 

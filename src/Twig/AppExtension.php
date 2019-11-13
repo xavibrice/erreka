@@ -5,9 +5,11 @@ namespace App\Twig;
 
 
 use App\Service\UploaderHelper;
+use Doctrine\ORM\PersistentCollection;
 use Psr\Container\ContainerInterface;
 use Symfony\Contracts\Service\ServiceSubscriberInterface;
 use Twig\Extension\AbstractExtension;
+use Twig\TwigFilter;
 use Twig\TwigFunction;
 
 class AppExtension extends AbstractExtension implements ServiceSubscriberInterface
@@ -44,5 +46,32 @@ class AppExtension extends AbstractExtension implements ServiceSubscriberInterfa
         return [
             UploaderHelper::class
         ];
+    }
+
+    public function getFilters()
+    {
+        return [
+            new TwigFilter('sortByCreatedAt', [$this, 'sortByCreatedAt']),
+        ];
+    }
+
+    /**
+     * @param PersistentCollection $objects
+     * @return mixed
+     */
+    public function sortByCreatedAt($objects, $direction = 'asc')
+    {
+        $objects = $objects->toArray();
+        usort($objects, function ($a, $b) use($direction) {
+            if ($direction === 'asc') {
+                return $a->getCreatedAt() >  $b->getCreatedAt();
+            } elseif ($direction === 'desc') {
+                return $a->getCreatedAt() <  $b->getCreatedAt();
+            } else {
+                throw new \Exception('unknown sort direction');
+            }
+
+        });
+        return $objects;
     }
 }

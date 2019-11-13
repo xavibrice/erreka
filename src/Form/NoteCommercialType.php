@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\NoteCommercial;
 use App\Entity\User;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -13,8 +14,10 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class NoteCommercialType extends AbstractType
 {
+    private $agency;
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->agency = $options['agency'];
         $builder
             ->add('note', TextareaType::class, [
                 'label' => 'Nota'
@@ -31,7 +34,14 @@ class NoteCommercialType extends AbstractType
             ->add('commercial', EntityType::class, [
                 'label' => "Selecciona un Comercial",
                 'class' => User::class,
-                'placeholder' => "Selecciona un comercial"
+                'placeholder' => "Selecciona un comercial",
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->innerJoin('u.agency', 'a')
+                        ->andWhere('a.name = :agency')
+                        ->setParameter('agency', $this->agency)
+                        ;
+                }
             ])
         ;
     }
@@ -40,6 +50,7 @@ class NoteCommercialType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => NoteCommercial::class,
+            'agency' => null
         ]);
     }
 

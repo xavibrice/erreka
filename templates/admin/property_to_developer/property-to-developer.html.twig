@@ -1,0 +1,117 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de noticias a desarrollar</h1>
+            {#            <a class="btn btn-success float-right" href="{{ path('news_new') }}">Crear Noticia</a>#}
+            <a class="btn btn-success float-right" href="#" data-toggle="modal" data-target="#createNewModal">
+                Crear Noticia a Desarrollar
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered dataTable table-hover" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>Estado</th>
+                        <th>Creado</th>
+                        <th>Motivo</th>
+                        <th>Zona</th>
+{#                        <th>Asesor</th>#}
+{#                        <th>Situación</th>#}
+                        <th>Calle</th>
+                        <th>Portal</th>
+                        <th>Piso</th>
+                        <th>Propietario</th>
+                        <th>Móvil</th>
+{#                        <th>Precio</th>#}
+{#                        <th>Últ Llamada</th>#}
+                        <th>Comentario</th>
+                        <th>Ver</th>
+                        <th>Editar</th>
+                        <th>Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for property in properties %}
+                            {% if property.enabled %}
+                                <tr class="clickable-row" data-href="{{ path('property_to_developer_show', {'id': property.id}) }}">
+                                    <td>{{ property.enabled }}</td>
+                                    <td>{{ property.created|date('d/m/Y') }}</td>
+                                    <td>
+                                        {% if property.reason is not empty %}
+                                            {{ property.reason.name }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if property.street is not empty and property.street.zone %}
+                                            {{ property.street.zone.name }}
+                                        {% endif %}
+                                    </td>
+                                    {#                                        <td>{{ property.commercial.fullName }}</td>#}
+                                    {#                                        <td>{{ situation.name }}</td>#}
+                                    <td>
+                                        {% if property.street is not empty %}
+                                            {{ property.street.name }}
+                                        {% endif %}
+                                    </td>
+                                    <td>{{ property.portal }}</td>
+                                    <td>{{ property.floor }}</td>
+                                    <td>{{ property.fullName }}</td>
+                                    <td>{{ property.mobile }}</td>
+                                    {#                                        <td>{{ property.price|number_format(2, '.', ',') }} €</td>#}
+                                    {#                                        <td>#}
+                                    {#                                            {% if property.noteNew is not empty %}#}
+                                    {#                                            {% if property.note_new is not defined %}#}
+                                    {#                                                {{ property.noteNew.last }}#}
+                                    {#                                            {% endif %}#}
+                                    {#                                        </td>#}
+                                    <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
+                                        {{ property.comment|slice(0, 25) }}
+                                    </td>
+                                    <td>
+{#                                                                                    {{ include('admin/_show_link.html.twig', {'route': 'property_to_developer_show', 'id': property.id }) }}#}
+{#                                        <a class="btn btn-primary btn-circle" href="{{ path('property_to_developer_show', {'id': property.id}) }}"><i class="fas fa-eye"></i></a>#}
+                                    </td>
+                                    <td>
+{#                                                                                    {{ include('admin/_edit_link.html.twig', {'route': 'news_edit', 'id': new.id }) }}#}
+{#                                        <a class="btn btn-primary btn-circle" href="{{ path('property_to_developer_edit', {'id': property.id}) }}"><i class="fas fa-pencil-alt"></i></a>#}
+                                    </td>
+                                    <td>
+                                        {#                                            {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': new, 'count': 0}) }}#}
+                                    </td>
+                                </tr>
+                            {% endif %}
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="createNewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Noticia a Desarrollar</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ render_esi(controller('App\\Controller\\PropertyToDeveloperController::propertyToDeveloper')) }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}

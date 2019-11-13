@@ -14,39 +14,16 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin2/situation")
+ * @Route("/admin/situation")
  */
 class SituationController extends AbstractController
 {
-    /**
-     * @Route("/{situation}", name="situation_for_new", methods={"GET"})
-     */
-    public function situationForNew(SituationRepository $situationRepository, $situation): Response
-    {
-        $situations =$situationRepository->newForSituation($situation, $this->getUser());
-        /*$situations = $situationRepository->createQueryBuilder('s')
-            ->innerJoin('s.reason', 'r')
-            ->innerJoin( 'r.properties', 'p')
-            ->andWhere('p.commercial = :commercial')
-            ->andWhere('s.name_slug = :situation')
-            ->andWhere('p.enabled = :enabled')
-            ->setParameter('situation', $situation)
-            ->setParameter('commercial', $this->getUser())
-            ->setParameter('enabled', true)
-            ->getQuery()
-            ->getResult()
-        ;*/
-        return $this->render('admin/situation/'.$situation.'.html.twig', [
-            'situations' => $situations,
-        ]);
-    }
-
     /**
      * @Route("/", name="situation_index", methods={"GET"})
      */
     public function situations(SituationRepository $situationRepository): Response
     {
-        return $this->render('admin/situation/situations.html.twig', [
+        return $this->render('admin/situation/index.html.twig', [
             'situations' => $situationRepository->findAll(),
         ]);
     }

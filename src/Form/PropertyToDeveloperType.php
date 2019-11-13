@@ -85,7 +85,14 @@ class PropertyToDeveloperType extends AbstractType
                 'label' => false,
                 'class' => Situation::class,
                 'placeholder' => 'Selecciona una situación',
-                'mapped' => false
+                'mapped' => false,
+                'query_builder' => function(EntityRepository $s) {
+                    return $s->createQueryBuilder('s')
+                        ->andwhere('s.name = :notice or s.name = :noticetodeveloper')
+                        ->setParameter('notice', 'noticia')
+                        ->setParameter('noticetodeveloper', 'noticia a desarrollar')
+                        ;
+                }
             ]);
 
             $builder->get('situation')->addEventListener(

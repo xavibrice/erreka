@@ -2,88 +2,36 @@
 
 namespace App\Controller;
 
+use App\Entity\Images;
 use App\Entity\NoteNew;
 use App\Entity\Property;
+use App\Entity\PropertyReduction;
 use App\Entity\RateHousing;
-use App\Entity\TypeProperty;
+use App\Form\Collection\PropertyReductionType;
 use App\Form\NoteNewType;
-use App\Form\PropertyChargeThreeType;
-use App\Form\PropertyChargeTwoType;
-use App\Form\PropertyToDeveloperType;
 use App\Form\PropertyType;
 use App\Form\RateHousingType;
 use App\Repository\PropertyRepository;
-use App\Repository\SituationRepository;
-use App\Repository\TypePropertyRepository;
+use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/property")
+ * @Route("/admin/noticia")
  */
 class PropertyController extends AbstractController
 {
-
     /**
-     * @Route("/{situation}", name="situation_for_property", methods={"GET"})
+     * @Route("/", name="property_index", methods={"GET"})
      */
-    public function situationForProperty(PropertyRepository $propertyRepository, $situation): Response
+    public function index(PropertyRepository $propertyRepository): Response
     {
-        $properties = $propertyRepository->propertyForSituation($situation, $this->getUser());
+        $properties = $propertyRepository->onlyNotices($this->getUser());
 
-        return $this->render('admin/property/'.$situation.'.html.twig', [
+        return $this->render('admin/property/property.html.twig', [
             'properties' => $properties,
-        ]);
-    }
-
-    /**
-     * @Route("/new-property", name="property_new", methods={"GET","POST"})
-     */
-    public function new(Request $request): Response
-    {
-        $property = new Property();
-        $property->setEnabled(true);
-        $form = $this->createForm(PropertyType::class, $property);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($property);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('situation_for_property', [
-                'situation' => 'noticia'
-            ]);
-        }
-
-        return $this->render('admin/property/new-property.html.twig', [
-            'properties' => $property,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/edit-property", name="property_edit", methods={"GET","POST"})
-     */
-    public function editProperty(Request $request, Property $property): Response
-    {
-        $form = $this->createForm(PropertyType::class, $property);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('situation_for_property', [
-                'situation' => 'noticia',
-//                'id' => $property->getId(),
-            ]);
-        }
-
-        return $this->render('admin/property/edit-property.html.twig', [
-            'property' => $property,
-            'form' => $form->createView(),
         ]);
     }
 
@@ -91,84 +39,67 @@ class PropertyController extends AbstractController
     {
         $property = new Property();
         $property->setCommercial($this->getUser());
-        $form = $this->createForm(PropertyType::class, $property);
+        $form = $this->createForm(PropertyType::class, $property, [
+            'role' => $this->getUser()->getRoles()
+        ]);
 
-        return $this->render('admin/property/new-property.html.twig', [
+        return $this->render('admin/property/_new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/new-property-to-developer", name="property_to_developer_new", methods={"GET","POST"})
+     * @Route("/nueva", name="property_new", methods={"GET","POST"})
      */
-    public function newPropertyToDeveloper(Request $request): Response
+    public function new(Request $request, UploaderHelper $uploaderHelper): Response
     {
+        $em = $this->getDoctrine()->getManager();
+
         $property = new Property();
         $property->setEnabled(true);
-        $form = $this->createForm(PropertyToDeveloperType::class, $property);
+        $form = $this->createForm(PropertyType::class, $property, [
+            'role' => $this->getUser()->getRoles()
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($property);
-            $entityManager->flush();
 
-            return $this->redirectToRoute('situation_for_property', [
-                'situation' => 'noticia-a-desarrollar'
+            $files = $request->files->get("property")["image"];
+
+            foreach ($files as $file) {
+                $image = new Images();
+                $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
+
+                $property->addImage($image);
+            }
+
+
+            $em->persist($property);
+            $em->flush();
+
+            return $this->redirectToRoute('property_show', [
+                'id' => $property->getId()
             ]);
         }
 
-        return $this->render('admin/property/new-property-to-developer.html.twig', [
+        return $this->render('admin/property/new-property.html.twig', [
             'properties' => $property,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}/edit-property-to-developer", name="property_to_developer_edit", methods={"GET","POST"})
+     * @Route("/{id}/ver", name="property_show", methods={"GET", "POST"})
      */
-    public function editPropertyToDeveloper(Request $request, Property $property): Response
+    public function show(Request $request, Property $property): Response
     {
-        $form = $this->createForm(PropertyToDeveloperType::class, $property);
-        $form->handleRequest($request);
+        $em = $this->getDoctrine()->getManager();
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('situation_for_property', [
-                'situation' => 'noticia-a-desarrollar',
-//                'id' => $property->getId(),
-            ]);
-        }
-
-        return $this->render('admin/property/edit-property-to-developer.html.twig', [
-            'property' => $property,
-            'form' => $form->createView(),
-        ]);
-    }
-
-    public function propertyToDeveloper(): Response
-    {
-        $property = new Property();
-        $property->setCommercial($this->getUser());
-        $form = $this->createForm(PropertyToDeveloperType::class, $property);
-
-        return $this->render('admin/property/new-property-to-developer.html.twig', [
-            'form' => $form->createView(),
-        ]);
-    }
-
-    /**
-     * @Route("/{id}/show-property", name="property_show", methods={"GET", "POST"})
-     */
-    public function showProperty(Request $request, Property $property): Response
-    {
         $noteProperty = new NoteNew();
         $noteProperty->setProperty($property);
         $form = $this->createForm(NoteNewType::class, $noteProperty);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
             $em->persist($noteProperty);
             $em->flush();
 
@@ -179,87 +110,176 @@ class PropertyController extends AbstractController
             ]);
         }
 
+        $propertyReduction = new PropertyReduction();
+        $propertyReduction->setProperty($property);
+        $formReduction = $this->createForm(PropertyReductionType::class, $propertyReduction);
+        $formReduction->handleRequest($request);
+        if ($formReduction->isSubmitted() && $formReduction->isValid()) {
+            $propertyReduction->setLastPrice($propertyReduction->getLastPrice());
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($propertyReduction);
+            $em->flush();
+
+            $this->addFlash('success', 'Precio creado correctamente');
+            return $this->redirectToRoute('property_show', ['id' => $property->getId()]);
+        }
+
+
+        return $this->render('admin/property/show.html.twig', [
+            'property' => $property,
+            'form' => $form->createView(),
+            'formReduction' => $formReduction->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/nueva/{id}/valoracion", name="property_rate_housing_new_show")
+     */
+    public function rateHousingNewShow(Request $request, Property $property): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
         $rateHousing = new RateHousing();
         $rateHousing->setProperty($property);
-        $formRate = $this->createForm(RateHousingType::class, $rateHousing);
-        $formRate->handleRequest($request);
-        if ($formRate->isSubmitted() && $formRate->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($rateHousing);
-            $entityManager->flush();
+        $form = $this->createForm(RateHousingType::class, $rateHousing);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em->persist($rateHousing);
+            $em->flush();
 
             $this->addFlash('success', 'Valoración creada correctamente');
             return $this->redirectToRoute('property_show', ['id' => $property->getId()]);
         }
 
-        return $this->render('admin/property/show-property.html.twig', [
+        return $this->render('admin/property/rate_housing.html.twig', [
             'property' => $property,
-            'form' => $form->createView(),
-            'formRate' => $formRate->createView(),
+            'form' => $form->createView()
         ]);
     }
 
     /**
-     * @Route("/{id}/show-property-to-developer", name="property_to_developer_show", methods={"GET", "POST"})
+     * @Route("/editar/{id}/valoracion", name="property_rate_housing_edit", methods={"GET", "POST"})
      */
-    public function showPropertyToDeveloper(Request $request, Property $property): Response
+    public function rateHousingEdit(Request $request, RateHousing $rateHousing): Response
     {
-        $noteProperty = new NoteNew();
-        $noteProperty->setProperty($property);
-        $form = $this->createForm(NoteNewType::class, $noteProperty);
+        $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($noteProperty);
-            $em->flush();
+            $this->getDoctrine()->getManager()->flush();
 
-            $this->addFlash('success', 'Nota creada correctamente');
+            $this->addFlash('success', 'Valoración Editada Correctamente');
 
-            return $this->redirectToRoute('property_to_developer_show', [
-                'id' => $property->getId()
+            return $this->redirectToRoute('property_rate_housing_new_show', [
+                'id' => $rateHousing->getProperty()->getId()
             ]);
         }
 
-        return $this->render('admin/property/show-property-to-developer.html.twig', [
+        return $this->render('admin/property/edit_rate_housing.html.twig', [
+            'form' => $form->createView(),
+            'rateHousing' => $rateHousing
+        ]);
+    }
+
+    /**
+     * @Route("/{id}/editar", name="property_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Property $property, UploaderHelper $uploaderHelper): Response
+    {
+        $form = $this->createForm(PropertyType::class, $property, [
+            'role' => $this->getUser()->getRoles()
+        ]);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $files = $request->files->get("property")["image"];
+
+            foreach ($files as $file) {
+                $image = new Images();
+                $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
+
+                $property->addImage($image);
+            }
+
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('property_show', [
+                'id' => $property->getId(),
+            ]);
+        }
+
+        return $this->render('admin/property/edit.html.twig', [
             'property' => $property,
             'form' => $form->createView(),
         ]);
     }
 
-    /**
-     * @Route("/{charge}/{property}", name="charge_for_property", methods={"GET"})
-     */
-    public function chargeForProperty(PropertyRepository $propertyRepository, $charge, $property): Response
-    {
-        $charges = $propertyRepository->chargeForSituation($charge, $property, $this->getUser());
 
-        $typeProperty = $this->getDoctrine()->getRepository(TypeProperty::class)->findBy(['name_slug' => $property]);
 
-        return $this->render('admin/property/charge.html.twig', [
-            'charges' => $charges,
-            'typeProperty' => $typeProperty,
-        ]);
-    }
 
-    public function templateCharge($template, int $idTypeProperty): Response
-    {
-        $property = new Property();
-        $property->setCommercial($this->getUser());
 
-        if ($template === 1) {
-            echo $template;
-        } elseif ($template === 2) {
-            $form = $this->createForm(PropertyChargeTwoType::class, $property, ['idTypeProperty' => $idTypeProperty]);
-        } elseif ($template === 3) {
-            $form = $this->createForm(PropertyChargeThreeType::class, $property, ['idTypeProperty' => $idTypeProperty]);
-        }
-
-        return $this->render('admin/property/template/template'.$template.'.html.twig', [
-            'form' => $form->createView(),
-            'template' => $template,
-            'idTypeProperty' => $idTypeProperty,
-        ]);
-    }
+//
+//    /**
+//     * @Route("/{id}/show-property-to-developer", name="property_to_developer_show", methods={"GET", "POST"})
+//     */
+//    public function showPropertyToDeveloper(Request $request, Property $property): Response
+//    {
+//        $noteProperty = new NoteNew();
+//        $noteProperty->setProperty($property);
+//        $form = $this->createForm(NoteNewType::class, $noteProperty);
+//        $form->handleRequest($request);
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $em = $this->getDoctrine()->getManager();
+//            $em->persist($noteProperty);
+//            $em->flush();
+//
+//            $this->addFlash('success', 'Nota creada correctamente');
+//
+//            return $this->redirectToRoute('property_to_developer_show', [
+//                'id' => $property->getId()
+//            ]);
+//        }
+//
+//        return $this->render('admin/property/show-property-to-developer.html.twig', [
+//            'property' => $property,
+//            'form' => $form->createView(),
+//        ]);
+//    }
+//
+//    /**
+//     * @Route("/{charge}/{property}", name="charge_for_property", methods={"GET"})
+//     */
+//    public function chargeForProperty(PropertyRepository $propertyRepository, $charge, $property): Response
+//    {
+//        $charges = $propertyRepository->chargeForSituation($charge, $property, $this->getUser());
+//
+//        $typeProperty = $this->getDoctrine()->getRepository(TypeProperty::class)->findBy(['name_slug' => $property]);
+//
+//        return $this->render('admin/property/charge.html.twig', [
+//            'charges' => $charges,
+//            'typeProperty' => $typeProperty,
+//        ]);
+//    }
+//
+//    public function templateCharge($template, int $idTypeProperty): Response
+//    {
+//        $property = new Property();
+//        $property->setCommercial($this->getUser());
+//
+//        if ($template === 1) {
+//            echo $template;
+//        } elseif ($template === 2) {
+//            $form = $this->createForm(PropertyChargeTwoType::class, $property, ['idTypeProperty' => $idTypeProperty]);
+//        } elseif ($template === 3) {
+//            $form = $this->createForm(PropertyChargeThreeType::class, $property, ['idTypeProperty' => $idTypeProperty]);
+//        }
+//
+//        return $this->render('admin/property/template/template'.$template.'.html.twig', [
+//            'form' => $form->createView(),
+//            'template' => $template,
+//            'idTypeProperty' => $idTypeProperty,
+//        ]);
+//    }
 
 
 //    /**

@@ -27,11 +27,6 @@ class NoteNew
     private $notice_date;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\News", inversedBy="noteNews", cascade={"REMOVE"})
-     */
-    private $new;
-
-    /**
      * @ORM\Column(type="date")
      */
     private $next_call;
@@ -66,18 +61,6 @@ class NoteNew
     public function setNoticeDate(\DateTimeInterface $notice_date): self
     {
         $this->notice_date = $notice_date;
-
-        return $this;
-    }
-
-    public function getNew(): ?News
-    {
-        return $this->new;
-    }
-
-    public function setNew(?News $new): self
-    {
-        $this->new = $new;
 
         return $this;
     }

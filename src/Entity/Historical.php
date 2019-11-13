@@ -23,17 +23,6 @@ class Historical
      */
     private $name;
 
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\News", mappedBy="historical")
-     * @ORM\JoinColumn(nullable=true)
-     */
-    private $news;
-
-    public function __construct()
-    {
-        $this->news = new ArrayCollection();
-    }
-
     public function getId(): ?int
     {
         return $this->id;
@@ -47,37 +36,6 @@ class Historical
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|News[]
-     */
-    public function getNews(): Collection
-    {
-        return $this->news;
-    }
-
-    public function addNews(News $news): self
-    {
-        if (!$this->news->contains($news)) {
-            $this->news[] = $news;
-            $news->setHistorical($this);
-        }
-
-        return $this;
-    }
-
-    public function removeNews(News $news): self
-    {
-        if ($this->news->contains($news)) {
-            $this->news->removeElement($news);
-            // set the owning side to null (unless already changed)
-            if ($news->getHistorical() === $this) {
-                $news->setHistorical(null);
-            }
-        }
 
         return $this;
     }

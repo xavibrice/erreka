@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\File\UploadedFile;
 class UploaderHelper
 {
     const USER_IMAGE = 'images/profile';
+    const PROPERTY_IMAGE = 'images/property';
     private $uploadPath;
     private $requestStackContext;
 
@@ -23,6 +24,21 @@ class UploaderHelper
     public function uploadUserImage(UploadedFile $uploadedFile): string
     {
         $destination = $this->uploadPath.'/'.self::USER_IMAGE;
+
+        $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+        $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid() . '.' . $uploadedFile->guessExtension();
+
+        $uploadedFile->move(
+            $destination,
+            $newFilename
+        );
+
+        return $newFilename;
+    }
+
+    public function uploadPropertyImage(UploadedFile $uploadedFile): string
+    {
+        $destination = $this->uploadPath.'/'.self::PROPERTY_IMAGE;
 
         $originalFilename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
         $newFilename = Urlizer::urlize($originalFilename) . '-' . uniqid() . '.' . $uploadedFile->guessExtension();

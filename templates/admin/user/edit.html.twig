@@ -1,12 +1,12 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}Editar {{ user.firstName }} {{ user.lastName }}{% endblock %}
+{% block title %}Editar {{ user.fullName }}{% endblock %}
 
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-            <h1 class="h3 mb-4 text-gray-800 float-left">Editar {{ user.firstName }} {{ user.lastName }}</h1>
+            <h1 class="h3 mb-4 text-gray-800 float-left">Editar {{ user.fullName }} </h1>
     {#        <a class="btn btn-success float-right" href="{{ path('company_new') }}">Create new</a>#}
         </div>
         <div class="card-body">

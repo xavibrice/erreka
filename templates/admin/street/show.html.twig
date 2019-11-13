@@ -30,16 +30,16 @@
                         <tr>
                             <th>Nº Noticias</th>
                             <td>
-                                {% if street.news.count > 0 %}
+                                {% if street.properties.count > 0 %}
                                     <ul class="list-group">
-                                        {% for new in street.news %}
+                                        {% for new in street.properties %}
                                             <li class="list-group-item">
                                                 <strong>Nº - Portal:</strong>
-                                                <a href="{{ path('news_show', {'id': new.id }) }}">{{ new.portal }} - {{ new.floor }}</a>
+{#                                                <a href="{{ path('news_show', {'id': new.id }) }}">{{ new.portal }} - {{ new.floor }}</a>#}
                                                 <strong>Agencia:</strong>
-                                                <a href="{{ path('company_show', {'id': new.commercial.company.id }) }}">{{ new.commercial.company.name }}</a>
+{#                                                <a href="{{ path('company_show', {'id': new.commercial.company.id }) }}">{{ new.commercial.company.name }}</a>#}
                                                 <strong>Comercial:</strong>
-                                                <a href="{{ path('user_show', {'id': new.commercial.id }) }}">{{ new.commercial.firstName }} {{ new.commercial.lastName }}</a>
+                                                <a href="{{ path('user_show', {'id': new.commercial.id }) }}">{{ new.commercial.fullName }} </a>
                                             </li>
                                         {% endfor %}
                                     </ul>

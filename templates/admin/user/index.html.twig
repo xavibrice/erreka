@@ -2,10 +2,10 @@
 
 {% block title %}Lista de usuarios{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_script_tags('dataTable') }}
-{% endblock %}
+{#{% block stylesheets %}#}
+{#    {{ parent() }}#}
+{#    {{ encore_entry_script_tags('dataTableCss') }}#}
+{#{% endblock %}#}
 
 {% block content %}
     <div class="card shadow mb-4">
@@ -16,13 +16,12 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
+                <table class="table table-striped dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
     {#                    <th>Id</th>#}
                         <th>Foto</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
+                        <th>Apellido y Apellido</th>
                         <th>Móvil</th>
                         <th>Empresa</th>
                         <th>Estado</th>
@@ -40,19 +39,18 @@
     {#                                <img class="img-thumbnail" src="{{ vich_uploader_asset(user, 'imageFile') }}" alt="{{ user.firstName }}" width="100px" />#}
 
                                 {% if user.imageFilename %}
-                                    <img src="{{ uploaded_asset(user.imagePath)|imagine_filter('squared_thumbnail_small') }}" alt="{{ user.firstName }}">
+                                    <img src="{{ uploaded_asset(user.imagePath)|imagine_filter('squared_thumbnail_small') }}" alt="{{ user.fullName }}">
                                 {% else %}
                                     Sin Foto
                                 {% endif %}
                             </td>
-                            <td>{{ user.firstName }}</td>
-                            <td>{{ user.lastName }}</td>
+                            <td>{{ user.fullName }}</td>
                             <td>{{ user.mobile }}</td>
                             <td>
-                                {% if user.company %}
-                                    <a href="{{ path('company_edit', {'id': user.company.id}) }}">
-                                        {{ user.company.name }}
-                                    </a>
+                                {% if user.agency %}
+{#                                    <a href="{{ path('company_edit', {'id': user.company.id}) }}">#}
+                                        {{ user.agency.name }}
+{#                                    </a>#}
                                     {% else %}
                                     Sin Agencia
                                 {% endif %}
@@ -88,4 +86,9 @@
 
         </div>
     </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
 {% endblock %}

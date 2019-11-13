@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-md-12 mb-4">
+
+        <a class="btn btn-info" href="{{ path('property_show', {'id': property.id }) }}">Detalles</a>
+        <a class="btn btn-info" href="{{ path('property_rate_housing_new_show', {'id': property.id }) }}">Valoración</a>
+        {% if property.reason.situation.name == 'autorización' or property.reason.situation.name == 'Encargo' %}
+            <a class="btn btn-info" href="">{{ property.reason.situation.name }}</a>
+        {% endif %}
+
+        <a class="btn btn-info" href="">Pedidos</a>
+    </div>
+</div>

@@ -1,0 +1,12 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Hello DuplexController!{% endblock %}
+
+{% block content %}
+    <h1>Listado Duplex {{ properties|length }}</h1>
+    {% for property in properties %}
+        {{ property.price }}
+        {{ property.typeProperty.name }}
+    {% endfor %}
+{% endblock %}
+

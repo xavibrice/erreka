@@ -2,13 +2,12 @@
 
 namespace App\Form;
 
-use App\Entity\Company;
+use App\Entity\Agency;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -18,7 +17,6 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\Image;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotNull;
-use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class UserType extends AbstractType
 {
@@ -64,23 +62,17 @@ class UserType extends AbstractType
                     'placeholder' => 'Selecciona una imagen'
                 ],
             ])
-            ->add('company', EntityType::class, [
+            ->add('agency', EntityType::class, [
                 'label' => ' ',
                 'required' => false,
-                'class' => Company::class,
+                'class' => Agency::class,
                 'empty_data' => true,
-                'placeholder' => 'Selecciona una empresa',
+                'placeholder' => 'Selecciona una agencia',
             ])
-            ->add('firstName', TextType::class, [
+            ->add('fullName', TextType::class, [
                 'label' => ' ',
                 'attr' => [
-                    'placeholder' => 'Nombres'
-                ]
-            ])
-            ->add('lastName', TextType::class, [
-                'label' => ' ',
-                'attr' => [
-                    'placeholder' => 'Apellidos'
+                    'placeholder' => 'Nombre y Apellidos'
                 ]
             ])
             ->add('mobile', TelType::class, [

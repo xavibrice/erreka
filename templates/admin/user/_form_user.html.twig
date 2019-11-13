@@ -1,25 +1,23 @@
 {{ form_start(form) }}
-<div class="row">
-    <div class="col-md-9">
-        {{ form_row(form.imageFile) }}
+    <div class="row">
+        <div class="col-md-9">
+            {{ form_row(form.imageFile) }}
+        </div>
+        <div class="col-md-3">
+            {% if form.vars.data.imageFilename|default %}
+                <a href="{{ uploaded_asset(form.vars.data.imagePath) }}" target="_blank">
+    {#                <img src="{{ form.vars.data.imagePath|imagine_filter('squared_thumbnail_small') }}">#}
+                    <img src="{{ uploaded_asset(user.imagePath)|imagine_filter('squared_thumbnail_small') }}">
+                </a>
+            {% endif %}
+        </div>
     </div>
-    <div class="col-md-3">
-        {% if form.vars.data.imageFilename|default %}
-            <a href="{{ uploaded_asset(form.vars.data.imagePath) }}" target="_blank">
-{#                <img src="{{ form.vars.data.imagePath|imagine_filter('squared_thumbnail_small') }}">#}
-                <img src="{{ uploaded_asset(user.imagePath)|imagine_filter('squared_thumbnail_small') }}">
-
-            </a>
-        {% endif %}
-    </div>
-</div>
-{{ form_row(form.company) }}
-            {{ form_row(form.firstName) }}
-            {{ form_row(form.lastName) }}
-            {{ form_row(form.mobile) }}
-            {{ form_row(form.username) }}
-            {{ form_row(form.active) }}
-            {{ form_row(form.roles) }}
-            {{ form_row(form.plainPassword) }}
+{{ form_row(form.agency) }}
+{{ form_row(form.fullName) }}
+{{ form_row(form.mobile) }}
+{{ form_row(form.username) }}
+{{ form_row(form.active) }}
+{{ form_row(form.roles) }}
+{{ form_row(form.plainPassword) }}
 <button class="btn btn-success float-left">{{ button_label|default('Guardar') }}</button>
 {{ form_end(form) }}

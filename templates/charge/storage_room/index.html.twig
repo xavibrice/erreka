@@ -1,0 +1,10 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Hello StorageRoomController!{% endblock %}
+
+{% block content %}
+    <h1>Listado Trastero {{ properties|length }}</h1>
+    {% for property in properties %}
+        {{ property.price }}
+    {% endfor %}
+{% endblock %}

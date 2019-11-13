@@ -14,24 +14,28 @@ class PropertyReductionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('price', MoneyType::class)
+            ->add('price', MoneyType::class, [
+                'label' => 'Precio'
+            ])
             ->add('reductionDate', DateType::class, [
+                'label' => 'Fecha de rebaja',
                 'widget' => 'single_text',
-'data' => new \DateTime()
-//                'format' => 'dd-mm-yyyy',
-//                'html5' => false,
-//                'attr' => [
-//                    'class' => 'js-datepicker',
-//                ],
+//                'data' => new \DateTime()
+                'format' => 'dd-mm-yyyy',
+                'html5' => false,
+                'attr' => [
+                    'class' => 'js-datepicker',
+                ],
             ])
             ->add('reductionNextDate', DateType::class, [
+                'label' => 'Fecha próxima rebaja',
                 'widget' => 'single_text',
-'required' => false
-//                'format' => 'dd-mm-yyyy',
-//                'html5' => false,
-//                'attr' => [
-//                    'class' => 'js-datepicker-empty',
-//                ],
+                'required' => false,
+                'format' => 'dd-mm-yyyy',
+                'html5' => false,
+                'attr' => [
+                    'class' => 'js-datepicker-empty',
+                ],
             ])
         ;
     }
