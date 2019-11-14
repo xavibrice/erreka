@@ -22,7 +22,6 @@ class Situation
     private $id;
 
     /**
-     * @Assert\Unique(message="Ya existe una situación con ese nombre.")
      * @ORM\Column(type="string", length=255, unique=true)
      */
     private $name;

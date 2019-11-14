@@ -1,21 +1,21 @@
 {{ form_start(form) }}
-            {{ form_row(form.name) }}
+    {{ form_row(form.name) }}
 {#            {{ form_row(form.streets) }}#}
-<div class="col-sm-10 col-sm-offset-2" id="collectionInput" data-prototype="{{ form_widget(form.reason.vars.prototype)|e('html_attr') }}">
-    {% for row in form.reason %}
-        <div class="panel panel-warning">
-            <div class="panel-heading">
-                <strong>
-                    {{ form_label(row) }}
-                    {{ row.vars.value.name }}
-                </strong>
+    <div class="col-sm-10 col-sm-offset-2" id="collectionInput" data-prototype="{{ form_widget(form.reason.vars.prototype)|e('html_attr') }}">
+        {% for row in form.reason %}
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <strong>
+    {#                    {{ form_label(row) }}#}
+                        {{ row.vars.value.name }}
+                    </strong>
+                </div>
+                <div class="panel-body">
+                    {{ form_row(row.name) }}
+                </div>
             </div>
-            <div class="panel-body">
-                {{ form_row(row.name) }}
-            </div>
-        </div>
-    {% endfor %}
-</div>
+        {% endfor %}
+    </div>
 
-<button class="btn btn-success m-2">{{ button_label|default('Guardar') }}</button>
+    <button class="btn btn-success m-2">{{ button_label|default('Guardar') }}</button>
 {{ form_end(form) }}

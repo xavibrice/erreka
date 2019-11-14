@@ -16,7 +16,7 @@ class SituationType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => 'Nombre'
+                'label' => 'Situación'
             ])
             ->add('reason', CollectionType::class, [
                 'label' => ' ',
