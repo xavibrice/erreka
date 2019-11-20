@@ -3,8 +3,12 @@
 
         <a class="btn btn-info" href="{{ path('property_show', {'id': property.id }) }}">Detalles</a>
         <a class="btn btn-info" href="{{ path('property_rate_housing_new_show', {'id': property.id }) }}">Valoración</a>
-        {% if property.reason.situation.name == 'autorización' or property.reason.situation.name == 'Encargo' %}
-            <a class="btn btn-info" href="">{{ property.reason.situation.name }}</a>
+        {% if property.reason.situation.name == 'Autorización' or property.reason.situation.name == 'autorización' %}
+            <a class="btn btn-info" href="{{ path('property_authorization', {'id': property.id}) }}">{{ property.reason.situation.name }}</a>
+        {% endif %}
+
+        {% if property.reason.situation.name == 'Encargo' or property.reason.situation.name == 'encargo' %}
+            <a class="btn btn-info" href="{{ path('property_charge', {'id': property.id}) }}">{{ property.reason.situation.name }}</a>
         {% endif %}
 
         <a class="btn btn-info" href="">Pedidos</a>

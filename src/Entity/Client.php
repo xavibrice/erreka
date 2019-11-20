@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ClientRepository")
@@ -20,6 +21,7 @@ class Client
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("main")
      */
     private $full_name;
 
@@ -27,11 +29,6 @@ class Client
      * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
      */
     private $price;
-
-    /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Property", mappedBy="visits")
-     */
-    private $properties;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -118,9 +115,14 @@ class Client
      */
     private $elevator;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="client")
+     */
+    private $visits;
+
     public function __construct()
     {
-        $this->properties = new ArrayCollection();
+        $this->visits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -150,40 +152,6 @@ class Client
         $this->price = $price;
 
         return $this;
-    }
-
-    /**
-     * @return Collection|Property[]
-     */
-    public function getProperties(): Collection
-    {
-        return $this->properties;
-    }
-
-    public function addProperty(Property $property): self
-    {
-        if (!$this->properties->contains($property)) {
-            $this->properties[] = $property;
-            $property->addVisit($this);
-        }
-
-        return $this;
-    }
-
-    public function removeProperty(Property $property): self
-    {
-        if ($this->properties->contains($property)) {
-            $this->properties->removeElement($property);
-            $property->removeVisit($this);
-        }
-
-        return $this;
-    }
-
-    public function __toString()
-    {
-        // TODO: Implement __toString() method.
-        return (string)$this->full_name;
     }
 
     public function getEmail(): ?string
@@ -386,6 +354,37 @@ class Client
     public function setElevator(?bool $elevator): self
     {
         $this->elevator = $elevator;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Visit[]
+     */
+    public function getVisits(): Collection
+    {
+        return $this->visits;
+    }
+
+    public function addVisit(Visit $visit): self
+    {
+        if (!$this->visits->contains($visit)) {
+            $this->visits[] = $visit;
+            $visit->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVisit(Visit $visit): self
+    {
+        if ($this->visits->contains($visit)) {
+            $this->visits->removeElement($visit);
+            // set the owning side to null (unless already changed)
+            if ($visit->getClient() === $this) {
+                $visit->setClient(null);
+            }
+        }
 
         return $this;
     }

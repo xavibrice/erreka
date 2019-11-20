@@ -55,11 +55,6 @@ class Property
     private $typeProperty;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Client", inversedBy="properties")
-     */
-    private $visits;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="properties")
      */
     private $commercial;
@@ -114,12 +109,17 @@ class Property
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="property")
+     */
+    private $visits;
+
     public function __construct()
     {
-        $this->visits = new ArrayCollection();
         $this->propertyReductions = new ArrayCollection();
         $this->note_new = new ArrayCollection();
         $this->image = new ArrayCollection();
+        $this->visits = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -207,32 +207,6 @@ class Property
     public function setTypeProperty(?TypeProperty $typeProperty): self
     {
         $this->typeProperty = $typeProperty;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Client[]
-     */
-    public function getVisits(): Collection
-    {
-        return $this->visits;
-    }
-
-    public function addVisit(Client $visit): self
-    {
-        if (!$this->visits->contains($visit)) {
-            $this->visits[] = $visit;
-        }
-
-        return $this;
-    }
-
-    public function removeVisit(Client $visit): self
-    {
-        if ($this->visits->contains($visit)) {
-            $this->visits->removeElement($visit);
-        }
 
         return $this;
     }
@@ -426,6 +400,37 @@ class Property
             // set the owning side to null (unless already changed)
             if ($image->getProperty() === $this) {
                 $image->setProperty(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Visit[]
+     */
+    public function getVisits(): Collection
+    {
+        return $this->visits;
+    }
+
+    public function addVisit(Visit $visit): self
+    {
+        if (!$this->visits->contains($visit)) {
+            $this->visits[] = $visit;
+            $visit->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeVisit(Visit $visit): self
+    {
+        if ($this->visits->contains($visit)) {
+            $this->visits->removeElement($visit);
+            // set the owning side to null (unless already changed)
+            if ($visit->getProperty() === $this) {
+                $visit->setProperty(null);
             }
         }
 

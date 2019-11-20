@@ -103,4 +103,16 @@ class ClientController extends AbstractController
 
         return $this->redirectToRoute('client_index');
     }
+
+    /**
+     * @Route("/api/autocomplete", name="api_client_autocomplete", methods={"GET"})
+     */
+    public function autocomplete(ClientRepository $clientRepository, Request $request): Response
+    {
+//        $clients = $clientRepository->findFullName();
+        $clients = $clientRepository->findAllMatching($request->query->get('query'));
+        return $this->json([
+            'clients' => $clients
+        ], 200, [], ['groups' => ['main']]);
+    }
 }

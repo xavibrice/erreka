@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Heating;
+use App\Entity\Orientation;
 use App\Entity\RateHousing;
 use App\Entity\ValuationStatus;
 use App\Entity\Window;
@@ -12,7 +13,9 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -20,14 +23,23 @@ class RateHousingType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $rateHousing = $options['data'] ?? null;
+        $isEdit = $rateHousing && $rateHousing->getId();
+
+        if ($isEdit) {
+            $date = 'js-datepicker-empty';
+        } else {
+            $date = 'js-datepicker';
+        }
+
         $builder
             ->add('visited', DateType::class, [
-                'label' => 'Visitado',
+                'label' => 'Fecha Valoración',
                 'widget' => 'single_text',
-                'format' => 'dd-mm-yyyy',
+                'format' => 'dd-MM-yyyy',
                 'html5' => false,
                 'attr' => [
-                    'class' => 'js-datepicker',
+                    'class' => $date,
                 ],
             ])
             ->add('comment', TextareaType::class, [
@@ -154,6 +166,43 @@ class RateHousingType extends AbstractType
                 'label' => false,
                 'placeholder' => 'Tipo Calefacción',
                 'class' => Heating::class
+            ])
+            ->add('orientation', EntityType::class, [
+                'label' => 'Orientación',
+                'class' => Orientation::class,
+                'placeholder' => 'Selecciona Orientación',
+                'required' => false
+            ])
+            ->add('antiquity', IntegerType::class, [
+                'label' => 'Antigüedad',
+                'required' => false,
+                'attr' => [
+                    'min' => 0
+                ]
+            ])
+            ->add('communityExpenses', MoneyType::class, [
+                'label' => 'Gastos Comunidad',
+                'required' => false
+            ])
+            ->add('pendingSpills', TextareaType::class, [
+                'label' => 'Derrama Pendiente',
+                'required' => false
+            ])
+            ->add('amountPendingSpills', MoneyType::class, [
+                'label' => 'Importe Derrama Pendiente',
+                'required' => false
+            ])
+            ->add('spillsFuture', TextareaType::class, [
+                'label' => 'Derrama Futura',
+                'required' => false
+            ])
+            ->add('administrator', TextType::class, [
+                'label' => 'Administrador de Fincas',
+                'required' => false
+            ])
+            ->add('mobileAdministrator', TelType::class, [
+                'label' => 'Móvil/Teléfono',
+                'required' => false
             ])
         ;
     }

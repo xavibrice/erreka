@@ -16,6 +16,29 @@ const $ = require('jquery');
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
 
+const autocomplete = require('autocomplete.js');
+
+$(document).ready(function () {
+    $('.js-client-autocomplete').each(function () {
+        var autocompleteUrl = $(this).data('autocomplete-url');
+
+        autocomplete('.js-client-autocomplete', {hint: false}, [
+            {
+                source: function (query, cb) {
+                    $.ajax({
+                        url: autocompleteUrl+'?query='+query
+                    }).then(function (data) {
+                        cb(data.clients);
+                    })
+                },
+                displayKey: 'full_name',
+                debounce: 500
+            }
+        ])
+    });
+
+});
+
 const routes = require('../../public/js/fos_js_routes');
 // const Routing = require('./Components/Routing');
 import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router';
@@ -247,7 +270,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     calendar.render();
 });
-
 
 $("#property_situation").change(function () {
     const data = {

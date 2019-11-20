@@ -7,10 +7,12 @@ use App\Entity\NoteNew;
 use App\Entity\Property;
 use App\Entity\PropertyReduction;
 use App\Entity\RateHousing;
+use App\Entity\Visit;
 use App\Form\Collection\PropertyReductionType;
 use App\Form\NoteNewType;
 use App\Form\PropertyType;
 use App\Form\RateHousingType;
+use App\Form\VisitType;
 use App\Repository\PropertyRepository;
 use App\Service\UploaderHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -148,10 +150,10 @@ class PropertyController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'Valoración creada correctamente');
-            return $this->redirectToRoute('property_show', ['id' => $property->getId()]);
+            return $this->redirectToRoute('property_rate_housing_new_show', ['id' => $property->getId()]);
         }
 
-        return $this->render('admin/property/rate_housing.html.twig', [
+        return $this->render('admin/property/rate_housing/rate_housing.html.twig', [
             'property' => $property,
             'form' => $form->createView()
         ]);
@@ -162,22 +164,68 @@ class PropertyController extends AbstractController
      */
     public function rateHousingEdit(Request $request, RateHousing $rateHousing): Response
     {
+        $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $em->flush();
 
             $this->addFlash('success', 'Valoración Editada Correctamente');
-
-            return $this->redirectToRoute('property_rate_housing_new_show', [
-                'id' => $rateHousing->getProperty()->getId()
-            ]);
         }
 
         return $this->render('admin/property/edit_rate_housing.html.twig', [
             'form' => $form->createView(),
             'rateHousing' => $rateHousing
+        ]);
+    }
+
+    /**
+     * @Route("/autorizacion/{id}", name="property_authorization", methods={"GET", "POST"})
+     * @Route("/encargo/{id}", name="property_charge", methods={"GET", "POST"})
+     */
+    public function rateAuthorizationCharge(Request $request, Property $property): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $propertyReduction = new PropertyReduction();
+        $propertyReduction->setProperty($property);
+        $form = $this->createForm(PropertyReductionType::class, $propertyReduction);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $propertyReduction->setLastPrice(86000);
+            $propertyReduction->setPercentage(5);
+            $em->persist($propertyReduction);
+            $em->flush();
+
+            $this->addFlash('success', 'Rebaja creada correctamente');
+
+            return $this->redirectToRoute($request->attributes->get('_route'), [
+                'id' => $property->getId()
+            ]);
+        }
+
+        $visit = new Visit();
+        $visit->setProperty($property);
+        $formVisit = $this->createForm(VisitType::class, $visit);
+        $formVisit->handleRequest($request);
+
+        if ($formVisit->isSubmitted() && $formVisit->isValid()) {
+            $em->persist($visit);
+            $em->flush();
+
+            $this->addFlash('success', 'Visita creada correctamente');
+
+            return $this->redirectToRoute($request->attributes->get('_route'), [
+                'id' => $property->getId()
+            ]);
+        }
+
+        return $this->render('admin/property/authorization_charge/authorization_charge.html.twig', [
+            'form' => $form->createView(),
+            'formVisit' => $formVisit->createView(),
+            'property' => $property
         ]);
     }
 

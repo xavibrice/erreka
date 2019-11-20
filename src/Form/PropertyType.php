@@ -36,7 +36,6 @@ class PropertyType extends AbstractType
         $roles = $options['role'];
         $role = implode(',', $roles);
 
-
         if ($role == 'ROLE_ADMIN') {
             $builder
                 ->add('commercial', EntityType::class, [
@@ -49,6 +48,7 @@ class PropertyType extends AbstractType
         $isEdit = $property && $property->getId();
 
         if ($isEdit) {
+            $date = 'js-datepicker-empty';
             /*$builder->add('propertyReductions', CollectionType::class, [
                 'label' => 'Rebajar Precio',
                 'entry_type' => PropertyReductionType::class,
@@ -130,6 +130,7 @@ class PropertyType extends AbstractType
                 }
             );
         } else {
+            $date = 'js-datepicker';
             $builder->add('reason', EntityType::class, [
                 'label' => 'Motivo',
                 'class' => Reason::class,
@@ -159,10 +160,10 @@ class PropertyType extends AbstractType
                 'required' => true,
                 'label' => 'Fecha creación',
                 'widget' => 'single_text',
-                'format' => 'dd-mm-yyyy',
+                'format' => 'dd-MM-yyyy',
                 'html5' => false,
                 'attr' => [
-                    'class' => 'js-datepicker',
+                    'class' => $date,
                 ],
             ])
             ->add('fullName', TextType::class, [

@@ -47,4 +47,30 @@ class ClientRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /**
+     * @return Client[]
+     */
+    public function findFullName()
+    {
+        return $this->createQueryBuilder('c')
+            ->orderBy('c.full_name', 'ASC')
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+    /**
+     * @param Client[]
+     */
+    public function findAllMatching(string $query, int $limit = 5)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.full_name LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }

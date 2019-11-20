@@ -33,16 +33,6 @@ class TypeProperty
      */
     private $is_property;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name_slug;
-
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $template;
-
     public function __construct()
     {
         $this->property = new ArrayCollection();
@@ -114,27 +104,4 @@ class TypeProperty
         return $this;
     }
 
-    public function getNameSlug(): ?string
-    {
-        return $this->name_slug;
-    }
-
-    public function setNameSlug(string $name_slug): self
-    {
-        $this->name_slug = $name_slug;
-
-        return $this;
-    }
-
-    public function getTemplate(): ?int
-    {
-        return $this->template;
-    }
-
-    public function setTemplate(int $template): self
-    {
-        $this->template = $template;
-
-        return $this;
-    }
 }

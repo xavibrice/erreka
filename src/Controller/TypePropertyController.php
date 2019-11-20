@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/tipo/propiedad")
+ * @Route("/admin/tipo/propiedad")
  */
 class TypePropertyController extends AbstractController
 {
@@ -20,8 +20,8 @@ class TypePropertyController extends AbstractController
      */
     public function index(TypePropertyRepository $typePropertyRepository, Request $request): Response
     {
-        return $this->render('type_property/index.html.twig', [
-            'type_properties' => $typePropertyRepository->findBy(['name' => $request->get('name')]),
+        return $this->render('admin/type_property/index.html.twig', [
+            'type_properties' => $typePropertyRepository->findAll(),
         ]);
     }
 
@@ -42,7 +42,7 @@ class TypePropertyController extends AbstractController
             return $this->redirectToRoute('type_property_index');
         }
 
-        return $this->render('type_property/new.html.twig', [
+        return $this->render('admin/type_property/new.html.twig', [
             'type_property' => $typeProperty,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class TypePropertyController extends AbstractController
      */
     public function show(TypeProperty $typeProperty): Response
     {
-        return $this->render('type_property/show.html.twig', [
+        return $this->render('admin/type_property/show.html.twig', [
             'type_property' => $typeProperty,
         ]);
     }
@@ -74,7 +74,7 @@ class TypePropertyController extends AbstractController
             ]);
         }
 
-        return $this->render('type_property/edit.html.twig', [
+        return $this->render('admin/type_property/edit.html.twig', [
             'type_property' => $typeProperty,
             'form' => $form->createView(),
         ]);

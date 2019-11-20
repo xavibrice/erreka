@@ -1,0 +1,133 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block content %}
+    {% include 'admin/property/type_property/_tab.html.twig' %}
+    <div class="row">
+        <!-- Content Column -->
+        <div class="col-md-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles noticias</h6>
+                    {#<h6 class="m-0 font-weight-bold text-primary float-right">
+                        <a class="btn btn-success" href="">Crear Noticia</a>
+                    </h6>#}
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <th>Situacion</th>
+                                    <td>{{ property.reason.situation.name }}</td>
+                                    <th>Motivo</th>
+                                    <td>{{ property.reason.name }}</td>
+                                    <th>Creado</th>
+                                    <td>{{ property.created|date('d/m/Y') }}</td>
+                                    <th>Precio</th>
+                                    <td>{{ property.price }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Propietario</th>
+                                    <td>{{ property.fullName }}</td>
+                                    <th>Tipo de propiedad</th>
+                                    <td>
+                                        {% if property.typeProperty is not empty %}
+                                            {{ property.typeProperty.name }}
+                                        {% endif %}
+                                    </td>
+                                    <th>Zona</th>
+                                    <td>{{ property.street.zone.name }}</td>
+                                    <th>Calle</th>
+                                    <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
+                                </tr>
+                                <tr>
+
+                                    <th>Móvil/Teléfono</th>
+                                    <td>{{ property.mobile }}</td>
+                                    <th>Correo</th>
+                                    <td>{{ property.email }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-footer">
+                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
+                    {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary ">Visitas</h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+{#                        {{ include('admin/_form.html.twig', {'form': formVisit}) }}#}
+                        {{ form_start(formVisit) }}
+                        {{ form_widget(formVisit) }}
+                        <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+                        {{ form_end(formVisit) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mb-4">
+            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
+                {% for visit in property.visits %}
+                    <div class="col-md-12 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                {{ visit.visited|date('d-m-Y') }}
+                                {{ visit.price }}
+                                {{ visit.comment }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        No hay rebajas
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary ">Importes Rebajados</h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+                        {{ include('admin/_form.html.twig') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mb-4">
+            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
+                {% for propertyReduction in property.propertyReductions %}
+                    <div class="col-md-12 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                {{ propertyReduction.reductionDate|date('d-m-Y') }}
+                                {{ propertyReduction.reductionNextDate|date('d-m-Y') }}
+                                {{ propertyReduction.price }}
+                                {{ propertyReduction.lastPrice }}
+                                {{ propertyReduction.percentage }}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        No hay rebajas
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
