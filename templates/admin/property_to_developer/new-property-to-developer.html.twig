@@ -3,8 +3,18 @@
 {% block body %}
 
     {{ form_start(form, {'action': path('property_to_developer_new'), 'method': 'POST'}) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    {{ form_row(form.created) }}
+    {{ form_row(form.commercial) }}
+    {{ form_row(form.zone) }}
+    {{ form_row(form.street) }}
+    {{ form_row(form.portal) }}
+    {{ form_row(form.floor) }}
+     {{ form_row(form.reason) }}
+     {{ form_row(form.full_name) }}
+     {{ form_row(form.mobile) }}
+     {{ form_row(form.comment) }}
+{#    {{ form_widget(form) }}#}
+    <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
     {{ form_end(form) }}
 
 {% endblock %}

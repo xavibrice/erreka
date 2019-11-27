@@ -1,0 +1,81 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Booking index{% endblock %}
+
+{% block content %}
+
+    <div class="row">
+        <!-- Area Chart -->
+        <div class="col-md-12">
+            <div class="card shadow mb-4">
+                <!-- Card Header - Dropdown -->
+                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                </div>
+                <!-- Card Body -->
+                <div class="card-body">
+{#                    <a class="btn btn-success" href="{{ path('booking_new') }}">Crear Booking</a>#}
+                    {#                    {% include '@Calendar/calendar.html' %}#}
+                    <div class="table-responsive">
+                        <div id="calendar-holder" data-events-url="{{ path('fc_load_events') }}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleEvent"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="descriptionEvent"></div>
+                </div>
+                <div class="modal-footer">
+                    {#<button type="button" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success">Modificar</button>
+                    <button type="button" class="btn btn-danger">Borrar</button>#}
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleEventAdd"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ include('admin/_form.html.twig') }}
+                </div>
+                <div class="modal-footer">
+{#                    <button type="button" class="btn btn-success">Agregar</button>#}
+{#                    <button type="button" class="btn btn-success">Modificar</button>#}
+{#                    <button type="button" class="btn btn-danger">Borrar</button>#}
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('calendar') }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('calendar') }}
+{% endblock %}

@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
@@ -61,6 +62,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("main")
      */
     private $full_name;
 
@@ -74,10 +76,16 @@ class User implements UserInterface
      */
     private $properties;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Booking", mappedBy="commercial")
+     */
+    private $bookings;
+
     public function __construct()
     {
         $this->noteCommercials = new ArrayCollection();
         $this->properties = new ArrayCollection();
+        $this->bookings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -302,6 +310,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($property->getCommercial() === $this) {
                 $property->setCommercial(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Booking[]
+     */
+    public function getBookings(): Collection
+    {
+        return $this->bookings;
+    }
+
+    public function addBooking(Booking $booking): self
+    {
+        if (!$this->bookings->contains($booking)) {
+            $this->bookings[] = $booking;
+            $booking->setCommercial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBooking(Booking $booking): self
+    {
+        if ($this->bookings->contains($booking)) {
+            $this->bookings->removeElement($booking);
+            // set the owning side to null (unless already changed)
+            if ($booking->getCommercial() === $this) {
+                $booking->setCommercial(null);
             }
         }
 

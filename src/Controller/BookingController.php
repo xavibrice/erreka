@@ -15,6 +15,31 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class BookingController extends AbstractController
 {
+
+    /**
+     * @Route("/calendar", name="booking_calendar", methods={"GET", "POST"})
+     */
+    public function calendar(Request $request): Response
+    {
+        $booking = new Booking();
+        $form = $this->createForm(BookingType::class, $booking);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($booking);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Booking creado correctamente');
+
+            return $this->redirectToRoute('booking_calendar');
+        }
+
+        return $this->render('admin/booking/calendar.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
     /**
      * @Route("/", name="booking_index", methods={"GET"})
      */

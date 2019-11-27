@@ -33,7 +33,7 @@ class PropertyToDeveloperType extends AbstractType
         $isEdit = $property && $property->getId();
 
         $builder->add('zone', EntityType::class, [
-            'label' => false,
+            'label' => 'Zona',
             'class' => Zone::class,
             'placeholder' => 'Selecciona una zona',
             'mapped' => false
@@ -62,7 +62,7 @@ class PropertyToDeveloperType extends AbstractType
                 if ($street) {
                     $form->get('zone')->setData($street->getZone());
                     $form->add('street', EntityType::class, [
-                        'label' => false,
+                        'label' => 'Calle',
                         'required' => true,
                         'class' => Street::class,
                         'placeholder' => 'Selecciona primero una zona',
@@ -70,7 +70,7 @@ class PropertyToDeveloperType extends AbstractType
                     ]);
                 } else {
                     $form->add('street', EntityType::class, [
-                        'label' => false,
+                        'label' => 'Calle',
                         'required' => true,
                         'class' => Street::class,
                         'placeholder' => 'Selecciona primero una zona',
@@ -118,7 +118,7 @@ class PropertyToDeveloperType extends AbstractType
                     if ($reason) {
                         $form->get('situation')->setData($reason->getSituation());
                         $form->add('reason', EntityType::class, [
-                            'label' => false,
+                            'label' => 'Motivo',
                             'required' => true,
                             'class' => Reason::class,
                             'placeholder' => 'Selecciona primero una situación',
@@ -137,13 +137,14 @@ class PropertyToDeveloperType extends AbstractType
             );
         } else {
             $builder->add('reason', EntityType::class, [
-                    'label' => false,
+                    'label' => 'Motivo',
+                    'placeholder' => 'Selecciona un motivo',
                     'class' => Reason::class,
                     'query_builder' => function(EntityRepository $er) {
                         return $er->createQueryBuilder('r')
                             ->innerJoin('r.situation', 's')
-                            ->where('s.name_slug = :situation_name_slug')
-                            ->setParameter('situation_name_slug', 'noticia-a-desarrollar')
+                            ->where('s.name = :situation')
+                            ->setParameter('situation', 'noticia a desarrollar')
                             ;
                     }
                 ])
@@ -159,7 +160,7 @@ class PropertyToDeveloperType extends AbstractType
                 'required' => true,
 //                'label' => false,
                 'widget' => 'single_text',
-                'format' => 'dd-mm-yyyy',
+                'format' => 'dd-MM-yyyy',
                 'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
@@ -169,13 +170,22 @@ class PropertyToDeveloperType extends AbstractType
                 'class' => User::class
             ])
             ->add('full_name', TextType::class, [
+                'label' => 'Propietario',
                 'required' => false
             ])
             ->add('mobile', TelType::class, [
+                'label' => 'Móvil',
                 'required' => false
             ])
             ->add('comment', TextareaType::class, [
+                'label' => 'Comentario',
                 'required' => false
+            ])
+            ->add('portal', TextType::class, [
+                'label' => 'Portal'
+            ])
+            ->add('floor', TextType::class, [
+                'label' => 'Piso'
             ])
 //            ->add('typeProperty', EntityType::class, [
 //                'placeholder' => 'Selecciona un tipo de propiedad',

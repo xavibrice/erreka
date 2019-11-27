@@ -48,7 +48,9 @@ class NoteCommercialController extends AbstractController
     public function new(Request $request): Response
     {
         $noteCommercial = new NoteCommercial();
-        $form = $this->createForm(NoteCommercialType::class, $noteCommercial, ['agency' => $this->getUser()->getAgency()->getName()]);
+        $form = $this->createForm(NoteCommercialType::class, $noteCommercial, [
+            'agency' => $this->getUser()->getAgency()->getName()
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -80,7 +82,9 @@ class NoteCommercialController extends AbstractController
      */
     public function edit(Request $request, NoteCommercial $noteCommercial): Response
     {
-        $form = $this->createForm(NoteCommercialType::class, $noteCommercial);
+        $form = $this->createForm(NoteCommercialType::class, $noteCommercial, [
+            'agency' => $this->getUser()->getAgency()->getName()
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

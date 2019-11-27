@@ -41,7 +41,7 @@ class CalendarListener
         foreach ($bookings as $booking) {
             // this create the events with your data (here booking data) to fill calendar
             $bookingEvent = new Event(
-                $booking->getTitle(),
+                $booking->getCommercial()->getFullname() . ' - ' . $booking->getTitle(),
                 $booking->getBeginAt(),
                 $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
             );
@@ -54,15 +54,18 @@ class CalendarListener
              */
 
             $bookingEvent->setOptions([
-                'backgroundColor' => 'red',
-                'borderColor' => 'red',
+//                'backgroundColor' => $booking->getColor(),
+//                'borderColor' => $booking->getColor(),
+                'textColor' => 'white',
+                'description' => $booking->getDescription(),
+                'commercial' => $booking->getCommercial()->getFullname(),
             ]);
-            $bookingEvent->addOption(
-                'url',
-                $this->router->generate('booking_show', [
-                    'id' => $booking->getId(),
-                ])
-            );
+//            $bookingEvent->addOption(
+//                'url',
+//                $this->router->generate('booking_show', [
+//                    'id' => $booking->getId(),
+//                ])
+//            );
 
             // finally, add the event to the CalendarEvent to fill the calendar
             $calendar->addEvent($bookingEvent);

@@ -105,7 +105,7 @@ class RateHousingType extends AbstractType
             ])
             ->add('elevator', CheckboxType::class, [
                 'label' => 'Ascensor',
-                'required' => false
+                'required' => false,
             ])
             /*->add('alarmSystem', CheckboxType::class, [
                 'label' => 'Sistema de alarmas',
@@ -121,49 +121,49 @@ class RateHousingType extends AbstractType
             ])*/
             ->add('bathroomState', EntityType::class, [
                 'required' => false,
-                'label' => false,
+                'label' => 'Estado Baño',
                 'placeholder' => 'Estado Baños',
                 'class' => ValuationStatus::class
             ])
             ->add('beenCooking', EntityType::class, [
                 'required' => false,
-                'label' => false,
-                'placeholder' => 'Estado Cocina ',
+                'label' => 'Estado Cocina',
+                'placeholder' => 'Estado Cocina',
                 'class' => ValuationStatus::class
             ])
             ->add('windowsState', EntityType::class, [
                 'required' => false,
-                'label' => false,
+                'label' => 'Estado Ventanas',
                 'placeholder' => 'Estado Ventanas',
                 'class' => ValuationStatus::class
             ])
             ->add('beenWalls', EntityType::class, [
                 'required' => false,
-                'label' => false,
+                'label' => 'Estado Paredes',
                 'placeholder' => 'Estado Paredes',
                 'class' => ValuationStatus::class
             ])
             ->add('doorsState', EntityType::class, [
                 'required' => false,
-                'label' => false,
+                'label' => 'Estado Puertas',
                 'placeholder' => 'Estado Puertas',
                 'class' => ValuationStatus::class
             ])
             ->add('groundState', EntityType::class, [
                 'required' => false,
-                'label' => false,
+                'label' => 'Estado Suelo',
                 'placeholder' => 'Estado Suelo',
                 'class' => ValuationStatus::class
             ])
             ->add('window', EntityType::class, [
                 'required' => false,
-                'label' => false,
+                'label' => 'Tipo Ventana',
                 'placeholder' => 'Tipo Ventana',
                 'class' => Window::class
             ])
             ->add('heating', EntityType::class, [
                 'required' => false,
-                'label' => false,
+                'label' => 'Tipo Calefacción',
                 'placeholder' => 'Tipo Calefacción',
                 'class' => Heating::class
             ])

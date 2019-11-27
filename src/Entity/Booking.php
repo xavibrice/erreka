@@ -31,6 +31,26 @@ class Booking
      */
     private $title;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="bookings")
+     */
+    private $commercial;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $color;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $textColor;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     */
+    private $description;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +88,54 @@ class Booking
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getCommercial(): ?User
+    {
+        return $this->commercial;
+    }
+
+    public function setCommercial(?User $commercial): self
+    {
+        $this->commercial = $commercial;
+
+        return $this;
+    }
+
+    public function getColor(): ?string
+    {
+        return $this->color;
+    }
+
+    public function setColor(?string $color): self
+    {
+        $this->color = $color;
+
+        return $this;
+    }
+
+    public function getTextColor(): ?string
+    {
+        return $this->textColor;
+    }
+
+    public function setTextColor(?string $textColor): self
+    {
+        $this->textColor = $textColor;
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

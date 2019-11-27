@@ -36,7 +36,26 @@ $(document).ready(function () {
             }
         ])
     });
+});
 
+$(document).ready(function () {
+    $('.js-commercial-autocomplete').each(function () {
+        var autocompleteUrl = $(this).data('autocomplete-url');
+
+        autocomplete('.js-commercial-autocomplete', {hint: false}, [
+            {
+                source: function (query, cb) {
+                    $.ajax({
+                        url: autocompleteUrl+'?query='+query
+                    }).then(function (data) {
+                        cb(data.commercials);
+                    })
+                },
+                displayKey: 'full_name',
+                debounce: 500
+            }
+        ])
+    });
 });
 
 const routes = require('../../public/js/fos_js_routes');
@@ -240,36 +259,36 @@ $(document).ready(function() {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-    var calendarEl = document.getElementById('calendar-holder');
-
-    var calendar = new FullCalendar.Calendar(calendarEl, {
-        defaultView: 'dayGridMonth',
-        selectable: true,
-        editable: true,
-        locale: 'es',
-        eventSources: [
-            {
-                url: "/fc-load-events",
-                method: "POST",
-                extraParams: {
-                    filters: JSON.stringify({})
-                },
-                failure: () => {
-                    // alert("There was an error while fetching FullCalendar!");
-                },
-            },
-        ],
-        header: {
-            left: 'prev,next today',
-            center: 'title',
-            right: 'dayGridMonth,timeGridWeek,timeGridDay',
-        },
-        plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-        timeZone: 'UTC',
-    });
-    calendar.render();
-});
+// document.addEventListener('DOMContentLoaded', () => {
+//     var calendarEl = document.getElementById('calendar-holder');
+//
+//     var calendar = new FullCalendar.Calendar(calendarEl, {
+//         defaultView: 'dayGridMonth',
+//         selectable: true,
+//         editable: true,
+//         locale: 'es',
+//         eventSources: [
+//             {
+//                 url: "/fc-load-events",
+//                 method: "POST",
+//                 extraParams: {
+//                     filters: JSON.stringify({})
+//                 },
+//                 failure: () => {
+//                     // alert("There was an error while fetching FullCalendar!");
+//                 },
+//             },
+//         ],
+//         header: {
+//             left: 'prev,next today',
+//             center: 'title',
+//             right: 'dayGridMonth,timeGridWeek,timeGridDay',
+//         },
+//         plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
+//         timeZone: 'UTC',
+//     });
+//     calendar.render();
+// });
 
 $("#property_situation").change(function () {
     const data = {

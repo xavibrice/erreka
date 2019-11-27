@@ -118,4 +118,14 @@ class UserController extends AbstractController
         return $this->redirectToRoute('user_index');
     }
 
+    /**
+     * @Route("/api/autocomplete", name="api_commercial_autocomplete", methods={"GET"})
+     */
+    public function autocomplete(UserRepository $userRepository, Request $request): Response
+    {
+        $commercial = $userRepository->findAllMatching($request->query->get('query'));
+        return $this->json([
+            'commercials' => $commercial
+        ], 200, [], ['groups' => ['main']]);
+    }
 }

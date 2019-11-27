@@ -6,7 +6,7 @@
 
     <div class="row">
         <!-- Area Chart -->
-        <div class="col-xl-8 col-lg-7">
+        <div class="col-md-12">
             <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -26,113 +26,125 @@
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    {% include '@Calendar/calendar.html' %}
+{#                    {% include '@Calendar/calendar.html' %}#}
+                    <div class="table-responsive">
+                        <div id="calendar-holder" data-events-url="{{ path('fc_load_events') }}"></div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5">
-            <div class="card shadow mb-4">
-                <!-- Card Header - Dropdown -->
-                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
-                    <div class="dropdown no-arrow">
-                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">
-                            <div class="dropdown-header">Dropdown Header:</div>
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <a class="btn btn-success mb-4" href="{{ path('booking_new') }}">Crear</a>
-                    <div class="table-responsive">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>Id</th>
-                                <th>BeginAt</th>
-                                <th>EndAt</th>
-                                <th>Title</th>
-                                <th>actions</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            {% for booking in bookings %}
-                                <tr>
-                                    <td>{{ booking.id }}</td>
-                                    <td>{{ booking.beginAt ? booking.beginAt|date('Y-m-d H:i:s') : '' }}</td>
-                                    <td>{{ booking.endAt ? booking.endAt|date('Y-m-d H:i:s') : '' }}</td>
-                                    <td>{{ booking.title }}</td>
-                                    <td>
-                                        <a href="{{ path('booking_show', {'id': booking.id}) }}">show</a>
-                                        <a href="{{ path('booking_edit', {'id': booking.id}) }}">edit</a>
-                                    </td>
-                                </tr>
-                            {% else %}
-                                <tr>
-                                    <td colspan="5">no records found</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
-                    </div>
+{#        <!-- Pie Chart -->#}
+{#        <div class="col-xl-4 col-lg-5">#}
+{#            <div class="card shadow mb-4">#}
+{#                <!-- Card Header - Dropdown -->#}
+{#                <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">#}
+{#                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>#}
+{#                    <div class="dropdown no-arrow">#}
+{#                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">#}
+{#                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>#}
+{#                        </a>#}
+{#                        <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in" aria-labelledby="dropdownMenuLink">#}
+{#                            <div class="dropdown-header">Dropdown Header:</div>#}
+{#                            <a class="dropdown-item" href="#">Action</a>#}
+{#                            <a class="dropdown-item" href="#">Another action</a>#}
+{#                            <div class="dropdown-divider"></div>#}
+{#                            <a class="dropdown-item" href="#">Something else here</a>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#                <!-- Card Body -->#}
+{#                <div class="card-body">#}
+{#                    <a class="btn btn-success mb-4" href="{{ path('booking_new') }}">Crear</a>#}
+{#                    <div class="table-responsive">#}
+{#                        <table class="table table-striped">#}
+{#                            <thead>#}
+{#                            <tr>#}
+{#                                <th>Id</th>#}
+{#                                <th>BeginAt</th>#}
+{#                                <th>EndAt</th>#}
+{#                                <th>Title</th>#}
+{#                                <th>actions</th>#}
+{#                            </tr>#}
+{#                            </thead>#}
+{#                            <tbody>#}
+{#                            {% for booking in bookings %}#}
+{#                                <tr>#}
+{#                                    <td>{{ booking.id }}</td>#}
+{#                                    <td>{{ booking.beginAt ? booking.beginAt|date('Y-m-d H:i:s') : '' }}</td>#}
+{#                                    <td>{{ booking.endAt ? booking.endAt|date('Y-m-d H:i:s') : '' }}</td>#}
+{#                                    <td>{{ booking.title }}</td>#}
+{#                                    <td>#}
+{#                                        <a href="{{ path('booking_show', {'id': booking.id}) }}">show</a>#}
+{#                                        <a href="{{ path('booking_edit', {'id': booking.id}) }}">edit</a>#}
+{#                                    </td>#}
+{#                                </tr>#}
+{#                            {% else %}#}
+{#                                <tr>#}
+{#                                    <td colspan="5">no records found</td>#}
+{#                                </tr>#}
+{#                            {% endfor %}#}
+{#                            </tbody>#}
+{#                        </table>#}
+{#                    </div>#}
 
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+    </div>
+
+    <div class="modal fade" id="calendarModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleEvent"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="descriptionEvent"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success">Modificar</button>
+                    <button type="button" class="btn btn-danger">Borrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="modal fade" id="addEventModal" tabindex="-1" role="dialog" aria-labelledby="calendarModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="titleEvent"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="descriptionEvent"></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success">Agregar</button>
+                    <button type="button" class="btn btn-success">Modificar</button>
+                    <button type="button" class="btn btn-danger">Borrar</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.css">
+    {{ encore_entry_link_tags('calendar') }}
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/core@4.1.0/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/interaction@4.1.0/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid@4.1.0/main.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid@4.1.0/main.min.js"></script>
-
-    <script type="text/javascript">
-        document.addEventListener('DOMContentLoaded', () => {
-            var calendarEl = document.getElementById('calendar-holder');
-
-            var calendar = new FullCalendar.Calendar(calendarEl, {
-                defaultView: 'dayGridMonth',
-                editable: true,
-                eventSources: [
-                    {
-                        url: "{{ path('fc_load_events') }}",
-                        method: "POST",
-                        extraParams: {
-                            filters: JSON.stringify({})
-                        },
-                        failure: () => {
-                            // alert("There was an error while fetching FullCalendar!");
-                        },
-                    },
-                ],
-                header: {
-                    left: 'prev,next today',
-                    center: 'title',
-                    right: 'dayGridMonth,timeGridWeek,timeGridDay',
-                },
-                plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-                timeZone: 'UTC',
-            });
-            calendar.render();
-        });
-    </script>
+    {{ encore_entry_script_tags('calendar') }}
 {% endblock %}
