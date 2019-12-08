@@ -22,7 +22,9 @@ class BookingController extends AbstractController
     public function calendar(Request $request): Response
     {
         $booking = new Booking();
-        $form = $this->createForm(BookingType::class, $booking);
+        $form = $this->createForm(BookingType::class, $booking, [
+            'agency' => $this->getUser()->getAgency()->getName()
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

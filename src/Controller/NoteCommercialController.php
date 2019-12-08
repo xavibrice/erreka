@@ -22,10 +22,6 @@ class NoteCommercialController extends AbstractController
      */
     public function notes(NoteCommercialRepository $noteCommercialRepository): Response
     {
-//        $today = new \DateTime('now');
-
-//        $a = \DateTime::createFromFormat('Y-m-d', $today);
-//        dd($a);
         return $this->render('admin/note_commercial/note.html.twig', [
             'note_commercials' => $noteCommercialRepository->findBy(['commercial' => $this->getUser()]),
         ]);

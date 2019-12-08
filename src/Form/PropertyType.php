@@ -10,6 +10,7 @@ use App\Entity\TypeProperty;
 use App\Entity\User;
 use App\Entity\Zone;
 use App\Form\Collection\PropertyReductionType;
+use App\Form\Type\DateTimePickerType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -27,6 +28,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class PropertyType extends AbstractType
 {
@@ -156,12 +158,12 @@ class PropertyType extends AbstractType
                     'accept' => 'image/*'
                 ]
             ])
-            ->add('created', DateType::class, [
+            ->add('created', DateTimePickerType::class, [
                 'required' => true,
                 'label' => 'Fecha creación',
-                'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
-                'html5' => false,
+//                'widget' => 'single_text',
+//                'format' => 'dd-MM-yyyy',
+//                'html5' => false,
                 'attr' => [
                     'class' => $date,
                 ],
@@ -192,7 +194,7 @@ class PropertyType extends AbstractType
             ])
             ->add('price', MoneyType::class, [
                 'label' => 'Precio',
-                'required' => false
+                'required' => false,
             ])
             ->add('url', UrlType::class, [
                 'label' => 'URL',

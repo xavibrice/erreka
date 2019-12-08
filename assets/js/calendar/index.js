@@ -9,7 +9,33 @@ import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 
-import "./index.css"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
+import "./index.css";
+import moment, {defaultFormat} from "moment"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
+
+// $("#booking_beginAt_date, #booking_endAt").datetimepicker();
+
+// require("eonasdan-bootstrap-datetimepicker-bootstrap4beta");
+
+import 'eonasdan-bootstrap-datetimepicker-bootstrap4beta';
+
+$(function() {
+    // Datetime picker initialization.
+    // See http://eonasdan.github.io/bootstrap-datetimepicker/
+    $('.dateStart').datetimepicker({
+        locale: 'es',
+        icons: {
+            time: 'far fa-clock',
+            date: 'far fa-calendar',
+            up: 'fas fa-arrow-up',
+            down: 'fas fa-arrow-down',
+            previous: 'fas fa-chevron-left',
+            next: 'fas fa-chevron-right',
+            today: 'fas fa-calendar-check',
+            clear: 'far fa-trash-alt',
+            close: 'far fa-times-circle'
+        }
+    });
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     var calendarEl = document.getElementById("calendar-holder");

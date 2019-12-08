@@ -47,8 +47,8 @@
                     <span>Noticias</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
+            <li class="nav-item {% if app.request.get('_route') == 'list_charge_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('list_charge_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Exclusivas</span>
                 </a>
@@ -59,14 +59,14 @@
                     <span>En Trámite</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
+            <li class="nav-item {% if app.request.get('_route') == 'list_authorization_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('list_authorization_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Autorizaciones</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
+            <li class="nav-item {% if app.request.get('_route') == 'list_rate_housing_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('list_rate_housing_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Valoraciones</span>
                 </a>
@@ -101,8 +101,8 @@
                     <span>Informes</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
+            <li class="nav-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('note_commercial_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Recados</span>
                 </a>
@@ -146,6 +146,7 @@
                         <a class="collapse-item {% if app.request.get('_route') == 'situation_index' %}active{% endif %}" href="{{ path('situation_index') }}">Situaciones</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'type_property_index' %}active{% endif %}" href="{{ path('type_property_index') }}">Tipo Propiedad</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'orientation_index' %}active{% endif %}" href="{{ path('orientation_index') }}">Orientación</a>
                     </div>
                 </div>
             </li>

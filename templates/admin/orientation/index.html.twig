@@ -1,0 +1,35 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Orientation index{% endblock %}
+
+{% block content %}
+    <h1>Orientation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for orientation in orientations %}
+            <tr>
+                <td>{{ orientation.id }}</td>
+                <td>{{ orientation.name }}</td>
+                <td>
+                    <a href="{{ path('orientation_show', {'id': orientation.id}) }}">show</a>
+                    <a href="{{ path('orientation_edit', {'id': orientation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('orientation_new') }}">Create new</a>
+{% endblock %}

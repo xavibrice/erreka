@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                <table class="table table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
 {#                        <th>Id</th>#}
@@ -68,11 +68,7 @@
                                 <td>{{ property.mobile }}</td>
                                 <td>{{ property.price|number_format(0, '.', ',') }}€</td>
                                 <td>
-                                    {% if property.rateHousing %}
-                                        Si
-                                    {% else %}
-                                        No
-                                    {% endif %}
+                                    {{ property.rateHousing ? 'Si' : 'No' }}
                                 </td>
                                 <td>
                                     {% if property.rateHousing %}

@@ -1,0 +1,79 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Listado de encargos{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800">Listado de exclusivas</h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th>Asesor</th>
+                            <th>Zona</th>
+                            <th>Calle</th>
+                            <th>Nº</th>
+                            <th>Piso</th>
+                            <th>Propietario</th>
+                            <th>Móvil</th>
+                            <th>Fecha</th>
+                            <th>Caduca</th>
+                            <th>Precio Encargo</th>
+                            <th>Precio Actual</th>
+                            <th>Precio OK</th>
+                            <th>Visitas</th>
+                            <th>% Caro</th>
+                            <th>Rebaj.</th>
+                            <th>Últ. Reb.</th>
+                            <th>% Reb.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for charge in charges %}
+                        {% for reason in charge.reason %}
+                            {% for property in reason.properties %}
+                                <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
+                                    <td>{{ property.commercial.fullName }}</td>
+                                    <td>{{ property.street.zone.name }}</td>
+                                    <td>{{ property.street.name }}</td>
+                                    <td>{{ property.portal }}</td>
+                                    <td>{{ property.floor }}</td>
+                                    <td>{{ property.fullName }}</td>
+                                    <td>{{ property.mobile }}</td>
+                                    <td>{{ property.created|date('d/m/Y') }}</td>
+                                    <td>
+                                        {% if property.rateHousing %}
+                                            {{ property.rateHousing.bedrooms }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if property.rateHousing %}
+                                            {{ property.rateHousing.bathrooms }}
+                                        {% endif %}
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            {% endfor %}
+                        {% endfor %}
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}

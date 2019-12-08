@@ -22,7 +22,7 @@ class NoteCommercial
     private $note;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
     private $notice_date;
 

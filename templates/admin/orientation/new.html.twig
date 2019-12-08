@@ -1,0 +1,11 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}New Orientation{% endblock %}
+
+{% block content %}
+    <h1>Create new Orientation</h1>
+
+    {{ include('admin/_form.html.twig') }}
+
+    <a href="{{ path('orientation_index') }}">back to list</a>
+{% endblock %}

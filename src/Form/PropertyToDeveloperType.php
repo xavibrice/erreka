@@ -10,6 +10,7 @@ use App\Entity\TypeProperty;
 use App\Entity\User;
 use App\Entity\Zone;
 use App\Form\Collection\PropertyReductionType;
+use App\Form\Type\DateTimePickerType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -156,12 +157,12 @@ class PropertyToDeveloperType extends AbstractType
                 'placeholder' => 'Selecciona un comercial',
                 'class' => User::class
             ])
-            ->add('created', DateType::class, [
+            ->add('created', DateTimePickerType::class, [
                 'required' => true,
 //                'label' => false,
-                'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
-                'html5' => false,
+//                'widget' => 'single_text',
+//                'format' => 'dd-MM-yyyy',
+//                'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
                 ],
@@ -173,6 +174,10 @@ class PropertyToDeveloperType extends AbstractType
                 'label' => 'Propietario',
                 'required' => false
             ])
+            ->add('url', UrlType::class, [
+                'label' => 'URL',
+                'required' => false
+            ])
             ->add('mobile', TelType::class, [
                 'label' => 'Móvil',
                 'required' => false
@@ -182,10 +187,12 @@ class PropertyToDeveloperType extends AbstractType
                 'required' => false
             ])
             ->add('portal', TextType::class, [
-                'label' => 'Portal'
+                'label' => 'Portal',
+                'required' => false
             ])
             ->add('floor', TextType::class, [
-                'label' => 'Piso'
+                'label' => 'Piso',
+                'required' => false
             ])
 //            ->add('typeProperty', EntityType::class, [
 //                'placeholder' => 'Selecciona un tipo de propiedad',

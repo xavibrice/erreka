@@ -2,15 +2,17 @@
     <div class="col-md-12 mb-4">
 
         <a class="btn btn-info" href="{{ path('property_show', {'id': property.id }) }}">Detalles</a>
-        <a class="btn btn-info" href="{{ path('property_rate_housing_new_show', {'id': property.id }) }}">Valoración</a>
-        {% if property.reason.situation.name == 'Autorización' or property.reason.situation.name == 'autorización' %}
-            <a class="btn btn-info" href="{{ path('property_authorization', {'id': property.id}) }}">{{ property.reason.situation.name }}</a>
+        {% if property.rateHousing %}
+            <a class="btn btn-info" href="{{ path('property_rate_housing_new_show', {'id': property.id }) }}">Valoración</a>
         {% endif %}
+{#        {% if property.reason.situation.name == 'Autorización' or property.reason.situation.name == 'autorización' %}#}
+{#            <a class="btn btn-info" href="{{ path('property_authorization', {'id': property.id}) }}">{{ property.reason.situation.name }}</a>#}
+{#        {% endif %}#}
 
-        {% if property.reason.situation.name == 'Encargo' or property.reason.situation.name == 'encargo' %}
-            <a class="btn btn-info" href="{{ path('property_charge', {'id': property.id}) }}">{{ property.reason.situation.name }}</a>
-        {% endif %}
+{#        {% if property.reason.situation.name == 'Encargo' or property.reason.situation.name == 'encargo' %}#}
+{#            <a class="btn btn-info" href="{{ path('property_charge', {'id': property.id}) }}">{{ property.reason.situation.name }}</a>#}
+{#        {% endif %}#}
 
-        <a class="btn btn-info" href="">Pedidos</a>
+{#        <a class="btn btn-info" href="">Pedidos</a>#}
     </div>
 </div>

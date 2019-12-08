@@ -3,7 +3,12 @@
 namespace App\Form;
 
 use App\Entity\Booking;
+use App\Entity\User;
+use App\Form\Type\DateTimePickerType;
+use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -12,28 +17,27 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 class BookingType extends AbstractType
 {
+    private $agency;
+
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $this->agency = $options['agency'];
         $builder
-            ->add('beginAt', DateType::class, [
-                'required' => true,
+            ->add('beginAt', DateTimePickerType::class, [
+//                'required' => true,
                 'label' => 'Fecha inicio',
-                'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
-                'html5' => false,
+//                'widget' => 'single_text',
+//                'html5' => false,
                 'attr' => [
-                    'class' => 'js-datepicker',
-                ],
+                    'class' => 'dateStart'
+                ]
             ])
-            ->add('endAt', DateType::class, [
+            ->add('endAt', DateTimePickerType::class, [
                 'required' => false,
                 'label' => 'Fecha fín',
-                'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
-                'html5' => false,
                 'attr' => [
-                    'class' => 'js-datepicker-empty',
-                ],
+                    'class' => 'dateStart'
+                ]
             ])
             ->add('title', TextType::class, [
                 'label' => 'Título'
@@ -41,7 +45,19 @@ class BookingType extends AbstractType
             ->add('description', TextareaType::class, [
                 'label' => 'Descripción'
             ])
-            ->add('commercial', CommercialSelectType::class)
+            ->add('commercial', EntityType::class, [
+                'label' => "Selecciona un Comercial",
+                'class' => User::class,
+                'placeholder' => "Selecciona un comercial",
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('u')
+                        ->innerJoin('u.agency', 'a')
+                        ->andWhere('a.name = :agency')
+                        ->setParameter('agency', $this->agency)
+                        ;
+                }
+            ])
+//            ->add('commercial', CommercialSelectType::class)
         ;
     }
 
@@ -49,6 +65,7 @@ class BookingType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Booking::class,
+            'agency' => null
         ]);
     }
 }

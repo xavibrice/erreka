@@ -7,6 +7,7 @@ use App\Entity\Orientation;
 use App\Entity\RateHousing;
 use App\Entity\ValuationStatus;
 use App\Entity\Window;
+use App\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -33,11 +34,11 @@ class RateHousingType extends AbstractType
         }
 
         $builder
-            ->add('visited', DateType::class, [
+            ->add('visited', DateTimePickerType::class, [
                 'label' => 'Fecha Valoración',
-                'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
-                'html5' => false,
+//                'widget' => 'single_text',
+//                'format' => 'dd-MM-yyyy',
+//                'html5' => false,
                 'attr' => [
                     'class' => $date,
                 ],

@@ -1,0 +1,14 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Edit Orientation{% endblock %}
+
+{% block content %}
+    <h1>Edit Orientation</h1>
+
+    {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
+
+    {{ include('admin/_back_link.html.twig', {'route': 'orientation_index'}) }}
+
+
+    {#    {{ include('admin/_delete_form.html.twig') }}#}
+{% endblock %}

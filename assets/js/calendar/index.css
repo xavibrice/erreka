@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Muli:400,900&display=swap");
+@import "~eonasdan-bootstrap-datetimepicker-bootstrap4beta/build/css/bootstrap-datetimepicker.css";
 
 #calendar-holder {
     font-family: "Muli", sans-serif;

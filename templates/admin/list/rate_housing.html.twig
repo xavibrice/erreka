@@ -1,0 +1,77 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Valoraciones{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800">Listado de valoraciones</h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                        <tr>
+                        <th>Fecha</th>
+                        <th>Asesor</th>
+                        <th>Zona</th>
+                        <th>Situación</th>
+                        <th>Motivo</th>
+                        <th>Calle</th>
+                        <th>Nº</th>
+                        <th>Piso</th>
+                        <th>Propietario</th>
+                        <th>Móvil</th>
+                        <th>Precio</th>
+                        <th>Dor</th>
+                        <th>WC</th>
+                        <th>M²</th>
+                        <th>Asc</th>
+                        <th>Calefacción</th>
+                        <th>Comentario</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rateHousing in rateHousings %}
+                        <tr class="clickable-row" data-href="{{ path('property_show', {'id': rateHousing.id}) }}">
+                            <td>{{ rateHousing.visited|date('d/m/Y') }}</td>
+                            <td>{{ rateHousing.property.commercial.fullName }}</td>
+                            <td>{{ rateHousing.property.street.zone.name }}</td>
+                            <td>
+                                {{ rateHousing.property.reason.situation.name }}
+{#                                {% if property.rateHousing %}#}
+{#                                    {{ property.rateHousing.bathrooms }}#}
+{#                                {% endif %}#}
+                            </td>
+                            <td>{{ rateHousing.property.reason.name }}</td>
+                            <td>{{ rateHousing.property.street }}</td>
+                            <td>{{ rateHousing.property.portal }}</td>
+                            <td>{{ rateHousing.property.floor }}</td>
+                            <td>{{ rateHousing.property.fullName }}</td>
+                            <td>{{ rateHousing.property.mobile }}</td>
+                            <td>{{ rateHousing.maxPrice }}</td>
+                            <td>{{ rateHousing.bedrooms }}</td>
+                            <td>{{ rateHousing.bathrooms }}</td>
+                            <td>{{ rateHousing.realMeters }}</td>
+                            <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
+                            <td>
+                                {% if rateHousing.heating %}
+                                    {{ rateHousing.heating.name }}
+                                {% endif %}
+                            </td>
+                            <td data-toggle="tooltip" data-placement="top" title="{{ rateHousing.comment }}">
+                                {{ rateHousing.comment|slice(0, 50) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}

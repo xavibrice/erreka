@@ -56,24 +56,24 @@ class Booking
         return $this->id;
     }
 
-    public function getBeginAt(): ?\DateTimeInterface
+    public function getBeginAt(): ?\DateTime
     {
         return $this->beginAt;
     }
 
-    public function setBeginAt(\DateTimeInterface $beginAt): self
+    public function setBeginAt(\DateTime $beginAt): self
     {
         $this->beginAt = $beginAt;
 
         return $this;
     }
 
-    public function getEndAt(): ?\DateTimeInterface
+    public function getEndAt(): ?\DateTime
     {
         return $this->endAt;
     }
 
-    public function setEndAt(?\DateTimeInterface $endAt = null): self
+    public function setEndAt(?\DateTime $endAt = null): self
     {
         $this->endAt = $endAt;
 

@@ -7,16 +7,48 @@
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // import  $ from 'jquery';
+import moment from "moment";
+
 require('bootstrap');
 require('datatables.net');
+require('moment');
+
 // require('datatables.net-bs4');
-require('bootstrap-datepicker');
+// require('bootstrap-datepicker');
 
 const $ = require('jquery');
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
 
 const autocomplete = require('autocomplete.js');
+
+require("eonasdan-bootstrap-datetimepicker-bootstrap4beta");
+//
+// $.extend(true, $.fn.datetimepicker.defaults, {
+//     icons: {
+//         time: 'far fa-clock',
+//         date: 'far fa-calendar',
+//         up: 'fas fa-arrow-up',
+//         down: 'fas fa-arrow-down',
+//         previous: 'fas fa-chevron-left',
+//         next: 'fas fa-chevron-right',
+//         today: 'fas fa-calendar-check',
+//         clear: 'far fa-trash-alt',
+//         close: 'far fa-times-circle'
+//     }
+// });
+//
+$(document).ready(function () {
+    $('.js-datepicker').datetimepicker({
+        format: moment().format('L'),
+        locale: 'es',
+    });
+
+    $(".js-datepicker-empty").datetimepicker({
+        format: moment().format('L'),
+        locale: 'es',
+    });
+});
 
 $(document).ready(function () {
     $('.js-client-autocomplete').each(function () {
@@ -221,73 +253,43 @@ function addRemoveButton ($panel) {
     $panel.append($panelFooter);
 }
 
-(function($){
-    $.fn.datepicker.dates['es'] = {
-        days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
-        daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
-        daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
-        months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
-        monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
-        today: "Hoy",
-        monthsTitle: "Meses",
-        clear: "Borrar",
-        weekStart: 1,
-        format: "dd/mm/yyyy"
-    };
-}(jQuery));
+// (function($){
+//     $.fn.datepicker.dates['es'] = {
+//         days: ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+//         daysShort: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"],
+//         daysMin: ["Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa"],
+//         months: ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"],
+//         monthsShort: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+//         today: "Hoy",
+//         monthsTitle: "Meses",
+//         clear: "Borrar",
+//         weekStart: 1,
+//         format: "dd/mm/yyyy"
+//     };
+// }(jQuery));
 
-var date = new Date();
-var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
-$(document).ready(function() {
-    // you may need to change this code if you are not using Bootstrap Datepicker
-    $('.js-datepicker').datepicker({
-        language: 'es',
-        format: 'dd-mm-yyyy',
-        todayHighlight: true,
-        autoclose: true,
-    });
-    $('.js-datepicker').datepicker('setDate', today);
-});
 
-$(document).ready(function() {
-    // you may need to change this code if you are not using Bootstrap Datepicker
-    $('.js-datepicker-empty').datepicker({
-        language: 'es',
-        format: 'dd-mm-yyyy',
-        todayHighlight: true,
-        autoclose: true,
-    });
-});
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     var calendarEl = document.getElementById('calendar-holder');
-//
-//     var calendar = new FullCalendar.Calendar(calendarEl, {
-//         defaultView: 'dayGridMonth',
-//         selectable: true,
-//         editable: true,
-//         locale: 'es',
-//         eventSources: [
-//             {
-//                 url: "/fc-load-events",
-//                 method: "POST",
-//                 extraParams: {
-//                     filters: JSON.stringify({})
-//                 },
-//                 failure: () => {
-//                     // alert("There was an error while fetching FullCalendar!");
-//                 },
-//             },
-//         ],
-//         header: {
-//             left: 'prev,next today',
-//             center: 'title',
-//             right: 'dayGridMonth,timeGridWeek,timeGridDay',
-//         },
-//         plugins: [ 'interaction', 'dayGrid', 'timeGrid' ], // https://fullcalendar.io/docs/plugin-index
-//         timeZone: 'UTC',
+// var date = new Date();
+// var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+// $(document).ready(function() {
+//     // you may need to change this code if you are not using Bootstrap Datepicker
+//     $('.js-datepicker').datepicker({
+//         language: 'es',
+//         format: 'dd-mm-yyyy',
+//         todayHighlight: true,
+//         autoclose: true,
 //     });
-//     calendar.render();
+//     $('.js-datepicker').datepicker('setDate', today);
+// });
+//
+// $(document).ready(function() {
+//     // you may need to change this code if you are not using Bootstrap Datepicker
+//     $('.js-datepicker-empty').datepicker({
+//         language: 'es',
+//         format: 'dd-mm-yyyy',
+//         todayHighlight: true,
+//         autoclose: true,
+//     });
 // });
 
 $("#property_situation").change(function () {

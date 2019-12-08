@@ -12,7 +12,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered dataTable table-hover" id="dataTable" width="100%" cellpadding="0">
+                <table class="table table-borderless dataTable table-sm table-hover" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
                         <th>Estado</th>
@@ -29,9 +29,9 @@
 {#                        <th>Precio</th>#}
 {#                        <th>Últ Llamada</th>#}
                         <th>Comentario</th>
-                        <th>Ver</th>
-                        <th>Editar</th>
-                        <th>Eliminar</th>
+{#                        <th>Ver</th>#}
+{#                        <th>Editar</th>#}
+{#                        <th>Eliminar</th>#}
                     </tr>
                     </thead>
                     <tbody>
@@ -71,17 +71,17 @@
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
                                         {{ property.comment|slice(0, 25) }}
                                     </td>
-                                    <td>
+{#                                    <td>#}
 {#                                                                                    {{ include('admin/_show_link.html.twig', {'route': 'property_to_developer_show', 'id': property.id }) }}#}
 {#                                        <a class="btn btn-primary btn-circle" href="{{ path('property_to_developer_show', {'id': property.id}) }}"><i class="fas fa-eye"></i></a>#}
-                                    </td>
-                                    <td>
+{#                                    </td>#}
+{#                                    <td>#}
 {#                                                                                    {{ include('admin/_edit_link.html.twig', {'route': 'news_edit', 'id': new.id }) }}#}
 {#                                        <a class="btn btn-primary btn-circle" href="{{ path('property_to_developer_edit', {'id': property.id}) }}"><i class="fas fa-pencil-alt"></i></a>#}
-                                    </td>
-                                    <td>
+{#                                    </td>#}
+{#                                    <td>#}
                                         {#                                            {{ include('admin/_delete_form.html.twig', {'route': 'news_delete', 'entity': new, 'count': 0}) }}#}
-                                    </td>
+{#                                    </td>#}
                                 </tr>
                             {% endif %}
                         {% endfor %}
