@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Charge;
+use App\Form\ChargeType;
 use App\Entity\Images;
 use App\Entity\NoteNew;
 use App\Entity\Property;
@@ -74,7 +76,6 @@ class PropertyController extends AbstractController
 
                 $property->addImage($image);
             }
-
 
             $em->persist($property);
             $em->flush();
@@ -165,6 +166,7 @@ class PropertyController extends AbstractController
     public function rateHousingEdit(Request $request, RateHousing $rateHousing): Response
     {
         $em = $this->getDoctrine()->getManager();
+        $typeCharges = $em->getRepository(\App\Entity\ChargeType::class)->findAll();
         $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
 
@@ -176,17 +178,38 @@ class PropertyController extends AbstractController
 
         return $this->render('admin/property/edit_rate_housing.html.twig', [
             'form' => $form->createView(),
+            'typeCharges' => $typeCharges,
             'rateHousing' => $rateHousing
         ]);
     }
 
     /**
-     * @Route("/autorizacion/{id}", name="property_authorization", methods={"GET", "POST"})
-     * @Route("/encargo/{id}", name="property_charge", methods={"GET", "POST"})
+     * @Route("/encargo/{id}/{idChargeType}", name="property_authorization", methods={"GET", "POST"})
+//     * @Route("/encargo/{id}/{idChargeType}", name="property_charge", methods={"GET", "POST"})
      */
-    public function rateAuthorizationCharge(Request $request, Property $property): Response
+    public function charge(Request $request, Property $property, $idChargeType): Response
     {
         $em = $this->getDoctrine()->getManager();
+
+        $chargeType = $em->getRepository(\App\Entity\ChargeType::class)->find($idChargeType);
+
+        $charge = new Charge();
+        $formCharge = $this->createForm(ChargeType::class, $charge);
+        $formCharge->handleRequest($request);
+        if ($formCharge->isSubmitted() && $formCharge->isValid()) {
+            $charge->setRateHousing($property->getRateHousing());
+            $charge->setChargeType($chargeType);
+
+            $em->persist($charge);
+            $em->flush();
+
+            $this->addFlash('success', 'Encargo creado correctamente');
+
+            return $this->redirectToRoute('property_authorization', [
+                'id' => $property->getId(),
+                'idChargeType' => $idChargeType
+            ]);
+        }
 
         $propertyReduction = new PropertyReduction();
         $propertyReduction->setProperty($property);
@@ -225,7 +248,9 @@ class PropertyController extends AbstractController
         return $this->render('admin/property/authorization_charge/authorization_charge.html.twig', [
             'form' => $form->createView(),
             'formVisit' => $formVisit->createView(),
-            'property' => $property
+            'formCharge' => $formCharge->createView(),
+            'property' => $property,
+            'chargeType' => $chargeType
         ]);
     }
 

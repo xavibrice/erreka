@@ -3,6 +3,7 @@
 namespace App\Form\Collection;
 
 use App\Entity\PropertyReduction;
+use App\Form\Type\DateTimePickerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
@@ -17,22 +18,21 @@ class PropertyReductionType extends AbstractType
             ->add('price', MoneyType::class, [
                 'label' => 'Precio'
             ])
-            ->add('reductionDate', DateType::class, [
+            ->add('reductionDate', DateTimePickerType::class, [
                 'label' => 'Fecha de rebaja',
-                'widget' => 'single_text',
-//                'data' => new \DateTime()
-                'format' => 'dd-mm-yyyy',
-                'html5' => false,
+//                'widget' => 'single_text',
+//                'format' => 'dd-mm-yyyy',
+//                'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
                 ],
             ])
-            ->add('reductionNextDate', DateType::class, [
+            ->add('reductionNextDate', DateTimePickerType::class, [
                 'label' => 'Fecha próxima rebaja',
-                'widget' => 'single_text',
-                'required' => false,
-                'format' => 'dd-mm-yyyy',
-                'html5' => false,
+//                'widget' => 'single_text',
+//                'required' => false,
+//                'format' => 'dd-mm-yyyy',
+//                'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker-empty',
                 ],

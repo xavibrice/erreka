@@ -59,6 +59,24 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary ">{{ chargeType.name }}</h6>
+                </div>
+                <div class="card-body">
+                    {% if property.rateHousing.charges %}
+                        {{ form_start(formCharge) }}
+                        {{ form_widget(formCharge) }}
+                        <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+                        {{ form_end(formCharge) }}
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-4 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -89,7 +107,7 @@
                     </div>
                 {% else %}
                     <div class="alert alert-info">
-                        No hay rebajas
+                        No hay visitas
                     </div>
                 {% endfor %}
             </div>

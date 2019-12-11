@@ -6,6 +6,7 @@ use App\Controller\ClienteSelectType;
 use App\Entity\Client;
 use App\Entity\Property;
 use App\Entity\Visit;
+use App\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
@@ -19,12 +20,12 @@ class VisitType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('visited', DateType::class, [
+            ->add('visited', DateTimePickerType::class, [
                 'required' => true,
                 'label' => 'Fecha Visita',
-                'widget' => 'single_text',
-                'format' => 'dd-MM-yyyy',
-                'html5' => false,
+//                'widget' => 'single_text',
+//                'format' => 'dd-MM-yyyy',
+//                'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
                 ]

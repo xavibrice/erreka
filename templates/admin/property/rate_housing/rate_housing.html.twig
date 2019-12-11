@@ -9,65 +9,39 @@
     <div class="row">
         <div class="col-12 mb-4">
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Valoración</h6>
-                </div>
+{#                <div class="card-header py-3">#}
+{#                    <h6 class="m-0 font-weight-bold text-primary">Valoración</h6>#}
+{#                </div>#}
                 <div class="card-body">
                     {% if property.rateHousing %}
-
                         <div class="table-responsive">
                             <table class="table table-borderless">
                                 <tbody>
                                 <tr>
-                                    <th>Situacion</th>
-                                    <td>{{ property.reason.situation.name }}</td>
-                                    <th>Motivo</th>
-                                    <td>{{ property.reason.name }}</td>
-                                    <th>Asesor</th>
-                                    <td>{{ property.commercial.fullName }}</td>
-                                    <th>Zona</th>
-                                    <td>{{ property.street.zone.name }}</td>
-{#                                    <th>Creado</th>#}
-{#                                    <td>{{ property.created|date('d/m/Y') }}</td>#}
-{#                                    <th>Precio</th>#}
-{#                                    <td>{{ property.price }}</td>#}
+                                    <th class="text-center bg-light text-dark" colspan="8">VALORACIÓN</th>
                                 </tr>
                                 <tr>
-                                    <th>Propietario</th>
-                                    <td>{{ property.fullName }}</td>
-{#                                    <th>Tipo de propiedad</th>#}
-{#                                    <td>#}
-{#                                        {% if property.typeProperty is not empty %}#}
-{#                                            {{ property.typeProperty.name }}#}
-{#                                        {% endif %}#}
-{#                                    </td>#}
-                                    <th>Móvil</th>
-                                    <td>{{ property.mobile }}</td>
-                                    <th>Correo</th>
-                                    <td>{{ property.email }}</td>
-                                    <th>Calle</th>
-                                    <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
+                                    <th>Propietario / Piso</th>
+                                    <td colspan="7">{{ property.fullName }} / {{ property.street.name }} {{ property.portal }} {{ property.floor }}</td>
                                 </tr>
                                 <tr>
-                                    <th colspan="2">Comentario Valoración</th>
-                                    <td colspan="6">{{ property.rateHousing.comment }}</td>
+                                    <th>Comentario Vivienda</th>
+                                    <td colspan="7">{{ property.rateHousing.comment }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="text-center bg-light" colspan="8">INFORME</th>
+                                    <th class="text-center bg-light text-dark" colspan="8">INFORME</th>
                                 </tr>
                                 <tr>
-                                    <th>Fecha Valoración</th>
+                                    <th>Fecha V</th>
                                     <td>{{ property.rateHousing.visited|date('d/m/Y') }}</td>
-                                    <th>Precio Mínimo</th>
-                                    <td>{{ property.rateHousing.minPrice }}</td>
-                                    <th>Precio Máximo</th>
+                                    <th>P. Máximo </th>
                                     <td>{{ property.rateHousing.maxPrice }}</td>
+                                    <th>P. Mínimo</th>
+                                    <td>{{ property.rateHousing.minPrice }}</td>
+                                </tr>
+                                <tr>
                                     <th>Dormitorios</th>
                                     <td>{{ property.rateHousing.bedrooms }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Baños</th>
-                                    <td>{{ property.rateHousing.bathrooms }}</td>
                                     <th>Estado Baño</th>
                                     <td>
                                         {% if property.rateHousing.bathroomState is not empty %}
@@ -84,6 +58,8 @@
                                     <td>{{ property.rateHousing.realMeters }}</td>
                                 </tr>
                                 <tr>
+                                    <th>Baños</th>
+                                    <td>{{ property.rateHousing.bathrooms }}</td>
                                     <th>Orientación</th>
                                     <td>
                                         {% if property.rateHousing.orientation is not empty %}
@@ -155,17 +131,20 @@
                                     <td>{{ property.rateHousing.disabledAccess ? 'Si' : 'No'}}</td>
                                     <th>Cota Zero</th>
                                     <td>{{ property.rateHousing.zeroDimension ? 'Si' : 'No'}}</td>
-                                    <th>Ascensor</th>
-                                    <td>{{ property.rateHousing.elevator ? 'Si' : 'No'}}</td>
+
                                 </tr>
                                 <tr>
                                     <th class="text-center bg-light" colspan="8">EDIFICIO</th>
                                 </tr>
                                 <tr>
+                                    <th>Ascensor</th>
+                                    <td>{{ property.rateHousing.elevator ? 'Si' : 'No'}}</td>
                                     <th>Antigüedad</th>
                                     <td>{{ property.rateHousing.antiquity }}</td>
                                     <th>Gastos Comunidad</th>
                                     <td>{{ property.rateHousing.communityExpenses }}</td>
+                                </tr>
+                                <tr>
                                     <th>Derrama Pendiente</th>
                                     <td title="{{ property.rateHousing.pendingSpills }}">{{ property.rateHousing.pendingSpills|slice(0, 50) }}</td>
                                     <th>Importe derrama Pendiente</th>
@@ -173,10 +152,12 @@
                                 </tr>
                                 <tr>
                                     <th colspan="2">Derrama Futura</th>
-                                    <td title="{{ property.rateHousing.spillsFuture }}" colspan="2">{{ property.rateHousing.spillsFuture|slice(0, 50) }}</td>
-                                    <th>Administrador de Fincas</th>
+                                    <td title="{{ property.rateHousing.spillsFuture }}" colspan="8">{{ property.rateHousing.spillsFuture|slice(0, 50) }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Administrador</th>
                                     <td>{{ property.rateHousing.administrator }}</td>
-                                    <th>Móvil / Teléfono</th>
+                                    <th>Teléfono</th>
                                     <td>{{ property.rateHousing.mobileAdministrator }}</td>
                                 </tr>
                                 </tbody>
@@ -194,10 +175,11 @@
                     {% endif %}
                 </div>
                 <div class="card-footer">
-                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
+{#                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
                     {% if property.rateHousing %}
                         {{ include('admin/_edit_link.html.twig', {'route': 'property_rate_housing_edit', 'id': property.rateHousing.id, 'button_label': 'Editar'}) }}
                     {% endif %}
+{#                    <a href="{{ path('property_rate_housing_edit') }}"></a>#}
                 </div>
             </div>
         </div>

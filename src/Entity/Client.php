@@ -120,9 +120,15 @@ class Client
      */
     private $visits;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Charge", mappedBy="client")
+     */
+    private $charges;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
+        $this->charges = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -383,6 +389,37 @@ class Client
             // set the owning side to null (unless already changed)
             if ($visit->getClient() === $this) {
                 $visit->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Charge[]
+     */
+    public function getCharges(): Collection
+    {
+        return $this->charges;
+    }
+
+    public function addCharge(Charge $charge): self
+    {
+        if (!$this->charges->contains($charge)) {
+            $this->charges[] = $charge;
+            $charge->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharge(Charge $charge): self
+    {
+        if ($this->charges->contains($charge)) {
+            $this->charges->removeElement($charge);
+            // set the owning side to null (unless already changed)
+            if ($charge->getClient() === $this) {
+                $charge->setClient(null);
             }
         }
 

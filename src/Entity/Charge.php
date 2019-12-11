@@ -5,9 +5,9 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ExclusiveRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\ChargeRepository")
  */
-class Exclusive
+class Charge
 {
     /**
      * @ORM\Id()
@@ -15,11 +15,6 @@ class Exclusive
      * @ORM\Column(type="integer")
      */
     private $id;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $comment;
 
     /**
      * @ORM\Column(type="boolean")
@@ -37,25 +32,18 @@ class Exclusive
     private $price_ok;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\RateHousing", inversedBy="charges")
      */
-    private $price_actual;
+    private $rate_housing;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ChargeType", inversedBy="charges")
+     */
+    private $charge_type;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getComment(): ?string
-    {
-        return $this->comment;
-    }
-
-    public function setComment(?string $comment): self
-    {
-        $this->comment = $comment;
-
-        return $this;
     }
 
     public function getHouseKey(): ?bool
@@ -94,15 +82,28 @@ class Exclusive
         return $this;
     }
 
-    public function getPriceActual()
+    public function getRateHousing(): ?RateHousing
     {
-        return $this->price_actual;
+        return $this->rate_housing;
     }
 
-    public function setPriceActual($price_actual): self
+    public function setRateHousing(?RateHousing $rate_housing): self
     {
-        $this->price_actual = $price_actual;
+        $this->rate_housing = $rate_housing;
 
         return $this;
     }
+
+    public function getChargeType(): ?ChargeType
+    {
+        return $this->charge_type;
+    }
+
+    public function setChargeType(?ChargeType $charge_type): self
+    {
+        $this->charge_type = $charge_type;
+
+        return $this;
+    }
+
 }

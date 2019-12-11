@@ -23,17 +23,17 @@
                         <th>Propietario</th>
                         <th>Móvil</th>
                         <th>Precio</th>
-                        <th>Dor</th>
-                        <th>WC</th>
+                        <th>D</th>
+                        <th>B</th>
                         <th>M²</th>
-                        <th>Asc</th>
-                        <th>Calefacción</th>
+                        <th>A</th>
+                        <th>Fotos</th>
                         <th>Comentario</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for rateHousing in rateHousings %}
-                        <tr class="clickable-row" data-href="{{ path('property_show', {'id': rateHousing.id}) }}">
+                        <tr class="clickable-row" data-href="{{ path('property_show', {'id': rateHousing.property.id }) }}">
                             <td>{{ rateHousing.visited|date('d/m/Y') }}</td>
                             <td>{{ rateHousing.property.commercial.fullName }}</td>
                             <td>{{ rateHousing.property.street.zone.name }}</td>
@@ -54,11 +54,12 @@
                             <td>{{ rateHousing.bathrooms }}</td>
                             <td>{{ rateHousing.realMeters }}</td>
                             <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
-                            <td>
-                                {% if rateHousing.heating %}
-                                    {{ rateHousing.heating.name }}
-                                {% endif %}
-                            </td>
+{#                            <td>#}
+{#                                {% if rateHousing.heating %}#}
+{#                                    {{ rateHousing.heating.name }}#}
+{#                                {% endif %}#}
+{#                            </td>#}
+                            <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ rateHousing.comment }}">
                                 {{ rateHousing.comment|slice(0, 50) }}
                             </td>

@@ -9,9 +9,12 @@
             {{ include('admin/property/_form_rate_housing.html.twig', {'button_label': 'Actualizar'}) }}
         </div>
         <div class="card-footer">
-            {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
+{#            {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
             <a class="btn btn-info" href="{{ path('property_show', {'id': rateHousing.property.id }) }}">Ver noticia</a>
             <a class="btn btn-info" href="{{ path('property_rate_housing_new_show', {'id': rateHousing.property.id }) }}">Ver valoración</a>
+            {% for typeCharge in typeCharges %}
+                <a class="btn btn-primary" href="{{ path('property_authorization', {'id': rateHousing.property.id, 'idChargeType': typeCharge.id }) }}">{{ typeCharge.name }}</a>
+            {% endfor %}
         </div>
     </div>
 {% endblock %}

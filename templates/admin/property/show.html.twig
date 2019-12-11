@@ -15,29 +15,29 @@
         <!-- Content Column -->
         <div class="col-md-12 mb-4">
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles noticias</h6>
-                    {#<h6 class="m-0 font-weight-bold text-primary float-right">
-                        <a class="btn btn-success" href="">Crear Noticia</a>
-                    </h6>#}
-                </div>
+{#                <div class="card-header py-3">#}
+{#                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles noticias</h6>#}
+{#                </div>#}
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-borderless">
                             <tbody>
                             <tr>
-                                <th>Situacion</th>
-                                <td>{{ property.reason.situation.name }}</td>
-                                <th>Motivo</th>
-                                <td>{{ property.reason.name }}</td>
-                                <th>Creado</th>
-                                <td>{{ property.created|date('d/m/Y') }}</td>
-                                <th>Precio</th>
-                                <td>{{ property.price }}</td>
+                                <th class="text-center bg-light" colspan="8">DETALLES</th>
                             </tr>
                             <tr>
-                                <th>Propietario</th>
-                                <td>{{ property.fullName }}</td>
+                                <th>Fecha</th>
+                                <td>{{ property.created|date('m/d/Y') }}</td>
+                                <th>Asesor</th>
+                                <td>{{ property.commercial.fullName }}</td>
+                                <th>Motivo</th>
+                                <td>{{ property.reason.name }}</td>
+                                <th>Referencia</th>
+                                <td>1000</td>
+{#                                <th>Precio</th>#}
+{#                                <td>{{ property.price }}</td>#}
+                            </tr>
+                            <tr>
                                 <th>Tipo de propiedad</th>
                                 <td>
                                     {% if property.typeProperty is not empty %}
@@ -50,24 +50,22 @@
                                 <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
                             </tr>
                             <tr>
-
+                                <th>Propietario</th>
+                                <td>{{ property.fullName }}</td>
                                 <th>Móvil/Teléfono</th>
                                 <td>{{ property.mobile }}</td>
                                 <th>Correo</th>
                                 <td>{{ property.email }}</td>
                             </tr>
                             <tr>
-
-                            </tr>
-                            <tr>
                                 <th>URL</th>
-                                <td colspan="7">
+                                <td colspan="8">
                                     <a target="_blank" href="{{ property.url }}">{{ property.url }}</a>
                                 </td>
                             </tr>
                             <tr>
                                 <th>Comentario</th>
-                                <td colspan="7">{{ property.comment }}</td>
+                                <td colspan="8">{{ property.comment }}</td>
                             </tr>
                             </tbody>
                         </table>
@@ -137,7 +135,7 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">Notas noticia a desarrollar </h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Notas  </h6>
                     <h6 class="m-0 font-weight-bold text-primary float-right">Proxima llamada: {{ property.noteNew.last }}</h6>
                 </div>
                 <div class="card-body">

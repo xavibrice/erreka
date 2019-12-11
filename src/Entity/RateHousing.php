@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -201,6 +203,16 @@ class RateHousing
      * @ORM\ManyToOne(targetEntity="App\Entity\EnergyCertificate", inversedBy="rateHousings")
      */
     private $energy_certificate;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Charge", mappedBy="rate_housing")
+     */
+    private $charges;
+
+    public function __construct()
+    {
+        $this->charges = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -657,6 +669,37 @@ class RateHousing
     public function setEnergyCertificate(?EnergyCertificate $energy_certificate): self
     {
         $this->energy_certificate = $energy_certificate;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Charge[]
+     */
+    public function getCharges(): Collection
+    {
+        return $this->charges;
+    }
+
+    public function addCharge(Charge $charge): self
+    {
+        if (!$this->charges->contains($charge)) {
+            $this->charges[] = $charge;
+            $charge->setRateHousing($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharge(Charge $charge): self
+    {
+        if ($this->charges->contains($charge)) {
+            $this->charges->removeElement($charge);
+            // set the owning side to null (unless already changed)
+            if ($charge->getRateHousing() === $this) {
+                $charge->setRateHousing(null);
+            }
+        }
 
         return $this;
     }
