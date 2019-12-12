@@ -17,7 +17,7 @@ class PropertyReduction
     private $id;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=0)
      */
     private $price;
 
@@ -37,7 +37,7 @@ class PropertyReduction
     private $reduction_next_date;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2)
+     * @ORM\Column(type="decimal", precision=10, scale=0)
      */
     private $last_price;
 

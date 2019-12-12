@@ -21,64 +21,64 @@
                                     <th class="text-center bg-light text-dark" colspan="8">VALORACIÓN</th>
                                 </tr>
                                 <tr>
-                                    <th>Propietario / Piso</th>
+                                    <th class="text-right">Propietario / Piso</th>
                                     <td colspan="7">{{ property.fullName }} / {{ property.street.name }} {{ property.portal }} {{ property.floor }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Comentario Vivienda</th>
+                                    <th class="text-right">Comentario Vivienda</th>
                                     <td colspan="7">{{ property.rateHousing.comment }}</td>
                                 </tr>
                                 <tr>
                                     <th class="text-center bg-light text-dark" colspan="8">INFORME</th>
                                 </tr>
                                 <tr>
-                                    <th>Fecha V</th>
+                                    <th class="text-right">Fecha V</th>
                                     <td>{{ property.rateHousing.visited|date('d/m/Y') }}</td>
-                                    <th>P. Máximo </th>
+                                    <th class="text-right">P. Máximo </th>
                                     <td>{{ property.rateHousing.maxPrice }}</td>
-                                    <th>P. Mínimo</th>
+                                    <th class="text-right">P. Mínimo</th>
                                     <td>{{ property.rateHousing.minPrice }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Dormitorios</th>
+                                    <th class="text-right">Dormitorios</th>
                                     <td>{{ property.rateHousing.bedrooms }}</td>
-                                    <th>Estado Baño</th>
+                                    <th class="text-right">Estado Baño</th>
                                     <td>
                                         {% if property.rateHousing.bathroomState is not empty %}
                                             {{ property.rateHousing.bathroomState.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Cocina / Estado</th>
+                                    <th class="text-right">Cocina / Estado</th>
                                     <td>
                                         {% if property.rateHousing.beenCooking is not empty %}
                                             {{ property.rateHousing.beenCooking.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Metros²</th>
+                                    <th class="text-right">Metros²</th>
                                     <td>{{ property.rateHousing.realMeters }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Baños</th>
+                                    <th class="text-right">Baños</th>
                                     <td>{{ property.rateHousing.bathrooms }}</td>
-                                    <th>Orientación</th>
+                                    <th class="text-right">Orientación</th>
                                     <td>
                                         {% if property.rateHousing.orientation is not empty %}
                                             {{ property.rateHousing.orientation.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Cert. Energét.</th>
+                                    <th class="text-right">Cert. Energét.</th>
                                     <td>
                                         {% if property.rateHousing.energyCertificate is not empty %}
                                             {{ property.rateHousing.energyCertificate.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Ventana</th>
+                                    <th class="text-right">Ventana</th>
                                     <td>
                                         {% if property.rateHousing.window is not empty %}
                                             {{ property.rateHousing.window.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Estado Ventana</th>
+                                    <th class="text-right">Estado Ventana</th>
                                     <td>
                                         {% if property.rateHousing.windowsState is not empty %}
                                             {{ property.rateHousing.windowsState.name }}
@@ -86,25 +86,25 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th>Puerta</th>
+                                    <th class="text-right">Puerta</th>
                                     <td>
                                         {% if property.rateHousing.door is not empty %}
                                             {{ property.rateHousing.door.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Estado Puerta</th>
+                                    <th class="text-right">Estado Puerta</th>
                                     <td>
                                         {% if property.rateHousing.doorsState is not empty %}
                                             {{ property.rateHousing.doorsState.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Estado Suelo</th>
+                                    <th class="text-right">Estado Suelo</th>
                                     <td>
                                         {% if property.rateHousing.groundState is not empty %}
                                             {{ property.rateHousing.groundState.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Calefacción</th>
+                                    <th class="text-right">Calefacción</th>
                                     <td>
                                         {% if property.rateHousing.heating is not empty %}
                                             {{ property.rateHousing.heating.name }}
@@ -115,21 +115,21 @@
                                     <th class="text-center bg-light" colspan="8">EXTRAS</th>
                                 </tr>
                                 <tr>
-                                    <th>Terraza</th>
+                                    <th class="text-right">Terraza</th>
                                     <td>{{ property.rateHousing.terrace ? 'Si' : 'No' }}</td>
-                                    <th>Baño en Suit</th>
+                                    <th class="text-right">Baño en Suit</th>
                                     <td>{{ property.rateHousing.suitBathroom ? 'Si' : 'No'}}</td>
-                                    <th>Videoportero</th>
+                                    <th class="text-right">Videoportero</th>
                                     <td>{{ property.rateHousing.videoIntercom ? 'Si' : 'No'}}</td>
-                                    <th>Trastero</th>
+                                    <th class="text-right">Trastero</th>
                                     <td>{{ property.rateHousing.storageRoom ? 'Si' : 'No'}}</td>
                                 </tr>
                                 <tr>
-                                    <th>Garaje Directo</th>
+                                    <th class="text-right">Garaje Directo</th>
                                     <td>{{ property.rateHousing.directGarage ? 'Si' : 'No'}}</td>
-                                    <th>Acceso Minusválido</th>
+                                    <th class="text-right">Acceso Minusválido</th>
                                     <td>{{ property.rateHousing.disabledAccess ? 'Si' : 'No'}}</td>
-                                    <th>Cota Zero</th>
+                                    <th class="text-right">Cota Zero</th>
                                     <td>{{ property.rateHousing.zeroDimension ? 'Si' : 'No'}}</td>
 
                                 </tr>
@@ -137,27 +137,27 @@
                                     <th class="text-center bg-light" colspan="8">EDIFICIO</th>
                                 </tr>
                                 <tr>
-                                    <th>Ascensor</th>
+                                    <th class="text-right">Ascensor</th>
                                     <td>{{ property.rateHousing.elevator ? 'Si' : 'No'}}</td>
-                                    <th>Antigüedad</th>
-                                    <td>{{ property.rateHousing.antiquity }}</td>
-                                    <th>Gastos Comunidad</th>
-                                    <td>{{ property.rateHousing.communityExpenses }}</td>
+                                    <th class="text-right">Antigüedad</th>
+                                    <td>{{ property.rateHousing.antiquity }} Años</td>
+                                    <th class="text-right">Gastos Mensuales Comunidad</th>
+                                    <td>{{ property.rateHousing.communityExpenses }} €</td>
                                 </tr>
                                 <tr>
-                                    <th>Derrama Pendiente</th>
-                                    <td title="{{ property.rateHousing.pendingSpills }}">{{ property.rateHousing.pendingSpills|slice(0, 50) }}</td>
-                                    <th>Importe derrama Pendiente</th>
-                                    <td>{{ property.rateHousing.amountPendingSpills }}</td>
+                                    <th class="text-right">Derrama Pendiente</th>
+                                    <td title="{{ property.rateHousing.pendingSpills }}">{{ property.rateHousing.pendingSpills|slice(0, 40) }}</td>
+                                    <th class="text-right">Importe derrama Pendiente</th>
+                                    <td>{{ property.rateHousing.amountPendingSpills }} €</td>
                                 </tr>
                                 <tr>
-                                    <th colspan="2">Derrama Futura</th>
-                                    <td title="{{ property.rateHousing.spillsFuture }}" colspan="8">{{ property.rateHousing.spillsFuture|slice(0, 50) }}</td>
+                                    <th class="text-right">Derrama Futura</th>
+                                    <td title="{{ property.rateHousing.spillsFuture }}">{{ property.rateHousing.spillsFuture|slice(0, 40) }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Administrador</th>
+                                    <th class="text-right">Administrador</th>
                                     <td>{{ property.rateHousing.administrator }}</td>
-                                    <th>Teléfono</th>
+                                    <th class="text-right">Teléfono</th>
                                     <td>{{ property.rateHousing.mobileAdministrator }}</td>
                                 </tr>
                                 </tbody>

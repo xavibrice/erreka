@@ -29,12 +29,12 @@ class RateHousing
     private $comment;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
      */
     private $min_price;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
      */
     private $max_price;
 

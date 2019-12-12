@@ -17,35 +17,28 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <th>Situacion</th>
-                                    <td>{{ property.reason.situation.name }}</td>
-                                    <th>Motivo</th>
-                                    <td>{{ property.reason.name }}</td>
-                                    <th>Creado</th>
+                                    <th class="text-right">Propietario</th>
+                                    <td>{{ property.fullName }}</td>
+                                    <th class="text-right">Fecha</th>
                                     <td>{{ property.created|date('d/m/Y') }}</td>
-                                    <th>Precio</th>
+                                    <th class="text-right">Precio</th>
                                     <td>{{ property.price }}</td>
                                 </tr>
                                 <tr>
-                                    <th>Propietario</th>
-                                    <td>{{ property.fullName }}</td>
-                                    <th>Tipo de propiedad</th>
+                                    <th class="text-right">Tipo de propiedad</th>
                                     <td>
                                         {% if property.typeProperty is not empty %}
                                             {{ property.typeProperty.name }}
                                         {% endif %}
                                     </td>
-                                    <th>Zona</th>
+                                    <th class="text-right">Zona</th>
                                     <td>{{ property.street.zone.name }}</td>
-                                    <th>Calle</th>
+                                    <th class="text-right">Calle</th>
                                     <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
                                 </tr>
                                 <tr>
-
-                                    <th>Móvil/Teléfono</th>
+                                    <th class="text-right">Móvil/Teléfono</th>
                                     <td>{{ property.mobile }}</td>
-                                    <th>Correo</th>
-                                    <td>{{ property.email }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -65,87 +58,92 @@
                     <h6 class="m-0 font-weight-bold text-primary ">{{ chargeType.name }}</h6>
                 </div>
                 <div class="card-body">
-                    {% if property.rateHousing.charges %}
-                        {{ form_start(formCharge) }}
-                        {{ form_widget(formCharge) }}
-                        <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
-                        {{ form_end(formCharge) }}
+                    {% if property.rateHousing.charges.empty %}
+                        <h1>Vacio</h1>
+                        {% else %}
+                        <h1>Hay encargo</h1>
+                            {% for charge in property.rateHousing.charges %}
+                                Precio: {{ charge.price }} € <br>
+                                Precio Ok: {{ charge.priceOk }} € <br>
+                                Llaves: {{ charge.houseKey ? 'Si' : 'No' }} <br>
+                            {% endfor %}
                     {% endif %}
-
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary ">Visitas</h6>
-                </div>
-                <div class="card-body">
-                    <div class="m-2">
-{#                        {{ include('admin/_form.html.twig', {'form': formVisit}) }}#}
-                        {{ form_start(formVisit) }}
-                        {{ form_widget(formVisit) }}
-                        <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
-                        {{ form_end(formVisit) }}
+    {% if not property.rateHousing.charges.empty %}
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary ">Visitas</h6>
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-8 mb-4">
-            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
-                {% for visit in property.visits %}
-                    <div class="col-md-12 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                {{ visit.visited|date('d-m-Y') }}
-                                {{ visit.price }}
-                                {{ visit.comment }}
-                            </div>
+                    <div class="card-body">
+                        <div class="m-2">
+                            {#                        {{ include('admin/_form.html.twig', {'form': formVisit}) }}#}
+                            {{ form_start(formVisit) }}
+                            {{ form_widget(formVisit) }}
+                            <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+                            {{ form_end(formVisit) }}
                         </div>
                     </div>
-                {% else %}
-                    <div class="alert alert-info">
-                        No hay visitas
-                    </div>
-                {% endfor %}
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary ">Importes Rebajados</h6>
-                </div>
-                <div class="card-body">
-                    <div class="m-2">
-                        {{ include('admin/_form.html.twig') }}
-                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-md-8 mb-4">
-            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
-                {% for propertyReduction in property.propertyReductions %}
-                    <div class="col-md-12 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                {{ propertyReduction.reductionDate|date('d-m-Y') }}
-                                {{ propertyReduction.reductionNextDate|date('d-m-Y') }}
-                                {{ propertyReduction.price }}
-                                {{ propertyReduction.lastPrice }}
-                                {{ propertyReduction.percentage }}
+            <div class="col-md-8 mb-4">
+                <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
+                    {% for visit in property.visits %}
+                        <div class="col-md-12 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    {{ visit.visited|date('d-m-Y') }}
+                                    {{ visit.price }}
+                                    {{ visit.comment }}
+                                </div>
                             </div>
                         </div>
-                    </div>
-                {% else %}
-                    <div class="alert alert-info">
-                        No hay rebajas
-                    </div>
-                {% endfor %}
+                    {% else %}
+                        <div class="alert alert-info">
+                            No hay visitas
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
         </div>
-    </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary ">Importes Rebajados</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="m-2">
+                            {{ include('admin/_form.html.twig') }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 mb-4">
+                <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
+                    {% for propertyReduction in property.propertyReductions %}
+                        <div class="col-md-12 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    {{ propertyReduction.reductionDate|date('d-m-Y') }}
+                                    {{ propertyReduction.reductionNextDate|date('d-m-Y') }}
+                                    {{ propertyReduction.price }}
+                                    {{ propertyReduction.lastPrice }}
+                                    {{ propertyReduction.percentage }}
+                                </div>
+                            </div>
+                        </div>
+                    {% else %}
+                        <div class="alert alert-info">
+                            No hay rebajas
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

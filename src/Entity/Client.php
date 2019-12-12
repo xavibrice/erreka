@@ -26,7 +26,7 @@ class Client
     private $full_name;
 
     /**
-     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
      */
     private $price;
 

@@ -26,50 +26,49 @@
                                 <th class="text-center bg-light" colspan="8">DETALLES</th>
                             </tr>
                             <tr>
-                                <th>Fecha</th>
+                                <th class="text-right">Fecha</th>
                                 <td>{{ property.created|date('m/d/Y') }}</td>
-                                <th>Asesor</th>
+                                <th class="text-right">Asesor</th>
                                 <td>{{ property.commercial.fullName }}</td>
-                                <th>Motivo</th>
+                                <th class="text-right">Motivo</th>
                                 <td>{{ property.reason.name }}</td>
-                                <th>Referencia</th>
+                                <th class="text-right">Referencia</th>
                                 <td>1000</td>
 {#                                <th>Precio</th>#}
 {#                                <td>{{ property.price }}</td>#}
                             </tr>
                             <tr>
-                                <th>Tipo de propiedad</th>
+                                <th class="text-right">Tipo de propiedad</th>
                                 <td>
                                     {% if property.typeProperty is not empty %}
                                         {{ property.typeProperty.name }}
                                     {% endif %}
                                 </td>
-                                <th>Zona</th>
+                                <th class="text-right">Zona</th>
                                 <td>{{ property.street.zone.name }}</td>
-                                <th>Calle</th>
+                                <th class="text-right">Calle</th>
                                 <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
                             </tr>
                             <tr>
-                                <th>Propietario</th>
+                                <th class="text-right">Propietario</th>
                                 <td>{{ property.fullName }}</td>
-                                <th>Móvil/Teléfono</th>
+                                <th class="text-right">Móvil/Teléfono</th>
                                 <td>{{ property.mobile }}</td>
-                                <th>Correo</th>
+                                <th class="text-right">Correo</th>
                                 <td>{{ property.email }}</td>
                             </tr>
                             <tr>
-                                <th>URL</th>
+                                <th class="text-right">URL</th>
                                 <td colspan="8">
                                     <a target="_blank" href="{{ property.url }}">{{ property.url }}</a>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Comentario</th>
+                                <th class="text-right">Comentario</th>
                                 <td colspan="8">{{ property.comment }}</td>
                             </tr>
                             </tbody>
                         </table>
-
                     </div>
                     <div class="compact-gallery">
                         <div class="row">
@@ -87,10 +86,9 @@
                             {% endfor %}
                         </div>
                     </div>
-
                 </div>
                 <div class="card-footer">
-                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
+{#                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
                     {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}
                 </div>
             </div>

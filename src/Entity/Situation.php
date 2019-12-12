@@ -31,11 +31,6 @@ class Situation
      */
     private $reason;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name_slug;
-
     public function __construct()
     {
         $this->reason = new ArrayCollection();
@@ -91,19 +86,6 @@ class Situation
 
     public function __toString()
     {
-        // TODO: Implement __toString() method.
         return (string)$this->name;
-    }
-
-    public function getNameSlug(): ?string
-    {
-        return $this->name_slug;
-    }
-
-    public function setNameSlug(string $name_slug): self
-    {
-        $this->name_slug = $name_slug;
-
-        return $this;
     }
 }
