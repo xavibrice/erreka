@@ -59,7 +59,10 @@
                 </div>
                 <div class="card-body">
                     {% if property.rateHousing.charges.empty %}
-                        <h1>Vacio</h1>
+                        {{ form_start(formCharge) }}
+                        {{ form_widget(formCharge) }}
+                        <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+                        {{ form_end(formCharge) }}
                         {% else %}
                         <h1>Hay encargo</h1>
                             {% for charge in property.rateHousing.charges %}
