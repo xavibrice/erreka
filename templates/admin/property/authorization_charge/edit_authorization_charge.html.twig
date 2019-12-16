@@ -1,0 +1,20 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block content %}
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Editar Encargo</h1>
+        </div>
+        <div class="card-body">
+            {{ include('admin/_form.html.twig') }}
+
+            {#            {{ include('admin/property/_form_rate_housing.html.twig', {'button_label': 'Actualizar'}) }}#}
+        </div>
+        <div class="card-footer">
+            <a class="btn btn-info" href="{{ path('property_charge', {'id': idProperty, 'idChargeType': charge.chargeType.id }) }}">{{ charge.chargeType.name }}</a>
+            {#            {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
+{#            <a class="btn btn-info" href="{{ path('property_show', {'id': rateHousing.property.id }) }}">Ver noticia</a>#}
+{#            <a class="btn btn-info" href="{{ path('property_rate_housing_new_show', {'id': rateHousing.property.id }) }}">Ver valoración</a>#}
+        </div>
+    </div>
+{% endblock %}

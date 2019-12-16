@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Repository\ChargeTypeRepository;
 use App\Repository\RateHousingRepository;
 use App\Repository\SituationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,22 +25,22 @@ class ListController extends AbstractController
     }
 
     /**
-     * @Route("/encargo", name="list_charge_index")
+     * @Route("/exclusiva", name="list_charge_index")
      */
-    public function listCharge(SituationRepository $situationRepository): Response
+    public function listCharge(ChargeTypeRepository $chargeTypeRepository): Response
     {
-        return $this->render('admin/list/charge.html.twig', [
-            'charges' => $situationRepository->findBy(['name' => 'encargo'])
+        return $this->render('admin/list/exclusive.html.twig', [
+            'exclusives' => $chargeTypeRepository->findBy(['name' => 'Exclusiva'])
         ]);
     }
 
     /**
      * @Route("/autorizacion", name="list_authorization_index")
      */
-    public function listAuthorization(SituationRepository $situationRepository): Response
+    public function listAuthorization(ChargeTypeRepository $chargeTypeRepository): Response
     {
         return $this->render('admin/list/authorization.html.twig', [
-            'authorizations' => $situationRepository->findBy(['name' => 'autorizacion'])
+            'authorizations' => $chargeTypeRepository->findBy(['name' => 'autorizacion'])
         ]);
     }
 

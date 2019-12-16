@@ -83,7 +83,7 @@ class PropertyToDeveloperType extends AbstractType
 
         if ($isEdit) {
             $builder->add('situation', EntityType::class, [
-                'label' => false,
+                'label' => 'Situación',
                 'class' => Situation::class,
                 'placeholder' => 'Selecciona una situación',
                 'mapped' => false,
@@ -127,7 +127,7 @@ class PropertyToDeveloperType extends AbstractType
                         ]);
                     } else {
                         $form->add('reason', EntityType::class, [
-                            'label' => false,
+                            'label' => 'Motivo',
                             'required' => true,
                             'class' => Reason::class,
                             'placeholder' => 'Selecciona primero una situación',
@@ -168,6 +168,7 @@ class PropertyToDeveloperType extends AbstractType
                 ],
             ])
             ->add('commercial', EntityType::class, [
+                'label' => 'Comercial',
                 'class' => User::class
             ])
             ->add('full_name', TextType::class, [

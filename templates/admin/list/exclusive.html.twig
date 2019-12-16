@@ -32,10 +32,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for charge in charges %}
-                        {% for reason in charge.reason %}
-                            {% for property in reason.properties %}
-                                <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
+                    {% for exclusive in exclusives %}
+                        {% for charge in exclusive.charges %}
+                            {% for rateHousing in charge.rateHousing %}
+                                {% for property in rateHousing.property %}
+                                    <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
                                     <td>{{ property.commercial.fullName }}</td>
                                     <td>{{ property.street.zone.name }}</td>
                                     <td>{{ property.street.name }}</td>
@@ -44,24 +45,17 @@
                                     <td>{{ property.fullName }}</td>
                                     <td>{{ property.mobile }}</td>
                                     <td>{{ property.created|date('d/m/Y') }}</td>
-                                    <td>
-                                        {% if property.rateHousing %}
-                                            {{ property.rateHousing.bedrooms }}
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if property.rateHousing %}
-                                            {{ property.rateHousing.bathrooms }}
-                                        {% endif %}
-                                    </td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>Caduca</td>
+                                    <td>{{ charge.price|number_format(0, ',', '.') }} €</td>
+                                    <td>{{ property.price|number_format(0, ',', '.') }} €</td>
+                                    <td>precio ok€</td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                     <td></td>
                                 </tr>
+                                {% endfor %}
                             {% endfor %}
                         {% endfor %}
                     {% endfor %}

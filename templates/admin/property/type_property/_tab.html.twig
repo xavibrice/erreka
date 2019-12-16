@@ -1,10 +1,15 @@
 <div class="row">
     <div class="col-md-12 mb-4">
 
-        <a class="btn btn-info" href="{{ path('property_show', {'id': property.id }) }}">Detalles</a>
         {% if property.rateHousing %}
+            <a class="btn btn-info" href="{{ path('property_show', {'id': property.id }) }}">Detalles</a>
             <a class="btn btn-info" href="{{ path('property_rate_housing_new_show', {'id': property.id }) }}">Valoración</a>
         {% endif %}
+
+{#        {% if not property.rateHousing.charges.empty %}#}
+{#            <a href="">{{ property.rateHousing }}</a>#}
+{#            no esta vacio#}
+{#        {% endif %}#}
 {#        {% if property.reason.situation.name == 'Autorización' or property.reason.situation.name == 'autorización' %}#}
 {#            <a class="btn btn-info" href="{{ path('property_authorization', {'id': property.id}) }}">{{ property.reason.situation.name }}</a>#}
 {#        {% endif %}#}

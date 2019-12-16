@@ -42,13 +42,27 @@
                                 <tr>
                                     <th class="text-right">Dormitorios</th>
                                     <td>{{ property.rateHousing.bedrooms }}</td>
+                                    <th class="text-right">Exterior</th>
+                                    <td>{{ property.rateHousing.exteriorBedrooms }}</td>
+                                    <th class="text-right">Patio/Ciego</th>
+                                    <td>{{ property.rateHousing.patioBedrooms }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Baños</th>
+                                    <td>{{ property.rateHousing.bathrooms }}</td>
+                                    <th class="text-right">Exterior</th>
+                                    <td>{{ property.rateHousing.exteriorBathrooms }}</td>
                                     <th class="text-right">Estado Baño</th>
                                     <td>
                                         {% if property.rateHousing.bathroomState is not empty %}
                                             {{ property.rateHousing.bathroomState.name }}
                                         {% endif %}
                                     </td>
-                                    <th class="text-right">Cocina / Estado</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Cocina Exterior</th>
+                                    <td>{{ property.rateHousing.exteriorCooking ? 'Si' : 'No' }}</td>
+                                    <th class="text-right">Estado Cocina</th>
                                     <td>
                                         {% if property.rateHousing.beenCooking is not empty %}
                                             {{ property.rateHousing.beenCooking.name }}
@@ -58,8 +72,6 @@
                                     <td>{{ property.rateHousing.realMeters }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="text-right">Baños</th>
-                                    <td>{{ property.rateHousing.bathrooms }}</td>
                                     <th class="text-right">Orientación</th>
                                     <td>
                                         {% if property.rateHousing.orientation is not empty %}
@@ -70,18 +82,6 @@
                                     <td>
                                         {% if property.rateHousing.energyCertificate is not empty %}
                                             {{ property.rateHousing.energyCertificate.name }}
-                                        {% endif %}
-                                    </td>
-                                    <th class="text-right">Ventana</th>
-                                    <td>
-                                        {% if property.rateHousing.window is not empty %}
-                                            {{ property.rateHousing.window.name }}
-                                        {% endif %}
-                                    </td>
-                                    <th class="text-right">Estado Ventana</th>
-                                    <td>
-                                        {% if property.rateHousing.windowsState is not empty %}
-                                            {{ property.rateHousing.windowsState.name }}
                                         {% endif %}
                                     </td>
                                 </tr>
@@ -108,6 +108,20 @@
                                     <td>
                                         {% if property.rateHousing.heating is not empty %}
                                             {{ property.rateHousing.heating.name }}
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Ventana</th>
+                                    <td>
+                                        {% if property.rateHousing.window is not empty %}
+                                            {{ property.rateHousing.window.name }}
+                                        {% endif %}
+                                    </td>
+                                    <th class="text-right">Estado Ventana</th>
+                                    <td>
+                                        {% if property.rateHousing.windowsState is not empty %}
+                                            {{ property.rateHousing.windowsState.name }}
                                         {% endif %}
                                     </td>
                                 </tr>
@@ -171,13 +185,23 @@
                     {% else %}
 {#                        {{ include('admin/rate_housing/_form_rate_housing.html.twig', {'form': formRate}) }}#}
                         {{ include('admin/property/_form_rate_housing.html.twig') }}
-
                     {% endif %}
                 </div>
                 <div class="card-footer">
 {#                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
                     {% if property.rateHousing %}
                         {{ include('admin/_edit_link.html.twig', {'route': 'property_rate_housing_edit', 'id': property.rateHousing.id, 'button_label': 'Editar'}) }}
+                        {% else %}
+                            <a class="btn btn-info" href="{{ path('property_show', {'id': property.id }) }}">Ver noticia</a>
+                    {% endif %}
+                    {% if property.rateHousing %}
+                        {% if property.rateHousing.charge is not empty %}
+                            <a class="btn btn-primary" href="{{ path('property_charge', {'id': property.id, 'idChargeType': property.rateHousing.charge.chargeType.id }) }}">{{ property.rateHousing.charge.chargeType.name }}</a>
+                        {% else %}
+                            {% for typeCharge in typeCharges %}
+                                <a class="btn btn-primary" href="{{ path('property_charge', {'id': property.id, 'idChargeType': typeCharge.id }) }}">{{ typeCharge.name }}</a>
+                            {% endfor %}
+                        {% endif %}
                     {% endif %}
 {#                    <a href="{{ path('property_rate_housing_edit') }}"></a>#}
                 </div>

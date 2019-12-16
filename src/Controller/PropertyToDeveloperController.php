@@ -46,7 +46,7 @@ class PropertyToDeveloperController extends AbstractController
 
             $this->addFlash('success', 'Nota creada correctamente');
 
-            return $this->redirectToRoute('property_show', [
+            return $this->redirectToRoute('property_to_developer_show', [
                 'id' => $property->getId()
             ]);
         }
@@ -105,7 +105,10 @@ class PropertyToDeveloperController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('property_to_developer_index');
+            $this->addFlash('success', 'Noticia a desarrollar editada correctamente');
+            return $this->redirectToRoute('property_to_developer_edit', [
+                'id' => $property->getId()
+            ]);
         }
 
         return $this->render('admin/property_to_developer/edit-property-to-developer.html.twig', [

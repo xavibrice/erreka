@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\EnergyCertificateRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\StateKeysRepository")
  */
-class EnergyCertificate
+class StateKeys
 {
     /**
      * @ORM\Id()
@@ -19,18 +19,18 @@ class EnergyCertificate
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="string", length=255)
      */
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\RateHousing", mappedBy="energy_certificate")
+     * @ORM\OneToMany(targetEntity="App\Entity\RateHousing", mappedBy="stateKeys")
      */
-    private $rateHousings;
+    private $rate_housing;
 
     public function __construct()
     {
-        $this->rateHousings = new ArrayCollection();
+        $this->rate_housing = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -43,7 +43,7 @@ class EnergyCertificate
         return $this->name;
     }
 
-    public function setName(?string $name): self
+    public function setName(string $name): self
     {
         $this->name = $name;
 
@@ -53,16 +53,16 @@ class EnergyCertificate
     /**
      * @return Collection|RateHousing[]
      */
-    public function getRateHousings(): Collection
+    public function getRateHousing(): Collection
     {
-        return $this->rateHousings;
+        return $this->rate_housing;
     }
 
     public function addRateHousing(RateHousing $rateHousing): self
     {
-        if (!$this->rateHousings->contains($rateHousing)) {
-            $this->rateHousings[] = $rateHousing;
-            $rateHousing->setEnergyCertificate($this);
+        if (!$this->rate_housing->contains($rateHousing)) {
+            $this->rate_housing[] = $rateHousing;
+            $rateHousing->setStateKeys($this);
         }
 
         return $this;
@@ -70,11 +70,11 @@ class EnergyCertificate
 
     public function removeRateHousing(RateHousing $rateHousing): self
     {
-        if ($this->rateHousings->contains($rateHousing)) {
-            $this->rateHousings->removeElement($rateHousing);
+        if ($this->rate_housing->contains($rateHousing)) {
+            $this->rate_housing->removeElement($rateHousing);
             // set the owning side to null (unless already changed)
-            if ($rateHousing->getEnergyCertificate() === $this) {
-                $rateHousing->setEnergyCertificate(null);
+            if ($rateHousing->getStateKeys() === $this) {
+                $rateHousing->setStateKeys(null);
             }
         }
 
@@ -86,4 +86,5 @@ class EnergyCertificate
         // TODO: Implement __toString() method.
         return (string)$this->name;
     }
+
 }

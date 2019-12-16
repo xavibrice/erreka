@@ -14,7 +14,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-borderless">
                             <tbody>
                                 <tr>
                                     <th class="text-right">Propietario</th>
@@ -44,10 +44,10 @@
                         </table>
                     </div>
                 </div>
-                <div class="card-footer">
-                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
-                    {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}
-                </div>
+{#                <div class="card-footer">#}
+{#                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
+{#                    {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}#}
+{#                </div>#}
             </div>
         </div>
     </div>
@@ -58,24 +58,23 @@
                     <h6 class="m-0 font-weight-bold text-primary ">{{ chargeType.name }}</h6>
                 </div>
                 <div class="card-body">
-                    {% if property.rateHousing.charges.empty %}
+                    {% if not property.rateHousing.charge %}
                         {{ form_start(formCharge) }}
                         {{ form_widget(formCharge) }}
                         <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
                         {{ form_end(formCharge) }}
                         {% else %}
-                        <h1>Hay encargo</h1>
-                            {% for charge in property.rateHousing.charges %}
-                                Precio: {{ charge.price }} € <br>
-                                Precio Ok: {{ charge.priceOk }} € <br>
-                                Llaves: {{ charge.houseKey ? 'Si' : 'No' }} <br>
-                            {% endfor %}
+                            Encargo: {{ property.rateHousing.charge.chargeType.name }} <br>
+                            Precio: {{ property.rateHousing.charge.price }} € <br>
+                            Precio Ok: {{ property.rateHousing.charge.priceOk }} € <br>
+                            Llaves: {{ property.rateHousing.charge.houseKey ? 'Si' : 'No' }} <br>
+                            <a class="btn btn-info" href="{{ path('property_charge_edit', {'id': property.rateHousing.charge.id, 'idProperty': property.id }) }}">Editar</a>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    {% if not property.rateHousing.charges.empty %}
+    {% if property.rateHousing.charge %}
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card shadow mb-4">

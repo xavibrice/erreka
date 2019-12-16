@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,14 +34,19 @@ class Charge
     private $price_ok;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\RateHousing", inversedBy="charges")
-     */
-    private $rate_housing;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ChargeType", inversedBy="charges")
      */
     private $charge_type;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\RateHousing", mappedBy="charge")
+     */
+    private $rate_housing;
+
+    public function __construct()
+    {
+        $this->rate_housing = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -82,18 +89,6 @@ class Charge
         return $this;
     }
 
-    public function getRateHousing(): ?RateHousing
-    {
-        return $this->rate_housing;
-    }
-
-    public function setRateHousing(?RateHousing $rate_housing): self
-    {
-        $this->rate_housing = $rate_housing;
-
-        return $this;
-    }
-
     public function getChargeType(): ?ChargeType
     {
         return $this->charge_type;
@@ -102,6 +97,37 @@ class Charge
     public function setChargeType(?ChargeType $charge_type): self
     {
         $this->charge_type = $charge_type;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RateHousing[]
+     */
+    public function getRateHousing(): Collection
+    {
+        return $this->rate_housing;
+    }
+
+    public function addRateHousing(RateHousing $rateHousing): self
+    {
+        if (!$this->rate_housing->contains($rateHousing)) {
+            $this->rate_housing[] = $rateHousing;
+            $rateHousing->setCharge($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRateHousing(RateHousing $rateHousing): self
+    {
+        if ($this->rate_housing->contains($rateHousing)) {
+            $this->rate_housing->removeElement($rateHousing);
+            // set the owning side to null (unless already changed)
+            if ($rateHousing->getCharge() === $this) {
+                $rateHousing->setCharge(null);
+            }
+        }
 
         return $this;
     }

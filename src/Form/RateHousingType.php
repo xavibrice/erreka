@@ -2,16 +2,17 @@
 
 namespace App\Form;
 
+use App\Entity\EnergyCertificate;
 use App\Entity\Heating;
 use App\Entity\Orientation;
 use App\Entity\RateHousing;
+use App\Entity\StateKeys;
 use App\Entity\ValuationStatus;
 use App\Entity\Window;
 use App\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -45,7 +46,10 @@ class RateHousingType extends AbstractType
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'rows' => 2,
+                ]
             ])
             ->add('min_price', MoneyType::class, [
                 'label' => 'Precio Mínimo',
@@ -123,49 +127,49 @@ class RateHousingType extends AbstractType
             ->add('bathroomState', EntityType::class, [
                 'required' => false,
                 'label' => 'Estado Baño',
-                'placeholder' => 'Estado Baños',
+                'placeholder' => 'Selecciona Estado Baños',
                 'class' => ValuationStatus::class
             ])
             ->add('beenCooking', EntityType::class, [
                 'required' => false,
                 'label' => 'Estado Cocina',
-                'placeholder' => 'Estado Cocina',
+                'placeholder' => 'Selecciona Estado Cocina',
                 'class' => ValuationStatus::class
             ])
             ->add('windowsState', EntityType::class, [
                 'required' => false,
                 'label' => 'Estado Ventanas',
-                'placeholder' => 'Estado Ventanas',
+                'placeholder' => 'Selecciona Estado Ventanas',
                 'class' => ValuationStatus::class
             ])
             ->add('beenWalls', EntityType::class, [
                 'required' => false,
                 'label' => 'Estado Paredes',
-                'placeholder' => 'Estado Paredes',
+                'placeholder' => 'Selecciona Estado Paredes',
                 'class' => ValuationStatus::class
             ])
             ->add('doorsState', EntityType::class, [
                 'required' => false,
                 'label' => 'Estado Puertas',
-                'placeholder' => 'Estado Puertas',
+                'placeholder' => 'Selecciona Estado Puertas',
                 'class' => ValuationStatus::class
             ])
             ->add('groundState', EntityType::class, [
                 'required' => false,
                 'label' => 'Estado Suelo',
-                'placeholder' => 'Estado Suelo',
+                'placeholder' => 'Selecciona Estado Suelo',
                 'class' => ValuationStatus::class
             ])
             ->add('window', EntityType::class, [
                 'required' => false,
                 'label' => 'Tipo Ventana',
-                'placeholder' => 'Tipo Ventana',
+                'placeholder' => 'Selecciona Tipo Ventana',
                 'class' => Window::class
             ])
             ->add('heating', EntityType::class, [
                 'required' => false,
                 'label' => 'Tipo Calefacción',
-                'placeholder' => 'Tipo Calefacción',
+                'placeholder' => 'Selecciona Tipo Calefacción',
                 'class' => Heating::class
             ])
             ->add('orientation', EntityType::class, [
@@ -204,6 +208,44 @@ class RateHousingType extends AbstractType
             ->add('mobileAdministrator', TelType::class, [
                 'label' => 'Móvil/Teléfono',
                 'required' => false
+            ])
+            ->add('stateKeys', EntityType::class, [
+                'label' => 'LLaves',
+                'class' => StateKeys::class,
+                'required' => false,
+                'placeholder' => '¿Llaves?'
+            ])
+            ->add('pets', CheckboxType::class, [
+                'label' => 'Perros',
+                'required' => false
+            ])
+            ->add('exteriorBedrooms', IntegerType::class, [
+                'label' => 'Habitación exterior',
+                'required' => false
+            ])
+            ->add('exteriorCooking', CheckboxType::class, [
+                'label' => 'Cocina exterior',
+                'required' => false
+            ])
+            ->add('patioBedrooms', IntegerType::class, [
+                'label' => 'Habitación patio/ciego',
+                'required' => false,
+                'attr' => [
+                    'min' => 0
+                ]
+            ])
+            ->add('exteriorBathrooms', IntegerType::class, [
+                'label' => 'Baños exterior',
+                'required' => false,
+                'attr' => [
+                    'min' => 0
+                ]
+            ])
+            ->add('energyCertificate', EntityType::class, [
+                'label' => 'Certificado Energético',
+                'class' => EnergyCertificate::class,
+                'required' => false,
+                'placeholder' => 'Selecciona Certificado Energético',
             ])
         ;
     }

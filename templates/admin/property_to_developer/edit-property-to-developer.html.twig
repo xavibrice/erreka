@@ -6,17 +6,14 @@
             <h1>Editar Noticia a Desarrollar</h1>
         </div>
         <div class="card-body">
-            {{ form_start(form) }}
-            {{ form_widget(form) }}
-            <button class="btn">{{ button_label|default('Actualizar') }}</button>
-            {{ form_end(form) }}
+            {{ include('admin/_form.html.twig', {'button_label': 'Actualizar'}) }}
         </div>
+
         <div class="card-footer">
-            {{ include('admin/_back_link.html.twig', {'route': 'property_to_developer_index'}) }}
+{#            {{ include('admin/_back_link.html.twig', {'route': 'property_to_developer_index'}) }}#}
             <a class="btn btn-info" href="{{ path('property_to_developer_show', {'id': property.id }) }}">
                 Ver Noticia a Desarrollar
             </a>
-
         </div>
     </div>
 

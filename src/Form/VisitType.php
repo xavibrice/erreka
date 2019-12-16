@@ -30,7 +30,9 @@ class VisitType extends AbstractType
                     'class' => 'js-datepicker',
                 ]
             ])
-            ->add('client', ClientSelectType::class)
+            ->add('client', ClientSelectType::class, [
+                'label' => 'Cliente'
+            ])
             ->add('price', MoneyType::class, [
                 'label' => 'Precio Visita',
                 'required' => false

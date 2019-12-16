@@ -84,12 +84,6 @@ class RateHousing
     private $zero_dimension;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Property", inversedBy="rate_housing")
-     * @ORM\JoinColumn(name="property_id", referencedColumnName="id")
-     */
-    private $property;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\ValuationStatus", inversedBy="bathroom_state")
      */
     private $bathroomState;
@@ -205,13 +199,49 @@ class RateHousing
     private $energy_certificate;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Charge", mappedBy="rate_housing")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Charge", inversedBy="rate_housing")
      */
-    private $charges;
+    private $charge;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\StateKeys", inversedBy="rate_housing")
+     */
+    private $stateKeys;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $pets;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $exterior_bedrooms;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $patio_bedrooms;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $exterior_bathrooms;
+
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $exterior_cooking;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="rateHousing")
+     * @ORM\JoinColumn(name="rateHousing", referencedColumnName="id")
+     */
+    private $property;
 
     public function __construct()
     {
-        $this->charges = new ArrayCollection();
+        $this->property = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -453,22 +483,6 @@ class RateHousing
         return $this;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getProperty()
-    {
-        return $this->property;
-    }
-
-    /**
-     * @param mixed $property
-     */
-    public function setProperty($property): void
-    {
-        $this->property = $property;
-    }
-
     public function getHeating(): ?Heating
     {
         return $this->heating;
@@ -673,31 +687,115 @@ class RateHousing
         return $this;
     }
 
-    /**
-     * @return Collection|Charge[]
-     */
-    public function getCharges(): Collection
+    public function getCharge(): ?Charge
     {
-        return $this->charges;
+        return $this->charge;
     }
 
-    public function addCharge(Charge $charge): self
+    public function setCharge(?Charge $charge): self
     {
-        if (!$this->charges->contains($charge)) {
-            $this->charges[] = $charge;
-            $charge->setRateHousing($this);
+        $this->charge = $charge;
+
+        return $this;
+    }
+
+    public function getStateKeys(): ?StateKeys
+    {
+        return $this->stateKeys;
+    }
+
+    public function setStateKeys(?StateKeys $stateKeys): self
+    {
+        $this->stateKeys = $stateKeys;
+
+        return $this;
+    }
+
+    public function getPets(): ?bool
+    {
+        return $this->pets;
+    }
+
+    public function setPets(bool $pets): self
+    {
+        $this->pets = $pets;
+
+        return $this;
+    }
+
+    public function getExteriorBedrooms(): ?int
+    {
+        return $this->exterior_bedrooms;
+    }
+
+    public function setExteriorBedrooms(?int $exterior_bedrooms): self
+    {
+        $this->exterior_bedrooms = $exterior_bedrooms;
+
+        return $this;
+    }
+
+    public function getPatioBedrooms(): ?int
+    {
+        return $this->patio_bedrooms;
+    }
+
+    public function setPatioBedrooms(?int $patio_bedrooms): self
+    {
+        $this->patio_bedrooms = $patio_bedrooms;
+
+        return $this;
+    }
+
+    public function getExteriorBathrooms(): ?int
+    {
+        return $this->exterior_bathrooms;
+    }
+
+    public function setExteriorBathrooms(?int $exterior_bathrooms): self
+    {
+        $this->exterior_bathrooms = $exterior_bathrooms;
+
+        return $this;
+    }
+
+    public function getExteriorCooking(): ?bool
+    {
+        return $this->exterior_cooking;
+    }
+
+    public function setExteriorCooking(bool $exterior_cooking): self
+    {
+        $this->exterior_cooking = $exterior_cooking;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Property[]
+     */
+    public function getProperty(): Collection
+    {
+        return $this->property;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->property->contains($property)) {
+            $this->property[] = $property;
+            $property->setRateHousing($this);
         }
 
         return $this;
     }
 
-    public function removeCharge(Charge $charge): self
+    public function removeProperty(Property $property): self
     {
-        if ($this->charges->contains($charge)) {
-            $this->charges->removeElement($charge);
+        if ($this->property->contains($property)) {
+            $this->property->removeElement($property);
             // set the owning side to null (unless already changed)
-            if ($charge->getRateHousing() === $this) {
-                $charge->setRateHousing(null);
+            if ($property->getRateHousing() === $this) {
+                $property->setRateHousing(null);
             }
         }
 

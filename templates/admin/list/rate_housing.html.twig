@@ -33,37 +33,39 @@
                     </thead>
                     <tbody>
                     {% for rateHousing in rateHousings %}
-                        <tr class="clickable-row" data-href="{{ path('property_show', {'id': rateHousing.property.id }) }}">
-                            <td>{{ rateHousing.visited|date('d/m/Y') }}</td>
-                            <td>{{ rateHousing.property.commercial.fullName }}</td>
-                            <td>{{ rateHousing.property.street.zone.name }}</td>
-                            <td>
-                                {{ rateHousing.property.reason.situation.name }}
-{#                                {% if property.rateHousing %}#}
-{#                                    {{ property.rateHousing.bathrooms }}#}
-{#                                {% endif %}#}
-                            </td>
-                            <td>{{ rateHousing.property.reason.name }}</td>
-                            <td>{{ rateHousing.property.street }}</td>
-                            <td>{{ rateHousing.property.portal }}</td>
-                            <td>{{ rateHousing.property.floor }}</td>
-                            <td>{{ rateHousing.property.fullName }}</td>
-                            <td>{{ rateHousing.property.mobile }}</td>
-                            <td>{{ rateHousing.maxPrice }}</td>
-                            <td>{{ rateHousing.bedrooms }}</td>
-                            <td>{{ rateHousing.bathrooms }}</td>
-                            <td>{{ rateHousing.realMeters }}</td>
-                            <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
-{#                            <td>#}
-{#                                {% if rateHousing.heating %}#}
-{#                                    {{ rateHousing.heating.name }}#}
-{#                                {% endif %}#}
-{#                            </td>#}
-                            <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
-                            <td data-toggle="tooltip" data-placement="top" title="{{ rateHousing.comment }}">
-                                {{ rateHousing.comment|slice(0, 50) }}
-                            </td>
-                        </tr>
+                        {% for property in rateHousing.property %}
+                            <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id }) }}">
+                                <td>{{ rateHousing.visited|date('d/m/Y') }}</td>
+                                <td>{{ property.commercial.fullName }}</td>
+                                <td>{{ property.street.zone.name }}</td>
+                                <td>
+                                    {{ property.reason.situation.name }}
+                                    {% if property.rateHousing %}
+                                        {{ property.rateHousing.bathrooms }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ property.reason.name }}</td>
+                                <td>{{ property.street }}</td>
+                                <td>{{ property.portal }}</td>
+                                <td>{{ property.floor }}</td>
+                                <td>{{ property.fullName }}</td>
+                                <td>{{ property.mobile }}</td>
+                                <td>{{ rateHousing.maxPrice }}</td>
+                                <td>{{ rateHousing.bedrooms }}</td>
+                                <td>{{ rateHousing.bathrooms }}</td>
+                                <td>{{ rateHousing.realMeters }}</td>
+                                <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
+                                <td>
+                                    {% if rateHousing.heating %}
+                                        {{ rateHousing.heating.name }}
+                                    {% endif %}
+                                </td>
+                                <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
+                                <td data-toggle="tooltip" data-placement="top" title="{{ rateHousing.comment }}">
+                                    {{ rateHousing.comment|slice(0, 50) }}
+                                </td>
+                            </tr>
+                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>

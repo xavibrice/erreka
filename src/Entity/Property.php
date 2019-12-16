@@ -100,11 +100,6 @@ class Property
     private $url;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\RateHousing", mappedBy="property", cascade={"persist", "remove"})
-     */
-    private $rate_housing;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="property", cascade={"persist"})
      */
     private $image;
@@ -113,6 +108,11 @@ class Property
      * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="property")
      */
     private $visits;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\RateHousing", inversedBy="property")
+     */
+    private $rateHousing;
 
     public function __construct()
     {
@@ -357,18 +357,6 @@ class Property
         return $this;
     }
 
-    public function getRateHousing(): ?RateHousing
-    {
-        return $this->rate_housing;
-    }
-
-    public function setRateHousing(?RateHousing $rate_housing): self
-    {
-        $this->rate_housing = $rate_housing;
-
-        return $this;
-    }
-
     public function __toString()
     {
         // TODO: Implement __toString() method.
@@ -433,6 +421,18 @@ class Property
                 $visit->setProperty(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getRateHousing(): ?RateHousing
+    {
+        return $this->rateHousing;
+    }
+
+    public function setRateHousing(?RateHousing $rateHousing): self
+    {
+        $this->rateHousing = $rateHousing;
 
         return $this;
     }

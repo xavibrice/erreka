@@ -16,23 +16,31 @@
                 <div class="col-md-auto">{{ form_row(form.situation) }}</div>
                 <div class="col-md-auto">{{ form_row(form.reason) }}</div>
                 <div class="col-md-auto">{{ form_row(form.typeProperty) }}</div>
+            </div>
+            <div class="form-group row">
                 <div class="col-md-auto">{{ form_row(form.zone) }}</div>
                 <div class="col-md-auto">{{ form_row(form.street) }}</div>
                 <div class="col-md-auto">{{ form_row(form.portal) }}</div>
                 <div class="col-md-auto">{{ form_row(form.floor) }}</div>
+            </div>
+            <div class="form-group row">
                 <div class="col-md-auto">{{ form_row(form.price) }}</div>
                 <div class="col-md-auto">{{ form_row(form.mobile) }}</div>
 {#                <div class="col-md-auto">{{ form_row(form.email) }}</div>#}
                 <div class="col-md-auto">{{ form_row(form.fullName) }}</div>
             </div>
-            <div class="form-group">
-                {{ form_row(form.image) }}
+            <div class="form-group row">
+                <div class="col-md-auto">
+                    {{ form_row(form.image) }}
+                </div>
             </div>
 
-            <div>
-                {% for image in form.vars.data.image %}
-                    <img src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_small') }}">
-                {% endfor %}
+            <div class="form-group row">
+                <div class="col-md-auto">
+                    {% for image in form.vars.data.image %}
+                        <img src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_small') }}">
+                    {% endfor %}
+                </div>
 {#                {% if form.vars.data.imageFilename|default %}#}
 {#                    <a href="{{ uploaded_asset(form.vars.data.imagePath) }}" target="_blank">#}
 {#                        #}{#                <img src="{{ form.vars.data.imagePath|imagine_filter('squared_thumbnail_small') }}">#}
@@ -42,10 +50,14 @@
             </div>
 
             <div class="form-group">
-                {{ form_row(form.url) }}
+                <div class="col-md-6">
+                    {{ form_row(form.url) }}
+                </div>
             </div>
             <div class="form-group">
-                {{ form_row(form.comment) }}
+                <div class="col-md-6">
+                    {{ form_row(form.comment) }}
+                </div>
             </div>
 {#            {{ form_label(form.propertyReductions) }}#}
 {#            <div id="collectionInput" data-prototype="{{ form_widget(form.propertyReductions.vars.prototype)|e('html_attr') }}">#}

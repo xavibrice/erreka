@@ -38,6 +38,9 @@ require("eonasdan-bootstrap-datetimepicker-bootstrap4beta");
 //     }
 // });
 //
+
+// var date = new Date();
+// var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());
 $(document).ready(function () {
     $('.js-datepicker').datetimepicker({
         format: moment().format('L'),

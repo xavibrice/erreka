@@ -142,11 +142,13 @@ class PropertyController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
+        $typeCharges = $em->getRepository(\App\Entity\ChargeType::class)->findAll();
+
         $rateHousing = new RateHousing();
-        $rateHousing->setProperty($property);
         $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $rateHousing->addProperty($property);
             $em->persist($rateHousing);
             $em->flush();
 
@@ -156,7 +158,8 @@ class PropertyController extends AbstractController
 
         return $this->render('admin/property/rate_housing/rate_housing.html.twig', [
             'property' => $property,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'typeCharges' => $typeCharges
         ]);
     }
 
@@ -166,7 +169,6 @@ class PropertyController extends AbstractController
     public function rateHousingEdit(Request $request, RateHousing $rateHousing): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $typeCharges = $em->getRepository(\App\Entity\ChargeType::class)->findAll();
         $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
 
@@ -176,15 +178,14 @@ class PropertyController extends AbstractController
             $this->addFlash('success', 'Valoración Editada Correctamente');
         }
 
-        return $this->render('admin/property/edit_rate_housing.html.twig', [
+        return $this->render('admin/property/rate_housing/edit_rate_housing.html.twig', [
             'form' => $form->createView(),
-            'typeCharges' => $typeCharges,
             'rateHousing' => $rateHousing
         ]);
     }
 
     /**
-     * @Route("/encargo/{id}/{idChargeType}", name="property_authorization", methods={"GET", "POST"})
+     * @Route("/encargo/{id}/{idChargeType}", name="property_charge", methods={"GET", "POST"})
 //     * @Route("/encargo/{id}/{idChargeType}", name="property_charge", methods={"GET", "POST"})
      */
     public function charge(Request $request, Property $property, $idChargeType): Response
@@ -197,15 +198,14 @@ class PropertyController extends AbstractController
         $formCharge = $this->createForm(ChargeType::class, $charge);
         $formCharge->handleRequest($request);
         if ($formCharge->isSubmitted() && $formCharge->isValid()) {
-            $charge->setRateHousing($property->getRateHousing());
             $charge->setChargeType($chargeType);
-
+            $charge->addRateHousing($property->getRateHousing());
             $em->persist($charge);
             $em->flush();
 
             $this->addFlash('success', 'Encargo creado correctamente');
 
-            return $this->redirectToRoute('property_authorization', [
+            return $this->redirectToRoute('property_charge', [
                 'id' => $property->getId(),
                 'idChargeType' => $idChargeType
             ]);
@@ -225,7 +225,8 @@ class PropertyController extends AbstractController
             $this->addFlash('success', 'Rebaja creada correctamente');
 
             return $this->redirectToRoute($request->attributes->get('_route'), [
-                'id' => $property->getId()
+                'id' => $property->getId(),
+                'idChargeType' => $idChargeType
             ]);
         }
 
@@ -241,7 +242,8 @@ class PropertyController extends AbstractController
             $this->addFlash('success', 'Visita creada correctamente');
 
             return $this->redirectToRoute($request->attributes->get('_route'), [
-                'id' => $property->getId()
+                'id' => $property->getId(),
+                'idChargeType' => $idChargeType
             ]);
         }
 
@@ -251,6 +253,32 @@ class PropertyController extends AbstractController
             'formCharge' => $formCharge->createView(),
             'property' => $property,
             'chargeType' => $chargeType
+        ]);
+    }
+
+    /**
+     * @Route("/valoracion/encargo/editar/{id}/{idProperty}", name="property_charge_edit", methods={"GET", "POST"})
+     */
+    public function editCharge(Request $request, Charge $charge, $idProperty)
+    {
+        $form = $this->createForm(ChargeType::class, $charge);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', $charge->getChargeType()->getName() . 'editado correctamente.');
+
+            return $this->redirectToRoute('property_charge_edit', [
+                'id' => $charge->getId(),
+                'idProperty' => $idProperty
+            ]);
+        }
+
+        return $this->render('admin/property/authorization_charge/edit_authorization_charge.html.twig', [
+            'charge' => $charge,
+            'form' => $form->createView(),
+            'idProperty' => $idProperty
         ]);
     }
 

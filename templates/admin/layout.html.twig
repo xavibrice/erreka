@@ -71,8 +71,8 @@
                     <span>Valoraciones</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link {% if app.request.get('_route') == 'client_index' %}active{% endif %}" href="{{ path('client_index') }}">
+            <li class="nav-item {% if app.request.get('_route') == 'client_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('client_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Pedidos</span>
                 </a>

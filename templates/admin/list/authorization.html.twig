@@ -33,9 +33,10 @@
                     </thead>
                     <tbody>
                     {% for authorization in authorizations %}
-                        {% for reason in authorization.reason %}
-                            {% for property in reason.properties %}
-                                <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
+                        {% for charge in authorization.charges %}
+                            {% for rateHousing in charge.rateHousing %}
+                                {% for property in rateHousing.property %}
+                                    <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
                                     <td>{{ property.commercial.fullName }}</td>
                                     <td>{{ property.street.zone.name }}</td>
                                     <td>{{ property.street.name }}</td>
@@ -55,6 +56,7 @@
                                         {% endif %}
                                     </td>
                                 </tr>
+                                {% endfor %}
                             {% endfor %}
                         {% endfor %}
                     {% endfor %}
