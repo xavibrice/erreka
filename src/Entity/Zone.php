@@ -34,9 +34,15 @@ class Zone
      */
     private $agency;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Client", mappedBy="zone")
+     */
+    private $clients;
+
     public function __construct()
     {
         $this->streets = new ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -101,6 +107,34 @@ class Zone
     public function setAgency(?Agency $agency): self
     {
         $this->agency = $agency;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Client[]
+     */
+    public function getClients(): Collection
+    {
+        return $this->clients;
+    }
+
+    public function addClient(Client $client): self
+    {
+        if (!$this->clients->contains($client)) {
+            $this->clients[] = $client;
+            $client->addZone($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Client $client): self
+    {
+        if ($this->clients->contains($client)) {
+            $this->clients->removeElement($client);
+            $client->removeZone($this);
+        }
 
         return $this;
     }

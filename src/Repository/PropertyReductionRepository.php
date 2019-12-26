@@ -19,6 +19,17 @@ class PropertyReductionRepository extends ServiceEntityRepository
         parent::__construct($registry, PropertyReduction::class);
     }
 
+    public function sumPropertyReduction($id)
+    {
+        return $this->createQueryBuilder('pr')
+            ->andWhere('pr.property = :id')
+            ->select('SUM(pr.price) as sumPropertyReduction')
+            ->setParameter('id', $id)
+            ->getQuery()
+            ->getSingleScalarResult()
+            ;
+    }
+
     // /**
     //  * @return PropertyReduction[] Returns an array of PropertyReduction objects
     //  */

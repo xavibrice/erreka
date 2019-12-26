@@ -120,9 +120,31 @@ class Client
      */
     private $visits;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="App\Entity\Zone", inversedBy="clients")
+     */
+    private $zone;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="clients")
+     */
+    private $commercial;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeProperty", inversedBy="clients")
+     */
+    private $typeProperty;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Offered", mappedBy="client")
+     */
+    private $offereds;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
+        $this->zone = new ArrayCollection();
+        $this->offereds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -383,6 +405,87 @@ class Client
             // set the owning side to null (unless already changed)
             if ($visit->getClient() === $this) {
                 $visit->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Zone[]
+     */
+    public function getZone(): Collection
+    {
+        return $this->zone;
+    }
+
+    public function addZone(Zone $zone): self
+    {
+        if (!$this->zone->contains($zone)) {
+            $this->zone[] = $zone;
+        }
+
+        return $this;
+    }
+
+    public function removeZone(Zone $zone): self
+    {
+        if ($this->zone->contains($zone)) {
+            $this->zone->removeElement($zone);
+        }
+
+        return $this;
+    }
+
+    public function getCommercial(): ?User
+    {
+        return $this->commercial;
+    }
+
+    public function setCommercial(?User $commercial): self
+    {
+        $this->commercial = $commercial;
+
+        return $this;
+    }
+
+    public function getTypeProperty(): ?TypeProperty
+    {
+        return $this->typeProperty;
+    }
+
+    public function setTypeProperty(?TypeProperty $typeProperty): self
+    {
+        $this->typeProperty = $typeProperty;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Offered[]
+     */
+    public function getOffereds(): Collection
+    {
+        return $this->offereds;
+    }
+
+    public function addOffered(Offered $offered): self
+    {
+        if (!$this->offereds->contains($offered)) {
+            $this->offereds[] = $offered;
+            $offered->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffered(Offered $offered): self
+    {
+        if ($this->offereds->contains($offered)) {
+            $this->offereds->removeElement($offered);
+            // set the owning side to null (unless already changed)
+            if ($offered->getClient() === $this) {
+                $offered->setClient(null);
             }
         }
 

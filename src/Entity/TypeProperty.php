@@ -33,9 +33,15 @@ class TypeProperty
      */
     private $is_property;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Client", mappedBy="typeProperty")
+     */
+    private $clients;
+
     public function __construct()
     {
         $this->property = new ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -100,6 +106,37 @@ class TypeProperty
     public function setIsProperty(bool $is_property): self
     {
         $this->is_property = $is_property;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Client[]
+     */
+    public function getClients(): Collection
+    {
+        return $this->clients;
+    }
+
+    public function addClient(Client $client): self
+    {
+        if (!$this->clients->contains($client)) {
+            $this->clients[] = $client;
+            $client->setTypeProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Client $client): self
+    {
+        if ($this->clients->contains($client)) {
+            $this->clients->removeElement($client);
+            // set the owning side to null (unless already changed)
+            if ($client->getTypeProperty() === $this) {
+                $client->setTypeProperty(null);
+            }
+        }
 
         return $this;
     }

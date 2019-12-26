@@ -3,7 +3,9 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use App\Entity\Visit;
 use App\Form\ClientType;
+use App\Form\VisitType;
 use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -59,12 +61,31 @@ class ClientController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="client_show", methods={"GET"})
+     * @Route("/{id}", name="client_show", methods={"GET", "POST"})
      */
-    public function show(Client $client): Response
+    public function show(Request $request, Client $client): Response
     {
+        $em = $this->getDoctrine()->getManager();
+        $visit = new Visit();
+        $visit->setClient($client);
+        $formVisit = $this->createForm(VisitType::class, $visit);
+        $formVisit->handleRequest($request);
+
+        if ($formVisit->isSubmitted() && $formVisit->isValid()) {
+            $client->setPrice(1000);
+            $em->persist($visit);
+            $em->flush();
+
+            $this->addFlash('success', 'Visita creada correctamente');
+
+            return $this->redirectToRoute($request->attributes->get('_route'), [
+                'id' => $client->getId()
+            ]);
+        }
+
         return $this->render('admin/client/show.html.twig', [
             'client' => $client,
+            'formVisit' => $formVisit->createView()
         ]);
     }
 
@@ -79,7 +100,7 @@ class ClientController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('client_index', [
+            return $this->redirectToRoute('client_show', [
                 'id' => $client->getId(),
             ]);
         }

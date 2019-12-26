@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/visit")
+ * @Route("/admin/visitas")
  */
 class VisitController extends AbstractController
 {
@@ -20,7 +20,7 @@ class VisitController extends AbstractController
      */
     public function index(VisitRepository $visitRepository): Response
     {
-        return $this->render('visit/index.html.twig', [
+        return $this->render('admin/visit/index.html.twig', [
             'visits' => $visitRepository->findAll(),
         ]);
     }
@@ -42,7 +42,7 @@ class VisitController extends AbstractController
             return $this->redirectToRoute('visit_index');
         }
 
-        return $this->render('visit/new.html.twig', [
+        return $this->render('admin/visit/new.html.twig', [
             'visit' => $visit,
             'form' => $form->createView(),
         ]);
@@ -53,7 +53,7 @@ class VisitController extends AbstractController
      */
     public function show(Visit $visit): Response
     {
-        return $this->render('visit/show.html.twig', [
+        return $this->render('admin/visit/show.html.twig', [
             'visit' => $visit,
         ]);
     }
@@ -74,7 +74,7 @@ class VisitController extends AbstractController
             ]);
         }
 
-        return $this->render('visit/edit.html.twig', [
+        return $this->render('admin/visit/edit.html.twig', [
             'visit' => $visit,
             'form' => $form->createView(),
         ]);

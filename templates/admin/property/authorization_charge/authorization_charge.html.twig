@@ -64,10 +64,23 @@
                         <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
                         {{ form_end(formCharge) }}
                         {% else %}
-                            Encargo: {{ property.rateHousing.charge.chargeType.name }} <br>
-                            Precio: {{ property.rateHousing.charge.price }} € <br>
-                            Precio Ok: {{ property.rateHousing.charge.priceOk }} € <br>
-                            Llaves: {{ property.rateHousing.charge.houseKey ? 'Si' : 'No' }} <br>
+
+                            <div class="table-responsive">
+                                <table class="table table-borderless">
+                                    <tbody>
+                                    <tr>
+                                        <th class="text-right">Tipo Encargo</th>
+                                        <td>{{ property.rateHousing.charge.chargeType.name }}</td>
+                                        <th class="text-right">Precio</th>
+                                        <td>{{ property.rateHousing.charge.price|number_format(0, ',', '.') }} €</td>
+                                        <th class="text-right">Precio OK</th>
+                                        <td>{{ property.rateHousing.charge.priceOk }} €</td>
+                                        <th class="text-right">LLaves</th>
+                                        <td>{{ property.rateHousing.charge.houseKey ? 'Si' : 'No' }}</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             <a class="btn btn-info" href="{{ path('property_charge_edit', {'id': property.rateHousing.charge.id, 'idProperty': property.id }) }}">Editar</a>
                     {% endif %}
                 </div>
@@ -79,7 +92,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary ">Visitas</h6>
+                        <h6 class="m-0 font-weight-bold text-primary ">Visitas: {{ property.visits.count }}</h6>
                     </div>
                     <div class="card-body">
                         <div class="m-2">
@@ -94,12 +107,12 @@
             </div>
             <div class="col-md-8 mb-4">
                 <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
-                    {% for visit in property.visits %}
+                    {% for visit in property.visits|reverse %}
                         <div class="col-md-12 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
-                                    {{ visit.visited|date('d-m-Y') }}
-                                    {{ visit.price }}
+                                    {{ visit.visited|date('d/m/Y')}} -
+                                    <strong>{{ visit.price|number_format(0, ',', '.') }} € </strong> -
                                     {{ visit.comment }}
                                 </div>
                             </div>
@@ -116,7 +129,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary ">Importes Rebajados</h6>
+                        <h6 class="m-0 font-weight-bold text-primary ">Importes Rebajados  </h6>
                     </div>
                     <div class="card-body">
                         <div class="m-2">

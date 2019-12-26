@@ -164,6 +164,7 @@ class PropertyType extends AbstractType
 //                'widget' => 'single_text',
 //                'format' => 'dd-MM-yyyy',
 //                'html5' => false,
+                'data' => new \DateTime(),
                 'attr' => [
                     'class' => $date,
                 ],
@@ -184,6 +185,10 @@ class PropertyType extends AbstractType
                 'label' => 'Móvil',
                 'required' => false
             ])
+            ->add('reference', null, [
+                'required' => false,
+                'disabled' => true,
+            ])
 //            ->add('email', EmailType::class, [
 //                'label' => 'Correo',
 //                'required' => false
@@ -202,7 +207,7 @@ class PropertyType extends AbstractType
             ])
             ->add('typeProperty', EntityType::class, [
                 'label' => 'Tipo de propiedad',
-                'placeholder' => 'Selecciona un tipo de propiedad',
+                'placeholder' => 'Selecciona Tipo Propiedad',
                 'class' => TypeProperty::class,
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('tp')

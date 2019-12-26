@@ -5,6 +5,10 @@ namespace App\Form;
 use App\Entity\Client;
 use App\Entity\Heating;
 use App\Entity\Orientation;
+use App\Entity\TypeProperty;
+use App\Entity\User;
+use App\Entity\Zone;
+use App\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -23,53 +27,60 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('full_name', TextType::class, [
-                'label' => 'Cliente'
-            ])
-            ->add('price', MoneyType::class, [
-                'label' => 'Precio'
-            ])
-            ->add('email', EmailType::class, [
-                'label' => 'Correo'
-            ])
-            ->add('mobile', TelType::class, [
-                'label' => 'Móvil/Teléfono'
-            ])
-            ->add('comment', TextareaType::class, [
-                'label' => 'Comentario'
-            ])
-            ->add('created', DateType::class, [
+            ->add('created', DateTimePickerType::class, [
                 'required' => true,
-                'label' => false,
-                'widget' => 'single_text',
-                'format' => 'dd-mm-yyyy',
-                'html5' => false,
+                'label' => 'Fecha',
+                'data' => new \DateTime(),
                 'attr' => [
                     'class' => 'js-datepicker',
                 ],
             ])
+            ->add('full_name', TextType::class, [
+                'label' => 'Cliente'
+            ])
+            ->add('price', MoneyType::class, [
+                'label' => 'Precio',
+                'required' => false
+            ])
+/*            ->add('email', EmailType::class, [
+                'label' => 'Correo',
+                'required' => false
+            ])*/
+            ->add('mobile', TelType::class, [
+                'label' => 'Móvil/Teléfono',
+                'required' => false
+            ])
+            ->add('comment', TextareaType::class, [
+                'label' => 'Comentario',
+                'required' => false
+            ])
             ->add('realMeters', IntegerType::class, [
-                'label' => 'Metros'
+                'label' => 'Metros',
+                'required' => false
             ])
             ->add('bedrooms', IntegerType::class, [
-                'label' => 'Habitaciones'
+                'label' => 'Habitaciones',
+                'required' => false
             ])
             ->add('bathrooms', IntegerType::class, [
-                'label' => 'Baños'
+                'label' => 'Baños',
+                'required' => false
             ])
             ->add('heating', EntityType::class, [
                 'class' => Heating::class,
                 'label' => 'Calefacción',
-                'placeholder' => 'Selecciona Calefacción'
+                'placeholder' => 'Selecciona Calefacción',
+                'required' => false
             ])
             ->add('orientation', EntityType::class, [
                 'class' => Orientation::class,
-                'label' => 'Selecciona Orientación',
-                'placeholder' => 'Selecciona Orientación'
+                'label' => 'Orientación',
+                'placeholder' => 'Selecciona Orientación',
+                'required' => false
             ])
             ->add('terrace', CheckboxType::class, [
                 'label' => 'Terraza',
-                'required' => false
+                'required' => false,
             ])
             ->add('suit_bathroom', CheckboxType::class, [
                 'label' => 'Baño en suit',
@@ -99,7 +110,23 @@ class ClientType extends AbstractType
                 'label' => 'Ascensor',
                 'required' => false
             ])
-//            ->add('properties')
+            ->add('zone', EntityType::class, [
+                'label' => 'Zona',
+                'class' => Zone::class,
+                'multiple' => true,
+                'expanded' => true
+            ])
+            ->add('commercial', EntityType::class, [
+                'label' => 'Comercial',
+                'class' => User::class,
+                'placeholder' => 'Selecciona un comercial'
+            ])
+            ->add('typeProperty', EntityType::class, [
+                'label' => 'Tipo Propiedad',
+                'required' => true,
+                'class' => TypeProperty::class,
+                'placeholder' => 'Selecciona Tipo Propiedad'
+            ])
         ;
     }
 

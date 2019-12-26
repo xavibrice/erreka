@@ -17,6 +17,7 @@ use App\Form\RateHousingType;
 use App\Form\VisitType;
 use App\Repository\PropertyRepository;
 use App\Service\UploaderHelper;
+use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -59,6 +60,9 @@ class PropertyController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
+        $uuidGenerator = Uuid::uuid4();
+        $uuid = $uuidGenerator->toString();
+
         $property = new Property();
         $property->setEnabled(true);
         $form = $this->createForm(PropertyType::class, $property, [
@@ -67,6 +71,7 @@ class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $property->setReference($uuid);
 
             $files = $request->files->get("property")["image"];
 
@@ -176,6 +181,10 @@ class PropertyController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'Valoración Editada Correctamente');
+
+            return $this->redirectToRoute('property_rate_housing_new_show', [
+                'id' => $rateHousing->getProperty()->first()->getId()
+            ]);
         }
 
         return $this->render('admin/property/rate_housing/edit_rate_housing.html.twig', [
@@ -191,6 +200,8 @@ class PropertyController extends AbstractController
     public function charge(Request $request, Property $property, $idChargeType): Response
     {
         $em = $this->getDoctrine()->getManager();
+
+        $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
 
         $chargeType = $em->getRepository(\App\Entity\ChargeType::class)->find($idChargeType);
 
@@ -235,7 +246,9 @@ class PropertyController extends AbstractController
         $formVisit = $this->createForm(VisitType::class, $visit);
         $formVisit->handleRequest($request);
 
+
         if ($formVisit->isSubmitted() && $formVisit->isValid()) {
+            $visit->setPrice($property->getRateHousing()->getCharge()->getPrice() - $sumPropertyReduction);
             $em->persist($visit);
             $em->flush();
 

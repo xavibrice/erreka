@@ -89,7 +89,12 @@
                                     {% endif %}
                                 </td>
                                 <td>
-                                    {{ property.image ? 'Si' : 'No' }}
+                                    {% if property.image.count > 0 %}
+                                        Si
+                                    {% else %}
+                                        No
+                                    {% endif %}
+{#                                    {{ property.image ? 'Si' : 'No' }}#}
                                 </td>
                                 <td>
                                     {% if property.noteNew %}

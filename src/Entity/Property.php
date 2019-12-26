@@ -114,12 +114,23 @@ class Property
      */
     private $rateHousing;
 
+    /**
+     * @ORM\Column(type="guid")
+     */
+    private $reference;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Offered", mappedBy="property")
+     */
+    private $offereds;
+
     public function __construct()
     {
         $this->propertyReductions = new ArrayCollection();
         $this->note_new = new ArrayCollection();
         $this->image = new ArrayCollection();
         $this->visits = new ArrayCollection();
+        $this->offereds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -433,6 +444,49 @@ class Property
     public function setRateHousing(?RateHousing $rateHousing): self
     {
         $this->rateHousing = $rateHousing;
+
+        return $this;
+    }
+
+    public function getReference(): ?string
+    {
+        return $this->reference;
+    }
+
+    public function setReference(string $reference): self
+    {
+        $this->reference = $reference;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Offered[]
+     */
+    public function getOffereds(): Collection
+    {
+        return $this->offereds;
+    }
+
+    public function addOffered(Offered $offered): self
+    {
+        if (!$this->offereds->contains($offered)) {
+            $this->offereds[] = $offered;
+            $offered->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffered(Offered $offered): self
+    {
+        if ($this->offereds->contains($offered)) {
+            $this->offereds->removeElement($offered);
+            // set the owning side to null (unless already changed)
+            if ($offered->getProperty() === $this) {
+                $offered->setProperty(null);
+            }
+        }
 
         return $this;
     }

@@ -19,12 +19,13 @@ import moment, {defaultFormat} from "moment"; // this will create a calendar.css
 import 'eonasdan-bootstrap-datetimepicker-bootstrap4beta';
 
 $(function() {
-    // var date = new Date();
+    var date = new Date();
+    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
     // Datetime picker initialization.
     // See http://eonasdan.github.io/bootstrap-datetimepicker/
     $('.dateStart').datetimepicker({
         locale: 'es',
-        // defaultDate: date,
+        timeZone: 'UTC +1',
         icons: {
             time: 'far fa-clock',
             date: 'far fa-calendar',

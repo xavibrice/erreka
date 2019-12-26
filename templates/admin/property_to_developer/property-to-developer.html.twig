@@ -15,7 +15,7 @@
                 <table class="table table-borderless dataTable table-sm table-hover" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
-                        <th>Estado</th>
+{#                        <th>Estado</th>#}
                         <th>Creado</th>
                         <th>Motivo</th>
                         <th>Zona</th>
@@ -38,7 +38,7 @@
                         {% for property in properties %}
                             {% if property.enabled %}
                                 <tr class="clickable-row" data-href="{{ path('property_to_developer_show', {'id': property.id}) }}">
-                                    <td>{{ property.enabled }}</td>
+{#                                    <td>{{ property.enabled }}</td>#}
                                     <td>{{ property.created|date('d/m/Y') }}</td>
                                     <td>
                                         {% if property.reason is not empty %}

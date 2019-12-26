@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Door;
 use App\Entity\EnergyCertificate;
 use App\Entity\Heating;
 use App\Entity\Orientation;
@@ -37,6 +38,7 @@ class RateHousingType extends AbstractType
         $builder
             ->add('visited', DateTimePickerType::class, [
                 'label' => 'Fecha Valoración',
+                'data' => new \DateTime(),
 //                'widget' => 'single_text',
 //                'format' => 'dd-MM-yyyy',
 //                'html5' => false,
@@ -45,11 +47,17 @@ class RateHousingType extends AbstractType
                 ],
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Comentario',
+                'label' => 'Comentario Vivienda',
                 'required' => false,
                 'attr' => [
                     'rows' => 2,
                 ]
+            ])
+            ->add('door', EntityType::class, [
+                'label' => 'Tipo Puerta',
+                'class' => Door::class,
+                'required' => false,
+                'placeholder' => 'Seleciona Puerta'
             ])
             ->add('min_price', MoneyType::class, [
                 'label' => 'Precio Mínimo',
@@ -138,8 +146,8 @@ class RateHousingType extends AbstractType
             ])
             ->add('windowsState', EntityType::class, [
                 'required' => false,
-                'label' => 'Estado Ventanas',
-                'placeholder' => 'Selecciona Estado Ventanas',
+                'label' => 'Estado Ventana',
+                'placeholder' => 'Selecciona Estado Ventana',
                 'class' => ValuationStatus::class
             ])
             ->add('beenWalls', EntityType::class, [
@@ -191,7 +199,10 @@ class RateHousingType extends AbstractType
             ])
             ->add('pendingSpills', TextareaType::class, [
                 'label' => 'Derrama Pendiente',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'rows' => 1
+                ]
             ])
             ->add('amountPendingSpills', MoneyType::class, [
                 'label' => 'Importe Derrama Pendiente',
@@ -199,7 +210,10 @@ class RateHousingType extends AbstractType
             ])
             ->add('spillsFuture', TextareaType::class, [
                 'label' => 'Derrama Futura',
-                'required' => false
+                'required' => false,
+                'attr' => [
+                    'rows' => 1
+                ]
             ])
             ->add('administrator', TextType::class, [
                 'label' => 'Administrador de Fincas',
@@ -216,11 +230,11 @@ class RateHousingType extends AbstractType
                 'placeholder' => '¿Llaves?'
             ])
             ->add('pets', CheckboxType::class, [
-                'label' => 'Perros',
+                'label' => 'Mascotas',
                 'required' => false
             ])
             ->add('exteriorBedrooms', IntegerType::class, [
-                'label' => 'Habitación exterior',
+                'label' => 'Dormitorio exterior',
                 'required' => false
             ])
             ->add('exteriorCooking', CheckboxType::class, [
@@ -228,14 +242,14 @@ class RateHousingType extends AbstractType
                 'required' => false
             ])
             ->add('patioBedrooms', IntegerType::class, [
-                'label' => 'Habitación patio/ciego',
+                'label' => 'Dormitorio patio/ciego',
                 'required' => false,
                 'attr' => [
                     'min' => 0
                 ]
             ])
             ->add('exteriorBathrooms', IntegerType::class, [
-                'label' => 'Baños exterior',
+                'label' => 'Baño exterior',
                 'required' => false,
                 'attr' => [
                     'min' => 0

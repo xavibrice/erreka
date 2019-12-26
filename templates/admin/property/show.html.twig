@@ -33,12 +33,12 @@
                                 <th class="text-right">Motivo</th>
                                 <td>{{ property.reason.name }}</td>
                                 <th class="text-right">Referencia</th>
-                                <td>1000</td>
+                                <td>{{ property.reference }}</td>
 {#                                <th>Precio</th>#}
 {#                                <td>{{ property.price }}</td>#}
                             </tr>
                             <tr>
-                                <th class="text-right">Tipo de propiedad</th>
+                                <th class="text-right">Tipo Propiedad</th>
                                 <td>
                                     {% if property.typeProperty is not empty %}
                                         {{ property.typeProperty.name }}

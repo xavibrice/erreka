@@ -26,6 +26,7 @@ class NoteCommercialType extends AbstractType
             ])
             ->add('notice_date', DateTimePickerType::class, [
                 'label' => 'Selecciona Fecha',
+                'data' => new \DateTime(),
 //                'widget' => 'single_text',
 //                'format' => 'dd-MM-yyyy',
 //                'html5' => false,

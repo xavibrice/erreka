@@ -19,6 +19,7 @@ class NoteNewType extends AbstractType
         $builder
             ->add('notice_date', DateTimePickerType::class, [
                 'label' => 'Fecha creación',
+                'data' => new \DateTime(),
 //                'widget' => 'single_text',
 //                'format' => 'dd-MM-yyyy',
 //                'html5' => false,

@@ -1,0 +1,13 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Edit Visit{% endblock %}
+
+{% block content %}
+    <h1>Edit Visit</h1>
+
+    {{ include('admin/visit/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('visit_index') }}">back to list</a>
+
+    {{ include('admin/visit/_delete_form.html.twig') }}
+{% endblock %}

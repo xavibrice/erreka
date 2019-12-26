@@ -37,6 +37,7 @@ class DateTimePickerType extends AbstractType
     {
         $resolver->setDefaults([
             'widget' => 'single_text',
+            'format' => "dd-MM-yyyy'T'HH:mm:ss",
             // if true, the browser will display the native date picker widget
             // however, this app uses a custom JavaScript widget, so it must be set to false
             'html5' => false,

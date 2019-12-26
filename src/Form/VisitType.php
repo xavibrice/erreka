@@ -23,6 +23,7 @@ class VisitType extends AbstractType
             ->add('visited', DateTimePickerType::class, [
                 'required' => true,
                 'label' => 'Fecha Visita',
+                'data' => new \DateTime(),
 //                'widget' => 'single_text',
 //                'format' => 'dd-MM-yyyy',
 //                'html5' => false,
@@ -32,10 +33,6 @@ class VisitType extends AbstractType
             ])
             ->add('client', ClientSelectType::class, [
                 'label' => 'Cliente'
-            ])
-            ->add('price', MoneyType::class, [
-                'label' => 'Precio Visita',
-                'required' => false
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario',

@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Booking;
 use App\Entity\User;
 use App\Form\Type\DateTimePickerType;
+use Cassandra\Date;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -28,6 +29,7 @@ class BookingType extends AbstractType
                 'label' => 'Fecha inicio',
 //                'widget' => 'single_text',
 //                'html5' => false,
+                'data' => new \DateTime(),
                 'attr' => [
                     'class' => 'dateStart'
                 ]

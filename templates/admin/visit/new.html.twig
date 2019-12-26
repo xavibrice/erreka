@@ -1,0 +1,11 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Crear Visita{% endblock %}
+
+{% block content %}
+    <h1>Create new Visit</h1>
+
+    {{ include('admin/visit/_form.html.twig') }}
+
+    <a href="{{ path('visit_index') }}">back to list</a>
+{% endblock %}

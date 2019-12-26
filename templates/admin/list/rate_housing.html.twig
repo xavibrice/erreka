@@ -34,15 +34,15 @@
                     <tbody>
                     {% for rateHousing in rateHousings %}
                         {% for property in rateHousing.property %}
-                            <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id }) }}">
+                            <tr class="clickable-row" data-href="{{ path('property_rate_housing_new_show', {'id': property.id }) }}">
                                 <td>{{ rateHousing.visited|date('d/m/Y') }}</td>
                                 <td>{{ property.commercial.fullName }}</td>
                                 <td>{{ property.street.zone.name }}</td>
                                 <td>
                                     {{ property.reason.situation.name }}
-                                    {% if property.rateHousing %}
-                                        {{ property.rateHousing.bathrooms }}
-                                    {% endif %}
+{#                                    {% if property.rateHousing %}#}
+{#                                        {{ property.rateHousing.bathrooms }}#}
+{#                                    {% endif %}#}
                                 </td>
                                 <td>{{ property.reason.name }}</td>
                                 <td>{{ property.street }}</td>
@@ -55,11 +55,11 @@
                                 <td>{{ rateHousing.bathrooms }}</td>
                                 <td>{{ rateHousing.realMeters }}</td>
                                 <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
-                                <td>
-                                    {% if rateHousing.heating %}
-                                        {{ rateHousing.heating.name }}
-                                    {% endif %}
-                                </td>
+{#                                <td>#}
+{#                                    {% if rateHousing.heating %}#}
+{#                                        {{ rateHousing.heating.name }}#}
+{#                                    {% endif %}#}
+{#                                </td>#}
                                 <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
                                 <td data-toggle="tooltip" data-placement="top" title="{{ rateHousing.comment }}">
                                     {{ rateHousing.comment|slice(0, 50) }}
