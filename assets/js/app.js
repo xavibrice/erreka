@@ -131,14 +131,24 @@ $(document).ready(function() {
         }
     });
 } );
+//
+// $(document).ready(function ($) {
+//     $('.clickable-row').on('click', function (event) {
+//         window.location = $(this).data("href");
+//         console.log($(this).data("href"))
+//     });
+// });
 
-$(document).ready(function ($) {
-    $(".clickable-row").click(function () {
+$(document).ready(function() {
+    // var table = $('#dataTable').DataTable();
+
+    $('#dataTable tbody').on('click', 'tr', function () {
+        // var data = table.row( this ).data();
         window.location = $(this).data("href");
-        console.log($(this).data("href"))
-    });
-});
 
+        // alert( 'You clicked on '+data[0]+'\'s row' );
+    } );
+} );
 
 $('.custom-file-input').on('change', function (event) {
     var inputFile = event.currentTarget;

@@ -19,6 +19,23 @@ class ChargeTypeRepository extends ServiceEntityRepository
         parent::__construct($registry, ChargeType::class);
     }
 
+
+    public function findExclusive()
+    {
+        return $this->createQueryBuilder('ct')
+            ->andWhere('ct.name = :name')
+            ->innerJoin('ct.charges', 'c')
+            ->innerJoin('c.rate_housing', 'rh')
+            ->innerJoin('rh.property', 'p')
+            ->innerJoin('p.propertyReductions', 'pr')
+            ->select(['SUM(pr.price) as sumPropertyReduction', 'ct', 'c', 'rh', 'p', 'pr'])
+            ->setParameter('name', 'Exclusiva')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
     // /**
     //  * @return ChargeType[] Returns an array of ChargeType objects
     //  */

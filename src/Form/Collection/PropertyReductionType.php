@@ -30,7 +30,7 @@ class PropertyReductionType extends AbstractType
             ->add('reductionNextDate', DateTimePickerType::class, [
                 'label' => 'Fecha próxima rebaja',
 //                'widget' => 'single_text',
-//                'required' => false,
+                'required' => false,
 //                'format' => 'dd-mm-yyyy',
 //                'html5' => false,
                 'attr' => [

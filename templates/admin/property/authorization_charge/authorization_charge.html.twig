@@ -76,7 +76,11 @@
                                         <th class="text-right">Precio OK</th>
                                         <td>{{ property.rateHousing.charge.priceOk }} €</td>
                                         <th class="text-right">LLaves</th>
-                                        <td>{{ property.rateHousing.charge.houseKey ? 'Si' : 'No' }}</td>
+                                        <td>
+                                            {% if property.rateHousing.stateKeys %}
+                                                {{ property.rateHousing.stateKeys.name }}
+                                            {% endif %}
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

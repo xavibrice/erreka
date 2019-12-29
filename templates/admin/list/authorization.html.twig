@@ -12,18 +12,19 @@
                 <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
+                        <th>Ref.</th>
                         <th>Asesor</th>
-                        <th>Zona</th>
+{#                        <th>Zona</th>#}
                         <th>Calle</th>
                         <th>Nº</th>
                         <th>Piso</th>
                         <th>Propietario</th>
                         <th>Móvil</th>
-                        <th>Fecha</th>
-                        <th>Caduca</th>
-                        <th>Precio Encargo</th>
-                        <th>Precio Actual</th>
-                        <th>Precio OK</th>
+                        <th>Fecha E</th>
+                        <th>Fecha C</th>
+                        <th>P Enc.</th>
+                        <th>P Actual</th>
+                        <th>P OK</th>
                         <th>Visitas</th>
                         <th>% Caro</th>
                         <th>Rebaj.</th>
@@ -37,24 +38,34 @@
                             {% for rateHousing in charge.rateHousing %}
                                 {% for property in rateHousing.property %}
                                     <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
+                                    <td>{{ property.reference }}</td>
                                     <td>{{ property.commercial.fullName }}</td>
-                                    <td>{{ property.street.zone.name }}</td>
+{#                                    <td>{{ property.street.zone.name }}</td>#}
                                     <td>{{ property.street.name }}</td>
                                     <td>{{ property.portal }}</td>
                                     <td>{{ property.floor }}</td>
                                     <td>{{ property.fullName }}</td>
                                     <td>{{ property.mobile }}</td>
-                                    <td>{{ property.created|date('d/m/Y') }}</td>
-                                    <td>
-                                        {% if property.rateHousing %}
-                                            {{ property.rateHousing.bedrooms }}
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% if property.rateHousing %}
-                                            {{ property.rateHousing.bathrooms }}
-                                        {% endif %}
-                                    </td>
+                                    <td>{{ charge.startDate|date('d/m/Y') }}</td>
+                                    <td>{{ charge.endDate|date('d/m/Y') }}</td>
+{#                                    <td>#}
+{#                                        {% if property.rateHousing %}#}
+{#                                            {{ property.rateHousing.bedrooms }}#}
+{#                                        {% endif %}#}
+{#                                    </td>#}
+{#                                    <td>#}
+{#                                        {% if property.rateHousing %}#}
+{#                                            {{ property.rateHousing.bathrooms }}#}
+{#                                        {% endif %}#}
+{#                                    </td>#}
+                                        <td>{{ charge.price|number_format(0, ',', '.') }} €</td>
+                                        <td>{{ charge.price|number_format(0, ',', '.') }} € -</td>
+                                        <td>{{ charge.priceOk|number_format(0, ',', '.') }} €</td>
+                                        <td>a</td>
+                                        <td>a</td>
+                                        <td>a</td>
+                                        <td>a</td>
+                                        <td>a</td>
                                 </tr>
                                 {% endfor %}
                             {% endfor %}

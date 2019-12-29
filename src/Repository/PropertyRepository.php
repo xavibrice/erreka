@@ -40,8 +40,10 @@ class PropertyRepository extends ServiceEntityRepository
     public function onlyNotices($getUser)
     {
         return $this->addAllNoticesQueryBuilder()
-            ->andWhere('s.name != :situation')
-            ->setParameter('situation', 'noticia a desarrollar')
+            ->andWhere('s.name = :situation')
+//            ->join('p.rateHousing', 'rh')
+//            ->join('rh.charge', 'c')
+            ->setParameter('situation', 'Noticia')
             ->setParameter('commercial', $getUser)
             ->getQuery()
             ->getResult();

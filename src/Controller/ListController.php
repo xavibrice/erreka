@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\PropertyReduction;
 use App\Repository\ChargeTypeRepository;
 use App\Repository\RateHousingRepository;
 use App\Repository\SituationRepository;
@@ -20,7 +21,7 @@ class ListController extends AbstractController
     public function listRateHousing(RateHousingRepository $rateHousingRepository): Response
     {
         return $this->render('admin/list/rate_housing.html.twig', [
-            'rateHousings' => $rateHousingRepository->findAll()
+            'rateHousings' => $rateHousingRepository->findAll(),
         ]);
     }
 
@@ -30,7 +31,8 @@ class ListController extends AbstractController
     public function listCharge(ChargeTypeRepository $chargeTypeRepository): Response
     {
         return $this->render('admin/list/exclusive.html.twig', [
-            'exclusives' => $chargeTypeRepository->findBy(['name' => 'Exclusiva'])
+            'exclusives' => $chargeTypeRepository->findBy(['name' => 'exclusiva']),
+//            'exclusives' => $chargeTypeRepository->findExclusive(),
         ]);
     }
 

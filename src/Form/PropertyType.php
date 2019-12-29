@@ -185,10 +185,10 @@ class PropertyType extends AbstractType
                 'label' => 'Móvil',
                 'required' => false
             ])
-            ->add('reference', null, [
-                'required' => false,
-                'disabled' => true,
-            ])
+//            ->add('reference', null, [
+//                'required' => false,
+//                'disabled' => true,
+//            ])
 //            ->add('email', EmailType::class, [
 //                'label' => 'Correo',
 //                'required' => false

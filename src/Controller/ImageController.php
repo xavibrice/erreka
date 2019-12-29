@@ -24,7 +24,7 @@ class ImageController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('property_show', [
+        return $this->redirectToRoute('property_rate_housing_new_show', [
             'id' => $images->getProperty()->getId()
         ]);
     }

@@ -35,6 +35,8 @@ class PropertyController extends AbstractController
     {
         $properties = $propertyRepository->onlyNotices($this->getUser());
 
+//        dd($properties);
+
         return $this->render('admin/property/property.html.twig', [
             'properties' => $properties,
         ]);
@@ -60,8 +62,13 @@ class PropertyController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $uuidGenerator = Uuid::uuid4();
-        $uuid = $uuidGenerator->toString();
+        $lastReference = $em->getRepository(Property::class)->findOneBy([], ['id' => 'desc']);
+
+        if ($lastReference) {
+            $newReference = $lastReference->getReference() + 1;
+        } else {
+            $newReference = 1;
+        }
 
         $property = new Property();
         $property->setEnabled(true);
@@ -71,7 +78,7 @@ class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $property->setReference($uuid);
+            $property->setReference($newReference);
 
             $files = $request->files->get("property")["image"];
 

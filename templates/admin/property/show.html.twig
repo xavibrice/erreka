@@ -2,10 +2,10 @@
 
 {% block title %}Detalles Noticia{% endblock %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
-{% endblock %}
+{#{% block stylesheets %}#}
+{#    {{ parent() }}#}
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />#}
+{#{% endblock %}#}
 
 {% block content %}
 
@@ -27,7 +27,7 @@
                             </tr>
                             <tr>
                                 <th class="text-right">Fecha</th>
-                                <td>{{ property.created|date('m/d/Y') }}</td>
+                                <td>{{ property.created|date('d/m/Y') }}</td>
                                 <th class="text-right">Asesor</th>
                                 <td>{{ property.commercial.fullName }}</td>
                                 <th class="text-right">Motivo</th>
@@ -48,13 +48,15 @@
                                 <td>{{ property.street.zone.name }}</td>
                                 <th class="text-right">Calle</th>
                                 <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
+                                <th>Precio</th>
+                                <td>{{ property.price|number_format(0, ',', '.') }} €</td>
                             </tr>
                             <tr>
                                 <th class="text-right">Propietario</th>
                                 <td>{{ property.fullName }}</td>
-                                <th class="text-right">Móvil/Teléfono</th>
+                                <th class="text-right">Móvil / Teléfono</th>
                                 <td>{{ property.mobile }}</td>
-                                <th class="text-right">Correo</th>
+                                <th class="text-right">Email</th>
                                 <td>{{ property.email }}</td>
                             </tr>
                             <tr>
@@ -70,7 +72,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="compact-gallery">
+                    {#<div class="compact-gallery">
                         <div class="row">
                             {% for image in property.image %}
                                 <div class="col-2">
@@ -85,7 +87,7 @@
                                 </div>
                             {% endfor %}
                         </div>
-                    </div>
+                    </div>#}
                 </div>
                 <div class="card-footer">
 {#                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
@@ -181,10 +183,11 @@
 {#    {{ include('admin/property/_delete_form.html.twig') }}#}
 {% endblock %}
 
+{#
 {% block javascripts %}
     {{ parent() }}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
     <script>
         baguetteBox.run('.compact-gallery', { animation: 'slideIn'});
     </script>
-{% endblock %}
+{% endblock %}#}

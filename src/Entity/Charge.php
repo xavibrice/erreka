@@ -19,11 +19,6 @@ class Charge
     private $id;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $house_key;
-
-    /**
      * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
      */
     private $price;
@@ -43,6 +38,21 @@ class Charge
      */
     private $rate_housing;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $expiration_date;
+
+    /**
+     * @ORM\Column(type="date")
+     */
+    private $start_date;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $end_date;
+
     public function __construct()
     {
         $this->rate_housing = new ArrayCollection();
@@ -51,18 +61,6 @@ class Charge
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getHouseKey(): ?bool
-    {
-        return $this->house_key;
-    }
-
-    public function setHouseKey(bool $house_key): self
-    {
-        $this->house_key = $house_key;
-
-        return $this;
     }
 
     public function getPrice()
@@ -128,6 +126,42 @@ class Charge
                 $rateHousing->setCharge(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getExpirationDate(): ?\DateTimeInterface
+    {
+        return $this->expiration_date;
+    }
+
+    public function setExpirationDate(?\DateTimeInterface $expiration_date): self
+    {
+        $this->expiration_date = $expiration_date;
+
+        return $this;
+    }
+
+    public function getStartDate(): ?\DateTimeInterface
+    {
+        return $this->start_date;
+    }
+
+    public function setStartDate(\DateTimeInterface $start_date): self
+    {
+        $this->start_date = $start_date;
+
+        return $this;
+    }
+
+    public function getEndDate(): ?\DateTimeInterface
+    {
+        return $this->end_date;
+    }
+
+    public function setEndDate(?\DateTimeInterface $end_date): self
+    {
+        $this->end_date = $end_date;
 
         return $this;
     }
