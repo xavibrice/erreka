@@ -52,10 +52,10 @@
                                     <td>{{ charge.price|number_format(0, ',', '.') }} €</td>
                                     <td>{{ charge.price }} - </td>
                                     <td>{{ charge.priceOk|number_format(0, ',', '.') }} €</td>
+                                    <td>{{ property.visits.count }}</td>
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ property.propertyReductions.count }}</td>
+                                    <td>{{ property.propertyReductions.last.price|number_format(0, ',', '.') }} €</td>
                                     <td></td>
                                 </tr>
                                 {% endfor %}

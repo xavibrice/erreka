@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ImageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ImageController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ListController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Charge.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Charge.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/AgencyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/AgencyType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ChargeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChargeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/Collection/PropertyReductionType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/Collection/PropertyReductionType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/VisitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/VisitType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ChargeTypeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ChargeTypeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/list/authorization.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/authorization.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/property.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/property.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/show.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -369,7 +347,7 @@
       <workItem from="1577462292006" duration="9467000" />
       <workItem from="1577558544468" duration="22000" />
       <workItem from="1577559145022" duration="184000" />
-      <workItem from="1577633851608" duration="6460000" />
+      <workItem from="1577633851608" duration="6701000" />
     </task>
     <servers />
   </component>
