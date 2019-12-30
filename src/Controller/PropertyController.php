@@ -317,14 +317,7 @@ class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $files = $request->files->get("property")["image"];
 
-            foreach ($files as $file) {
-                $image = new Images();
-                $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
-
-                $property->addImage($image);
-            }
 
             $this->getDoctrine()->getManager()->flush();
 
