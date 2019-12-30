@@ -97,6 +97,8 @@ class PropertyController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
+
+
         $noteProperty = new NoteNew();
         $noteProperty->setProperty($property);
         $form = $this->createForm(NoteNewType::class, $noteProperty);

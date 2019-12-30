@@ -33,7 +33,8 @@ class NoteNewType extends AbstractType
 //                'placeholder' => 'Selecciona una noticia'
 //            ])
             ->add('note', TextareaType::class, [
-                'label' => 'Nota'
+                'label' => 'Nota',
+                'required' => false
             ])
             ->add('nextCall', DateTimePickerType::class, [
                 'label' => 'Proxima Llamada',

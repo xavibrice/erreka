@@ -55,7 +55,13 @@
                                     <td>{{ property.visits.count }}</td>
                                     <td></td>
                                     <td>{{ property.propertyReductions.count }}</td>
-                                    <td>{{ property.propertyReductions.last.price|number_format(0, ',', '.') }} €</td>
+                                    <td>
+                                        {% if property.propertyReductions is defined %}
+                                            {% if property.propertyReductions.count > 0 %}
+                                                {{ property.propertyReductions.last.price|number_format(0, ',', '.') }} €
+                                            {% endif %}
+                                        {% endif %}
+                                    </td>
                                     <td></td>
                                 </tr>
                                 {% endfor %}
