@@ -3,6 +3,7 @@
         <div class="col-md-auto">{{ form_row(form.created) }}</div>
         {% if is_granted('ROLE_ADMIN') %}
             <div class="col-md-auto">{{ form_row(form.commercial) }}</div>
+            <div class="col-md-auto">{{ form_row(form.historical) }}</div>
         {% endif %}
 {#        <div class="col-md-auto">{{ form_row(form.reference) }}</div>#}
         <div class="col-md-auto">{{ form_row(form.reason) }}</div>

@@ -23,6 +23,16 @@ class Historical
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="historical")
+     */
+    private $property;
+
+    public function __construct()
+    {
+        $this->property = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,5 +54,36 @@ class Historical
     {
         // TODO: Implement __toString() method.
         return (string)$this->name;
+    }
+
+    /**
+     * @return Collection|Property[]
+     */
+    public function getProperty(): Collection
+    {
+        return $this->property;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->property->contains($property)) {
+            $this->property[] = $property;
+            $property->setHistorical($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProperty(Property $property): self
+    {
+        if ($this->property->contains($property)) {
+            $this->property->removeElement($property);
+            // set the owning side to null (unless already changed)
+            if ($property->getHistorical() === $this) {
+                $property->setHistorical(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -73,12 +73,22 @@ class PropertyToDeveloperController extends AbstractController
      */
     public function new(Request $request): Response
     {
+        $em = $this->getDoctrine()->getManager();
+        $lastReference = $em->getRepository(Property::class)->findOneBy([], ['id' => 'desc']);
+
+        if ($lastReference) {
+            $newReference = $lastReference->getReference() + 1;
+        } else {
+            $newReference = 1;
+        }
+
         $property = new Property();
         $property->setEnabled(true);
         $form = $this->createForm(PropertyToDeveloperType::class, $property);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $property->setReference($newReference);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($property);
             $entityManager->flush();

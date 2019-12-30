@@ -59,7 +59,6 @@ class PropertyController extends AbstractController
     public function new(Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
-
         $lastReference = $em->getRepository(Property::class)->findOneBy([], ['id' => 'desc']);
 
         if ($lastReference) {

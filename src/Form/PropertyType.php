@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Historical;
 use App\Entity\Property;
 use App\Entity\Reason;
 use App\Entity\Situation;
@@ -194,6 +195,12 @@ class PropertyType extends AbstractType
             ])
             ->add('url', UrlType::class, [
                 'label' => 'URL',
+                'required' => false
+            ])
+            ->add('historical', EntityType::class, [
+                'label' => 'Histórico',
+                'placeholder' => 'Selecciona Histórico',
+                'class' => Historical::class,
                 'required' => false
             ])
             ->add('typeProperty', EntityType::class, [

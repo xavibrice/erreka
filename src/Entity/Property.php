@@ -119,6 +119,11 @@ class Property
      */
     private $offereds;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Historical", inversedBy="property")
+     */
+    private $historical;
+
     public function __construct()
     {
         $this->propertyReductions = new ArrayCollection();
@@ -450,6 +455,18 @@ class Property
                 $offered->setProperty(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getHistorical(): ?Historical
+    {
+        return $this->historical;
+    }
+
+    public function setHistorical(?Historical $historical): self
+    {
+        $this->historical = $historical;
 
         return $this;
     }
