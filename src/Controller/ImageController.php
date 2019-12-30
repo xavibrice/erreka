@@ -25,7 +25,7 @@ class ImageController extends AbstractController
         }
 
         return $this->redirectToRoute('property_rate_housing_new_show', [
-            'id' => $images->getProperty()->getId()
+            'id' => $images->getRateHousing()->getProperty()->first()->getId()
         ]);
     }
 }

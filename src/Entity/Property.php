@@ -100,11 +100,6 @@ class Property
     private $url;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="property", cascade={"persist"})
-     */
-    private $image;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="property")
      */
     private $visits;
@@ -128,7 +123,6 @@ class Property
     {
         $this->propertyReductions = new ArrayCollection();
         $this->note_new = new ArrayCollection();
-        $this->image = new ArrayCollection();
         $this->visits = new ArrayCollection();
         $this->offereds = new ArrayCollection();
     }
@@ -372,37 +366,6 @@ class Property
     {
         // TODO: Implement __toString() method.
         return (string)$this->getFullName();
-    }
-
-    /**
-     * @return Collection|Images[]
-     */
-    public function getImage(): Collection
-    {
-        return $this->image;
-    }
-
-    public function addImage(Images $image): self
-    {
-        if (!$this->image->contains($image)) {
-            $this->image[] = $image;
-            $image->setProperty($this);
-        }
-
-        return $this;
-    }
-
-    public function removeImage(Images $image): self
-    {
-        if ($this->image->contains($image)) {
-            $this->image->removeElement($image);
-            // set the owning side to null (unless already changed)
-            if ($image->getProperty() === $this) {
-                $image->setProperty(null);
-            }
-        }
-
-        return $this;
     }
 
     /**

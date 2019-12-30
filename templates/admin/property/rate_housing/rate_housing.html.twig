@@ -196,18 +196,21 @@
 
                     <div class="compact-gallery">
                         <div class="row">
-                            {% for image in property.image %}
-                                <div class="col-2">
-                                    <div class="card-body">
-                                        <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
-                                            <img src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_small') }}" alt="">
-                                        </a>
+                            {% if property.rateHousing %}
+                                {% for image in property.rateHousing.image %}
+                                    <div class="col-2">
+                                        <div class="card-body">
+                                            <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                                <img class="img-fluid" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_small') }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            {{ include('admin/_delete_form.html.twig', {'route': 'image_delete', 'entity': image, 'count': 0}) }}
+                                        </div>
                                     </div>
-                                    <div class="card-footer text-center">
-                                        {{ include('admin/_delete_form.html.twig', {'route': 'image_delete', 'entity': image, 'count': 0}) }}
-                                    </div>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
+
+                            {% endif %}
                         </div>
                     </div>
                 </div>

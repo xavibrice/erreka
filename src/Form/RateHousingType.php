@@ -14,6 +14,7 @@ use App\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -260,6 +261,15 @@ class RateHousingType extends AbstractType
                 'class' => EnergyCertificate::class,
                 'required' => false,
                 'placeholder' => 'Selecciona Certificado Energético',
+            ])
+            ->add('image', FileType::class, [
+                'label' => 'Subir fotos',
+                'mapped' => false,
+                'required' => false,
+                'multiple' => true,
+                'attr' => [
+                    'accept' => 'image/*'
+                ]
             ])
         ;
     }

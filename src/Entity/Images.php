@@ -25,9 +25,9 @@ class Images
     private $name_image;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="image")
+     * @ORM\ManyToOne(targetEntity="App\Entity\RateHousing", inversedBy="image")
      */
-    private $property;
+    private $rateHousing;
 
     public function getId(): ?int
     {
@@ -46,18 +46,6 @@ class Images
         return $this;
     }
 
-    public function getProperty(): ?Property
-    {
-        return $this->property;
-    }
-
-    public function setProperty(?Property $property): self
-    {
-        $this->property = $property;
-
-        return $this;
-    }
-
     public function __toString()
     {
         // TODO: Implement __toString() method.
@@ -67,5 +55,17 @@ class Images
     public function getImagePath()
     {
         return UploaderHelper::PROPERTY_IMAGE.'/'.$this->getNameImage();
+    }
+
+    public function getRateHousing(): ?RateHousing
+    {
+        return $this->rateHousing;
+    }
+
+    public function setRateHousing(?RateHousing $rateHousing): self
+    {
+        $this->rateHousing = $rateHousing;
+
+        return $this;
     }
 }

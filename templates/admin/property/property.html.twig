@@ -41,76 +41,82 @@
                     <tbody>
                     {% for property in properties %}
                         {% if property.enabled %}
-                                {% if property.rateHousing is not defined or property.rateHousing is defined %}
-                                {% if property.rateHousing.charge is empty %}
-{#                                {% if property.rateHousing.charge is not defined %}#}
-                                    <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
-                                        {#                                <td>{{ property.id }}</td>#}
-                                        <td>{{ property.created|date('d/m/Y') }}</td>
-                                        <td>
-                                            {{ property.commercial.fullName }}
-                                            {#                                    {% if property.street is not empty and property.street.zone is not empty %}#}
-                                            {#                                        {{ property.street.zone.name }}#}
+                                {% if property.rateHousing is null or property.rateHousing is not null %}
+{#                                    {% if property.rateHousing.charge is not defined %}#}
+
+                                        <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
+                                            {#                                <td>{{ property.id }}</td>#}
+                                            <td>{{ property.created|date('d/m/Y') }}</td>
+                                            <td>
+                                                {{ property.commercial.fullName }}
+                                                {#                                    {% if property.street is not empty and property.street.zone is not empty %}#}
+                                                {#                                        {{ property.street.zone.name }}#}
+                                                {#                                    {% endif %}#}
+                                            </td>
+                                            {#                                <td>#}
+                                            {#                                    {% if property.reason is not empty and property.reason.situation is not empty %}#}
+                                            {#                                        {{ property.reason.situation.name }}#}
                                             {#                                    {% endif %}#}
-                                        </td>
-                                        {#                                <td>#}
-                                        {#                                    {% if property.reason is not empty and property.reason.situation is not empty %}#}
-                                        {#                                        {{ property.reason.situation.name }}#}
-                                        {#                                    {% endif %}#}
-                                        {#                                </td>#}
-                                        <td>
-                                            {% if property.reason is not empty %}
-                                                {{ property.reason.name }}
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if property.street is not empty %}
-                                                {{ property.street.name }}
-                                            {% endif %}
-                                        </td>
-                                        <td>{{ property.portal }}</td>
-                                        <td>{{ property.floor }}</td>
-                                        <td>{{ property.fullName }}</td>
-                                        <td>{{ property.mobile }}</td>
-                                        <td>{{ property.price|number_format(0, '.', ',') }}€</td>
-                                        <td>
-                                            {{ property.rateHousing ? 'Si' : 'No' }}
-                                        </td>
-                                        <td>
-                                            {% if property.rateHousing %}
-                                                {{ property.rateHousing.bedrooms }}
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if property.rateHousing %}
-                                                {{ property.rateHousing.bathrooms }}
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if property.rateHousing %}
-                                                {{ property.rateHousing.realMeters }}
-                                            {% endif %}
-                                        </td>
-                                        <td>
-                                            {% if property.image.count > 0 %}
-                                                Si
-                                            {% else %}
-                                                No
-                                            {% endif %}
-                                            {#                                    {{ property.image ? 'Si' : 'No' }}#}
-                                        </td>
-                                        <td>
-                                            {% if property.noteNew %}
-                                                {{ property.noteNew.last }}
-                                            {% endif %}
-                                        </td>
-                                        <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
-                                            {{ property.comment|slice(0, 13) }}
-                                        </td>
-                                    </tr>
+                                            {#                                </td>#}
+                                            <td>
+                                                {% if property.reason is not empty %}
+                                                    {{ property.reason.name }}
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if property.street is not empty %}
+                                                    {{ property.street.name }}
+                                                {% endif %}
+                                            </td>
+                                            <td>{{ property.portal }}</td>
+                                            <td>{{ property.floor }}</td>
+                                            <td>{{ property.fullName }}</td>
+                                            <td>{{ property.mobile }}</td>
+                                            <td>{{ property.price|number_format(0, '.', ',') }}€</td>
+                                            <td>
+                                                {{ property.rateHousing ? 'Si' : 'No' }}
+                                            </td>
+                                            <td>
+                                                {% if property.rateHousing %}
+                                                    {{ property.rateHousing.bedrooms }}
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if property.rateHousing %}
+                                                    {{ property.rateHousing.bathrooms }}
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if property.rateHousing %}
+                                                    {{ property.rateHousing.realMeters }}
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if property.rateHousing %}
+                                                    {% if property.rateHousing.image.count > 0 %}
+                                                        Si
+                                                    {% else %}
+                                                        No
+                                                    {% endif %}
+                                                {% endif %}
+                                            </td>
+                                            <td>
+                                                {% if property.noteNew %}
+                                                    {{ property.noteNew.last }}
+                                                {% endif %}
+                                            </td>
+                                            <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
+                                                {{ property.comment|slice(0, 13) }}
+                                            </td>
+                                        </tr>
+
+{#                                    {% endif %}#}
+
+{#                                {% if property.rateHousing.charge is not defined %}#}
+{#                                                                    {% if property.rateHousing.charge is not empty %}#}
 {#                                {% endif %}#}
                                 {% endif %}
-                                {% endif %}
+
 
                         {% endif %}
                     {% endfor %}

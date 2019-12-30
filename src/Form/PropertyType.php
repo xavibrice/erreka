@@ -149,15 +149,6 @@ class PropertyType extends AbstractType
         }
 
         $builder
-            ->add('image', FileType::class, [
-                'label' => 'Subir fotos',
-                'mapped' => false,
-                'required' => false,
-                'multiple' => true,
-                'attr' => [
-                    'accept' => 'image/*'
-                ]
-            ])
             ->add('created', DateTimePickerType::class, [
                 'required' => true,
                 'label' => 'Fecha creación',

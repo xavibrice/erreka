@@ -35,8 +35,6 @@ class PropertyController extends AbstractController
     {
         $properties = $propertyRepository->onlyNotices($this->getUser());
 
-//        dd($properties);
-
         return $this->render('admin/property/property.html.twig', [
             'properties' => $properties,
         ]);
@@ -58,7 +56,7 @@ class PropertyController extends AbstractController
     /**
      * @Route("/nueva", name="property_new", methods={"GET","POST"})
      */
-    public function new(Request $request, UploaderHelper $uploaderHelper): Response
+    public function new(Request $request): Response
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -79,16 +77,6 @@ class PropertyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $property->setReference($newReference);
-
-            $files = $request->files->get("property")["image"];
-
-            foreach ($files as $file) {
-                $image = new Images();
-                $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
-
-                $property->addImage($image);
-            }
-
             $em->persist($property);
             $em->flush();
 
@@ -150,7 +138,7 @@ class PropertyController extends AbstractController
     /**
      * @Route("/nueva/{id}/valoracion", name="property_rate_housing_new_show")
      */
-    public function rateHousingNewShow(Request $request, Property $property): Response
+    public function rateHousingNewShow(Request $request, Property $property, UploaderHelper $uploaderHelper): Response
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -160,6 +148,15 @@ class PropertyController extends AbstractController
         $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
+            $files = $request->files->get("rate_housing")["image"];
+
+            foreach ($files as $file) {
+                $image = new Images();
+                $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
+
+                $rateHousing->addImage($image);
+            }
+
             $rateHousing->addProperty($property);
             $em->persist($rateHousing);
             $em->flush();
@@ -178,13 +175,21 @@ class PropertyController extends AbstractController
     /**
      * @Route("/editar/{id}/valoracion", name="property_rate_housing_edit", methods={"GET", "POST"})
      */
-    public function rateHousingEdit(Request $request, RateHousing $rateHousing): Response
+    public function rateHousingEdit(Request $request, RateHousing $rateHousing, UploaderHelper $uploaderHelper): Response
     {
         $em = $this->getDoctrine()->getManager();
         $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $files = $request->files->get("rate_housing")["image"];
+
+            foreach ($files as $file) {
+                $image = new Images();
+                $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
+
+                $rateHousing->addImage($image);
+            }
             $em->flush();
 
             $this->addFlash('success', 'Valoración Editada Correctamente');

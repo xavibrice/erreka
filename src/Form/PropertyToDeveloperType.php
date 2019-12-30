@@ -159,6 +159,7 @@ class PropertyToDeveloperType extends AbstractType
             ])
             ->add('created', DateTimePickerType::class, [
                 'required' => true,
+                'data' => new \DateTime(),
 //                'label' => false,
 //                'widget' => 'single_text',
 //                'format' => 'dd-MM-yyyy',

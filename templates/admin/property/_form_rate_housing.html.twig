@@ -165,5 +165,17 @@
             {{ form_row(form.mobileAdministrator) }}
         </div>
     </div>
+    <div class="form-group row">
+        <div class="col-md-auto">
+            {{ form_row(form.image) }}
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-md-auto">
+            {% for image in form.vars.data.image %}
+                <img src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_small') }}">
+            {% endfor %}
+        </div>
+    </div>
     <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
 {{ form_end(form) }}

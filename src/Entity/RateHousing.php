@@ -239,9 +239,15 @@ class RateHousing
      */
     private $property;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="rateHousing", cascade={"persist"})
+     */
+    private $image;
+
     public function __construct()
     {
         $this->property = new ArrayCollection();
+        $this->image = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -796,6 +802,37 @@ class RateHousing
             // set the owning side to null (unless already changed)
             if ($property->getRateHousing() === $this) {
                 $property->setRateHousing(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Images[]
+     */
+    public function getImage(): Collection
+    {
+        return $this->image;
+    }
+
+    public function addImage(Images $image): self
+    {
+        if (!$this->image->contains($image)) {
+            $this->image[] = $image;
+            $image->setRateHousing($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Images $image): self
+    {
+        if ($this->image->contains($image)) {
+            $this->image->removeElement($image);
+            // set the owning side to null (unless already changed)
+            if ($image->getRateHousing() === $this) {
+                $image->setRateHousing(null);
             }
         }
 
