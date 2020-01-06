@@ -68,7 +68,7 @@ class NoteNew
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return (string)$this->getNextCall()->format('d-m-Y');
+        return (string)$this->getNote();
     }
 
 
@@ -77,7 +77,7 @@ class NoteNew
         return $this->next_call;
     }
 
-    public function setNextCall(\DateTimeInterface $next_call): self
+    public function setNextCall(?\DateTimeInterface $next_call): self
     {
         $this->next_call = $next_call;
 
