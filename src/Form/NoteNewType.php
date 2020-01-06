@@ -26,6 +26,7 @@ class NoteNewType extends AbstractType
                 'required' => false
             ])
             ->add('nextCall', DatePickerType::class, [
+                'required' => false,
                 'label' => 'Próxima Llamada',
                 'attr' => [
                     'class' => 'js-datepicker',

@@ -27,7 +27,7 @@ class NoteNew
     private $notice_date;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", nullable=true)
      */
     private $next_call;
 
