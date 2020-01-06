@@ -10,6 +10,7 @@ use App\Entity\RateHousing;
 use App\Entity\StateKeys;
 use App\Entity\ValuationStatus;
 use App\Entity\Window;
+use App\Form\Type\DatePickerType;
 use App\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -37,7 +38,7 @@ class RateHousingType extends AbstractType
         }
 
         $builder
-            ->add('visited', DateTimePickerType::class, [
+            ->add('visited', DatePickerType::class, [
                 'label' => 'Fecha Valoración',
                 'data' => new \DateTime(),
 //                'widget' => 'single_text',

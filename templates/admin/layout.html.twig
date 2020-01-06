@@ -107,101 +107,53 @@
                     <span>Recados</span>
                 </a>
             </li>
-            <!-- Divider -->
-            <hr class="sidebar-divider">
 
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Administración
-            </div>
+            {% if is_granted('ROLE_ADMIN') %}
+                <!-- Divider -->
+                <hr class="sidebar-divider">
 
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Admin</span>
-                </a>
-                <div id="collapseTwo" class="collapse
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Administración
+                </div>
+
+                <!-- Nav Item - Pages Collapse Menu -->
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <i class="fas fa-fw fa-cog"></i>
+                        <span>Admin</span>
+                    </a>
+                    <div id="collapseTwo" class="collapse
                 {% if
-                    app.request.get('_route') == 'agency_index' or
-                    app.request.get('_route') == 'user_index' or
-                    app.request.get('_route') == 'owner_index' or
-                    app.request.get('_route') == 'zone_index' or
-                    app.request.get('_route') == 'reason_index' or
-                    app.request.get('_route') == 'note_commercial_index' or
-                    app.request.get('_route') == 'street_index' or
-                    app.request.get('_route') == 'situation_index' or
-                    app.request.get('_route') == 'note_new_index' or
-                    app.request.get('_route') == 'type_property_index'
-                %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item {% if app.request.get('_route') == 'agency_index' %}active{% endif %}" href="{{ path('agency_index') }}">Empresas </a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}" href="{{ path('user_index') }}">Usuarios</a>
-{#                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>#}
-                        <a class="collapse-item {% if app.request.get('_route') == 'note_new_index' %}active{% endif %}" href="{{ path('note_new_index') }}">Nota Noticia</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}" href="{{ path('note_commercial_index') }}">Nota Comercial</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'street_index' %}active{% endif %}" href="{{ path('street_index') }}">Calles</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'situation_index' %}active{% endif %}" href="{{ path('situation_index') }}">Situaciones</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'type_property_index' %}active{% endif %}" href="{{ path('type_property_index') }}">Tipo Propiedad</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'orientation_index' %}active{% endif %}" href="{{ path('orientation_index') }}">Orientación</a>
+                        app.request.get('_route') == 'agency_index' or
+                        app.request.get('_route') == 'user_index' or
+                        app.request.get('_route') == 'owner_index' or
+                        app.request.get('_route') == 'zone_index' or
+                        app.request.get('_route') == 'reason_index' or
+                        app.request.get('_route') == 'note_commercial_index' or
+                        app.request.get('_route') == 'street_index' or
+                        app.request.get('_route') == 'situation_index' or
+                        app.request.get('_route') == 'note_new_index' or
+                        app.request.get('_route') == 'type_property_index'
+                    %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header">Custom Components:</h6>
+                            <a class="collapse-item {% if app.request.get('_route') == 'agency_index' %}active{% endif %}" href="{{ path('agency_index') }}">Empresas </a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}" href="{{ path('user_index') }}">Usuarios</a>
+                            {#                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>#}
+                            <a class="collapse-item {% if app.request.get('_route') == 'note_new_index' %}active{% endif %}" href="{{ path('note_new_index') }}">Nota Noticia</a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}" href="{{ path('note_commercial_index') }}">Nota Comercial</a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'street_index' %}active{% endif %}" href="{{ path('street_index') }}">Calles</a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'situation_index' %}active{% endif %}" href="{{ path('situation_index') }}">Situaciones</a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'type_property_index' %}active{% endif %}" href="{{ path('type_property_index') }}">Tipo Propiedad</a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'orientation_index' %}active{% endif %}" href="{{ path('orientation_index') }}">Orientación</a>
+                        </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            {% endif %}
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-{#                {{ render_esi(controller('App\\Controller\\TypePropertyController::index')) }}#}
-
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Addons
-            </div>
-
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item active">
-                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Login Screens:</h6>
-                        <a class="collapse-item" href="login.html">Login</a>
-                        <a class="collapse-item" href="register.html">Register</a>
-                        <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="404.html">404 Page</a>
-                        <a class="collapse-item active" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

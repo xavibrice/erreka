@@ -8,12 +8,10 @@ use App\Entity\Orientation;
 use App\Entity\TypeProperty;
 use App\Entity\User;
 use App\Entity\Zone;
-use App\Form\Type\DateTimePickerType;
+use App\Form\Type\DatePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -27,7 +25,7 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('created', DateTimePickerType::class, [
+            ->add('created', DatePickerType::class, [
                 'required' => true,
                 'label' => 'Fecha',
                 'data' => new \DateTime(),
@@ -36,16 +34,12 @@ class ClientType extends AbstractType
                 ],
             ])
             ->add('full_name', TextType::class, [
-                'label' => 'Cliente'
+                'label' => 'Nombre Cliente'
             ])
             ->add('price', MoneyType::class, [
                 'label' => 'Precio',
                 'required' => false
             ])
-/*            ->add('email', EmailType::class, [
-                'label' => 'Correo',
-                'required' => false
-            ])*/
             ->add('mobile', TelType::class, [
                 'label' => 'Móvil/Teléfono',
                 'required' => false

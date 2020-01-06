@@ -8,7 +8,6 @@
             <h1 class="h3 mb-4 text-gray-800">Listado de exclusivas</h1>
         </div>
         <div class="card-body">
-
             <div class="table-responsive">
                 <table class="table table-sm table-borderless table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
@@ -35,38 +34,34 @@
                     </thead>
                     <tbody>
                     {% for exclusive in exclusives %}
-                        {% for charge in exclusive.charges %}
-                            {% for rateHousing in charge.rateHousing %}
-                                {% for property in rateHousing.property %}
-                                    <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
-                                    <td>{{ property.reference }}</td>
-                                    <td>{{ property.commercial.fullName }}</td>
-                                    <td>{{ property.street.zone.name }}</td>
-                                    <td>{{ property.street.name }}</td>
-                                    <td>{{ property.portal }}</td>
-                                    <td>{{ property.floor }}</td>
-                                    <td>{{ property.fullName }}</td>
-                                    <td>{{ property.mobile }}</td>
-                                    <td>{{ charge.startDate|date('d/m/Y') }}</td>
-                                    <td>{{ charge.endDate|date('d/m/Y') }}</td>
-                                    <td>{{ charge.price|number_format(0, ',', '.') }} €</td>
-                                    <td>{{ charge.price }} - </td>
-                                    <td>{{ charge.priceOk|number_format(0, ',', '.') }} €</td>
-                                    <td>{{ property.visits.count }}</td>
+                                    <tr class="clickable-row" data-href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">
+                                    <td>{{ exclusive.reference }}</td>
+                                    <td>{{ exclusive.commercial.fullName }}</td>
+                                    <td>{{ exclusive.street.zone.name }}</td>
+                                    <td>{{ exclusive.street.name }}</td>
+                                    <td>{{ exclusive.portal }}</td>
+                                    <td>{{ exclusive.floor }}</td>
+                                    <td>{{ exclusive.fullName }}</td>
+                                    <td>{{ exclusive.mobile }}</td>
+                                    <td>{{ exclusive.charge.startDate|date('d/m/Y') }}</td>
+                                    <td>{{ exclusive.charge.endDate|date('d/m/Y') }}</td>
+                                    <td>{{ exclusive.charge.price|number_format(0, ',', '.') }} €</td>
+                                    <td>{{ exclusive.charge.price }} - </td>
+                                    <td>{{ exclusive.charge.priceOk|number_format(0, ',', '.') }} €</td>
+                                    <td>{{ exclusive.visits.count }}</td>
                                     <td></td>
-                                    <td>{{ property.propertyReductions.count }}</td>
+                                    <td>{{ exclusive.propertyReductions.count }}</td>
                                     <td>
-                                        {% if property.propertyReductions is defined %}
-                                            {% if property.propertyReductions.count > 0 %}
-                                                {{ property.propertyReductions.last.price|number_format(0, ',', '.') }} €
+                                        {% if exclusive.propertyReductions is defined %}
+                                            {% if exclusive.propertyReductions.count > 0 %}
+                                                {{ exclusive.propertyReductions.last.price|number_format(0, ',', '.') }} €
                                             {% endif %}
                                         {% endif %}
                                     </td>
                                     <td></td>
                                 </tr>
-                                {% endfor %}
-                            {% endfor %}
-                        {% endfor %}
+
+
                     {% endfor %}
                     </tbody>
                 </table>

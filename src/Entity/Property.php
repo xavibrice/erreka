@@ -124,6 +124,11 @@ class Property
      */
     private $historical;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Charge", cascade={"persist", "remove"}, mappedBy="property")
+     */
+    private $charge;
+
     public function __construct()
     {
         $this->propertyReductions = new ArrayCollection();
@@ -370,7 +375,7 @@ class Property
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return (string)$this->getFullName();
+        return (string)$this->street . ' Nº ' . $this->portal . ' Piso ' . $this->floor;
     }
 
     /**
@@ -467,6 +472,18 @@ class Property
     public function setHistorical(?Historical $historical): self
     {
         $this->historical = $historical;
+
+        return $this;
+    }
+
+    public function getCharge(): ?Charge
+    {
+        return $this->charge;
+    }
+
+    public function setCharge(?Charge $charge): self
+    {
+        $this->charge = $charge;
 
         return $this;
     }

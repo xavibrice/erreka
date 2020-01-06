@@ -223,7 +223,7 @@ class PropertyController extends AbstractController
         $formCharge->handleRequest($request);
         if ($formCharge->isSubmitted() && $formCharge->isValid()) {
             $charge->setChargeType($chargeType);
-            $charge->addRateHousing($property->getRateHousing());
+            $charge->setProperty($property);
             $em->persist($charge);
             $em->flush();
 
@@ -261,7 +261,7 @@ class PropertyController extends AbstractController
 
 
         if ($formVisit->isSubmitted() && $formVisit->isValid()) {
-            $visit->setPrice($property->getRateHousing()->getCharge()->getPrice() - $sumPropertyReduction);
+            $visit->setPrice($property->getCharge()->getPrice() - $sumPropertyReduction);
             $em->persist($visit);
             $em->flush();
 
@@ -295,9 +295,9 @@ class PropertyController extends AbstractController
 
             $this->addFlash('success', $charge->getChargeType()->getName() . 'editado correctamente.');
 
-            return $this->redirectToRoute('property_charge_edit', [
-                'id' => $charge->getId(),
-                'idProperty' => $idProperty
+            return $this->redirectToRoute('property_charge', [
+                'id' => $idProperty,
+                'idChargeType' => $charge->getChargeType()->getId()
             ]);
         }
 
@@ -334,6 +334,18 @@ class PropertyController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/api/autocomplete/property", name="api_property_autocomplete", methods={"GET"})
+     */
+    public function autocomplete(PropertyRepository $propertyRepository, Request $request): Response
+    {
+//        $clients = $clientRepository->findFullName();
+        $properties = $propertyRepository->findAllMatching($request->query->get('query'));
+        return $this->json([
+            'properties' => $properties
+        ], 200, [], ['groups' => ['main']]);
+    }
 
 
 

@@ -1,8 +1,10 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Property;
 use App\Entity\PropertyReduction;
 use App\Repository\ChargeTypeRepository;
+use App\Repository\PropertyRepository;
 use App\Repository\RateHousingRepository;
 use App\Repository\SituationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,10 +30,10 @@ class ListController extends AbstractController
     /**
      * @Route("/exclusiva", name="list_charge_index")
      */
-    public function listCharge(ChargeTypeRepository $chargeTypeRepository): Response
+    public function listExclusive(PropertyRepository $propertyRepository): Response
     {
         return $this->render('admin/list/exclusive.html.twig', [
-            'exclusives' => $chargeTypeRepository->findBy(['name' => 'exclusiva']),
+            'exclusives' => $propertyRepository->onlyExclusives($this->getUser()),
 //            'exclusives' => $chargeTypeRepository->findExclusive(),
         ]);
     }
@@ -39,10 +41,10 @@ class ListController extends AbstractController
     /**
      * @Route("/autorizacion", name="list_authorization_index")
      */
-    public function listAuthorization(ChargeTypeRepository $chargeTypeRepository): Response
+    public function listAuthorization(PropertyRepository $propertyRepository): Response
     {
         return $this->render('admin/list/authorization.html.twig', [
-            'authorizations' => $chargeTypeRepository->findBy(['name' => 'autorizacion'])
+            'authorizations' => $propertyRepository->onlyAuthorization($this->getUser())
         ]);
     }
 

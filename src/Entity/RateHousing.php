@@ -199,11 +199,6 @@ class RateHousing
     private $energy_certificate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Charge", inversedBy="rate_housing")
-     */
-    private $charge;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\StateKeys", inversedBy="rate_housing")
      */
     private $stateKeys;
@@ -689,18 +684,6 @@ class RateHousing
     public function setEnergyCertificate(?EnergyCertificate $energy_certificate): self
     {
         $this->energy_certificate = $energy_certificate;
-
-        return $this;
-    }
-
-    public function getCharge(): ?Charge
-    {
-        return $this->charge;
-    }
-
-    public function setCharge(?Charge $charge): self
-    {
-        $this->charge = $charge;
 
         return $this;
     }

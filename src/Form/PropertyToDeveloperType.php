@@ -10,6 +10,7 @@ use App\Entity\TypeProperty;
 use App\Entity\User;
 use App\Entity\Zone;
 use App\Form\Collection\PropertyReductionType;
+use App\Form\Type\DatePickerType;
 use App\Form\Type\DateTimePickerType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -46,6 +47,7 @@ class PropertyToDeveloperType extends AbstractType
             {
                 $form = $event->getForm();
                 $form->getParent()->add('street', EntityType::class, [
+                    'label' => 'Calle',
                     'class' => Street::class,
                     'placeholder' => 'Selecciona una calle',
                     'choices' => $form->getData()->getStreets()
@@ -157,7 +159,8 @@ class PropertyToDeveloperType extends AbstractType
                 'placeholder' => 'Selecciona un comercial',
                 'class' => User::class
             ])
-            ->add('created', DateTimePickerType::class, [
+            ->add('created', DatePickerType::class, [
+                'label' => 'Fecha Creación',
                 'required' => true,
                 'data' => new \DateTime(),
 //                'label' => false,

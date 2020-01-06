@@ -63,7 +63,7 @@ class PropertyToDeveloperController extends AbstractController
         $property->setCommercial($this->getUser());
         $form = $this->createForm(PropertyToDeveloperType::class, $property);
 
-        return $this->render('admin/property_to_developer/new-property-to-developer.html.twig', [
+        return $this->render('admin/property_to_developer/_new.html.twig', [
             'form' => $form->createView(),
         ]);
     }
@@ -116,7 +116,7 @@ class PropertyToDeveloperController extends AbstractController
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', 'Noticia a desarrollar editada correctamente');
-            return $this->redirectToRoute('property_to_developer_edit', [
+            return $this->redirectToRoute('property_to_developer_show', [
                 'id' => $property->getId()
             ]);
         }

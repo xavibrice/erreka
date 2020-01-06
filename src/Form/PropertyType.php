@@ -11,6 +11,7 @@ use App\Entity\TypeProperty;
 use App\Entity\User;
 use App\Entity\Zone;
 use App\Form\Collection\PropertyReductionType;
+use App\Form\Type\DatePickerType;
 use App\Form\Type\DateTimePickerType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -150,12 +151,9 @@ class PropertyType extends AbstractType
         }
 
         $builder
-            ->add('created', DateTimePickerType::class, [
+            ->add('created', DatePickerType::class, [
                 'required' => true,
                 'label' => 'Fecha creación',
-//                'widget' => 'single_text',
-//                'format' => 'dd-MM-yyyy',
-//                'html5' => false,
                 'data' => new \DateTime(),
                 'attr' => [
                     'class' => $date,
@@ -177,14 +175,6 @@ class PropertyType extends AbstractType
                 'label' => 'Móvil',
                 'required' => false
             ])
-//            ->add('reference', null, [
-//                'required' => false,
-//                'disabled' => true,
-//            ])
-//            ->add('email', EmailType::class, [
-//                'label' => 'Correo',
-//                'required' => false
-//            ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario',
                 'required' => false

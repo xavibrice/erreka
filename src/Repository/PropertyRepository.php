@@ -42,7 +42,7 @@ class PropertyRepository extends ServiceEntityRepository
         return $this->addAllNoticesQueryBuilder()
             ->andWhere('s.name = :situation')
 //            ->join('p.rateHousing', 'rh')
-//            ->join('rh.charge', 'c')
+//            ->innerJoin('p.charge', 'c')
             ->setParameter('situation', 'Noticia')
             ->setParameter('commercial', $getUser)
             ->getQuery()
@@ -59,6 +59,35 @@ class PropertyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function onlyExclusives($getUser)
+    {
+        return $this->addAllNoticesQueryBuilder()
+            ->andWhere('s.name = :situation')
+            ->innerJoin('p.charge', 'c')
+            ->innerJoin('c.charge_type', 'ct')
+            ->andWhere('ct.name = :chargeType')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('chargeType', 'Exclusiva')
+            ->setParameter('commercial', $getUser)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function onlyAuthorization($getUser)
+    {
+        return $this->addAllNoticesQueryBuilder()
+            ->andWhere('s.name = :situation')
+            ->innerJoin('p.charge', 'c')
+            ->innerJoin('c.charge_type', 'ct')
+            ->andWhere('ct.name = :chargeType')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('chargeType', 'Autorización')
+            ->setParameter('commercial', $getUser)
+            ->getQuery()
+            ->getResult();
+    }
+
+
     private function addAllNoticesQueryBuilder(QueryBuilder $qb = null)
     {
         return $this->getOrCreateQueryBuilder($qb)
@@ -73,5 +102,16 @@ class PropertyRepository extends ServiceEntityRepository
     private function getOrCreateQueryBuilder(QueryBuilder $qb = null)
     {
         return $qb ?: $this->createQueryBuilder('p');
+    }
+
+    public function findAllMatching(string $query, int $limit = 5)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.street LIKE :query')
+            ->setParameter('query', '%'.$query.'%')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
     }
 }

@@ -74,6 +74,26 @@ $(document).ready(function () {
 });
 
 $(document).ready(function () {
+    $('.js-property-autocomplete').each(function () {
+        var autocompleteUrl = $(this).data('autocomplete-url');
+
+        autocomplete('.js-property-autocomplete', {hint: false}, [
+            {
+                source: function (query, cb) {
+                    $.ajax({
+                        url: autocompleteUrl+'?query='+query
+                    }).then(function (data) {
+                        cb(data.properties);
+                    })
+                },
+                displayKey: 'full_name',
+                debounce: 500
+            }
+        ])
+    });
+});
+
+$(document).ready(function () {
     $('.js-commercial-autocomplete').each(function () {
         var autocompleteUrl = $(this).data('autocomplete-url');
 

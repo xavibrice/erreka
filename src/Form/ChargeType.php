@@ -3,10 +3,9 @@
 namespace App\Form;
 
 use App\Entity\Charge;
-use App\Form\Type\DateTimePickerType;
+use App\Form\Type\DatePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -25,7 +24,7 @@ class ChargeType extends AbstractType
                     'class' => \App\Entity\ChargeType::class,
                     'placeholder' => 'Selecciona Tipo Encargo'
                 ])
-                ->add('startDate', DateTimePickerType::class, [
+                ->add('startDate', DatePickerType::class, [
                     'required' => true,
                     'label' => 'Fecha Inicio',
                     'attr' => [
@@ -35,7 +34,7 @@ class ChargeType extends AbstractType
             ;
         } else {
             $builder
-                ->add('startDate', DateTimePickerType::class, [
+                ->add('startDate', DatePickerType::class, [
                     'required' => true,
                     'label' => 'Fecha Inicio',
                     'data' => new \DateTime(),
@@ -54,7 +53,7 @@ class ChargeType extends AbstractType
                 'label' => 'Precio OK',
                 'required' => false
             ])
-            ->add('endDate', DateTimePickerType::class, [
+            ->add('endDate', DatePickerType::class, [
                 'label' => 'Fecha Fin',
                 'required' => false,
                 'attr' => [

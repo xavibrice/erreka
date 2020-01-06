@@ -58,7 +58,7 @@
                     <h6 class="m-0 font-weight-bold text-primary ">{{ chargeType.name }}</h6>
                 </div>
                 <div class="card-body">
-                    {% if not property.rateHousing.charge %}
+                    {% if not property.charge %}
                         {{ form_start(formCharge) }}
                         {{ form_widget(formCharge) }}
                         <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
@@ -70,28 +70,30 @@
                                     <tbody>
                                     <tr>
                                         <th class="text-right">Tipo Encargo</th>
-                                        <td>{{ property.rateHousing.charge.chargeType.name }}</td>
+                                        <td>{{ property.charge.chargeType.name }}</td>
                                         <th class="text-right">Precio</th>
-                                        <td>{{ property.rateHousing.charge.price|number_format(0, ',', '.') }} €</td>
+                                        <td>{{ property.charge.price|number_format(0, ',', '.') }} €</td>
                                         <th class="text-right">Precio OK</th>
-                                        <td>{{ property.rateHousing.charge.priceOk }} €</td>
+                                        <td>{{ property.charge.priceOk }} €</td>
                                         <th class="text-right">LLaves</th>
                                         <td>
                                             {% if property.rateHousing.stateKeys %}
                                                 {{ property.rateHousing.stateKeys.name }}
+                                                {% else %}
+                                                No hay selección de llaves
                                             {% endif %}
                                         </td>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <a class="btn btn-info" href="{{ path('property_charge_edit', {'id': property.rateHousing.charge.id, 'idProperty': property.id }) }}">Editar</a>
+                            <a class="btn btn-info" href="{{ path('property_charge_edit', {'id': property.charge.id, 'idProperty': property.id }) }}">Editar</a>
                     {% endif %}
                 </div>
             </div>
         </div>
     </div>
-    {% if property.rateHousing.charge %}
+    {% if property.charge %}
         <div class="row">
             <div class="col-md-4 mb-4">
                 <div class="card shadow mb-4">
@@ -111,21 +113,32 @@
             </div>
             <div class="col-md-8 mb-4">
                 <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
-                    {% for visit in property.visits|reverse %}
-                        <div class="col-md-12 mb-4">
-                            <div class="card border-left-info shadow h-100 py-2">
-                                <div class="card-body">
-                                    {{ visit.visited|date('d/m/Y')}} -
-                                    <strong>{{ visit.price|number_format(0, ',', '.') }} € </strong> -
-                                    {{ visit.comment }}
-                                </div>
+                    <div class="col-md-12 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <table class="table table-sm table-borderless">
+                                    <thead>
+                                        <tr>
+                                            <th>Cliente</th>
+                                            <th>Fecha</th>
+                                            <th>Precio</th>
+                                            <th>Nota</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for visit in property.visits|reverse %}
+                                            <tr>
+                                                <td>{{ visit.client.fullName }}</td>
+                                                <td>{{ visit.visited|date('d/m/Y') }}</td>
+                                                <td>{{ visit.price|number_format(0, ',', '.') }} €</td>
+                                                <td>{{ visit.comment }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    {% else %}
-                        <div class="alert alert-info">
-                            No hay visitas
-                        </div>
-                    {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
@@ -133,7 +146,7 @@
             <div class="col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary ">Importes Rebajados  </h6>
+                        <h6 class="m-0 font-weight-bold text-primary ">Importes Rebajados {{ property.propertyReductions.count }}</h6>
                     </div>
                     <div class="card-body">
                         <div class="m-2">
@@ -144,23 +157,37 @@
             </div>
             <div class="col-md-8 mb-4">
                 <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
-                    {% for propertyReduction in property.propertyReductions %}
-                        <div class="col-md-12 mb-4">
+                    <div class="col-md-12 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
                                 <div class="card-body">
-                                    {{ propertyReduction.reductionDate|date('d-m-Y') }}
-                                    {{ propertyReduction.reductionNextDate|date('d-m-Y') }}
-                                    {{ propertyReduction.price }}
-                                    {{ propertyReduction.lastPrice }}
-                                    {{ propertyReduction.percentage }}
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-borderless">
+                                            <thead>
+                                            <tr>
+                                                <th>Fecha de rebaja</th>
+                                                <th>Fecha próxima rebaja</th>
+                                                <th>Precio</th>
+                                                <th>Último precio</th>
+                                                <th>Porcentaje</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for propertyReduction in property.propertyReductions %}
+                                                    <tr>
+                                                        <td>{{ propertyReduction.reductionDate|date('d-m-Y') }}</td>
+                                                        <td>{{ propertyReduction.reductionNextDate|date('d-m-Y') }}</td>
+                                                        <td>{{ propertyReduction.price }} €</td>
+                                                        <td>{{ propertyReduction.lastPrice }} €</td>
+                                                        <td>{{ propertyReduction.percentage }}%</td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
-                    {% else %}
-                        <div class="alert alert-info">
-                            No hay rebajas
-                        </div>
-                    {% endfor %}
                 </div>
             </div>
         </div>

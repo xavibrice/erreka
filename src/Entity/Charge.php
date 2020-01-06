@@ -34,11 +34,6 @@ class Charge
     private $charge_type;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\RateHousing", mappedBy="charge")
-     */
-    private $rate_housing;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $expiration_date;
@@ -53,10 +48,11 @@ class Charge
      */
     private $end_date;
 
-    public function __construct()
-    {
-        $this->rate_housing = new ArrayCollection();
-    }
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Property", inversedBy="charge")
+     * @ORM\JoinColumn(name="property_id", referencedColumnName="id")
+     */
+    private $property;
 
     public function getId(): ?int
     {
@@ -99,37 +95,6 @@ class Charge
         return $this;
     }
 
-    /**
-     * @return Collection|RateHousing[]
-     */
-    public function getRateHousing(): Collection
-    {
-        return $this->rate_housing;
-    }
-
-    public function addRateHousing(RateHousing $rateHousing): self
-    {
-        if (!$this->rate_housing->contains($rateHousing)) {
-            $this->rate_housing[] = $rateHousing;
-            $rateHousing->setCharge($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRateHousing(RateHousing $rateHousing): self
-    {
-        if ($this->rate_housing->contains($rateHousing)) {
-            $this->rate_housing->removeElement($rateHousing);
-            // set the owning side to null (unless already changed)
-            if ($rateHousing->getCharge() === $this) {
-                $rateHousing->setCharge(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getExpirationDate(): ?\DateTimeInterface
     {
         return $this->expiration_date;
@@ -164,6 +129,16 @@ class Charge
         $this->end_date = $end_date;
 
         return $this;
+    }
+
+    public function getProperty()
+    {
+        return $this->property;
+    }
+
+    public function setProperty($property): void
+    {
+        $this->property = $property;
     }
 
 }

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Client;
 use App\Entity\Visit;
 use App\Form\ClientType;
+use App\Form\VisitNewType;
 use App\Form\VisitType;
 use App\Repository\ClientRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -68,7 +69,7 @@ class ClientController extends AbstractController
         $em = $this->getDoctrine()->getManager();
         $visit = new Visit();
         $visit->setClient($client);
-        $formVisit = $this->createForm(VisitType::class, $visit);
+        $formVisit = $this->createForm(VisitNewType::class, $visit);
         $formVisit->handleRequest($request);
 
         if ($formVisit->isSubmitted() && $formVisit->isValid()) {

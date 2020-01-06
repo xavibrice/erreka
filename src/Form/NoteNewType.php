@@ -2,12 +2,9 @@
 
 namespace App\Form;
 
-use App\Entity\News;
 use App\Entity\NoteNew;
-use App\Form\Type\DateTimePickerType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Form\Type\DatePickerType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,30 +14,19 @@ class NoteNewType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('notice_date', DateTimePickerType::class, [
+            ->add('notice_date', DatePickerType::class, [
                 'label' => 'Fecha creación',
                 'data' => new \DateTime(),
-//                'widget' => 'single_text',
-//                'format' => 'dd-MM-yyyy',
-//                'html5' => false,
                 'attr' => [
                     'class' => 'js-datepicker',
                 ],
             ])
-//            ->add('new', EntityType::class, [
-//                'label' => 'Noticia',
-//                'class' => News::class,
-//                'placeholder' => 'Selecciona una noticia'
-//            ])
             ->add('note', TextareaType::class, [
                 'label' => 'Nota',
                 'required' => false
             ])
-            ->add('nextCall', DateTimePickerType::class, [
-                'label' => 'Proxima Llamada',
-//                'widget' => 'single_text',
-//                'format' => 'dd-MM-yyyy',
-//                'html5' => false,
+            ->add('nextCall', DatePickerType::class, [
+                'label' => 'Próxima Llamada',
                 'attr' => [
                     'class' => 'js-datepicker',
                 ],
