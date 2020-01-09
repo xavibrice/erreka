@@ -48,9 +48,17 @@ document.addEventListener("DOMContentLoaded", () => {
     var calendar = new Calendar(calendarEl, {
         locale: esLocale,
         defaultView: "dayGridMonth",
-        editable: false,
+        editable: true,
+        selectable: true,
+        visibleRange: function(currentDate) {
+            var startDate = new Date(currentDate.valueOf());
+            var endDate = new Date(currentDate.valueOf());
 
-        selectable: false,
+            startDate.setDate(startDate.getDate());
+            endDate.setDate(endDate.getDate());
+
+            return { start: startDate, end: endDate }
+        },
         eventSources: [
             {
                 url: eventsUrl,
@@ -86,6 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
                     $("#addEventModal").modal();
                 }
             },
+        },
+        dayClick: function(date, jsEvent, view) {
+            alert('Clicked on: ' + date.format());
+
+
         },
         eventClick: function(info){
             var eventObj = info.event;

@@ -17,16 +17,6 @@ use Symfony\Component\Validator\Constraints\DateTime;
  */
 class NoteCommercialController extends AbstractController
 {
-    /**
-     * @Route("/notes", name="note_index", methods={"GET"})
-     */
-    public function notes(NoteCommercialRepository $noteCommercialRepository): Response
-    {
-        return $this->render('admin/note_commercial/note.html.twig', [
-            'note_commercials' => $noteCommercialRepository->findBy(['commercial' => $this->getUser()]),
-        ]);
-    }
-
 
     /**
      * @Route("/", name="note_commercial_index", methods={"GET"})

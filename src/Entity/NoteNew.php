@@ -68,7 +68,7 @@ class NoteNew
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return (string)$this->getNote();
+        return (string)$this->note;
     }
 
 

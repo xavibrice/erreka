@@ -3,7 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/calendar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/NoteCommercialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoteCommercialController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/NoteNew.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/NoteNew.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookingType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/NoteNewRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoteNewRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/note_commercial/note.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/note.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +168,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/Form/DataTransformer" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/default" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -176,19 +185,19 @@
     <property name="ts.external.directory.path" value="C:\Users\HP\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\192.6817.20\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\erreka\templates\admin" />
-      <recent name="C:\xampp\htdocs\erreka\templates\admin\property\rate_housing" />
-      <recent name="C:\xampp\htdocs\erreka\src\Form" />
-      <recent name="C:\xampp\htdocs\erreka\templates\admin\client" />
-      <recent name="C:\xampp\htdocs\erreka\templates\charge" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
       <recent name="C:\xampp\htdocs\erreka\src\Form\DataTransformer" />
       <recent name="C:\xampp\htdocs\erreka\src\Form" />
       <recent name="C:\xampp\htdocs\erreka\src\Form\Type" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin" />
-      <recent name="C:\xampp\htdocs\erreka\templates\admin\property" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
+      <recent name="C:\xampp\htdocs\erreka\templates\admin" />
+      <recent name="C:\xampp\htdocs\erreka\templates\admin\property\rate_housing" />
+      <recent name="C:\xampp\htdocs\erreka\src\Form" />
+      <recent name="C:\xampp\htdocs\erreka\templates\admin\client" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -353,7 +362,11 @@
       <workItem from="1577749207433" duration="17000" />
       <workItem from="1578064396053" duration="12000" />
       <workItem from="1578323078188" duration="97000" />
-      <workItem from="1578323194812" duration="15663000" />
+      <workItem from="1578323194812" duration="16777000" />
+      <workItem from="1578397330540" duration="10000" />
+      <workItem from="1578491574682" duration="5445000" />
+      <workItem from="1578503138182" duration="3189000" />
+      <workItem from="1578565210901" duration="4318000" />
     </task>
     <servers />
   </component>

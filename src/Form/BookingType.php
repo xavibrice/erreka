@@ -29,7 +29,7 @@ class BookingType extends AbstractType
                 'label' => 'Fecha inicio',
 //                'widget' => 'single_text',
 //                'html5' => false,
-                'data' => new \DateTime(),
+//                'data' => new \DateTime(),
                 'attr' => [
                     'class' => 'dateStart'
                 ]

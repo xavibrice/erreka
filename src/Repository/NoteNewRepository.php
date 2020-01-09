@@ -47,4 +47,25 @@ class NoteNewRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function alertsOnlyNoticesToDeveloper($getUser)
+    {
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d');
+
+        return $this->createQueryBuilder('nn')
+            ->innerJoin('nn.property', 'p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('p.commercial = :commercial')
+            ->andWhere('p.enabled = :enabled')
+            ->andWhere('s.name = :situation')
+            ->andWhere('nn.next_call = :nextCall')
+            ->setParameter('enabled', true)
+            ->setParameter('commercial', $getUser)
+            ->setParameter('nextCall', $date)
+            ->setParameter('situation', 'noticia a desarrollar')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
