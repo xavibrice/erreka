@@ -54,6 +54,11 @@ class Charge
      */
     private $property;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\StateKeys", inversedBy="charges")
+     */
+    private $stateKeys;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -139,6 +144,18 @@ class Charge
     public function setProperty($property): void
     {
         $this->property = $property;
+    }
+
+    public function getStateKeys(): ?StateKeys
+    {
+        return $this->stateKeys;
+    }
+
+    public function setStateKeys(?StateKeys $stateKeys): self
+    {
+        $this->stateKeys = $stateKeys;
+
+        return $this;
     }
 
 }

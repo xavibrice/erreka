@@ -187,6 +187,10 @@ class PropertyToDeveloperType extends AbstractType
                 'label' => 'Móvil',
                 'required' => false
             ])
+            ->add('phone', TelType::class, [
+                'label' => 'Teléfono',
+                'required' => false
+            ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario',
                 'required' => false

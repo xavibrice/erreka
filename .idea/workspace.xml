@@ -2,17 +2,43 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Entity/BuildingStructure.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Ground.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Proposal.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Entity/Wall.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Form/ProposalType.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110145052.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110154600.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110164329.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110171418.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110171550.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110173105.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110173304.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110174229.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110175116.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110175606.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/BuildingStructureRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/GroundRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/ProposalRepository.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Repository/WallRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/calendar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/NoteCommercialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoteCommercialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/NoteNew.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/NoteNew.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookingType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/NoteNewRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoteNewRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Charge.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Charge.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Property.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/RateHousing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RateHousing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/StateKeys.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StateKeys.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ChargeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChargeType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RateHousingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RateHousingType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/note_commercial/note.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/note.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/_form_rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/_form_rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/rate_housing/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/rate_housing/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -366,7 +392,7 @@
       <workItem from="1578397330540" duration="10000" />
       <workItem from="1578491574682" duration="5445000" />
       <workItem from="1578503138182" duration="3189000" />
-      <workItem from="1578565210901" duration="4318000" />
+      <workItem from="1578565210901" duration="24264000" />
     </task>
     <servers />
   </component>

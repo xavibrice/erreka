@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Charge;
+use App\Entity\StateKeys;
 use App\Form\Type\DatePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -59,6 +60,12 @@ class ChargeType extends AbstractType
                 'attr' => [
                     'class' => 'js-datepicker-empty',
                 ],
+            ])
+            ->add('stateKeys', EntityType::class, [
+                'label' => 'LLaves',
+                'class' => StateKeys::class,
+                'required' => false,
+                'placeholder' => '¿Llaves?'
             ])
         ;
     }

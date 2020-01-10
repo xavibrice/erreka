@@ -24,13 +24,13 @@ class StateKeys
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\RateHousing", mappedBy="stateKeys")
+     * @ORM\OneToMany(targetEntity="App\Entity\Charge", mappedBy="stateKeys")
      */
-    private $rate_housing;
+    private $charges;
 
     public function __construct()
     {
-        $this->rate_housing = new ArrayCollection();
+        $this->charges = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -50,41 +50,41 @@ class StateKeys
         return $this;
     }
 
-    /**
-     * @return Collection|RateHousing[]
-     */
-    public function getRateHousing(): Collection
-    {
-        return $this->rate_housing;
-    }
-
-    public function addRateHousing(RateHousing $rateHousing): self
-    {
-        if (!$this->rate_housing->contains($rateHousing)) {
-            $this->rate_housing[] = $rateHousing;
-            $rateHousing->setStateKeys($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRateHousing(RateHousing $rateHousing): self
-    {
-        if ($this->rate_housing->contains($rateHousing)) {
-            $this->rate_housing->removeElement($rateHousing);
-            // set the owning side to null (unless already changed)
-            if ($rateHousing->getStateKeys() === $this) {
-                $rateHousing->setStateKeys(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         // TODO: Implement __toString() method.
         return (string)$this->name;
+    }
+
+    /**
+     * @return Collection|Charge[]
+     */
+    public function getCharges(): Collection
+    {
+        return $this->charges;
+    }
+
+    public function addCharge(Charge $charge): self
+    {
+        if (!$this->charges->contains($charge)) {
+            $this->charges[] = $charge;
+            $charge->setStateKeys($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharge(Charge $charge): self
+    {
+        if ($this->charges->contains($charge)) {
+            $this->charges->removeElement($charge);
+            // set the owning side to null (unless already changed)
+            if ($charge->getStateKeys() === $this) {
+                $charge->setStateKeys(null);
+            }
+        }
+
+        return $this;
     }
 
 }

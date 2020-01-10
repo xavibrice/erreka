@@ -56,16 +56,6 @@ class RateHousing
     /**
      * @ORM\Column(type="boolean")
      */
-    private $suit_bathroom;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
-    private $video_intercom;
-
-    /**
-     * @ORM\Column(type="boolean")
-     */
     private $storage_room;
 
     /**
@@ -199,11 +189,6 @@ class RateHousing
     private $energy_certificate;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\StateKeys", inversedBy="rate_housing")
-     */
-    private $stateKeys;
-
-    /**
      * @ORM\Column(type="boolean")
      */
     private $pets;
@@ -238,6 +223,31 @@ class RateHousing
      * @ORM\OneToMany(targetEntity="App\Entity\Images", mappedBy="rateHousing", cascade={"persist"})
      */
     private $image;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=2, nullable=true)
+     */
+    private $energyConsumption;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Wall", inversedBy="rate_housing")
+     */
+    private $wall;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Ground", inversedBy="rate_housing")
+     */
+    private $ground;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $balcony;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\BuildingStructure", inversedBy="building_structure")
+     */
+    private $buildingStructure;
 
     public function __construct()
     {
@@ -330,30 +340,6 @@ class RateHousing
     public function setRealMeters(?int $real_meters): self
     {
         $this->real_meters = $real_meters;
-
-        return $this;
-    }
-
-    public function getSuitBathroom(): ?bool
-    {
-        return $this->suit_bathroom;
-    }
-
-    public function setSuitBathroom(bool $suit_bathroom): self
-    {
-        $this->suit_bathroom = $suit_bathroom;
-
-        return $this;
-    }
-
-    public function getVideoIntercom(): ?bool
-    {
-        return $this->video_intercom;
-    }
-
-    public function setVideoIntercom(bool $video_intercom): self
-    {
-        $this->video_intercom = $video_intercom;
 
         return $this;
     }
@@ -688,18 +674,6 @@ class RateHousing
         return $this;
     }
 
-    public function getStateKeys(): ?StateKeys
-    {
-        return $this->stateKeys;
-    }
-
-    public function setStateKeys(?StateKeys $stateKeys): self
-    {
-        $this->stateKeys = $stateKeys;
-
-        return $this;
-    }
-
     public function getPets(): ?bool
     {
         return $this->pets;
@@ -818,6 +792,66 @@ class RateHousing
                 $image->setRateHousing(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getEnergyConsumption()
+    {
+        return $this->energyConsumption;
+    }
+
+    public function setEnergyConsumption($energyConsumption): self
+    {
+        $this->energyConsumption = $energyConsumption;
+
+        return $this;
+    }
+
+    public function getWall(): ?Wall
+    {
+        return $this->wall;
+    }
+
+    public function setWall(?Wall $wall): self
+    {
+        $this->wall = $wall;
+
+        return $this;
+    }
+
+    public function getGround(): ?Ground
+    {
+        return $this->ground;
+    }
+
+    public function setGround(?Ground $ground): self
+    {
+        $this->ground = $ground;
+
+        return $this;
+    }
+
+    public function getBalcony(): ?bool
+    {
+        return $this->balcony;
+    }
+
+    public function setBalcony(?bool $balcony): self
+    {
+        $this->balcony = $balcony;
+
+        return $this;
+    }
+
+    public function getBuildingStructure(): ?BuildingStructure
+    {
+        return $this->buildingStructure;
+    }
+
+    public function setBuildingStructure(?BuildingStructure $buildingStructure): self
+    {
+        $this->buildingStructure = $buildingStructure;
 
         return $this;
     }

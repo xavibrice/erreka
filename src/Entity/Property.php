@@ -129,12 +129,23 @@ class Property
      */
     private $charge;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Proposal", mappedBy="property")
+     */
+    private $proposals;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone;
+
     public function __construct()
     {
         $this->propertyReductions = new ArrayCollection();
         $this->note_new = new ArrayCollection();
         $this->visits = new ArrayCollection();
         $this->offereds = new ArrayCollection();
+        $this->proposals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -484,6 +495,49 @@ class Property
     public function setCharge(?Charge $charge): self
     {
         $this->charge = $charge;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Proposal[]
+     */
+    public function getProposals(): Collection
+    {
+        return $this->proposals;
+    }
+
+    public function addProposal(Proposal $proposal): self
+    {
+        if (!$this->proposals->contains($proposal)) {
+            $this->proposals[] = $proposal;
+            $proposal->setProperty($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProposal(Proposal $proposal): self
+    {
+        if ($this->proposals->contains($proposal)) {
+            $this->proposals->removeElement($proposal);
+            // set the owning side to null (unless already changed)
+            if ($proposal->getProperty() === $this) {
+                $proposal->setProperty(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
 
         return $this;
     }

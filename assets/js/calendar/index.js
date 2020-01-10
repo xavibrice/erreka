@@ -2,9 +2,9 @@ import { Calendar } from "@fullcalendar/core";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import esLocale from "@fullcalendar/core/locales/es"
-import momentPlugin from "@fullcalendar/moment"
-
+import esLocale from "@fullcalendar/core/locales/es";
+import momentPlugin from "@fullcalendar/moment";
+// import "@fullcalendar-scheduler";
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
@@ -47,18 +47,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     var calendar = new Calendar(calendarEl, {
         locale: esLocale,
-        defaultView: "dayGridMonth",
-        editable: true,
+        defaultView: "timeGridWeek",
+        // editable: true,
         selectable: true,
-        visibleRange: function(currentDate) {
-            var startDate = new Date(currentDate.valueOf());
-            var endDate = new Date(currentDate.valueOf());
-
-            startDate.setDate(startDate.getDate());
-            endDate.setDate(endDate.getDate());
-
-            return { start: startDate, end: endDate }
-        },
         eventSources: [
             {
                 url: eventsUrl,
@@ -68,7 +59,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     filters: JSON.stringify({}),
                 },
                 failure: () => {
-                    // alert("There was an error while fetching FullCalendar!");
+                    alert("There was an error while fetching FullCalendar!");
                 },
             },
         ],
@@ -78,35 +69,41 @@ document.addEventListener("DOMContentLoaded", () => {
             right: "dayGridMonth,timeGridWeek,timeGridDay",
         },
         dateClick: function(info) {
-            // alert('Clicked on: ' + info.dateStr);
-            // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-            // alert('Current view: ' + info.view.type);
-            // change the day's background color just for fun
-            // info.dayEl.style.backgroundColor = 'red';
-            $("#titleEventAdd").html('Crear nota');
-            $("#addEventModal").modal();
-        },
-        customButtons: {
-            myButton: {
-                text: 'Crear',
-                click:function () {
-                    $("#titleEventAdd").html('Crear nota');
-                    $("#addEventModal").modal();
-                }
-            },
-        },
-        dayClick: function(date, jsEvent, view) {
-            alert('Clicked on: ' + date.format());
-
-
-        },
-        eventClick: function(info){
+            alert('Clicked on: ' + info.dateStr);
             var eventObj = info.event;
 
-            $("#titleEvent").html(eventObj.title);
-            $("#descriptionEvent").html(eventObj.extendedProps.description);
-            $("#calendarModal").modal();
+
+
+                            $("#titleEventAdd").html('Crear nota');
+                            $("#booking_beginAt").val(info.dateStr);
+                            $("#addEventModal").modal();
+            // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+        //     // alert('Current view: ' + info.view.type);
+        //     // change the day's background color just for fun
+        //     // info.dayEl.style.backgroundColor = 'red';
+        //     $("#titleEventAdd").html('Crear nota');
+        //     $("#addEventModal").modal();
         },
+        // customButtons: {
+        //     myButton: {
+        //         text: 'Crear',
+        //         click:function () {
+        //             $("#titleEventAdd").html('Crear nota');
+        //             $("#addEventModal").modal();
+        //         }
+        //     },
+        // },
+        select: function(info) {
+            alert('selected ' + info.startStr);
+            // console.log('Select on: ' + info.dateStr);
+        },
+        // eventClick: function(info){
+        //     var eventObj = info.event;
+        //
+        //     $("#titleEvent").html(eventObj.title);
+        //     $("#descriptionEvent").html(eventObj.extendedProps.description);
+        //     $("#calendarModal").modal();
+        // },
         plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, momentPlugin], // https://fullcalendar.io/docs/plugin-index
         timeZone: "UTC",
     });

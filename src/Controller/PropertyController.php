@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Charge;
+use App\Entity\Proposal;
 use App\Form\ChargeType;
 use App\Entity\Images;
 use App\Entity\NoteNew;
@@ -13,6 +14,7 @@ use App\Entity\Visit;
 use App\Form\Collection\PropertyReductionType;
 use App\Form\NoteNewType;
 use App\Form\PropertyType;
+use App\Form\ProposalType;
 use App\Form\RateHousingType;
 use App\Form\VisitType;
 use App\Repository\PropertyRepository;
@@ -273,12 +275,29 @@ class PropertyController extends AbstractController
             ]);
         }
 
+        $proposal = new Proposal();
+        $proposal->setProperty($property);
+        $formProposal = $this->createForm(ProposalType::class, $proposal);
+        $formProposal->handleRequest($request);
+
+        if ($formProposal->isSubmitted() && $formProposal->isValid()) {
+            $em->persist($proposal);
+            $em->flush();
+
+            $this->addFlash('success', 'Propuesta creada correctamente');
+            return $this->redirectToRoute($request->attributes->get('_route'), [
+                'id' => $property->getId(),
+                'idChargeType' => $idChargeType
+            ]);
+        }
+
         return $this->render('admin/property/authorization_charge/authorization_charge.html.twig', [
             'form' => $form->createView(),
             'formVisit' => $formVisit->createView(),
             'formCharge' => $formCharge->createView(),
             'property' => $property,
-            'chargeType' => $chargeType
+            'chargeType' => $chargeType,
+            'formProposal' => $formProposal->createView(),
         ]);
     }
 
@@ -346,9 +365,6 @@ class PropertyController extends AbstractController
             'properties' => $properties
         ], 200, [], ['groups' => ['main']]);
     }
-
-
-
 
 //
 //    /**

@@ -27,6 +27,7 @@
         "datatables.net": "^1.10.19",
         "eonasdan-bootstrap-datetimepicker-bootstrap4beta": "^4.17.47-a",
         "fullcalendar": "^3.10.1",
+        "fullcalendar-scheduler": "^1.10.0",
         "jquery": "^3.4.1",
         "moment": "^2.24.0",
         "tooltip.js": "^1.3.2"

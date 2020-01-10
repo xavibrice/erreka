@@ -2,13 +2,16 @@
 
 namespace App\Form;
 
+use App\Entity\BuildingStructure;
 use App\Entity\Door;
 use App\Entity\EnergyCertificate;
+use App\Entity\Ground;
 use App\Entity\Heating;
 use App\Entity\Orientation;
 use App\Entity\RateHousing;
 use App\Entity\StateKeys;
 use App\Entity\ValuationStatus;
+use App\Entity\Wall;
 use App\Entity\Window;
 use App\Form\Type\DatePickerType;
 use App\Form\Type\DateTimePickerType;
@@ -18,6 +21,7 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -84,7 +88,7 @@ class RateHousingType extends AbstractType
                 ]
             ])
             ->add('real_meters', IntegerType::class, [
-                'label' => 'Metros Reales',
+                'label' => 'M² útiles',
                 'required' => false,
                 'attr' => [
                     'min' => 0
@@ -94,12 +98,8 @@ class RateHousingType extends AbstractType
                 'label' => 'Terraza',
                 'required' => false
             ])
-            ->add('suit_bathroom', CheckboxType::class, [
-                'label' => 'Baño en suit',
-                'required' => false
-            ])
-            ->add('video_intercom', CheckboxType::class, [
-                'label' => 'Videoportero',
+            ->add('balcony', CheckboxType::class, [
+                'label' => 'Balcón',
                 'required' => false
             ])
             ->add('storage_room', CheckboxType::class, [
@@ -225,12 +225,6 @@ class RateHousingType extends AbstractType
                 'label' => 'Móvil/Teléfono',
                 'required' => false
             ])
-            ->add('stateKeys', EntityType::class, [
-                'label' => 'LLaves',
-                'class' => StateKeys::class,
-                'required' => false,
-                'placeholder' => '¿Llaves?'
-            ])
             ->add('pets', CheckboxType::class, [
                 'label' => 'Mascotas',
                 'required' => false
@@ -263,6 +257,10 @@ class RateHousingType extends AbstractType
                 'required' => false,
                 'placeholder' => 'Selecciona Certificado Energético',
             ])
+            ->add('energyConsumption', NumberType::class, [
+                'label' => 'Consumo de energía',
+                'required' => false
+            ])
             ->add('image', FileType::class, [
                 'label' => 'Subir fotos',
                 'mapped' => false,
@@ -271,6 +269,24 @@ class RateHousingType extends AbstractType
                 'attr' => [
                     'accept' => 'image/*'
                 ]
+            ])
+            ->add('wall', EntityType::class, [
+                'label' => 'Tipo Pared',
+                'class' => Wall::class,
+                'required' => false,
+                'placeholder' => 'Selecciona Pared'
+            ])
+            ->add('ground', EntityType::class, [
+                'label' => 'Tipo Suelo',
+                'class' => Ground::class,
+                'required' => false,
+                'placeholder' => 'Selecciona Suelo'
+            ])
+            ->add('buildingStructure', EntityType::class, [
+                'label' => 'Tipo Estructura',
+                'class' => BuildingStructure::class,
+                'placeholder' => 'Seleccion Tipo Estructura',
+                'required' => false
             ])
         ;
     }

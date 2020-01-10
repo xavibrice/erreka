@@ -140,11 +140,17 @@ class Client
      */
     private $offereds;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Proposal", mappedBy="client")
+     */
+    private $proposals;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
         $this->zone = new ArrayCollection();
         $this->offereds = new ArrayCollection();
+        $this->proposals = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -496,6 +502,37 @@ class Client
     {
         // TODO: Implement __toString() method.
         return (string)$this->full_name;
+    }
+
+    /**
+     * @return Collection|Proposal[]
+     */
+    public function getProposals(): Collection
+    {
+        return $this->proposals;
+    }
+
+    public function addProposal(Proposal $proposal): self
+    {
+        if (!$this->proposals->contains($proposal)) {
+            $this->proposals[] = $proposal;
+            $proposal->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProposal(Proposal $proposal): self
+    {
+        if ($this->proposals->contains($proposal)) {
+            $this->proposals->removeElement($proposal);
+            // set the owning side to null (unless already changed)
+            if ($proposal->getClient() === $this) {
+                $proposal->setClient(null);
+            }
+        }
+
+        return $this;
     }
 
 }
