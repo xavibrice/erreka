@@ -421,7 +421,8 @@ $("#property_zone").change(function () {
 
 });
 
-$("#property_charge_two_zone").change(function () {
+
+$("#local_zone").change(function () {
     const data = {
         zone_id: $(this).val()
     };
@@ -431,13 +432,13 @@ $("#property_charge_two_zone").change(function () {
         data: data,
         success: function (data) {
             if (data.length) {
-                const $reason_selector = $('#property_charge_two_street');
+                const $reason_selector = $('#local_street');
                 $reason_selector.html('<option> Selecciona...</option>');
                 for (let i = 0, total = data.length; i < total; i++) {
                     $reason_selector.append('<option value="' + data[i].id + '">' + data[i].name + '</option>');
                 }
             } else {
-                const $reason_selector = $('#property_charge_two_street');
+                const $reason_selector = $('#local_street');
                 $reason_selector.html('<option> Selecciona primero una zona</option>');
             }
         }

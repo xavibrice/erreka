@@ -57,6 +57,7 @@ class CalendarListener
 //                'backgroundColor' => $booking->getColor(),
 //                'borderColor' => $booking->getColor(),
                 'textColor' => 'white',
+                'id' => $booking->getId(),
                 'description' => $booking->getDescription(),
                 'commercial' => $booking->getCommercial()->getFullname(),
             ]);

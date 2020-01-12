@@ -6,6 +6,7 @@ use App\Entity\Booking;
 use App\Form\BookingType;
 use App\Repository\BookingRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -108,16 +109,17 @@ class BookingController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="booking_delete", methods={"DELETE"})
+     * @Route("/{id}", options={"expose"=true}, name="booking_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Booking $booking): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$booking->getId(), $request->request->get('_token'))) {
+//        if ($this->isCsrfTokenValid('delete'.$booking->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($booking);
             $entityManager->flush();
-        }
+//        }
 
-        return $this->redirectToRoute('booking_index');
+        return new JsonResponse(true);
+//        return $this->redirect($this->generateUrl('booking_index'));
     }
 }

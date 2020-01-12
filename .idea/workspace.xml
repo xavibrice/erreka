@@ -2,42 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Entity/BuildingStructure.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Ground.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Proposal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Entity/Wall.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Form/ProposalType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110145052.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110154600.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110164329.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110171418.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110171550.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110173105.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110173304.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110174229.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110175116.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Migrations/Version20200110175606.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/BuildingStructureRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/GroundRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/ProposalRepository.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Repository/WallRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/calendar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Charge.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Charge.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Property.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/RateHousing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RateHousing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/StateKeys.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StateKeys.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ChargeType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ChargeType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RateHousingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RateHousingType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/_form_rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/_form_rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/fos_js_routes.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/fos_js_routes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/CalendarListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/CalendarListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/booking/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/booking/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/authorization.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/authorization.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/note_commercial/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/note_commercial/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/rate_housing/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/rate_housing/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -194,7 +176,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/default" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/js/calendar" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -211,19 +193,19 @@
     <property name="ts.external.directory.path" value="C:\Users\HP\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\192.6817.20\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
-      <recent name="C:\xampp\htdocs\erreka\src\Form\DataTransformer" />
-      <recent name="C:\xampp\htdocs\erreka\src\Form" />
-      <recent name="C:\xampp\htdocs\erreka\src\Form\Type" />
-      <recent name="C:\xampp\htdocs\erreka\templates\admin" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\property\rate_housing" />
       <recent name="C:\xampp\htdocs\erreka\src\Form" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\client" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\erreka\assets\js\calendar" />
+      <recent name="C:\xampp\htdocs\erreka\src\Form" />
+      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
+      <recent name="C:\xampp\htdocs\erreka\src\Form\DataTransformer" />
+      <recent name="C:\xampp\htdocs\erreka\src\Form\Type" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -392,18 +374,9 @@
       <workItem from="1578397330540" duration="10000" />
       <workItem from="1578491574682" duration="5445000" />
       <workItem from="1578503138182" duration="3189000" />
-      <workItem from="1578565210901" duration="24264000" />
+      <workItem from="1578565210901" duration="50450000" />
     </task>
     <servers />
-  </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />

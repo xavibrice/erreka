@@ -6,7 +6,7 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
-        <h1 class="h3 mb-4 text-gray-800 float-left">Listado de notas</h1>
+        <h1 class="h3 mb-4 text-gray-800 float-left">Listado de recados</h1>
         <a class="btn btn-success float-right" href="{{ path('note_commercial_new') }}">Crear Nota</a>
     </div>
     <div class="card-body">
@@ -14,7 +14,7 @@
             <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
                 <thead>
                 <tr>
-                                        <th>Id</th>
+                    <th>Id</th>
                     <th>Nota</th>
                     <th>Fecha Nota</th>
                     <th>Comercial</th>
@@ -24,28 +24,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                {% for note_commercial in note_commercials %}
-                    <tr>
-                                            <td>{{ note_commercial.id }}</td>
-                        <td>{{ note_commercial.note }}</td>
-                        <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('d-m-Y') : '' }}</td>
-                        <td>
-                            <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">
-                                {{ note_commercial.commercial.fullName }}
-                            </a>
-                        </td>
-                        <td>
-                            {{ include('admin/_show_link.html.twig', {'route': 'note_commercial_show', 'id': note_commercial.id }) }}
-                        </td>
-                        <td>
-                            {{ include('admin/_edit_link.html.twig', {'route': 'note_commercial_edit', 'id': note_commercial.id }) }}
-                        </td>
-                        <td>
-                            {{ include('admin/_delete_form.html.twig', {'route': 'note_commercial_delete', 'entity': note_commercial, 'count': 0}) }}
-                            {#                        {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company, 'count': company.users.count}) }}#}
-                        </td>
-                    </tr>
-                {% endfor %}
+                    {% for note_commercial in note_commercials %}
+                        <tr>
+                            <td>{{ note_commercial.id }}</td>
+                            <td>{{ note_commercial.note }}</td>
+                            <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('d-m-Y') : '' }}</td>
+                            <td>
+    {#                            <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">#}
+                                    {{ note_commercial.commercial.fullName }}
+    {#                            </a>#}
+                            </td>
+                            <td>
+                                {{ include('admin/_show_link.html.twig', {'route': 'note_commercial_show', 'id': note_commercial.id }) }}
+                            </td>
+                            <td>
+                                {{ include('admin/_edit_link.html.twig', {'route': 'note_commercial_edit', 'id': note_commercial.id }) }}
+                            </td>
+                            <td>
+                                {{ include('admin/_delete_form.html.twig', {'route': 'note_commercial_delete', 'entity': note_commercial, 'count': 0}) }}
+                                {#                        {{ include('admin/_delete_form.html.twig', {'route': 'company_delete', 'entity': company, 'count': company.users.count}) }}#}
+                            </td>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>

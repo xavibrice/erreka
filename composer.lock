@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1fc5bdaa363916b9e45568b3d785d865",
+    "content-hash": "fbf8f9cfc358f035a864dc9b234c0c62",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -1365,27 +1365,27 @@
         },
         {
             "name": "friendsofsymfony/jsrouting-bundle",
-            "version": "2.4.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/FriendsOfSymfony/FOSJsRoutingBundle.git",
-                "reference": "e42ed450eac2b61d5fcba9cd834c294a429e9a40"
+                "reference": "81cf14bf3db5e6fe3ef0442fc762891422005d3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/e42ed450eac2b61d5fcba9cd834c294a429e9a40",
-                "reference": "e42ed450eac2b61d5fcba9cd834c294a429e9a40",
+                "url": "https://api.github.com/repos/FriendsOfSymfony/FOSJsRoutingBundle/zipball/81cf14bf3db5e6fe3ef0442fc762891422005d3b",
+                "reference": "81cf14bf3db5e6fe3ef0442fc762891422005d3b",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.3.9|^7.0",
-                "symfony/console": "~2.7||~3.0|^4.0",
-                "symfony/framework-bundle": "~2.7||~3.0|^4.0",
-                "symfony/serializer": "~2.7||~3.0|^4.0",
+                "php": "^7.1",
+                "symfony/console": "~3.3|^4.0|^5.0",
+                "symfony/framework-bundle": "~3.3|^4.0|^5.0",
+                "symfony/serializer": "~3.3|^4.0|^5.0",
                 "willdurand/jsonp-callback-validator": "~1.0"
             },
             "require-dev": {
-                "symfony/expression-language": "~2.7||~3.0|^4.0",
+                "symfony/expression-language": "~3.3|^4.0|^5.0",
                 "symfony/phpunit-bridge": "^3.3|^4.0"
             },
             "type": "symfony-bundle",
@@ -1423,7 +1423,7 @@
                 "javascript",
                 "routing"
             ],
-            "time": "2019-08-10T15:40:05+00:00"
+            "time": "2019-12-02T08:01:22+00:00"
         },
         {
             "name": "gedmo/doctrine-extensions",
@@ -6578,6 +6578,7 @@
                 "code",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-code",
             "time": "2018-08-13T20:36:59+00:00"
         },
         {
@@ -6632,6 +6633,7 @@
                 "events",
                 "zf2"
             ],
+            "abandoned": "laminas/laminas-eventmanager",
             "time": "2018-04-25T15:33:34+00:00"
         }
     ],

@@ -1,55 +1,42 @@
+
 import { Calendar } from "@fullcalendar/core";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import esLocale from "@fullcalendar/core/locales/es";
 import momentPlugin from "@fullcalendar/moment";
+import listPlugin from '@fullcalendar/list';
+
 // import "@fullcalendar-scheduler";
 import "@fullcalendar/core/main.css";
 import "@fullcalendar/daygrid/main.css";
 import "@fullcalendar/timegrid/main.css";
 
 import "./index.css";
-import moment, {defaultFormat} from "moment"; // this will create a calendar.css file reachable to 'encore_entry_link_tags'
 
-// $("#booking_beginAt_date, #booking_endAt").datetimepicker();
 
-// require("eonasdan-bootstrap-datetimepicker-bootstrap4beta");
+const routes = require('../../../public/js/fos_js_routes');
+import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min';
 
-import 'eonasdan-bootstrap-datetimepicker-bootstrap4beta';
+Routing.setRoutingData(routes);
 
-$(function() {
-    var date = new Date();
-    var today = new Date(date.getFullYear(), date.getMonth(), date.getDate(), date.getHours(), date.getMinutes());
-    // Datetime picker initialization.
-    // See http://eonasdan.github.io/bootstrap-datetimepicker/
-    $('.dateStart').datetimepicker({
-        locale: 'es',
-        timeZone: 'UTC +1',
-        icons: {
-            time: 'far fa-clock',
-            date: 'far fa-calendar',
-            up: 'fas fa-arrow-up',
-            down: 'fas fa-arrow-down',
-            previous: 'fas fa-chevron-left',
-            next: 'fas fa-chevron-right',
-            today: 'fas fa-calendar-check',
-            clear: 'far fa-trash-alt',
-            close: 'far fa-times-circle'
-        }
-    });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+$(document).ready(function(){
+
     var calendarEl = document.getElementById("calendar-holder");
 
     var eventsUrl = calendarEl.dataset.eventsUrl;
 
     var calendar = new Calendar(calendarEl, {
         locale: esLocale,
+        timeZone: "UTC +1",
         defaultView: "timeGridWeek",
-        // editable: true,
         selectable: true,
+        header:{
+            left: 'prev,next today',
+            center: 'title',
+            right: "timeGridWeek,timeGridDay",
+        },
         eventSources: [
             {
                 url: eventsUrl,
@@ -63,49 +50,51 @@ document.addEventListener("DOMContentLoaded", () => {
                 },
             },
         ],
-        header: {
-            left: "prev,next today myButton",
-            center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay",
-        },
-        dateClick: function(info) {
-            alert('Clicked on: ' + info.dateStr);
-            var eventObj = info.event;
-
-
-
-                            $("#titleEventAdd").html('Crear nota');
-                            $("#booking_beginAt").val(info.dateStr);
-                            $("#addEventModal").modal();
-            // alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-        //     // alert('Current view: ' + info.view.type);
-        //     // change the day's background color just for fun
-        //     // info.dayEl.style.backgroundColor = 'red';
-        //     $("#titleEventAdd").html('Crear nota');
-        //     $("#addEventModal").modal();
-        },
-        // customButtons: {
-        //     myButton: {
-        //         text: 'Crear',
-        //         click:function () {
-        //             $("#titleEventAdd").html('Crear nota');
-        //             $("#addEventModal").modal();
-        //         }
-        //     },
+        // dateClick: function(info) {
+        //     alert('clicked ' + info.dateStr);
         // },
         select: function(info) {
-            alert('selected ' + info.startStr);
-            // console.log('Select on: ' + info.dateStr);
+            // alert('selected ' + info.startStr + ' to ' + info.endStr);
+            let start = calendar.formatDate(info.startStr, "DD-MM-YYYYTHH:mm:ss");
+            let end = calendar.formatDate(info.endStr, "DD-MM-YYYYTHH:mm:ss");
+            $("#titleEventAdd").html('Crear nota');
+            $("#booking_beginAt").val(start);
+            $("#booking_endAt").val(end);
+            $("#addEventModal").modal();
         },
-        // eventClick: function(info){
-        //     var eventObj = info.event;
-        //
-        //     $("#titleEvent").html(eventObj.title);
-        //     $("#descriptionEvent").html(eventObj.extendedProps.description);
-        //     $("#calendarModal").modal();
-        // },
-        plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, momentPlugin], // https://fullcalendar.io/docs/plugin-index
-        timeZone: "UTC",
+        eventClick: function(info){
+            var eventObj = info.event;
+            $("#titleEvent").html(eventObj.title);
+            $("#descriptionEvent").html(eventObj.extendedProps.description);
+            $("#calendarModal").modal();
+
+
+            $("#btn-delete-booking").on('click', function () {
+                if (info.event.id) {
+                    // info.jsEvent.preventDefault(); // don't let the browser navigate
+                    var event = calendar.getEventById(info.event.id);
+                    event.remove();
+                    $("#calendarModal").modal('hide');
+
+                    // let url = Routing.generate
+                }
+                $.ajax({
+                    url: Routing.generate('booking_delete', {id: info.event.id}),
+                    method: "DELETE",
+                    success: function () {
+                        // alert('ok');
+
+                    }
+                });
+            });
+
+
+        },
+        editable: true,
+        allDaySlot: false,
+        // events: eventsUrl,  // request to load current events
+        plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, momentPlugin, listPlugin], // https://fullcalendar.io/docs/plugin-index
     });
+
     calendar.render();
 });

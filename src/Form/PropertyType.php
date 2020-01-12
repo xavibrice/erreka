@@ -208,8 +208,6 @@ class PropertyType extends AbstractType
                         ;
                 }
             ])
-//            ->add('stateProperty')
-//            ->add('visits')
         ;
 
         $builder->add('zone', EntityType::class, [
