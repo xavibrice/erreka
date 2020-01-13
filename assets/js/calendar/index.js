@@ -32,6 +32,10 @@ $(document).ready(function(){
         timeZone: "UTC +1",
         defaultView: "timeGridWeek",
         selectable: true,
+        editable: true,
+        minTime: '08:00:00',
+        maxTime: '21:00:00',
+        hiddenDays: [0],
         header:{
             left: 'prev,next today',
             center: 'title',
@@ -90,7 +94,44 @@ $(document).ready(function(){
 
 
         },
-        editable: true,
+        eventDrop: function(info) {
+            // alert(info.event.title + " was dropped on " + info.event.start.toISOString());
+            let start = calendar.formatDate(info.event.start, "DD-MM-YYYY HH:mm:ss");
+            let end = calendar.formatDate(info.event.end, "DD-MM-YYYY HH:mm:ss");
+
+            // alert(start + end);
+            $.ajax({
+                url: Routing.generate('booking_edit', {id: info.event.id}),
+                data: 'beginAt='+start+'&endAt='+end,
+                method: "POST",
+                success: function () {
+                    // alert('ok');
+                }
+            });
+
+            // if (!confirm("Are you sure about this change?")) {
+            //     info.revert();
+            // }
+        },
+        eventResize: function(info) {
+            let start = calendar.formatDate(info.event.start, "DD-MM-YYYY HH:mm:ss");
+            let end = calendar.formatDate(info.event.end, "DD-MM-YYYY HH:mm:ss");
+
+            // alert(start + end);
+            $.ajax({
+                url: Routing.generate('booking_edit', {id: info.event.id}),
+                data: 'beginAt='+start+'&endAt='+end,
+                method: "POST",
+                success: function () {
+                    // alert('ok');
+                }
+            });
+            // alert(info.event.title + " end is now " + info.event.end.toISOString());
+            //
+            // if (!confirm("is this okay?")) {
+            //     info.revert();
+            // }
+        },
         allDaySlot: false,
         // events: eventsUrl,  // request to load current events
         plugins: [interactionPlugin, dayGridPlugin, timeGridPlugin, momentPlugin, listPlugin], // https://fullcalendar.io/docs/plugin-index

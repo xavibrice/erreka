@@ -3,24 +3,21 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/calendar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/fos_js_routes.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/fos_js_routes.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EventListener/CalendarListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/CalendarListener.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/booking/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/booking/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/list/authorization.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/authorization.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/note_commercial/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/note_commercial/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookingType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PropertyToDeveloperType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyToDeveloperType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/_back_link.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/_back_link.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/property.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/property.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/_new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/edit-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/edit-property-to-developer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/property-to-developer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -374,7 +371,8 @@
       <workItem from="1578397330540" duration="10000" />
       <workItem from="1578491574682" duration="5445000" />
       <workItem from="1578503138182" duration="3189000" />
-      <workItem from="1578565210901" duration="50450000" />
+      <workItem from="1578565210901" duration="51061000" />
+      <workItem from="1578910960672" duration="15690000" />
     </task>
     <servers />
   </component>

@@ -21,16 +21,16 @@
                         <th>Fecha</th>
                         <th>Asesor</th>
                         <th>Motivo</th>
-                        <th>Calle</th>
-                        <th>Portal</th>
-                        <th>Piso</th>
+                        <th>Dirección</th>
+{#                        <th>Portal</th>#}
+{#                        <th>Piso</th>#}
                         <th>Propietario</th>
-                        <th>Móvil</th>
+                        <th>Móvil - Teléfono</th>
                         {#                        <th>Zona</th>#}
                         {#                        <th>Situación</th>#}
                         <th>Precio</th>
                         <th>V</th>
-                        <th></th>
+                        <th>D</th>
                         <th>B</th>
                         <th>M²</th>
                         <th>Fotos</th>
@@ -69,12 +69,19 @@
                                         {% if property.street is not empty %}
                                             {{ property.street.name }}
                                         {% endif %}
-                                    </td>
-                                    <td>{{ property.portal }}</td>
-                                    <td>{{ property.floor }}</td>
+                                    Nº {{ property.portal }},
+                                    {{ property.floor }}</td>
                                     <td>{{ property.fullName }}</td>
-                                    <td>{{ property.mobile }}</td>
-                                    <td>{{ property.price|number_format(0, '.', ',') }}€</td>
+                                    <td>
+                                        {% if property.mobile is not empty %}
+                                            {{ property.mobile }} - {{ property.mobile }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if property.price is not empty %}
+                                            {{ property.price|number_format(0, ',', '.') }} €
+                                        {% endif %}
+                                    </td>
                                     <td>
                                         {{ property.rateHousing ? 'Si' : 'No' }}
                                     </td>
@@ -103,12 +110,12 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        {% if property.noteNew %}
-                                            {{ property.noteNew.last }}
+                                        {% if property.noteNew.last %}
+                                            {{ property.noteNew.last.nextCall|date('d-m-Y') }}
                                         {% endif %}
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
-                                        {{ property.comment|slice(0, 13) }}
+                                        {{ property.comment|slice(0, 50) }}
                                     </td>
                                 </tr>
 

@@ -160,7 +160,7 @@ class PropertyToDeveloperType extends AbstractType
                 'class' => User::class
             ])
             ->add('created', DatePickerType::class, [
-                'label' => 'Fecha Creación',
+                'label' => 'Fecha',
                 'required' => true,
                 'data' => new \DateTime(),
 //                'label' => false,
@@ -172,7 +172,7 @@ class PropertyToDeveloperType extends AbstractType
                 ],
             ])
             ->add('commercial', EntityType::class, [
-                'label' => 'Comercial',
+                'label' => 'Agente',
                 'class' => User::class
             ])
             ->add('full_name', TextType::class, [
@@ -192,7 +192,7 @@ class PropertyToDeveloperType extends AbstractType
                 'required' => false
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Comentario',
+                'label' => 'Comentario Noticia',
                 'required' => false
             ])
             ->add('portal', TextType::class, [
@@ -203,16 +203,11 @@ class PropertyToDeveloperType extends AbstractType
                 'label' => 'Piso',
                 'required' => false
             ])
-//            ->add('typeProperty', EntityType::class, [
-//                'placeholder' => 'Selecciona un tipo de propiedad',
-//                'class' => TypeProperty::class,
-//                'query_builder' => function(EntityRepository $er) {
-//                    return $er->createQueryBuilder('tp')
-//                        ->where('tp.is_property = :property')
-//                        ->setParameter('property', false)
-//                        ;
-//                }
-//            ])
+            ->add('typeProperty', EntityType::class, [
+                'placeholder' => 'Selecciona un tipo de propiedad',
+                'class' => TypeProperty::class,
+                'label' => 'Tipo Propiedad'
+            ])
         ;
     }
 

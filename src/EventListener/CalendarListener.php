@@ -7,22 +7,27 @@ use App\Repository\BookingRepository;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use CalendarBundle\Entity\Event;
 use CalendarBundle\Event\CalendarEvent;
+use Symfony\Component\Security\Core\Security;
 
 class CalendarListener
 {
     private $bookingRepository;
     private $router;
+    private $security;
 
     public function __construct(
         BookingRepository $bookingRepository,
-        UrlGeneratorInterface $router
+        UrlGeneratorInterface $router,
+        Security $security
     ) {
         $this->bookingRepository = $bookingRepository;
         $this->router = $router;
+        $this->security = $security;
     }
 
     public function load(CalendarEvent $calendar): void
     {
+//        dd($this->security->getUser()->getAgency()->getName());
         $start = $calendar->getStart();
         $end = $calendar->getEnd();
         $filters = $calendar->getFilters();

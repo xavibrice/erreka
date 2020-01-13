@@ -27,6 +27,7 @@ class BookingType extends AbstractType
             ->add('beginAt', DateTimePickerType::class, [
 //                'required' => true,
                 'label' => 'Fecha inicio',
+//                'disabled' => true,
 //                'widget' => 'single_text',
 //                'html5' => false,
 //                'data' => new \DateTime(),
@@ -36,6 +37,7 @@ class BookingType extends AbstractType
             ])
             ->add('endAt', DateTimePickerType::class, [
                 'required' => false,
+//                'disabled' => true,
                 'label' => 'Fecha fín',
                 'attr' => [
                     'class' => 'dateStart'

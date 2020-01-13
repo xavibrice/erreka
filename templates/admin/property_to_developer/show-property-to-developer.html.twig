@@ -1,6 +1,6 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}Detalles Noticia a Desarrollar{% endblock %}
+{% block title %}Detalle Noticia a Desarrollar{% endblock %}
 
 {% block content %}
     <div class="row">
@@ -8,57 +8,52 @@
         <div class="col-md-12 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles Noticias a Desarrollar</h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalle Noticia a Desarrollar</h6>
                     {#<h6 class="m-0 font-weight-bold text-primary float-right">
                         <a class="btn btn-success" href="">Crear Noticia</a>
                     </h6>#}
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-borderless">
                             <tbody>
                             <tr>
-                                <th>Situacion</th>
-                                <td>{{ property.reason.situation.name }}</td>
-                                <th>Motivo</th>
-                                <td>{{ property.reason.name }}</td>
-                                <th>Creado</th>
+                                <th class="text-right">Fecha</th>
                                 <td>{{ property.created|date('d/m/Y') }}</td>
-                                <th>Precio</th>
-                                <td>{{ property.price }}</td>
-                            </tr>
-                            <tr>
-                                <th>Propietario</th>
-                                <td>{{ property.fullName }}</td>
-                                <th>Tipo de propiedad</th>
+                                <th class="text-right">Asesor</th>
+                                <td>{{ property.commercial.fullName }}</td>
+                                <th class="text-right">Motivo</th>
+                                <td>{{ property.reason.name }}</td>
+                                <th class="text-right">Tipo de propiedad</th>
                                 <td>
                                     {% if property.typeProperty is not empty %}
                                         {{ property.typeProperty.name }}
                                     {% endif %}
                                 </td>
-                                <th>Zona</th>
+
+                            </tr>
+                            <tr>
+                                <th class="text-right">Zona</th>
                                 <td>{{ property.street.zone.name }}</td>
-                                <th>Calle</th>
+                                <th class="text-right">Calle</th>
                                 <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
                             </tr>
                             <tr>
-
-                                <th>Móvil/Teléfono</th>
+                                <th class="text-right">Propietario</th>
+                                <td>{{ property.fullName }}</td>
+                                <th class="text-right">Móvil</th>
                                 <td>{{ property.mobile }}</td>
-                                <th>Correo</th>
-                                <td>{{ property.email }}</td>
+                                <th class="text-right">Teléfono</th>
+                                <td>{{ property.phone }}</td>
                             </tr>
                             <tr>
-
-                            </tr>
-                            <tr>
-                                <th>URL</th>
+                                <th class="text-right">URL</th>
                                 <td colspan="7">
                                     <a target="_blank" href="{{ property.url }}">{{ property.url }}</a>
                                 </td>
                             </tr>
                             <tr>
-                                <th>Comentario</th>
+                                <th class="text-right">Comentario</th>
                                 <td colspan="7">{{ property.comment }}</td>
                             </tr>
                             </tbody>
@@ -67,7 +62,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-{#                    {{ include('admin/_back_link.html.twig', {'route': 'property_to_developer_index'}) }}#}
+                    {{ include('admin/_back_link.html.twig', {'route': 'property_to_developer_index'}) }}
                     {{ include('admin/_edit_link.html.twig', {'route': 'property_to_developer_edit', 'id': property.id, 'button_label': 'Editar'}) }}
                 </div>
             </div>

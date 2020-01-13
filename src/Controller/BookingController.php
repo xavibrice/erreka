@@ -87,25 +87,36 @@ class BookingController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="booking_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", options={"expose"=true}, name="booking_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Booking $booking): Response
     {
-        $form = $this->createForm(BookingType::class, $booking);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+        $start = new \DateTime($request->request->get('beginAt'));
+        $end = new \DateTime($request->request->get('endAt'));
 
-            return $this->redirectToRoute('booking_index', [
-                'id' => $booking->getId(),
-            ]);
-        }
+        $booking->setBeginAt($start);
+        $booking->setEndAt($end);
+        $this->getDoctrine()->getManager()->flush();
 
-        return $this->render('admin/booking/edit.html.twig', [
-            'booking' => $booking,
-            'form' => $form->createView(),
-        ]);
+//        $form = $this->createForm(BookingType::class, $booking);
+//        $form->handleRequest($request);
+
+
+//        if ($form->isSubmitted() && $form->isValid()) {
+//            $this->getDoctrine()->getManager()->flush();
+
+//            return new JsonResponse(true);
+//            return $this->redirectToRoute('booking_index', [
+//                'id' => $booking->getId(),
+//            ]);
+//        }
+
+//        return $this->render('admin/booking/edit.html.twig', [
+//            'booking' => $booking,
+//            'form' => $form->createView(),
+//        ]);
+        return new JsonResponse(true);
     }
 
     /**
