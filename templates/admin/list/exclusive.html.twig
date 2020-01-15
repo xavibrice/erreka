@@ -6,40 +6,23 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h1 class="h3 mb-4 text-gray-800">Listado de exclusivas</h1>
-
-{#            <button type="button" class="btn btn-primary" >Large modal</button>#}
-
-
-            <div class="dropdown mb-4">
-                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Crear
-                </button>
-                <div class="dropdown-menu animated--fade-in" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#createLocalModal"> Crear Local</a>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#createGarajeModal"> Crear Garaje</a>
-{#                    <a class="dropdown-item" href="#">Something else here</a>#}
-                </div>
-            </div>
-
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-sm table-borderless table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                <table class="table-striped table-borderless table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                         <tr>
                             <th>Referencia</th>
                             <th>Asesor</th>
                             <th>Zona</th>
-                            <th>Calle</th>
-                            <th>Nº</th>
-                            <th>Piso</th>
+                            <th>Dirección</th>
                             <th>Propietario</th>
                             <th>Móvil</th>
-                            <th>Fecha E</th>
-                            <th>Fecha C</th>
-                            <th>P Enc.</th>
-                            <th>P Actual</th>
-                            <th>P OK</th>
+                            <th>Fecha Enc.</th>
+                            <th>Fecha Fín</th>
+                            <th>P. Enc.</th>
+                            <th>P. Actual</th>
+                            <th>P. OK</th>
                             <th>Visitas</th>
                             <th>% Caro</th>
                             <th>Rebaj.</th>
@@ -53,15 +36,13 @@
                                     <td>{{ exclusive.reference }}</td>
                                     <td>{{ exclusive.commercial.fullName }}</td>
                                     <td>{{ exclusive.street.zone.name }}</td>
-                                    <td>{{ exclusive.street.name }}</td>
-                                    <td>{{ exclusive.portal }}</td>
-                                    <td>{{ exclusive.floor }}</td>
+                                    <td>{{ exclusive.street.name }}, Nº {{ exclusive.portal }}, {{ exclusive.floor }}</td>
                                     <td>{{ exclusive.fullName }}</td>
                                     <td>{{ exclusive.mobile }}</td>
                                     <td>{{ exclusive.charge.startDate|date('d/m/Y') }}</td>
                                     <td>{{ exclusive.charge.endDate|date('d/m/Y') }}</td>
                                     <td>{{ exclusive.charge.price|number_format(0, ',', '.') }} €</td>
-                                    <td>{{ exclusive.charge.price }} - </td>
+                                    <td>{{ exclusive.charge.price }} -  </td>
                                     <td>{{ exclusive.charge.priceOk|number_format(0, ',', '.') }} €</td>
                                     <td>{{ exclusive.visits.count }}</td>
                                     <td></td>
@@ -146,27 +127,6 @@
                     </div>#}
                     <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
                     {{ form_end(formLocal) }}
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal fade" id="createGarajeModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Crear Garaje</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-{#                    {{ form_start(formLocal) }}#}
-{#                    {{ form_widget(formLocal) }}#}
-{#                    {{ form_end(formLocal) }}#}
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>

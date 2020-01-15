@@ -7,7 +7,7 @@
         <div class="col-md-12 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalles noticias</h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Cliente</h6>
                     {#<h6 class="m-0 font-weight-bold text-primary float-right">
                         <a class="btn btn-success" href="">Crear Noticia</a>
                     </h6>#}
@@ -19,26 +19,12 @@
                                 <tr>
                                     <th class="text-right">Propietario</th>
                                     <td>{{ property.fullName }}</td>
-                                    <th class="text-right">Fecha</th>
-                                    <td>{{ property.created|date('d/m/Y') }}</td>
-                                    <th class="text-right">Precio</th>
-                                    <td>{{ property.price }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-right">Tipo de propiedad</th>
-                                    <td>
-                                        {% if property.typeProperty is not empty %}
-                                            {{ property.typeProperty.name }}
-                                        {% endif %}
-                                    </td>
-                                    <th class="text-right">Zona</th>
-                                    <td>{{ property.street.zone.name }}</td>
-                                    <th class="text-right">Calle</th>
+                                    <th class="text-right">Dirección</th>
                                     <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-right">Móvil/Teléfono</th>
-                                    <td>{{ property.mobile }}</td>
+                                    <th class="text-right">Precio Encargo</th>
+                                    <td>{{ property.charge.price|number_format(0, ',', '.') }} €</td>
+                                    <th class="text-right">Móvil / Teléfono</th>
+                                    <td>{{ property.mobile }} - {{ property.phone }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -55,7 +41,7 @@
         <div class="col-md-12 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary ">{{ chargeType.name }}</h6>
+                    <h6 class="m-0 font-weight-bold text-primary ">{{ chargeType.name }} - Referencia: {{ property.reference }}</h6>
                 </div>
                 <div class="card-body">
                     {% if not property.charge %}
@@ -69,12 +55,18 @@
                                 <table class="table table-borderless">
                                     <tbody>
                                     <tr>
-                                        <th class="text-right">Tipo Encargo</th>
-                                        <td>{{ property.charge.chargeType.name }}</td>
-                                        <th class="text-right">Precio</th>
-                                        <td>{{ property.charge.price|number_format(0, ',', '.') }} €</td>
+                                        <th class="text-right">Precio Actual</th>
+                                        <td>{{ (property.charge.price - sumPropertyReduction)|number_format(0, ',', '.') }} €</td>
                                         <th class="text-right">Precio OK</th>
-                                        <td>{{ property.charge.priceOk }} €</td>
+                                        <td>{{ property.charge.priceOk|number_format(0, ',', '.') }} €</td>
+                                        <th class="text-right">% Caro</th>
+                                        <td>{{ (100-(property.charge.priceOk/(property.charge.price - sumPropertyReduction))*100)|number_format(1, ',', '.') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-right">Fecha Encargo</th>
+                                        <td>{{ property.charge.startDate|date('d-m-Y') }}</td>
+                                        <th class="text-right">Fecha Fín</th>
+                                        <td>{{ property.charge.endDate|date('d-m-Y') }}</td>
                                         <th class="text-right">LLaves</th>
                                         <td>
                                             {% if property.charge.stateKeys %}
@@ -95,7 +87,7 @@
     </div>
     {% if property.charge %}
         <div class="row">
-            <div class="col-md-auto mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary ">Visitas: {{ property.visits.count }}</h6>
@@ -111,7 +103,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-auto mb-4">
+            <div class="col-md-8 mb-4">
                 <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
                     <div class="col-md-12 mb-4">
                         <div class="card border-left-info shadow h-100 py-2">
@@ -145,7 +137,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-auto mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary ">Rebajas {{ property.propertyReductions.count }}</h6>
@@ -157,7 +149,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-auto mb-4">
+            <div class="col-md-8 mb-4">
                 <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
                     <div class="col-md-12 mb-4">
                             <div class="card border-left-info shadow h-100 py-2">
@@ -194,7 +186,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-auto mb-4">
+            <div class="col-md-4 mb-4">
                 <div class="card shadow mb-4">
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary ">Propuestas {{ property.proposals.count }}</h6>
@@ -209,7 +201,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-auto mb-4">
+            <div class="col-md-8 mb-4">
                 <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 700px;">
                     <div class="col-md-auto mb-4">
                         <div class="card border-left-info shadow h-100 py-2">

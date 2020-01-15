@@ -298,6 +298,7 @@ class PropertyController extends AbstractController
             'property' => $property,
             'chargeType' => $chargeType,
             'formProposal' => $formProposal->createView(),
+            'sumPropertyReduction' => $sumPropertyReduction
         ]);
     }
 

@@ -17,9 +17,7 @@
                         <th>Zona</th>
                         <th>Situación</th>
                         <th>Motivo</th>
-                        <th>Calle</th>
-                        <th>Nº</th>
-                        <th>Piso</th>
+                        <th>Dirección</th>
                         <th>Propietario</th>
                         <th>Móvil</th>
                         <th>Precio</th>
@@ -48,12 +46,14 @@
 {#                                    {% endif %}#}
                                 </td>
                                 <td>{{ property.reason.name }}</td>
-                                <td>{{ property.street }}</td>
-                                <td>{{ property.portal }}</td>
-                                <td>{{ property.floor }}</td>
+                                <td>{{ property.street }}, Nº {{ property.portal }}, {{ property.floor }}</td>
                                 <td>{{ property.fullName }}</td>
                                 <td>{{ property.mobile }}</td>
-                                <td>{{ rateHousing.maxPrice }}</td>
+                                <td>
+                                    {% if rateHousing.maxPrice is not empty %}
+                                        {{ rateHousing.maxPrice|number_format(0, ',', '.') }} €
+                                    {% endif %}
+                                </td>
                                 <td>{{ rateHousing.bedrooms }}</td>
                                 <td>{{ rateHousing.bathrooms }}</td>
                                 <td>{{ rateHousing.realMeters }}</td>
