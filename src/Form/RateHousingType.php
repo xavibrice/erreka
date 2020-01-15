@@ -189,7 +189,7 @@ class RateHousingType extends AbstractType
                 'required' => false
             ])
             ->add('antiquity', IntegerType::class, [
-                'label' => 'Antigüedad',
+                'label' => 'Antigüedad (Años)',
                 'required' => false,
                 'attr' => [
                     'min' => 0

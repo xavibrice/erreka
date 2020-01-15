@@ -42,7 +42,7 @@ class User implements UserInterface
     private $username;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial", orphanRemoval=true, cascade={"persist"})
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="commercial")
      */
     private $noteCommercials;
     /**

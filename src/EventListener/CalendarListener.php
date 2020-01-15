@@ -27,7 +27,7 @@ class CalendarListener
 
     public function load(CalendarEvent $calendar): void
     {
-//        dd($this->security->getUser()->getAgency()->getName());
+        $agency = $this->security->getUser()->getAgency()->getName();
         $start = $calendar->getStart();
         $end = $calendar->getEnd();
         $filters = $calendar->getFilters();
@@ -36,9 +36,13 @@ class CalendarListener
         // Change booking.beginAt by your start date property
         $bookings = $this->bookingRepository
             ->createQueryBuilder('booking')
-            ->where('booking.beginAt BETWEEN :start and :end')
+            ->innerJoin('booking.commercial', 'commercial')
+            ->innerJoin('commercial.agency', 'agency')
+            ->andWhere('booking.beginAt BETWEEN :start and :end')
+            ->andWhere('agency.name = :agency')
             ->setParameter('start', $start->format('Y-m-d H:i:s'))
             ->setParameter('end', $end->format('Y-m-d H:i:s'))
+            ->setParameter('agency', $agency)
             ->getQuery()
             ->getResult()
         ;

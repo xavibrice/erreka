@@ -9,7 +9,7 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                         <tr>
                         <th>Fecha</th>
@@ -39,7 +39,10 @@
                                 <td>{{ property.commercial.fullName }}</td>
                                 <td>{{ property.street.zone.name }}</td>
                                 <td>
-                                    {{ property.reason.situation.name }}
+                                    {% if property.charge is not empty %}
+                                        {{ property.charge.chargeType.name }}
+                                    {% endif %}
+{#                                    {{ property.reason.situation.name }}#}
 {#                                    {% if property.rateHousing %}#}
 {#                                        {{ property.rateHousing.bathrooms }}#}
 {#                                    {% endif %}#}

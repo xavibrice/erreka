@@ -43,7 +43,7 @@ class PropertyType extends AbstractType
         if ($role == 'ROLE_ADMIN') {
             $builder
                 ->add('commercial', EntityType::class, [
-                    'label' => 'Comercial',
+                    'label' => 'Agente',
                     'class' => User::class,
                 ]);
 
@@ -191,22 +191,22 @@ class PropertyType extends AbstractType
                 'label' => 'URL',
                 'required' => false
             ])
-            ->add('historical', EntityType::class, [
-                'label' => 'Histórico',
-                'placeholder' => 'Selecciona Histórico',
-                'class' => Historical::class,
-                'required' => false
-            ])
+//            ->add('historical', EntityType::class, [
+//                'label' => 'Histórico',
+//                'placeholder' => 'Selecciona Histórico',
+//                'class' => Historical::class,
+//                'required' => false
+//            ])
             ->add('typeProperty', EntityType::class, [
                 'label' => 'Tipo de propiedad',
                 'placeholder' => 'Selecciona Tipo Propiedad',
                 'class' => TypeProperty::class,
-                'query_builder' => function(EntityRepository $er) {
-                    return $er->createQueryBuilder('tp')
-                        ->where('tp.is_property = :property')
-                        ->setParameter('property', true)
-                        ;
-                }
+//                'query_builder' => function(EntityRepository $er) {
+//                    return $er->createQueryBuilder('tp')
+//                        ->where('tp.is_property = :property')
+//                        ->setParameter('property', true)
+//                        ;
+//                }
             ])
         ;
 

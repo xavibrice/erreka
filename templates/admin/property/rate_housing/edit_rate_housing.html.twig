@@ -6,6 +6,9 @@
             <h1 class="h3 mb-4 text-gray-800 float-left">Editar Valoración</h1>
         </div>
         <div class="card-body">
+            <div class="col-md-12 text-center">
+                <strong>{{ rateHousing.property.first.fullName }} / {{ rateHousing.property.first.street.name }}, Nº {{ rateHousing.property.first.portal }}, {{ rateHousing.property.first.floor }}</strong>
+            </div>
             {{ include('admin/property/_form_rate_housing.html.twig', {'button_label': 'Actualizar'}) }}
         </div>
         <div class="card-footer">

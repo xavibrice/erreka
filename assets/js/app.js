@@ -125,6 +125,8 @@ import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/pu
 $(document).ready(function() {
     $('#dataTable').DataTable( {
         // "orderSequence": ["desc"],
+        "lengthMenu": [ 10, 15, 25, 50, 100 ],
+        "pageLength": 15,
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",

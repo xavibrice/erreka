@@ -36,33 +36,15 @@
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'property_to_developer_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('property_to_developer_index') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-file"></i>
                     <span>Noticias a Desarrollar</span>
                 </a>
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'property_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('property_index') }}">
                     {#        <a class="nav-link" href="#">#}
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-newspaper"></i>
                     <span>Noticias</span>
-                </a>
-            </li>
-            <li class="nav-item {% if app.request.get('_route') == 'list_charge_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('list_charge_index') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Exclusivas</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>En Trámite</span>
-                </a>
-            </li>
-            <li class="nav-item {% if app.request.get('_route') == 'list_authorization_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('list_authorization_index') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Autorizaciones</span>
                 </a>
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'list_rate_housing_index' %}active{% endif %}">
@@ -71,15 +53,34 @@
                     <span>Valoraciones</span>
                 </a>
             </li>
+            <li class="nav-item {% if app.request.get('_route') == 'list_charge_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('list_charge_index') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Exclusivas</span>
+                </a>
+            </li>
+            <li class="nav-item {% if app.request.get('_route') == 'list_authorization_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('list_authorization_index') }}">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Autorizaciones</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>En Trámite</span>
+                </a>
+            </li>
+
             <li class="nav-item {% if app.request.get('_route') == 'client_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('client_index') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>Pedidos</span>
                 </a>
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'visit_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('visit_index') }}">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-eye"></i>
                     <span>Visitas</span>
                 </a>
             </li>
@@ -91,7 +92,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-history"></i>
                     <span>Histórico</span>
                 </a>
             </li>
@@ -298,7 +299,12 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">
-                                    <i class="fas fa-user"></i>
+
+                                    {% if app.user.imageFilename %}
+                                        <img class="img-profile" src="{{ uploaded_asset(app.user.imagePath)|imagine_filter('squared_thumbnail_small') }}" alt="{{ app.user.fullName }}">
+                                    {% else %}
+                                        <i class="fas fa-user"></i>
+                                    {% endif %}
                                     {{ app.user.fullName }}
                                 </span>
                             </a>

@@ -30,6 +30,7 @@ $(document).ready(function(){
     var calendar = new Calendar(calendarEl, {
         locale: esLocale,
         timeZone: "UTC +1",
+        height: 'parent',
         defaultView: "timeGridWeek",
         selectable: true,
         editable: true,

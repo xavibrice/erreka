@@ -23,7 +23,7 @@
                         <table class="table table-borderless">
                             <tbody>
                             <tr>
-                                <th class="text-center bg-light" colspan="8">DETALLES</th>
+                                <th class="text-center bg-light" colspan="10">DETALLE NOTICIA</th>
                             </tr>
                             <tr>
                                 <th class="text-right">Fecha</th>
@@ -32,31 +32,36 @@
                                 <td>{{ property.commercial.fullName }}</td>
                                 <th class="text-right">Motivo</th>
                                 <td>{{ property.reason.name }}</td>
-                                <th class="text-right">Referencia</th>
-                                <td>{{ property.reference }}</td>
-{#                                <th>Precio</th>#}
-{#                                <td>{{ property.price }}</td>#}
-                            </tr>
-                            <tr>
                                 <th class="text-right">Tipo Propiedad</th>
                                 <td>
                                     {% if property.typeProperty is not empty %}
                                         {{ property.typeProperty.name }}
                                     {% endif %}
                                 </td>
+                                <th class="text-right">Referencia</th>
+                                <td>{{ property.reference }}</td>
+{#                                <th>Precio</th>#}
+{#                                <td>{{ property.price }}</td>#}
+                            </tr>
+                            <tr>
+
                                 <th class="text-right">Zona</th>
                                 <td>{{ property.street.zone.name }}</td>
                                 <th class="text-right">Calle</th>
                                 <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
-                                <th>Precio</th>
+                            </tr>
+                            <tr>
+                                <th class="text-right">Precio</th>
                                 <td>{{ property.price|number_format(0, ',', '.') }} €</td>
                             </tr>
                             <tr>
                                 <th class="text-right">Propietario</th>
                                 <td>{{ property.fullName }}</td>
-                                <th class="text-right">Móvil / Teléfono</th>
+                                <th class="text-right">Móvil</th>
                                 <td>{{ property.mobile }}</td>
-                                <th class="text-right">Email</th>
+                                <th class="text-right">Teléfono</th>
+                                <td>{{ property.phone }}</td>
+                                <th class="text-right">Correo</th>
                                 <td>{{ property.email }}</td>
                             </tr>
                             <tr>
@@ -90,7 +95,7 @@
                     </div>#}
                 </div>
                 <div class="card-footer">
-{#                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
+                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
                     {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}
                 </div>
             </div>
@@ -155,7 +160,7 @@
                                     <div class="col mr-2">
                                         <div class="text-sm-left font-weight-bold text-primary text-uppercase mb-1"><strong>{{ noteProperty.noticeDate|date('d-m-Y') }} </strong></div>
                                         <div class="h5 mb-0 text-gray-800" data-toggle="tooltip" data-placement="top" title="{{ noteProperty.note }}">
-                                            {{ noteProperty.note|slice(0, 50) }}
+                                            {{ noteProperty.note }}
                                         </div>
                                     </div>
                                     <div class="col-auto">
