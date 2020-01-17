@@ -2,6 +2,8 @@
 
 namespace App\Form;
 
+use App\Entity\Bedrooms;
+use App\Entity\BuildingStructure;
 use App\Entity\Client;
 use App\Entity\Heating;
 use App\Entity\Orientation;
@@ -34,31 +36,23 @@ class ClientType extends AbstractType
                 ],
             ])
             ->add('full_name', TextType::class, [
-                'label' => 'Nombre Cliente'
+                'label' => 'Nombre Cliente',
             ])
             ->add('price', MoneyType::class, [
                 'label' => 'Precio',
-                'required' => false
+                'required' => false,
             ])
             ->add('mobile', TelType::class, [
-                'label' => 'Móvil/Teléfono',
-                'required' => false
+                'label' => 'Móvil',
+                'required' => false,
+            ])
+            ->add('phone', TelType::class, [
+                'label' => 'Teléfono',
+                'required' => false,
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario',
-                'required' => false
-            ])
-            ->add('realMeters', IntegerType::class, [
-                'label' => 'Metros',
-                'required' => false
-            ])
-            ->add('bedrooms', IntegerType::class, [
-                'label' => 'Habitaciones',
-                'required' => false
-            ])
-            ->add('bathrooms', IntegerType::class, [
-                'label' => 'Baños',
-                'required' => false
+                'required' => false,
             ])
             ->add('heating', EntityType::class, [
                 'class' => Heating::class,
@@ -70,56 +64,73 @@ class ClientType extends AbstractType
                 'class' => Orientation::class,
                 'label' => 'Orientación',
                 'placeholder' => 'Selecciona Orientación',
-                'required' => false
+                'required' => false,
             ])
             ->add('terrace', CheckboxType::class, [
                 'label' => 'Terraza',
                 'required' => false,
             ])
-            ->add('suit_bathroom', CheckboxType::class, [
-                'label' => 'Baño en suit',
-                'required' => false
-            ])
-            ->add('video_intercom', CheckboxType::class, [
-                'label' => 'Videoportero',
-                'required' => false
+            ->add('balcony', CheckboxType::class, [
+                'label' => 'Balcón',
+                'required' => false,
             ])
             ->add('storage_room', CheckboxType::class, [
                 'label' => 'Trastero',
-                'required' => false
+                'required' => false,
             ])
             ->add('direct_garage', CheckboxType::class, [
                 'label' => 'Garaje Directo',
-                'required' => false
+                'required' => false,
             ])
             ->add('disabled_access', CheckboxType::class, [
                 'label' => 'Acceso Minusválidos',
-                'required' => false
+                'required' => false,
             ])
             ->add('zero_dimension', CheckboxType::class, [
                 'label' => 'Cota Cero',
-                'required' => false
+                'required' => false,
             ])
             ->add('elevator', CheckboxType::class, [
                 'label' => 'Ascensor',
-                'required' => false
+                'required' => false,
             ])
             ->add('zone', EntityType::class, [
                 'label' => 'Zona',
                 'class' => Zone::class,
                 'multiple' => true,
-                'expanded' => true
+                'expanded' => true,
             ])
             ->add('commercial', EntityType::class, [
+                'required' => false,
                 'label' => 'Comercial',
                 'class' => User::class,
-                'placeholder' => 'Selecciona un comercial'
+                'placeholder' => 'Selecciona un comercial',
             ])
             ->add('typeProperty', EntityType::class, [
                 'label' => 'Tipo Propiedad',
                 'required' => true,
                 'class' => TypeProperty::class,
-                'placeholder' => 'Selecciona Tipo Propiedad'
+                'placeholder' => 'Selecciona Tipo Propiedad',
+            ])
+            ->add('bedrooms', EntityType::class, [
+//                'required' => false,
+                'label' => 'Habitaciones',
+                'class' => Bedrooms::class,
+                'placeholder' => 'Selecciona Habitación',
+            ])
+            ->add('buildingStructure', EntityType::class, [
+                'required' => false,
+                'label' => 'Estructura',
+                'class' => BuildingStructure::class,
+                'placeholder' => 'Selecciona Estructura',
+            ])
+            ->add('income', MoneyType::class, [
+                'label' => 'Ingresos',
+                'required' => false,
+            ])
+            ->add('pets', CheckboxType::class, [
+                'label' => 'Mascotas',
+                'required' => false,
             ])
         ;
     }

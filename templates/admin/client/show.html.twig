@@ -1,45 +1,106 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}Client{% endblock %}
+{% block title %}Cliente{% endblock %}
 
 {% block content %}
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-header">
-                    <h1>Detalles</h1>
+                    <h6 class="m-0 font-weight-bold text-primary">Detalles Pedido</h6>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-borderless">
                             <tbody>
                             <tr>
-                                <th>Id</th>
-                                <td>{{ client.id }}</td>
+                                <th class="text-right">Agente</th>
+                                <td>
+                                    {% if client.commercial %}
+                                        {{ client.commercial.fullName }}
+                                    {% endif %}
+                                </td>
+                                <th class="text-right">Motivo</th>
+                                <td>Venta/Alquiler</td>
+                                <th class="text-right">Tipo Inmueble</th>
+                                <td>
+                                    {% if client.typeProperty %}
+                                        {{ client.typeProperty.name }}
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
-                                <th>Full_name</th>
+                                <th class="text-right">Cliente</th>
                                 <td>{{ client.fullName }}</td>
-                            </tr>
-                            <tr>
-                                <th>Price</th>
-                                <td>{{ client.price }}</td>
-                            </tr>
-                            <tr>
-                                <th>Email</th>
-                                <td>{{ client.email }}</td>
-                            </tr>
-                            <tr>
-                                <th>Mobile</th>
+                                <th class="text-right">Móvil</th>
                                 <td>{{ client.mobile }}</td>
+                                <th class="text-right">Teléfono</th>
+                                <td>{{ client.phone }}</td>
                             </tr>
                             <tr>
-                                <th>Comment</th>
+                                <th class="text-right">Comentario</th>
                                 <td>{{ client.comment }}</td>
                             </tr>
                             <tr>
-                                <th>Created</th>
-                                <td>{{ client.created ? client.created|date('Y-m-d') : '' }}</td>
+                                <th class="text-center bg-light" colspan="10">CARACTERÍSTICA VIVIENDA</th>
+                            </tr>
+                            <tr>
+                                <th class="text-right">Habitaciones</th>
+                                <td>{{ client.bedrooms }}</td>
+                                <th class="text-right">Calefacción</th>
+                                <td>
+                                    {% if client.heating %}
+                                        {{ client.heating.name }}
+                                    {% endif %}
+                                </td>
+                                <th class="text-right">Orientación</th>
+                                <td>
+                                    {% if client.orientation %}
+                                        {{ client.orientation.name }}
+                                    {% endif %}
+                                </td>
+                                <th class="text-right">Ascendor</th>
+                                <td>{{ client.elevator ? 'Si' : 'No' }}</td>
+                            </tr>
+                            <tr>
+                                <th>Estructura</th>
+                                <td>
+                                    {% if client.buildingStructure %}
+                                        {{ client.buildingStructure.name }}
+                                    {% endif %}
+                                </td>
+                                <th>Ingresos</th>
+                                <td>{{ client.income|number_format(0, '.', ',') }}</td>
+                            </tr>
+                            <tr>
+                                <th>Terraza</th>
+                                <td>{{ client.terrace ? 'Si' : 'No' }}</td>
+                                <th class="text-right">Balcón</th>
+                                <td>{{ client.balcony ? 'Si' : 'No' }}</td>
+                                <th class="text-right">Trastero</th>
+                                <td>{{ client.storageRoom ? 'Si' : 'No' }}</td>
+                                <th class="text-right">Garage Directo</th>
+                                <td>{{ client.directGarage ? 'Si' : 'No' }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">Cota Zero</th>
+                                <td>{{ client.zeroDimension ? 'Si' : 'No' }}</td>
+                                <th class="text-right">Acceso Minusválidos</th>
+                                <td>{{ client.disabledAccess ? 'Si' : 'No' }}</td>
+                                <th class="text-right">Mascotas</th>
+                                <td>{{ client.pets ? 'Si' : 'No' }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">Precio</th>
+                                <td>{{ client.price }}</td>
+                            </tr>
+                            <tr>
+                                <th class="text-right">Zonas</th>
+                                <td>
+                                    {% for zone in client.zone %}
+                                        {{ zone.name }}
+                                    {% endfor %}
+                                </td>
                             </tr>
                             </tbody>
                         </table>

@@ -19,7 +19,26 @@ class SecurityController extends AbstractController
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        $arrayData = $this->getPhrases();
+        $idArray = array_rand($this->getPhrases(), 1);
+
+        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error, 'phrase' => $arrayData[$idArray]]);
+    }
+
+    public function getPhrases(): array
+    {
+        return [
+            'Cada día es una nueva oportunidad para cambiar tu vida.',
+            'Ningún mar en calma hizo experto a un marinero.',
+            'El éxito en la vida no se mide por lo que logras sino por los obstáculos que superas.',
+            'Mañana es una excusa maravillosa, ¿No crees?',
+            'Eres suficiente tal y como eres.',
+            'Debes hacer las cosas que crees que no puedes hacer.',
+            'Tu mejor profesor es tu mayor error.',
+            'No busques el momento perfecto, solo busca el momento y hazlo perfecto.',
+            'Levántate, suspira, sonríe, y sigue adelante.',
+            'Dale a cada día la posibilidad de ser el mejor día de tu vida.',
+        ];
     }
 
     /**

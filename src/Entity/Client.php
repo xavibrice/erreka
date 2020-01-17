@@ -51,21 +51,6 @@ class Client
     private $created;
 
     /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $real_meters;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $bedrooms;
-
-    /**
-     * @ORM\Column(type="integer", nullable=true)
-     */
-    private $bathrooms;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Heating", inversedBy="clients")
      */
     private $heating;
@@ -83,17 +68,7 @@ class Client
     /**
      * @ORM\Column(type="boolean", nullable=true)
      */
-    private $suit_bathroom;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
     private $direct_garage;
-
-    /**
-     * @ORM\Column(type="boolean", nullable=true)
-     */
-    private $video_intercom;
 
     /**
      * @ORM\Column(type="boolean", nullable=true)
@@ -144,6 +119,36 @@ class Client
      * @ORM\OneToMany(targetEntity="App\Entity\Proposal", mappedBy="client")
      */
     private $proposals;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Bedrooms", inversedBy="client")
+     */
+    private $bedrooms;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\BuildingStructure", inversedBy="clients")
+     */
+    private $building_structure;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $income;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $pets;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $balcony;
 
     public function __construct()
     {
@@ -230,42 +235,6 @@ class Client
         return $this;
     }
 
-    public function getRealMeters(): ?int
-    {
-        return $this->real_meters;
-    }
-
-    public function setRealMeters(?int $real_meters): self
-    {
-        $this->real_meters = $real_meters;
-
-        return $this;
-    }
-
-    public function getBedrooms(): ?int
-    {
-        return $this->bedrooms;
-    }
-
-    public function setBedrooms(?int $bedrooms): self
-    {
-        $this->bedrooms = $bedrooms;
-
-        return $this;
-    }
-
-    public function getBathrooms(): ?int
-    {
-        return $this->bathrooms;
-    }
-
-    public function setBathrooms(?int $bathrooms): self
-    {
-        $this->bathrooms = $bathrooms;
-
-        return $this;
-    }
-
     public function getHeating(): ?Heating
     {
         return $this->heating;
@@ -302,18 +271,6 @@ class Client
         return $this;
     }
 
-    public function getSuitBathroom(): ?bool
-    {
-        return $this->suit_bathroom;
-    }
-
-    public function setSuitBathroom(?bool $suit_bathroom): self
-    {
-        $this->suit_bathroom = $suit_bathroom;
-
-        return $this;
-    }
-
     public function getDirectGarage(): ?bool
     {
         return $this->direct_garage;
@@ -322,18 +279,6 @@ class Client
     public function setDirectGarage(?bool $direct_garage): self
     {
         $this->direct_garage = $direct_garage;
-
-        return $this;
-    }
-
-    public function getVideoIntercom(): ?bool
-    {
-        return $this->video_intercom;
-    }
-
-    public function setVideoIntercom(?bool $video_intercom): self
-    {
-        $this->video_intercom = $video_intercom;
 
         return $this;
     }
@@ -531,6 +476,78 @@ class Client
                 $proposal->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getBedrooms(): ?Bedrooms
+    {
+        return $this->bedrooms;
+    }
+
+    public function setBedrooms(?Bedrooms $bedrooms): self
+    {
+        $this->bedrooms = $bedrooms;
+
+        return $this;
+    }
+
+    public function getBuildingStructure(): ?BuildingStructure
+    {
+        return $this->building_structure;
+    }
+
+    public function setBuildingStructure(?BuildingStructure $building_structure): self
+    {
+        $this->building_structure = $building_structure;
+
+        return $this;
+    }
+
+    public function getIncome()
+    {
+        return $this->income;
+    }
+
+    public function setIncome($income): self
+    {
+        $this->income = $income;
+
+        return $this;
+    }
+
+    public function getPets(): ?bool
+    {
+        return $this->pets;
+    }
+
+    public function setPets(bool $pets): self
+    {
+        $this->pets = $pets;
+
+        return $this;
+    }
+
+    public function getBalcony(): ?bool
+    {
+        return $this->balcony;
+    }
+
+    public function setBalcony(bool $balcony): self
+    {
+        $this->balcony = $balcony;
 
         return $this;
     }

@@ -2,13 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/erreka.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/erreka.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/list/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/rate_housing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/BuildingStructure.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/BuildingStructure.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/_new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/security/login.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/security/login.html.twig" afterDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,6 +164,11 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1QxBSoq0BrBlN2YV1mE0XLHbtUN" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -194,15 +204,15 @@
       <recent name="C:\xampp\htdocs\erreka\src\Form\Type" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -363,7 +373,13 @@
       <workItem from="1578565210901" duration="51061000" />
       <workItem from="1578910960672" duration="17366000" />
       <workItem from="1579002185471" duration="23000" />
-      <workItem from="1579094711816" duration="14420000" />
+      <workItem from="1579094711816" duration="15290000" />
+      <workItem from="1579130710631" duration="11000" />
+      <workItem from="1579131602995" duration="617000" />
+      <workItem from="1579166366484" duration="3795000" />
+      <workItem from="1579188206712" duration="2780000" />
+      <workItem from="1579263313250" duration="18000" />
+      <workItem from="1579263347561" duration="8041000" />
     </task>
     <servers />
   </component>
@@ -382,5 +398,23 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="235" y="183" key="#Notifications" timestamp="1579265308923">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="235" y="183" key="#Notifications/0.0.2560.1040@0.0.2560.1040" timestamp="1579265308923" />
+    <state x="250" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579263327735">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="250" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579263327735" />
+    <state x="144" y="167" key="SettingsEditor" timestamp="1579265255255">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="144" y="167" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1579265255255" />
+    <state x="587" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1579263347739">
+      <screen x="0" y="0" width="2560" height="1040" />
+    </state>
+    <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579263347739" />
   </component>
 </project>
