@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use App\Entity\Property;
+use App\Entity\RateHousing;
 use App\Entity\Visit;
 use App\Form\ClientType;
 use App\Form\VisitNewType;
@@ -62,6 +64,117 @@ class ClientController extends AbstractController
     }
 
     /**
+     * @Route("/posibles/visitas/{id}", name="client_possible_visits")
+     */
+    public function possibleVisits(Request $request, Client $client)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $queryBuilder = $em
+            ->getRepository(Property::class)
+            ->createQueryBuilder('p')
+            ->innerJoin('p.rateHousing', 'rh')
+            ->innerJoin('p.charge', 'c')
+            ->where('p.enabled = :enabled')
+            ->setParameter('enabled', true)
+        ;
+
+        if ($client->getHeating()) {
+            $queryBuilder
+                ->innerJoin('rh.heating', 'h')
+                ->andWhere('h.name = :heating')
+                ->setParameter('heating', $client->getHeating()->getName())
+            ;
+        }
+
+        if ($client->getOrientation()) {
+            $queryBuilder
+                ->innerJoin('rh.orientation', 'o')
+                ->andWhere('o.name = :orientation')
+                ->setParameter('orientation', $client->getOrientation()->getName())
+                ;
+        }
+
+        if ($client->getElevator()) {
+            $queryBuilder
+                ->andWhere('rh.elevator = :elevator')
+                ->setParameter('elevator', $client->getElevator())
+            ;
+        }
+
+        if ($client->getBuildingStructure()) {
+            $queryBuilder
+                ->innerJoin('rh.buildingStructure', 'bs')
+                ->andWhere('bs.name = :buildingStructure')
+                ->setParameter('buildingStructure', $client->getBuildingStructure()->getName())
+            ;
+        }
+
+        if ($client->getBalcony()) {
+            $queryBuilder
+                ->andWhere('rh.balcony = :balcony')
+                ->setParameter('balcony', $client->getBalcony())
+            ;
+        }
+
+        if ($client->getStorageRoom()) {
+            $queryBuilder
+                ->andWhere('rh.storage_room = :storage_room')
+                ->setParameter('storage_room', $client->getStorageRoom())
+            ;
+        }
+
+        if ($client->getDirectGarage()) {
+            $queryBuilder
+                ->andWhere('rh.direct_garage = :direct_garage')
+                ->setParameter('direct_garage', $client->getDirectGarage())
+            ;
+        }
+
+        if ($client->getZeroDimension()) {
+            $queryBuilder
+                ->andWhere('rh.zero_dimension = :zero_dimension')
+                ->setParameter('zero_dimension', $client->getZeroDimension())
+            ;
+        }
+
+        if ($client->getDisabledAccess()) {
+            $queryBuilder
+                ->andWhere('rh.disabled_access = :disabled_access')
+                ->setParameter('disabled_access', $client->getDisabledAccess())
+            ;
+        }
+
+        if ($client->getPets()) {
+            $queryBuilder
+                ->andWhere('rh.pets = :pets')
+                ->setParameter('pets', $client->getPets())
+            ;
+        }
+
+        //Que precio cojo de referencia?? Si es desde ese precio para abajo o como?
+
+/*        if ($client->getZone()) {
+//            dd($client->getZone()->count());
+//            dump($client->getZone()->toArray());
+            foreach ($client->getZone() as $zone) {
+                dump($zone->getId());
+//                foreach ($zone->getStreets() as $street) {
+//                    dd($street->getZone()->getName());
+//                }
+            }
+        }
+dd('ok');*/
+
+        $possibleVisits = $queryBuilder->getQuery()->getResult();
+        return $this->render('admin/client/possible-visits.html.twig', [
+            'client' => $client,
+            'possibleVisits' => $possibleVisits
+        ]);
+    }
+
+
+    /**
      * @Route("/{id}", name="client_show", methods={"GET", "POST"})
      */
     public function show(Request $request, Client $client): Response
@@ -73,7 +186,7 @@ class ClientController extends AbstractController
         $formVisit->handleRequest($request);
 
         if ($formVisit->isSubmitted() && $formVisit->isValid()) {
-            $client->setPrice(1000);
+//            $client->setPrice(1000);
             $em->persist($visit);
             $em->flush();
 

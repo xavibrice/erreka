@@ -1,0 +1,92 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}
+    Posibles Visitas
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+{% endblock %}
+
+
+{% block content %}
+
+    <a class="btn btn-primary mb-4" href="{{ path('client_show', {'id': client.id}) }}">Detalles</a>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Posibles visitas</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table-striped table-sm table-hover">
+                    <thead>
+                    <tr class="text-center">
+                        <th>Ref.</th>
+                        <th>Zona</th>
+                        <th>Dirección</th>
+                        <th>Precio</th>
+                        <th>Dorm.</th>
+                        <th>WC</th>
+                        <th>M²</th>
+                        <th>Calefacción</th>
+                        <th>Asc</th>
+                        <th>Ofre.</th>
+                        <th>Visit.</th>
+                        <th>Comentario</th>
+                        <th>Fotos</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for possibleVisit in possibleVisits %}
+                        <tr>
+                            <td>{{ possibleVisit.reference }}</td>
+                            <td>{{ possibleVisit.street.zone.name }}</td>
+                            <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}, {{ possibleVisit.floor }}</td>
+                            <td>{{ possibleVisit.charge.price }} <br> Que precio va?</td>
+                            <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
+                            <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
+                            <td>{{ possibleVisit.rateHousing.realMeters }}</td>
+                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>
+                            <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
+                            <td>{{ possibleVisit.offereds ? 'Si' : 'No' }}</td>
+                            <td>{{ possibleVisit.visits ? 'Si' : 'No' }}</td>
+                            <td>{{ possibleVisit.comment }} - ¿Qué comentario?</td>
+                            <td>
+                                {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}
+
+
+
+                                <div class="compact-gallery">
+                                    <div class="row">
+                                        {% if possibleVisit.rateHousing %}
+                                            {% for image in possibleVisit.rateHousing.image %}
+                                                <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                                    <img class="img-profile" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_super_small') }}" alt="">
+                                                </a>
+                                            {% endfor %}
+
+                                        {% endif %}
+                                    </div>
+                                </div>
+
+
+
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.compact-gallery', { animation: 'slideIn'});
+    </script>
+{% endblock %}

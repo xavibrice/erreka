@@ -4,6 +4,11 @@
 
 {% block content %}
     <div class="row">
+        <div class="col-md-12 mb-4">
+            <a class="btn btn-primary" href="{{ path('client_possible_visits', {'id': client.id}) }}">Posibles Visitas</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-md-12">
             <div class="card shadow mb-4">
                 <div class="card-header">

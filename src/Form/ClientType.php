@@ -116,6 +116,7 @@ class ClientType extends AbstractType
 //                'required' => false,
                 'label' => 'Habitaciones',
                 'class' => Bedrooms::class,
+                'required' => false,
                 'placeholder' => 'Selecciona Habitación',
             ])
             ->add('buildingStructure', EntityType::class, [

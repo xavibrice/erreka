@@ -3,6 +3,13 @@ liip_imagine:
     # valid drivers options include "gd" or "gmagick" or "imagick"
 #    driver: "gd"
     filter_sets:
+        squared_thumbnail_super_small:
+            filters:
+                thumbnail:
+                    size: [25, 25]
+                    mode: outbound
+                    allow_upscale: true
+
         squared_thumbnail_small:
             filters:
                 thumbnail:

@@ -105,4 +105,5 @@ class Offered
 
         return $this;
     }
+
 }

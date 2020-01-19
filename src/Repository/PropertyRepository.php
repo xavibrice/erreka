@@ -53,19 +53,6 @@ class PropertyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function alertsOnlyNoticesToDeveloper($getUser)
-    {
-        return $this->addAllNoticesQueryBuilder()
-            ->andWhere('s.name = :situation')
-            ->innerJoin('p.note_new', 'nn')
-            ->andWhere('nn.next_call = :next_call')
-            ->setParameter('situation', 'noticia a desarrollar')
-            ->setParameter('next_call', new \DateTime())
-            ->setParameter('commercial', $getUser)
-            ->getQuery()
-            ->getResult();
-    }
-
     public function onlyExclusives($getUser)
     {
         return $this->addAllNoticesQueryBuilder()
