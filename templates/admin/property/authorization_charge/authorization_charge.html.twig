@@ -22,7 +22,11 @@
                                     <th class="text-right">Dirección</th>
                                     <td>{{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
                                     <th class="text-right">Precio Encargo</th>
-                                    <td>{{ property.charge.price|number_format(0, ',', '.') }} €</td>
+                                    <td>
+                                        {% if property.charge %}
+                                            {{ property.charge.price|number_format(0, ',', '.') }} €
+                                        {% endif %}
+                                    </td>
                                     <th class="text-right">Móvil / Teléfono</th>
                                     <td>{{ property.mobile }} - {{ property.phone }}</td>
                                 </tr>
