@@ -60,7 +60,11 @@
                                         <th class="text-right">Precio OK</th>
                                         <td>{{ property.charge.priceOk|number_format(0, ',', '.') }} €</td>
                                         <th class="text-right">% Caro</th>
-                                        <td>{{ (100-(property.charge.priceOk/(property.charge.price - sumPropertyReduction))*100)|number_format(1, ',', '.') }}</td>
+                                        <td>
+                                            {% if property.charge %}
+                                                {{ (100-(property.charge.priceOk/(property.charge.price - sumPropertyReduction))*100)|number_format(1, ',', '.') }}
+                                            {% endif %}
+                                        </td>
                                     </tr>
                                     <tr>
                                         <th class="text-right">Fecha Encargo</th>

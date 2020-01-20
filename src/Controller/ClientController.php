@@ -74,7 +74,7 @@ class ClientController extends AbstractController
             ->getRepository(Property::class)
             ->createQueryBuilder('p')
             ->innerJoin('p.rateHousing', 'rh')
-            ->innerJoin('p.charge', 'c')
+            ->innerJoin('p.charge', 'c')  
             ->where('p.enabled = :enabled')
             ->setParameter('enabled', true)
         ;
