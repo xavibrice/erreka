@@ -27,11 +27,6 @@ class NoteNew
     private $notice_date;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $next_call;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="note_new")
      */
     private $property;
@@ -69,19 +64,6 @@ class NoteNew
     {
         // TODO: Implement __toString() method.
         return (string)$this->note;
-    }
-
-
-    public function getNextCall(): ?\DateTimeInterface
-    {
-        return $this->next_call;
-    }
-
-    public function setNextCall(?\DateTimeInterface $next_call): self
-    {
-        $this->next_call = $next_call;
-
-        return $this;
     }
 
     public function getProperty(): ?Property

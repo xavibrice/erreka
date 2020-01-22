@@ -50,9 +50,9 @@
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>
                             <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>
                             <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
-                            <td>{{ possibleVisit.offereds ? 'Si' : 'No' }}</td>
-                            <td>{{ possibleVisit.visits ? 'Si' : 'No' }}</td>
-                            <td>{{ possibleVisit.comment }} - ¿Qué comentario?</td>
+                            <td>{#{{ possibleVisit.offereds }}#} ofrecido</td>
+                            <td>{{ possibleVisit.visits|length }}</td>
+                            <td>{{ possibleVisit.rateHousing.comment|slice(0, 50)  }}</td>
                             <td>
                                 {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}
 

@@ -13,6 +13,10 @@ class NoteNewType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+        $nextCall = $options['nextCall'];
+
+
         $builder
             ->add('notice_date', DatePickerType::class, [
                 'label' => 'Fecha creación',
@@ -27,9 +31,11 @@ class NoteNewType extends AbstractType
             ])
             ->add('nextCall', DatePickerType::class, [
                 'required' => false,
+                'mapped' => false,
+                'data' => $nextCall,
                 'label' => 'Próxima Llamada',
                 'attr' => [
-                    'class' => 'js-datepicker',
+                    'class' => 'js-datepicker-empty',
                 ],
             ])
         ;
@@ -39,6 +45,7 @@ class NoteNewType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => NoteNew::class,
+            'nextCall' => null
         ]);
     }
 }

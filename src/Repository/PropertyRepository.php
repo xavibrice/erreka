@@ -35,10 +35,8 @@ class PropertyRepository extends ServiceEntityRepository
         return $this->addAllNoticesQueryBuilder()
             ->andWhere('s.name = :situation')
             ->innerJoin('p.note_new', 'nn')
-            ->andWhere('nn.next_call = :next_call')
             ->setParameter('situation', 'Noticia')
             ->setParameter('commercial', $getUser)
-            ->setParameter('next_call', new \DateTime())
             ->getQuery()
             ->getResult();
     }
@@ -88,12 +86,10 @@ class PropertyRepository extends ServiceEntityRepository
             ->innerJoin('p.charge', 'c')
             ->innerJoin('c.charge_type', 'ct')
             ->innerJoin('p.note_new', 'nn')
-            ->andWhere('nn.next_call = :next_call')
             ->andWhere('ct.name = :chargeType OR ct.name = :chargeExclusive')
             ->setParameter('situation', 'Noticia')
             ->setParameter('chargeType', 'Autorización')
             ->setParameter('chargeExclusive', 'Exclusiva')
-            ->setParameter('next_call', new \DateTime())
             ->setParameter('commercial', $getUser)
             ->getQuery()
             ->getResult();
@@ -121,6 +117,27 @@ class PropertyRepository extends ServiceEntityRepository
             ->andWhere('p.street LIKE :query')
             ->setParameter('query', '%'.$query.'%')
             ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function alertsOnlyNoticesToDeveloper($getUser)
+    {
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d');
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.note_new', 'nn')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('p.commercial = :commercial')
+            ->andWhere('p.enabled = :enabled')
+            ->andWhere('p.next_call <= :nexCall')
+            ->andWhere('s.name = :situation')
+            ->setParameter('nexCall', $date)
+            ->setParameter('enabled', true)
+            ->setParameter('commercial', $getUser)
+            ->setParameter('situation', 'noticia a desarrollar')
             ->getQuery()
             ->getResult()
             ;

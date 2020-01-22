@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyToDeveloperController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyToDeveloperController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/NoteNew.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/NoteNew.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Offered.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Offered.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Property.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ClientSelectType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientSelectType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/NoteNewNextCallType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/NoteNewType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/NoteNewType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClientRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/NoteNewRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoteNewRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/charges.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/charges.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/notices_to_developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/notices_to_developer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/property.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/property.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -371,7 +394,9 @@
       <workItem from="1579363850439" duration="11418000" />
       <workItem from="1579446788406" duration="602000" />
       <workItem from="1579449438022" duration="4092000" />
-      <workItem from="1579539520182" duration="343000" />
+      <workItem from="1579539520182" duration="1029000" />
+      <workItem from="1579700265705" duration="3754000" />
+      <workItem from="1579707322084" duration="11908000" />
     </task>
     <servers />
   </component>
@@ -404,9 +429,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="144" y="167" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1579265255255" />
-    <state x="587" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1579539527628">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1579708140591">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579708140591" />
     <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579539527628" />
     <state x="225" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1579381231226">
       <screen x="0" y="0" width="2560" height="1040" />

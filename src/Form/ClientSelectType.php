@@ -43,7 +43,7 @@ class ClientSelectType extends AbstractType
         $resolver->setDefaults([
             'invalid_message' => 'Cliente no encontrado',
             'finder_callback' => function(ClientRepository $clientRepository, string $fullname) {
-                return $clientRepository->findOneBy(['full_name' => $fullname]);
+                return $clientRepository->findFullNameMobile($fullname);
             },
         ]);
     }

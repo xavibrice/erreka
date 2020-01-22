@@ -1,6 +1,7 @@
 <li class="nav-item dropdown no-arrow mx-1">
     <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-envelope fa-fw"></i>
+{#        <i class="fas fa-envelope fa-fw"></i>#}
+        <strong>ND</strong>
         <!-- Counter - Messages -->
         <span class="badge badge-danger badge-counter">{{ noticestodeveloper|length }}</span>
     </a>
@@ -11,14 +12,17 @@
         </h6>
         {% if noticestodeveloper|length > 0 %}
             {% for noticetodeveloper in noticestodeveloper %}
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                        <div class="status-indicator bg-success"></div>
-                    </div>
+                <a class="dropdown-item d-flex align-items-center" href="{{ path('property_to_developer_show', {'id': noticetodeveloper.id}) }}">
+{#                    <div class="dropdown-list-image mr-3">#}
+{#                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">#}
+{#                        <div class="bg-success">#}
+{#                            {{ noticetodeveloper.fullname }}#}
+{#                        </div>#}
+
+{#                    </div>#}
                     <div class="font-weight-bold">
-                        <div class="text-truncate">{{ noticetodeveloper.property.fullname }}</div>
-                        <div class="small text-gray-500">{{ noticetodeveloper.property.street.name }} Nº {{ noticetodeveloper.property.portal }}, {{ noticetodeveloper.property.floor }}</div>
+                        <div class="text-truncate">{{ noticetodeveloper.fullname }}</div>
+                        <div class="small text-gray-500">{{ noticetodeveloper.street.name }} Nº {{ noticetodeveloper.portal }}, {{ noticetodeveloper.floor }}</div>
                     </div>
                 </a>
             {% endfor %}

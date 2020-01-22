@@ -64,6 +64,7 @@ $(document).ready(function () {
                         url: autocompleteUrl+'?query='+query
                     }).then(function (data) {
                         cb(data.clients);
+                        console.log(data)
                     })
                 },
                 displayKey: 'full_name',
@@ -84,6 +85,7 @@ $(document).ready(function () {
                         url: autocompleteUrl+'?query='+query
                     }).then(function (data) {
                         cb(data.properties);
+                        console.log(data)
                     })
                 },
                 displayKey: 'full_name',

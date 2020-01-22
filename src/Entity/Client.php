@@ -37,6 +37,7 @@ class Client
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("main")
      */
     private $mobile;
 

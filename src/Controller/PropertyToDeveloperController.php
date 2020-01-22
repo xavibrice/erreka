@@ -36,20 +36,75 @@ class PropertyToDeveloperController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
+        $nextCall = $request->get('note_new')['nextCall'];
+        $note = $request->get('note_new')['note'];
+        $date = $request->get('note_new')['notice_date'];
+
+//        dd($request->request->get('note_new'));
+
+
+        if ($request->isMethod('POST')){
+
+
+        if($nextCall) {
+            $property->setNextCall(new \DateTime($nextCall));
+            $em->persist($property);
+            $em->flush();
+        }
+
+        if($nextCall == null) {
+            $property->setNextCall(null);
+            $em->persist($property);
+            $em->flush();
+        }
+
+        if ($note) {
+            $noteNew = new NoteNew();
+            $noteNew->setProperty($property);
+            $noteNew->setNoticeDate(new \DateTime($date));
+            $noteNew->setNote($note);
+
+            $em->persist($noteNew);
+            $em->flush();
+        }
+
+        }
+
+//
+//
+//        if ($nextCall == null) {
+//            $property->setNextCall(null);
+//            $em->persist($property);
+//            $em->flush();
+//        }
+//
+//        if ($nextCall) {
+//            $property->setNextCall(new \DateTime($nextCall));
+//            $em->persist($property);
+//            $em->flush();
+//        }
+//
         $noteProperty = new NoteNew();
         $noteProperty->setProperty($property);
-        $form = $this->createForm(NoteNewType::class, $noteProperty);
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em->persist($noteProperty);
-            $em->flush();
+        $form = $this->createForm(NoteNewType::class, $noteProperty, [
+            'nextCall' => $property->getNextCall()
+        ]);
+//        $form->handleRequest($request);
+//
+////        if ($note) {
+//            if ($form->isSubmitted() && $form->isValid()) {
+//                $em->persist($noteProperty);
+//                $em->flush();
+//
+//                $this->addFlash('success', 'Nota creada correctamente');
+//
+//                return $this->redirectToRoute('property_to_developer_show', [
+//                    'id' => $property->getId()
+//                ]);
+//            }
+////        }
 
-            $this->addFlash('success', 'Nota creada correctamente');
 
-            return $this->redirectToRoute('property_to_developer_show', [
-                'id' => $property->getId()
-            ]);
-        }
 
         return $this->render('admin/property_to_developer/show-property-to-developer.html.twig', [
             'property' => $property,

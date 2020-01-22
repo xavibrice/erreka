@@ -110,9 +110,10 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        {% if property.noteNew.last %}
-                                            {{ property.noteNew.last.nextCall|date('d-m-Y') }}
-                                        {% endif %}
+{#                                        {% if property.noteNew.last %}#}
+{#                                            {{ property.noteNew.last.nextCall|date('d-m-Y') }}#}
+{#                                        {% endif %}#}
+                                        proxima llamada
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
                                         {{ property.comment|slice(0, 50) }}

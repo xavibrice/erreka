@@ -74,7 +74,7 @@ class ClientController extends AbstractController
             ->getRepository(Property::class)
             ->createQueryBuilder('p')
             ->innerJoin('p.rateHousing', 'rh')
-            ->innerJoin('p.charge', 'c')  
+            ->innerJoin('p.charge', 'c')
             ->where('p.enabled = :enabled')
             ->setParameter('enabled', true)
         ;
@@ -152,19 +152,23 @@ class ClientController extends AbstractController
             ;
         }
 
+        if ($client->getVisits()) {
+            $client->getVisits()->first();
+        }
+
         //Que precio cojo de referencia?? Si es desde ese precio para abajo o como?
 
-/*        if ($client->getZone()) {
+//        if ($client->getZone()) {
 //            dd($client->getZone()->count());
 //            dump($client->getZone()->toArray());
-            foreach ($client->getZone() as $zone) {
-                dump($zone->getId());
+//            foreach ($client->getZone() as $zone) {
+//                dump($zone->getId());
 //                foreach ($zone->getStreets() as $street) {
 //                    dd($street->getZone()->getName());
 //                }
-            }
-        }
-dd('ok');*/
+//            }
+//        }
+//dd('ok');
 
         $possibleVisits = $queryBuilder->getQuery()->getResult();
         return $this->render('admin/client/possible-visits.html.twig', [

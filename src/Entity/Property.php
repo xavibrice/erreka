@@ -139,6 +139,11 @@ class Property
      */
     private $phone;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $next_call;
+
     public function __construct()
     {
         $this->propertyReductions = new ArrayCollection();
@@ -538,6 +543,18 @@ class Property
     public function setPhone(?string $phone): self
     {
         $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getNextCall(): ?\DateTime
+    {
+        return $this->next_call;
+    }
+
+    public function setNextCall(?\DateTime $next_call): self
+    {
+        $this->next_call = $next_call;
 
         return $this;
     }

@@ -60,14 +60,27 @@ class ClientRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findFullNameMobile($data)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('(c.full_name LIKE :query OR c.mobile LIKE :phone)')
+            ->setParameter('query', '%'.$data.'%')
+            ->setParameter('phone', '%'.$data.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+
     /**
      * @param Client[]
      */
     public function findAllMatching(string $query, int $limit = 5)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.full_name LIKE :query')
+            ->andWhere('(c.full_name LIKE :query or c.mobile LIKE :mobile)')
             ->setParameter('query', '%'.$query.'%')
+            ->setParameter('mobile', '%'.$query.'%')
             ->setMaxResults($limit)
             ->getQuery()
             ->getResult()

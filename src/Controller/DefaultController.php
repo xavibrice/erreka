@@ -33,10 +33,10 @@ class DefaultController extends AbstractController
     /**
      * @Route("/alerts/notices-to-developer", name="alerts_notices_to_developer", methods={"GET"})
      */
-    public function noticestodeveloper(NoteNewRepository $newRepository): Response
+    public function noticestodeveloper(PropertyRepository $propertyRepository): Response
     {
         return $this->render('admin/default/notices_to_developer.html.twig', [
-            'noticestodeveloper' => $newRepository->alertsOnlyNoticesToDeveloper($this->getUser())
+            'noticestodeveloper' => $propertyRepository->alertsOnlyNoticesToDeveloper($this->getUser())
         ]);
     }
 
