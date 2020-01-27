@@ -19,38 +19,6 @@ class ClientRepository extends ServiceEntityRepository
         parent::__construct($registry, Client::class);
     }
 
-    // /**
-    //  * @return Client[] Returns an array of Client objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Client
-    {
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
-
-    /**
-     * @return Client[]
-     */
     public function findFullName()
     {
         return $this->createQueryBuilder('c')
@@ -71,10 +39,6 @@ class ClientRepository extends ServiceEntityRepository
             ;
     }
 
-
-    /**
-     * @param Client[]
-     */
     public function findAllMatching(string $query, int $limit = 5)
     {
         return $this->createQueryBuilder('c')

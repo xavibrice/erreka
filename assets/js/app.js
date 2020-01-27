@@ -64,10 +64,9 @@ $(document).ready(function () {
                         url: autocompleteUrl+'?query='+query
                     }).then(function (data) {
                         cb(data.clients);
-                        console.log(data)
                     })
                 },
-                displayKey: 'full_name',
+                displayKey: function(sugg) { return sugg.full_name + ' - ' + sugg.mobile },
                 debounce: 500
             }
         ])
@@ -88,7 +87,8 @@ $(document).ready(function () {
                         console.log(data)
                     })
                 },
-                displayKey: 'full_name',
+                displayKey: function(sugg) { return sugg.street.name + ' Nº ' + sugg.portal + ', ' + sugg.floor},
+
                 debounce: 500
             }
         ])

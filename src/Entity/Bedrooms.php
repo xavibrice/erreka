@@ -24,11 +24,6 @@ class Bedrooms
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $code;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Client", mappedBy="bedrooms")
      */
     private $client;
@@ -51,18 +46,6 @@ class Bedrooms
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getCode(): ?string
-    {
-        return $this->code;
-    }
-
-    public function setCode(string $code): self
-    {
-        $this->code = $code;
 
         return $this;
     }

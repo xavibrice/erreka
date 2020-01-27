@@ -48,8 +48,11 @@
         <div class="col-md-auto">{{ form_row(form.price) }}</div>
     </div>
     <div class="form-group row">
-        <div class="col-md-auto">{{ form_row(form.zone) }}</div>
+        <div class="col-md-auto">{{ form_row(form.zoneOne) }}</div>
+        <div class="col-md-auto">{{ form_row(form.zoneTwo) }}</div>
+        <div class="col-md-auto">{{ form_row(form.zoneThree) }}</div>
     </div>
+
     <button class="btn btn-success">{{ button_label|default('Actualizar') }}</button>
     {{ form_end(form) }}
 

@@ -35,14 +35,27 @@ class Zone
     private $agency;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Client", mappedBy="zone")
+     * @ORM\OneToMany(targetEntity="App\Entity\Client", mappedBy="zoneOne")
      */
-    private $clients;
+    private $clientsOne;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Client", mappedBy="zoneTwo")
+     */
+    private $clientsTwo;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Client", mappedBy="zoneThree")
+     */
+    private $clientsThree;
+
 
     public function __construct()
     {
         $this->streets = new ArrayCollection();
-        $this->clients = new ArrayCollection();
+        $this->clientsOne = new ArrayCollection();
+        $this->clientsTwo = new ArrayCollection();
+        $this->clientsThree = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,28 +127,94 @@ class Zone
     /**
      * @return Collection|Client[]
      */
-    public function getClients(): Collection
+    public function getClientsOne(): Collection
     {
-        return $this->clients;
+        return $this->clientsOne;
     }
 
-    public function addClient(Client $client): self
+    public function addClientsOne(Client $clientsOne): self
     {
-        if (!$this->clients->contains($client)) {
-            $this->clients[] = $client;
-            $client->addZone($this);
+        if (!$this->clientsOne->contains($clientsOne)) {
+            $this->clientsOne[] = $clientsOne;
+            $clientsOne->setZoneOne($this);
         }
 
         return $this;
     }
 
-    public function removeClient(Client $client): self
+    public function removeClientsOne(Client $clientsOne): self
     {
-        if ($this->clients->contains($client)) {
-            $this->clients->removeElement($client);
-            $client->removeZone($this);
+        if ($this->clientsOne->contains($clientsOne)) {
+            $this->clientsOne->removeElement($clientsOne);
+            // set the owning side to null (unless already changed)
+            if ($clientsOne->getZoneOne() === $this) {
+                $clientsOne->setZoneOne(null);
+            }
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Client[]
+     */
+    public function getClientsTwo(): Collection
+    {
+        return $this->clientsTwo;
+    }
+
+    public function addClientsTwo(Client $clientsTwo): self
+    {
+        if (!$this->clientsTwo->contains($clientsTwo)) {
+            $this->clientsTwo[] = $clientsTwo;
+            $clientsTwo->setZoneTwo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClientsTwo(Client $clientsTwo): self
+    {
+        if ($this->clientsTwo->contains($clientsTwo)) {
+            $this->clientsTwo->removeElement($clientsTwo);
+            // set the owning side to null (unless already changed)
+            if ($clientsTwo->getZoneTwo() === $this) {
+                $clientsTwo->setZoneTwo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Client[]
+     */
+    public function getClientsThree(): Collection
+    {
+        return $this->clientsThree;
+    }
+
+    public function addClientsThree(Client $clientsThree): self
+    {
+        if (!$this->clientsThree->contains($clientsThree)) {
+            $this->clientsThree[] = $clientsThree;
+            $clientsThree->setZoneThree($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClientsThree(Client $clientsThree): self
+    {
+        if ($this->clientsThree->contains($clientsThree)) {
+            $this->clientsThree->removeElement($clientsThree);
+            // set the owning side to null (unless already changed)
+            if ($clientsThree->getZoneThree() === $this) {
+                $clientsThree->setZoneThree(null);
+            }
+        }
+
+        return $this;
+    }
+
 }

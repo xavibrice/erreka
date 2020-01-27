@@ -156,13 +156,71 @@ class ClientController extends AbstractController
             $client->getVisits()->first();
         }
 
+        if ($client->getBedrooms()) {
+//            dd($client->getBedrooms()->getName());
+            if ($client->getBedrooms()->getName() == "1 - 2") {
+                $queryBuilder
+                    ->andWhere('(rh.bedrooms >= :start AND rh.bedrooms <= :end)')
+                    ->setParameter('start', 1)
+                    ->setParameter('end', 2)
+                    ;
+            }
+            if ($client->getBedrooms()->getName() == "2 - 3") {
+                $queryBuilder
+                    ->andWhere('rh.bedrooms >= :start AND rh.bedrooms <= :end')
+                    ->setParameter('start', 2)
+                    ->setParameter('end', 3)
+                ;
+            }
+            if ($client->getBedrooms()->getName() == "+3") {
+                $queryBuilder
+                    ->andWhere('rh.bedrooms > :start')
+                    ->setParameter('start', 3)
+                ;
+            }
+        }
+
+        if ($client->getZoneOne()) {
+            $queryBuilder
+                ->innerJoin('p.street', 's')
+                ->innerJoin('s.zone', 'z')
+                ->andWhere('z.name = :zoneOne')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+            ;
+
+            if ($client->getZoneTwo()) {
+                $queryBuilder
+                    ->orWhere('z.name = :zoneTwo')
+                    ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
+                ;
+            }
+
+            if ($client->getZoneThree()) {
+                $queryBuilder
+                    ->orWhere('z.name = :zoneThree')
+                    ->setParameter('zoneThree', $client->getZoneThree()->getName())
+                ;
+            }
+        }
+
+
+
+
         //Que precio cojo de referencia?? Si es desde ese precio para abajo o como?
 
 //        if ($client->getZone()) {
-//            dd($client->getZone()->count());
+//            $queryBuilder
+//                ->innerJoin('p.street', 's')
+//                ->innerJoin('s.zone', 'z')
+//            ;
+//            dump($client->getZone()->count());
 //            dump($client->getZone()->toArray());
-//            foreach ($client->getZone() as $zone) {
-//                dump($zone->getId());
+//            foreach ($client->getZone() as $key => $zone) {
+//                $queryBuilder
+//                    ->orWhere('z.id = :zone'.$key)
+//                    ->setParameter('zone'.$key, $zone->getId())
+//                    ;
+//                dump($zone->getName());
 //                foreach ($zone->getStreets() as $street) {
 //                    dd($street->getZone()->getName());
 //                }

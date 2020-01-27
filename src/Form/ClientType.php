@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Bedrooms;
 use App\Entity\BuildingStructure;
 use App\Entity\Client;
+use App\Entity\ClientZone;
 use App\Entity\Heating;
 use App\Entity\Orientation;
 use App\Entity\TypeProperty;
@@ -58,7 +59,7 @@ class ClientType extends AbstractType
                 'class' => Heating::class,
                 'label' => 'Calefacción',
                 'placeholder' => 'Selecciona Calefacción',
-                'required' => false
+                'required' => false,
             ])
             ->add('orientation', EntityType::class, [
                 'class' => Orientation::class,
@@ -94,11 +95,23 @@ class ClientType extends AbstractType
                 'label' => 'Ascensor',
                 'required' => false,
             ])
-            ->add('zone', EntityType::class, [
-                'label' => 'Zona',
+            ->add('zoneOne', EntityType::class, [
+                'label' => 'Zona 1',
+                'required' => false,
                 'class' => Zone::class,
-                'multiple' => true,
-                'expanded' => true,
+                'placeholder' => 'Selecciona Zona 1',
+            ])
+            ->add('zoneTwo', EntityType::class, [
+                'label' => 'Zona 2',
+                'required' => false,
+                'class' => Zone::class,
+                'placeholder' => 'Selecciona Zona 2',
+            ])
+            ->add('zoneThree', EntityType::class, [
+                'label' => 'Zona 3',
+                'required' => false,
+                'class' => Zone::class,
+                'placeholder' => 'Selecciona Zona 3',
             ])
             ->add('commercial', EntityType::class, [
                 'required' => false,

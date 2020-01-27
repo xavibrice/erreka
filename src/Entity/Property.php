@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Service\UploaderHelper;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
@@ -41,6 +41,7 @@ class Property
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Street", inversedBy="properties")
+     * @Groups("main")
      */
     private $street;
 
@@ -81,11 +82,13 @@ class Property
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("main")
      */
     private $portal;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("main")
      */
     private $floor;
 

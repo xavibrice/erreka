@@ -97,11 +97,6 @@ class Client
     private $visits;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Zone", inversedBy="clients")
-     */
-    private $zone;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="clients")
      */
     private $commercial;
@@ -151,10 +146,24 @@ class Client
      */
     private $balcony;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="clientsOne")
+     */
+    private $zoneOne;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="clientsTwo")
+     */
+    private $zoneTwo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="clientsThree")
+     */
+    private $zoneThree;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
-        $this->zone = new ArrayCollection();
         $this->offereds = new ArrayCollection();
         $this->proposals = new ArrayCollection();
     }
@@ -363,32 +372,6 @@ class Client
         return $this;
     }
 
-    /**
-     * @return Collection|Zone[]
-     */
-    public function getZone(): Collection
-    {
-        return $this->zone;
-    }
-
-    public function addZone(Zone $zone): self
-    {
-        if (!$this->zone->contains($zone)) {
-            $this->zone[] = $zone;
-        }
-
-        return $this;
-    }
-
-    public function removeZone(Zone $zone): self
-    {
-        if ($this->zone->contains($zone)) {
-            $this->zone->removeElement($zone);
-        }
-
-        return $this;
-    }
-
     public function getCommercial(): ?User
     {
         return $this->commercial;
@@ -552,5 +535,42 @@ class Client
 
         return $this;
     }
+
+    public function getZoneOne(): ?Zone
+    {
+        return $this->zoneOne;
+    }
+
+    public function setZoneOne(?Zone $zoneOne): self
+    {
+        $this->zoneOne = $zoneOne;
+
+        return $this;
+    }
+
+    public function getZoneTwo(): ?Zone
+    {
+        return $this->zoneTwo;
+    }
+
+    public function setZoneTwo(?Zone $zoneTwo): self
+    {
+        $this->zoneTwo = $zoneTwo;
+
+        return $this;
+    }
+
+    public function getZoneThree(): ?Zone
+    {
+        return $this->zoneThree;
+    }
+
+    public function setZoneThree(?Zone $zoneThree): self
+    {
+        $this->zoneThree = $zoneThree;
+
+        return $this;
+    }
+
 
 }

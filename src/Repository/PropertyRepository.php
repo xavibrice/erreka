@@ -111,17 +111,6 @@ class PropertyRepository extends ServiceEntityRepository
         return $qb ?: $this->createQueryBuilder('p');
     }
 
-    public function findAllMatching(string $query, int $limit = 5)
-    {
-        return $this->createQueryBuilder('p')
-            ->andWhere('p.street LIKE :query')
-            ->setParameter('query', '%'.$query.'%')
-            ->setMaxResults($limit)
-            ->getQuery()
-            ->getResult()
-            ;
-    }
-
     public function alertsOnlyNoticesToDeveloper($getUser)
     {
         $datetime = new \DateTime();
@@ -138,6 +127,33 @@ class PropertyRepository extends ServiceEntityRepository
             ->setParameter('enabled', true)
             ->setParameter('commercial', $getUser)
             ->setParameter('situation', 'noticia a desarrollar')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function findFullStreet(string $data)
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.street', 's')
+            ->andWhere('(s.name LIKE :street OR p.portal LIKE :portal OR p.floor LIKE :floor)')
+            ->setParameter('street', '%'.$data.'%')
+            ->setParameter('portal', '%'.$data.'%')
+            ->setParameter('floor', '%'.$data.'%')
+            ->getQuery()
+            ->execute()
+            ;
+    }
+
+    public function findAllMatching(string $query, int $limit = 5)
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.street', 's')
+            ->andWhere('(s.name LIKE :street OR p.portal LIKE :portal OR p.floor LIKE :floor)')
+            ->setParameter('street', '%'.$query.'%')
+            ->setParameter('portal', '%'.$query.'%')
+            ->setParameter('floor', '%'.$query.'%')
+            ->setMaxResults($limit)
             ->getQuery()
             ->getResult()
             ;

@@ -42,9 +42,9 @@ class PropertySelectType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'invalid_message' => 'Calle no encontrada',
+            'invalid_message' => 'Dirección no encontrada',
             'finder_callback' => function(PropertyRepository $propertyRepository, string $street) {
-                return $propertyRepository->findOneBy(['street' => $street]);
+                return $propertyRepository->findFullStreet($street);
             },
         ]);
     }

@@ -18,7 +18,9 @@
                         <th>Fecha</th>
                         <th>Cliente</th>
                         <th>Móvil</th>
-                        <th>Zona</th>
+                        <th>Zona 1</th>
+                        <th>Zona 2</th>
+                        <th>Zona 3</th>
                         <th>Precio</th>
                         <th>Dorm</th>
                         <th>Visitas</th>
@@ -32,12 +34,23 @@
                             <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
                             <td>{{ client.fullName }}</td>
                             <td>{{ client.mobile }}</td>
-                            <td>
-{#                                {{ client.zone.count }}#}
-                                {% for zone in client.zone %}
-                                    - {{ zone.name }} <br>
-                                {% endfor %}
-                            </td>
+                            {% if client.zoneOne %}
+                                <td>{{ client.zoneOne.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+
+                            {% if client.zoneTwo %}
+                                <td>{{ client.zoneTwo.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+
+                            {% if client.zoneThree %}
+                                <td>{{ client.zoneThree.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
                             <td>{{ client.price }} € </td>
                             <td>{{ client.bedrooms }} </td>
                             <td>{{ client.visits ? client.visits.count }}</td>
