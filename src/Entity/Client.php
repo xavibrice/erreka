@@ -166,11 +166,6 @@ class Client
      */
     private $reason;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Agency", inversedBy="clients")
-     */
-    private $agency;
-
     public function __construct()
     {
         $this->visits = new ArrayCollection();
@@ -593,18 +588,5 @@ class Client
 
         return $this;
     }
-
-    public function getAgency(): ?Agency
-    {
-        return $this->agency;
-    }
-
-    public function setAgency(?Agency $agency): self
-    {
-        $this->agency = $agency;
-
-        return $this;
-    }
-
 
 }
