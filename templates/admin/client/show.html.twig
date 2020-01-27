@@ -68,17 +68,17 @@
                                 <td>{{ client.elevator ? 'Si' : 'No' }}</td>
                             </tr>
                             <tr>
-                                <th>Estructura</th>
+                                <th class="text-right">Estructura</th>
                                 <td>
                                     {% if client.buildingStructure %}
                                         {{ client.buildingStructure.name }}
                                     {% endif %}
                                 </td>
-                                <th>Ingresos</th>
-                                <td>{{ client.income|number_format(0, '.', ',') }}</td>
+                                <th class="text-right">Ingresos</th>
+                                <td>{{ client.income|number_format(0, '.', ',') }} </td>
                             </tr>
                             <tr>
-                                <th>Terraza</th>
+                                <th class="text-right">Terraza</th>
                                 <td>{{ client.terrace ? 'Si' : 'No' }}</td>
                                 <th class="text-right">Balcón</th>
                                 <td>{{ client.balcony ? 'Si' : 'No' }}</td>
@@ -97,12 +97,22 @@
                             </tr>
                             <tr>
                                 <th class="text-right">Precio</th>
-                                <td>{{ client.price }}</td>
+                                <td>{{ client.price }} €</td>
                             </tr>
                             <tr>
                                 <th class="text-right">Zonas</th>
                                 <td>
-                                    {{ client.zoneOne }}
+                                    {% if client.zoneOne %}
+                                        {{ client.zoneOne.name }}
+                                    {% endif %}
+
+                                    {% if client.zoneOne %}
+                                        <strong>-</strong> {{ client.zoneTwo.name }}
+                                    {% endif %}
+
+                                    {% if client.zoneOne %}
+                                        <strong>-</strong> {{ client.zoneThree.name }}
+                                    {% endif %}
 {#                                    {% for zone in client.zone %}#}
 {#                                        {{ zone.name }}#}
 {#                                    {% endfor %}#}

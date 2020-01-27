@@ -70,6 +70,7 @@ class PropertyController extends AbstractController
         }
 
         $property = new Property();
+        $property->setCommercial($this->getUser());
         $property->setEnabled(true);
         $form = $this->createForm(PropertyType::class, $property, [
             'role' => $this->getUser()->getRoles()

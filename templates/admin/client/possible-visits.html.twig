@@ -24,6 +24,7 @@
                     <thead>
                     <tr class="">
                         <th>Ref.</th>
+                        <th>Agencia</th>
                         <th>Zona</th>
                         <th>Dirección</th>
                         <th>Precio</th>
@@ -42,9 +43,10 @@
                     {% for possibleVisit in possibleVisits %}
                         <tr>
                             <td>{{ possibleVisit.reference }}</td>
+                            <td>{{ possibleVisit.commercial.agency.name }}</td>
                             <td>{{ possibleVisit.street.zone.name }}</td>
                             <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}, {{ possibleVisit.floor }}</td>
-                            <td>{{ possibleVisit.charge.price }} <br> Que precio va?</td>
+                            <td>{{ possibleVisit.charge.price }} €</td>
                             <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>

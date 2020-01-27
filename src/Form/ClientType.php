@@ -109,6 +109,7 @@ class ClientType extends AbstractType
                 'label' => 'Ascensor',
                 'required' => false,
             ])
+            ->add('agency')
             ->add('zoneOne', EntityType::class, [
                 'label' => 'Zona 1',
                 'required' => false,
@@ -140,7 +141,6 @@ class ClientType extends AbstractType
                 'placeholder' => 'Selecciona Tipo Propiedad',
             ])
             ->add('bedrooms', EntityType::class, [
-//                'required' => false,
                 'label' => 'Habitaciones',
                 'class' => Bedrooms::class,
                 'required' => false,
