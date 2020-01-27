@@ -157,7 +157,6 @@ class ClientController extends AbstractController
         }
 
         if ($client->getBedrooms()) {
-//            dd($client->getBedrooms()->getName());
             if ($client->getBedrooms()->getName() == "1 - 2") {
                 $queryBuilder
                     ->andWhere('(rh.bedrooms >= :start AND rh.bedrooms <= :end)')
@@ -201,6 +200,14 @@ class ClientController extends AbstractController
                     ->setParameter('zoneThree', $client->getZoneThree()->getName())
                 ;
             }
+        }
+
+        if ($client->getReason()) {
+            $queryBuilder
+                ->innerJoin('p.reason', 'r')
+                ->andWhere('r.name = :reason')
+                ->setParameter('reason', $client->getReason()->getName())
+                ;
         }
 
 

@@ -161,6 +161,11 @@ class Client
      */
     private $zoneThree;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Reason", inversedBy="clients")
+     */
+    private $reason;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
@@ -568,6 +573,18 @@ class Client
     public function setZoneThree(?Zone $zoneThree): self
     {
         $this->zoneThree = $zoneThree;
+
+        return $this;
+    }
+
+    public function getReason(): ?Reason
+    {
+        return $this->reason;
+    }
+
+    public function setReason(?Reason $reason): self
+    {
+        $this->reason = $reason;
 
         return $this;
     }

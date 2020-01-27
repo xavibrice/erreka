@@ -8,10 +8,12 @@ use App\Entity\Client;
 use App\Entity\ClientZone;
 use App\Entity\Heating;
 use App\Entity\Orientation;
+use App\Entity\Reason;
 use App\Entity\TypeProperty;
 use App\Entity\User;
 use App\Entity\Zone;
 use App\Form\Type\DatePickerType;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -28,6 +30,18 @@ class ClientType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('reason', EntityType::class, [
+                'label' => 'Motivo',
+                'class' => Reason::class,
+                'placeholder' => 'Selecciona un motivo',
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('r')
+                        ->innerJoin('r.situation', 's')
+                        ->where('s.name = :name')
+                        ->setParameter('name', 'noticia')
+                        ;
+                }
+            ])
             ->add('created', DatePickerType::class, [
                 'required' => true,
                 'label' => 'Fecha',

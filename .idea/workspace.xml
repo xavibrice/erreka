@@ -3,23 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Bedrooms.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Bedrooms.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Property.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Street.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Street.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Zone.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Zone.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Reason.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reason.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Form/ClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PropertySelectType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertySelectType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClientRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/client/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/_new.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/client/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/default/notices_to_developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/notices_to_developer.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -398,7 +387,8 @@
       <workItem from="1579824405165" duration="613000" />
       <workItem from="1579853763319" duration="191000" />
       <workItem from="1579981209936" duration="629000" />
-      <workItem from="1580073625899" duration="11664000" />
+      <workItem from="1580073625899" duration="11780000" />
+      <workItem from="1580141424299" duration="1912000" />
     </task>
     <servers />
   </component>
@@ -427,6 +417,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="250" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579263327735" />
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580143051543">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580143051543" />
     <state x="1060" y="276" key="FileChooserDialogImpl" timestamp="1579802950687">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
@@ -435,10 +429,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="144" y="167" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1579265255255" />
-    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1579981215612">
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1580141430734">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1579981215612" />
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580141430734" />
     <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579802935103" />
     <state x="225" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1579381231226">
       <screen x="0" y="0" width="2560" height="1040" />
