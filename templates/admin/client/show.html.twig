@@ -123,9 +123,10 @@
                 <div class="card-footer">
                     {{ include('admin/_back_link.html.twig', {'route': 'client_index'}) }}
                     {{ include('admin/_edit_link.html.twig', {'route': 'client_edit', 'id': client.id, 'button_label': 'Editar'}) }}
-{#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}
-                    <hr>
-                    {{ include('admin/_delete_form.html.twig', {'route': 'client_delete', 'entity': client, 'count': 0}) }}
+
+                    <div class="float-right">
+                        {{ include('admin/_delete_form.html.twig', {'route': 'client_delete', 'entity': client, 'count': 0}) }}
+                    </div>
                 </div>
             </div>
         </div>

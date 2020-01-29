@@ -40,11 +40,7 @@ class PropertyToDeveloperController extends AbstractController
         $note = $request->get('note_new')['note'];
         $date = $request->get('note_new')['notice_date'];
 
-//        dd($request->request->get('note_new'));
-
-
         if ($request->isMethod('POST')){
-
 
         if($nextCall) {
             $property->setNextCall(new \DateTime($nextCall));
@@ -70,20 +66,6 @@ class PropertyToDeveloperController extends AbstractController
 
         }
 
-//
-//
-//        if ($nextCall == null) {
-//            $property->setNextCall(null);
-//            $em->persist($property);
-//            $em->flush();
-//        }
-//
-//        if ($nextCall) {
-//            $property->setNextCall(new \DateTime($nextCall));
-//            $em->persist($property);
-//            $em->flush();
-//        }
-//
         $noteProperty = new NoteNew();
         $noteProperty->setProperty($property);
         $form = $this->createForm(NoteNewType::class, $noteProperty, [

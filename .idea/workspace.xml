@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyToDeveloperController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyToDeveloperController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Agency.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Agency.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/property.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/property.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -387,7 +390,7 @@
       <workItem from="1580231834618" duration="16000" />
       <workItem from="1580232271625" duration="359000" />
       <workItem from="1580233667548" duration="72000" />
-      <workItem from="1580308616388" duration="6462000" />
+      <workItem from="1580308616388" duration="8294000" />
     </task>
     <servers />
   </component>
@@ -412,6 +415,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="235" y="183" key="#Notifications/0.0.2560.1040@0.0.2560.1040" timestamp="1579265308923" />
+    <state x="765" y="206" key="#com.intellij.ide.util.MemberChooser" timestamp="1580322521991">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="765" y="206" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1580322521991" />
     <state x="250" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1579263327735">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>

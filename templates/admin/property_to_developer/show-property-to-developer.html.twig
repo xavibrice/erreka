@@ -64,8 +64,10 @@
                 <div class="card-footer">
                     {{ include('admin/_back_link.html.twig', {'route': 'property_to_developer_index'}) }}
                     {{ include('admin/_edit_link.html.twig', {'route': 'property_to_developer_edit', 'id': property.id, 'button_label': 'Editar'}) }}
-                    <hr>
-                    {{ include('admin/_delete_form.html.twig', {'route': 'property_to_developer_delete', 'entity': property, 'count': 0}) }}
+
+                    <div class="float-right">
+                        {{ include('admin/_delete_form.html.twig', {'route': 'property_to_developer_delete', 'entity': property, 'count': 0}) }}
+                    </div>
                 </div>
             </div>
         </div>

@@ -113,7 +113,7 @@
 {#                                        {% if property.noteNew.last %}#}
 {#                                            {{ property.noteNew.last.nextCall|date('d-m-Y') }}#}
 {#                                        {% endif %}#}
-                                        proxima llamada
+                                        {{ property.nextCall|date('d-m-Y') }}
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
                                         {{ property.comment|slice(0, 50) }}
