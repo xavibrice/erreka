@@ -213,8 +213,14 @@ class PropertyType extends AbstractType
         $builder->add('zone', EntityType::class, [
             'label' => 'Zona',
             'class' => Zone::class,
-            'placeholder' => 'Selecciona una zona',
-            'mapped' => false
+            'placeholder' => 'Seleciona una zona',
+            'mapped' => false,
+            'query_builder' => function(EntityRepository $er) use ($options) {
+                return $er->createQueryBuilder('z')
+                    ->andWhere('z.agency = :agency')
+                    ->setParameter('agency', $options['agency'])
+                    ;
+                }
         ]);
 
         $builder->get('zone')->addEventListener(
@@ -264,7 +270,8 @@ class PropertyType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Property::class,
-            'role' => null
+            'role' => null,
+            'agency' => null,
         ]);
     }
 

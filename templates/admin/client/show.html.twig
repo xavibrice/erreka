@@ -3,11 +3,9 @@
 {% block title %}Cliente{% endblock %}
 
 {% block content %}
-    <div class="row">
-        <div class="col-md-12 mb-4">
-            <a class="btn btn-primary" href="{{ path('client_possible_visits', {'id': client.id}) }}">Posibles Visitas</a>
-        </div>
-    </div>
+
+    {{ include('admin/client/_tab.html.twig') }}
+
     <div class="row">
         <div class="col-md-12">
             <div class="card shadow mb-4">
@@ -106,11 +104,11 @@
                                         {{ client.zoneOne.name }}
                                     {% endif %}
 
-                                    {% if client.zoneOne %}
+                                    {% if client.zoneTwo  %}
                                         <strong>-</strong> {{ client.zoneTwo.name }}
                                     {% endif %}
 
-                                    {% if client.zoneOne %}
+                                    {% if client.zoneThree %}
                                         <strong>-</strong> {{ client.zoneThree.name }}
                                     {% endif %}
 {#                                    {% for zone in client.zone %}#}
@@ -123,8 +121,11 @@
                     </div>
                 </div>
                 <div class="card-footer">
+                    {{ include('admin/_back_link.html.twig', {'route': 'client_index'}) }}
                     {{ include('admin/_edit_link.html.twig', {'route': 'client_edit', 'id': client.id, 'button_label': 'Editar'}) }}
 {#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}
+                    <hr>
+                    {{ include('admin/_delete_form.html.twig', {'route': 'client_delete', 'entity': client, 'count': 0}) }}
                 </div>
             </div>
         </div>
@@ -134,7 +135,7 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary ">Visitas</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Visitas</h6>
                 </div>
                 <div class="card-body">
                     <div class="m-2">

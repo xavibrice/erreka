@@ -92,7 +92,7 @@ class Client
     private $elevator;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="client", cascade={"remove"})
      */
     private $visits;
 
@@ -107,12 +107,12 @@ class Client
     private $typeProperty;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Offered", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="App\Entity\Offered", mappedBy="client", cascade={"remove"})
      */
     private $offereds;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Proposal", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="App\Entity\Proposal", mappedBy="client", cascade={"remove"})
      */
     private $proposals;
 

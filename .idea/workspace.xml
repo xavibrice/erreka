@@ -4,12 +4,14 @@
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Agency.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Agency.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyToDeveloperController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyToDeveloperController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Property.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Property.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +171,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../mongo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../solarezy" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -389,7 +391,11 @@
       <workItem from="1579853763319" duration="191000" />
       <workItem from="1579981209936" duration="629000" />
       <workItem from="1580073625899" duration="11780000" />
-      <workItem from="1580141424299" duration="5027000" />
+      <workItem from="1580141424299" duration="5331000" />
+      <workItem from="1580231834618" duration="16000" />
+      <workItem from="1580232271625" duration="359000" />
+      <workItem from="1580233667548" duration="72000" />
+      <workItem from="1580308616388" duration="4889000" />
     </task>
     <servers />
   </component>
@@ -422,17 +428,19 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580143051543" />
-    <state x="1060" y="276" key="FileChooserDialogImpl" timestamp="1579802950687">
-      <screen x="0" y="0" width="2560" height="1040" />
+    <state x="795" y="276" key="FileChooserDialogImpl" timestamp="1580231848757">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="795" y="276" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580231848757" />
     <state x="1060" y="276" key="FileChooserDialogImpl/0.0.2560.1040@0.0.2560.1040" timestamp="1579802950687" />
     <state x="144" y="167" key="SettingsEditor" timestamp="1579265255255">
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="144" y="167" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1579265255255" />
-    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1580141430734">
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1580231840049">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580231840049" />
     <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580141430734" />
     <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579802935103" />
     <state x="225" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1579381231226">

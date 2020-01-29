@@ -47,7 +47,8 @@ class PropertyController extends AbstractController
         $property = new Property();
         $property->setCommercial($this->getUser());
         $form = $this->createForm(PropertyType::class, $property, [
-            'role' => $this->getUser()->getRoles()
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
         ]);
 
         return $this->render('admin/property/_new.html.twig', [
@@ -73,7 +74,8 @@ class PropertyController extends AbstractController
         $property->setCommercial($this->getUser());
         $property->setEnabled(true);
         $form = $this->createForm(PropertyType::class, $property, [
-            'role' => $this->getUser()->getRoles()
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
         ]);
         $form->handleRequest($request);
 

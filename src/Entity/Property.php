@@ -93,7 +93,7 @@ class Property
     private $floor;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NoteNew", mappedBy="property")
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteNew", mappedBy="property", cascade={"remove"})
      */
     private $note_new;
 

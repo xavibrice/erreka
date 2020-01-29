@@ -181,4 +181,19 @@ class PropertyToDeveloperController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/noticias-a-desarrollar/eliminar/{id}", name="property_to_developer_delete", methods={"DELETE"})
+     */
+    public function delete(Request $request, Property $property): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$property->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($property);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('property_to_developer_index');
+    }
+
 }
