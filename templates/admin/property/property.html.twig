@@ -5,9 +5,7 @@
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            {#        <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>#}
             <h1 class="h3 mb-4 text-gray-800 float-left">Listado de noticias</h1>
-            {#            <a class="btn btn-success float-right" href="{{ path('news_new') }}">Crear Noticia</a>#}
             <a class="btn btn-success float-right" href="#" data-toggle="modal" data-target="#createNewModal">
                 Crear Noticia
             </a>
@@ -16,14 +14,11 @@
             <div class="table-responsive">
                 <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
-                    <tr class="text-center">
-{#                        <th>Id</th>#}
+                        <tr class="text-center">
                         <th>Fecha</th>
                         <th>Asesor</th>
                         <th>Motivo</th>
                         <th>Dirección</th>
-{#                        <th>Portal</th>#}
-{#                        <th>Piso</th>#}
                         <th>Propietario</th>
                         <th>Móvil &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Teléfono</th>
                         {#                        <th>Zona</th>#}
@@ -43,7 +38,6 @@
                         {% if property.enabled %}
                             {% if property.charge is null %}
 
-
                                 {#                                    {% if property.rateHousing.charge is not defined %}#}
 
                                 <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
@@ -51,15 +45,7 @@
                                     <td>{{ property.created|date('d/m/Y') }}</td>
                                     <td>
                                         {{ property.commercial.fullName }}
-                                        {#                                    {% if property.street is not empty and property.street.zone is not empty %}#}
-                                        {#                                        {{ property.street.zone.name }}#}
-                                        {#                                    {% endif %}#}
                                     </td>
-                                    {#                                <td>#}
-                                    {#                                    {% if property.reason is not empty and property.reason.situation is not empty %}#}
-                                    {#                                        {{ property.reason.situation.name }}#}
-                                    {#                                    {% endif %}#}
-                                    {#                                </td>#}
                                     <td>
                                         {% if property.reason is not empty %}
                                             {{ property.reason.name }}
@@ -69,8 +55,9 @@
                                         {% if property.street is not empty %}
                                             {{ property.street.name }}
                                         {% endif %}
-                                    Nº {{ property.portal }},
-                                    {{ property.floor }}</td>
+                                        Nº {{ property.portal }},
+                                        {{ property.floor }}
+                                    </td>
                                     <td>{{ property.fullName }}</td>
                                     <td>
                                         {% if property.mobile is not empty or property.phone is not empty %}
@@ -110,22 +97,12 @@
                                         {% endif %}
                                     </td>
                                     <td>
-{#                                        {% if property.noteNew.last %}#}
-{#                                            {{ property.noteNew.last.nextCall|date('d-m-Y') }}#}
-{#                                        {% endif %}#}
                                         {{ property.nextCall|date('d-m-Y') }}
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
                                         {{ property.comment|slice(0, 50) }}
                                     </td>
                                 </tr>
-
-                                {#                                    {% endif %}#}
-
-                                {#                                {% if property.rateHousing.charge is not defined %}#}
-                                {#                                                                    {% if property.rateHousing.charge is not empty %}#}
-                                {#                                {% endif %}#}
-
                             {% endif %}
                         {% endif %}
                     {% endfor %}

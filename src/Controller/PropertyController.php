@@ -37,7 +37,7 @@ class PropertyController extends AbstractController
     {
 
         if ($this->isGranted('ROLE_ADMIN')) {
-            $properties = $propertyRepository->findAll();
+            $properties = $propertyRepository->onlyNoticesAdmin();
         } else {
             $properties = $propertyRepository->onlyNotices($this->getUser());
         }
@@ -108,8 +108,44 @@ class PropertyController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
 
+        $nextCall = $request->get('note_new')['nextCall'];
+        $note = $request->get('note_new')['note'];
+        $date = $request->get('note_new')['notice_date'];
+
+        if ($request->isMethod('POST')){
+
+            if($nextCall) {
+                $property->setNextCall(new \DateTime($nextCall));
+                $em->persist($property);
+                $em->flush();
+            }
+
+            if($nextCall == null) {
+                $property->setNextCall(null);
+                $em->persist($property);
+                $em->flush();
+            }
+
+            if ($note) {
+                $noteNew = new NoteNew();
+                $noteNew->setProperty($property);
+                $noteNew->setNoticeDate(new \DateTime($date));
+                $noteNew->setNote($note);
+
+                $em->persist($noteNew);
+                $em->flush();
+            }
+
+        }
 
         $noteProperty = new NoteNew();
+        $noteProperty->setProperty($property);
+        $form = $this->createForm(NoteNewType::class, $noteProperty, [
+            'nextCall' => $property->getNextCall()
+        ]);
+
+
+/*        $noteProperty = new NoteNew();
         $noteProperty->setProperty($property);
         $form = $this->createForm(NoteNewType::class, $noteProperty);
         $form->handleRequest($request);
@@ -122,7 +158,7 @@ class PropertyController extends AbstractController
             return $this->redirectToRoute('property_show', [
                 'id' => $property->getId()
             ]);
-        }
+        }*/
 
         $propertyReduction = new PropertyReduction();
         $propertyReduction->setProperty($property);

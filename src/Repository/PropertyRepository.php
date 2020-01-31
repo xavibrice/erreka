@@ -20,6 +20,20 @@ class PropertyRepository extends ServiceEntityRepository
         parent::__construct($registry, Property::class);
     }
 
+    public function onlyNoticesAdmin()
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('s.name = :situation')
+            ->andWhere('p.enabled = :enabled')
+            ->orderBy('p.created', 'DESC')
+            ->setParameter('enabled', true)
+            ->setParameter('situation', 'Noticia')
+            ->getQuery()
+            ->getResult();
+    }
+
     public function onlyNotices($getUser)
     {
         return $this->addAllNoticesQueryBuilder()
@@ -32,13 +46,32 @@ class PropertyRepository extends ServiceEntityRepository
 
     public function alertsOnlyNotices($getUser)
     {
-        return $this->addAllNoticesQueryBuilder()
+//        $datetime = new \DateTime();
+//        $date = $datetime->format('Y-m-d');
+//        return $this->addAllNoticesQueryBuilder()
+//            ->andWhere('s.name = :situation')
+//            ->andWhere('p.next_call <= :nexCall')
+//            ->setParameter('situation', 'Noticia')
+//            ->setParameter('commercial', $getUser)
+//            ->getQuery()
+//            ->getResult();
+
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d');
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('p.commercial = :commercial')
+            ->andWhere('p.enabled = :enabled')
+            ->andWhere('p.next_call <= :nexCall')
             ->andWhere('s.name = :situation')
-            ->innerJoin('p.note_new', 'nn')
-            ->setParameter('situation', 'Noticia')
+            ->setParameter('nexCall', $date)
+            ->setParameter('enabled', true)
             ->setParameter('commercial', $getUser)
+            ->setParameter('situation', 'noticia')
             ->getQuery()
-            ->getResult();
+            ->getResult()
+            ;
     }
 
     public function onlyNoticesToDeveloper($getUser)
@@ -81,12 +114,15 @@ class PropertyRepository extends ServiceEntityRepository
 
     public function alertsOnlyCharges($getUser)
     {
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d');
         return $this->addAllNoticesQueryBuilder()
             ->andWhere('s.name = :situation')
             ->innerJoin('p.charge', 'c')
             ->innerJoin('c.charge_type', 'ct')
-            ->innerJoin('p.note_new', 'nn')
+            ->andWhere('p.next_call <= :nexCall')
             ->andWhere('ct.name = :chargeType OR ct.name = :chargeExclusive')
+            ->setParameter('nexCall', $date)
             ->setParameter('situation', 'Noticia')
             ->setParameter('chargeType', 'Autorización')
             ->setParameter('chargeExclusive', 'Exclusiva')

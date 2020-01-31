@@ -3,10 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyToDeveloperController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyToDeveloperController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Agency.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Agency.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/HistoricalRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/HistoricalRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/property/property.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/property.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,8 +193,8 @@
       <recent name="C:\xampp\htdocs\erreka\src\Form\Type" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin" />
+      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\property\rate_housing" />
       <recent name="C:\xampp\htdocs\erreka\src\Form" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\client" />
@@ -390,7 +392,10 @@
       <workItem from="1580231834618" duration="16000" />
       <workItem from="1580232271625" duration="359000" />
       <workItem from="1580233667548" duration="72000" />
-      <workItem from="1580308616388" duration="8294000" />
+      <workItem from="1580308616388" duration="8922000" />
+      <workItem from="1580455217844" duration="21000" />
+      <workItem from="1580455372524" duration="3515000" />
+      <workItem from="1580487608053" duration="4524000" />
     </task>
     <servers />
   </component>
@@ -423,10 +428,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="250" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579263327735" />
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580143051543">
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1580455755009">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580143051543" />
+    <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580455755009" />
     <state x="795" y="276" key="FileChooserDialogImpl" timestamp="1580231848757">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -436,11 +441,11 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="144" y="167" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1579265255255" />
-    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1580231840049">
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1580487651549">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1580231840049" />
-    <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580141430734" />
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1580487651549" />
     <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579802935103" />
     <state x="225" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1579381231226">
       <screen x="0" y="0" width="2560" height="1040" />

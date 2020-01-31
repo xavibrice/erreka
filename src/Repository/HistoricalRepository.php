@@ -2,49 +2,20 @@
 
 namespace App\Repository;
 
-use App\Entity\Historical;
+use App\Entity\Property;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Historical|null find($id, $lockMode = null, $lockVersion = null)
- * @method Historical|null findOneBy(array $criteria, array $orderBy = null)
- * @method Historical[]    findAll()
- * @method Historical[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Property|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Property|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Property[]    findAll()
+ * @method Property[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class HistoricalRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Historical::class);
+        parent::__construct($registry, Property::class);
     }
-
-    // /**
-    //  * @return Historical[] Returns an array of Historical objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('h.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?Historical
-    {
-        return $this->createQueryBuilder('h')
-            ->andWhere('h.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
 }

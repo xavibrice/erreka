@@ -90,8 +90,8 @@
                     <span>Alquilados</span>
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
+            <li class="nav-item {% if app.request.get('_route') == 'history_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('history_index') }}">
                     <i class="fas fa-fw fa-history"></i>
                     <span>Histórico</span>
                 </a>
@@ -292,7 +292,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Erreka 2019</span>
+                        <span>Copyright &copy; Erreka 2020</span>
                     </div>
                 </div>
             </footer>
