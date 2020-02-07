@@ -12,14 +12,14 @@
         </h6>
         {% if charges|length > 0 %}
             {% for charge in charges %}
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                <a class="dropdown-item d-flex align-items-center" href="{{ path('property_charge', {'id': charge.id, 'idChargeType': charge.charge.chargeType.id}) }}">
                     <div class="dropdown-list-image mr-3">
                         <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
                         <div class="status-indicator bg-success"></div>
                     </div>
                     <div class="font-weight-bold">
-                        <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                        <div class="small text-gray-500">{{ charge.price }}</div>
+                        <div class="text-truncate">{{ charge.fullname }}</div>
+                        <div class="small text-gray-500">{{ charge.street.name }} Nº {{ charge.portal }}, {{ charge.floor }}</div>
                     </div>
                 </a>
             {% endfor %}

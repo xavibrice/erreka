@@ -3,7 +3,9 @@
 {#        <i class="fas fa-bars fa-fw"></i>#}
         <strong>N</strong>
         <!-- Counter - Messages -->
-        <span class="badge badge-danger badge-counter">{{ notices|length }}</span>
+        <span class="badge badge-danger badge-counter">
+            {{ notices|length }}
+        </span>
     </a>
     <!-- Dropdown - Messages -->
     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
@@ -12,16 +14,18 @@
         </h6>
         {% if notices|length > 0 %}
             {% for notice in notices %}
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                    <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                        <div class="status-indicator bg-success"></div>
-                    </div>
-                    <div class="font-weight-bold">
-                        <div class="text-truncate">{{ notice.fullname }}</div>
-                        <div class="small text-gray-500">{{ notice.street.name }} Nº {{ notice.portal }}, {{ notice.floor }}</div>
-                    </div>
-                </a>
+                {% if notice.charge is null %}
+                    <a class="dropdown-item d-flex align-items-center" href="{{ path('property_show', {'id': notice.id}) }}">
+                        <div class="dropdown-list-image mr-3">
+                            <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                            <div class="status-indicator bg-success"></div>
+                        </div>
+                        <div class="font-weight-bold">
+                            <div class="text-truncate">{{ notice.fullname }}</div>
+                            <div class="small text-gray-500">{{ notice.street.name }} Nº {{ notice.portal }}, {{ notice.floor }}</div>
+                        </div>
+                    </a>
+                {% endif %}
             {% endfor %}
             <a class="dropdown-item text-center small text-gray-500" href="#">ver mas</a>
 
