@@ -31,7 +31,6 @@ class AppFixtures extends Fixture
         foreach ($this->getNameSituation() as $name) {
             $situation = new Situation();
             $situation->setName($name);
-            $situation->setNameSlug($name);
             $manager->persist($situation);
         }
         $manager->flush();
