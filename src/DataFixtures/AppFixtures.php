@@ -79,7 +79,7 @@ class AppFixtures extends Fixture
     {
         return [
             ['Jon Erreka', 'jon', true, ['ROLE_ADMIN'], '666666664', 'Jon2014'],
-            ['Nekane Bilbao', 'nekane', true, ['ROLE_USER'], '999999393', 'nekane'],
+            //['Nekane Bilbao', 'nekane', true, ['ROLE_USER'], '999999393', 'nekane'],
         ];
     }
 }

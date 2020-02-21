@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/img/logo-erreka.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/img/logo-medidas.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +167,7 @@
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -179,19 +184,19 @@
     <property name="ts.external.directory.path" value="C:\Users\HP\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\192.6817.20\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\erreka\public\img" />
+      <recent name="C:\xampp\htdocs\erreka" />
+      <recent name="C:\xampp\htdocs\erreka\assets\js\calendar" />
+      <recent name="C:\xampp\htdocs\erreka\src\Form" />
+      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\erreka\templates\admin" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\property\rate_housing" />
       <recent name="C:\xampp\htdocs\erreka\src\Form" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\client" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\erreka" />
-      <recent name="C:\xampp\htdocs\erreka\assets\js\calendar" />
-      <recent name="C:\xampp\htdocs\erreka\src\Form" />
-      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
-      <recent name="C:\xampp\htdocs\erreka\src\Form\DataTransformer" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -395,7 +400,8 @@
       <workItem from="1581077203648" duration="1082000" />
       <workItem from="1581087426777" duration="366000" />
       <workItem from="1581100221117" duration="2150000" />
-      <workItem from="1581943580058" duration="861000" />
+      <workItem from="1581943580058" duration="2427000" />
+      <workItem from="1582304225369" duration="1102000" />
     </task>
     <servers />
   </component>
@@ -441,11 +447,11 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="144" y="167" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1579265255255" />
-    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1581100223869">
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog" timestamp="1582304257258">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581087439063" />
-    <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581100223869" />
+    <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582304257258" />
     <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579802935103" />
     <state x="225" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1579381231226">
       <screen x="0" y="0" width="2560" height="1040" />
