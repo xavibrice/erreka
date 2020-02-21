@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20200221173904 extends AbstractMigration
+final class Version20200221174816 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,6 +22,7 @@ final class Version20200221173904 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, agency_id INT DEFAULT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, username VARCHAR(150) NOT NULL, image_filename VARCHAR(255) DEFAULT NULL, active TINYINT(1) NOT NULL, mobile VARCHAR(255) NOT NULL, full_name VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_8D93D649F85E0677 (username), INDEX IDX_8D93D649CDEADB2A (agency_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE agency (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE bedrooms (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE booking (id INT AUTO_INCREMENT NOT NULL, commercial_id INT DEFAULT NULL, begin_at DATETIME NOT NULL, end_at DATETIME DEFAULT NULL, title VARCHAR(255) NOT NULL, color VARCHAR(255) DEFAULT NULL, text_color VARCHAR(255) DEFAULT NULL, description LONGTEXT DEFAULT NULL, INDEX IDX_E00CEDDE7854071C (commercial_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
@@ -48,12 +49,12 @@ final class Version20200221173904 extends AbstractMigration
         $this->addSql('CREATE TABLE state_keys (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE street (id INT AUTO_INCREMENT NOT NULL, zone_id INT DEFAULT NULL, name VARCHAR(255) NOT NULL, INDEX IDX_F0EED3D89F2C3FAB (zone_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE type_property (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, is_property TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, agency_id INT DEFAULT NULL, roles JSON NOT NULL, password VARCHAR(255) NOT NULL, username VARCHAR(255) NOT NULL, image_filename VARCHAR(255) DEFAULT NULL, active TINYINT(1) NOT NULL, mobile VARCHAR(255) NOT NULL, full_name VARCHAR(255) DEFAULT NULL, UNIQUE INDEX UNIQ_8D93D649F85E0677 (username), INDEX IDX_8D93D649CDEADB2A (agency_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE valuation_status (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE visit (id INT AUTO_INCREMENT NOT NULL, property_id INT DEFAULT NULL, client_id INT DEFAULT NULL, visited DATE DEFAULT NULL, price NUMERIC(10, 0) DEFAULT NULL, comment LONGTEXT DEFAULT NULL, INDEX IDX_437EE939549213EC (property_id), INDEX IDX_437EE93919EB6921 (client_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE wall (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE window (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(255) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE zone (id INT AUTO_INCREMENT NOT NULL, agency_id INT DEFAULT NULL, name VARCHAR(255) NOT NULL, INDEX IDX_A0EBC007CDEADB2A (agency_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649CDEADB2A FOREIGN KEY (agency_id) REFERENCES agency (id)');
         $this->addSql('ALTER TABLE booking ADD CONSTRAINT FK_E00CEDDE7854071C FOREIGN KEY (commercial_id) REFERENCES user (id)');
         $this->addSql('ALTER TABLE charge ADD CONSTRAINT FK_556BA43491A77836 FOREIGN KEY (charge_type_id) REFERENCES charge_type (id)');
         $this->addSql('ALTER TABLE charge ADD CONSTRAINT FK_556BA434549213EC FOREIGN KEY (property_id) REFERENCES property (id)');
@@ -98,7 +99,6 @@ final class Version20200221173904 extends AbstractMigration
         $this->addSql('ALTER TABLE rate_housing ADD CONSTRAINT FK_21430D22BECD3E04 FOREIGN KEY (building_structure_id) REFERENCES building_structure (id)');
         $this->addSql('ALTER TABLE reason ADD CONSTRAINT FK_3BB8880C3408E8AF FOREIGN KEY (situation_id) REFERENCES situation (id)');
         $this->addSql('ALTER TABLE street ADD CONSTRAINT FK_F0EED3D89F2C3FAB FOREIGN KEY (zone_id) REFERENCES zone (id)');
-        $this->addSql('ALTER TABLE user ADD CONSTRAINT FK_8D93D649CDEADB2A FOREIGN KEY (agency_id) REFERENCES agency (id)');
         $this->addSql('ALTER TABLE visit ADD CONSTRAINT FK_437EE939549213EC FOREIGN KEY (property_id) REFERENCES property (id)');
         $this->addSql('ALTER TABLE visit ADD CONSTRAINT FK_437EE93919EB6921 FOREIGN KEY (client_id) REFERENCES client (id)');
         $this->addSql('ALTER TABLE zone ADD CONSTRAINT FK_A0EBC007CDEADB2A FOREIGN KEY (agency_id) REFERENCES agency (id)');
@@ -109,6 +109,10 @@ final class Version20200221173904 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
+        $this->addSql('ALTER TABLE booking DROP FOREIGN KEY FK_E00CEDDE7854071C');
+        $this->addSql('ALTER TABLE client DROP FOREIGN KEY FK_C74404557854071C');
+        $this->addSql('ALTER TABLE note_commercial DROP FOREIGN KEY FK_16F4DA9E7854071C');
+        $this->addSql('ALTER TABLE property DROP FOREIGN KEY FK_8BF21CDE7854071C');
         $this->addSql('ALTER TABLE user DROP FOREIGN KEY FK_8D93D649CDEADB2A');
         $this->addSql('ALTER TABLE zone DROP FOREIGN KEY FK_A0EBC007CDEADB2A');
         $this->addSql('ALTER TABLE client DROP FOREIGN KEY FK_C7440455BE7F364B');
@@ -141,10 +145,6 @@ final class Version20200221173904 extends AbstractMigration
         $this->addSql('ALTER TABLE property DROP FOREIGN KEY FK_8BF21CDE87CF8EB');
         $this->addSql('ALTER TABLE client DROP FOREIGN KEY FK_C74404551F8BC47D');
         $this->addSql('ALTER TABLE property DROP FOREIGN KEY FK_8BF21CDE1F8BC47D');
-        $this->addSql('ALTER TABLE booking DROP FOREIGN KEY FK_E00CEDDE7854071C');
-        $this->addSql('ALTER TABLE client DROP FOREIGN KEY FK_C74404557854071C');
-        $this->addSql('ALTER TABLE note_commercial DROP FOREIGN KEY FK_16F4DA9E7854071C');
-        $this->addSql('ALTER TABLE property DROP FOREIGN KEY FK_8BF21CDE7854071C');
         $this->addSql('ALTER TABLE rate_housing DROP FOREIGN KEY FK_21430D2260F1BE35');
         $this->addSql('ALTER TABLE rate_housing DROP FOREIGN KEY FK_21430D22394F640');
         $this->addSql('ALTER TABLE rate_housing DROP FOREIGN KEY FK_21430D222ED4DF49');
@@ -157,6 +157,7 @@ final class Version20200221173904 extends AbstractMigration
         $this->addSql('ALTER TABLE client DROP FOREIGN KEY FK_C7440455AFD501AE');
         $this->addSql('ALTER TABLE client DROP FOREIGN KEY FK_C74404555F1D81F8');
         $this->addSql('ALTER TABLE street DROP FOREIGN KEY FK_F0EED3D89F2C3FAB');
+        $this->addSql('DROP TABLE user');
         $this->addSql('DROP TABLE agency');
         $this->addSql('DROP TABLE bedrooms');
         $this->addSql('DROP TABLE booking');
@@ -183,7 +184,6 @@ final class Version20200221173904 extends AbstractMigration
         $this->addSql('DROP TABLE state_keys');
         $this->addSql('DROP TABLE street');
         $this->addSql('DROP TABLE type_property');
-        $this->addSql('DROP TABLE user');
         $this->addSql('DROP TABLE valuation_status');
         $this->addSql('DROP TABLE visit');
         $this->addSql('DROP TABLE wall');
