@@ -38,7 +38,7 @@ class SituationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $situation->setNameSlug(Slugger::slugify($situation->getName()));
+            //$situation->setNameSlug(Slugger::slugify($situation->getName()));
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($situation);
             $entityManager->flush();
