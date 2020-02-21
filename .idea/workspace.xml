@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/logo-erreka.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/img/logo-medidas.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/AppFixtures.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Situation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Situation.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -401,7 +396,7 @@
       <workItem from="1581087426777" duration="366000" />
       <workItem from="1581100221117" duration="2150000" />
       <workItem from="1581943580058" duration="2427000" />
-      <workItem from="1582304225369" duration="1102000" />
+      <workItem from="1582304225369" duration="1971000" />
     </task>
     <servers />
   </component>
