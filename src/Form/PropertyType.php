@@ -215,12 +215,12 @@ class PropertyType extends AbstractType
             'class' => Zone::class,
             'placeholder' => 'Seleciona una zona',
             'mapped' => false,
-            'query_builder' => function(EntityRepository $er) use ($options) {
-                return $er->createQueryBuilder('z')
-                    ->andWhere('z.agency = :agency')
-                    ->setParameter('agency', $options['agency'])
-                    ;
-                }
+//            'query_builder' => function(EntityRepository $er) use ($options) {
+//                return $er->createQueryBuilder('z')
+//                    ->andWhere('z.agency = :agency')
+//                    ->setParameter('agency', $options['agency'])
+//                    ;
+//                }
         ]);
 
         $builder->get('zone')->addEventListener(
@@ -264,6 +264,8 @@ class PropertyType extends AbstractType
                 }
             }
         );
+
+
     }
 
     public function configureOptions(OptionsResolver $resolver)

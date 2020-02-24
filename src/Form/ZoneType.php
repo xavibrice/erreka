@@ -2,8 +2,10 @@
 
 namespace App\Form;
 
+use App\Entity\Agency;
 use App\Entity\Zone;
 use App\Form\Collection\StreetZoneType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -27,6 +29,11 @@ class ZoneType extends AbstractType
                 'by_reference' => false,
                 'allow_add' => true,
                 'allow_delete' => true
+            ])
+            ->add('agency', EntityType::class, [
+                'label' => 'Agencia',
+                'placeholder' => 'Selecciona una agencia',
+                'class' => Agency::class
             ])
         ;
     }
