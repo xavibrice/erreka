@@ -36,7 +36,7 @@
                     <tbody>
                     {% for property in properties %}
                         {% if property.enabled %}
-                            {% if property.charge is null %}
+{#                            {% if property.charge is null %}#}
 
                                 {#                                    {% if property.rateHousing.charge is not defined %}#}
 
@@ -103,7 +103,7 @@
                                         {{ property.comment|slice(0, 50) }}
                                     </td>
                                 </tr>
-                            {% endif %}
+{#                            {% endif %}#}
                         {% endif %}
                     {% endfor %}
                     </tbody>
