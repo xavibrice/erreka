@@ -43,7 +43,7 @@ class PropertyController extends AbstractController
 //        }
 
         return $this->render('admin/property/property.html.twig', [
-            'properties' => $propertyRepository->onlyNotices($this->getUser()->getAgency()->getName()),
+            'properties' => $propertyRepository->onlyNotices($this->getUser()->getAgency()->getName(), $this->getUser()),
         ]);
     }
 
