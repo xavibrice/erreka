@@ -84,32 +84,60 @@ class PropertyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function onlyExclusives($getUser)
+    public function onlyExclusives($getAgency)
     {
-        return $this->addAllNoticesQueryBuilder()
-            ->andWhere('s.name = :situation')
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.agency', 'a')
             ->innerJoin('p.charge', 'c')
             ->innerJoin('c.charge_type', 'ct')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('a.name = :agency')
             ->andWhere('ct.name = :chargeType')
+            ->andWhere('s.name = :situation')
             ->setParameter('situation', 'Noticia')
             ->setParameter('chargeType', 'Exclusiva')
-            ->setParameter('commercial', $getUser)
+            ->setParameter('agency', $getAgency)
             ->getQuery()
             ->getResult();
+//        return $this->addAllNoticesQueryBuilder()
+//            ->andWhere('s.name = :situation')
+//            ->innerJoin('p.charge', 'c')
+//            ->innerJoin('c.charge_type', 'ct')
+//            ->andWhere('ct.name = :chargeType')
+//            ->setParameter('situation', 'Noticia')
+//            ->setParameter('chargeType', 'Exclusiva')
+//            ->setParameter('commercial', $getUser)
+//            ->getQuery()
+//            ->getResult();
     }
 
-    public function onlyAuthorization($getUser)
+    public function onlyAuthorization($getAgency)
     {
-        return $this->addAllNoticesQueryBuilder()
-            ->andWhere('s.name = :situation')
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.agency', 'a')
             ->innerJoin('p.charge', 'c')
             ->innerJoin('c.charge_type', 'ct')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('a.name = :agency')
             ->andWhere('ct.name = :chargeType')
+            ->andWhere('s.name = :situation')
             ->setParameter('situation', 'Noticia')
             ->setParameter('chargeType', 'Autorización')
-            ->setParameter('commercial', $getUser)
+            ->setParameter('agency', $getAgency)
             ->getQuery()
             ->getResult();
+//        return $this->addAllNoticesQueryBuilder()
+//            ->andWhere('s.name = :situation')
+//            ->innerJoin('p.charge', 'c')
+//            ->innerJoin('c.charge_type', 'ct')
+//            ->andWhere('ct.name = :chargeType')
+//            ->setParameter('situation', 'Noticia')
+//            ->setParameter('chargeType', 'Autorización')
+//            ->setParameter('commercial', $getUser)
+//            ->getQuery()
+//            ->getResult();
     }
 
     public function alertsOnlyCharges($getUser)

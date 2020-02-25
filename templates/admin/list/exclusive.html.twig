@@ -6,6 +6,7 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h1 class="h3 mb-4 text-gray-800">Listado de exclusivas</h1>
+
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -31,6 +32,7 @@
                         </tr>
                     </thead>
                     <tbody>
+
                     {% for exclusive in exclusives %}
                                     <tr class="clickable-row" data-href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">
                                     <td>{{ exclusive.reference }}</td>
@@ -56,8 +58,6 @@
                                     </td>
                                     <td></td>
                                 </tr>
-
-
                     {% endfor %}
                     </tbody>
                 </table>

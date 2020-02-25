@@ -47,4 +47,7 @@ class AgencyRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function onlyExclusives($getName)
+    {
+    }
 }

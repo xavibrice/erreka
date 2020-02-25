@@ -33,10 +33,16 @@ class Agency
      */
     private $users;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Property", mappedBy="agency")
+     */
+    private $properties;
+
     public function __construct()
     {
         $this->zone = new ArrayCollection();
         $this->users = new ArrayCollection();
+        $this->properties = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -122,6 +128,37 @@ class Agency
     {
         // TODO: Implement __toString() method.
         return (string)$this->name;
+    }
+
+    /**
+     * @return Collection|Property[]
+     */
+    public function getProperties(): Collection
+    {
+        return $this->properties;
+    }
+
+    public function addProperty(Property $property): self
+    {
+        if (!$this->properties->contains($property)) {
+            $this->properties[] = $property;
+            $property->setAgency($this);
+        }
+
+        return $this;
+    }
+
+    public function removeProperty(Property $property): self
+    {
+        if ($this->properties->contains($property)) {
+            $this->properties->removeElement($property);
+            // set the owning side to null (unless already changed)
+            if ($property->getAgency() === $this) {
+                $property->setAgency(null);
+            }
+        }
+
+        return $this;
     }
 
 }

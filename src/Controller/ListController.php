@@ -4,6 +4,7 @@ namespace App\Controller;
 use App\Entity\Property;
 use App\Entity\PropertyReduction;
 use App\Form\LocalType;
+use App\Repository\AgencyRepository;
 use App\Repository\ChargeTypeRepository;
 use App\Repository\PropertyRepository;
 use App\Repository\RateHousingRepository;
@@ -32,7 +33,7 @@ class ListController extends AbstractController
     /**
      * @Route("/exclusiva", name="list_charge_index")
      */
-    public function listExclusive(Request $request,PropertyRepository $propertyRepository): Response
+    public function listExclusive(Request $request, PropertyRepository $propertyRepository): Response
     {
         $em = $this->getDoctrine()->getManager();
 
@@ -58,9 +59,8 @@ class ListController extends AbstractController
             return $this->redirectToRoute($request->attributes->get('_route'));
         }
 
-
         return $this->render('admin/list/exclusive.html.twig', [
-            'exclusives' => $propertyRepository->onlyExclusives($this->getUser()),
+            'exclusives' => $propertyRepository->onlyExclusives($this->getUser()->getAgency()->getName()),
             'formLocal' => $formLocal->createView(),
         ]);
     }
@@ -71,7 +71,7 @@ class ListController extends AbstractController
     public function listAuthorization(PropertyRepository $propertyRepository): Response
     {
         return $this->render('admin/list/authorization.html.twig', [
-            'authorizations' => $propertyRepository->onlyAuthorization($this->getUser())
+            'authorizations' => $propertyRepository->onlyAuthorization($this->getUser()->getAgency()->getName())
         ]);
     }
 

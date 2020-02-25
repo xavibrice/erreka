@@ -23,21 +23,21 @@ require('../css/app.css');
 const autocomplete = require('autocomplete.js');
 
 require("eonasdan-bootstrap-datetimepicker-bootstrap4beta");
-//
-// $.extend(true, $.fn.datetimepicker.defaults, {
-//     icons: {
-//         time: 'far fa-clock',
-//         date: 'far fa-calendar',
-//         up: 'fas fa-arrow-up',
-//         down: 'fas fa-arrow-down',
-//         previous: 'fas fa-chevron-left',
-//         next: 'fas fa-chevron-right',
-//         today: 'fas fa-calendar-check',
-//         clear: 'far fa-trash-alt',
-//         close: 'far fa-times-circle'
-//     }
-// });
-//
+
+$.extend(true, $.fn.datetimepicker.defaults, {
+    icons: {
+        time: 'far fa-clock',
+        date: 'far fa-calendar',
+        up: 'fas fa-arrow-up',
+        down: 'fas fa-arrow-down',
+        previous: 'fas fa-chevron-left',
+        next: 'fas fa-chevron-right',
+        today: 'fas fa-calendar-check',
+        clear: 'far fa-trash-alt',
+        close: 'far fa-times-circle'
+    }
+});
+
 
 // var date = new Date();
 // var today = new Date(date.getFullYear(), date.getMonth(), date.getDate());

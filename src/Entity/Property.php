@@ -147,6 +147,11 @@ class Property
      */
     private $next_call;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Agency", inversedBy="properties")
+     */
+    private $agency;
+
     public function __construct()
     {
         $this->propertyReductions = new ArrayCollection();
@@ -558,6 +563,18 @@ class Property
     public function setNextCall(?\DateTime $next_call): self
     {
         $this->next_call = $next_call;
+
+        return $this;
+    }
+
+    public function getAgency(): ?Agency
+    {
+        return $this->agency;
+    }
+
+    public function setAgency(?Agency $agency): self
+    {
+        $this->agency = $agency;
 
         return $this;
     }
