@@ -125,6 +125,38 @@ import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/pu
 // console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
 $(document).ready(function() {
+    $('#dataTableEmpty').DataTable( {
+        // "orderSequence": ["desc"],
+        "lengthMenu": [ 10, 15, 25, 50, 100 ],
+        "pageLength": 15,
+        "language": {
+            "sProcessing":     "Procesando...",
+            "sLengthMenu":     "Mostrar _MENU_ registros",
+            "sZeroRecords":    "No se encontraron resultados",
+            "sEmptyTable":     "Ningún dato disponible en esta tabla",
+            "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+            "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
+            "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
+            "sInfoPostFix":    "",
+            "sSearch":         "Buscar:",
+            "sUrl":            "",
+            "sInfoThousands":  ",",
+            "sLoadingRecords": "Cargando...",
+            "oPaginate": {
+                "sFirst":    "Primero",
+                "sLast":     "Último",
+                "sNext":     "Siguiente",
+                "sPrevious": "Anterior"
+            },
+            "oAria": {
+                "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                "sSortDescending": ": Activar para ordenar la columna de manera descendente"
+            }
+        }
+    });
+} );
+
+$(document).ready(function() {
     $('#dataTable').DataTable( {
         // "orderSequence": ["desc"],
         "lengthMenu": [ 10, 15, 25, 50, 100 ],

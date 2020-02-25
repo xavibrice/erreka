@@ -20,10 +20,11 @@
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table table-borderless table-sm table-hover">
+                <table class="table table-striped table-sm table-hover dataTable" id="dataTableEmpty" width="100%" cellpadding="0">
                     <thead>
                     <tr class="">
                         <th>Ref.</th>
+                        <th>Encargo</th>
                         <th>Agencia</th>
                         <th>Zona</th>
                         <th>Dirección</th>
@@ -31,7 +32,7 @@
                         <th>Dorm.</th>
                         <th>WC</th>
                         <th>M²</th>
-                        <th>Calefacción</th>
+{#                        <th>Calefacción</th>#}
                         <th>Asc</th>
                         <th>Ofre.</th>
                         <th>Visit.</th>
@@ -43,6 +44,7 @@
                     {% for possibleVisit in possibleVisits %}
                         <tr>
                             <td>{{ possibleVisit.reference }}</td>
+                            <td>{{ possibleVisit.charge.chargeType.name }}</td>
                             <td>{{ possibleVisit.commercial.agency.name }}</td>
                             <td>{{ possibleVisit.street.zone.name }}</td>
                             <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}, {{ possibleVisit.floor }}</td>
@@ -50,11 +52,11 @@
                             <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>
-                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>
+{#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
                             <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
                             <td>{#{{ possibleVisit.offereds }}#} ofrecido</td>
                             <td>{{ possibleVisit.visits|length }}</td>
-                            <td>{{ possibleVisit.rateHousing.comment|slice(0, 50)  }}</td>
+                            <td>{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
                             <td>
                                 {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}
 
@@ -91,4 +93,5 @@
     <script>
         baguetteBox.run('.compact-gallery', { animation: 'slideIn'});
     </script>
+    {{ encore_entry_script_tags('dataTableJs') }}
 {% endblock %}
