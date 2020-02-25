@@ -26,7 +26,7 @@ class ListController extends AbstractController
     public function listRateHousing(RateHousingRepository $rateHousingRepository): Response
     {
         return $this->render('admin/list/rate_housing.html.twig', [
-            'rateHousings' => $rateHousingRepository->findAll(),
+            'rateHousings' => $rateHousingRepository->findByAgency($this->getUser()->getAgency()->getName()),
         ]);
     }
 
