@@ -34,14 +34,29 @@ class PropertyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
-    public function onlyNotices($getUser)
+    public function onlyNotices($getAgency)
     {
-        return $this->addAllNoticesQueryBuilder()
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('p.agency', 'a')
+            ->innerJoin('r.situation', 's')
             ->andWhere('s.name = :situation')
+            ->andWhere('p.enabled = :enabled')
+            ->andWhere('a.name = :agency')
+            ->orderBy('p.created', 'DESC')
+            ->setParameter('agency', $getAgency)
+            ->setParameter('enabled', true)
             ->setParameter('situation', 'Noticia')
-            ->setParameter('commercial', $getUser)
             ->getQuery()
             ->getResult();
+
+
+//        return $this->addAllNoticesQueryBuilder()
+//            ->andWhere('s.name = :situation')
+//            ->setParameter('situation', 'Noticia')
+//            ->setParameter('commercial', $getUser)
+//            ->getQuery()
+//            ->getResult();
     }
 
     public function alertsOnlyNotices($getUser)
