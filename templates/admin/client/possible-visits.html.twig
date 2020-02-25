@@ -47,8 +47,8 @@
                             <td>{{ possibleVisit.charge.chargeType.name }}</td>
                             <td>{{ possibleVisit.commercial.agency.name }}</td>
                             <td>{{ possibleVisit.street.zone.name }}</td>
-                            <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}, {{ possibleVisit.floor }}</td>
-                            <td>{{ possibleVisit.charge.price }} €</td>
+                            <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}</td>
+                            <td>{{ possibleVisit.charge.price }}€</td>
                             <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>
@@ -56,7 +56,7 @@
                             <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
                             <td>{#{{ possibleVisit.offereds }}#} ofrecido</td>
                             <td>{{ possibleVisit.visits|length }}</td>
-                            <td>{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
+                            <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
                             <td>
                                 {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}
 
