@@ -20,22 +20,18 @@ class RateHousingRepository extends ServiceEntityRepository
         parent::__construct($registry, RateHousing::class);
     }
 
-    // /**
-    //  * @return Street[] Returns an array of Street objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findByAgency($getAgency)
     {
-        return $this->createQueryBuilder('s')
-            ->andWhere('s.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('s.id', 'ASC')
-            ->setMaxResults(10)
+        return $this->createQueryBuilder('rh')
+            ->innerJoin('rh.property', 'p')
+            ->innerJoin('p.agency', 'a')
+            ->andWhere('a.name = :agency')
+            ->setParameter('agency', $getAgency)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
 
     /*
     public function findOneBySomeField($value): ?Street

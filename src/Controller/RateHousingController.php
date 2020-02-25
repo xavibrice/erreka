@@ -21,7 +21,7 @@ class RateHousingController extends AbstractController
     public function index(RateHousingRepository $rateHousingRepository): Response
     {
         return $this->render('admin/rate_housing/index.html.twig', [
-            'rate_housings' => $rateHousingRepository->findAll(),
+            'rate_housings' => $rateHousingRepository->findByAgency($this->getUser()->getAgency()->getName()),
         ]);
     }
 
@@ -31,7 +31,6 @@ class RateHousingController extends AbstractController
     public function new(Request $request): Response
     {
         $rateHousing = new RateHousing();
-        $rateHousing->setProperty();
         $form = $this->createForm(RateHousingType::class, $rateHousing);
         $form->handleRequest($request);
 

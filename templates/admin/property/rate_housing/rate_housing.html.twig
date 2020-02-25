@@ -215,6 +215,9 @@
 
                     {% else %}
 {#                        {{ include('admin/rate_housing/_form_rate_housing.html.twig', {'form': formRate}) }}#}
+                        <div class="col-md-12 text-center">
+                            <strong>{{ property.fullName }} / {{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</strong>
+                        </div>
                         {{ include('admin/property/_form_rate_housing.html.twig') }}
                     {% endif %}
 
