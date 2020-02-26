@@ -29,7 +29,7 @@
                         <th>Zona</th>
                         <th>Dirección</th>
                         <th>Precio</th>
-                        <th>Dorm.</th>
+                        <th>D</th>
                         <th>WC</th>
                         <th>M²</th>
 {#                        <th>Calefacción</th>#}
@@ -54,7 +54,7 @@
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>
 {#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
                             <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
-                            <td>{#{{ possibleVisit.offereds }}#} ofrecido</td>
+                            <td>{{ possibleVisit.offereds ? 'Si' : 'No' }}{#{{ possibleVisit.offereds }}#}</td>
                             <td>{{ possibleVisit.visits|length }}</td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
                             <td>

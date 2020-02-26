@@ -90,18 +90,6 @@
                     <span>Alquilados</span>
                 </a>
             </li>
-            <li class="nav-item {% if app.request.get('_route') == 'history_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('history_index') }}">
-                    <i class="fas fa-fw fa-history"></i>
-                    <span>Histórico</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Informes</span>
-                </a>
-            </li>
             <li class="nav-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('note_commercial_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -152,6 +140,18 @@
                             <a class="collapse-item {% if app.request.get('_route') == 'orientation_index' %}active{% endif %}" href="{{ path('orientation_index') }}">Orientación</a>
                         </div>
                     </div>
+                </li>
+                <li class="nav-item {% if app.request.get('_route') == 'history_index' %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('history_index') }}">
+                        <i class="fas fa-fw fa-history"></i>
+                        <span>Histórico</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Informes</span>
+                    </a>
                 </li>
             {% endif %}
 
