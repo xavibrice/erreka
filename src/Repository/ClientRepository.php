@@ -42,8 +42,8 @@ class ClientRepository extends ServiceEntityRepository
     public function findAllMatching(string $query, int $limit = 5)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('(c.full_name LIKE :query or c.mobile LIKE :mobile)')
-            ->setParameter('query', '%'.$query.'%')
+            ->andWhere('(c.full_name LIKE :fullName OR c.mobile LIKE :mobile)')
+            ->setParameter('fullName', '%'.$query.'%')
             ->setParameter('mobile', '%'.$query.'%')
             ->setMaxResults($limit)
             ->getQuery()

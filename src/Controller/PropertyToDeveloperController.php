@@ -22,10 +22,16 @@ class PropertyToDeveloperController extends AbstractController
      */
     public function index(PropertyRepository $propertyRepository): Response
     {
-        $propierties = $propertyRepository->onlyNoticesToDeveloper($this->getUser());
+        if ($this->isGranted('ROLE_ADMIN')) {
+            $properties = $propertyRepository->onlyNoticesAdmin($this->getUser()->getAgency()->getName());
+        } else {
+            $properties = $propertyRepository->onlyNoticesToDeveloper($this->getUser()->getAgency()->getName(), $this->getUser());
+        }
+
+        //$propierties = $propertyRepository->onlyNoticesToDeveloper($this->getUser());
 
         return $this->render('admin/property_to_developer/property-to-developer.html.twig', [
-            'properties' => $propierties
+            'properties' => $properties
         ]);
     }
 

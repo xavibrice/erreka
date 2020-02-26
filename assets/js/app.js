@@ -57,7 +57,7 @@ $(document).ready(function () {
     $('.js-client-autocomplete').each(function () {
         var autocompleteUrl = $(this).data('autocomplete-url');
 
-        autocomplete('.js-client-autocomplete', {hint: false}, [
+        $(this).autocomplete('.js-client-autocomplete', {hint: false}, [
             {
                 source: function (query, cb) {
                     $.ajax({
@@ -87,7 +87,7 @@ $(document).ready(function () {
                         console.log(data)
                     })
                 },
-                displayKey: function(sugg) { return sugg.street.name + ' Nº ' + sugg.portal + ', ' + sugg.floor},
+                displayKey: function(sugg) { return sugg.street.name + ' Nº ' + sugg.portal + ', ' + sugg.floor },
 
                 debounce: 500
             }

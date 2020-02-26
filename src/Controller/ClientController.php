@@ -314,7 +314,7 @@ class ClientController extends AbstractController
     public function autocomplete(ClientRepository $clientRepository, Request $request): Response
     {
 //        $clients = $clientRepository->findFullName();
-        $clients = $clientRepository->findAllMatching($request->query->get('query'));
+        $clients = $clientRepository->findFullNameMobile($request->query->get('query'));
         return $this->json([
             'clients' => $clients
         ], 200, [], ['groups' => ['main']]);

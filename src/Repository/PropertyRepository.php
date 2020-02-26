@@ -95,12 +95,45 @@ class PropertyRepository extends ServiceEntityRepository
             ;
     }
 
-    public function onlyNoticesToDeveloper($getUser)
+    public function onlyNoticesToDeveloper($getAgency, $getUser)
     {
-        return $this->addAllNoticesQueryBuilder()
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('p.agency', 'a')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('s.name = :situation')
+            ->andWhere('p.commercial = :commercial')
+            ->andWhere('p.enabled = :enabled')
+            ->andWhere('a.name = :agency')
+            ->orderBy('p.created', 'DESC')
+            ->setParameter('agency', $getAgency)
+            ->setParameter('commercial', $getUser)
+            ->setParameter('enabled', true)
+            ->setParameter('situation', 'noticia a desarrollar')
+            ->getQuery()
+            ->getResult();
+/*        return $this->addAllNoticesQueryBuilder()
             ->andWhere('s.name = :situation')
             ->setParameter('situation', 'noticia a desarrollar')
             ->setParameter('commercial', $getUser)
+            ->getQuery()
+            ->getResult();*/
+    }
+
+    public function onlyNoticesToDeveloperAdmin($getAgency)
+    {
+
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('p.agency', 'a')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('s.name = :situation')
+            ->andWhere('p.enabled = :enabled')
+            ->andWhere('a.name = :agency')
+            ->orderBy('p.created', 'DESC')
+            ->setParameter('agency', $getAgency)
+            ->setParameter('enabled', true)
+            ->setParameter('situation', 'noticia a desarrollar')
             ->getQuery()
             ->getResult();
     }
