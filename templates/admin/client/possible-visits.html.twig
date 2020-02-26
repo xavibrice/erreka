@@ -54,7 +54,14 @@
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>
 {#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
                             <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
-                            <td>{{ possibleVisit.offereds ? 'Si' : 'No' }}{#{{ possibleVisit.offereds }}#}</td>
+                            <td>
+                                {% if possibleVisit.offereds is not empty %}
+                                    Si
+                                    {% else %}
+                                    No
+                                {% endif %}
+{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}
+                            </td>
                             <td>{{ possibleVisit.visits|length }}</td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
                             <td>

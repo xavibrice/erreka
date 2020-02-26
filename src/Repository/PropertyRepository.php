@@ -22,7 +22,6 @@ class PropertyRepository extends ServiceEntityRepository
 
     public function onlyNoticesAdmin($getAgency)
     {
-
         return $this->createQueryBuilder('p')
             ->innerJoin('p.reason', 'r')
             ->innerJoin('p.agency', 'a')
@@ -122,7 +121,6 @@ class PropertyRepository extends ServiceEntityRepository
 
     public function onlyNoticesToDeveloperAdmin($getAgency)
     {
-
         return $this->createQueryBuilder('p')
             ->innerJoin('p.reason', 'r')
             ->innerJoin('p.agency', 'a')
