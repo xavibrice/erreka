@@ -17,6 +17,7 @@
                     <tr>
 {#                        <th>Estado</th>#}
                         <th>Fecha</th>
+                        <th>Asesor</th>
                         <th>Motivo</th>
                         <th>Tipo Propiedad</th>
                         <th>Zona</th>
@@ -41,6 +42,7 @@
                                 <tr class="clickable-row" data-href="{{ path('property_to_developer_show', {'id': property.id}) }}">
 {#                                    <td>{{ property.enabled }}</td>#}
                                     <td>{{ property.created|date('d/m/Y') }}</td>
+                                    <td>{{ property.commercial.fullName }}</td>
                                     <td>
                                         {% if property.reason is not empty %}
                                             {{ property.reason.name }}

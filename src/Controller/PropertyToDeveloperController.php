@@ -23,7 +23,7 @@ class PropertyToDeveloperController extends AbstractController
     public function index(PropertyRepository $propertyRepository): Response
     {
         if ($this->isGranted('ROLE_ADMIN')) {
-            $properties = $propertyRepository->onlyNoticesAdmin($this->getUser()->getAgency()->getName());
+            $properties = $propertyRepository->onlyNoticesToDeveloperAdmin($this->getUser()->getAgency()->getName());
         } else {
             $properties = $propertyRepository->onlyNoticesToDeveloper($this->getUser()->getAgency()->getName(), $this->getUser());
         }
