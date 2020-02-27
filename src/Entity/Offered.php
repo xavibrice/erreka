@@ -17,57 +17,23 @@ class Offered
     private $id;
 
     /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $comment;
-
-    /**
-     * @ORM\Column(type="text", nullable=true)
-     */
-    private $price;
-
-    /**
      * @ORM\Column(type="date", nullable=true)
      */
     private $created;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="offereds")
-     */
-    private $property;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="offereds")
      */
     private $client;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="offereds", cascade={"persist"})
+     */
+    private $property;
+
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getComment(): ?string
-    {
-        return $this->comment;
-    }
-
-    public function setComment(?string $comment): self
-    {
-        $this->comment = $comment;
-
-        return $this;
-    }
-
-    public function getPrice(): ?string
-    {
-        return $this->price;
-    }
-
-    public function setPrice(?string $price): self
-    {
-        $this->price = $price;
-
-        return $this;
     }
 
     public function getCreated(): ?\DateTimeInterface
@@ -78,18 +44,6 @@ class Offered
     public function setCreated(?\DateTimeInterface $created): self
     {
         $this->created = $created;
-
-        return $this;
-    }
-
-    public function getProperty(): ?Property
-    {
-        return $this->property;
-    }
-
-    public function setProperty(?Property $property): self
-    {
-        $this->property = $property;
 
         return $this;
     }
@@ -106,10 +60,15 @@ class Offered
         return $this;
     }
 
-    public function __toString()
+    public function getProperty(): ?Property
     {
-        // TODO: Implement __toString() method.
-        return (string)$this->price;
+        return $this->property;
     }
 
+    public function setProperty(?Property $property): self
+    {
+        $this->property = $property;
+
+        return $this;
+    }
 }

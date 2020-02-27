@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Offered{% endblock %}
+
+{% block body %}
+    <h1>Offered</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offered.id }}</td>
+            </tr>
+            <tr>
+                <th>Created</th>
+                <td>{{ offered.created ? offered.created|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('offered_index') }}">back to list</a>
+
+    <a href="{{ path('offered_edit', {'id': offered.id}) }}">edit</a>
+
+    {{ include('offered/_delete_form.html.twig') }}
+{% endblock %}

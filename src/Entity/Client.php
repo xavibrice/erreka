@@ -107,11 +107,6 @@ class Client
     private $typeProperty;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Offered", mappedBy="client", cascade={"remove"})
-     */
-    private $offereds;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Proposal", mappedBy="client", cascade={"remove"})
      */
     private $proposals;
@@ -166,11 +161,16 @@ class Client
      */
     private $reason;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Offered", mappedBy="client")
+     */
+    private $offereds;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
-        $this->offereds = new ArrayCollection();
         $this->proposals = new ArrayCollection();
+        $this->offereds = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -401,37 +401,6 @@ class Client
         return $this;
     }
 
-    /**
-     * @return Collection|Offered[]
-     */
-    public function getOffereds(): Collection
-    {
-        return $this->offereds;
-    }
-
-    public function addOffered(Offered $offered): self
-    {
-        if (!$this->offereds->contains($offered)) {
-            $this->offereds[] = $offered;
-            $offered->setClient($this);
-        }
-
-        return $this;
-    }
-
-    public function removeOffered(Offered $offered): self
-    {
-        if ($this->offereds->contains($offered)) {
-            $this->offereds->removeElement($offered);
-            // set the owning side to null (unless already changed)
-            if ($offered->getClient() === $this) {
-                $offered->setClient(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function __toString()
     {
         // TODO: Implement __toString() method.
@@ -585,6 +554,37 @@ class Client
     public function setReason(?Reason $reason): self
     {
         $this->reason = $reason;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Offered[]
+     */
+    public function getOffereds(): Collection
+    {
+        return $this->offereds;
+    }
+
+    public function addOffered(Offered $offered): self
+    {
+        if (!$this->offereds->contains($offered)) {
+            $this->offereds[] = $offered;
+            $offered->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffered(Offered $offered): self
+    {
+        if ($this->offereds->contains($offered)) {
+            $this->offereds->removeElement($offered);
+            // set the owning side to null (unless already changed)
+            if ($offered->getClient() === $this) {
+                $offered->setClient(null);
+            }
+        }
 
         return $this;
     }
