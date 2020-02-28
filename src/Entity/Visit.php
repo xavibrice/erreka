@@ -18,12 +18,12 @@ class Visit
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="visits")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="visits", cascade={"persist"})
      */
     private $property;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="visits")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Client", inversedBy="visits", cascade={"persist"})
      * @Assert\NotNull(message="Por favor selecciona un cliente")
      */
     private $client;
@@ -106,5 +106,11 @@ class Visit
         $this->comment = $comment;
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        // TODO: Implement __toString() method.
+        return (string)$this->comment;
     }
 }

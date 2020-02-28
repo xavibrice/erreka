@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Client;
 use App\Entity\Property;
 use App\Entity\Visit;
 use App\Form\Type\DatePickerType;
@@ -29,8 +30,13 @@ class VisitType extends AbstractType
                 'class' => Property::class,
                 'disabled' => true
             ])
-            ->add('client', ClientSelectType::class, [
-                'label' => 'Cliente'
+//            ->add('client', ClientSelectType::class, [
+//                'label' => 'Cliente'
+//            ])
+            ->add('client', EntityType::class, [
+                'class' => Client::class,
+                'label' => 'Cliente',
+                'placeholder' => 'Selecciona un cliente'
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario',

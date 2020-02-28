@@ -24,19 +24,25 @@ class ClientRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('c')
             ->orderBy('c.full_name', 'ASC')
             ->getQuery()
-            ->execute()
+            ->getResult()
             ;
     }
 
     public function findFullNameMobile($data)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('(c.full_name LIKE :query OR c.mobile LIKE :phone)')
+            ->andWhere('c.full_name LIKE :query')
             ->setParameter('query', '%'.$data.'%')
-            ->setParameter('phone', '%'.$data.'%')
             ->getQuery()
-            ->execute()
+            ->getResult()
             ;
+//        return $this->createQueryBuilder('c')
+//            ->andWhere('(c.full_name LIKE :query OR c.mobile LIKE :phone)')
+//            ->setParameter('query', '%'.$data.'%')
+//            ->setParameter('phone', '%'.$data.'%')
+//            ->getQuery()
+//            ->getResult()
+//            ;
     }
 
     public function findAllMatching(string $query, int $limit = 5)

@@ -103,7 +103,7 @@ class Property
     private $url;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="property")
+     * @ORM\OneToMany(targetEntity="App\Entity\Visit", mappedBy="property", cascade={"persist"})
      */
     private $visits;
 
@@ -398,8 +398,8 @@ class Property
 
     public function __toString()
     {
-        // TODO: Implement __toString() method.
         return (string)$this->street . ' Nº ' . $this->portal . ' Piso ' . $this->floor;
+//        return (string)$this->street;
     }
 
     /**

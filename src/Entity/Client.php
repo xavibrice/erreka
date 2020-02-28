@@ -37,7 +37,7 @@ class Client
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Groups("main")
+//     * @Groups("main")
      */
     private $mobile;
 
@@ -410,7 +410,7 @@ class Client
     public function __toString()
     {
         // TODO: Implement __toString() method.
-        return (string)$this->full_name;
+        return (string)$this->full_name . ' - ' . $this->mobile;
     }
 
     /**

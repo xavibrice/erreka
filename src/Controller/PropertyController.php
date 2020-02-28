@@ -302,12 +302,11 @@ class PropertyController extends AbstractController
         }
 
         $visit = new Visit();
-        $visit->setProperty($property);
         $formVisit = $this->createForm(VisitType::class, $visit);
         $formVisit->handleRequest($request);
 
-
         if ($formVisit->isSubmitted() && $formVisit->isValid()) {
+            $visit->setProperty($property);
             $visit->setPrice($property->getCharge()->getPrice() - $sumPropertyReduction);
             $em->persist($visit);
             $em->flush();
