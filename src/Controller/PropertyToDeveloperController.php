@@ -160,7 +160,10 @@ class PropertyToDeveloperController extends AbstractController
      */
     public function editPropertyToDeveloper(Request $request, Property $property): Response
     {
-        $form = $this->createForm(PropertyToDeveloperType::class, $property);
+        $form = $this->createForm(PropertyToDeveloperType::class, $property, [
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
