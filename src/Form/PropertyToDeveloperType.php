@@ -31,6 +31,17 @@ class PropertyToDeveloperType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $roles = $options['role'];
+        $role = implode(',', $roles);
+
+        if ($role === 'ROLE_ADMIN') {
+            $builder
+                ->add('commercial', EntityType::class, [
+                    'placeholder' => 'Selecciona un comercial',
+                    'class' => User::class
+                ]);
+        }
+
         $property = $options['data'] ?? null;
         $isEdit = $property && $property->getId();
 
@@ -155,10 +166,6 @@ class PropertyToDeveloperType extends AbstractType
         }
 
         $builder
-            ->add('commercial', EntityType::class, [
-                'placeholder' => 'Selecciona un comercial',
-                'class' => User::class
-            ])
             ->add('created', DatePickerType::class, [
                 'label' => 'Fecha',
                 'required' => true,
@@ -170,10 +177,6 @@ class PropertyToDeveloperType extends AbstractType
                 'attr' => [
                     'class' => 'js-datepicker',
                 ],
-            ])
-            ->add('commercial', EntityType::class, [
-                'label' => 'Agente',
-                'class' => User::class
             ])
             ->add('full_name', TextType::class, [
                 'label' => 'Propietario',
@@ -215,6 +218,8 @@ class PropertyToDeveloperType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Property::class,
+            'role' => null,
+            'agency' => null,
         ]);
     }
 

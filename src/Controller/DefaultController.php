@@ -59,4 +59,14 @@ class DefaultController extends AbstractController
             'charges' => $propertyRepository->alertsOnlyCharges($this->getUser())
         ]);
     }
+
+    /**
+     * @Route("/alerts/clients", name="alerts_clients", methods={"GET"})
+     */
+    public function clients(PropertyRepository $propertyRepository): Response
+    {
+        return $this->render('admin/default/clients.html.twig', [
+            'charges' => $propertyRepository->alertsOnlyCharges($this->getUser())
+        ]);
+    }
 }

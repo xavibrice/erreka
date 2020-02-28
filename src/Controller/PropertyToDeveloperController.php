@@ -104,7 +104,10 @@ class PropertyToDeveloperController extends AbstractController
     {
         $property = new Property();
         $property->setCommercial($this->getUser());
-        $form = $this->createForm(PropertyToDeveloperType::class, $property);
+        $form = $this->createForm(PropertyToDeveloperType::class, $property, [
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
+        ]);
 
         return $this->render('admin/property_to_developer/_new.html.twig', [
             'form' => $form->createView(),
@@ -127,7 +130,10 @@ class PropertyToDeveloperController extends AbstractController
 
         $property = new Property();
         $property->setEnabled(true);
-        $form = $this->createForm(PropertyToDeveloperType::class, $property);
+        $form = $this->createForm(PropertyToDeveloperType::class, $property, [
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
