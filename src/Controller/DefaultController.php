@@ -66,7 +66,7 @@ class DefaultController extends AbstractController
     public function clients(PropertyRepository $propertyRepository): Response
     {
         return $this->render('admin/default/clients.html.twig', [
-            'charges' => $propertyRepository->alertsOnlyCharges($this->getUser())
+            'charges' => $propertyRepository->alertsOnlyClients($this->getUser())
         ]);
     }
 }
