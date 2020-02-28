@@ -166,11 +166,17 @@ class Client
      */
     private $offereds;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteClient", mappedBy="client")
+     */
+    private $noteClients;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
         $this->proposals = new ArrayCollection();
         $this->offereds = new ArrayCollection();
+        $this->noteClients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -583,6 +589,37 @@ class Client
             // set the owning side to null (unless already changed)
             if ($offered->getClient() === $this) {
                 $offered->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|NoteClient[]
+     */
+    public function getNoteClients(): Collection
+    {
+        return $this->noteClients;
+    }
+
+    public function addNoteClient(NoteClient $noteClient): self
+    {
+        if (!$this->noteClients->contains($noteClient)) {
+            $this->noteClients[] = $noteClient;
+            $noteClient->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNoteClient(NoteClient $noteClient): self
+    {
+        if ($this->noteClients->contains($noteClient)) {
+            $this->noteClients->removeElement($noteClient);
+            // set the owning side to null (unless already changed)
+            if ($noteClient->getClient() === $this) {
+                $noteClient->setClient(null);
             }
         }
 

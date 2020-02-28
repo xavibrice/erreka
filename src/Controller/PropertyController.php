@@ -405,7 +405,7 @@ class PropertyController extends AbstractController
      */
     public function autocomplete(PropertyRepository $propertyRepository, Request $request): Response
     {
-//        $clients = $clientRepository->findFullName();
+//        $properties = $propertyRepository->findFullStreet($request->query->get('query'));
         $properties = $propertyRepository->findAllMatching($request->query->get('query'));
         return $this->json([
             'properties' => $properties

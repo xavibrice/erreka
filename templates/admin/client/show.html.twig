@@ -136,6 +136,42 @@
         <div class="col-md-4 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Notas cliente</h6>
+                </div>
+                <div class="card-body">
+                    <div class="m-2">
+                        {#                        {{ include('admin/_form.html.twig', {'form': formVisit}) }}#}
+                        {{ form_start(formNoteClient) }}
+                        {{ form_widget(formNoteClient) }}
+                        <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+                        {{ form_end(formNoteClient) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8 mb-4">
+            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
+                {% for noteclient in client.noteClients %}
+                    <div class="col-md-12 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                {{ noteclient.comment}}
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <div class="alert alert-info">
+                        No hay comentarios
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mb-4">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Visitas</h6>
                 </div>
                 <div class="card-body">

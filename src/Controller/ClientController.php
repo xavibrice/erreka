@@ -3,10 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Client;
+use App\Entity\NoteClient;
 use App\Entity\Property;
 use App\Entity\RateHousing;
 use App\Entity\Visit;
 use App\Form\ClientType;
+use App\Form\NoteClientType;
 use App\Form\VisitNewType;
 use App\Form\VisitType;
 use App\Repository\ClientRepository;
@@ -266,9 +268,28 @@ class ClientController extends AbstractController
             ]);
         }
 
+        $noteClient = new NoteClient();
+        $noteClient->setCreated(new \DateTime());
+        $noteClient->setClient($client);
+        $formNoteClient = $this->createForm(NoteClientType::class, $noteClient);
+        $formNoteClient->handleRequest($request);
+
+        if ($formNoteClient->isSubmitted() && $formNoteClient->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($noteClient);
+            $entityManager->flush();
+
+            $this->addFlash('success', 'Comentario creado correctamente');
+
+            return $this->redirectToRoute($request->attributes->get('_route'), [
+                'id' => $client->getId()
+            ]);
+        }
+
         return $this->render('admin/client/show.html.twig', [
             'client' => $client,
-            'formVisit' => $formVisit->createView()
+            'formVisit' => $formVisit->createView(),
+            'formNoteClient' => $formNoteClient->createView()
         ]);
     }
 
