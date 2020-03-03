@@ -6,15 +6,14 @@
     <div class="card shadow mb-4">
         <div class="card-header py-3">
             <h1 class="h3 mb-4 text-gray-800">Listado de exclusivas</h1>
-
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table-striped table-borderless table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                <table class="table table-bordered table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                         <tr>
-                            <th>Referencia</th>
-                            <th>Asesor</th>
+                            <th>Ref.</th>
+                            <th>Agente</th>
                             <th>Zona</th>
                             <th>Dirección</th>
                             <th>Propietario</th>
@@ -43,9 +42,9 @@
                                     <td>{{ exclusive.mobile }}</td>
                                     <td>{{ exclusive.charge.startDate|date('d/m/Y') }}</td>
                                     <td>{{ exclusive.charge.endDate|date('d/m/Y') }}</td>
-                                    <td>{{ exclusive.charge.price|number_format(0, ',', '.') }} €</td>
-                                    <td>{{ exclusive.charge.price }} -  </td>
-                                    <td>{{ exclusive.charge.priceOk|number_format(0, ',', '.') }} €</td>
+                                    <td>{{ exclusive.charge.price|number_format(0, ',', '.') }}€</td>
+                                    <td>{{ exclusive.charge.price }}€ -  </td>
+                                    <td>{{ exclusive.charge.priceOk|number_format(0, ',', '.') }}€</td>
                                     <td>{{ exclusive.visits.count }}</td>
                                     <td></td>
                                     <td>{{ exclusive.propertyReductions.count }}</td>
@@ -65,75 +64,6 @@
         </div>
     </div>
 
-
-
-
-    <div class="modal fade" id="createLocalModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Crear Local</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{ form_start(formLocal) }}
-                    <div class="form-group row">
-                        <div class="col-md-auto">{{ form_row(formLocal.created) }}</div>
-                        {% if is_granted('ROLE_ADMIN') %}
-                            <div class="col-md-auto">{{ form_row(formLocal.commercial) }}</div>
-                        {% endif %}
-                        {#        <div class="col-md-auto">{{ form_row(form.reference) }}</div>#}
-                        <div class="col-md-auto">{{ form_row(formLocal.reason) }}</div>
-                        <div class="col-md-auto">{{ form_row(formLocal.typeProperty) }}</div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-auto">{{ form_row(formLocal.zone) }}</div>
-                        <div class="col-md-auto">{{ form_row(formLocal.street) }}</div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-auto">{{ form_row(formLocal.portal) }}</div>
-                        <div class="col-md-auto">{{ form_row(formLocal.floor) }}</div>
-                        <div class="col-md-auto">{{ form_row(formLocal.price) }}</div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-auto">{{ form_row(formLocal.fullName) }}</div>
-                        <div class="col-md-auto">{{ form_row(formLocal.mobile) }}</div>
-                        <div class="col-md-auto">{{ form_row(formLocal.phone) }}</div>
-                    </div>
-                    <div class="form-group">
-                        {{ form_row(formLocal.comment) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_row(formLocal.url) }}
-                    </div>
-{#                    <div class="form-group">
-                        <div class="col-sm-8 col-sm-offset-2" id="collectionInput" data-prototype="{{ form_widget(formLocal.rateHousing.vars.prototype)|e('html_attr') }}">
-                            {% for row in formLocal.rateHousing %}                                <div class="panel panel-warning">
-                                    <div class="panel-heading">
-                                        <strong>
-                                                                {{ dump(row.vars.value.name) }}
-                                            {{ row.vars.value.price }}
-                                        </strong>
-                                    </div>
-                                    <div class="panel-body">
-                                        {{ form_row(row.price) }}
-                                    </div>
-                                </div>
-                            {% endfor %}
-                        </div>
-
-                    </div>#}
-                    <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
-                    {{ form_end(formLocal) }}
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block javascripts %}

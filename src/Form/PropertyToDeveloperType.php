@@ -12,6 +12,7 @@ use App\Entity\Zone;
 use App\Form\Collection\PropertyReductionType;
 use App\Form\Type\DatePickerType;
 use App\Form\Type\DateTimePickerType;
+use App\Repository\UserRepository;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -37,8 +38,15 @@ class PropertyToDeveloperType extends AbstractType
         if ($role === 'ROLE_ADMIN') {
             $builder
                 ->add('commercial', EntityType::class, [
-                    'placeholder' => 'Selecciona un comercial',
-                    'class' => User::class
+                    'label' => 'Agente',
+                    'placeholder' => 'Selecciona un agente',
+                    'class' => User::class,
+                    'query_builder' => function(EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('u')
+                        ->andWhere('u.agency = :agency')
+                        ->setParameter('agency', $options['agency'])
+                        ;
+                    }
                 ]);
         }
 

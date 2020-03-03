@@ -13,10 +13,10 @@
                     <thead>
                         <tr>
                         <th>Fecha</th>
-                        <th>Asesor</th>
-                        <th>Zona</th>
+                        <th>Agente</th>
                         <th>Situación</th>
                         <th>Motivo</th>
+                        <th>Zona</th>
                         <th>Dirección</th>
                         <th>Propietario</th>
                         <th>Móvil</th>
@@ -35,7 +35,6 @@
                             <tr class="clickable-row" data-href="{{ path('property_rate_housing_new_show', {'id': property.id }) }}">
                                 <td>{{ rateHousing.visited|date('d/m/Y') }}</td>
                                 <td>{{ property.commercial.fullName }}</td>
-                                <td>{{ property.street.zone.name }}</td>
                                 <td>
                                     {% if property.charge is not empty %}
                                         {{ property.charge.chargeType.name }}
@@ -46,13 +45,15 @@
 {#                                    {% endif %}#}
                                 </td>
                                 <td>{{ property.reason.name }}</td>
+                                <td>{{ property.street.zone.name }}</td>
                                 <td>{{ property.street }}, Nº {{ property.portal }}, {{ property.floor }}</td>
                                 <td>{{ property.fullName }}</td>
                                 <td>{{ property.mobile }}</td>
                                 <td>
-                                    {% if rateHousing.maxPrice is not empty %}
+                                    {{ property.price|number_format(0, ',', '.') }}€
+{#                                    {% if rateHousing.maxPrice is not empty %}
                                         {{ rateHousing.maxPrice|number_format(0, ',', '.') }} €
-                                    {% endif %}
+                                    {% endif %}#}
                                 </td>
                                 <td>{{ rateHousing.bedrooms }}</td>
                                 <td>{{ rateHousing.bathrooms }}</td>

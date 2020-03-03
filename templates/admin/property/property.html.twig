@@ -14,17 +14,20 @@
             <div class="table-responsive">
                 <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
-                        <tr class="text-center">
+                        <tr>
                         <th>Fecha</th>
-                        <th>Asesor</th>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <th>Agente</th>
+                            {% endif %}
                         <th>Motivo</th>
+                        <th>Zona</th>
                         <th>Dirección</th>
                         <th>Propietario</th>
-                        <th>Móvil &nbsp;&nbsp;&nbsp;&nbsp; - &nbsp;&nbsp;&nbsp; Teléfono</th>
+                        <th>Móvil</th>
                         {#                        <th>Zona</th>#}
                         {#                        <th>Situación</th>#}
                         <th>Precio</th>
-                        <th>V</th>
+{#                        <th>V</th>#}
                         <th>D</th>
                         <th>B</th>
                         <th>M²</th>
@@ -43,12 +46,21 @@
                                 <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
                                     {#                                <td>{{ property.id }}</td>#}
                                     <td>{{ property.created|date('d/m/Y') }}</td>
+                                    {% if is_granted('ROLE_ADMIN') %}
                                     <td>
                                         {{ property.commercial.fullName }}
                                     </td>
+                                        {% endif %}
                                     <td>
                                         {% if property.reason is not empty %}
                                             {{ property.reason.name }}
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if property.street is not empty %}
+                                            {% if property.street.zone is not empty %}
+                                                {{ property.street.zone.name }}
+                                            {% endif %}
                                         {% endif %}
                                     </td>
                                     <td>
@@ -60,8 +72,8 @@
                                     </td>
                                     <td>{{ property.fullName }}</td>
                                     <td>
-                                        {% if property.mobile is not empty or property.phone is not empty %}
-                                            {{ property.mobile }} - {{ property.phone }}
+                                        {% if property.mobile is not empty %}
+                                            {{ property.mobile }}
                                         {% endif %}
                                     </td>
                                     <td>
@@ -69,9 +81,9 @@
                                             {{ property.price|number_format(0, ',', '.') }} €
                                         {% endif %}
                                     </td>
-                                    <td>
-                                        {{ property.rateHousing ? 'Si' : 'No' }}
-                                    </td>
+{#                                    <td>#}
+{#                                        {{ property.rateHousing ? 'Si' : 'No' }}#}
+{#                                    </td>#}
                                     <td>
                                         {% if property.rateHousing %}
                                             {{ property.rateHousing.bedrooms }}
@@ -100,7 +112,7 @@
                                         {{ property.nextCall|date('d-m-Y') }}
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
-                                        {{ property.comment|slice(0, 50) }}
+                                        {{ property.comment|slice(0, 25) }}
                                     </td>
                                 </tr>
 {#                            {% endif %}#}

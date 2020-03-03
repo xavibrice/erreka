@@ -2,7 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Form/VisitNewType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/VisitNewType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PropertyToDeveloperType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyToDeveloperType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RateHousingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RateHousingType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/authorization.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/authorization.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/_form_rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/_form_rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/property.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/property.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/property-to-developer.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -399,7 +417,7 @@
       <workItem from="1582304225369" duration="5343000" />
       <workItem from="1582540092736" duration="11000" />
       <workItem from="1582540115972" duration="4064000" />
-      <workItem from="1582619852267" duration="35685000" />
+      <workItem from="1582619852267" duration="42955000" />
     </task>
     <servers />
   </component>
@@ -467,10 +485,10 @@
     <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581087439063" />
     <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582540134791" />
     <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579802935103" />
-    <state x="169" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1582307166116">
+    <state x="169" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1583259908361">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="169" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1582307166116" />
+    <state x="169" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583259908361" />
     <state x="225" y="230" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1579381231226" />
   </component>
 </project>

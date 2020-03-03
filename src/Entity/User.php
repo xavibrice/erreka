@@ -56,7 +56,7 @@ class User implements UserInterface
     private $active;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $mobile;
 

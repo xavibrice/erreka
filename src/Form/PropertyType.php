@@ -34,7 +34,6 @@ use Symfony\Component\Validator\Constraints\DateTime;
 
 class PropertyType extends AbstractType
 {
-
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $roles = $options['role'];
@@ -43,8 +42,15 @@ class PropertyType extends AbstractType
         if ($role == 'ROLE_ADMIN') {
             $builder
                 ->add('commercial', EntityType::class, [
+                    'placeholder' => 'Selecciona un agente',
                     'label' => 'Agente',
                     'class' => User::class,
+                    'query_builder' => function(EntityRepository $er) use ($options) {
+                        return $er->createQueryBuilder('u')
+                            ->andWhere('u.agency = :agency')
+                            ->setParameter('agency', $options['agency'])
+                            ;
+                    }
                 ]);
 
         }

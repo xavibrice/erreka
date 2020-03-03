@@ -258,7 +258,7 @@ class RateHousingType extends AbstractType
                 'placeholder' => 'Selecciona Certificado Energético',
             ])
             ->add('energyConsumption', NumberType::class, [
-                'label' => 'Consumo de energía',
+                'label' => 'Consumo de energía kWh/m2 año',
                 'required' => false
             ])
             ->add('image', FileType::class, [

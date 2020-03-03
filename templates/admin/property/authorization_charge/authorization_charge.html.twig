@@ -1,5 +1,7 @@
 {% extends 'admin/layout.html.twig' %}
 
+{% block title %} Propiedad {% endblock %}
+
 {% block content %}
     {% include 'admin/property/type_property/_tab.html.twig' %}
     <div class="row">
@@ -34,10 +36,10 @@
                         </table>
                     </div>
                 </div>
-{#                <div class="card-footer">#}
-{#                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
+                <div class="card-footer">
+                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
 {#                    {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}#}
-{#                </div>#}
+                </div>
             </div>
         </div>
     </div>

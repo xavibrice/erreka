@@ -128,7 +128,7 @@ class ClientType extends AbstractType
                 'placeholder' => 'Selecciona Zona 3',
             ])
             ->add('commercial', EntityType::class, [
-                'required' => false,
+                'required' => true,
                 'label' => 'Comercial',
                 'class' => User::class,
                 'placeholder' => 'Selecciona un comercial',

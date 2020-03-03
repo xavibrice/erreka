@@ -77,6 +77,7 @@ class UserType extends AbstractType
             ])
             ->add('mobile', TelType::class, [
                 'label' => ' ',
+                'required' => false,
                 'attr' => [
                     'placeholder' => "+34 666 666 666"
                 ]

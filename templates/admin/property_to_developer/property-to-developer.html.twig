@@ -17,11 +17,10 @@
                     <tr>
 {#                        <th>Estado</th>#}
                         <th>Fecha</th>
-                        <th>Asesor</th>
+                        <th>Agente</th>
                         <th>Motivo</th>
                         <th>Tipo Propiedad</th>
                         <th>Zona</th>
-{#                        <th>Asesor</th>#}
 {#                        <th>Situación</th>#}
                         <th>Dirección</th>
 {#                        <th>Portal</th>#}
@@ -54,18 +53,22 @@
                                         {% endif %}
                                     </td>
                                     <td>
+                                        {% if property.street is not empty %}
+                                            {% if property.street.zone is not empty %}
+                                                {{ property.street.zone.name }}
+                                            {% endif %}
+                                        {% endif %}
+
+                                    </td>
+                                    <td>
                                         {% if property.street is not empty and property.street.zone %}
                                             {{ property.street.zone.name }}
                                         {% endif %}
+                                        Nº {{ property.portal }},
+                                        {{ property.floor }}
                                     </td>
                                     {#                                        <td>{{ property.commercial.fullName }}</td>#}
                                     {#                                        <td>{{ situation.name }}</td>#}
-                                    <td>
-                                        {% if property.street is not empty %}
-                                            {{ property.street.name }}
-                                        {% endif %}
-                                    {{ property.portal }}
-                                    {{ property.floor }}</td>
                                     <td>{{ property.fullName }}</td>
                                     <td>{{ property.mobile }}</td>
                                     {#                                        <td>{{ property.price|number_format(2, '.', ',') }} €</td>#}
@@ -76,7 +79,7 @@
                                     {#                                            {% endif %}#}
                                     {#                                        </td>#}
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
-                                        {{ property.comment|slice(0, 50) }}
+                                        {{ property.comment|slice(0, 25) }}
                                     </td>
 {#                                    <td>#}
 {#                                                                                    {{ include('admin/_show_link.html.twig', {'route': 'property_to_developer_show', 'id': property.id }) }}#}

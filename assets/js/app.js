@@ -128,8 +128,8 @@ import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/pu
 $(document).ready(function() {
     $('#dataTableEmpty').DataTable( {
         // "orderSequence": ["desc"],
-        "lengthMenu": [ 10, 15, 25, 50, 100 ],
-        "pageLength": 15,
+        "lengthMenu": [ 15, 19, 25, 50, 100 ],
+        "pageLength": 19,
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
@@ -160,8 +160,8 @@ $(document).ready(function() {
 $(document).ready(function() {
     $('#dataTable').DataTable( {
         // "orderSequence": ["desc"],
-        "lengthMenu": [ 10, 15, 25, 50, 100 ],
-        "pageLength": 15,
+        "lengthMenu": [ 15, 19, 25, 50, 100 ],
+        "pageLength": 19,
         "language": {
             "sProcessing":     "Procesando...",
             "sLengthMenu":     "Mostrar _MENU_ registros",
