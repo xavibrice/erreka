@@ -180,7 +180,10 @@
                                                     <tr>
                                                         <td>{{ propertyReduction.reductionDate|date('d-m-Y') }}</td>
                                                         <td>{{ propertyReduction.price }} €</td>
-                                                        <td>{{ propertyReduction.lastPrice }} €</td>
+                                                        <td>
+{#                                                            {{ propertyReduction.lastPrice }} €#}
+                                                            {{ (propertyReduction.property.charge.price - sumPropertyReduction)|number_format(0, ',', '.') }} €
+                                                        </td>
                                                         <td>{{ propertyReduction.percentage }}%</td>
                                                     </tr>
                                                 {% endfor %}
