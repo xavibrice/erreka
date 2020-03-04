@@ -75,4 +75,23 @@ class ListController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/alquilados", name="list_rented_index")
+     */
+    public function listRented(PropertyRepository $propertyRepository): Response
+    {
+        return $this->render('admin/list/rented.html.twig', [
+            'rented' => $propertyRepository->onlyRented($this->getUser()->getAgency()->getName())
+        ]);
+    }
+
+    /**
+     * @Route("/historico", name="list_historical_index")
+     */
+    public function listHistorical(PropertyRepository $propertyRepository): Response
+    {
+        return $this->render('admin/list/historical.html.twig', [
+            'rented' => $propertyRepository->onlyHistorical($this->getUser()->getAgency()->getName())
+        ]);
+    }
 }

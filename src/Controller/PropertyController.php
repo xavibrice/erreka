@@ -19,6 +19,8 @@ use App\Form\RateHousingType;
 use App\Form\VisitType;
 use App\Repository\PropertyRepository;
 use App\Service\UploaderHelper;
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
 use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -30,6 +32,15 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PropertyController extends AbstractController
 {
+    private const MAX_WIDTH = 800;
+    private const MAX_HEIGHT = 600;
+    private $imagine;
+
+    public function __construct()
+    {
+        $this->imagine = new Imagine();
+    }
+
     /**
      * @Route("/", name="property_index", methods={"GET"})
      */
@@ -107,7 +118,6 @@ class PropertyController extends AbstractController
     public function show(Request $request, Property $property): Response
     {
         $em = $this->getDoctrine()->getManager();
-
 
         $nextCall = $request->get('note_new')['nextCall'];
         $note = $request->get('note_new')['note'];
@@ -378,7 +388,8 @@ class PropertyController extends AbstractController
     public function edit(Request $request, Property $property, UploaderHelper $uploaderHelper): Response
     {
         $form = $this->createForm(PropertyType::class, $property, [
-            'role' => $this->getUser()->getRoles()
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
         ]);
         $form->handleRequest($request);
 

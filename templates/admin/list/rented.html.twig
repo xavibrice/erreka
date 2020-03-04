@@ -1,0 +1,72 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Alquilados{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800">Listado de alquilados</h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Agente</th>
+                        <th>Encargo</th>
+                        <th>Situación</th>
+                        <th>Motivo</th>
+                        <th>Zona</th>
+                        <th>Dirección</th>
+                        <th>Propietario</th>
+                        <th>Precio</th>
+                        <th>D</th>
+                        <th>B</th>
+                        <th>M²</th>
+                        <th>A</th>
+                        <th>Fotos</th>
+                        <th>Comentario</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for rent in rented %}
+                        <tr class="clickable-row" data-href="{{ path('property_rate_housing_new_show', {'id': rent.id }) }}">
+                            <td>{{ rent.rateHousing.visited|date('d/m/Y') }}</td>
+                            <td>{{ rent.commercial.fullName }}</td>
+                            <td>
+                                {% if rent.charge is not empty %}
+                                    {{ rent.charge.chargeType.name }}
+                                {% endif %}
+                            </td>
+                            <td>{{ rent.reason.situation.name }}</td>
+                            <td>{{ rent.reason.name }}</td>
+                            <td>{{ rent.street.zone.name }}</td>
+                            <td>{{ rent.street }}, Nº {{ rent.portal }}, {{ rent.floor }}</td>
+                            <td>{{ rent.fullName }}</td>
+                            <td>{{ rent.price|number_format(0, ',', '.') }}€</td>
+                            <td>{{ rent.rateHousing.bedrooms }}</td>
+                            <td>
+                                {% if rent.rateHousing %}
+                                    {{ rent.rateHousing.bathrooms }}
+                                {% endif %}
+                            </td>
+                            <td>{{ rent.rateHousing.realMeters }}</td>
+                            <td>{{ rent.rateHousing.elevator ? 'Si' : 'No' }}</td>
+                            <td>{{ rent.rateHousing.image.count ? 'Si' : 'No' }}</td>
+                            <td data-toggle="tooltip" data-placement="top" title="{{ rent.rateHousing.comment }}">
+                                {{ rent.rateHousing.comment|slice(0, 25) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}

@@ -27,7 +27,9 @@
                         {#                        <th>Zona</th>#}
                         {#                        <th>Situación</th>#}
                         <th>Precio</th>
-{#                        <th>V</th>#}
+                        <th>Encargo</th>
+
+                            {#                        <th>V</th>#}
                         <th>D</th>
                         <th>B</th>
                         <th>M²</th>
@@ -81,6 +83,13 @@
                                             {{ property.price|number_format(0, ',', '.') }} €
                                         {% endif %}
                                     </td>
+                                    <td>
+                                        {% if property.charge is not empty %}
+                                            {% if property.charge.chargeType is not empty %}
+                                                {{ property.charge.chargeType.name }}
+                                            {% endif %}
+                                        {% endif %}
+                                    </td>
 {#                                    <td>#}
 {#                                        {{ property.rateHousing ? 'Si' : 'No' }}#}
 {#                                    </td>#}
@@ -109,7 +118,9 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        {{ property.nextCall|date('d-m-Y') }}
+                                        {% if property.nextCall is not empty %}
+                                            {{ property.nextCall|date('d-m-Y') }}
+                                        {% endif %}
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
                                         {{ property.comment|slice(0, 25) }}
