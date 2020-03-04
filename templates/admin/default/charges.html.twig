@@ -12,6 +12,7 @@
         </h6>
         {% if charges|length > 0 %}
             {% for charge in charges %}
+{#        <a class="dropdown-item d-flex align-items-center" href="{{ path('property_show', {'id': charge.id, 'idChargeType': charge.charge.chargeType.id}) }}">#}
                 <a class="dropdown-item d-flex align-items-center" href="{{ path('property_show', {'id': charge.id}) }}">
                     <div class="dropdown-list-image mr-3">
                         <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
