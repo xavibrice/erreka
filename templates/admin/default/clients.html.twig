@@ -3,30 +3,30 @@
         {#        <i class="fas fa-book fa-fw"></i>#}
         <strong>E</strong>
         <!-- Counter - Messages -->
-        <span class="badge badge-danger badge-counter">{{ charges|length }}</span>
+        <span class="badge badge-danger badge-counter">{{ clients|length }}</span>
     </a>
     <!-- Dropdown - Messages -->
     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
         <h6 class="dropdown-header">
-            Encargos
+            Clientes
         </h6>
-        {% if charges|length > 0 %}
-            {% for charge in charges %}
-                <a class="dropdown-item d-flex align-items-center" href="{{ path('property_charge', {'id': charge.id, 'idChargeType': charge.charge.chargeType.id}) }}">
+        {% if clients|length > 0 %}
+            {% for client in clients %}
+                <a class="dropdown-item d-flex align-items-center" href="{{ path('client_edit', {'id': client.id}) }}">
                     <div class="dropdown-list-image mr-3">
                         <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
                         <div class="status-indicator bg-success"></div>
                     </div>
                     <div class="font-weight-bold">
-                        <div class="text-truncate">{{ charge.fullname }}</div>
-                        <div class="small text-gray-500">{{ charge.street.name }} Nº {{ charge.portal }}, {{ charge.floor }}</div>
+                        <div class="text-truncate">{{ client.fullname }}</div>
+                        <div class="small text-gray-500">{{ client.id }}</div>
                     </div>
                 </a>
             {% endfor %}
-            <a class="dropdown-item text-center small text-gray-500" href="#">ver mas</a>
+{#            <a class="dropdown-item text-center small text-gray-500" href="#">ver mas</a>#}
 
         {% else %}
-            <p class="mt-2 text-center small text-gray-500">No hay encargos</p>
+            <p class="mt-2 text-center small text-gray-500">No hay clientes</p>
         {% endif %}
 
 

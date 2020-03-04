@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\ClientRepository;
 use App\Repository\NoteCommercialRepository;
 use App\Repository\NoteNewRepository;
 use App\Repository\PropertyRepository;
@@ -63,10 +64,10 @@ class DefaultController extends AbstractController
     /**
      * @Route("/alerts/clients", name="alerts_clients", methods={"GET"})
      */
-    public function clients(PropertyRepository $propertyRepository): Response
+    public function clients(ClientRepository $clientRepository): Response
     {
         return $this->render('admin/default/clients.html.twig', [
-            'charges' => $propertyRepository->alertsOnlyClients($this->getUser())
+            'clients' => $clientRepository->alertsOnlyClients($this->getUser())
         ]);
     }
 }

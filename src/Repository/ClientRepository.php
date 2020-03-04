@@ -56,4 +56,14 @@ class ClientRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    public function alertsOnlyClients($getUser)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.commercial = :agent')
+            ->setParameter('agent', $getUser)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
