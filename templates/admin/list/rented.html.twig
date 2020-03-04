@@ -31,7 +31,7 @@
                     </thead>
                     <tbody>
                     {% for rent in rented %}
-                        <tr class="clickable-row" data-href="{{ path('property_rate_housing_new_show', {'id': rent.id }) }}">
+                        <tr class="clickable-row" data-href="{{ path('property_show', {'id': rent.id }) }}">
                             <td>{{ rent.created|date('d/m/Y') }}</td>
                             <td>{{ rent.commercial.fullName }}</td>
                             <td>
