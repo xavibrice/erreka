@@ -59,6 +59,8 @@ class ClientRepository extends ServiceEntityRepository
 
     public function alertsOnlyClients($getUser)
     {
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d');
         return $this->createQueryBuilder('c')
             ->andWhere('c.commercial = :agent')
             ->setParameter('agent', $getUser)
