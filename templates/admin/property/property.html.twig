@@ -118,8 +118,8 @@
                                         {% endif %}
                                     </td>
                                     <td>
-                                        {% if property.nextCall is not empty %}
-                                            {{ property.nextCall|date('d-m-Y') }}
+                                        {% if property.noteNew is not empty %}
+                                            {{ property.noteNew.last.noticeDate|date('d-m-Y') }}
                                         {% endif %}
                                     </td>
                                     <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
