@@ -34,8 +34,7 @@
                     <tbody>
                     {% for authorization in authorizations %}
 
-{#                                    <tr class="clickable-row" data-href="{{ path('property_charge', {'id': authorization.id, 'idChargeType': authorization.charge.chargeType.id}) }}">#}
-                                    <tr class="clickable-row" data-href="{{ path('property_show', {'id': authorization.id }) }}">
+                                    <tr class="clickable-row" data-href="{{ path('property_charge', {'id': authorization.id, 'idChargeType': authorization.charge.chargeType.id}) }}">
                                     <td>{{ authorization.reference }}</td>
                                     <td>{{ authorization.commercial.fullName }}</td>
                                     <td>{{ authorization.street.name }}</td>
