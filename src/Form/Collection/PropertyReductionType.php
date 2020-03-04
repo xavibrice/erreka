@@ -15,7 +15,7 @@ class PropertyReductionType extends AbstractType
     {
         $builder
             ->add('price', MoneyType::class, [
-                'label' => 'Precio'
+                'label' => 'Importe rebajado'
             ])
             ->add('reductionDate', DatePickerType::class, [
                 'label' => 'Fecha de rebaja',
