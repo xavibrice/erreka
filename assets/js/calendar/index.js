@@ -62,7 +62,7 @@ $(document).ready(function(){
             // alert('selected ' + info.startStr + ' to ' + info.endStr);
             let start = calendar.formatDate(info.startStr, "DD-MM-YYYYTHH:mm:ss");
             let end = calendar.formatDate(info.endStr, "DD-MM-YYYYTHH:mm:ss");
-            $("#titleEventAdd").html('Crear nota');
+            $("#titleEventAdd").html('Crear recado');
             $("#booking_beginAt").val(start);
             $("#booking_endAt").val(end);
             $("#addEventModal").modal();
