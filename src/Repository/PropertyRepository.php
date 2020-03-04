@@ -274,4 +274,34 @@ class PropertyRepository extends ServiceEntityRepository
             ->getResult()
             ;
     }
+
+    public function onlyRented($getAgency)
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.commercial', 'c')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('c.agency', 'a')
+            ->andWhere('a.name = :agency')
+            ->andWhere('r.name = :reason')
+            ->setParameter('agency', $getAgency)
+            ->setParameter('reason', 'alquilado')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function onlyHistorical($getAgency)
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.commercial', 'c')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('c.agency', 'a')
+            ->andWhere('a.name = :agency')
+            ->andWhere('r.name = :reason')
+            ->setParameter('agency', $getAgency)
+            ->setParameter('reason', 'eliminado')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 }
