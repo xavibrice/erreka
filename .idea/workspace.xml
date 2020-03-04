@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/NoteCommercialType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/NoteCommercialType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/note_commercial/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/note_commercial/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/visit/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/visit/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -403,7 +405,7 @@
       <workItem from="1582540115972" duration="4064000" />
       <workItem from="1582619852267" duration="42955000" />
       <workItem from="1583309610275" duration="13107000" />
-      <workItem from="1583339190052" duration="1087000" />
+      <workItem from="1583339190052" duration="1621000" />
     </task>
     <servers />
   </component>
@@ -466,10 +468,10 @@
     </state>
     <state x="108" y="167" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582307168855" />
     <state x="144" y="167" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1579265255255" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1583332138453">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1583341243789">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1792.1120@0.0.1792.1120" timestamp="1583332138453" />
+    <state width="500" height="445" key="SwitcherDM/0.0.1792.1120@0.0.1792.1120" timestamp="1583341243789" />
     <state x="411" y="393" key="com.intellij.ide.util.TipDialog" timestamp="1583339190164">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

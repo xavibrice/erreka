@@ -35,7 +35,7 @@ class NoteCommercialType extends AbstractType
                 ],
             ])
             ->add('commercial', EntityType::class, [
-                'label' => "Selecciona un Comercial",
+                'label' => "Selecciona un agente",
                 'class' => User::class,
                 'placeholder' => "Selecciona un comercial",
                 'query_builder' => function(EntityRepository $er) {

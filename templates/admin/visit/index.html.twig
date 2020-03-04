@@ -1,39 +1,50 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}Visit index{% endblock %}
+{% block title %} Listado Visitas {% endblock %}
 
 {% block content %}
-    <h1>Visit index</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado visitas</h1>
 
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Visited</th>
-                <th>Price</th>
-                <th>Comment</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for visit in visits %}
-            <tr>
-                <td>{{ visit.id }}</td>
-                <td>{{ visit.visited ? visit.visited|date('Y-m-d') : '' }}</td>
-                <td>{{ visit.price }}</td>
-                <td>{{ visit.comment }}</td>
-                <td>
-                    <a href="{{ path('visit_show', {'id': visit.id}) }}">show</a>
-                    <a href="{{ path('visit_edit', {'id': visit.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="5">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>Visita</th>
+                        <th>Precio</th>
+                        <th>Comentario</th>
+                        <th>Acciones</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for visit in visits %}
+                        <tr>
+                            <td>{{ visit.id }}</td>
+                            <td>{{ visit.visited ? visit.visited|date('Y-m-d') : '' }}</td>
+                            <td>{{ visit.price }}</td>
+                            <td>{{ visit.comment }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ path('visit_show', {'id': visit.id}) }}">Ver</a>
+                                <a class="btn btn-info" href="{{ path('visit_edit', {'id': visit.id}) }}">Editar</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
-    <a href="{{ path('visit_new') }}">Create new</a>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
 {% endblock %}
