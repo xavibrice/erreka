@@ -50,9 +50,9 @@ class BookingType extends AbstractType
                 'label' => 'Descripción'
             ])
             ->add('commercial', EntityType::class, [
-                'label' => "Selecciona un agente",
+                'label' => "Selecciona agente",
                 'class' => User::class,
-                'placeholder' => "Selecciona un agente",
+                'placeholder' => "Selecciona agente",
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('u')
                         ->innerJoin('u.agency', 'a')
