@@ -21,7 +21,7 @@
                         <th>Fecha E</th>
                         <th>Fecha C</th>
                         <th>Precio Enc.</th>
-                        <th>PrecioHoy</th>
+                        <th>Precio Actual</th>
                         <th>Precio OK</th>
                         <th>Visitas</th>
                         <th>% Caro</th>
@@ -53,7 +53,7 @@
 {#                                        {% endif %}#}
 {#                                    </td>#}
                                         <td>{{ authorization.charge.price|number_format(0, ',', '.') }} €</td>
-                                        <td>{{ authorization.charge.price }} €</td>
+                                        <td>{{ authorization.charge.price }} € -</td>
                                         <td>{{ authorization.charge.priceOk|number_format(0, ',', '.') }} €</td>
                                         <td>{{ authorization.visits.count }}</td>
                                         <td></td>

@@ -24,13 +24,6 @@ class PropertyReductionType extends AbstractType
                     'class' => 'js-datepicker',
                 ],
             ])
-            ->add('reductionNextDate', DatePickerType::class, [
-                'label' => 'Fecha próxima rebaja',
-                'required' => false,
-                'attr' => [
-                    'class' => 'js-datepicker-empty',
-                ],
-            ])
         ;
     }
 

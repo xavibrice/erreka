@@ -32,11 +32,6 @@ class PropertyReduction
     private $reduction_date;
 
     /**
-     * @ORM\Column(type="date", nullable=true)
-     */
-    private $reduction_next_date;
-
-    /**
      * @ORM\Column(type="decimal", precision=10, scale=0)
      */
     private $last_price;
@@ -89,18 +84,6 @@ class PropertyReduction
     public function setReductionDate(\DateTimeInterface $reduction_date): self
     {
         $this->reduction_date = $reduction_date;
-
-        return $this;
-    }
-
-    public function getReductionNextDate(): ?\DateTimeInterface
-    {
-        return $this->reduction_next_date;
-    }
-
-    public function setReductionNextDate(?\DateTimeInterface $reduction_next_date): self
-    {
-        $this->reduction_next_date = $reduction_next_date;
 
         return $this;
     }
