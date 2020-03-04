@@ -22,7 +22,6 @@
                     <tbody>
                     {% for visit in visits %}
                         <tr>
-                            <td>{{ visit.id }}</td>
                             <td>{{ visit.visited ? visit.visited|date('Y-m-d') : '' }}</td>
                             <td>{{ visit.price }}</td>
                             <td>{{ visit.comment }}</td>
