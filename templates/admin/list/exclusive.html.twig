@@ -56,11 +56,14 @@
                                         {% endif %}
                                     </td>
                                     <td>
+                                        {% set sum = 0 %}
+
                                         {% if exclusive.propertyReductions is defined %}
                                             {% if exclusive.propertyReductions.count > 0 %}
                                                 {% for reduction in exclusive.propertyReductions  %}
-                                                    {{ reduction.price }}
+                                                    {% set sum = sum + reduction.price %}
                                                 {% endfor %}
+                                                {{ sum }}
                                             {% endif %}
                                         {% endif %}
                                     </td>
