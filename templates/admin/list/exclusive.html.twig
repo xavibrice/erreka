@@ -63,7 +63,7 @@
                                                 {% for reduction in exclusive.propertyReductions  %}
                                                     {% set sum = sum + reduction.price %}
                                                 {% endfor %}
-                                                {{ sum / exclusive.charge.price * 100|number_format(0, ',', '.') }} %
+                                                {{ sum / exclusive.charge.price * 100|number_format(2, ',', '.') }} %
                                             {% endif %}
                                         {% endif %}
                                     </td>
