@@ -183,7 +183,10 @@
 {#                                                            {{ propertyReduction.lastPrice }} €#}
                                                             {{ (propertyReduction.property.charge.price - sumPropertyReduction)|number_format(0, ',', '.') }} €
                                                         </td>
-                                                        <td>{{ propertyReduction.percentage }}%</td>
+                                                        <td>
+                                                            {{ propertyReduction.price % (propertyReduction.property.charge.price - sumPropertyReduction)|number_format(0, ',', '.') * 100 }} %
+{#                                                            {{ propertyReduction.percentage }}%#}
+                                                        </td>
                                                     </tr>
                                                 {% endfor %}
                                             </tbody>
