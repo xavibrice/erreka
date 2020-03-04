@@ -38,7 +38,10 @@ class ClientController extends AbstractController
     public function new(Request $request): Response
     {
         $client = new Client();
-        $form = $this->createForm(ClientType::class, $client);
+        $form = $this->createForm(ClientType::class, $client, [
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -58,7 +61,10 @@ class ClientController extends AbstractController
     public function newForm(): Response
     {
         $client = new Client();
-        $form = $this->createForm(ClientType::class, $client);
+        $form = $this->createForm(ClientType::class, $client, [
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
+        ]);
 
         return $this->render('admin/client/_new.html.twig', [
             'form' => $form->createView()
@@ -298,7 +304,10 @@ class ClientController extends AbstractController
      */
     public function edit(Request $request, Client $client): Response
     {
-        $form = $this->createForm(ClientType::class, $client);
+        $form = $this->createForm(ClientType::class, $client, [
+            'role' => $this->getUser()->getRoles(),
+            'agency' => $this->getUser()->getAgency(),
+        ]);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

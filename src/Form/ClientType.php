@@ -129,9 +129,15 @@ class ClientType extends AbstractType
             ])
             ->add('commercial', EntityType::class, [
                 'required' => true,
-                'label' => 'Comercial',
+                'label' => 'Agente',
                 'class' => User::class,
                 'placeholder' => 'Selecciona un comercial',
+                'query_builder' => function(EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('u')
+                        ->andWhere('u.agency = :agency')
+                        ->setParameter('agency', $options['agency'])
+                        ;
+                }
             ])
             ->add('typeProperty', EntityType::class, [
                 'label' => 'Tipo Propiedad',
@@ -166,6 +172,8 @@ class ClientType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Client::class,
+            'role' => null,
+            'agency' => null,
         ]);
     }
 }
