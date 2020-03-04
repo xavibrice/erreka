@@ -75,7 +75,9 @@
                                 {% endif %}
                             </td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ rent.rateHousing.comment }}">
-                                {{ rent.rateHousing.comment|slice(0, 25) }}
+                                {% if rent.rateHousing is not empty %}
+                                    {{ rent.rateHousing.comment|slice(0, 25) }}
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
