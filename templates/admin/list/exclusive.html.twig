@@ -55,7 +55,15 @@
                                             {% endif %}
                                         {% endif %}
                                     </td>
-                                    <td></td>
+                                    <td>
+                                        {% if exclusive.propertyReductions is defined %}
+                                            {% if exclusive.propertyReductions.count > 0 %}
+                                                {% for reduction in exclusive.propertyReductions  %}
+                                                    {{ reduction.price }}
+                                                {% endfor %}
+                                            {% endif %}
+                                        {% endif %}
+                                    </td>
                                 </tr>
                     {% endfor %}
                     </tbody>
