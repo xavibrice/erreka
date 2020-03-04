@@ -16,7 +16,7 @@
                         <th>Visita</th>
                         <th>Precio</th>
                         <th>Comentario</th>
-                        <th>Acciones</th>
+{#                        <th>Acciones</th>#}
                     </tr>
                     </thead>
                     <tbody>
@@ -26,10 +26,10 @@
                             <td>{{ visit.visited ? visit.visited|date('Y-m-d') : '' }}</td>
                             <td>{{ visit.price }}</td>
                             <td>{{ visit.comment }}</td>
-                            <td>
+{#                            <td>
                                 <a class="btn btn-primary" href="{{ path('visit_show', {'id': visit.id}) }}">Ver</a>
                                 <a class="btn btn-info" href="{{ path('visit_edit', {'id': visit.id}) }}">Editar</a>
-                            </td>
+                            </td>#}
                         </tr>
                     {% else %}
                         <tr>
