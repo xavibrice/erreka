@@ -57,7 +57,13 @@ class PropertyToDeveloperType extends AbstractType
             'label' => 'Zona',
             'class' => Zone::class,
             'placeholder' => 'Selecciona una zona',
-            'mapped' => false
+            'mapped' => false,
+            'query_builder' => function(EntityRepository $er) use ($options) {
+                return $er->createQueryBuilder('z')
+                    ->andWhere('z.agency = :agency')
+                    ->setParameter('agency', $options['agency'])
+                    ;
+            }
         ]);
 
         $builder->get('zone')->addEventListener(
