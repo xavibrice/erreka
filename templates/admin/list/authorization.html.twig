@@ -14,16 +14,15 @@
                     <tr>
                         <th>Ref.</th>
                         <th>Agente</th>
-                        <th>Calle</th>
-                        <th>Nº</th>
-                        <th>Piso</th>
+                        <th>Zona</th>
+                        <th>Dirección</th>
                         <th>Propietario</th>
                         <th>Móvil</th>
                         <th>Fecha E</th>
                         <th>Fecha C</th>
-                        <th>P Enc.</th>
-                        <th>P Actual</th>
-                        <th>P OK</th>
+                        <th>Precio Enc.</th>
+                        <th>PrecioHoy</th>
+                        <th>Precio OK</th>
                         <th>Visitas</th>
                         <th>% Caro</th>
                         <th>Rebaj.</th>
@@ -37,9 +36,8 @@
                                     <tr class="clickable-row" data-href="{{ path('property_charge', {'id': authorization.id, 'idChargeType': authorization.charge.chargeType.id}) }}">
                                     <td>{{ authorization.reference }}</td>
                                     <td>{{ authorization.commercial.fullName }}</td>
-                                    <td>{{ authorization.street.name }}</td>
-                                    <td>{{ authorization.portal }}</td>
-                                    <td>{{ authorization.floor }}</td>
+                                    <td>{{ authorization.street.zone.name }}</td>
+                                    <td>{{ authorization.street.name }}, Nº {{ exclusive.portal }}, {{ exclusive.floor }}</td>
                                     <td>{{ authorization.fullName }}</td>
                                     <td>{{ authorization.mobile }}</td>
                                     <td>{{ authorization.charge.startDate|date('d/m/Y') }}</td>
@@ -55,7 +53,7 @@
 {#                                        {% endif %}#}
 {#                                    </td>#}
                                         <td>{{ authorization.charge.price|number_format(0, ',', '.') }} €</td>
-                                        <td>{{ authorization.charge.price }} € - </td>
+                                        <td>{{ authorization.charge.price }} €</td>
                                         <td>{{ authorization.charge.priceOk|number_format(0, ',', '.') }} €</td>
                                         <td>{{ authorization.visits.count }}</td>
                                         <td></td>
