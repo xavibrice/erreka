@@ -33,7 +33,7 @@
                     {% for rent in rented %}
                         <tr class="clickable-row" data-href="{{ path('property_rate_housing_new_show', {'id': rent.id }) }}">
                             <td>
-                                {% if rate.rateHousing is not empty %}
+                                {% if rent.rateHousing is not empty %}
                                     {{ rent.rateHousing.visited|date('d/m/Y') }}
                                 {% endif %}
                             </td>
