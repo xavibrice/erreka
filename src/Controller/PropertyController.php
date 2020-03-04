@@ -32,15 +32,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PropertyController extends AbstractController
 {
-    private const MAX_WIDTH = 800;
-    private const MAX_HEIGHT = 600;
-    private $imagine;
-
-    public function __construct()
-    {
-        $this->imagine = new Imagine();
-    }
-
     /**
      * @Route("/", name="property_index", methods={"GET"})
      */
@@ -385,7 +376,7 @@ class PropertyController extends AbstractController
     /**
      * @Route("/{id}/editar", name="property_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Property $property, UploaderHelper $uploaderHelper): Response
+    public function edit(Request $request, Property $property): Response
     {
         $form = $this->createForm(PropertyType::class, $property, [
             'role' => $this->getUser()->getRoles(),
@@ -394,9 +385,9 @@ class PropertyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-
             $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Noticia editada correctamente');
 
             return $this->redirectToRoute('property_show', [
                 'id' => $property->getId(),

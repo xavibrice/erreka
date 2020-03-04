@@ -16,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class PropertyToDeveloperController extends AbstractController
 {
-
     /**
      * @Route("/", name="property_to_developer_index", methods={"GET"})
      */
