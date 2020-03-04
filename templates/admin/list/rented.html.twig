@@ -49,15 +49,31 @@
                             <td>{{ rent.street }}, Nº {{ rent.portal }}, {{ rent.floor }}</td>
                             <td>{{ rent.fullName }}</td>
                             <td>{{ rent.price|number_format(0, ',', '.') }}€</td>
-                            <td>{{ rent.rateHousing.bedrooms }}</td>
+                            <td>
+                                {% if rent.rateHousing is not empty %}
+                                    {{ rent.rateHousing.bedrooms }}
+                                {% endif %}
+                            </td>
                             <td>
                                 {% if rent.rateHousing %}
                                     {{ rent.rateHousing.bathrooms }}
                                 {% endif %}
                             </td>
-                            <td>{{ rent.rateHousing.realMeters }}</td>
-                            <td>{{ rent.rateHousing.elevator ? 'Si' : 'No' }}</td>
-                            <td>{{ rent.rateHousing.image.count ? 'Si' : 'No' }}</td>
+                            <td>
+                                {% if rent.rateHousing is not empty %}
+                                    {{ rent.rateHousing.realMeters }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if rent.rateHousing is not empty %}
+                                    {{ rent.rateHousing.elevator ? 'Si' : 'No' }}
+                                {% endif %}
+                            </td>
+                            <td>
+                                {% if rent.rateHousing is not empty %}
+                                    {{ rent.rateHousing.image.count ? 'Si' : 'No' }}
+                                {% endif %}
+                            </td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ rent.rateHousing.comment }}">
                                 {{ rent.rateHousing.comment|slice(0, 25) }}
                             </td>
