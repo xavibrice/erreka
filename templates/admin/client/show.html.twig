@@ -167,10 +167,12 @@
                                         </thead>
                                         <tbody>
                                             {% for noteclient in client.noteClients %}
-                                                <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
-                                                <td data-toggle="tooltip" data-placement="top" title="{{ noteclient.comment }}">
-                                                    {{ noteclient.comment|slice(0, 25) }}
-                                                </td>
+                                                <tr>
+                                                    <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
+                                                    <td data-toggle="tooltip" data-placement="top" title="{{ noteclient.comment }}">
+                                                        {{ noteclient.comment|slice(0, 25) }}
+                                                    </td>
+                                                </tr>
                                             {% endfor %}
                                         </tbody>
                                     </table>
