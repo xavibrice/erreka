@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\NoteCommercial;
 use App\Entity\User;
+use App\Form\Type\DatePickerType;
 use App\Form\Type\DateTimePickerType;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -24,7 +25,7 @@ class NoteCommercialType extends AbstractType
             ->add('note', TextareaType::class, [
                 'label' => 'Nota'
             ])
-            ->add('notice_date', DateTimePickerType::class, [
+            ->add('notice_date', DatePickerType::class, [
                 'label' => 'Selecciona Fecha',
                 'data' => new \DateTime(),
 //                'widget' => 'single_text',

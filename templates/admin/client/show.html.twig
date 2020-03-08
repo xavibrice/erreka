@@ -191,21 +191,35 @@
         </div>
         <div class="col-md-8 mb-4">
             <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
-                {% for visit in client.visits|reverse %}
+
                     <div class="col-md-12 mb-4">
                         <div class="card border-left-info shadow h-100 py-2">
                             <div class="card-body">
-                                {{ visit.visited|date('d/m/Y')}} -
-                                {{ visit.price|number_format(0, ',', '.') }}€
-                                {{ visit.comment }}
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th>Fecha de rebaja</th>
+                                            <th>Importe rebajado</th>
+                                            <th>Último precio</th>
+                                            <th>Porcentaje</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for visit in client.visits|reverse %}
+                                            <tr>
+                                                <td>{{ visit.visited|date('d/m/Y')}}</td>
+                                                <td>{{ visit.property.street.zone.name }} {{ visit.property.portal }}, {{ visit.property.floor }}</td>
+                                                <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
+                                                <td>{{ visit.comment }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
-                {% else %}
-                    <div class="alert alert-info">
-                        No hay visitas
-                    </div>
-                {% endfor %}
             </div>
         </div>
     </div>
