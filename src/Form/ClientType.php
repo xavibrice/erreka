@@ -127,6 +127,12 @@ class ClientType extends AbstractType
                 'class' => Zone::class,
                 'placeholder' => 'Selecciona Zona 3',
             ])
+            ->add('zone_four', EntityType::class, [
+                'label' => 'Zona 4',
+                'required' => false,
+                'class' => Zone::class,
+                'placeholder' => 'Selecciona Zona 4',
+            ])
             ->add('commercial', EntityType::class, [
                 'required' => true,
                 'label' => 'Agente',

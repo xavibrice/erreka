@@ -49,6 +49,11 @@ class Zone
      */
     private $clientsThree;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Client", mappedBy="zone_four")
+     */
+    private $clients;
+
 
     public function __construct()
     {
@@ -56,6 +61,7 @@ class Zone
         $this->clientsOne = new ArrayCollection();
         $this->clientsTwo = new ArrayCollection();
         $this->clientsThree = new ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -211,6 +217,37 @@ class Zone
             // set the owning side to null (unless already changed)
             if ($clientsThree->getZoneThree() === $this) {
                 $clientsThree->setZoneThree(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Client[]
+     */
+    public function getClients(): Collection
+    {
+        return $this->clients;
+    }
+
+    public function addClient(Client $client): self
+    {
+        if (!$this->clients->contains($client)) {
+            $this->clients[] = $client;
+            $client->setZoneFour($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Client $client): self
+    {
+        if ($this->clients->contains($client)) {
+            $this->clients->removeElement($client);
+            // set the owning side to null (unless already changed)
+            if ($client->getZoneFour() === $this) {
+                $client->setZoneFour(null);
             }
         }
 

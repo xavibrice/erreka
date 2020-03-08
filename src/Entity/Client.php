@@ -171,6 +171,16 @@ class Client
      */
     private $noteClients;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Zone", inversedBy="clients")
+     */
+    private $zone_four;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $nextCall;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
@@ -622,6 +632,30 @@ class Client
                 $noteClient->setClient(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getZoneFour(): ?Zone
+    {
+        return $this->zone_four;
+    }
+
+    public function setZoneFour(?Zone $zone_four): self
+    {
+        $this->zone_four = $zone_four;
+
+        return $this;
+    }
+
+    public function getNextCall(): ?\DateTimeInterface
+    {
+        return $this->nextCall;
+    }
+
+    public function setNextCall(?\DateTimeInterface $nextCall): self
+    {
+        $this->nextCall = $nextCall;
 
         return $this;
     }

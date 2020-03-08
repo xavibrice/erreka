@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\NoteClient;
+use App\Form\Type\DatePickerType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -12,9 +13,21 @@ class NoteClientType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+
+        $nextCall = $options['nextCall'];
+
         $builder
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario'
+            ])
+            ->add('nextCall', DatePickerType::class, [
+                'required' => false,
+                'mapped' => false,
+                'data' => $nextCall,
+                'label' => 'Próxima Llamada',
+                'attr' => [
+                    'class' => 'js-datepicker-empty',
+                ]
             ])
 //            ->add('created')
 //            ->add('client')
@@ -25,6 +38,7 @@ class NoteClientType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => NoteClient::class,
+            'nextCall' => null,
         ]);
     }
 }

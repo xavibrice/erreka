@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Client;
 use App\Entity\NoteClient;
+use App\Entity\NoteNew;
 use App\Entity\Property;
 use App\Entity\RateHousing;
 use App\Entity\Visit;
@@ -181,7 +182,7 @@ class ClientController extends AbstractController
             }
             if ($client->getBedrooms()->getName() == "+3") {
                 $queryBuilder
-                    ->andWhere('rh.bedrooms > :start')
+                    ->andWhere('rh.bedrooms >= :start')
                     ->setParameter('start', 3)
                 ;
             }
@@ -206,6 +207,13 @@ class ClientController extends AbstractController
                 $queryBuilder
                     ->orWhere('z.name = :zoneThree')
                     ->setParameter('zoneThree', $client->getZoneThree()->getName())
+                ;
+            }
+
+            if ($client->getZoneFour()) {
+                $queryBuilder
+                    ->orWhere('z.name = :zoneFour')
+                    ->setParameter('zoneFour', $client->getZoneFour()->getName())
                 ;
             }
         }
@@ -274,10 +282,30 @@ class ClientController extends AbstractController
             ]);
         }
 
+
+        $nextCall = $request->get('note_client')['nextCall'];
+        if ($request->isMethod('POST')) {
+
+            if ($nextCall) {
+                $client->setNextCall(new \DateTime($nextCall));
+                $em->persist($client);
+                $em->flush();
+            }
+
+            if ($nextCall == null) {
+                $client->setNextCall(null);
+                $em->persist($client);
+                $em->flush();
+            }
+        }
+
+
         $noteClient = new NoteClient();
         $noteClient->setCreated(new \DateTime());
         $noteClient->setClient($client);
-        $formNoteClient = $this->createForm(NoteClientType::class, $noteClient);
+        $formNoteClient = $this->createForm(NoteClientType::class, $noteClient, [
+            'nextCall' => $client->getNextCall()
+        ]);
         $formNoteClient->handleRequest($request);
 
         if ($formNoteClient->isSubmitted() && $formNoteClient->isValid()) {

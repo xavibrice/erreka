@@ -34,7 +34,7 @@
                         <th>M²</th>
 {#                        <th>Calefacción</th>#}
                         <th>Asc</th>
-                        <th>Ofre.</th>
+{#                        <th>Ofre.</th>#}
                         <th>Visit.</th>
                         <th>Comentario vivienda</th>
                         <th>Fotos</th>
@@ -54,9 +54,9 @@
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>
 {#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
                             <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
-                            <td>
+{#                            <td>
                                 {% if possibleVisit.offereds is not empty %}
-{#                                    <a class="btn btn-success" href="{{ path('offered_delete', {'id': possibleVisit.offereds.first.id, 'idClient': client.id }) }}">Si</a>#}
+#}{#                                    <a class="btn btn-success" href="{{ path('offered_delete', {'id': possibleVisit.offereds.first.id, 'idClient': client.id }) }}">Si</a>#}{#
                                     {% for offerp in possibleVisit.offereds %}
                                         {% for offerc in client.offereds %}
                                             {% if offerc.client.id == client.id and offerp.property.id == possibleVisit.id %}
@@ -67,8 +67,8 @@
                                 {% else %}
                                     <a class="btn btn-danger" href="{{ path('offered_new', {'idClient': client.id, 'idProperty': possibleVisit.id }) }}">No</a>
                                 {% endif %}
-{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}
-                            </td>
+#}{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}{#
+                            </td>#}
                             <td>{{ possibleVisit.visits|length }}</td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
                             <td>

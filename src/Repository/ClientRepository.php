@@ -63,7 +63,9 @@ class ClientRepository extends ServiceEntityRepository
         $date = $datetime->format('Y-m-d');
         return $this->createQueryBuilder('c')
             ->andWhere('c.commercial = :agent')
+            ->andWhere('c.nextCall <= :nextCalll')
             ->setParameter('agent', $getUser)
+            ->setParameter('nextCalll', $date)
             ->getQuery()
             ->getResult()
             ;

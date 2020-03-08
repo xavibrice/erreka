@@ -31,43 +31,42 @@
                         </tr>
                     </thead>
                     <tbody>
-
                     {% for exclusive in exclusives %}
-                                    <tr class="clickable-row" data-href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">
-                                    <td>{{ exclusive.reference }}</td>
-                                    <td>{{ exclusive.commercial.fullName }}</td>
-                                    <td>{{ exclusive.street.zone.name }}</td>
-                                    <td>{{ exclusive.street.name }}, Nº {{ exclusive.portal }}, {{ exclusive.floor }}</td>
-                                    <td>{{ exclusive.fullName }}</td>
-                                    <td>{{ exclusive.mobile }}</td>
-                                    <td>{{ exclusive.charge.startDate|date('d/m/Y') }}</td>
-                                    <td>{{ exclusive.charge.endDate|date('d/m/Y') }}</td>
-                                    <td>{{ exclusive.charge.price|number_format(0, ',', '.') }}€</td>
-                                    <td>{{ exclusive.charge.price }}€ - </td>
-                                    <td>{{ exclusive.charge.priceOk|number_format(0, ',', '.') }}€</td>
-                                    <td>{{ exclusive.visits.count }}</td>
-                                    <td></td>
-                                    <td>{{ exclusive.propertyReductions.count }}</td>
-                                    <td>
-                                        {% if exclusive.propertyReductions is defined %}
-                                            {% if exclusive.propertyReductions.count > 0 %}
-                                                {{ exclusive.propertyReductions.last.price|number_format(0, ',', '.') }} €
-                                            {% endif %}
-                                        {% endif %}
-                                    </td>
-                                    <td>
-                                        {% set sum = 0 %}
+                        <tr class="clickable-row" data-href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">
+                        <td>{{ exclusive.reference }}</td>
+                        <td>{{ exclusive.commercial.fullName }}</td>
+                        <td>{{ exclusive.street.zone.name }}</td>
+                        <td>{{ exclusive.street.name }}, Nº {{ exclusive.portal }}, {{ exclusive.floor }}</td>
+                        <td>{{ exclusive.fullName }}</td>
+                        <td>{{ exclusive.mobile }}</td>
+                        <td>{{ exclusive.charge.startDate|date('d/m/Y') }}</td>
+                        <td>{{ exclusive.charge.endDate|date('d/m/Y') }}</td>
+                        <td>{{ exclusive.charge.price|number_format(0, ',', '.') }}€</td>
+                        <td>{{ exclusive.charge.price }}€ - </td>
+                        <td>{{ exclusive.charge.priceOk|number_format(0, ',', '.') }}€</td>
+                        <td>{{ exclusive.visits.count }}</td>
+                        <td></td>
+                        <td>{{ exclusive.propertyReductions.count }}</td>
+                        <td>
+                            {% if exclusive.propertyReductions is defined %}
+                                {% if exclusive.propertyReductions.count > 0 %}
+                                    {{ exclusive.propertyReductions.last.price|number_format(0, ',', '.') }} €
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% set sum = 0 %}
 
-                                        {% if exclusive.propertyReductions is defined %}
-                                            {% if exclusive.propertyReductions.count > 0 %}
-                                                {% for reduction in exclusive.propertyReductions  %}
-                                                    {% set sum = sum + reduction.price %}
-                                                {% endfor %}
-                                                {{ sum / exclusive.charge.price * 100|number_format(0, ',', '.') }} %
-                                            {% endif %}
-                                        {% endif %}
-                                    </td>
-                                </tr>
+                            {% if exclusive.propertyReductions is defined %}
+                                {% if exclusive.propertyReductions.count > 0 %}
+                                    {% for reduction in exclusive.propertyReductions  %}
+                                        {% set sum = sum + reduction.price %}
+                                    {% endfor %}
+                                    {{ sum / exclusive.charge.price * 100|number_format(0, ',', '.') }} %
+                                {% endif %}
+                            {% endif %}
+                        </td>
+                    </tr>
                     {% endfor %}
                     </tbody>
                 </table>

@@ -115,7 +115,6 @@ class PropertyController extends AbstractController
         $date = $request->get('note_new')['notice_date'];
 
         if ($request->isMethod('POST')){
-
             if($nextCall) {
                 $property->setNextCall(new \DateTime($nextCall));
                 $em->persist($property);
@@ -137,7 +136,6 @@ class PropertyController extends AbstractController
                 $em->persist($noteNew);
                 $em->flush();
             }
-
         }
 
         $noteProperty = new NoteNew();
