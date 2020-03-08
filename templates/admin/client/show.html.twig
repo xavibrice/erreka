@@ -95,7 +95,7 @@
                             </tr>
                             <tr>
                                 <th class="text-right">Precio</th>
-                                <td>{{ client.price }} €</td>
+                                <td>{{ client.price|number_format(0, ',', '.') }}€</td>
                             </tr>
                             <tr>
                                 <th class="text-right">Zonas</th>
