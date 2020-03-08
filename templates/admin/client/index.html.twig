@@ -16,6 +16,7 @@
                     <thead>
                     <tr>
                         <th>Fecha</th>
+                        <th>Agente</th>
                         <th>Cliente</th>
                         <th>Móvil</th>
                         <th>Zona 1</th>
@@ -33,6 +34,7 @@
                     {% for client in clients %}
                         <tr class="clickable-row" data-href="{{ path('client_show', {'id': client.id}) }}">
                             <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
+                            <td>{{ client.commercial.fullName }}</td>
                             <td>{{ client.fullName }}</td>
                             <td>{{ client.mobile }}</td>
                             {% if client.zoneOne %}
@@ -57,10 +59,12 @@
                             {% else %}
                                 <td></td>
                             {% endif %}
-                            <td>{{ client.price }} € </td>
+                            <td>{{ client.price|number_format(0, ',', '.') }} € </td>
                             <td>{{ client.bedrooms }} </td>
                             <td>{{ client.visits ? client.visits.count }}</td>
-                            <td>{{ client.comment }}</td>
+                            <td data-toggle="tooltip" data-placement="top" title="{{ client.comment }}">
+                                {{ client.comment|slice(0, 25) }}
+                            </td>
                             {#                <td>#}
                             {#                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>#}
                             {#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}

@@ -12,14 +12,14 @@
         </h6>
         {% if clients|length > 0 %}
             {% for client in clients %}
-                <a class="dropdown-item d-flex align-items-center" href="{{ path('client_edit', {'id': client.id}) }}">
+                <a class="dropdown-item d-flex align-items-center" href="{{ path('client_show', {'id': client.id}) }}">
                     <div class="dropdown-list-image mr-3">
                         <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
                         <div class="status-indicator bg-success"></div>
                     </div>
                     <div class="font-weight-bold">
                         <div class="text-truncate">{{ client.fullname }}</div>
-                        <div class="small text-gray-500">{{ client.id }}</div>
+{#                        <div class="small text-gray-500">{{ client.no }}</div>#}
                     </div>
                 </a>
             {% endfor %}

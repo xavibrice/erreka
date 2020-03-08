@@ -18,7 +18,8 @@ class NoteClientType extends AbstractType
 
         $builder
             ->add('comment', TextareaType::class, [
-                'label' => 'Comentario'
+                'label' => 'Comentario',
+                'required' => false
             ])
             ->add('nextCall', DatePickerType::class, [
                 'required' => false,

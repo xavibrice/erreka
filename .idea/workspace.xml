@@ -3,19 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Zone.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Zone.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/NoteClientType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/NoteClientType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClientRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/_new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/_new.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/client/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/clients.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/clients.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -418,7 +408,8 @@
       <workItem from="1583339190052" duration="10499000" />
       <workItem from="1583397275811" duration="135000" />
       <workItem from="1583585514507" duration="4442000" />
-      <workItem from="1583665211343" duration="1894000" />
+      <workItem from="1583665211343" duration="4077000" />
+      <workItem from="1583691700453" duration="642000" />
     </task>
     <servers />
   </component>
