@@ -170,7 +170,7 @@
                                                 <tr>
                                                     <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
                                                     <td data-toggle="tooltip" data-placement="top" title="{{ noteclient.comment }}">
-                                                        {{ noteclient.comment|slice(0, 25) }}
+                                                        {{ noteclient.comment|slice(0, 50) }}
                                                     </td>
                                                 </tr>
                                             {% endfor %}
@@ -224,7 +224,7 @@
                                                 <td>{{ visit.property.street.name }} {{ visit.property.portal }}, {{ visit.property.floor }}</td>
                                                 <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
                                                 <td data-toggle="tooltip" data-placement="top" title="{{ visit.comment }}">
-                                                    {{ visit.comment|slice(0, 25) }}
+                                                    {{ visit.comment|slice(0, 50) }}
                                                 </td>
                                             </tr>
                                         {% endfor %}
