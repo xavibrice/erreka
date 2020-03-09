@@ -13,7 +13,10 @@
                 <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
-                        <th>Visita</th>
+                        <th>Fecha</th>
+                        <th>Cliente</th>
+                        <th>Móvil</th>
+                        <th>Dirección</th>
                         <th>Precio</th>
                         <th>Comentario</th>
 {#                        <th>Acciones</th>#}
@@ -22,9 +25,11 @@
                     <tbody>
                     {% for visit in visits %}
                         <tr>
-                            <td>{{ visit.visited ? visit.visited|date('Y-m-d') : '' }}</td>
-                            <td>{{ visit.price }}</td>
-                            <td>{{ visit.comment }}</td>
+                            <td>{{ visit.visited ? visit.visited|date('d-m-Y') : '' }}</td>
+                            <td>{{ visit.client.fullName }}</td>
+                            <td>{{ visit.client.mobile ? visit.client.mobile : '' }}</td>
+                            <td>{{ visit.property.street.name }} Nº {{ property.portal }}, {{ property.floor }}</td>
+                            <td>{{ visit.comment|slice(0, 100) }}</td>
 {#                            <td>
                                 <a class="btn btn-primary" href="{{ path('visit_show', {'id': visit.id}) }}">Ver</a>
                                 <a class="btn btn-info" href="{{ path('visit_edit', {'id': visit.id}) }}">Editar</a>
@@ -32,7 +37,7 @@
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="5">no records found</td>
+                            <td colspan="6">no records found</td>
                         </tr>
                     {% endfor %}
                     </tbody>
