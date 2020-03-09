@@ -28,6 +28,7 @@
                             <td>{{ visit.visited ? visit.visited|date('d-m-Y') : '' }}</td>
                             <td>{{ visit.client.fullName }}</td>
                             <td>{{ visit.client.mobile ? visit.client.mobile : '' }}</td>
+                            <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
                             <td>{{ visit.property.street.name }} Nº {{ visit.property.portal }}, {{ visit.property.floor }}</td>
                             <td>{{ visit.comment|slice(0, 100) }}</td>
 {#                            <td>
