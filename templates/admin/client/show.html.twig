@@ -203,33 +203,34 @@
         </div>
         <div class="col-md-8 mb-4">
             <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 500px;">
-
                     <div class="col-md-12 mb-4">
                         <div class="card border-left-info shadow h-100 py-2">
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-sm table-borderless">
-                                        <thead>
-                                        <tr>
-                                            <th>Fecha visita</th>
-                                            <th>Dirección</th>
-                                            <th>Precio</th>
-                                            <th>Comentario</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        {% for visit in client.visits|reverse %}
+                                <div class="row no-gutters align-items-center">
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-borderless">
+                                            <thead>
                                             <tr>
-                                                <td>{{ visit.visited|date('d/m/Y')}}</td>
-                                                <td>{{ visit.property.street.name }} {{ visit.property.portal }}, {{ visit.property.floor }}</td>
-                                                <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
-                                                <td data-toggle="tooltip" data-placement="top" title="{{ visit.comment }}">
-                                                    {{ visit.comment|slice(0, 50) }}
-                                                </td>
+                                                <th>Fecha visita</th>
+                                                <th>Dirección</th>
+                                                <th>Precio</th>
+                                                <th>Comentario</th>
                                             </tr>
-                                        {% endfor %}
-                                        </tbody>
-                                    </table>
+                                            </thead>
+                                            <tbody>
+                                            {% for visit in client.visits|reverse %}
+                                                <tr>
+                                                    <td>{{ visit.visited|date('d/m/Y')}}</td>
+                                                    <td>{{ visit.property.street.name }} {{ visit.property.portal }}, {{ visit.property.floor }}</td>
+                                                    <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
+                                                    <td data-toggle="tooltip" data-placement="top" title="{{ visit.comment }}">
+                                                        {{ visit.comment|slice(0, 50) }}
+                                                    </td>
+                                                </tr>
+                                            {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>

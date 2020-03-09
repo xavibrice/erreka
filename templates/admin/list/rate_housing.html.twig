@@ -66,7 +66,7 @@
 {#                                </td>#}
                                 <td>{{ rateHousing.elevator ? 'Si' : 'No' }}</td>
                                 <td data-toggle="tooltip" data-placement="top" title="{{ rateHousing.comment }}">
-                                    {{ rateHousing.comment|slice(0, 50) }}
+                                    {{ rateHousing.comment|slice(0, 25) }}
                                 </td>
                             </tr>
                         {% endfor %}
