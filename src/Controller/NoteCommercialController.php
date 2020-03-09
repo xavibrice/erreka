@@ -23,8 +23,16 @@ class NoteCommercialController extends AbstractController
      */
     public function index(NoteCommercialRepository $noteCommercialRepository): Response
     {
+
+        if ($this->isGranted('ROLE_ADMIN')) {
+            $noteCommercials = $noteCommercialRepository->findAgency($this->getUser()->getAgency());
+        } else {
+            $noteCommercials = $noteCommercialRepository->findAgencyAndAgent($this->getUser()->getAgency(), $this->getUser());
+        }
+
+
         return $this->render('admin/note_commercial/index.html.twig', [
-            'note_commercials' => $noteCommercialRepository->findAll(),
+            'note_commercials' => $noteCommercials
         ]);
     }
 

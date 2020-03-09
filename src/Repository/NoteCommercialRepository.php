@@ -19,22 +19,30 @@ class NoteCommercialRepository extends ServiceEntityRepository
         parent::__construct($registry, NoteCommercial::class);
     }
 
-    // /**
-    //  * @return NoteCommercial[] Returns an array of NoteCommercial objects
-    //  */
-    /*
-    public function findByExampleField($value)
+
+    public function findAgencyAndAgent($agency, $agent)
     {
         return $this->createQueryBuilder('n')
-            ->andWhere('n.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('n.id', 'ASC')
-            ->setMaxResults(10)
+            ->innerJoin('n.commercial', 'a')
+            ->andWhere('n.commercial = :agent')
+            ->andWhere('a.agency = :agency')
+            ->setParameter('agency', $agency)
+            ->setParameter('agent', $agent)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    public function findAgency($agency)
+    {
+        return $this->createQueryBuilder('n')
+            ->innerJoin('n.commercial', 'a')
+            ->andWhere('a.agency = :agency')
+            ->setParameter('agency', $agency)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     /*
     public function findOneBySomeField($value): ?NoteCommercial
