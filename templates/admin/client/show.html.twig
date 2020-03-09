@@ -124,7 +124,13 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ include('admin/_back_link.html.twig', {'route': 'client_index'}) }}
+                    {% if client.reason.name === 'alquiler' %}
+                        {{ include('admin/_back_link.html.twig', {'route': 'client_rent_index'}) }}
+                    {% endif %}
+                    {% if client.reason.name === 'venta' %}
+                        {{ include('admin/_back_link.html.twig', {'route': 'client_sell_index'}) }}
+                    {% endif %}
+
                     {{ include('admin/_edit_link.html.twig', {'route': 'client_edit', 'id': client.id, 'button_label': 'Editar'}) }}
 
                     <div class="float-right">

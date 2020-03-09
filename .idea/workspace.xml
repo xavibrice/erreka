@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClientRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/NoteCommercialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoteCommercialController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/NoteCommercialRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoteCommercialRepository.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,19 +181,19 @@
     <property name="ts.external.directory.path" value="C:\Users\HP\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\192.6817.20\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\erreka\public\img" />
-      <recent name="C:\xampp\htdocs\erreka" />
-      <recent name="C:\xampp\htdocs\erreka\assets\js\calendar" />
-      <recent name="C:\xampp\htdocs\erreka\src\Form" />
-      <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\erreka\templates\admin" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\default" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\property\rate_housing" />
       <recent name="C:\xampp\htdocs\erreka\src\Form" />
       <recent name="C:\xampp\htdocs\erreka\templates\admin\client" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/admin/client" />
+      <recent name="C:\xampp\htdocs\erreka\public\img" />
+      <recent name="C:\xampp\htdocs\erreka" />
+      <recent name="C:\xampp\htdocs\erreka\assets\js\calendar" />
+      <recent name="C:\xampp\htdocs\erreka\src\Form" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -408,7 +408,7 @@
       <workItem from="1583585514507" duration="4442000" />
       <workItem from="1583665211343" duration="4077000" />
       <workItem from="1583691700453" duration="3615000" />
-      <workItem from="1583770246320" duration="5504000" />
+      <workItem from="1583770246320" duration="6060000" />
     </task>
     <servers />
   </component>
