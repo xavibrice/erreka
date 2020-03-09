@@ -24,12 +24,22 @@ use Symfony\Component\Routing\Annotation\Route;
 class ClientController extends AbstractController
 {
     /**
-     * @Route("/", name="client_index", methods={"GET"})
+     * @Route("/venta", name="client_sell_index", methods={"GET"})
      */
-    public function index(ClientRepository $clientRepository): Response
+    public function sell(ClientRepository $clientRepository): Response
     {
-        return $this->render('admin/client/index.html.twig', [
-            'clients' => $clientRepository->findClienteForAgency($this->getUser()->getAgency()),
+        return $this->render('admin/client/sell.html.twig', [
+            'clients' => $clientRepository->findClienteForAgencyAndSell($this->getUser()->getAgency()),
+        ]);
+    }
+
+    /**
+     * @Route("/alquiler", name="client_rent_index", methods={"GET"})
+     */
+    public function rent(ClientRepository $clientRepository): Response
+    {
+        return $this->render('admin/client/rent.html.twig', [
+            'clients' => $clientRepository->findClienteForAgencyAndSell($this->getUser()->getAgency()),
         ]);
     }
 

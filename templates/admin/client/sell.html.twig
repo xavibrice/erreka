@@ -1,0 +1,106 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Listado Pedidos{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de pedidos (venta)</h1>
+            <a class="btn btn-success float-right" href="#" data-toggle="modal" data-target="#createNewModal">
+                Crear Pedido
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table-sm table-striped table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>Fecha</th>
+                        <th>Motivo</th>
+                        <th>Agente</th>
+                        <th>Cliente</th>
+                        <th>Móvil</th>
+                        <th>Zona 1</th>
+                        <th>Zona 2</th>
+                        <th>Zona 3</th>
+                        <th>Zona 4</th>
+                        <th>Precio</th>
+                        <th>Dorm</th>
+                        <th>Visitas</th>
+                        <th>Comentario</th>
+                        {#                <th>actions</th>#}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for client in clients %}
+                        <tr class="clickable-row" data-href="{{ path('client_show', {'id': client.id}) }}">
+                            <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
+                            <td>{{ client.reason.name }}</td>
+                            <td>{{ client.commercial.fullName }}</td>
+                            <td>{{ client.fullName }}</td>
+                            <td>{{ client.mobile }}</td>
+                            {% if client.zoneOne %}
+                                <td>{{ client.zoneOne.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+
+                            {% if client.zoneTwo %}
+                                <td>{{ client.zoneTwo.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+
+                            {% if client.zoneThree %}
+                                <td>{{ client.zoneThree.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                            {% if client.zoneFour %}
+                                <td>{{ client.zoneFour.name }}</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                            <td>{{ client.price|number_format(0, ',', '.') }} € </td>
+                            <td>{{ client.bedrooms }} </td>
+                            <td>{{ client.visits ? client.visits.count }}</td>
+                            <td data-toggle="tooltip" data-placement="top" title="{{ client.comment }}">
+                                {{ client.comment|slice(0, 25) }}
+                            </td>
+                            {#                <td>#}
+                            {#                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>#}
+                            {#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}
+                            {#                </td>#}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="createNewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Pedido</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    {{ render_esi(controller('App\\Controller\\ClientController::newForm')) }}
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#    <a href="{{ path('client_new') }}">Create new</a>#}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}

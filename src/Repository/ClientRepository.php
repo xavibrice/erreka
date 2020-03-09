@@ -19,16 +19,34 @@ class ClientRepository extends ServiceEntityRepository
         parent::__construct($registry, Client::class);
     }
 
-    public function findClienteForAgency($agency)
+    public function findClienteForAgencyAndSell($agency)
     {
         return $this->createQueryBuilder('cli')
             ->innerJoin('cli.commercial', 'com')
+            ->innerJoin('cli.reason', 'r')
+            ->andWhere('r.name = :reason')
             ->andWhere('com.agency = :agency')
+            ->setParameter('reason', 'venta')
             ->setParameter('agency', $agency)
             ->getQuery()
             ->getResult()
             ;
     }
+
+    public function findClienteForAgencyAndRent($agency)
+    {
+        return $this->createQueryBuilder('cli')
+            ->innerJoin('cli.commercial', 'com')
+            ->innerJoin('cli.reason', 'r')
+            ->andWhere('r.name = :reason')
+            ->andWhere('com.agency = :agency')
+            ->setParameter('reason', 'alquiler')
+            ->setParameter('agency', $agency)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
     public function findFullName()
     {
