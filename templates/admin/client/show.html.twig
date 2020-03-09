@@ -167,7 +167,7 @@
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for noteclient in client.noteClients %}
+                                            {% for noteclient in client.noteClients|reverse %}
                                                 <tr>
                                                     <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
                                                     <td data-toggle="tooltip" data-placement="top" title="{{ noteclient.comment }}">
