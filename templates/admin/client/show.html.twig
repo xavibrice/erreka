@@ -124,10 +124,10 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {% if client.reason.name === 'alquiler' %}
+                    {% if client.reason.name == 'Alquiler' %}
                         {{ include('admin/_back_link.html.twig', {'route': 'client_rent_index'}) }}
                     {% endif %}
-                    {% if client.reason.name === 'venta' %}
+                    {% if client.reason.name == 'Venta' %}
                         {{ include('admin/_back_link.html.twig', {'route': 'client_sell_index'}) }}
                     {% endif %}
 
