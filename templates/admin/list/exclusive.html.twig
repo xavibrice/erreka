@@ -8,6 +8,9 @@
             <h1 class="h3 mb-4 text-gray-800">Listado de exclusivas</h1>
         </div>
         <div class="card-body">
+            {% for exclusive in exclusives %}
+                {{ dump(exclusive) }}
+            {% endfor %}
             <div class="table-responsive">
                 <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
@@ -42,7 +45,7 @@
                         <td>{{ exclusive.charge.startDate|date('d/m/Y') }}</td>
                         <td>{{ exclusive.charge.endDate|date('d/m/Y') }}</td>
                         <td>{{ exclusive.charge.price|number_format(0, ',', '.') }}€</td>
-                        <td>{{ exclusive.charge.price }}€ - </td>
+                        <td>{{ exclusive.charge.price }}€ {{ exclusive. }} </td>
                         <td>{{ exclusive.charge.priceOk|number_format(0, ',', '.') }}€</td>
                         <td>{{ exclusive.visits.count }}</td>
                         <td></td>

@@ -144,6 +144,8 @@ class PropertyRepository extends ServiceEntityRepository
             ->innerJoin('c.charge_type', 'ct')
             ->innerJoin('p.reason', 'r')
             ->innerJoin('r.situation', 's')
+            ->innerJoin('p.propertyReductions', 'pr')
+            ->select('SUM(pr.price) as reductionPrice')
             ->andWhere('a.name = :agency')
             ->andWhere('ct.name = :chargeType')
             ->andWhere('s.name = :situation')
