@@ -48,7 +48,7 @@
                             <td>{{ possibleVisit.commercial.agency.name }}</td>
                             <td>{{ possibleVisit.street.zone.name }}</td>
                             <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}</td>
-                            <td>{{ possibleVisit.charge.price }}€</td>
+                            <td>{{ possibleVisit.charge.price|number_format(0, ',', '.') }}€</td>
                             <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>
