@@ -153,7 +153,6 @@ class PropertyRepository extends ServiceEntityRepository
             ->setParameter('chargeType', 'Exclusiva')
             ->setParameter('agency', $getAgency)
             ->getQuery()
-            ->getResult()
             ->getSingleScalarResult();
 //        return $this->addAllNoticesQueryBuilder()
 //            ->andWhere('s.name = :situation')
