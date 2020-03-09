@@ -4,7 +4,7 @@
         <strong>N</strong>
         <!-- Counter - Messages -->
         <span class="badge badge-danger badge-counter">
-            {{ notices|length }}
+            {{ notices|length > 0 ? 'New' : '' }}
         </span>
     </a>
     <!-- Dropdown - Messages -->
