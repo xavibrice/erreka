@@ -127,7 +127,7 @@ import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/pu
 
 $(document).ready(function() {
     $('#dataTableEmpty').DataTable( {
-        // "orderSequence": ["desc"],
+        "orderSequence": ["desc"],
         "lengthMenu": [ 15, 19, 25, 50, 100 ],
         "pageLength": 19,
         "language": {
@@ -159,7 +159,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('#dataTable').DataTable( {
-        // "orderSequence": ["desc"],
+        "orderSequence": ["desc"],
         "lengthMenu": [ 15, 19, 25, 50, 100 ],
         "pageLength": 19,
         "language": {
