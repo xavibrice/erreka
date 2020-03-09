@@ -21,7 +21,7 @@ class VisitController extends AbstractController
     public function index(VisitRepository $visitRepository): Response
     {
         return $this->render('admin/visit/index.html.twig', [
-            'visits' => $visitRepository->findAll([], ['visited' => 'DESC']),
+            'visits' => $visitRepository->findBy([], ['visited' => 'DESC']),
         ]);
     }
 
