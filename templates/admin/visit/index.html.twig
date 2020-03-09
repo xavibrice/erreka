@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
                     {% for visit in visits %}
-                        <tr>
+                        <tr class="clickable-row" data-href="{{ path('property_show', {'id': property.id}) }}">
                             <td>{{ visit.visited ? visit.visited|date('d-m-Y') : '' }}</td>
                             <td>{{ visit.client.fullName }}</td>
                             <td>{{ visit.client.mobile ? visit.client.mobile : '' }}</td>
