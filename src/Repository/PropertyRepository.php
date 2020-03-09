@@ -64,7 +64,7 @@ class PropertyRepository extends ServiceEntityRepository
 //            ->getResult();
     }
 
-    public function alertsOnlyNotices($getUser)
+    public function alertsOnlyNotices($getUser, $getAgency)
     {
 //        $datetime = new \DateTime();
 //        $date = $datetime->format('Y-m-d');

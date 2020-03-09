@@ -47,7 +47,7 @@ class DefaultController extends AbstractController
     public function notices(PropertyRepository $propertyRepository): Response
     {
         return $this->render('admin/default/notices.html.twig', [
-            'notices' => $propertyRepository->alertsOnlyNotices($this->getUser())
+            'notices' => $propertyRepository->alertsOnlyNotices($this->getUser(), $this->getUser()->getAgency())
         ]);
     }
 
