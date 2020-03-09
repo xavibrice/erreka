@@ -294,6 +294,9 @@ class ClientController extends AbstractController
 
 
         $nextCall = $request->get('note_client')['nextCall'];
+        $comment = $request->get('note_client')['comment'];
+        $date = $request->get('note_client')['created'];
+
         if ($request->isMethod('POST')) {
 
             if ($nextCall) {
@@ -307,8 +310,16 @@ class ClientController extends AbstractController
                 $em->persist($client);
                 $em->flush();
             }
-        }
+            if ($comment) {
+                $noteClient = new NoteClient();
+                $noteClient->setClient($client);
+                $noteClient->setCreated(new \DateTime($date));
+                $noteClient->setComment($comment);
 
+                $em->persist($noteClient);
+                $em->flush();
+            }
+        }
 
         $noteClient = new NoteClient();
         $noteClient->setCreated(new \DateTime());
@@ -318,7 +329,7 @@ class ClientController extends AbstractController
         ]);
         $formNoteClient->handleRequest($request);
 
-        if ($formNoteClient->isSubmitted() && $formNoteClient->isValid()) {
+/*        if ($formNoteClient->isSubmitted() && $formNoteClient->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($noteClient);
             $entityManager->flush();
@@ -328,7 +339,7 @@ class ClientController extends AbstractController
             return $this->redirectToRoute($request->attributes->get('_route'), [
                 'id' => $client->getId()
             ]);
-        }
+        }*/
 
         return $this->render('admin/client/show.html.twig', [
             'client' => $client,
