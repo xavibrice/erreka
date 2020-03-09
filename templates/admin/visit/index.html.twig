@@ -23,7 +23,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for visit in visits %}
+                    {% for visit in visits|reverse %}
                         <tr class="clickable-row" data-href="{{ path('client_show', {'id': visit.client.id}) }}">
                             <td>{{ visit.visited ? visit.visited|date('d-m-Y') : '' }}</td>
                             <td>{{ visit.client.fullName }}</td>
