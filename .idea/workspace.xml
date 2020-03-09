@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/list/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/rate_housing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/show.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -410,7 +405,7 @@
       <workItem from="1583585514507" duration="4442000" />
       <workItem from="1583665211343" duration="4077000" />
       <workItem from="1583691700453" duration="3615000" />
-      <workItem from="1583770246320" duration="1026000" />
+      <workItem from="1583770246320" duration="1290000" />
     </task>
     <servers />
   </component>
