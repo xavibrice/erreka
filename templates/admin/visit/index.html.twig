@@ -28,7 +28,7 @@
                             <td>{{ visit.visited ? visit.visited|date('d-m-Y') : '' }}</td>
                             <td>{{ visit.client.fullName }}</td>
                             <td>{{ visit.client.mobile ? visit.client.mobile : '' }}</td>
-                            <td>{{ visit.property.street.name }} Nº {{ property.portal }}, {{ property.floor }}</td>
+                            <td>{{ visit.property.street.name }} Nº {{ visit.property.portal }}, {{ visit.property.floor }}</td>
                             <td>{{ visit.comment|slice(0, 100) }}</td>
 {#                            <td>
                                 <a class="btn btn-primary" href="{{ path('visit_show', {'id': visit.id}) }}">Ver</a>
