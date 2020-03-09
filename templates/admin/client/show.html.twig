@@ -62,7 +62,7 @@
                                         {{ client.orientation.name }}
                                     {% endif %}
                                 </td>
-                                <th class="text-right">Ascendor</th>
+                                <th class="text-right">Ascensor</th>
                                 <td>{{ client.elevator ? 'Si' : 'No' }}</td>
                             </tr>
                             <tr>
@@ -157,15 +157,16 @@
                     <div class="col-md-12 mb-4">
                         <div class="card border-left-info shadow h-100 py-2">
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table table-sm table-borderless">
-                                        <thead>
-                                        <tr>
-                                            <th>Fecha creación</th>
-                                            <th>Comentario</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
+                                <div class="row no-gutters align-items-center">
+                                    <div class="table-responsive">
+                                        <table class="table table-sm table-borderless">
+                                            <thead>
+                                            <tr>
+                                                <th>Fecha </th>
+                                                <th>Comentario</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
                                             {% for noteclient in client.noteClients %}
                                                 <tr>
                                                     <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
@@ -174,8 +175,9 @@
                                                     </td>
                                                 </tr>
                                             {% endfor %}
-                                        </tbody>
-                                    </table>
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -202,11 +204,12 @@
             </div>
         </div>
         <div class="col-md-8 mb-4">
-            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 300px;">
+            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
                     <div class="col-md-12 mb-4">
                         <div class="card border-left-info shadow h-100 py-2">
                             <div class="card-body">
                                 <div class="row no-gutters align-items-center">
+                                    <div class="table-responsive">
                                         <table class="table table-sm table-borderless">
                                             <thead>
                                             <tr>
@@ -229,6 +232,7 @@
                                             {% endfor %}
                                             </tbody>
                                         </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
