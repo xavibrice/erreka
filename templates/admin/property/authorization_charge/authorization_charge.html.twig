@@ -37,7 +37,13 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}
+                    {% if chargeType.name == 'exclusiva' %}
+                        {{ include('admin/_back_link.html.twig', {'route': 'list_charge_index'}) }}
+                    {% endif %}
+                    {% if chargeType.name == 'autorizacion' %}
+                        {{ include('admin/_back_link.html.twig', {'route': 'list_authorization_index'}) }}
+                    {% endif %}
+
 {#                    {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}#}
                 </div>
             </div>
