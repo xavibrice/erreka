@@ -16,6 +16,7 @@
                     <thead>
                     <tr>
                         <th>Fecha</th>
+                        <th>Motivo</th>
                         <th>Agente</th>
                         <th>Cliente</th>
                         <th>Móvil</th>
@@ -34,6 +35,7 @@
                     {% for client in clients %}
                         <tr class="clickable-row" data-href="{{ path('client_show', {'id': client.id}) }}">
                             <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
+                            <td>{{ client.reason.name }}</td>
                             <td>{{ client.commercial.fullName }}</td>
                             <td>{{ client.fullName }}</td>
                             <td>{{ client.mobile }}</td>
