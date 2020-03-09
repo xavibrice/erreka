@@ -75,21 +75,21 @@ class RateHousingType extends AbstractType
             ])
             ->add('bedrooms', IntegerType::class, [
                 'label' => 'Dormitorios',
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'min' => 0
                 ]
             ])
             ->add('bathrooms', IntegerType::class, [
                 'label' => 'Baños',
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'min' => 0
                 ]
             ])
             ->add('real_meters', IntegerType::class, [
                 'label' => 'M² útiles',
-                'required' => false,
+                'required' => true,
                 'attr' => [
                     'min' => 0
                 ]
