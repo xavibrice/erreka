@@ -17,6 +17,13 @@ class NoteClientType extends AbstractType
         $nextCall = $options['nextCall'];
 
         $builder
+            ->add('created', DatePickerType::class, [
+                'label' => 'Fecha creación',
+                'data' => new \DateTime(),
+                'attr' => [
+                    'class' => 'js-datepicker',
+                ],
+            ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario',
                 'required' => false
