@@ -37,10 +37,10 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {% if chargeType.name == 'exclusiva' %}
+                    {% if chargeType.name == 'Exclusiva' %}
                         {{ include('admin/_back_link.html.twig', {'route': 'list_charge_index'}) }}
                     {% endif %}
-                    {% if chargeType.name == 'autorizacion' %}
+                    {% if chargeType.name == 'Autorización' %}
                         {{ include('admin/_back_link.html.twig', {'route': 'list_authorization_index'}) }}
                     {% endif %}
 
