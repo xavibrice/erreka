@@ -39,7 +39,7 @@ class ClientController extends AbstractController
     public function rent(ClientRepository $clientRepository): Response
     {
         return $this->render('admin/client/rent.html.twig', [
-            'clients' => $clientRepository->findClienteForAgencyAndSell($this->getUser()->getAgency()),
+            'clients' => $clientRepository->findClienteForAgencyAndRent($this->getUser()->getAgency()),
         ]);
     }
 
