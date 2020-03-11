@@ -37,31 +37,8 @@ class ListController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
-        $lastReference = $em->getRepository(Property::class)->findOneBy([], ['id' => 'desc']);
-
-        if ($lastReference) {
-            $newReference = $lastReference->getReference() + 1;
-        } else {
-            $newReference = 1;
-        }
-
-        $local = new Property();
-        $formLocal = $this->createForm(LocalType::class, $local);
-
-        $formLocal->handleRequest($request);
-
-        if ($formLocal->isSubmitted() && $formLocal->isValid()) {
-            $local->setReference($newReference);
-            $em->persist($local);
-            $em->flush();
-
-            $this->addFlash('success', 'Local creado correctamente');
-            return $this->redirectToRoute($request->attributes->get('_route'));
-        }
-
         return $this->render('admin/list/exclusive.html.twig', [
-            'exclusives' => $propertyRepository->onlyExclusives($this->getUser()->getAgency()->getName()),
-            'formLocal' => $formLocal->createView(),
+            'exclusives' => $propertyRepository->onlyCharges($this->getUser()->getAgency()),
         ]);
     }
 

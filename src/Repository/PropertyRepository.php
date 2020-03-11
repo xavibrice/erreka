@@ -136,6 +136,16 @@ class PropertyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function onlyCharges($getAgency) {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.charge', 'c')
+            ->andWhere('p.agency = :agency')
+            ->setParameter('agency', $getAgency)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     public function onlyExclusives($getAgency)
     {
         return $this->createQueryBuilder('p')
