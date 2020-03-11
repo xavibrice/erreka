@@ -14,7 +14,6 @@
             <table class="table table-striped" id="dataTableEmpty" width="100%" cellpadding="0">
                 <thead>
                 <tr>
-                    <th>Id</th>
                     <th>Nota</th>
                     <th>Fecha Nota</th>
                     <th>De</th>
@@ -27,7 +26,6 @@
                 <tbody>
                     {% for note_commercial in note_commercials %}
                         <tr>
-                            <td>{{ note_commercial.id }}</td>
                             <td>{{ note_commercial.note }}</td>
                             <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('d-m-Y') : '' }}</td>
                             <td>{{ note_commercial.fromCommercial.fullName }}</td>

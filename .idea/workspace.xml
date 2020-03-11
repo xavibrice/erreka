@@ -3,10 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/NoteCommercialController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/NoteCommercialController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/NoteCommercial.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/NoteCommercial.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/NoteCommercialType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/NoteCommercialType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/charges.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/charges.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/clients.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/clients.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/note.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/note.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/notices_to_developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/notices_to_developer.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/note_commercial/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/note_commercial/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -412,7 +413,7 @@
       <workItem from="1583585514507" duration="4442000" />
       <workItem from="1583665211343" duration="4077000" />
       <workItem from="1583691700453" duration="3615000" />
-      <workItem from="1583770246320" duration="11314000" />
+      <workItem from="1583770246320" duration="11779000" />
     </task>
     <servers />
   </component>

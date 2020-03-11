@@ -3,9 +3,10 @@
 {#        <i class="fas fa-bars fa-fw"></i>#}
         <strong>N</strong>
         <!-- Counter - Messages -->
-        <span class="badge badge-danger badge-counter">
-            {{ notices|length }}
-        </span>
+        {% if notices|length > 0 %}
+            <span class="badge badge-primary badge-counter">{{ notices|length }}</span>
+        {% endif %}
+
     </a>
     <!-- Dropdown - Messages -->
     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">

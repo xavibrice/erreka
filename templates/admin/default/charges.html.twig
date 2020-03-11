@@ -3,7 +3,9 @@
 {#        <i class="fas fa-book fa-fw"></i>#}
         <strong>E</strong>
         <!-- Counter - Messages -->
-        <span class="badge badge-danger badge-counter">{{ charges|length }}</span>
+        {% if charges|length > 0 %}
+            <span class="badge badge-primary badge-counter">{{ charges|length }}</span>
+        {% endif %}
     </a>
     <!-- Dropdown - Messages -->
     <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
