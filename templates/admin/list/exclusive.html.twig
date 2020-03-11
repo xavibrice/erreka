@@ -5,11 +5,11 @@
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="h3 mb-4 text-gray-800">Listado de exclusivas</h1>
+            <h1 class="h3 mb-4 text-gray-800">Encargos </h1>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                <table class="table-striped table-sm table-hover dataTable" id="dataTableEmpty" width="100%" cellpadding="0">
                     <thead>
                         <tr>
                             <th>Ref.</th>
@@ -18,39 +18,36 @@
                             <th>Encargo</th>
                             <th>Zona</th>
                             <th>Dirección</th>
-                            <th>Propietario</th>
-                            <th>Móvil</th>
-                            <th>Fecha Enc.</th>
-                            <th>Fecha Fín</th>
-                            <th>P. Enc.</th>
                             <th>P. Actual</th>
-                            <th>P. OK</th>
-                            <th>Visitas</th>
-                            <th>% Caro</th>
+                            <th>Llaves</th>
+                            <th>Fotos</th>
+                            {% if agency.id == app.user.agency.id %}
+                                <th>Acciones</th>
+                            {% endif %}
+                            {#<th>% Caro</th>
                             <th>Rebaj.</th>
                             <th>Últ. Reb.</th>
-                            <th>% Reb.</th>
+                            <th>% Reb.</th>#}
                         </tr>
                     </thead>
                     <tbody>
                     {% for exclusive in exclusives %}
-                        <tr class="clickable-row" data-href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">
+                        <tr>
                         <td>{{ exclusive.reference }}</td>
                         <td>{{ exclusive.agency.name }}</td>
-                        <td>{{ exclusive.charge.chargeType.name }}</td>
                         <td>{{ exclusive.commercial.fullName }}</td>
+                        <td>{{ exclusive.charge.chargeType.name }}</td>
                         <td>{{ exclusive.street.zone.name }}</td>
                         <td>{{ exclusive.street.name }}, Nº {{ exclusive.portal }}, {{ exclusive.floor }}</td>
-                        <td>{{ exclusive.fullName }}</td>
-                        <td>{{ exclusive.mobile }}</td>
-                        <td>{{ exclusive.charge.startDate|date('d/m/Y') }}</td>
-                        <td>{{ exclusive.charge.endDate|date('d/m/Y') }}</td>
                         <td>{{ exclusive.charge.price|number_format(0, ',', '.') }}€</td>
-                        <td>{{ exclusive.charge.price }}€ </td>
-                        <td>{{ exclusive.charge.priceOk|number_format(0, ',', '.') }}€</td>
-                        <td>{{ exclusive.visits.count }}</td>
-                        <td></td>
-                        <td>{{ exclusive.propertyReductions.count }}</td>
+                        <td>{{ exclusive.charge.stateKeys ? exclusive.charge.stateKeys.name : '' }}</td>
+                        <td>{{ exclusive.rateHousing.image|length > 0 ? 'Si' : 'No' }}</td>
+                        {% if exclusive.agency.id == app.user.agency.id %}
+                            <td>
+                                <a class="btn btn-info" href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">Ver</a>
+                            </td>
+                        {% endif %}
+{#                        <td>{{ exclusive.propertyReductions.count }}</td>
                         <td>
                             {% if exclusive.propertyReductions is defined %}
                                 {% if exclusive.propertyReductions.count > 0 %}
@@ -69,7 +66,7 @@
                                     {{ sum / exclusive.charge.price * 100|number_format(0, ',', '.') }} %
                                 {% endif %}
                             {% endif %}
-                        </td>
+                        </td>#}
                     </tr>
                     {% endfor %}
                     </tbody>

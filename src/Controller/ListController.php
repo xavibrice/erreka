@@ -38,6 +38,7 @@ class ListController extends AbstractController
     {
 
         return $this->render('admin/list/exclusive.html.twig', [
+            'agency' => $agency,
             'exclusives' => $propertyRepository->onlyCharges($agency),
         ]);
     }
