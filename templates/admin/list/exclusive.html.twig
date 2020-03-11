@@ -13,6 +13,7 @@
                     <thead>
                         <tr>
                             <th>Ref.</th>
+                            <th>Agencia</th>
                             <th>Agente</th>
                             <th>Encargo</th>
                             <th>Zona</th>
@@ -35,6 +36,7 @@
                     {% for exclusive in exclusives %}
                         <tr class="clickable-row" data-href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">
                         <td>{{ exclusive.reference }}</td>
+                        <td>{{ exclusive.agency.name }}</td>
                         <td>{{ exclusive.charge.chargeType.name }}</td>
                         <td>{{ exclusive.commercial.fullName }}</td>
                         <td>{{ exclusive.street.zone.name }}</td>
