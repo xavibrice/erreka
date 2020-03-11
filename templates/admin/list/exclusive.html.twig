@@ -35,7 +35,7 @@
                     {% for exclusive in exclusives %}
                         <tr class="clickable-row" data-href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">
                         <td>{{ exclusive.reference }}</td>
-                        <td>{{ exclusive.charge.typeCharge.name }}</td>
+                        <td>{{ exclusive.charge.chargeType.name }}</td>
                         <td>{{ exclusive.commercial.fullName }}</td>
                         <td>{{ exclusive.street.zone.name }}</td>
                         <td>{{ exclusive.street.name }}, Nº {{ exclusive.portal }}, {{ exclusive.floor }}</td>
