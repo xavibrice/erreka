@@ -42,7 +42,7 @@
                         <td>{{ exclusive.charge.price|number_format(0, ',', '.') }}€</td>
                         <td>{{ exclusive.charge.stateKeys ? exclusive.charge.stateKeys.name : '' }}</td>
                         <td>
-                            {% if exclusive.rateHousing.image is not empty %}
+                            {% if exclusive.rateHousing.image is defined %}
                                 {{ exclusive.rateHousing.image|length > 0 ? 'Si' : 'No' }}
                             {% endif %}
                         </td>
