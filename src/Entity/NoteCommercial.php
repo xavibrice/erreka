@@ -31,6 +31,11 @@ class NoteCommercial
      */
     private $commercial;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="noteCommercialsFrom")
+     */
+    private $fromCommercial;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -68,6 +73,18 @@ class NoteCommercial
     public function setCommercial(?User $commercial): self
     {
         $this->commercial = $commercial;
+
+        return $this;
+    }
+
+    public function getFromCommercial(): ?User
+    {
+        return $this->fromCommercial;
+    }
+
+    public function setFromCommercial(?User $fromCommercial): self
+    {
+        $this->fromCommercial = $fromCommercial;
 
         return $this;
     }

@@ -11,13 +11,14 @@
     </div>
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-striped" id="dataTable" width="100%" cellpadding="0">
+            <table class="table table-striped" id="dataTableEmpty" width="100%" cellpadding="0">
                 <thead>
                 <tr>
                     <th>Id</th>
                     <th>Nota</th>
                     <th>Fecha Nota</th>
-                    <th>Comercial</th>
+                    <th>De</th>
+                    <th>Para</th>
                     <th>Ver</th>
                     <th>Editar</th>
                     <th>Eliminar</th>
@@ -29,6 +30,7 @@
                             <td>{{ note_commercial.id }}</td>
                             <td>{{ note_commercial.note }}</td>
                             <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('d-m-Y') : '' }}</td>
+                            <td>{{ note_commercial.fromCommercial.fullName }}</td>
                             <td>
     {#                            <a href="{{ path('user_show', {'id': note_commercial.commercial.id}) }}">#}
                                     {{ note_commercial.commercial.fullName }}

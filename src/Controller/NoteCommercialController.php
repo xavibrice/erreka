@@ -42,9 +42,8 @@ class NoteCommercialController extends AbstractController
     public function new(Request $request): Response
     {
         $noteCommercial = new NoteCommercial();
-        $form = $this->createForm(NoteCommercialType::class, $noteCommercial, [
-            'agency' => $this->getUser()->getAgency()->getName()
-        ]);
+        $noteCommercial->setFromCommercial($this->getUser());
+        $form = $this->createForm(NoteCommercialType::class, $noteCommercial);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

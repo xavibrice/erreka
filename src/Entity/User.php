@@ -86,12 +86,18 @@ class User implements UserInterface
      */
     private $clients;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteCommercial", mappedBy="fromCommercial")
+     */
+    private $noteCommercialsFrom;
+
     public function __construct()
     {
         $this->noteCommercials = new ArrayCollection();
         $this->properties = new ArrayCollection();
         $this->bookings = new ArrayCollection();
         $this->clients = new ArrayCollection();
+        $this->noteCommercialsFrom = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -378,6 +384,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($client->getCommercial() === $this) {
                 $client->setCommercial(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|NoteCommercial[]
+     */
+    public function getNoteCommercialsFrom(): Collection
+    {
+        return $this->noteCommercialsFrom;
+    }
+
+    public function addNoteCommercialsFrom(NoteCommercial $noteCommercialsFrom): self
+    {
+        if (!$this->noteCommercialsFrom->contains($noteCommercialsFrom)) {
+            $this->noteCommercialsFrom[] = $noteCommercialsFrom;
+            $noteCommercialsFrom->setFromCommercial($this);
+        }
+
+        return $this;
+    }
+
+    public function removeNoteCommercialsFrom(NoteCommercial $noteCommercialsFrom): self
+    {
+        if ($this->noteCommercialsFrom->contains($noteCommercialsFrom)) {
+            $this->noteCommercialsFrom->removeElement($noteCommercialsFrom);
+            // set the owning side to null (unless already changed)
+            if ($noteCommercialsFrom->getFromCommercial() === $this) {
+                $noteCommercialsFrom->setFromCommercial(null);
             }
         }
 
