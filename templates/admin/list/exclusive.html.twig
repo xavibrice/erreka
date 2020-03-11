@@ -41,7 +41,11 @@
                         <td>{{ exclusive.street.name }}, Nº {{ exclusive.portal }}, {{ exclusive.floor }}</td>
                         <td>{{ exclusive.charge.price|number_format(0, ',', '.') }}€</td>
                         <td>{{ exclusive.charge.stateKeys ? exclusive.charge.stateKeys.name : '' }}</td>
-                        <td>{{ exclusive.rateHousing.image|length > 0 ? 'Si' : 'No' }}</td>
+                        <td>
+                            {% if exclusive.rateHousing.image is not empty %}
+                                {{ exclusive.rateHousing.image|length > 0 ? 'Si' : 'No' }}
+                            {% endif %}
+                        </td>
                         {% if exclusive.agency.id == app.user.agency.id %}
                             <td>
                                 <a class="btn btn-info" href="{{ path('property_charge', {'id': exclusive.id, 'idChargeType': exclusive.charge.chargeType.id}) }}">Ver</a>
