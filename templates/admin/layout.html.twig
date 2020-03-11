@@ -60,13 +60,13 @@
                 </a>
                 <div id="collapseTwo" class="collapse
                 {% if
-                    app.request.get('_route') == 'list_charge_index' or
-                    app.request.get('_route') == 'user_index'
+                    app.request.get('_route') == 'list_charge_agency'
                 %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item {% if app.request.get('_route') == 'list_charge_index' %}active{% endif %}" href="{{ path('list_charge_index') }}">Encargos Erreka</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}" href="{{ path('user_index') }}">Encargos Erreka Garrido</a>
+                        {% for agency in agencies %}
+                            <a class="collapse-item" href="{{ path('list_charge_agency', {'id': agency.id }) }}">{{ agency.name }}</a>
+                        {% endfor %}
                     </div>
                 </div>
             </li>

@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Agency;
 use App\Entity\Property;
 use App\Entity\PropertyReduction;
 use App\Form\LocalType;
@@ -27,6 +28,17 @@ class ListController extends AbstractController
     {
         return $this->render('admin/list/rate_housing.html.twig', [
             'rateHousings' => $rateHousingRepository->findByAgency($this->getUser()->getAgency()->getName()),
+        ]);
+    }
+
+    /**
+     * @Route("/encargos/{id}", name="list_charge_agency")
+     */
+    public function listCharge(Request $request, Agency $agency, PropertyRepository $propertyRepository): Response
+    {
+
+        return $this->render('admin/list/exclusive.html.twig', [
+            'exclusives' => $propertyRepository->onlyCharges($agency),
         ]);
     }
 
