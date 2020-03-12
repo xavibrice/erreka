@@ -5,12 +5,14 @@
 {% block content %}
     <h1>Agency index</h1>
 
-    <table class="table">
+    <a class="btn btn-success" href="{{ path('agency_new') }}">Crear agencia</a>
+
+    <table class="table table-bordered table-hover">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>Name</th>
-                <th>actions</th>
+                <th>Nombre</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -19,8 +21,8 @@
                 <td>{{ agency.id }}</td>
                 <td>{{ agency.name }}</td>
                 <td>
-                    <a href="{{ path('agency_show', {'id': agency.id}) }}">show</a>
-                    <a href="{{ path('agency_edit', {'id': agency.id}) }}">edit</a>
+                    <a class="btn btn-primary" href="{{ path('agency_show', {'id': agency.id}) }}">Ver</a>
+                    <a class="btn btn-info" href="{{ path('agency_edit', {'id': agency.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}
@@ -31,5 +33,4 @@
         </tbody>
     </table>
 
-    <a href="{{ path('agency_new') }}">Create new</a>
 {% endblock %}

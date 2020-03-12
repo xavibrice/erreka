@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('agency_index') }}">back to list</a>
+    <a class="btn btn-link" href="{{ path('agency_index') }}">Volver a la lista</a>
 
-    <a href="{{ path('agency_edit', {'id': agency.id}) }}">edit</a>
+    <a class="btn btn-info" href="{{ path('agency_edit', {'id': agency.id}) }}">Editar</a>
 
     {{ include('admin/agency/_delete_form.html.twig') }}
 {% endblock %}

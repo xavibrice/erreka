@@ -66,8 +66,10 @@ class DefaultController extends AbstractController
      */
     public function clients(ClientRepository $clientRepository): Response
     {
+        //SEPARARLOS POR VENTA Y ALQUILER
         return $this->render('admin/default/clients.html.twig', [
-            'clients' => $clientRepository->alertsOnlyClients($this->getUser())
+            'clientsSells' => $clientRepository->alertsOnlyClientsSell($this->getUser()),
+            'clientsRents' => $clientRepository->alertsOnlyClientsRent($this->getUser())
         ]);
     }
 }

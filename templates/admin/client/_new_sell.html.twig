@@ -1,0 +1,48 @@
+{{ form_start(form, {'action': path('client_sell_new'), 'method': 'POST'}) }}
+
+<div class="form-group row">
+    <div class="col-md-auto">{{ form_row(form.created) }}</div>
+    <div class="col-md-auto">{{ form_row(form.commercial) }}</div>
+    <div class="col-md-auto">{{ form_row(form.typeProperty) }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-md-auto">{{ form_row(form.full_name) }}</div>
+    <div class="col-md-auto">{{ form_row(form.mobile) }}</div>
+    <div class="col-md-auto">{{ form_row(form.phone) }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-md-12">{{ form_row(form.comment) }}</div>
+</div>
+<div class="form-group row bg-light text-center">
+    <div class="col-md-12 text-center"><strong>CARACTERÍSTICA VIVIENDA</strong></div>
+</div>
+<div class="form-group row">
+    <div class="col-md-auto">{{ form_row(form.bedrooms) }}</div>
+    <div class="col-md-auto">{{ form_row(form.heating) }}</div>
+    <div class="col-md-auto">{{ form_row(form.orientation) }}</div>
+    <div class="col-md-auto">{{ form_row(form.elevator) }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-md-auto">{{ form_row(form.buildingStructure) }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-md-auto">{{ form_row(form.terrace) }}</div>
+    <div class="col-md-auto">{{ form_row(form.balcony) }}</div>
+    <div class="col-md-auto">{{ form_row(form.storage_room) }}</div>
+    <div class="col-md-auto">{{ form_row(form.direct_garage) }}</div>
+    <div class="col-md-auto">{{ form_row(form.zero_dimension) }}</div>
+    <div class="col-md-auto">{{ form_row(form.disabled_access) }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-md-auto">{{ form_row(form.price) }}</div>
+</div>
+<div class="form-group row">
+    <div class="col-md-auto">{{ form_row(form.zoneOne) }}</div>
+    <div class="col-md-auto">{{ form_row(form.zoneTwo) }}</div>
+    <div class="col-md-auto">{{ form_row(form.zoneThree) }}</div>
+    <div class="col-md-auto">{{ form_row(form.zone_four) }}</div>
+</div>
+
+
+<button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+{{ form_end(form) }}

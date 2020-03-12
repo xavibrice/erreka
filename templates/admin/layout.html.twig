@@ -104,7 +104,7 @@
                 %}show{% endif %}" aria-labelledby="headingClient" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header"></h6>
-                        <a class="collapse-item {% if app.request.get('_route') == 'client_sell_index' %}active{% endif %}" href="{{ path('client_sell_index') }}">Compra</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'client_sell_index' %}active{% endif %}" href="{{ path('client_sell_index') }}">Comprar</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'client_rent_index' %}active{% endif %}" href="{{ path('client_rent_index') }}">Alquiler</a>
                     </div>
                 </div>
@@ -151,7 +151,6 @@
                         app.request.get('_route') == 'zone_index' or
                         app.request.get('_route') == 'reason_index' or
                         app.request.get('_route') == 'note_commercial_index' or
-                        app.request.get('_route') == 'street_index' or
                         app.request.get('_route') == 'situation_index' or
                         app.request.get('_route') == 'note_new_index' or
                         app.request.get('_route') == 'type_property_index'
@@ -164,7 +163,6 @@
                             <a class="collapse-item {% if app.request.get('_route') == 'note_new_index' %}active{% endif %}" href="{{ path('note_new_index') }}">Nota Noticia</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}" href="{{ path('note_commercial_index') }}">Nota Comercial</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
-                            <a class="collapse-item {% if app.request.get('_route') == 'street_index' %}active{% endif %}" href="{{ path('street_index') }}">Calles</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'situation_index' %}active{% endif %}" href="{{ path('situation_index') }}">Situaciones</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'type_property_index' %}active{% endif %}" href="{{ path('type_property_index') }}">Tipo Propiedad</a>

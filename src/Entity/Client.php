@@ -157,11 +157,6 @@ class Client
     private $zoneThree;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Reason", inversedBy="clients")
-     */
-    private $reason;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Offered", mappedBy="client")
      */
     private $offereds;
@@ -180,6 +175,16 @@ class Client
      * @ORM\Column(type="date", nullable=true)
      */
     private $nextCall;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $sellOrRent;
+
+    /**
+     * @ORM\Column(type="string", length=50, nullable=true)
+     */
+    private $nationality;
 
     public function __construct()
     {
@@ -562,18 +567,6 @@ class Client
         return $this;
     }
 
-    public function getReason(): ?Reason
-    {
-        return $this->reason;
-    }
-
-    public function setReason(?Reason $reason): self
-    {
-        $this->reason = $reason;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Offered[]
      */
@@ -656,6 +649,30 @@ class Client
     public function setNextCall(?\DateTimeInterface $nextCall): self
     {
         $this->nextCall = $nextCall;
+
+        return $this;
+    }
+
+    public function getSellOrRent(): ?bool
+    {
+        return $this->sellOrRent;
+    }
+
+    public function setSellOrRent(?bool $sellOrRent): self
+    {
+        $this->sellOrRent = $sellOrRent;
+
+        return $this;
+    }
+
+    public function getNationality(): ?string
+    {
+        return $this->nationality;
+    }
+
+    public function setNationality(?string $nationality): self
+    {
+        $this->nationality = $nationality;
 
         return $this;
     }

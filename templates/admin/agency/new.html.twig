@@ -2,10 +2,10 @@
 
 {% block title %}New Agency{% endblock %}
 
-{% block body %}
+{% block content %}
     <h1>Create new Agency</h1>
 
     {{ include('admin/agency/_form.html.twig') }}
 
-    <a href="{{ path('agency_index') }}">back to list</a>
+    <a class="btn btn-link" href="{{ path('agency_index') }}">Volver a la lista</a>
 {% endblock %}

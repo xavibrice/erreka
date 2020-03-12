@@ -1,7 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Reason.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Reason.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClientRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agency/_delete_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agency/_delete_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agency/_form.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agency/_form.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agency/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agency/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agency/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agency/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agency/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agency/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/agency/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/agency/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/_tab.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/_tab_sell.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/rent.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/sell.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/default/clients.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/clients.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/show.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/show.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -187,10 +210,10 @@
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/admin/client" />
+      <recent name="$PROJECT_DIR$/src/Form" />
       <recent name="C:\xampp\htdocs\erreka\public\img" />
       <recent name="C:\xampp\htdocs\erreka" />
       <recent name="C:\xampp\htdocs\erreka\assets\js\calendar" />
-      <recent name="C:\xampp\htdocs\erreka\src\Form" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -405,7 +428,7 @@
       <workItem from="1583585514507" duration="4442000" />
       <workItem from="1583665211343" duration="4077000" />
       <workItem from="1583691700453" duration="3615000" />
-      <workItem from="1583770246320" duration="20682000" />
+      <workItem from="1583770246320" duration="28750000" />
     </task>
     <servers />
   </component>

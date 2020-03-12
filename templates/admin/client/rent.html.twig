@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                     {% for client in clients %}
-                        <tr class="clickable-row" data-href="{{ path('client_show', {'id': client.id}) }}">
+                        <tr class="clickable-row" data-href="{{ path('client_rent_show', {'id': client.id}) }}">
                             <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
                             <td>{{ client.commercial.fullName }}</td>
                             <td>{{ client.fullName }}</td>
@@ -87,7 +87,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    {{ render_esi(controller('App\\Controller\\ClientController::newForm')) }}
+                    {{ render_esi(controller('App\\Controller\\ClientController::newRentForm')) }}
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>

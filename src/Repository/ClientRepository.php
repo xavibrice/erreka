@@ -23,10 +23,9 @@ class ClientRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('cli')
             ->innerJoin('cli.commercial', 'com')
-            ->innerJoin('cli.reason', 'r')
-            ->andWhere('r.name = :reason')
             ->andWhere('com.agency = :agency')
-            ->setParameter('reason', 'venta')
+            ->andWhere('cli.sellOrRent = :sell')
+            ->setParameter('sell', true)
             ->setParameter('agency', $agency)
             ->getQuery()
             ->getResult()
@@ -37,10 +36,9 @@ class ClientRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('cli')
             ->innerJoin('cli.commercial', 'com')
-            ->innerJoin('cli.reason', 'r')
-            ->andWhere('r.name = :reason')
             ->andWhere('com.agency = :agency')
-            ->setParameter('reason', 'alquiler')
+            ->andWhere('cli.sellOrRent = :sell')
+            ->setParameter('sell', false)
             ->setParameter('agency', $agency)
             ->getQuery()
             ->getResult()
@@ -86,13 +84,31 @@ class ClientRepository extends ServiceEntityRepository
             ;
     }
 
-    public function alertsOnlyClients($getUser)
+    public function alertsOnlyClientsSell($getUser)
     {
         $datetime = new \DateTime();
         $date = $datetime->format('Y-m-d');
         return $this->createQueryBuilder('c')
+            ->andWhere('c.sellOrRent = :sell')
             ->andWhere('c.commercial = :agent')
             ->andWhere('c.nextCall <= :nextCalll')
+            ->setParameter('sell', true)
+            ->setParameter('agent', $getUser)
+            ->setParameter('nextCalll', $date)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+    public function alertsOnlyClientsRent($getUser)
+    {
+        $datetime = new \DateTime();
+        $date = $datetime->format('Y-m-d');
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.sellOrRent = :sell')
+            ->andWhere('c.commercial = :agent')
+            ->andWhere('c.nextCall <= :nextCalll')
+            ->setParameter('sell', false)
             ->setParameter('agent', $getUser)
             ->setParameter('nextCalll', $date)
             ->getQuery()

@@ -4,7 +4,7 @@
 
 {% block content %}
 
-    {{ include('admin/client/_tab_sell.html.twig') }}
+    {{ include('admin/client/_tab_rent.html.twig') }}
 
     <div class="row">
         <div class="col-md-12">
@@ -24,7 +24,7 @@
                                     {% endif %}
                                 </td>
                                 <th class="text-right">Motivo</th>
-                                <td>{{ client.reason.name }}</td>
+                                <td>{{ client.sellOrRent ? 'Comprar' : 'Alquiler' }}</td>
                                 <th class="text-right">Tipo Inmueble</th>
                                 <td>
                                     {% if client.typeProperty %}
@@ -73,7 +73,9 @@
                                     {% endif %}
                                 </td>
                                 <th class="text-right">Ingresos</th>
-                                <td>{{ client.income|number_format(0, '.', ',') }} </td>
+                                <td>{{ client.income|number_format(0, '.', ',') }}€ </td>
+                                <th class="text-right">Nacionalidad</th>
+                                <td>{{ client.nationality }} </td>
                             </tr>
                             <tr>
                                 <th class="text-right">Terraza</th>
@@ -114,9 +116,9 @@
                                     {% if client.zoneFour %}
                                         <strong>-</strong> {{ client.zoneFour.name }}
                                     {% endif %}
-{#                                    {% for zone in client.zone %}#}
-{#                                        {{ zone.name }}#}
-{#                                    {% endfor %}#}
+                                    {#                                    {% for zone in client.zone %}#}
+                                    {#                                        {{ zone.name }}#}
+                                    {#                                    {% endfor %}#}
                                 </td>
                             </tr>
                             </tbody>
@@ -124,14 +126,10 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    {% if client.reason.name == 'Alquiler' %}
-                        {{ include('admin/_back_link.html.twig', {'route': 'client_rent_index'}) }}
-                    {% endif %}
-                    {% if client.reason.name == 'Venta' %}
-                        {{ include('admin/_back_link.html.twig', {'route': 'client_sell_index'}) }}
-                    {% endif %}
 
-                    {{ include('admin/_edit_link.html.twig', {'route': 'client_edit', 'id': client.id, 'button_label': 'Editar'}) }}
+                    {{ include('admin/_back_link.html.twig', {'route': 'client_rent_index'}) }}
+
+                    {{ include('admin/_edit_link.html.twig', {'route': 'client_rent_edit', 'id': client.id, 'button_label': 'Editar'}) }}
 
                     <div class="float-right">
                         {{ include('admin/_delete_form.html.twig', {'route': 'client_delete', 'entity': client, 'count': client.visits|length}) }}
@@ -160,34 +158,34 @@
         </div>
         <div class="col-md-8 mb-4">
             <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 350px;">
-                    <div class="col-md-12 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="table-responsive">
-                                        <table class="table table-sm table-borderless">
-                                            <thead>
+                <div class="col-md-12 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th>Fecha </th>
+                                            <th>Comentario</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for noteclient in client.noteClients|reverse %}
                                             <tr>
-                                                <th>Fecha </th>
-                                                <th>Comentario</th>
+                                                <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
+                                                <td data-toggle="tooltip" data-placement="top" title="{{ noteclient.comment }}">
+                                                    {{ noteclient.comment|slice(0, 100) }}
+                                                </td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for noteclient in client.noteClients|reverse %}
-                                                <tr>
-                                                    <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
-                                                    <td data-toggle="tooltip" data-placement="top" title="{{ noteclient.comment }}">
-                                                        {{ noteclient.comment|slice(0, 100) }}
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
@@ -211,42 +209,42 @@
         </div>
         <div class="col-md-8 mb-4">
             <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 400px;">
-                    <div class="col-md-12 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="table-responsive">
-                                        <table class="table table-sm table-borderless">
-                                            <thead>
+                <div class="col-md-12 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th>Fecha visita</th>
+                                            <th>Dirección</th>
+                                            <th>Precio</th>
+                                            <th>Comentario</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for visit in client.visits|reverse %}
                                             <tr>
-                                                <th>Fecha visita</th>
-                                                <th>Dirección</th>
-                                                <th>Precio</th>
-                                                <th>Comentario</th>
+                                                <td>{{ visit.visited|date('d/m/Y')}}</td>
+                                                <td>{{ visit.property.street.name }} {{ visit.property.portal }}, {{ visit.property.floor }}</td>
+                                                <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
+                                                <td data-toggle="tooltip" data-placement="top" title="{{ visit.comment }}">
+                                                    {{ visit.comment|slice(0, 50) }}
+                                                </td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for visit in client.visits|reverse %}
-                                                <tr>
-                                                    <td>{{ visit.visited|date('d/m/Y')}}</td>
-                                                    <td>{{ visit.property.street.name }} {{ visit.property.portal }}, {{ visit.property.floor }}</td>
-                                                    <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
-                                                    <td data-toggle="tooltip" data-placement="top" title="{{ visit.comment }}">
-                                                        {{ visit.comment|slice(0, 50) }}
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
 
-{#    <a href="{{ path('client_index') }}">back to list</a>#}
-{#    {{ include('admin/client/_delete_form.html.twig') }}#}
+    {#    <a href="{{ path('client_index') }}">back to list</a>#}
+    {#    {{ include('admin/client/_delete_form.html.twig') }}#}
 {% endblock %}

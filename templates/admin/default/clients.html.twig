@@ -3,8 +3,8 @@
         {#        <i class="fas fa-book fa-fw"></i>#}
         <strong>P</strong>
         <!-- Counter - Messages -->
-        {% if clients|length > 0 %}
-            <span class="badge badge-primary badge-counter">{{ clients|length }}</span>
+        {% if clientsSells|length + clientsRents|length > 0 %}
+            <span class="badge badge-primary badge-counter">{{ clientsSells|length + clientsRents|length }}</span>
         {% endif %}
     </a>
     <!-- Dropdown - Messages -->
@@ -12,25 +12,51 @@
         <h6 class="dropdown-header">
             Clientes
         </h6>
-        {% if clients|length > 0 %}
-            {% for client in clients %}
-                <a class="dropdown-item d-flex align-items-center" href="{{ path('client_show', {'id': client.id}) }}">
+        {% if clientsSells|length > 0 %}
+            {% for client in clientsSells %}
+                <a class="dropdown-item d-flex align-items-center" href="{{ path('client_sell_show', {'id': client.id}) }}">
                     <div class="dropdown-list-image mr-3">
                         <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
                         <div class="status-indicator bg-success"></div>
                     </div>
                     <div class="font-weight-bold">
-                        <div class="text-truncate">{{ client.fullname }}</div>
-{#                        <div class="small text-gray-500">{{ client.no }}</div>#}
+                        <div class="text-truncate">{{ client.fullname }} - {{ client.mobile }}</div>
+                        <div class="small text-gray-500">
+                            Comprar -
+                            {% if client.noteClients|length > 0 %}
+                                {{ client.noteClients.last.comment }}
+                            {% endif %}</div>
                     </div>
                 </a>
             {% endfor %}
 {#            <a class="dropdown-item text-center small text-gray-500" href="#">ver mas</a>#}
 
         {% else %}
-            <p class="mt-2 text-center small text-gray-500">No hay clientes</p>
+            <p class="mt-2 text-center small text-gray-500">No hay clientes de compra</p>
         {% endif %}
 
+        {% if clientsRents|length > 0 %}
+            {% for client in clientsRents %}
+                <a class="dropdown-item d-flex align-items-center" href="{{ path('client_rent_index', {'id': client.id}) }}">
+                    <div class="dropdown-list-image mr-3">
+                        <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
+                        <div class="status-indicator bg-success"></div>
+                    </div>
+                    <div class="font-weight-bold">
+                        <div class="text-truncate">{{ client.fullname }} - {{ client.mobile }}</div>
+                        <div class="small text-gray-500">
+                            Alquiler -
+                            {% if client.noteClients|length > 0 %}
+                                {{ client.noteClients.last.comment }}
+                            {% endif %}
+                        </div>
+                    </div>
+                </a>
+            {% endfor %}
+            {#            <a class="dropdown-item text-center small text-gray-500" href="#">ver mas</a>#}
 
+        {% else %}
+            <p class="mt-2 text-center small text-gray-500">No hay clientes de alquiler</p>
+        {% endif %}
     </div>
 </li>
