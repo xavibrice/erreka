@@ -362,7 +362,7 @@ class ClientController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="client_delete", methods={"DELETE"})
+     * @Route("/{id}/comprar", name="client_sell_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Client $client): Response
     {
@@ -372,7 +372,21 @@ class ClientController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('client_index');
+        return $this->redirectToRoute('client_sell_index');
+    }
+
+    /**
+     * @Route("/{id}/alquiler", name="client_rent_delete", methods={"DELETE"})
+     */
+    public function deleteRent(Request $request, Client $client): Response
+    {
+        if ($this->isCsrfTokenValid('delete'.$client->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($client);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('client_rent_index');
     }
 
     /**

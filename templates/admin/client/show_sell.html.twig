@@ -130,7 +130,7 @@
                     {{ include('admin/_edit_link.html.twig', {'route': 'client_sell_edit', 'id': client.id, 'button_label': 'Editar'}) }}
 
                     <div class="float-right">
-                        {{ include('admin/_delete_form.html.twig', {'route': 'client_delete', 'entity': client, 'count': client.visits|length}) }}
+                        {{ include('admin/_delete_form.html.twig', {'route': 'client_sell_delete', 'entity': client, 'count': client.visits|length}) }}
                     </div>
                 </div>
             </div>
