@@ -109,10 +109,16 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item {% if app.request.get('_route') == 'visit_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('visit_index') }}">
+            <li class="nav-item {% if app.request.get('_route') == 'visit_sell_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('visit_sell_index') }}">
                     <i class="fas fa-fw fa-eye"></i>
-                    <span>Visitas</span>
+                    <span>Visitas Comprar</span>
+                </a>
+            </li>
+            <li class="nav-item {% if app.request.get('_route') == 'visit_rent_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('visit_rent_index') }}">
+                    <i class="fas fa-fw fa-eye"></i>
+                    <span>Visitas Alquiler</span>
                 </a>
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'list_rented_index' %}active{% endif %}">

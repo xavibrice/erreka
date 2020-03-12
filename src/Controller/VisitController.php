@@ -16,14 +16,25 @@ use Symfony\Component\Routing\Annotation\Route;
 class VisitController extends AbstractController
 {
     /**
-     * @Route("/", name="visit_index", methods={"GET"})
+     * @Route("/comprar", name="visit_sell_index", methods={"GET"})
      */
-    public function index(VisitRepository $visitRepository): Response
+    public function indexSell(VisitRepository $visitRepository): Response
     {
-        return $this->render('admin/visit/index.html.twig', [
-            'visits' => $visitRepository->findBy([], ['visited' => 'ASC']),
+        return $this->render('admin/visit/index_sell.html.twig', [
+            'visits' => $visitRepository->findBySell(),
         ]);
     }
+
+    /**
+     * @Route("/alquiler", name="visit_rent_index", methods={"GET"})
+     */
+    public function indexRent(VisitRepository $visitRepository): Response
+    {
+        return $this->render('admin/visit/index_rent.html.twig', [
+            'visits' => $visitRepository->findByRent(),
+        ]);
+    }
+
 
     /**
      * @Route("/new", name="visit_new", methods={"GET","POST"})

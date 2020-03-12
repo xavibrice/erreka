@@ -19,22 +19,30 @@ class VisitRepository extends ServiceEntityRepository
         parent::__construct($registry, Visit::class);
     }
 
-    // /**
-    //  * @return Visit[] Returns an array of Visit objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    public function findBySell()
     {
         return $this->createQueryBuilder('v')
-            ->andWhere('v.exampleField = :val')
-            ->setParameter('val', $value)
+            ->innerJoin('v.client', 'c')
+            ->andWhere('c.sellOrRent = :sell')
+            ->setParameter('sell', true)
             ->orderBy('v.id', 'ASC')
-            ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    public function findByRent()
+    {
+        return $this->createQueryBuilder('v')
+            ->innerJoin('v.client', 'c')
+            ->andWhere('c.sellOrRent = :sell')
+            ->setParameter('sell', false)
+            ->orderBy('v.id', 'ASC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 
     /*
     public function findOneBySomeField($value): ?Visit
