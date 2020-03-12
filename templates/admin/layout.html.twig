@@ -34,18 +34,22 @@
                     <span>Agenda</span>
                 </a>
             </li>
-            <li class="nav-item {% if app.request.get('_route') == 'property_to_developer_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('property_to_developer_index') }}">
-                    <i class="fas fa-fw fa-file"></i>
-                    <span>Noticias a Desarrollar</span>
-                </a>
-            </li>
-            <li class="nav-item {% if app.request.get('_route') == 'property_index' %}active{% endif %}">
-                <a class="nav-link" href="{{ path('property_index') }}">
-                    {#        <a class="nav-link" href="#">#}
-                    <i class="fas fa-fw fa-newspaper"></i>
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseNotice" aria-expanded="true" aria-controls="collapseNotice">
+                    <i class="fas fa-fw fa-cog"></i>
                     <span>Noticias</span>
                 </a>
+                <div id="collapseNotice" class="collapse
+                {% if
+                    app.request.get('_route') == 'property_index' or
+                    app.request.get('_route') == 'property_to_developer_index'
+                %}show{% endif %}" aria-labelledby="headingNotice" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <h6 class="collapse-header"></h6>
+                        <a class="collapse-item {% if app.request.get('_route') == 'property_index' %}active{% endif %}" href="{{ path('property_index') }}">Noticias</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'property_to_developer_index' %}active{% endif %}" href="{{ path('property_to_developer_index') }}">Noticias a Desarrollar</a>
+                    </div>
+                </div>
             </li>
             <li class="nav-item {% if app.request.get('_route') == 'list_rate_housing_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('list_rate_housing_index') }}">
@@ -54,14 +58,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseCharge" aria-expanded="true" aria-controls="collapseCharge">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Encargos</span>
                 </a>
-                <div id="collapseTwo" class="collapse
+                <div id="collapseCharge" class="collapse
                 {% if
                     app.request.get('_route') == 'list_charge_agency'
-                %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                %}show{% endif %}" aria-labelledby="headingCharge" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header"></h6>
                         {% for agency in agencies %}
