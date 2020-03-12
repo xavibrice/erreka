@@ -38,12 +38,11 @@
                 </div>
                 <div class="card-footer">
                     {% if chargeType.name == 'Exclusiva' %}
-                        {{ include('admin/_back_link.html.twig', {'route': 'list_charge_index'}) }}
+                        <a class="btn btn-primary" href="{{ path('list_charge_agency', {'id': app.user.agency.id}) }}">Volver a la lista</a>
                     {% endif %}
                     {% if chargeType.name == 'Autorización' %}
-                        {{ include('admin/_back_link.html.twig', {'route': 'list_authorization_index'}) }}
+                        <a class="btn btn-primary" href="{{ path('list_charge_agency', {'id': app.user.agency.id}) }}">Volver a la lista</a>
                     {% endif %}
-
 {#                    {{ include('admin/_edit_link.html.twig', {'route': 'property_edit', 'id': property.id, 'button_label': 'Editar'}) }}#}
                 </div>
             </div>

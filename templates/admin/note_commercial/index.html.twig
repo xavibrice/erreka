@@ -14,19 +14,17 @@
             <table class="table table-striped" id="dataTableEmpty" width="100%" cellpadding="0">
                 <thead>
                 <tr>
-                    <th>Nota</th>
                     <th>Fecha Nota</th>
                     <th>De</th>
                     <th>Para</th>
-                    <th>Ver</th>
-                    <th>Editar</th>
+                    <th>Nota</th>
+                    <th>Acciones</th>
                     <th>Eliminar</th>
                 </tr>
                 </thead>
                 <tbody>
                     {% for note_commercial in note_commercials %}
                         <tr>
-                            <td>{{ note_commercial.note }}</td>
                             <td>{{ note_commercial.noticeDate ? note_commercial.noticeDate|date('d-m-Y') : '' }}</td>
                             <td>{{ note_commercial.fromCommercial.fullName }}</td>
                             <td>
@@ -34,10 +32,9 @@
                                     {{ note_commercial.commercial.fullName }}
     {#                            </a>#}
                             </td>
+                            <td>{{ note_commercial.note }}</td>
                             <td>
                                 {{ include('admin/_show_link.html.twig', {'route': 'note_commercial_show', 'id': note_commercial.id }) }}
-                            </td>
-                            <td>
                                 {{ include('admin/_edit_link.html.twig', {'route': 'note_commercial_edit', 'id': note_commercial.id }) }}
                             </td>
                             <td>
