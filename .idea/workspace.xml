@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/Controller/VisitController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/VisitController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/VisitRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/VisitRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/visit/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/visit/index.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,11 +188,11 @@
       <recent name="C:\xampp\htdocs\erreka\templates\admin\client" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/admin/visit" />
       <recent name="$PROJECT_DIR$/templates/admin/client" />
       <recent name="$PROJECT_DIR$/src/Form" />
       <recent name="C:\xampp\htdocs\erreka\public\img" />
       <recent name="C:\xampp\htdocs\erreka" />
-      <recent name="C:\xampp\htdocs\erreka\assets\js\calendar" />
     </key>
   </component>
   <component name="ServiceViewManager">
@@ -410,7 +407,7 @@
       <workItem from="1583585514507" duration="4442000" />
       <workItem from="1583665211343" duration="4077000" />
       <workItem from="1583691700453" duration="3615000" />
-      <workItem from="1583770246320" duration="29653000" />
+      <workItem from="1583770246320" duration="30051000" />
     </task>
     <servers />
   </component>
