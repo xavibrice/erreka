@@ -84,11 +84,12 @@ class PropertyRepository extends ServiceEntityRepository
             ->andWhere('p.commercial = :commercial')
             ->andWhere('p.enabled = :enabled')
             ->andWhere('p.next_call <= :nexCall')
-            ->andWhere('s.name = :situation')
+            ->andWhere('s.name = :situation OR r.name = :rent')
             ->setParameter('nexCall', $date)
             ->setParameter('enabled', true)
             ->setParameter('commercial', $getUser)
             ->setParameter('situation', 'noticia')
+            ->setParameter('rent', 'alquilado')
             ->getQuery()
             ->getResult()
             ;
