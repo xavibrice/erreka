@@ -407,7 +407,10 @@
       <workItem from="1583585514507" duration="4442000" />
       <workItem from="1583665211343" duration="4077000" />
       <workItem from="1583691700453" duration="3615000" />
-      <workItem from="1583770246320" duration="31702000" />
+      <workItem from="1583770246320" duration="32884000" />
+      <workItem from="1584097329973" duration="136000" />
+      <workItem from="1584097571275" duration="56000" />
+      <workItem from="1584182516855" duration="625000" />
     </task>
     <servers />
   </component>
@@ -483,12 +486,12 @@
     <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582540134791" />
     <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579802935103" />
     <state x="411" y="380" key="com.intellij.ide.util.TipDialog/0.23.1792.1017@0.23.1792.1017" timestamp="1583397307866" />
-    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup" timestamp="1584088039078">
-      <screen x="0" y="0" width="1792" height="1120" />
+    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup" timestamp="1584093757807">
+      <screen x="0" y="23" width="1792" height="1017" />
     </state>
     <state x="158" y="248" width="670" height="732" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1584088039078" />
     <state x="169" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1583259908361" />
     <state x="225" y="230" width="672" height="678" key="search.everywhere.popup/0.0.2560.1040@0.0.2560.1040" timestamp="1579381231226" />
-    <state x="158" y="248" width="670" height="664" key="search.everywhere.popup/0.23.1792.1017@0.23.1792.1017" timestamp="1583318642957" />
+    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup/0.23.1792.1017@0.23.1792.1017" timestamp="1584093757807" />
   </component>
 </project>
