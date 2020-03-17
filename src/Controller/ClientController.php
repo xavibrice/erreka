@@ -98,6 +98,8 @@ class ClientController extends AbstractController
             ->innerJoin('p.rateHousing', 'rh')
             ->innerJoin('p.charge', 'c')
             ->innerJoin('p.reason', 'r')
+            ->innerJoin('p.street', 's')
+            ->innerJoin('s.zone', 'z')
             ->andWhere('p.enabled = :enabled')
             ->andWhere('r.name = :reason')
             ->setParameter('reason', 'Venta')
@@ -199,8 +201,6 @@ class ClientController extends AbstractController
 
         if ($client->getZoneOne()) {
             $queryBuilder
-                ->innerJoin('p.street', 's')
-                ->innerJoin('s.zone', 'z')
                 ->andWhere('z.name = :zoneOne')
                 ->setParameter('zoneOne', $client->getZoneOne()->getName())
             ;
