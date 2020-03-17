@@ -98,7 +98,7 @@ class ClientController extends AbstractController
             ->innerJoin('p.rateHousing', 'rh')
             ->innerJoin('p.charge', 'c')
             ->innerJoin('p.reason', 'r')
-            ->where('p.enabled = :enabled')
+            ->andWhere('p.enabled = :enabled')
             ->andWhere('r.name = :reason')
             ->setParameter('reason', 'Venta')
             ->setParameter('enabled', true)
