@@ -69,7 +69,7 @@
                                 {% endif %}
 #}{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}{#
                             </td>#}
-                            <td>{{ possibleVisit.visits|length }}</td>
+                            <td>{{ possibleVisit.visits ? possibleVisit.visits.count }}</td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
                             <td>
                                 {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}

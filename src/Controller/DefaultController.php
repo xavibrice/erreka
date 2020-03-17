@@ -27,7 +27,7 @@ class DefaultController extends AbstractController
     public function notes(NoteCommercialRepository $noteCommercialRepository): Response
     {
         return $this->render('admin/default/note.html.twig', [
-            'note_commercials' => $noteCommercialRepository->findBy(['commercial' => $this->getUser()]),
+            'note_commercials' => $noteCommercialRepository->findByDate(['commercial' => $this->getUser()]),
         ]);
     }
 

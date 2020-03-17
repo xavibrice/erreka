@@ -19,6 +19,17 @@ class NoteCommercialRepository extends ServiceEntityRepository
         parent::__construct($registry, NoteCommercial::class);
     }
 
+    public function findByDate($getUser)
+    {
+        return $this->createQueryBuilder('n')
+            ->andWhere('n.notice_date <= :date')
+            ->andWhere('n.commercial = :agent')
+            ->setParameter('date', new \DateTime())
+            ->setParameter('agent',$getUser)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
 
     public function findAgencyAndAgent($agency, $agent)
     {

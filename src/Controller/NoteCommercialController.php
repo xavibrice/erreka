@@ -76,7 +76,7 @@ class NoteCommercialController extends AbstractController
     public function edit(Request $request, NoteCommercial $noteCommercial): Response
     {
         $form = $this->createForm(NoteCommercialType::class, $noteCommercial, [
-            'agency' => $this->getUser()->getAgency()->getName()
+            //'agency' => $this->getUser()->getAgency()->getName()
         ]);
         $form->handleRequest($request);
 
