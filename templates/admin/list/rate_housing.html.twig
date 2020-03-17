@@ -50,7 +50,9 @@
                                 <td>{{ property.fullName }}</td>
                                 <td>{{ property.mobile }}</td>
                                 <td>
-                                    {{ property.charge ? property.charge.price|number_format(0, ',', '.') }}€
+                                    {{ property.charge ? property.charge.price|number_format(0, ',', '.') : '' }}€
+
+                                    {{ property.propertyReduction ? property.property.reduction.count : '' }}
 {#                                    {% if rateHousing.maxPrice is not empty %}
                                         {{ rateHousing.maxPrice|number_format(0, ',', '.') }} €
                                     {% endif %}#}
