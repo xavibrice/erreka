@@ -250,7 +250,7 @@ class ClientController extends AbstractController
 //        }
 //dd('ok');
 
-        $possibleVisits = $queryBuilder->getQuery()->getScalarResult();
+        $possibleVisits = $queryBuilder->getQuery()->getResult();
         return $this->render('admin/client/possible-visits.html.twig', [
             'client' => $client,
             'possibleVisits' => $possibleVisits

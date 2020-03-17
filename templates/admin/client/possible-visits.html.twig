@@ -42,6 +42,7 @@
                     </thead>
                     <tbody>
                     {% for possibleVisit in possibleVisits %}
+{#                        {{ dump(possibleVisits) }}#}
                         <tr>
                             <td>{{ possibleVisit.reference }}</td>
                             <td>{{ possibleVisit.charge.chargeType.name }}</td>
@@ -52,23 +53,23 @@
                             <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
                             <td>{{ possibleVisit.rateHousing.realMeters }}</td>
-{#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
+                            {#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
                             <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
-{#                            <td>
-                                {% if possibleVisit.offereds is not empty %}
-#}{#                                    <a class="btn btn-success" href="{{ path('offered_delete', {'id': possibleVisit.offereds.first.id, 'idClient': client.id }) }}">Si</a>#}{#
-                                    {% for offerp in possibleVisit.offereds %}
-                                        {% for offerc in client.offereds %}
-                                            {% if offerc.client.id == client.id and offerp.property.id == possibleVisit.id %}
-                                                <a class="btn btn-success" href="">Si</a>
-                                            {% endif %}
-                                        {% endfor %}
-                                    {% endfor %}
-                                {% else %}
-                                    <a class="btn btn-danger" href="{{ path('offered_new', {'idClient': client.id, 'idProperty': possibleVisit.id }) }}">No</a>
-                                {% endif %}
-#}{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}{#
-                            </td>#}
+                            {#                            <td>
+                                                            {% if possibleVisit.offereds is not empty %}
+                            #}{#                                    <a class="btn btn-success" href="{{ path('offered_delete', {'id': possibleVisit.offereds.first.id, 'idClient': client.id }) }}">Si</a>#}{#
+                                                                {% for offerp in possibleVisit.offereds %}
+                                                                    {% for offerc in client.offereds %}
+                                                                        {% if offerc.client.id == client.id and offerp.property.id == possibleVisit.id %}
+                                                                            <a class="btn btn-success" href="">Si</a>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                <a class="btn btn-danger" href="{{ path('offered_new', {'idClient': client.id, 'idProperty': possibleVisit.id }) }}">No</a>
+                                                            {% endif %}
+                            #}{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}{#
+                                                        </td>#}
                             <td>{{ possibleVisit.visits ? possibleVisit.visits.count }}</td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
                             <td>
@@ -93,6 +94,7 @@
 
                             </td>
                         </tr>
+
                     {% endfor %}
                     </tbody>
                 </table>
