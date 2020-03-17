@@ -204,29 +204,34 @@ class ClientController extends AbstractController
                 ->andWhere('z.name = :zoneOne')
                 ->setParameter('zoneOne', $client->getZoneOne()->getName())
             ;
+        }
 
+        if ($client->getZoneTwo()) {
             if ($client->getZoneTwo()) {
                 $queryBuilder
-                    ->orWhere('z.name = :zoneTwo')
+                    ->andWhere('z.name = :zoneTwo')
                     ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
-                ;
-            }
-
-            if ($client->getZoneThree()) {
-                $queryBuilder
-                    ->orWhere('z.name = :zoneThree')
-                    ->setParameter('zoneThree', $client->getZoneThree()->getName())
-                ;
-            }
-
-            if ($client->getZoneFour()) {
-                $queryBuilder
-                    ->orWhere('z.name = :zoneFour')
-                    ->setParameter('zoneFour', $client->getZoneFour()->getName())
                 ;
             }
         }
 
+        if ($client->getZoneThree()) {
+            if ($client->getZoneThree()) {
+                $queryBuilder
+                    ->andWhere('z.name = :zoneThree')
+                    ->setParameter('zoneThree', $client->getZoneThree()->getName())
+                ;
+            }
+        }
+
+        if ($client->getZoneFour()) {
+            if ($client->getZoneFour()) {
+                $queryBuilder
+                    ->andWhere('z.name = :zoneFour')
+                    ->setParameter('zoneFour', $client->getZoneFour()->getName())
+                ;
+            }
+        }
 
         //Que precio cojo de referencia?? Si es desde ese precio para abajo o como?
 
