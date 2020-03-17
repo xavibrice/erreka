@@ -201,7 +201,7 @@ class ClientController extends AbstractController
 
         if ($client->getZoneOne()) {
             $queryBuilder
-                ->orWhere('z.name = :zoneOne')
+                ->andWhere('z.name = :zoneOne')
                 ->setParameter('zoneOne', $client->getZoneOne()->getName())
             ;
         }
