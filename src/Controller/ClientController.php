@@ -177,21 +177,21 @@ class ClientController extends AbstractController
         if ($client->getBedrooms()) {
             if ($client->getBedrooms()->getName() === "1 - 2") {
                 $queryBuilder
-                    ->andWhere('(rh.bedrooms >= :start AND rh.bedrooms <= :end)')
+                    ->where('(rh.bedrooms >= :start AND rh.bedrooms <= :end)')
                     ->setParameter('start', 1)
                     ->setParameter('end', 2)
                     ;
             }
             if ($client->getBedrooms()->getName() === "2 - 3") {
                 $queryBuilder
-                    ->andWhere('rh.bedrooms >= :start AND rh.bedrooms <= :end')
+                    ->where('rh.bedrooms >= :start AND rh.bedrooms <= :end')
                     ->setParameter('start', 2)
                     ->setParameter('end', 3)
                 ;
             }
             if ($client->getBedrooms()->getName() === "+3") {
                 $queryBuilder
-                    ->andWhere('rh.bedrooms >= :start')
+                    ->where('rh.bedrooms >= :start')
                     ->setParameter('start', 3)
                 ;
             }
