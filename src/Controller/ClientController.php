@@ -201,7 +201,7 @@ class ClientController extends AbstractController
             $queryBuilder
                 ->innerJoin('p.street', 's')
                 ->innerJoin('s.zone', 'z')
-                ->where('z.name = :zoneOne')
+                ->andWhere('z.name = :zoneOne')
                 ->setParameter('zoneOne', $client->getZoneOne()->getName())
             ;
 
