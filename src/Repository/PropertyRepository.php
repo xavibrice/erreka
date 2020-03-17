@@ -140,8 +140,11 @@ class PropertyRepository extends ServiceEntityRepository
     public function onlyCharges($getAgency) {
         return $this->createQueryBuilder('p')
             ->innerJoin('p.charge', 'c')
+            ->leftJoin('p.propertyReductions', 'pr')
+            ->addSelect('SUM(pr.price) as sumPropertyReduction')
             ->andWhere('p.agency = :agency')
             ->setParameter('agency', $getAgency)
+            ->groupBy('p.id')
             ->getQuery()
             ->getResult()
             ;
