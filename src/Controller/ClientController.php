@@ -209,7 +209,8 @@ class ClientController extends AbstractController
         if ($client->getZoneTwo()) {
             if ($client->getZoneTwo()) {
                 $queryBuilder
-                    ->andWhere('z.name = :zoneTwo')
+                    ->andWhere('z.name = :zoneOne OR z.name = :zoneTwo')
+                    ->setParameter('zoneOne', $client->getZoneOne()->getName())
                     ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
                 ;
             }
@@ -224,15 +225,39 @@ class ClientController extends AbstractController
             }
         }
 
-        if ($client->getZoneFour()) {
-            if ($client->getZoneFour()) {
-                $queryBuilder
-                    ->orWhere('z.name = :zoneFour')
-                    ->setParameter('zoneFour', $client->getZoneFour()->getName())
-                ;
-            }
+        if ($client->getZoneOne() && $client->getZoneTwo() && $client->getZoneThree() && $client->getZoneFour()) {
+            $queryBuilder
+                ->andWhere('z.name = :zoneOne OR z.name = :zoneTwo OR z.name = :zoneThree OR z.name = :zoneFour')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+                ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
+                ->setParameter('zoneThree', $client->getZoneThree()->getName())
+                ->setParameter('zoneFour', $client->getZoneFour()->getName())
+            ;
         }
 
+        if ($client->getZoneOne() && $client->getZoneTwo() && $client->getZoneThree()) {
+            $queryBuilder
+                ->andWhere('z.name = :zoneOne OR z.name = :zoneTwo OR z.name = :zoneThree')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+                ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
+                ->setParameter('zoneThree', $client->getZoneThree()->getName())
+            ;
+        }
+
+        if ($client->getZoneOne() && $client->getZoneTwo()) {
+            $queryBuilder
+                ->andWhere('z.name = :zoneOne OR z.name = :zoneTwo')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+                ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
+            ;
+        }
+
+        if ($client->getZoneOne()) {
+            $queryBuilder
+                ->andWhere('z.name = :zoneOne')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+            ;
+        }
         //Que precio cojo de referencia?? Si es desde ese precio para abajo o como?
 
 //        if ($client->getZone()) {
