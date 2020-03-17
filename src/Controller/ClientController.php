@@ -201,7 +201,7 @@ class ClientController extends AbstractController
 
         if ($client->getZoneOne()) {
             $queryBuilder
-                ->andWhere('z.name = :zoneOne')
+                ->orWhere('z.name = :zoneOne')
                 ->setParameter('zoneOne', $client->getZoneOne()->getName())
             ;
         }
@@ -209,7 +209,7 @@ class ClientController extends AbstractController
         if ($client->getZoneTwo()) {
             if ($client->getZoneTwo()) {
                 $queryBuilder
-                    ->andWhere('z.name = :zoneTwo')
+                    ->orWhere('z.name = :zoneTwo')
                     ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
                 ;
             }
@@ -218,7 +218,7 @@ class ClientController extends AbstractController
         if ($client->getZoneThree()) {
             if ($client->getZoneThree()) {
                 $queryBuilder
-                    ->andWhere('z.name = :zoneThree')
+                    ->orWhere('z.name = :zoneThree')
                     ->setParameter('zoneThree', $client->getZoneThree()->getName())
                 ;
             }
@@ -227,7 +227,7 @@ class ClientController extends AbstractController
         if ($client->getZoneFour()) {
             if ($client->getZoneFour()) {
                 $queryBuilder
-                    ->andWhere('z.name = :zoneFour')
+                    ->orWhere('z.name = :zoneFour')
                     ->setParameter('zoneFour', $client->getZoneFour()->getName())
                 ;
             }
