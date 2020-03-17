@@ -201,27 +201,27 @@ class ClientController extends AbstractController
             $queryBuilder
                 ->innerJoin('p.street', 's')
                 ->innerJoin('s.zone', 'z')
-                ->andWhere('z.name = :zoneOne')
+                ->orWhere('z.name = :zoneOne')
                 ->setParameter('zoneOne', $client->getZoneOne()->getName())
             ;
 
             if ($client->getZoneTwo()) {
                 $queryBuilder
-                    ->andWhere('z.name = :zoneTwo')
+                    ->orWhere('z.name = :zoneTwo')
                     ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
                 ;
             }
 
             if ($client->getZoneThree()) {
                 $queryBuilder
-                    ->andWhere('z.name = :zoneThree')
+                    ->orWhere('z.name = :zoneThree')
                     ->setParameter('zoneThree', $client->getZoneThree()->getName())
                 ;
             }
 
             if ($client->getZoneFour()) {
                 $queryBuilder
-                    ->andWhere('z.name = :zoneFour')
+                    ->orWhere('z.name = :zoneFour')
                     ->setParameter('zoneFour', $client->getZoneFour()->getName())
                 ;
             }
