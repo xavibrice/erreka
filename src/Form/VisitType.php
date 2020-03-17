@@ -25,11 +25,11 @@ class VisitType extends AbstractType
                     'class' => 'js-datepicker',
                 ]
             ])
-            ->add('property', EntityType::class, [
-                'label' => 'Propiedad',
-                'class' => Property::class,
-                'disabled' => true
-            ])
+//            ->add('property', EntityType::class, [
+//                'label' => 'Propiedad',
+//                'class' => Property::class,
+//                'disabled' => true
+//            ])
 //            ->add('client', ClientSelectType::class, [
 //                'label' => 'Cliente'
 //            ])
