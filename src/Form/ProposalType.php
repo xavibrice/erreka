@@ -50,12 +50,6 @@ class ProposalType extends AbstractType
                     'class' => 'js-datepicker',
                 ]
             ])
-            ->add('property', EntityType::class, [
-                'label' => 'Propiedad',
-                'class' => Property::class,
-                'disabled' => true
-            ])
-
         ;
     }
 
