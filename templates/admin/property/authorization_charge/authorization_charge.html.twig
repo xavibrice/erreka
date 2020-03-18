@@ -136,7 +136,15 @@
                                         <tbody>
                                         {% for visit in property.visits|reverse %}
                                             <tr>
-                                                <td>{{ visit.client.fullName }}</td>
+                                                <td>
+
+                                                    {% if visit.property.reason.name == 'Alquiler' %}
+                                                        <a class="btn btn-info" href="{{ path('client_rent_show', {'id': visit.client.id}) }}">{{ visit.client.fullName }}</a>
+                                                    {% endif %}
+                                                    {% if visit.property.reason.name == 'Venta' %}
+                                                        <a class="btn btn-info" href="{{ path('client_sell_show', {'id': visit.client.id}) }}">{{ visit.client.fullName }}</a>
+                                                    {% endif %}
+                                                </td>
                                                 <td>{{ visit.visited|date('d/m/Y') }}</td>
                                                 <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
                                                 <td>{{ visit.comment }}</td>
@@ -229,7 +237,7 @@
                                     <table class="table table-sm table-borderless">
                                         <thead>
                                         <tr>
-                                            <th>Fecha creación</th>
+                                            <th>Fecha propuesta</th>
                                             <th>Cliente</th>
                                             <th>Móvil</th>
                                             <th>Importe</th>
