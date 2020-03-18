@@ -30,7 +30,8 @@ class ProposalType extends AbstractType
             ])   */
             ->add('client', EntityType::class, [
                 'label' => 'Cliente',
-                'class' => Client::class
+                'class' => Client::class,
+                'placeholder' => 'Selecciona cliente'
             ])
             ->add('price', MoneyType::class, [
                 'label' => 'Precio'
