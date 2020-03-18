@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Client;
 use App\Entity\Property;
 use App\Entity\Proposal;
 use App\Form\Type\DatePickerType;
@@ -24,8 +25,12 @@ class ProposalType extends AbstractType
                     'class' => 'js-datepicker',
                 ]
             ])
-            ->add('client', ClientSelectType::class, [
+/*            ->add('client', ClientSelectType::class, [
                 'label' => 'Cliente'
+            ])   */
+            ->add('client', EntityType::class, [
+                'label' => 'Cliente',
+                'class' => Client::class
             ])
             ->add('price', MoneyType::class, [
                 'label' => 'Precio'
