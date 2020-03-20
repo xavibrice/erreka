@@ -21,10 +21,12 @@ class ProposalRepository extends ServiceEntityRepository
 
     public function findForProposalAgency($getAgency)
     {
-        return $this->createQueryBuilder('p')
-            ->innerJoin('p.property', 'property')
+        return $this->createQueryBuilder('proposal')
+            ->innerJoin('proposal.property', 'property')
             ->where('property.agency = :agency')
+            ->andWhere('proposal.contract != :contract')
             ->setParameter('agency', $getAgency)
+            ->setParameter('contract', null)
             ->getQuery()
             ->getResult()
             ;
