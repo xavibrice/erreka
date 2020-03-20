@@ -3,7 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ProposalType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProposalType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/rate_housing.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -417,7 +423,13 @@
       <workItem from="1584405103079" duration="1256000" />
       <workItem from="1584433205756" duration="9297000" />
       <workItem from="1584462270715" duration="395000" />
-      <workItem from="1584537897182" duration="1796000" />
+      <workItem from="1584537897182" duration="2382000" />
+      <workItem from="1584551710716" duration="333000" />
+      <workItem from="1584582076992" duration="8000" />
+      <workItem from="1584582662052" duration="7803000" />
+      <workItem from="1584633853785" duration="196000" />
+      <workItem from="1584634064045" duration="4519000" />
+      <workItem from="1584701966957" duration="967000" />
     </task>
     <servers />
   </component>

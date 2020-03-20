@@ -2,6 +2,11 @@
 
 {% block title %}Listado de encargos{% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+{% endblock %}
+
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
@@ -42,9 +47,17 @@
                             <td>{{ (exclusive[0].charge.price - exclusive.sumPropertyReduction)|number_format(0, ',', '.') }}€</td>
                             <td>{{ exclusive[0].charge.stateKeys ? exclusive[0].charge.stateKeys.name : '' }}</td>
                             <td>
-                                {% if exclusive[0].rateHousing.image is defined %}
-                                    {{ exclusive[0].rateHousing.image|length > 0 ? 'Si' : 'No' }}
-                                {% endif %}
+                                <div class="compact-gallery">
+                                    <div class="row">
+                                        {% if exclusive[0].rateHousing.image is defined %}
+                                            {% for image in exclusive[0].rateHousing.image %}
+                                                <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                                    <img class="img-profile" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_super_small') }}" alt="">
+                                                </a>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
                             </td>
                             {% if exclusive[0].agency.id == app.user.agency.id %}
                                 <td>
@@ -83,5 +96,9 @@
 
 {% block javascripts %}
     {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.compact-gallery', { animation: 'slideIn'});
+    </script>
     {{ encore_entry_script_tags('dataTableJs') }}
 {% endblock %}
