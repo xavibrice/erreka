@@ -19,6 +19,17 @@ class ProposalRepository extends ServiceEntityRepository
         parent::__construct($registry, Proposal::class);
     }
 
+    public function findForProposalAgency($getAgency)
+    {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.property', 'property')
+            ->where('property.agency = :agency')
+            ->setParameter('agency', $getAgency)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Proposal[] Returns an array of Proposal objects
     //  */

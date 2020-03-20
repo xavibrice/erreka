@@ -8,6 +8,7 @@ use App\Form\LocalType;
 use App\Repository\AgencyRepository;
 use App\Repository\ChargeTypeRepository;
 use App\Repository\PropertyRepository;
+use App\Repository\ProposalRepository;
 use App\Repository\RateHousingRepository;
 use App\Repository\SituationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -82,6 +83,16 @@ class ListController extends AbstractController
     {
         return $this->render('admin/list/historical.html.twig', [
             'rented' => $propertyRepository->onlyHistorical($this->getUser()->getAgency()->getName())
+        ]);
+    }
+
+    /**
+     * @Route("/propuestas", name="list_proposal_index")
+     */
+    public function listProposal(ProposalRepository $proposalRepository): Response
+    {
+        return $this->render('admin/list/proposal.html.twig', [
+            'proposals' => $proposalRepository->findForProposalAgency($this->getUser()->getAgency())
         ]);
     }
 }

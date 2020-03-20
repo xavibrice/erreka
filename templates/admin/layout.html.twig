@@ -86,8 +86,8 @@
                     <span>Autorizaciones</span>
                 </a>
             </li>#}
-            <li class="nav-item">
-                <a class="nav-link" href="">
+            <li class="nav-item {% if app.request.get('_route') == 'list_proposal_index' %}active{% endif %}">
+                <a class="nav-link" href="{{ path('list_proposal_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>En Trámite</span>
                 </a>

@@ -1,0 +1,41 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %} Listado propuestas{% endblock %}
+
+{% block content %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800">Encargos </h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table-striped table-sm table-hover dataTable" id="dataTableEmpty" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Fecha propuesta</th>
+                        <th>Precio</th>
+                        <th>Aceptada</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for proposal in proposals %}
+                        <tr>
+                            <td>{{ proposal.client ? proposal.client.fullName : '' }}</td>
+                            <td>{{ proposal.client.created|date('d/m/Y')}}</td>
+                            <td>{{ proposal.price|number_format(0, ',', '.') }}</td>
+                            <td>{{ proposal.agree ? 'Si' : 'No' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}
