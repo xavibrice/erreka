@@ -40,20 +40,20 @@ class ProposalType extends AbstractType
                 'label' => '¿Propuesta aceptada?',
                 'required' => false
             ])
-//            ->add('contract', DatePickerType::class, [
-//                'label' => 'Fecha contrato',
-//                'required' => false,
-//                'attr' => [
-//                    'class' => 'js-datepicker',
-//                ]
-//            ])
-//            ->add('scriptures', DatePickerType::class, [
-//                'label' => 'Fecha escrituras',
-//                'required' => false,
-//                'attr' => [
-//                    'class' => 'js-datepicker',
-//                ]
-//            ])
+            ->add('contract', DatePickerType::class, [
+                'label' => 'Fecha contrato',
+                'required' => false,
+                'attr' => [
+                    'class' => 'js-datepicker',
+                ]
+            ])
+            ->add('scriptures', DatePickerType::class, [
+                'label' => 'Fecha escrituras',
+                'required' => false,
+                'attr' => [
+                    'class' => 'js-datepicker',
+                ]
+            ])
         ;
     }
 
