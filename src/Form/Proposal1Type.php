@@ -20,7 +20,6 @@ class Proposal1Type extends AbstractType
         $builder
             ->add('created', DatePickerType::class, [
                 'label' => 'Fecha propuesta',
-                'data' => new \DateTime(),
                 'attr' => [
                     'class' => 'js-datepicker',
                 ]
