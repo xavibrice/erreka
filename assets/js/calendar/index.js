@@ -69,9 +69,8 @@ $(document).ready(function(){
         },
         eventClick: function(info){
             var eventObj = info.event;
-            $("#commercialEvent").html(eventObj.extendedProps.commercial);
             $("#locationEvent").html(eventObj.extendedProps.location);
-            $("#titleEvent").html(eventObj.title);
+            $("#titleEvent").html(eventObj.extendedProps.commercial + ' - ' + eventObj.title);
             $("#descriptionEvent").html(eventObj.extendedProps.description);
             $("#calendarModal").modal();
 
