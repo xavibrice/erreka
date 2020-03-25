@@ -63,6 +63,10 @@
                                 <td>
                                     <a class="btn btn-info" href="{{ path('property_charge', {'id': exclusive[0].id, 'idChargeType': exclusive[0].charge.chargeType.id}) }}">Ver</a>
                                 </td>
+                            {% else %}
+                                <td>
+                                    <a class="btn btn-link" href="{{ path('note_commercial_index') }}">Nota</a>
+                                </td>
                             {% endif %}
                             {#                        <td>{{ exclusive.propertyReductions.count }}</td>
                                                     <td>
