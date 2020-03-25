@@ -70,7 +70,7 @@ $(document).ready(function(){
         eventClick: function(info){
             var eventObj = info.event;
             $("#locationEvent").html(eventObj.extendedProps.location);
-            $("#titleEvent").html(eventObj.extendedProps.commercial + ' - ' + eventObj.title);
+            $("#titleEvent").html(eventObj.title);
             $("#descriptionEvent").html(eventObj.extendedProps.description);
             $("#calendarModal").modal();
 
