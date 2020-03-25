@@ -5,7 +5,7 @@
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="h3 mb-4 text-gray-800">Trámmites </h1>
+            <h1 class="h3 mb-4 text-gray-800">Trámites </h1>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -21,11 +21,12 @@
                         <th>Móvil</th>
                         <th>Fecha contrato</th>
                         <th>Precio</th>
+                        <th>Acción</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for proposal in proposals %}
-                        <tr>
+                        <tr >
                             <td>{{ proposal.property.reference }}</td>
                             <td>{{ proposal.property.commercial.fullName }}</td>
                             <td>{{ proposal.property.street.name }}, N {{ proposal.property.portal }} - {{ proposal.property.floor }}</td>
@@ -35,6 +36,9 @@
                             <td>{{ proposal.client ? proposal.client.mobile : '' }}</td>
                             <td>{{ proposal.client.created|date('d/m/Y')}}</td>
                             <td>{{ proposal.price|number_format(0, ',', '.') }}</td>
+                            <td>
+                                <a class="btn btn-info" href="{{ path('property_charge', {'id': proposal.property.id, 'idChargeType': proposal.property.typeProperty.id}) }}">Ver</a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
