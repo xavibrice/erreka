@@ -38,7 +38,7 @@
                     <tbody>
                     {% for exclusive in exclusives %}
                         {% for proposal in exclusive[0].proposals %}
-                            {% if proposal.contract is not empty %}
+                            {% if proposal.contract is null %}
                                 <tr>
                                     <td>{{ exclusive[0].reference }}</td>
                                     <td>{{ exclusive[0].agency.name }}</td>
