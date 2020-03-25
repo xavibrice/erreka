@@ -21,7 +21,7 @@ class VisitController extends AbstractController
     public function indexSell(VisitRepository $visitRepository): Response
     {
         return $this->render('admin/visit/index_sell.html.twig', [
-            'visits' => $visitRepository->findBySell(),
+            'visits' => $visitRepository->findBySell($this->getUser()->getAgency()),
         ]);
     }
 
@@ -31,7 +31,7 @@ class VisitController extends AbstractController
     public function indexRent(VisitRepository $visitRepository): Response
     {
         return $this->render('admin/visit/index_rent.html.twig', [
-            'visits' => $visitRepository->findByRent(),
+            'visits' => $visitRepository->findByRent($this->getUser()->getAgency()),
         ]);
     }
 

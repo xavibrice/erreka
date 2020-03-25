@@ -19,11 +19,14 @@ class VisitRepository extends ServiceEntityRepository
         parent::__construct($registry, Visit::class);
     }
 
-    public function findBySell()
+    public function findBySell($getAgency)
     {
         return $this->createQueryBuilder('v')
             ->innerJoin('v.client', 'c')
+            ->innerJoin('v.property', 'p')
+            ->andWhere('p.agency = :agency')
             ->andWhere('c.sellOrRent = :sell')
+            ->setParameter('agency', $getAgency)
             ->setParameter('sell', true)
             ->orderBy('v.id', 'ASC')
             ->getQuery()
@@ -31,11 +34,14 @@ class VisitRepository extends ServiceEntityRepository
         ;
     }
 
-    public function findByRent()
+    public function findByRent($getAgency)
     {
         return $this->createQueryBuilder('v')
             ->innerJoin('v.client', 'c')
+            ->innerJoin('v.property', 'p')
+            ->andWhere('p.agency = :agency')
             ->andWhere('c.sellOrRent = :sell')
+            ->setParameter('agency', $getAgency)
             ->setParameter('sell', false)
             ->orderBy('v.id', 'ASC')
             ->getQuery()
