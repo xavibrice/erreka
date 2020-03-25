@@ -37,7 +37,7 @@
                     </thead>
                     <tbody>
                     {% for exclusive in exclusives %}
-                        {% if exclusive[0].charge.chargeType.concract is not defined %}
+                        {% if exclusive[0].proposal.contract is not defined %}
                             <tr>
                                 <td>{{ exclusive[0].reference }}</td>
                                 <td>{{ exclusive[0].agency.name }}</td>
