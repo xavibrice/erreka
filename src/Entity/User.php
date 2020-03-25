@@ -13,7 +13,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"username"}, message="Nombre usuario ya existe")
- * @UniqueEntity(fields={"color"}, message="Color ya existe")
+ * @UniqueEntity(fields={"background_color"}, message="Color ya existe")
  */
 class User implements UserInterface
 {

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/assets/js/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/calendar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/CalendarListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/CalendarListener.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -427,7 +430,7 @@
       <workItem from="1585058295902" duration="174000" />
       <workItem from="1585059069852" duration="710000" />
       <workItem from="1585060206797" duration="740000" />
-      <workItem from="1585097835614" duration="6645000" />
+      <workItem from="1585097835614" duration="6895000" />
     </task>
     <servers />
   </component>
