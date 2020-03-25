@@ -69,6 +69,7 @@ class CalendarListener
                 'id' => $booking->getId(),
                 'description' => $booking->getDescription(),
                 'commercial' => $booking->getCommercial()->getFullname(),
+                'location' => $booking->getLocationBooking()->getName(),
             ]);
 //            $bookingEvent->addOption(
 //                'url',
