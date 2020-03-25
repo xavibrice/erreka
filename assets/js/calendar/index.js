@@ -62,13 +62,14 @@ $(document).ready(function(){
             // alert('selected ' + info.startStr + ' to ' + info.endStr);
             let start = calendar.formatDate(info.startStr, "DD-MM-YYYYTHH:mm:ss");
             let end = calendar.formatDate(info.endStr, "DD-MM-YYYYTHH:mm:ss");
-            $("#titleEventAdd").html('Crear recado');
+            $("#titleEventAdd").html('Crear');
             $("#booking_beginAt").val(start);
             $("#booking_endAt").val(end);
             $("#addEventModal").modal();
         },
         eventClick: function(info){
             var eventObj = info.event;
+            $("#commercialEvent").html(eventObj.extendedProps.commercial);
             $("#titleEvent").html(eventObj.title);
             $("#descriptionEvent").html(eventObj.extendedProps.description);
             $("#calendarModal").modal();

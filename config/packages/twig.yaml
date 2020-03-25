@@ -6,3 +6,5 @@ twig:
 #        - 'bootstrap_4_horizontal_layout.html.twig'
 #        - '@VichUploader/Form/fields.html.twig'
         - 'bootstrap_4_layout.html.twig'
+    number_format:
+        thousands_separator: '.'

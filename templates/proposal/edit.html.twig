@@ -1,0 +1,20 @@
+
+
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Editar Propuesta{% endblock %}
+
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-header py-3">
+        <h1 class="h3 mb-4 text-gray-800 float-left">Editar Propuesta</h1>
+    </div>
+    <div class="card-body">
+        {{ include('proposal/_form.html.twig', {'button_label': 'Actualizar'}) }}
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-link" href="{{ path('property_charge', {'id': proposal.property.id, 'idChargeType': proposal.property.typeProperty.id}) }}">Volver a encargo</a>
+    </div>
+</div>
+{% endblock %}

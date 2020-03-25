@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Proposal{% endblock %}
+
+{% block body %}
+    <h1>Create new Proposal</h1>
+
+    {{ include('proposal/_form.html.twig') }}
+
+    <a href="{{ path('proposal_index') }}">back to list</a>
+{% endblock %}

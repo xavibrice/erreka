@@ -13,7 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProposalType extends AbstractType
+class Proposal1Type extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -25,22 +25,26 @@ class ProposalType extends AbstractType
                     'class' => 'js-datepicker',
                 ]
             ])
-/*            ->add('client', ClientSelectType::class, [
-                'label' => 'Cliente'
-            ])   */
             ->add('client', EntityType::class, [
                 'label' => 'Cliente',
                 'class' => Client::class,
                 'placeholder' => 'Selecciona cliente'
             ])
+            ->add('property', EntityType::class, [
+                'label' => 'Propiedad',
+                'class' => Property::class,
+                'placeholder' => 'Selecciona propiedad',
+                'disabled' => true,
+            ])
             ->add('price', MoneyType::class, [
-                'label' => 'Precio'
+                'label' => 'Precio',
+                'scale' => 0,
             ])
             ->add('agree', CheckboxType::class, [
                 'label' => '¿Propuesta aceptada?',
                 'required' => false
             ])
-/*            ->add('contract', DatePickerType::class, [
+            ->add('contract', DatePickerType::class, [
                 'label' => 'Fecha contrato',
                 'required' => false,
                 'attr' => [
@@ -53,7 +57,7 @@ class ProposalType extends AbstractType
                 'attr' => [
                     'class' => 'js-datepicker',
                 ]
-            ])*/
+            ])
         ;
     }
 

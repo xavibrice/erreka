@@ -27,29 +27,24 @@ class Booking
     private $endAt = null;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $title;
-
-    /**
      * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="bookings")
      */
     private $commercial;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $color;
-
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $textColor;
-
-    /**
      * @ORM\Column(type="text", nullable=true)
      */
     private $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TitleBooking", inversedBy="booking")
+     */
+    private $titleBooking;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\LocationBooking", inversedBy="booking")
+     */
+    private $locationBooking;
 
     public function getId(): ?int
     {
@@ -80,18 +75,6 @@ class Booking
         return $this;
     }
 
-    public function getTitle(): ?string
-    {
-        return $this->title;
-    }
-
-    public function setTitle(string $title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
-
     public function getCommercial(): ?User
     {
         return $this->commercial;
@@ -104,30 +87,6 @@ class Booking
         return $this;
     }
 
-    public function getColor(): ?string
-    {
-        return $this->color;
-    }
-
-    public function setColor(?string $color): self
-    {
-        $this->color = $color;
-
-        return $this;
-    }
-
-    public function getTextColor(): ?string
-    {
-        return $this->textColor;
-    }
-
-    public function setTextColor(?string $textColor): self
-    {
-        $this->textColor = $textColor;
-
-        return $this;
-    }
-
     public function getDescription(): ?string
     {
         return $this->description;
@@ -136,6 +95,30 @@ class Booking
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getTitleBooking(): ?TitleBooking
+    {
+        return $this->titleBooking;
+    }
+
+    public function setTitleBooking(?TitleBooking $titleBooking): self
+    {
+        $this->titleBooking = $titleBooking;
+
+        return $this;
+    }
+
+    public function getLocationBooking(): ?LocationBooking
+    {
+        return $this->locationBooking;
+    }
+
+    public function setLocationBooking(?LocationBooking $locationBooking): self
+    {
+        $this->locationBooking = $locationBooking;
 
         return $this;
     }

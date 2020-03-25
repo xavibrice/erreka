@@ -3,6 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Booking;
+use App\Entity\LocationBooking;
+use App\Entity\TitleBooking;
 use App\Entity\User;
 use App\Form\Type\DateTimePickerType;
 use Cassandra\Date;
@@ -43,8 +45,15 @@ class BookingType extends AbstractType
                     'class' => 'dateStart'
                 ]
             ])
-            ->add('title', TextType::class, [
-                'label' => 'Título'
+            ->add('titleBooking', EntityType::class, [
+                'label' => 'Título',
+                'class' => TitleBooking::class,
+                'placeholder' => 'Selecciona título',
+            ])
+            ->add('locationBooking', EntityType::class, [
+                'label' => 'Ubicación',
+                'class' => LocationBooking::class,
+                'placeholder' => 'Selecciona ubicación',
             ])
             ->add('description', TextareaType::class, [
                 'label' => 'Descripción'
