@@ -35,6 +35,19 @@ class SituationRepository extends ServiceEntityRepository
             ;
     }
 
+    public function findHistorical()
+    {
+        return $this->createQueryBuilder('s')
+            ->innerJoin('s.reason', 'r')
+            ->andWhere('s.name = :historical')
+            ->andWhere('r.name <> :reason')
+            ->setParameter('historical', 'Histórico')
+            ->setParameter('reason', 'Alquilado')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
 //    public function newForSituation(string $situation, $user = null)
 //    {
 //        return $this->createQueryBuilder('n')

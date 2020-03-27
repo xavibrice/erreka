@@ -70,7 +70,25 @@
                                                             {% endif %}
                             #}{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}{#
                                                         </td>#}
-                            <td>{{ possibleVisit.visits ? possibleVisit.visits.count }}</td>
+                            <td>
+
+
+{#                                {{ possibleVisit.visits ? possibleVisit.visits.count }}#}
+
+
+                                {% set totalVisits = 0 %}
+
+                                {% for visit in possibleVisit.visits %}
+                                    {% if visit.client == client %}
+
+                                        {% set totalVisits = totalVisits + visit.client|length %}
+                                        ok
+                                    {% endif %}
+                                {% endfor %}
+
+                                {{ dump(totalVisits) }}
+
+                            </td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
                             <td>
                                 {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}

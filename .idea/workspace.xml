@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/EventSubscriber/TwigEventSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/TwigEventSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/new.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/new.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/SituationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SituationRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -434,7 +434,7 @@
       <workItem from="1585059069852" duration="710000" />
       <workItem from="1585060206797" duration="740000" />
       <workItem from="1585097835614" duration="11168000" />
-      <workItem from="1585304325530" duration="2445000" />
+      <workItem from="1585304325530" duration="5759000" />
     </task>
     <servers />
   </component>

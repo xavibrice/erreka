@@ -203,7 +203,10 @@
                             <h6 class="collapse-header"></h6>
                             {% for situation in situations %}
                                 {% for reason in situation.reason %}
-                                    <a class="collapse-item" href="{{ path('list_historical_index', {'id': reason.id}) }}">{{ reason.name }}</a>
+                                    {% if reason.name != 'Alquilado' %}
+                                        <a class="collapse-item" href="{{ path('list_historical_index', {'id': reason.id}) }}">{{ reason.name }}</a>
+
+                                    {% endif %}
                                 {% endfor %}
                             {% endfor %}
                         </div>
