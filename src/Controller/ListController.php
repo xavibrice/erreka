@@ -79,10 +79,10 @@ class ListController extends AbstractController
     /**
      * @Route("/historico", name="list_historical_index")
      */
-    public function listHistorical(PropertyRepository $propertyRepository): Response
+    public function listHistorical(Request $request, PropertyRepository $propertyRepository): Response
     {
         return $this->render('admin/list/historical.html.twig', [
-            'rented' => $propertyRepository->onlyHistorical($this->getUser()->getAgency()->getName())
+            'rented' => $propertyRepository->onlyHistorical($this->getUser()->getAgency()->getName(), $request->get('id'))
         ]);
     }
 

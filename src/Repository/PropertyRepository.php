@@ -303,16 +303,16 @@ class PropertyRepository extends ServiceEntityRepository
             ;
     }
 
-    public function onlyHistorical($getAgency)
+    public function onlyHistorical($getAgency, $idReason)
     {
         return $this->createQueryBuilder('p')
             ->innerJoin('p.commercial', 'c')
             ->innerJoin('p.reason', 'r')
             ->innerJoin('c.agency', 'a')
             ->andWhere('a.name = :agency')
-            ->andWhere('r.name = :reason')
+            ->andWhere('r.id = :reason')
             ->setParameter('agency', $getAgency)
-            ->setParameter('reason', 'eliminar')
+            ->setParameter('reason', $idReason)
             ->getQuery()
             ->getResult()
             ;
