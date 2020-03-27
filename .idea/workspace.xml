@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -429,7 +431,7 @@
       <workItem from="1585058295902" duration="174000" />
       <workItem from="1585059069852" duration="710000" />
       <workItem from="1585060206797" duration="740000" />
-      <workItem from="1585097835614" duration="8905000" />
+      <workItem from="1585097835614" duration="11168000" />
     </task>
     <servers />
   </component>
@@ -497,10 +499,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.0.1792.1120@0.0.1792.1120" timestamp="1583922783365" />
-    <state x="411" y="393" key="com.intellij.ide.util.TipDialog" timestamp="1585060218333">
+    <state x="411" y="393" key="com.intellij.ide.util.TipDialog" timestamp="1585304326390">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="411" y="393" key="com.intellij.ide.util.TipDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1585060218333" />
+    <state x="411" y="393" key="com.intellij.ide.util.TipDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1585304326390" />
     <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1581087439063" />
     <state x="440" y="365" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582540134791" />
     <state x="587" y="365" key="com.intellij.ide.util.TipDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579802935103" />

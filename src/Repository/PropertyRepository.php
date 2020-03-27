@@ -146,8 +146,7 @@ class PropertyRepository extends ServiceEntityRepository
             ->setParameter('agency', $getAgency)
             ->groupBy('p.id')
             ->getQuery()
-            ->getResult()
-            ;
+            ->getResult();
     }
 
     public function onlyExclusives($getAgency)
