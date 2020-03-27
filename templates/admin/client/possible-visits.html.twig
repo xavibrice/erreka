@@ -80,13 +80,11 @@
 
                                 {% for visit in possibleVisit.visits %}
                                     {% if visit.client == client %}
-
-                                        {% set totalVisits = totalVisits + visit.client|length %}
-                                        ok
+                                        {% set totalVisits = totalVisits + 1 %}
                                     {% endif %}
                                 {% endfor %}
 
-                                {{ dump(totalVisits) }}
+                                {{ totalVisits }}
 
                             </td>
                             <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
