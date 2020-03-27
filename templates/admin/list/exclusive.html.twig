@@ -29,10 +29,6 @@
                             {% if agency.id == app.user.agency.id %}
                                 <th>Acciones</th>
                             {% endif %}
-                            {#<th>% Caro</th>
-                            <th>Rebaj.</th>
-                            <th>Últ. Reb.</th>
-                            <th>% Reb.</th>#}
                         </tr>
                     </thead>
                     <tbody>
@@ -68,26 +64,6 @@
                                     <a class="btn btn-primary" href="{{ path('note_commercial_index') }}">Nota</a>
                                 </td>
                             {% endif %}
-                            {#                        <td>{{ exclusive.propertyReductions.count }}</td>
-                                                    <td>
-                                                        {% if exclusive.propertyReductions is defined %}
-                                                            {% if exclusive.propertyReductions.count > 0 %}
-                                                                {{ exclusive.propertyReductions.last.price|number_format(0, ',', '.') }} €
-                                                            {% endif %}
-                                                        {% endif %}
-                                                    </td>
-                                                    <td>
-                                                        {% set sum = 0 %}
-
-                                                        {% if exclusive.propertyReductions is defined %}
-                                                            {% if exclusive.propertyReductions.count > 0 %}
-                                                                {% for reduction in exclusive.propertyReductions  %}
-                                                                    {% set sum = sum + reduction.price %}
-                                                                {% endfor %}
-                                                                {{ sum / exclusive.charge.price * 100|number_format(0, ',', '.') }} %
-                                                            {% endif %}
-                                                        {% endif %}
-                                                    </td>#}
                         </tr>
                     {% endfor %}
                     </tbody>
