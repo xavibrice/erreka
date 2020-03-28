@@ -2,11 +2,13 @@
 namespace App\Controller;
 
 use App\Entity\Agency;
+use App\Entity\ClientStatus;
 use App\Entity\Property;
 use App\Entity\PropertyReduction;
 use App\Form\LocalType;
 use App\Repository\AgencyRepository;
 use App\Repository\ChargeTypeRepository;
+use App\Repository\ClientStatusRepository;
 use App\Repository\PropertyRepository;
 use App\Repository\ProposalRepository;
 use App\Repository\RateHousingRepository;
@@ -83,6 +85,16 @@ class ListController extends AbstractController
     {
         return $this->render('admin/list/historical.html.twig', [
             'rented' => $propertyRepository->onlyHistorical($this->getUser()->getAgency()->getName(), $request->get('id'))
+        ]);
+    }
+
+    /**
+     * @Route("/historico/cliente", name="list_historical_client_index")
+     */
+    public function listHistoricalClient(Request $request, ClientStatusRepository $clientStatusRepository): Response
+    {
+        return $this->render('admin/list/historical_client_status.html.twig', [
+            'clientsStatus' => $clientStatusRepository->findAgencyStatus($this->getUser()->getAgency(), $request->get('id'))
         ]);
     }
 

@@ -17,6 +17,7 @@ use App\Form\PropertyType;
 use App\Form\ProposalType;
 use App\Form\RateHousingType;
 use App\Form\VisitType;
+use App\Repository\ClientRepository;
 use App\Repository\PropertyRepository;
 use App\Service\UploaderHelper;
 use Imagine\Gd\Imagine;
@@ -342,6 +343,52 @@ class PropertyController extends AbstractController
             'chargeType' => $chargeType,
             'formProposal' => $formProposal->createView(),
             'sumPropertyReduction' => $sumPropertyReduction
+        ]);
+    }
+
+    /**
+     * @Route("/encargo/client/{id}/{idChargeType}", name="property_charge_client", methods={"GET", "POST"})
+     */
+    public function clients(Request $request, Property $property, $idChargeType, ClientRepository $clientRepository): Response
+    {
+
+        $queryBuilder = $clientRepository
+            ->createQueryBuilder('c')
+            ->innerJoin('c.bedrooms', 'b')
+        ;
+
+        if ($property->getRateHousing()->getBedrooms()) {
+            if ($property->getRateHousing()->getBedrooms() >= 1 && $property->getRateHousing()->getBedrooms() <= 2) {
+                $queryBuilder
+                    ->andWhere('b.name = :bedrooms')
+                    ->setParameter('bedrooms', "1 - 2")
+                ;
+            } elseif ($property->getRateHousing()->getBedrooms() >= 2 && $property->getRateHousing()->getBedrooms() <=  3) {
+                $queryBuilder
+                    ->andWhere('b.name = :bedrooms')
+                    ->setParameter('bedrooms', "2 - 3")
+                ;
+            } elseif ($property->getRateHousing()->getBedrooms() >= 4) {
+                $queryBuilder
+                    ->andWhere('b.name = :bedrooms')
+                    ->setParameter('bedrooms', "+3")
+                ;
+            }
+        }
+
+        if ($property->getRateHousing()->getElevator()) {
+            $queryBuilder
+                ->andWhere('c.elevator = :elevator')
+                ->setParameter('elevator', $property->getRateHousing()->getElevator())
+            ;
+        }
+
+
+        $possibleClients = $queryBuilder->getQuery()->getResult();
+
+        return $this->render('admin/property/possible-clients.html.twig', [
+            'property' => $property,
+            'possibleClients' => $possibleClients
         ]);
     }
 

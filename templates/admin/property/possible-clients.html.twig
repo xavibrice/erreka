@@ -1,0 +1,54 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}
+    Posibles Visitas
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+{% endblock %}
+
+
+{% block content %}
+
+    {% include 'admin/property/type_property/_tab.html.twig' %}
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-center">Propietario: {{ property.fullName }} - Móvil: {{ property.mobile }} - Dormitorios: {{ property.rateHousing.bedrooms }} - Precio Máximo: {{ property.price|number_format(0, ',', '.') }}€</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-sm table-hover dataTable" id="dataTableEmpty" width="100%" cellpadding="0">
+                    <thead>
+                    <tr class="">
+                        <th>Nombre cliente</th>
+                        <th>Dormitorios</th>
+                        <th>Ascensor</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for client in possibleClients %}
+                        {#                        {{ dump(possibleVisits) }}#}
+                        <tr>
+                            <td>{{ client.fullName }}</td>
+                            <td>{{ client.bedrooms }}</td>
+                            <td>{{ client.elevator ? 'Si' : 'No' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.compact-gallery', { animation: 'slideIn'});
+    </script>
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}

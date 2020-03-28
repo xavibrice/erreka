@@ -3,9 +3,18 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/_tab_rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/_tab_rent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/_tab_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/_tab_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ListController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/TwigEventSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/TwigEventSubscriber.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ClientRentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientRentType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ClientSellType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientSellType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/edit_rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit_rent.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/edit_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit_sell.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/sell.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/historical.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/historical.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/type_property/_tab.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/type_property/_tab.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -433,7 +442,7 @@
       <workItem from="1585059069852" duration="710000" />
       <workItem from="1585060206797" duration="740000" />
       <workItem from="1585097835614" duration="11168000" />
-      <workItem from="1585304325530" duration="6761000" />
+      <workItem from="1585304325530" duration="15550000" />
     </task>
     <servers />
   </component>
@@ -478,10 +487,10 @@
     </state>
     <state x="188" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582540097098" />
     <state x="250" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579263327735" />
-    <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1583592776175">
+    <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1585397452157">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1583592776175" />
+    <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1585397452157" />
     <state x="690" y="276" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582916075548" />
     <state x="795" y="276" key="FileChooserDialogImpl" timestamp="1580231848757">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -497,10 +506,10 @@
     </state>
     <state x="108" y="167" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1582307168855" />
     <state x="144" y="167" key="SettingsEditor/0.0.2560.1040@0.0.2560.1040" timestamp="1579265255255" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1583922783365">
+    <state width="500" height="445" key="SwitcherDM" timestamp="1585403321741">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1792.1120@0.0.1792.1120" timestamp="1583922783365" />
+    <state width="500" height="445" key="SwitcherDM/0.0.1792.1120@0.0.1792.1120" timestamp="1585403321741" />
     <state x="411" y="393" key="com.intellij.ide.util.TipDialog" timestamp="1585304326390">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

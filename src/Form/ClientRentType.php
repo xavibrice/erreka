@@ -5,6 +5,7 @@ namespace App\Form;
 use App\Entity\Bedrooms;
 use App\Entity\BuildingStructure;
 use App\Entity\Client;
+use App\Entity\ClientStatus;
 use App\Entity\Heating;
 use App\Entity\Orientation;
 use App\Entity\Reason;
@@ -28,6 +29,19 @@ class ClientRentType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $client= $options['data'] ?? null;
+        $isEdit = $client && $client->getId();
+
+        if ($isEdit) {
+            $builder
+                ->add('clientStatus', EntityType::class, [
+                    'label' => 'Estado cliente',
+                    'class' => ClientStatus::class,
+                    'placeholder' => 'Selecciona estado cliente',
+                    'required' => false,
+                ]);
+        }
+
         $builder
             ->add('created', DatePickerType::class, [
                 'required' => true,

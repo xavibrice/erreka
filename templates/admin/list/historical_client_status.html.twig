@@ -1,18 +1,15 @@
 {% extends 'admin/layout.html.twig' %}
 
-{% block title %}Listado Pedidos{% endblock %}
+{% block title %}Histórico{% endblock %}
 
 {% block content %}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h1 class="h3 mb-4 text-gray-800 float-left">Listado de pedidos (comprar)</h1>
-            <a class="btn btn-success float-right" href="#" data-toggle="modal" data-target="#createNewModal">
-                Crear Pedido
-            </a>
+            <h1 class="h3 mb-4 text-gray-800">Listado de historico clientes</h1>
         </div>
         <div class="card-body">
             <div class="table-responsive">
-                <table class="table-sm table-striped table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
+                <table class="table-striped table-sm table-hover dataTable" id="dataTable" width="100%" cellpadding="0">
                     <thead>
                     <tr>
                         <th>Fecha</th>
@@ -27,12 +24,11 @@
                         <th>Dorm</th>
                         <th>Visitas</th>
                         <th>Comentario</th>
-                        {#                <th>actions</th>#}
                     </tr>
                     </thead>
                     <tbody>
-                    {% for client in clients %}
-                        {% if client.clientStatus is null %}
+                    {% for clientState in clientsStatus %}
+                        {% for client in clientState.client %}
                             <tr class="clickable-row" data-href="{{ path('client_sell_show', {'id': client.id}) }}">
                                 <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
                                 <td>{{ client.commercial.fullName }}</td>
@@ -71,33 +67,13 @@
                                 {#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}
                                 {#                </td>#}
                             </tr>
-                        {% endif %}
+                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
-    <div class="modal fade" id="createNewModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Crear Nuevo Pedido</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{ render_esi(controller('App\\Controller\\ClientController::newSellForm')) }}
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    {#    <a href="{{ path('client_new') }}">Create new</a>#}
 {% endblock %}
 
 {% block javascripts %}

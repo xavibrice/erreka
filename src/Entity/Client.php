@@ -188,6 +188,11 @@ class Client
      */
     private $nationality;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\ClientStatus", inversedBy="client")
+     */
+    private $clientStatus;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
@@ -675,6 +680,18 @@ class Client
     public function setNationality(?string $nationality): self
     {
         $this->nationality = $nationality;
+
+        return $this;
+    }
+
+    public function getClientStatus(): ?ClientStatus
+    {
+        return $this->clientStatus;
+    }
+
+    public function setClientStatus(?ClientStatus $clientStatus): self
+    {
+        $this->clientStatus = $clientStatus;
 
         return $this;
     }
