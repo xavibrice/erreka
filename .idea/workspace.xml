@@ -3,18 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ListController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EventSubscriber/TwigEventSubscriber.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventSubscriber/TwigEventSubscriber.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClientRentType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientRentType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClientSellType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientSellType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/edit_rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit_rent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/edit_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/sell.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/calendar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/fos_js_routes.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/fos_js_routes.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/EventListener/CalendarListener.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/EventListener/CalendarListener.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/list/historical.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/historical.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/type_property/_tab.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/type_property/_tab.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -442,7 +437,7 @@
       <workItem from="1585059069852" duration="710000" />
       <workItem from="1585060206797" duration="740000" />
       <workItem from="1585097835614" duration="11168000" />
-      <workItem from="1585304325530" duration="15550000" />
+      <workItem from="1585304325530" duration="22807000" />
     </task>
     <servers />
   </component>
@@ -477,6 +472,10 @@
       <screen x="0" y="0" width="2560" height="1040" />
     </state>
     <state x="235" y="183" key="#Notifications/0.0.2560.1040@0.0.2560.1040" timestamp="1579265308923" />
+    <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585488483090">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1585488483090" />
     <state x="714" y="222" key="#com.intellij.ide.util.MemberChooser" timestamp="1583922158609">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

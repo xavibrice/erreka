@@ -7,6 +7,7 @@ use App\Repository\NoteCommercialRepository;
 use App\Repository\NoteNewRepository;
 use App\Repository\PropertyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -70,6 +71,37 @@ class DefaultController extends AbstractController
         return $this->render('admin/default/clients.html.twig', [
             'clientsSells' => $clientRepository->alertsOnlyClientsSell($this->getUser()),
             'clientsRents' => $clientRepository->alertsOnlyClientsRent($this->getUser())
+        ]);
+    }
+
+    /**
+     * @Route("/buscar", name="search")
+     */
+    public function search(Request $request, ClientRepository $clientRepository, PropertyRepository $propertyRepository): Response
+    {
+
+        $dataSearch = '%' . $request->request->get('search') . '%';
+
+        $clients = $clientRepository->createQueryBuilder('c')
+            ->andWhere('c.full_name LIKE :dataFullName OR c.mobile LIKE :dataMobile')
+            ->setParameter('dataFullName', $dataSearch)
+            ->setParameter('dataMobile', $dataSearch)
+            ->getQuery()
+            ->getResult()
+        ;
+
+        $properties = $propertyRepository->createQueryBuilder('p')
+            ->andWhere('p.full_name LIKE :dataFullName OR p.mobile LIKE :dataMobile')
+            ->setParameter('dataFullName', $dataSearch)
+            ->setParameter('dataMobile', $dataSearch)
+            ->getQuery()
+            ->getResult()
+        ;
+        //$properties = $propertyRepository->findBy(['full_name' => $dataSearch]);
+
+        return $this->render('admin/default/search.html.twig', [
+            'clients' => $clients,
+            'properties' => $properties,
         ]);
     }
 }

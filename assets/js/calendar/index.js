@@ -69,8 +69,10 @@ $(document).ready(function(){
         },
         eventClick: function(info){
             var eventObj = info.event;
+            $('#form-booking').attr('action', Routing.generate('booking_edit_calendar', {id: eventObj.extendedProps.idBooking}));
+
             $("#locationEvent").html(eventObj.extendedProps.location);
-            $("#titleEvent").html(eventObj.title);
+            $("#titleEvent").html(eventObj.title + eventObj.extendedProps.idBooking);
             $("#descriptionEvent").html(eventObj.extendedProps.description);
             $("#calendarModal").modal();
 

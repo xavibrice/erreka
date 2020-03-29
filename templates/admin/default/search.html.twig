@@ -1,0 +1,67 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Buscar{% endblock %}
+
+{% block content %}
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800">Clientes</h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table-striped table-sm dataTable" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Móvil</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for client in clients %}
+                        <tr>
+                            <td>{{ client.fullName}}</td>
+                            <td>{{ client.mobile }}</td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h1 class="h3 mb-4 text-gray-800">Propietarios</h1>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table-striped table-sm dataTable" width="100%" cellpadding="0">
+                    <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Móvil</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for property in properties %}
+                        <tr>
+                            <td>{{ property.fullName}}</td>
+                            <td>{{ property.mobile }}</td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}
