@@ -161,7 +161,6 @@
                         app.request.get('_route') == 'owner_index' or
                         app.request.get('_route') == 'zone_index' or
                         app.request.get('_route') == 'reason_index' or
-                        app.request.get('_route') == 'note_commercial_index' or
                         app.request.get('_route') == 'situation_index' or
                         app.request.get('_route') == 'note_new_index' or
                         app.request.get('_route') == 'type_property_index'
@@ -172,7 +171,6 @@
                             <a class="collapse-item {% if app.request.get('_route') == 'user_index' %}active{% endif %}" href="{{ path('user_index') }}">Usuarios</a>
                             {#                        <a class="collapse-item {% if app.request.get('_route') == 'news_index' %}active{% endif %}" href="{{ path('news_index') }}">Noticias</a>#}
                             <a class="collapse-item {% if app.request.get('_route') == 'note_new_index' %}active{% endif %}" href="{{ path('note_new_index') }}">Nota Noticia</a>
-                            <a class="collapse-item {% if app.request.get('_route') == 'note_commercial_index' %}active{% endif %}" href="{{ path('note_commercial_index') }}">Nota Comercial</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'situation_index' %}active{% endif %}" href="{{ path('situation_index') }}">Situaciones</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
