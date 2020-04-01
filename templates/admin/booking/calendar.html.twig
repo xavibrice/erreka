@@ -32,14 +32,16 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p id="locationEvent"></p>
                     <p id="descriptionEvent"></p>
                 </div>
                 <div class="modal-footer">
+                    <p class="text-left flex text-left" id="locationEvent"></p>
+
                     {#<button type="button" class="btn btn-success">Agregar</button>
                     <button type="button" class="btn btn-success">Modificar</button>#}
+                    <a id="btn-delete-edit" class="btn btn-info">Editar</a>
+
                     {% if is_granted('ROLE_ADMIN') %}
-                        <a id="btn-delete-edit" class="btn btn-info">Editar</a>
                         <button type="button" id="btn-delete-booking" class="btn btn-danger">Borrar</button>
                     {% endif %}
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
