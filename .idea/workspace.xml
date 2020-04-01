@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/calendar/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/BookingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/BookingController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookingType.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -434,7 +437,7 @@
       <workItem from="1585304325530" duration="23504000" />
       <workItem from="1585584217207" duration="1041000" />
       <workItem from="1585740318601" duration="4605000" />
-      <workItem from="1585756175210" duration="439000" />
+      <workItem from="1585756175210" duration="2676000" />
     </task>
     <servers />
   </component>

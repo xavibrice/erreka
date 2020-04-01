@@ -78,7 +78,7 @@ $(document).ready(function(){
 
 
             $("#btn-delete-booking").on('click', function () {
-                if (info.event.id) {
+                if (eventObj.extendedProps.idBooking) {
                     // info.jsEvent.preventDefault(); // don't let the browser navigate
                     var event = calendar.getEventById(info.event.id);
                     event.remove();

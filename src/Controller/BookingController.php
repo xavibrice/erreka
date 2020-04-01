@@ -126,7 +126,9 @@ class BookingController extends AbstractController
     public function editBooking(Request $request, Booking $booking): Response
     {
 
-        $form = $this->createForm(BookingType::class, $booking);
+        $form = $this->createForm(BookingType::class, $booking, [
+            'agency' => $this->getUser()->getAgency()->getName()
+        ]);
         $form->handleRequest($request);
 
 
