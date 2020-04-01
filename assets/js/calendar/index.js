@@ -69,10 +69,10 @@ $(document).ready(function(){
         },
         eventClick: function(info){
             var eventObj = info.event;
-            $('#form-booking').attr('action', Routing.generate('booking_edit_calendar', {id: eventObj.extendedProps.idBooking}));
+            $('#btn-delete-edit').attr('href', Routing.generate('booking_editar', {id: eventObj.extendedProps.idBooking}));
 
             $("#locationEvent").html(eventObj.extendedProps.location);
-            $("#titleEvent").html(eventObj.title + eventObj.extendedProps.idBooking);
+            $("#titleEvent").html(eventObj.title);
             $("#descriptionEvent").html(eventObj.extendedProps.description);
             $("#calendarModal").modal();
 
@@ -87,7 +87,7 @@ $(document).ready(function(){
                     // let url = Routing.generate
                 }
                 $.ajax({
-                    url: Routing.generate('booking_delete', {id: info.event.id}),
+                    url: Routing.generate('booking_delete', {id: eventObj.extendedProps.idBooking}),
                     method: "DELETE",
                     success: function () {
                         // alert('ok');
@@ -105,7 +105,7 @@ $(document).ready(function(){
 
             // alert(start + end);
             $.ajax({
-                url: Routing.generate('booking_edit', {id: info.event.id}),
+                url: Routing.generate('booking_edit', {id: info.event.extendedProps.idBooking}),
                 data: 'beginAt='+start+'&endAt='+end,
                 method: "POST",
                 success: function () {
@@ -123,7 +123,7 @@ $(document).ready(function(){
 
             // alert(start + end);
             $.ajax({
-                url: Routing.generate('booking_edit', {id: info.event.id}),
+                url: Routing.generate('booking_edit', {id: info.event.extendedProps.idBooking}),
                 data: 'beginAt='+start+'&endAt='+end,
                 method: "POST",
                 success: function () {

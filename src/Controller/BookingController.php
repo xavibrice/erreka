@@ -86,29 +86,6 @@ class BookingController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}/editar/booking", options={"expose"=true}, name="booking_edit_calendar", methods={"GET","POST"})
-     */
-    public function editBooking(Request $request, Booking $booking): Response
-    {
-
-        dd('ok');
-        $this->getDoctrine()->getManager()->flush();
-
-        $form = $this->createForm(BookingType::class, $booking);
-        $form->handleRequest($request);
-
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('booking_index');
-        }
-
-        return $this->redirectToRoute('booking_index');
-
-    }
-
 
     /**
      * @Route("/{id}/edit", options={"expose"=true}, name="booking_edit", methods={"GET","POST"})
@@ -141,6 +118,28 @@ class BookingController extends AbstractController
 //            'form' => $form->createView(),
 //        ]);
         return new JsonResponse(true);
+    }
+
+    /**
+     * @Route("/editar/{id}", options={"expose"=true}, name="booking_editar", methods={"GET","POST"})
+     */
+    public function editBooking(Request $request, Booking $booking): Response
+    {
+
+        $form = $this->createForm(BookingType::class, $booking);
+        $form->handleRequest($request);
+
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('booking_index');
+        }
+
+        return $this->render('admin/booking/edit.html.twig', [
+            'booking' => $booking,
+            'form' => $form->createView(),
+        ]);
     }
 
     /**

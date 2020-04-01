@@ -43,9 +43,9 @@
                             <td>{{ client.comment }}</td>
                             <td>
                                 {% if client.sellOrRent %}
-                                    <a class="btn btn-info" href="{{ path('client_sell_show', {'id': client.id}) }}">Ver Venta</a>
+                                    <a class="btn btn-info" href="{{ path('client_sell_show', {'id': client.id}) }}">Ver</a>
                                 {% else %}
-                                    <a class="btn btn-info" href="{{ path('client_rent_show', {'id': client.id}) }}">Ver Alquila</a>
+                                    <a class="btn btn-info" href="{{ path('client_rent_show', {'id': client.id}) }}">Ver</a>
                                 {% endif %}
                             </td>
                         </tr>

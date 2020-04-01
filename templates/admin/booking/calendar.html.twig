@@ -39,6 +39,7 @@
                     {#<button type="button" class="btn btn-success">Agregar</button>
                     <button type="button" class="btn btn-success">Modificar</button>#}
                     {% if is_granted('ROLE_ADMIN') %}
+                        <a id="btn-delete-edit" class="btn btn-info">Editar</a>
                         <button type="button" id="btn-delete-booking" class="btn btn-danger">Borrar</button>
                     {% endif %}
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
