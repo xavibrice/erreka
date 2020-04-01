@@ -16,7 +16,7 @@
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-center">Propietario: {{ property.fullName }} - Móvil: {{ property.mobile }} - Dormitorios: {{ property.rateHousing.bedrooms }} - Precio Máximo: {{ property.price|number_format(0, ',', '.') }}€</h6>
+            <h6 class="m-0 font-weight-bold text-center">Propietario: {{ property.fullName }} - Móvil: {{ property.mobile }} - Dormitorios: {{ property.rateHousing.bedrooms }} - Precio encargo: {{ property.charge.price|number_format(0, ',', '.') }}€ menos rebajas</h6>
         </div>
         <div class="card-body">
             <div class="table-responsive">
@@ -24,17 +24,30 @@
                     <thead>
                     <tr class="">
                         <th>Nombre cliente</th>
+                        <th>Móvil</th>
+                        <th>Precio</th>
                         <th>Dormitorios</th>
                         <th>Ascensor</th>
+                        <th>Comentario</th>
+                        <th>Acción</th>
                     </tr>
                     </thead>
                     <tbody>
                     {% for client in possibleClients %}
-                        {#                        {{ dump(possibleVisits) }}#}
                         <tr>
                             <td>{{ client.fullName }}</td>
+                            <td>{{ client.mobile }}</td>
+                            <td>{{ client.price|number_format(0, ',', '.') }}€</td>
                             <td>{{ client.bedrooms }}</td>
                             <td>{{ client.elevator ? 'Si' : 'No' }}</td>
+                            <td>{{ client.comment }}</td>
+                            <td>
+                                {% if client.sellOrRent %}
+                                    <a class="btn btn-info" href="{{ path('client_sell_show', {'id': client.id}) }}">Ver Venta</a>
+                                {% else %}
+                                    <a class="btn btn-info" href="{{ path('client_rent_show', {'id': client.id}) }}">Ver Alquila</a>
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>

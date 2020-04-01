@@ -368,7 +368,7 @@ class PropertyController extends AbstractController
                     ->andWhere('b.name = :bedrooms')
                     ->setParameter('bedrooms', "2 - 3")
                 ;
-            } elseif ($property->getRateHousing()->getBedrooms() >= 4) {
+            } elseif ($property->getRateHousing()->getBedrooms() >= 3) {
                 $queryBuilder
                     ->andWhere('b.name = :bedrooms')
                     ->setParameter('bedrooms', "+3")
@@ -382,6 +382,34 @@ class PropertyController extends AbstractController
                 ->setParameter('elevator', $property->getRateHousing()->getElevator())
             ;
         }
+
+/*        if ($client->getZoneOne() && $client->getZoneTwo() && $client->getZoneThree() && $client->getZoneFour()) {
+            $queryBuilder
+                ->andWhere('z.name = :zoneOne OR z.name = :zoneTwo OR z.name = :zoneThree OR z.name = :zoneFour')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+                ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
+                ->setParameter('zoneThree', $client->getZoneThree()->getName())
+                ->setParameter('zoneFour', $client->getZoneFour()->getName())
+            ;
+        } elseif ($client->getZoneOne() && $client->getZoneTwo() && $client->getZoneThree()) {
+            $queryBuilder
+                ->andWhere('z.name = :zoneOne OR z.name = :zoneTwo OR z.name = :zoneThree')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+                ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
+                ->setParameter('zoneThree', $client->getZoneThree()->getName())
+            ;
+        } elseif ($client->getZoneOne() && $client->getZoneTwo()) {
+            $queryBuilder
+                ->andWhere('z.name = :zoneOne OR z.name = :zoneTwo')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+                ->setParameter('zoneTwo', $client->getZoneTwo()->getName())
+            ;
+        } elseif ($client->getZoneOne()) {
+            $queryBuilder
+                ->andWhere('z.name = :zoneOne')
+                ->setParameter('zoneOne', $client->getZoneOne()->getName())
+            ;
+        }*/
 
 
         $possibleClients = $queryBuilder->getQuery()->getResult();

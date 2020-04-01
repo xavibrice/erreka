@@ -190,7 +190,7 @@
         </div>
     </div>
 
-    <div class="row">
+{#    <div class="row">
         <div class="col-md-4 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
@@ -198,7 +198,7 @@
                 </div>
                 <div class="card-body">
                     <div class="m-2">
-                        {#                        {{ include('admin/_form.html.twig', {'form': formVisit}) }}#}
+                        #}{#                        {{ include('admin/_form.html.twig', {'form': formVisit}) }}#}{#
                         {{ form_start(formVisit) }}
                         {{ form_widget(formVisit) }}
                         <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
@@ -243,7 +243,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div>#}
 
     {#    <a href="{{ path('client_index') }}">back to list</a>#}
     {#    {{ include('admin/client/_delete_form.html.twig') }}#}

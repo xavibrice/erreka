@@ -9,7 +9,7 @@
         <div class="col-md-12 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary float-left">Cliente</h6>
+                    <h6 class="m-0 font-weight-bold text-primary float-left">Detalle Encargo</h6>
                     {#<h6 class="m-0 font-weight-bold text-primary float-right">
                         <a class="btn btn-success" href="">Crear Noticia</a>
                     </h6>#}
@@ -31,6 +31,16 @@
                                     </td>
                                     <th class="text-right">Móvil / Teléfono</th>
                                     <td>{{ property.mobile }} - {{ property.phone }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Visitas</th>
+                                    <td>{{ property.visits.count }}</td>
+                                    <th class="text-right">Rebajas</th>
+                                    <td>{{ property.propertyReductions.count }}</td>
+                                    <th class="text-right">Propuestas</th>
+                                    <td>
+                                        {{ property.proposals.count }}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
