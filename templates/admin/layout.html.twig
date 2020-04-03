@@ -180,22 +180,12 @@
                     </div>
                 </li>
 
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseHistoricalClient" aria-expanded="true" aria-controls="collapseHistoricalClient">
-                        <i class="fas fa-fw fa-cog"></i>
-                        <span>Histórico Cliente</span>
+
+                <li class="nav-item {% if app.request.get('_route') == 'list_historical_client_index' %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('list_historical_client_index') }}">
+                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                        <span>Histórico cliente</span>
                     </a>
-                    <div id="collapseHistoricalClient" class="collapse
-                {% if
-                        app.request.get('_route') == 'list_historical_client_index'
-                    %}show{% endif %}" aria-labelledby="headingHistoricalClient" data-parent="#accordionSidebar">
-                        <div class="bg-white py-2 collapse-inner rounded">
-                            <h6 class="collapse-header"></h6>
-                            {% for clientState in clientStatus %}
-                                <a class="collapse-item" href="{{ path('list_historical_client_index', {'id': clientState.id}) }}">{{ clientState.name }}</a>
-                            {% endfor %}
-                        </div>
-                    </div>
                 </li>
 
 

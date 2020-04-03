@@ -15,6 +15,7 @@ use App\Form\NoteClientType;
 use App\Form\VisitNewType;
 use App\Form\VisitType;
 use App\Repository\ClientRepository;
+use App\Repository\VisitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,6 +43,17 @@ class ClientController extends AbstractController
     {
         return $this->render('admin/client/rent.html.twig', [
             'clients' => $clientRepository->findClienteForAgencyAndRent($this->getUser()->getAgency()),
+        ]);
+    }
+
+    /**
+     * @Route("/visitas/{id}", name="client_visit_index", methods={"GET"})
+     */
+    public function visit(Client $client, VisitRepository $visitRepository): Response
+    {
+        return $this->render('admin/client/visit.html.twig', [
+            'client' => $client,
+            'visits' => $visitRepository->findBy(['client' => $client]),
         ]);
     }
 

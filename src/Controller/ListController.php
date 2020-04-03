@@ -94,7 +94,7 @@ class ListController extends AbstractController
     public function listHistoricalClient(Request $request, ClientStatusRepository $clientStatusRepository): Response
     {
         return $this->render('admin/list/historical_client_status.html.twig', [
-            'clientsStatus' => $clientStatusRepository->findAgencyStatus($this->getUser()->getAgency(), $request->get('id'))
+            'clientsStatus' => $clientStatusRepository->findAgencyStatus($this->getUser()->getAgency())
         ]);
     }
 

@@ -47,14 +47,12 @@ class ClientStatusRepository extends ServiceEntityRepository
         ;
     }
     */
-    public function findAgencyStatus($getAgency, $clientStatus)
+    public function findAgencyStatus($getAgency)
     {
         return $this->createQueryBuilder('cs')
             ->innerJoin('cs.client', 'cli')
             ->innerJoin('cli.commercial', 'com')
-            ->andWhere('cs.id = :clientStatus')
             ->andWhere('com.agency = :agency')
-            ->setParameter('clientStatus', $clientStatus)
             ->setParameter('agency', $getAgency)
             ->getQuery()
             ->getResult()
