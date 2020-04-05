@@ -1,0 +1,78 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Propuestas{% endblock %}
+
+{% block content %}
+    {% include 'admin/property/type_property/_tab.html.twig' %}
+
+    {% if property.charge %}
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary ">Propuestas {{ property.proposals.count }}</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="m-2">
+                            {{ form_start(formProposal) }}
+                            {{ form_widget(formProposal) }}
+                            <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+                            {{ form_end(formProposal) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 mb-4">
+                <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 700px;">
+                    <div class="col-md-auto mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th>Fecha propuesta</th>
+                                            <th>Cliente</th>
+                                            <th>Móvil</th>
+                                            <th>Importe</th>
+                                            <th>¿Aceptada?</th>
+                                            <th>Fecha contrato</th>
+                                            <th>Fecha escrituras</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for proposal in property.proposals|reverse %}
+                                            <tr>
+                                                <td>{{ proposal.created|date('d-m-Y') }}</td>
+                                                <td>{{ proposal.client.fullName }}</td>
+                                                <td>{{ proposal.client.mobile }}</td>
+                                                <td>{{ proposal.price }}€</td>
+                                                <td>{{ proposal.agree ? 'Si' : 'No' }}</td>
+                                                <td>
+                                                    {% if proposal.contract is not null %}
+                                                        {{ proposal.contract|date('d-m-Y') }}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if proposal.scriptures is not null %}
+                                                        {{ proposal.scriptures|date('d-m-Y') }}
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <a class="btn btn-info" href="{{ path('proposal_edit', {'id': proposal.id}) }}">Editar</a>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

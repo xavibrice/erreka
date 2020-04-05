@@ -1,0 +1,68 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Visitas{% endblock %}
+
+{% block content %}
+    {% include 'admin/property/type_property/_tab.html.twig' %}
+
+    {% if property.charge %}
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary ">Visitas: {{ property.visits.count }}</h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="m-2">
+                            {#                        {{ include('admin/_form.html.twig', {'form': formVisit}) }}#}
+                            {{ form_start(formVisit) }}
+                            {{ form_widget(formVisit) }}
+                            <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
+                            {{ form_end(formVisit) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-8 mb-4">
+                <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 450px;">
+                    <div class="col-md-12 mb-4">
+                        <div class="card border-left-info shadow h-100 py-2">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-striped table-hover">
+                                        <thead>
+                                        <tr>
+                                            <th>Cliente</th>
+                                            <th>Fecha</th>
+                                            <th>Precio</th>
+                                            <th>Nota</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for visit in property.visits|reverse %}
+                                            <tr>
+                                                <td>
+
+                                                    {% if visit.property.reason.name == 'Alquiler' %}
+                                                        <a class="btn btn-info" href="{{ path('client_rent_show', {'id': visit.client.id}) }}">{{ visit.client.fullName }}</a>
+                                                    {% endif %}
+                                                    {% if visit.property.reason.name == 'Venta' %}
+                                                        <a class="btn btn-info" href="{{ path('client_sell_show', {'id': visit.client.id}) }}">{{ visit.client.fullName }}</a>
+                                                    {% endif %}
+                                                </td>
+                                                <td>{{ visit.visited|date('d/m/Y') }}</td>
+                                                <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
+                                                <td>{{ visit.comment }}</td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

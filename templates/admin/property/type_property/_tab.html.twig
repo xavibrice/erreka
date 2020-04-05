@@ -7,6 +7,9 @@
         {% endif %}
         {% if property.charge is defined %}
             {% if property.charge is not empty %}
+                <a class="btn btn-info" href="{{ path('property_charge_visit', {'id': property.id, 'idChargeType': property.charge.chargeType.id }) }}">Visitas</a>
+                <a class="btn btn-info" href="{{ path('property_charge_reduction', {'id': property.id, 'idChargeType': property.charge.chargeType.id }) }}">Rebajas</a>
+                <a class="btn btn-info" href="{{ path('property_charge_proposal', {'id': property.id, 'idChargeType': property.charge.chargeType.id }) }}">Propuestas</a>
                 <a class="btn btn-info" href="{{ path('property_charge', {'id': property.id, 'idChargeType': property.charge.chargeType.id }) }}">{{ property.charge.chargeType.name }}</a>
                 <a class="btn btn-info" href="{{ path('property_charge_client', {'id': property.id, 'idChargeType': property.charge.chargeType.id }) }}">Clientes</a>
             {% endif %}

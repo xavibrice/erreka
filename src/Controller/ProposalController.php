@@ -69,7 +69,7 @@ class ProposalController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('property_charge', [
+            return $this->redirectToRoute('property_charge_proposal', [
                 'id' => $proposal->getProperty()->getId(),
                 'idChargeType' => $proposal->getProperty()->getTypeProperty()->getId(),
             ]);

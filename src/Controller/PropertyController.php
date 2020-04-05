@@ -19,6 +19,8 @@ use App\Form\RateHousingType;
 use App\Form\VisitType;
 use App\Repository\ClientRepository;
 use App\Repository\PropertyRepository;
+use App\Repository\ProposalRepository;
+use App\Repository\VisitRepository;
 use App\Service\UploaderHelper;
 use Imagine\Gd\Imagine;
 use Imagine\Image\Box;
@@ -282,24 +284,24 @@ class PropertyController extends AbstractController
             ]);
         }
 
-        $propertyReduction = new PropertyReduction();
-        $propertyReduction->setProperty($property);
-        $form = $this->createForm(PropertyReductionType::class, $propertyReduction);
 
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-            $propertyReduction->setLastPrice(86000);
-            $propertyReduction->setPercentage(5);
-            $em->persist($propertyReduction);
-            $em->flush();
+        return $this->render('admin/property/authorization_charge/authorization_charge.html.twig', [
+            'formCharge' => $formCharge->createView(),
+            'property' => $property,
+            'chargeType' => $chargeType,
+            'sumPropertyReduction' => $sumPropertyReduction,
+        ]);
+    }
 
-            $this->addFlash('success', 'Rebaja creada correctamente');
 
-            return $this->redirectToRoute($request->attributes->get('_route'), [
-                'id' => $property->getId(),
-                'idChargeType' => $idChargeType
-            ]);
-        }
+    /**
+     * @Route("/encargo/visitas/{id}/{idChargeType}", name="property_charge_visit", methods={"GET", "POST"})
+     */
+    public function visits(Request $request, Property $property, $idChargeType, VisitRepository $visitRepository): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
 
         $visit = new Visit();
         $formVisit = $this->createForm(VisitType::class, $visit);
@@ -319,6 +321,59 @@ class PropertyController extends AbstractController
             ]);
         }
 
+        return $this->render('admin/property/visit.html.twig', [
+            'property' => $property,
+            'visits' => $visitRepository->findBy(['property' => $property]),
+            'formVisit' => $formVisit->createView(),
+            'sumPropertyReduction' => $sumPropertyReduction
+        ]);
+    }
+
+    /**
+     * @Route("/encargo/rebajas/{id}/{idChargeType}", name="property_charge_reduction", methods={"GET", "POST"})
+     */
+    public function reduction(Request $request, Property $property, $idChargeType, VisitRepository $visitRepository): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
+
+        $propertyReduction = new PropertyReduction();
+        $propertyReduction->setProperty($property);
+        $form = $this->createForm(PropertyReductionType::class, $propertyReduction);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $propertyReduction->setLastPrice(86000);
+            $propertyReduction->setPercentage(5);
+            $em->persist($propertyReduction);
+            $em->flush();
+
+            $this->addFlash('success', 'Rebaja creada correctamente');
+
+            return $this->redirectToRoute($request->attributes->get('_route'), [
+                'id' => $property->getId(),
+                'idChargeType' => $idChargeType
+            ]);
+        }
+
+        return $this->render('admin/property/reduction.html.twig', [
+            'property' => $property,
+            'visits' => $visitRepository->findBy(['property' => $property]),
+            'form' => $form->createView(),
+            'sumPropertyReduction' => $sumPropertyReduction,
+        ]);
+    }
+
+    /**
+     * @Route("/encargo/propuestas/{id}/{idChargeType}", name="property_charge_proposal", methods={"GET", "POST"})
+     */
+    public function proposal(Request $request, Property $property, $idChargeType, ProposalRepository $visitRepository): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
+
         $proposal = new Proposal();
         $proposal->setProperty($property);
         $formProposal = $this->createForm(ProposalType::class, $proposal);
@@ -335,16 +390,14 @@ class PropertyController extends AbstractController
             ]);
         }
 
-        return $this->render('admin/property/authorization_charge/authorization_charge.html.twig', [
-            'form' => $form->createView(),
-            'formVisit' => $formVisit->createView(),
-            'formCharge' => $formCharge->createView(),
+        return $this->render('admin/property/proposal.html.twig', [
             'property' => $property,
-            'chargeType' => $chargeType,
+            'visits' => $visitRepository->findBy(['property' => $property]),
             'formProposal' => $formProposal->createView(),
-            'sumPropertyReduction' => $sumPropertyReduction
+            'sumPropertyReduction' => $sumPropertyReduction,
         ]);
     }
+
 
     /**
      * @Route("/encargo/client/{id}/{idChargeType}", name="property_charge_client", methods={"GET", "POST"})
@@ -400,6 +453,7 @@ class PropertyController extends AbstractController
             'possibleClients' => $possibleClients
         ]);
     }
+
 
     /**
      * @Route("/valoracion/encargo/editar/{id}/{idProperty}", name="property_charge_edit", methods={"GET", "POST"})
