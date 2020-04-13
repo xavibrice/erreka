@@ -436,7 +436,7 @@ class PropertyController extends AbstractController
             ;
         }
 
-        if ($property->getStreet()->getZone()) {
+/*        if ($property->getStreet()->getZone()) {
             $queryBuilder
                 ->andWhere('c.zoneOne = :zoneOne OR c.zoneTwo = :zoneTwo OR c.zoneThree = :zoneThree OR c.zone_four = :zoneFour')
                 ->setParameter('zoneOne', $property->getStreet()->getZone())
@@ -444,7 +444,7 @@ class PropertyController extends AbstractController
                 ->setParameter('zoneThree', $property->getStreet()->getZone())
                 ->setParameter('zoneFour', $property->getStreet()->getZone())
             ;
-        }
+        }*/
 
         $possibleClients = $queryBuilder->getQuery()->getResult();
 
