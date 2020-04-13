@@ -405,10 +405,24 @@ class PropertyController extends AbstractController
     public function clients(Request $request, Property $property, $idChargeType, ClientRepository $clientRepository): Response
     {
 
+
+
+
         $queryBuilder = $clientRepository
             ->createQueryBuilder('c')
             ->innerJoin('c.bedrooms', 'b')
         ;
+
+        if ($property->getReason()->getName() === 'Alquiler') {
+            $queryBuilder
+                ->andWhere('c.sellOrRent = :reason')
+                ->setParameter('reason', false);
+        }
+        if ($property->getReason()->getName() === 'Venta') {
+            $queryBuilder
+                ->andWhere('c.sellOrRent = :reason')
+                ->setParameter('reason', true);
+        }
 
         if ($property->getRateHousing()->getBedrooms()) {
             if ($property->getRateHousing()->getBedrooms() >= 1 && $property->getRateHousing()->getBedrooms() <= 2) {
