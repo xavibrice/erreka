@@ -413,7 +413,7 @@ class PropertyController extends AbstractController
         if ($property->getRateHousing()->getBedrooms()) {
             if ($property->getRateHousing()->getBedrooms() >= 1 && $property->getRateHousing()->getBedrooms() <= 2) {
                 $queryBuilder
-                    ->andWhere('b.name = :bedrooms12 AND b.name = :bedrooms23')
+                    ->andWhere('b.name = :bedrooms12 OR b.name = :bedrooms23')
                     ->setParameter('bedrooms12', "1 - 2")
                     ->setParameter('bedrooms23', "2 - 3")
                 ;
