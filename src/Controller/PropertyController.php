@@ -416,12 +416,15 @@ class PropertyController extends AbstractController
                     ->andWhere('b.name = :bedrooms')
                     ->setParameter('bedrooms', "1 - 2")
                 ;
-            } elseif ($property->getRateHousing()->getBedrooms() >= 2 && $property->getRateHousing()->getBedrooms() <=  3) {
+            }
+
+            if ($property->getRateHousing()->getBedrooms() >= 2 && $property->getRateHousing()->getBedrooms() <=  3) {
                 $queryBuilder
                     ->andWhere('b.name = :bedrooms')
                     ->setParameter('bedrooms', "2 - 3")
                 ;
-            } elseif ($property->getRateHousing()->getBedrooms() >= 3) {
+            }
+            if ($property->getRateHousing()->getBedrooms() >= 3) {
                 $queryBuilder
                     ->andWhere('b.name = :bedrooms')
                     ->setParameter('bedrooms', "+3")
