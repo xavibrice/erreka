@@ -71,7 +71,6 @@ $(document).ready(function(){
             var eventObj = info.event;
             $('#btn-delete-edit').attr('href', Routing.generate('booking_editar', {id: eventObj.extendedProps.idBooking}));
 
-            $("#locationEvent").html(eventObj.extendedProps.location);
             $("#titleEvent").html(eventObj.title);
             $("#descriptionEvent").html(eventObj.extendedProps.description);
             $("#calendarModal").modal();

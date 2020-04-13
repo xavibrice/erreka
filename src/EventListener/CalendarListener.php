@@ -50,7 +50,7 @@ class CalendarListener
         foreach ($bookings as $booking) {
             // this create the events with your data (here booking data) to fill calendar
             $bookingEvent = new Event(
-                $booking->getCommercial()->getFullname() . ' - ' .$booking->getTitleBooking()->getName(),
+                $booking->getCommercial()->getFullname() . ' - ' .$booking->getTitleBooking()->getName() . ' - ' . $booking->getLocationBooking()->getName(),
                 $booking->getBeginAt(),
                 $booking->getEndAt() // If the end date is null or not defined, a all day event is created.
             );
