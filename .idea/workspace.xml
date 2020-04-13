@@ -3,12 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show_rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show_rent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/visit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/visit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/type_property/_tab.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/type_property/_tab.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/visit/index_rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/visit/index_rent.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/visit/index_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/visit/index_sell.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -442,7 +438,8 @@
       <workItem from="1585756175210" duration="2843000" />
       <workItem from="1585914306023" duration="3570000" />
       <workItem from="1585993959212" duration="615000" />
-      <workItem from="1586087819234" duration="3561000" />
+      <workItem from="1586087819234" duration="4195000" />
+      <workItem from="1586778082611" duration="712000" />
     </task>
     <servers />
   </component>
