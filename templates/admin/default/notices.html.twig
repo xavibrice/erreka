@@ -22,8 +22,13 @@
                             <div class="status-indicator bg-success"></div>
                         </div>
                         <div class="font-weight-bold">
-                            <div class="text-truncate">{{ notice.fullname }}</div>
+                            <div class="text-truncate">{{ notice.fullname }} - {{ notice.mobile }}</div>
                             <div class="small text-gray-500">{{ notice.street.name }} Nº {{ notice.portal }}, {{ notice.floor }}</div>
+                            <div class="small text-gray-500">
+                                {% if notice.noteNew|length > 0 %}
+                                    {{ notice.noteNew.last.note }}
+                                {% endif %}
+                            </div>
                         </div>
                     </a>
                 {% endif %}

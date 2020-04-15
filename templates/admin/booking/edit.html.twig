@@ -3,11 +3,21 @@
 {% block title %}Editar Cita{% endblock %}
 
 {% block content %}
-    <h1>Editar Cita</h1>
 
-    {{ include('admin/booking/_form.html.twig', {'button_label': 'Actualizar'}) }}
-
-    <a class="btn btn-link" href="{{ path('booking_calendar') }}">Volver a la lista</a>
-
+    <div class="row d-flex justify-content-center">
+        <div class="col-md-4">
+            <div class="card shadow mb-4">
+                <div class="card-header">
+                    <h6 class="m-0 font-weight-bold text-center">Editar Cita</h6>
+                </div>
+                <div class="card-body">
+                    {{ include('admin/booking/_form.html.twig', {'button_label': 'Actualizar'}) }}
+                </div>
+                <div class="card-footer">
+                    <a class="btn btn-link" href="{{ path('booking_calendar') }}">Volver a la lista</a>
+                </div>
+            </div>
+        </div>
+    </div>
 {#    {{ include('admin/booking/_delete_form.html.twig') }}#}
 {% endblock %}

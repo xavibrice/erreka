@@ -185,6 +185,10 @@ class PropertyType extends AbstractType
                 'label' => 'Teléfono',
                 'required' => false
             ])
+            ->add('email', EmailType::class, [
+                'label' => 'Correo',
+                'required' => false,
+            ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario',
                 'required' => false

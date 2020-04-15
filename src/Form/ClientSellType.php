@@ -17,6 +17,7 @@ use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -65,6 +66,10 @@ class ClientSellType extends AbstractType
             ])
             ->add('phone', TelType::class, [
                 'label' => 'Teléfono',
+                'required' => false,
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Correo',
                 'required' => false,
             ])
             ->add('comment', TextareaType::class, [

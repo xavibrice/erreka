@@ -19,6 +19,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -207,6 +208,10 @@ class PropertyToDeveloperType extends AbstractType
             ->add('phone', TelType::class, [
                 'label' => 'Teléfono',
                 'required' => false
+            ])
+            ->add('email', EmailType::class, [
+                'label' => 'Correo',
+                'required' => false,
             ])
             ->add('comment', TextareaType::class, [
                 'label' => 'Comentario Noticia',

@@ -1,7 +1,7 @@
 <li class="nav-item dropdown no-arrow mx-1">
     <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         {#        <i class="fas fa-book fa-fw"></i>#}
-        <strong>P</strong>
+        <strong>C</strong>
         <!-- Counter - Messages -->
         {% if clientsSells|length + clientsRents|length > 0 %}
             <span class="badge badge-primary badge-counter">{{ clientsSells|length + clientsRents|length }}</span>
@@ -25,7 +25,8 @@
                             Comprar -
                             {% if client.noteClients|length > 0 %}
                                 {{ client.noteClients.last.comment }}
-                            {% endif %}</div>
+                            {% endif %}
+                        </div>
                     </div>
                 </a>
             {% endfor %}
