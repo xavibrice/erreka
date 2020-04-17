@@ -51,6 +51,11 @@ class Proposal
      */
     private $created;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $comment;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -138,5 +143,22 @@ class Proposal
         $this->created = $created;
 
         return $this;
+    }
+
+    public function getComment(): ?string
+    {
+        return $this->comment;
+    }
+
+    public function setComment(?string $comment): self
+    {
+        $this->comment = $comment;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return (string)$this->comment;
     }
 }

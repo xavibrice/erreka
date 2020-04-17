@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\ClientStatus;
 use App\Entity\Proposal;
 use App\Form\Proposal1Type;
 use App\Repository\ProposalRepository;
@@ -63,11 +64,22 @@ class ProposalController extends AbstractController
      */
     public function edit(Request $request, Proposal $proposal): Response
     {
+        $em = $this->getDoctrine()->getManager();
+
+        $statusClient = $em->getRepository(ClientStatus::class)->findOneBy(['name' => 'Ha comprado']);
+
         $form = $this->createForm(Proposal1Type::class, $proposal);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            if ($form->get('scriptures')->getData() != null) {
+                $proposal->getClient()->setClientStatus($statusClient);
+            }
+
             $this->getDoctrine()->getManager()->flush();
+
+
 
             return $this->redirectToRoute('property_charge_proposal', [
                 'id' => $proposal->getProperty()->getId(),

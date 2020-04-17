@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ProposalController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ProposalController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Proposal.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Proposal.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -440,7 +443,7 @@
       <workItem from="1586778082611" duration="712000" />
       <workItem from="1586789262826" duration="4071000" />
       <workItem from="1586949686308" duration="3534000" />
-      <workItem from="1587117998283" duration="2250000" />
+      <workItem from="1587117998283" duration="4952000" />
     </task>
     <servers />
   </component>
