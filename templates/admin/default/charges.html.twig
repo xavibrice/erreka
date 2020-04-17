@@ -23,6 +23,11 @@
                     <div class="font-weight-bold">
                         <div class="text-truncate">{{ charge.fullname }}</div>
                         <div class="small text-gray-500">{{ charge.street.name }} Nº {{ charge.portal }}, {{ charge.floor }}</div>
+                        <div class="small text-gray-500">
+                            {% if charge.noteNew|length > 0 %}
+                                {{ charge.noteNew.last.note }}
+                            {% endif %}
+                        </div>
                     </div>
                 </a>
             {% endfor %}
