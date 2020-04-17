@@ -3,11 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show_rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show_rent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/default/charges.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/charges.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/authorization_charge.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/proposal.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/proposal.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -445,7 +442,7 @@
       <workItem from="1586778082611" duration="712000" />
       <workItem from="1586789262826" duration="4071000" />
       <workItem from="1586949686308" duration="3534000" />
-      <workItem from="1587117998283" duration="1022000" />
+      <workItem from="1587117998283" duration="1762000" />
     </task>
     <servers />
   </component>
@@ -489,9 +486,10 @@
     </state>
     <state x="714" y="222" key="#com.intellij.ide.util.MemberChooser/0.0.1792.1120@0.0.1792.1120" timestamp="1583922158609" />
     <state x="765" y="206" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1580322521991" />
-    <state x="188" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1582540097098">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="175" y="271" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1587119464335">
+      <screen x="0" y="0" width="1792" height="1120" />
     </state>
+    <state x="175" y="271" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1587119464335" />
     <state x="188" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1582540097098" />
     <state x="250" y="252" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.2560.1040@0.0.2560.1040" timestamp="1579263327735" />
     <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1586951247786">
