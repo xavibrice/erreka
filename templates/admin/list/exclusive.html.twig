@@ -33,8 +33,8 @@
                     </thead>
                     <tbody>
                     {% for exclusive in exclusives %}
-                        {% for proposal in exclusive[0].proposals %}
-                            {% if proposal.scriptures is empty or exclusive[0].proposals is not defined %}
+{#                        {% for proposal in exclusive[0].proposals %}
+                            {% if proposal.scriptures is empty %}#}
                                 <tr>
                                     <td>{{ exclusive[0].reference }}</td>
                                     <td>{{ exclusive[0].agency.name }}</td>
@@ -68,8 +68,9 @@
                                     {% endif %}
                                 </tr>
 
-                            {% endif %}
-                        {% endfor %}
+                            {#{% endif %}
+                        {% endfor %}#}
+
                     {% endfor %}
                     </tbody>
                 </table>
