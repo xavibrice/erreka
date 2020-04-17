@@ -26,7 +26,7 @@
                     </thead>
                     <tbody>
                     {% for proposal in proposals %}
-                        {% if proposal.contract is not null and proposal.scriptures is null %}
+                        {% if proposal.contract is not empty and proposal.scriptures is empty %}
                             <tr>
                                 <td>{{ proposal.property.reference }}</td>
                                 <td>{{ proposal.property.commercial.fullName }}</td>
