@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\ClientStatus;
 use App\Entity\Proposal;
+use App\Entity\Reason;
 use App\Form\Proposal1Type;
 use App\Repository\ProposalRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -67,6 +68,7 @@ class ProposalController extends AbstractController
         $em = $this->getDoctrine()->getManager();
 
         $statusClient = $em->getRepository(ClientStatus::class)->findOneBy(['name' => 'Ha comprado']);
+        $reasonProperty = $em->getRepository(Reason::class)->findOneBy(['name' => 'Vendido']);
 
         $form = $this->createForm(Proposal1Type::class, $proposal);
         $form->handleRequest($request);
@@ -75,6 +77,10 @@ class ProposalController extends AbstractController
 
             if ($form->get('contract')->getData() != null) {
                 $proposal->getClient()->setClientStatus($statusClient);
+            }
+
+            if ($form->get('scriptures')->getData() != null) {
+                $proposal->getProperty()->setReason($reasonProperty);
             }
 
             $this->getDoctrine()->getManager()->flush();
