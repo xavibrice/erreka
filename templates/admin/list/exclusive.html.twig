@@ -33,6 +33,9 @@
                     </thead>
                     <tbody>
                     {% for exclusive in exclusives %}
+                        {% if  %}
+                            
+                        {% endif %}
                         <tr>
                             <td>{{ exclusive[0].reference }}</td>
                             <td>{{ exclusive[0].agency.name }}</td>
