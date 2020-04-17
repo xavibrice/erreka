@@ -73,7 +73,7 @@ class ProposalController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            if ($form->get('scriptures')->getData() != null) {
+            if ($form->get('contract')->getData() != null) {
                 $proposal->getClient()->setClientStatus($statusClient);
             }
 
