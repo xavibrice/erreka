@@ -75,7 +75,9 @@ class ClientController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('client_sell_index');
+            return $this->redirectToRoute('client_sell_show', [
+                'id' => $client->getId()
+            ]);
         }
 
         return $this->render('admin/client/new.html.twig', [
@@ -530,7 +532,9 @@ class ClientController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('client_rent_index');
+            return $this->redirectToRoute('client_rent_index', [
+                'id' => $client->getId()
+            ]);
         }
 
         return $this->render('admin/client/new.html.twig', [

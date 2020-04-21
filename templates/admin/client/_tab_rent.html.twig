@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12 mb-4">
         <a class="btn btn-primary {% if app.request.get('_route') == 'client_rent_show' %}active{% endif %}" href="{{ path('client_rent_show', {'id': client.id}) }}">Detalles</a>
-        <a class="btn btn-primary {% if app.request.get('_route') == 'client_visit_index' %}active{% endif %}" href="{{ path('client_visit_index', {'id': client.id}) }}">Visitas</a>
         <a class="btn btn-primary b-4 {% if app.request.get('_route') == 'client_possible_rent_visits' %}active{% endif %}" href="{{ path('client_possible_rent_visits', {'id': client.id}) }}">Encargos</a>
+        <a class="btn btn-primary {% if app.request.get('_route') == 'client_visit_index' %}active{% endif %}" href="{{ path('client_visit_index', {'id': client.id}) }}">Visitas</a>
     </div>
 </div>
