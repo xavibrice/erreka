@@ -122,7 +122,7 @@
                                             {{ property.noteNew.last.noticeDate|date('d-m-Y') }}
                                         {% endif %}
                                     </td>
-                                    <td data-toggle="tooltip" data-placement="top" title="{{ property.comment }}">
+                                    <td data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ property.comment }}</b>">
                                         {{ property.comment|slice(0, 25) }}
                                     </td>
                                 </tr>

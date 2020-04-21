@@ -22,6 +22,10 @@ require('../css/app.css');
 
 const autocomplete = require('autocomplete.js');
 
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+});
+
 require("eonasdan-bootstrap-datetimepicker-bootstrap4beta");
 
 $.extend(true, $.fn.datetimepicker.defaults, {

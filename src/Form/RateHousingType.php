@@ -67,11 +67,11 @@ class RateHousingType extends AbstractType
             ])
             ->add('min_price', MoneyType::class, [
                 'label' => 'Precio Mínimo',
-                'required' => false
+                'required' => true
             ])
             ->add('max_price', MoneyType::class, [
                 'label' => 'Precio Máximo',
-                'required' => false
+                'required' => true
             ])
             ->add('bedrooms', IntegerType::class, [
                 'label' => 'Dormitorios',

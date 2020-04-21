@@ -118,6 +118,14 @@ class ClientController extends AbstractController
             ->setParameter('enabled', true)
         ;
 
+
+        if ($client->getTypeProperty()) {
+            $queryBuilder
+                ->andWhere('p.typeProperty = :typeProperty')
+                ->setParameter('typeProperty', $client->getTypeProperty())
+                ;
+        }
+
         if ($client->getHeating()) {
             $queryBuilder
                 ->innerJoin('rh.heating', 'h')

@@ -404,8 +404,8 @@ class PropertyController extends AbstractController
      */
     public function clients(Request $request, Property $property, $idChargeType, ClientRepository $clientRepository): Response
     {
-
-
+        $em = $this->getDoctrine()->getManager();
+        $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
 
 
         $queryBuilder = $clientRepository
@@ -445,12 +445,12 @@ class PropertyController extends AbstractController
             }
         }
 
-        if ($property->getRateHousing()->getElevator()) {
+        /*if ($property->getRateHousing()->getElevator()) {
             $queryBuilder
                 ->andWhere('c.elevator = :elevator')
                 ->setParameter('elevator', $property->getRateHousing()->getElevator())
             ;
-        }
+        }*/
 
         if ($property->getStreet()->getZone()) {
             $queryBuilder
@@ -466,7 +466,8 @@ class PropertyController extends AbstractController
 
         return $this->render('admin/property/possible-clients.html.twig', [
             'property' => $property,
-            'possibleClients' => $possibleClients
+            'possibleClients' => $possibleClients,
+            'sumPropertyReduction' => $sumPropertyReduction,
         ]);
     }
 

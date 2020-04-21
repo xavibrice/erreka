@@ -62,7 +62,7 @@
                             <td>{{ client.price|number_format(0, ',', '.') }} € </td>
                             <td>{{ client.bedrooms }} </td>
                             <td>{{ client.visits ? client.visits.count }}</td>
-                            <td data-toggle="tooltip" data-placement="top" title="{{ client.comment }}">
+                            <td data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ client.comment }}</b>">
                                 {{ client.comment|slice(0, 25) }}
                             </td>
                             {#                <td>#}
