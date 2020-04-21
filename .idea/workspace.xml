@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RateHousingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RateHousingType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/rent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/possible-clients.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/possible-clients.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/property.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/property.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/edit-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/edit-property-to-developer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/property-to-developer.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property_to_developer/show-property-to-developer.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -453,7 +440,7 @@
       <workItem from="1586949686308" duration="3534000" />
       <workItem from="1587117998283" duration="7616000" />
       <workItem from="1587248479318" duration="1721000" />
-      <workItem from="1587471896977" duration="4193000" />
+      <workItem from="1587471896977" duration="4403000" />
     </task>
     <servers />
   </component>
