@@ -445,6 +445,13 @@ class PropertyController extends AbstractController
             }
         }
 
+        if ($property->getTypeProperty()) {
+            $queryBuilder
+                ->andWhere('c.typeProperty = :typeProperty')
+                ->setParameter('typeProperty', $property->getTypeProperty())
+            ;
+        }
+
         /*if ($property->getRateHousing()->getElevator()) {
             $queryBuilder
                 ->andWhere('c.elevator = :elevator')
