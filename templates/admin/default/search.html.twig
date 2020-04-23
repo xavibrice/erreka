@@ -16,6 +16,7 @@
                     <tr>
                         <th>Cliente</th>
                         <th>Móvil</th>
+                        <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -23,7 +24,13 @@
                         <tr>
                             <td>{{ client.fullName}}</td>
                             <td>{{ client.mobile }}</td>
-
+                            <td>
+                                {% if client.sellOrRent %}
+                                    <a class="btn btn-info" href="{{ path('client_sell_show', {'id': client.id}) }}">Ver</a>
+                                {% else %}
+                                    <a class="btn btn-info" href="{{ path('client_rent_show', {'id': client.id}) }}">Ver</a>
+                                {% endif %}
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -43,6 +50,7 @@
                     <tr>
                         <th>Cliente</th>
                         <th>Móvil</th>
+                        <th>Acciones</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -50,7 +58,9 @@
                         <tr>
                             <td>{{ property.fullName}}</td>
                             <td>{{ property.mobile }}</td>
-
+                            <td>
+                                <a class="btn btn-info" href="{{ path('property_show', {'id': property.id }) }}">Ver</a>
+                            </td>
                         </tr>
                     {% endfor %}
                     </tbody>
