@@ -7,18 +7,6 @@
 @import "agolia-autocomplete.css";
 @import "~eonasdan-bootstrap-datetimepicker-bootstrap4beta/build/css/bootstrap-datetimepicker.css";
 
-
-/* GLOBAL STYLES
--------------------------------------------------- */
-/* Padding below the footer and lighter body text */
-
-body {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-    color: #5a5a5a;
-}
-
-
 /* CUSTOMIZE THE CAROUSEL
 -------------------------------------------------- */
 
