@@ -1,0 +1,84 @@
+{% extends 'fronted/fronted.html.twig' %}
+
+{% block title %}Sobre nosotros{% endblock %}
+
+{% block body %}
+    <div class="jumbotron">
+        <div class="container">
+            <h1 class="display-3 text-center">Sobre nosotros</h1>
+        </div>
+    </div>
+
+    <div class="container marketing">
+        <!-- START THE FEATURETTES -->
+        <div class="row featurette">
+            <div class="col-md-7">
+                <h2 class="featurette-heading">Inmobiliaria. <span class="text-muted">Erreka.</span></h2>
+                <p class="lead">Donegna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{ asset('img/bilbao.jpg') }}" alt="">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+            <div class="col-md-7 order-md-2">
+                <h2 class="featurette-heading">Oh yeah, it’s that good. <span class="text-muted">See for yourself.</span></h2>
+                <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+            </div>
+            <div class="col-md-5 order-md-1">
+                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{ asset('img/san-anton.jpg') }}" alt="">
+            </div>
+        </div>
+
+        <hr class="featurette-divider">
+        <!-- /END THE FEATURETTES -->
+
+        <div class="album">
+            <h2 class="text-center">Agentes</h2>
+            <p class="text-center">Nuestros agentes</p>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agentes.png') }}" alt="">
+                            <div class="card-body">
+                                <h3 class="text-center">Jon Erreka</h3>
+                                <p class="card-text">
+                                    Licenciado en Económicas por la Universidad de Sarriko, promoción del 2004. Agente inmobiliario con experiencia de más de 10 años en el sector.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agentes.png') }}" alt="">
+                            <div class="card-body">
+                                <h3 class="text-center">Jon Erreka</h3>
+                                <p class="card-text">
+                                    Licenciado en Empresariales por la Universidad de Sarriko, promoción del 2014. Su juventud y ambición le hacen formarse día a día para dar un mejor servicio al cliente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agentes.png') }}" alt="">
+                            <div class="card-body">
+                                <h3 class="text-center">Jon Erreka</h3>
+                                <p class="card-text">
+                                    Licenciado en Empresariales por la Universidad de Sarriko, promoción del 2014. Su juventud y ambición le hacen formarse día a día para dar un mejor servicio al cliente.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+{% endblock %}

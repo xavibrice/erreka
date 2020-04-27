@@ -23,6 +23,14 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/nosotros", name="about_us")
+     */
+    public function about()
+    {
+        return $this->render('fronted/default/about.html.twig');
+    }
+
+    /**
      * @Route("/alerts/recados", name="alerts_notes", methods={"GET"})
      */
     public function notes(NoteCommercialRepository $noteCommercialRepository): Response
