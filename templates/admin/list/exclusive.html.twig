@@ -18,7 +18,6 @@
                     <thead>
                         <tr>
                             <th>Ref.</th>
-                            <th>n propuestas</th>
                             <th>Agencia</th>
                             <th>Agente</th>
                             <th>Encargo</th>
@@ -37,7 +36,6 @@
                         {% if exclusive.countPropertyContract == 0 %}
                             <tr>
                                     <td>{{ exclusive[0].reference }}</td>
-                                    <td>{{ exclusive[0].proposals.count }}</td>
                                     <td>{{ exclusive[0].agency.name }}</td>
                                     <td>{{ exclusive[0].commercial.fullName }}</td>
                                     <td>{{ exclusive[0].charge.chargeType.name }}</td>
