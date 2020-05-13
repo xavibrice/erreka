@@ -755,13 +755,13 @@ class ClientController extends AbstractController
                     ->setParameter('zoneFour', $client->getZoneFour()->getName())
                 ;
             }
+        }
 
-            if ($client->getPets()) {
-                $queryBuilder
-                    ->andWhere('rh.pets = :pets')
-                    ->setParameter('pets', $client->getPets())
-                ;
-            }
+        if ($client->getPets()) {
+            $queryBuilder
+                ->andWhere('rh.pets = :pets')
+                ->setParameter('pets', $client->getPets())
+            ;
         }
 
         $possibleVisits = $queryBuilder->getQuery()->getResult();
