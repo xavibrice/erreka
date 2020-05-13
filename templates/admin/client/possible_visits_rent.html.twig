@@ -91,7 +91,7 @@
                                             {{ totalVisits }}
 
                                         </td>
-                                        <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
+                                        <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit[0].rateHousing.comment }}">{{ possibleVisit[0].rateHousing.comment|slice(0, 25)  }}</td>
                                         <td>
                                             {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}
 
@@ -99,8 +99,8 @@
 
                                             <div class="compact-gallery">
                                                 <div class="row">
-                                                    {% if possibleVisit.rateHousing %}
-                                                        {% for image in possibleVisit.rateHousing.image %}
+                                                    {% if possibleVisit[0].rateHousing %}
+                                                        {% for image in possibleVisit[0].rateHousing.image %}
                                                             <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
                                                                 <img class="img-profile" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_super_small') }}" alt="">
                                                             </a>
