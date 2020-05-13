@@ -628,18 +628,18 @@ class ClientController extends AbstractController
             ->setParameter('enabled', true)
         ;
 
+        if ($client->getPrice()) {
+            $queryBuilder
+                ->andWhere('c.price <= :price')
+                ->setParameter('price', $client->getPrice())
+            ;
+        }
+
 /*        if ($client->getHeating()) {
             $queryBuilder
                 ->innerJoin('rh.heating', 'h')
                 ->andWhere('h.name = :heating')
                 ->setParameter('heating', $client->getHeating()->getName())
-            ;
-        }
-
-        if ($client->getPrice()) {
-            $queryBuilder
-                ->andWhere('c.price <= :price')
-                ->setParameter('price', $client->getPrice())
             ;
         }
 
