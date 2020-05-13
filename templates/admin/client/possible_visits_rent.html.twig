@@ -45,6 +45,7 @@
                     {% for possibleVisit in possibleVisits %}
                         {% if possibleVisit.rateHousing is defined %}
                             {% if possibleVisit.charge %}
+                                {% if possibleVisit.reason.name == 'Alquiler' %}
                                     <tr>
                                         <td>{{ possibleVisit.reference }}</td>
                                         <td>{{ possibleVisit.reason.name }}</td>
@@ -109,7 +110,7 @@
                                             </div>
                                         </td>
                                     </tr>
-
+                                {% endif %}
                             {% endif %}
                         {% endif %}
 {#                        {{ dump(possibleVisits) }}#}
