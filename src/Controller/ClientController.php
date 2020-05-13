@@ -631,7 +631,7 @@ class ClientController extends AbstractController
         if ($client->getPrice()) {
             $queryBuilder
                 ->andWhere('c.price = :price')
-                ->setParameter('p', $client->getPrice())
+                ->setParameter('price', $client->getPrice())
             ;
         }
 
