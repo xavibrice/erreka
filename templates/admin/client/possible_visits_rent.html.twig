@@ -1,0 +1,131 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}
+    Posibles Visitas
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+{% endblock %}
+
+
+{% block content %}
+
+    {% if client.sellOrRent == true %}
+        {{ include('admin/client/_tab_sell.html.twig') }}
+    {% else %}
+        {{ include('admin/client/_tab_rent.html.twig') }}
+    {% endif %}
+
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-center">Cliente: {{ client.fullName }} - Móvil: {{ client.mobile }} - Dormitorios: {{ client.bedrooms }} - Precio Máximo: {{ client.price|number_format(0, ',', '.') }}€</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-striped table-sm table-hover dataTable" id="dataTableEmpty" width="100%" cellpadding="0">
+                    <thead>
+                    <tr class="">
+                        <th>Ref.</th>
+                        <th>Reason</th>
+                        <th>Encargo</th>
+                        <th>Agencia</th>
+                        <th>Zona</th>
+                        <th>Dirección</th>
+                        <th>Precio</th>
+                        <th>D</th>
+                        <th>WC</th>
+                        <th>M²</th>
+{#                        <th>Calefacción</th>#}
+                        <th>Asc</th>
+{#                        <th>Ofre.</th>#}
+                        <th>Visit.</th>
+                        <th>Comentario vivienda</th>
+                        <th>Fotos</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for possibleVisit in possibleVisits %}
+{#                        {{ dump(possibleVisits) }}#}
+                        <tr>
+                            <td>{{ possibleVisit.reference }}</td>
+                            <td>{{ possibleVisit.reason.name }}</td>
+                            <td>{{ possibleVisit.charge.chargeType.name }}</td>
+                            <td>{{ possibleVisit.commercial.agency.name }}</td>
+                            <td>{{ possibleVisit.street.zone.name }}</td>
+                            <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}</td>
+                            <td>{{ possibleVisit.charge.price|number_format(0, ',', '.') }}€</td>
+                            <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
+                            <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
+                            <td>{{ possibleVisit.rateHousing.realMeters }}</td>
+                            {#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
+                            <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
+                            {#                            <td>
+                                                            {% if possibleVisit.offereds is not empty %}
+                            #}{#                                    <a class="btn btn-success" href="{{ path('offered_delete', {'id': possibleVisit.offereds.first.id, 'idClient': client.id }) }}">Si</a>#}{#
+                                                                {% for offerp in possibleVisit.offereds %}
+                                                                    {% for offerc in client.offereds %}
+                                                                        {% if offerc.client.id == client.id and offerp.property.id == possibleVisit.id %}
+                                                                            <a class="btn btn-success" href="">Si</a>
+                                                                        {% endif %}
+                                                                    {% endfor %}
+                                                                {% endfor %}
+                                                            {% else %}
+                                                                <a class="btn btn-danger" href="{{ path('offered_new', {'idClient': client.id, 'idProperty': possibleVisit.id }) }}">No</a>
+                                                            {% endif %}
+                            #}{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}{#
+                                                        </td>#}
+                            <td>
+
+
+{#                                {{ possibleVisit.visits ? possibleVisit.visits.count }}#}
+
+
+                                {% set totalVisits = 0 %}
+
+                                {% for visit in possibleVisit.visits %}
+                                    {% if visit.client == client %}
+                                        {% set totalVisits = totalVisits + 1 %}
+                                    {% endif %}
+                                {% endfor %}
+
+                                {{ totalVisits }}
+
+                            </td>
+                            <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
+                            <td>
+                                {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}
+
+
+
+                                <div class="compact-gallery">
+                                    <div class="row">
+                                        {% if possibleVisit.rateHousing %}
+                                            {% for image in possibleVisit.rateHousing.image %}
+                                                <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                                    <img class="img-profile" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_super_small') }}" alt="">
+                                                </a>
+                                            {% endfor %}
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.compact-gallery', { animation: 'slideIn'});
+    </script>
+    {{ encore_entry_script_tags('dataTableJs') }}
+{% endblock %}

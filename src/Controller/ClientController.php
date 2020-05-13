@@ -635,6 +635,13 @@ class ClientController extends AbstractController
             ;
         }
 
+        if ($client->getPrice()) {
+            $queryBuilder
+                ->andWhere('p.price = :price')
+                ->setParameter('price', $client->getPrice())
+            ;
+        }
+
         if ($client->getOrientation()) {
             $queryBuilder
                 ->innerJoin('rh.orientation', 'o')
@@ -758,7 +765,7 @@ class ClientController extends AbstractController
         }
 
         $possibleVisits = $queryBuilder->getQuery()->getResult();
-        return $this->render('admin/client/possible_visits.html.twig', [
+        return $this->render('admin/client/possible_visits_rent.html.twig', [
             'client' => $client,
             'possibleVisits' => $possibleVisits
         ]);
