@@ -43,9 +43,9 @@
                     </thead>
                     <tbody>
                     {% for possibleVisit in possibleVisits %}
-                        {% if possibleVisit.rateHousing is defined %}
-                            {% if possibleVisit.charge %}
-                                {% if possibleVisit.reason.name == 'Alquiler' %}
+                        {% if possibleVisit[0].rateHousing is defined %}
+                            {% if possibleVisit[0].charge %}
+                                {% if possibleVisit[0].reason.name == 'Alquiler' %}
                                     <tr>
                                         <td>{{ possibleVisit[0].reference }}</td>
                                         <td>{{ possibleVisit[0].reason.name }}</td>
