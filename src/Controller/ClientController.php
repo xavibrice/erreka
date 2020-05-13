@@ -624,7 +624,7 @@ class ClientController extends AbstractController
             ->andWhere('p.enabled = :enabled')
             ->andWhere('r.name = :reason')
             ->setParameter('reason', 'Alquiler')
-            ->setParameter('enabled', true)
+            ->setParameter('enabled', false)
         ;
 
         if ($client->getHeating()) {
