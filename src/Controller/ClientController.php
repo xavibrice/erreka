@@ -628,6 +628,7 @@ class ClientController extends AbstractController
             ->andWhere('r.name = :reason')
             ->setParameter('reason', 'Alquiler')
             ->setParameter('enabled', true)
+            ->groupBy('p.id')
         ;
 
 
