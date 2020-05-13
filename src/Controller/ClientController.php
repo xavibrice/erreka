@@ -613,10 +613,9 @@ class ClientController extends AbstractController
      */
     public function possibleRentVisits(Request $request, Client $client)
     {
-        $em = $this->getDoctrine()->getManager();
+        $em = $this->getDoctrine()->getManager()->getRepository(Property::class);
 
         $queryBuilder = $em
-            ->getRepository(Property::class)
             ->createQueryBuilder('p')
             ->innerJoin('p.rateHousing', 'rh')
             ->innerJoin('p.charge', 'c')
