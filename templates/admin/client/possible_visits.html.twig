@@ -12,7 +12,7 @@
 
 {% block content %}
 
-    {% if client.sellOrRent %}
+    {% if client.sellOrRent === 1 %}
         {{ include('admin/client/_tab_sell.html.twig') }}
     {% else %}
         {{ include('admin/client/_tab_rent.html.twig') }}

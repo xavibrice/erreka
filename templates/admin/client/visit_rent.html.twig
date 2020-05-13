@@ -1,0 +1,50 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Visitas{% endblock %}
+
+{% block content %}
+
+    {{ include('admin/client/_tab_rent.html.twig') }}
+
+    <div class="row">
+        <div class="col-md-12 mb-4">
+            <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 350px;">
+                <div class="col-md-12 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th>Ref</th>
+                                            <th>Dirección</th>
+                                            <th>Precio</th>
+                                            <th>Fecha visita</th>
+                                            <th>Comentario</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for visit in visits %}
+                                            <tr>
+                                                <td>{{ visit.property.reference }}</td>
+                                                <td>{{ visit.property.street.name }}, Nº {{ visit.property.portal }}, {{ visit.property.floor }}</td>
+                                                <td>{{ visit.price|number_format(0, '.', ',') }}</td>
+                                                <td>{{ visit.visited ? visit.visited|date('d/m/Y') : '' }}</td>
+                                                <td data-toggle="tooltip" data-placement="top" title="{{ visit.comment }}">
+                                                    {{ visit.comment|slice(0, 100) }}
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

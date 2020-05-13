@@ -53,7 +53,7 @@ class ClientController extends AbstractController
      */
     public function visitRent(Client $client, VisitRepository $visitRepository): Response
     {
-        return $this->render('admin/client/visit.html.twig', [
+        return $this->render('admin/client/visit_rent.html.twig', [
             'client' => $client,
             'visits' => $visitRepository->findBy(['client' => $client]),
         ]);
@@ -64,7 +64,7 @@ class ClientController extends AbstractController
      */
     public function visitSell(Client $client, VisitRepository $visitRepository): Response
     {
-        return $this->render('admin/client/visit.html.twig', [
+        return $this->render('admin/client/visit_sell.html.twig', [
             'client' => $client,
             'visits' => $visitRepository->findBy(['client' => $client]),
         ]);
@@ -310,7 +310,7 @@ class ClientController extends AbstractController
 //dd('ok');
 
         $possibleVisits = $queryBuilder->getQuery()->getResult();
-        return $this->render('admin/client/possible-visits.html.twig', [
+        return $this->render('admin/client/possible_visits.html.twig', [
             'client' => $client,
             'possibleVisits' => $possibleVisits
         ]);
@@ -758,7 +758,7 @@ class ClientController extends AbstractController
         }
 
         $possibleVisits = $queryBuilder->getQuery()->getResult();
-        return $this->render('admin/client/possible-visits.html.twig', [
+        return $this->render('admin/client/possible_visits.html.twig', [
             'client' => $client,
             'possibleVisits' => $possibleVisits
         ]);
