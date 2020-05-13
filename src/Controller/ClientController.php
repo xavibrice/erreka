@@ -756,13 +756,13 @@ class ClientController extends AbstractController
                 ;
             }
         }
-
+*/
         if ($client->getPets()) {
             $queryBuilder
                 ->andWhere('rh.pets = :pets')
                 ->setParameter('pets', $client->getPets())
             ;
-        }*/
+        }
 
         $possibleVisits = $queryBuilder->getQuery()->getResult();
         return $this->render('admin/client/possible_visits_rent.html.twig', [
