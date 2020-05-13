@@ -29,6 +29,7 @@
                     <thead>
                     <tr class="">
                         <th>Ref.</th>
+                        <th>Reason</th>
                         <th>Encargo</th>
                         <th>Agencia</th>
                         <th>Zona</th>
@@ -50,6 +51,7 @@
 {#                        {{ dump(possibleVisits) }}#}
                         <tr>
                             <td>{{ possibleVisit.reference }}</td>
+                            <td>{{ possibleVisit.reason.name }}</td>
                             <td>{{ possibleVisit.charge.chargeType.name }}</td>
                             <td>{{ possibleVisit.commercial.agency.name }}</td>
                             <td>{{ possibleVisit.street.zone.name }}</td>
