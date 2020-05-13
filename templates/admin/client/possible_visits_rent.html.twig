@@ -47,18 +47,18 @@
                             {% if possibleVisit.charge %}
                                 {% if possibleVisit.reason.name == 'Alquiler' %}
                                     <tr>
-                                        <td>{{ possibleVisit.reference }}</td>
-                                        <td>{{ possibleVisit.reason.name }}</td>
-                                        <td>{{ possibleVisit.charge.chargeType.name }}</td>
-                                        <td>{{ possibleVisit.commercial.agency.name }}</td>
-                                        <td>{{ possibleVisit.street.zone.name }}</td>
-                                        <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}</td>
-                                        <td>{{ possibleVisit.charge.price|number_format(0, ',', '.') }}€</td>
-                                        <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
-                                        <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
-                                        <td>{{ possibleVisit.rateHousing.realMeters }}</td>
+                                        <td>{{ possibleVisit[0].reference }}</td>
+                                        <td>{{ possibleVisit[0].reason.name }}</td>
+                                        <td>{{ possibleVisit[0].charge.chargeType.name }}</td>
+                                        <td>{{ possibleVisit[0].commercial.agency.name }}</td>
+                                        <td>{{ possibleVisit[0].street.zone.name }}</td>
+                                        <td>{{ possibleVisit[0].street.name }}, Nº {{ possibleVisit.portal }}</td>
+                                        <td>{{ possibleVisit[0].charge.price - possibleVisit.sumPropertyReduction|number_format(0, ',', '.') }}€</td>
+                                        <td>{{ possibleVisit[0].rateHousing.bedrooms }}</td>
+                                        <td>{{ possibleVisit[0].rateHousing.bathrooms }}</td>
+                                        <td>{{ possibleVisit[0].rateHousing.realMeters }}</td>
                                         {#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
-                                        <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
+                                        <td>{{ possibleVisit[0].rateHousing.elevator ? 'Si' : 'No' }}</td>
                                         {#                            <td>
                                                                         {% if possibleVisit.offereds is not empty %}
                                         #}{#                                    <a class="btn btn-success" href="{{ path('offered_delete', {'id': possibleVisit.offereds.first.id, 'idClient': client.id }) }}">Si</a>#}{#
@@ -82,7 +82,7 @@
 
                                             {% set totalVisits = 0 %}
 
-                                            {% for visit in possibleVisit.visits %}
+                                            {% for visit in possibleVisit[0].visits %}
                                                 {% if visit.client == client %}
                                                     {% set totalVisits = totalVisits + 1 %}
                                                 {% endif %}

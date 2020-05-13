@@ -622,6 +622,8 @@ class ClientController extends AbstractController
             ->innerJoin('p.reason', 'r')
             ->innerJoin('p.street', 's')
             ->innerJoin('s.zone', 'z')
+            ->leftJoin('p.propertyReductions', 'pr')
+            ->addSelect('SUM(pr.price) as sumPropertyReduction')
             ->andWhere('p.enabled = :enabled')
             ->andWhere('r.name = :reason')
             ->setParameter('reason', 'Alquiler')
