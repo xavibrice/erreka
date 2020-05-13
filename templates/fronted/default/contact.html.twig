@@ -1,0 +1,47 @@
+{% extends 'fronted/fronted.html.twig' %}
+
+{% block title %}Contacto{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-gradient-dark text-black-50"><i class="fa fa-envelope"></i> Contáctanos.
+                    </div>
+                    <div class="card-body">
+                        {{ form_start(form) }}
+                        {{ form_widget(form) }}
+                        <button class="btn btn-success">Enviar</button>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-4">
+                <div class="card bg-light mb-3">
+                    <div class="card-header bg-dark text-white text-white"><i class="fa fa-home"></i> Dirección</div>
+                    <div class="card-body">
+                        <p><b>Erreka</b></p>
+                        <p>75008 PARIS</p>
+                        <p>France</p>
+                        <p>Email : email@example.com</p>
+                        <p>Tel. +33 12 56 11 51 84</p>
+                    </div>
+
+                    <div class="card-body">
+                        <p><b>Erreka Garrido</b></p>
+                        <p>75008 PARIS</p>
+                        <p>France</p>
+                        <p>Email : email@example.com</p>
+                        <p>Tel. +33 12 56 11 51 84</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+{% endblock %}

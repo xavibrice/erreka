@@ -12,7 +12,12 @@
 
 {% block content %}
 
-    {{ include('admin/client/_tab_sell.html.twig') }}
+    {% if client.sellOrRent %}
+        {{ include('admin/client/_tab_sell.html.twig') }}
+    {% else %}
+        {{ include('admin/client/_tab_rent.html.twig') }}
+    {% endif %}
+
 
     <div class="card shadow mb-4">
         <div class="card-header py-3">

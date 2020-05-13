@@ -140,5 +140,4 @@ class TypeProperty
 
         return $this;
     }
-
 }

@@ -6,6 +6,7 @@ use App\Entity\Client;
 use App\Entity\NoteClient;
 use App\Entity\NoteNew;
 use App\Entity\Property;
+use App\Entity\PropertyReduction;
 use App\Entity\RateHousing;
 use App\Entity\Visit;
 use App\Form\ClientRentType;
@@ -15,6 +16,7 @@ use App\Form\NoteClientType;
 use App\Form\VisitNewType;
 use App\Form\VisitType;
 use App\Repository\ClientRepository;
+use App\Repository\ProposalRepository;
 use App\Repository\VisitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -47,13 +49,50 @@ class ClientController extends AbstractController
     }
 
     /**
-     * @Route("/visitas/{id}", name="client_visit_index", methods={"GET"})
+     * @Route("/visitas/alquiler/{id}", name="client_visit_rent_index", methods={"GET"})
      */
-    public function visit(Client $client, VisitRepository $visitRepository): Response
+    public function visitRent(Client $client, VisitRepository $visitRepository): Response
     {
         return $this->render('admin/client/visit.html.twig', [
             'client' => $client,
             'visits' => $visitRepository->findBy(['client' => $client]),
+        ]);
+    }
+
+    /**
+     * @Route("/visitas/comprar/{id}", name="client_visit_sell_index", methods={"GET"})
+     */
+    public function visitSell(Client $client, VisitRepository $visitRepository): Response
+    {
+        return $this->render('admin/client/visit.html.twig', [
+            'client' => $client,
+            'visits' => $visitRepository->findBy(['client' => $client]),
+        ]);
+    }
+
+    /**
+     * @Route("/propuestas/comprar/{id}", name="client_proposal_sell_index", methods={"GET"})
+     */
+    public function proposalSell(Client $client, ProposalRepository $proposalRepository): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $this->render('admin/client/proposal.html.twig', [
+            'client' => $client,
+            'proposals' => $proposalRepository->findBy(['client' => $client])
+        ]);
+    }
+
+    /**
+     * @Route("/propuestas/alquiler/{id}", name="client_proposal_rent_index", methods={"GET"})
+     */
+    public function proposalRent(Client $client, ProposalRepository $proposalRepository): Response
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        return $this->render('admin/client/proposal.html.twig', [
+            'client' => $client,
+            'proposals' => $proposalRepository->findBy(['client' => $client])
         ]);
     }
 

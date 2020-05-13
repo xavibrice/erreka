@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\SearchFronted;
+use App\Form\ContactType;
+use App\Form\SearchFrontedType;
 use App\Repository\ClientRepository;
 use App\Repository\NoteCommercialRepository;
 use App\Repository\NoteNewRepository;
@@ -19,7 +22,15 @@ class DefaultController extends AbstractController
     public function index()
     {
 
-        return $this->render('fronted/default/index.html.twig');
+        return $this->render('fronted/default/homepage.htm.twig');
+    }
+
+    /**
+     * @Route("/servicios", name="services")
+     */
+    public function services()
+    {
+        return $this->render('fronted/default/service.html.twig');
     }
 
     /**
@@ -28,6 +39,54 @@ class DefaultController extends AbstractController
     public function about()
     {
         return $this->render('fronted/default/about.html.twig');
+    }
+
+    /**
+     * @Route("/contacto", name="contact")
+     */
+    public function contact(Request $request, \Swift_Mailer $mailer)
+    {
+        $form = $this->createForm(ContactType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $formData = $form->getData();
+
+            $email = null;
+
+            if ($formData['email'] === null) {
+                $email = 'noreply@errekainmobiliaria.com';
+            } else {
+                $email = $formData['email'];
+            }
+
+            $message = (new \Swift_Message('Mensaje de: ' . $formData['fullName']))
+                ->setFrom($email)
+                ->setTo('info@errekainmobiliaria.com')
+                ->setBody(
+                    $this->renderView(
+                    // templates/emails/registration.html.twig
+                        'fronted/email/contact.twig',
+                        [
+                            'fullName' => $formData['fullName'],
+                            'mobile' => $formData['mobile'],
+                            'comment' => $formData['comment'],
+                        ]
+                    ),
+                    'text/html'
+                )
+            ;
+
+            $mailer->send($message);
+            $this->addFlash('success', 'Mensaje enviado correctamente');
+
+            return $this->redirectToRoute('contact');
+        }
+
+        return $this->render('fronted/default/contact.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -83,7 +142,7 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/buscar", name="search")
+     * @Route("/admin/buscar", name="search")
      */
     public function search(Request $request, ClientRepository $clientRepository, PropertyRepository $propertyRepository): Response
     {
@@ -110,6 +169,36 @@ class DefaultController extends AbstractController
         return $this->render('admin/default/search.html.twig', [
             'clients' => $clients,
             'properties' => $properties,
+        ]);
+    }
+
+    /**
+     * @Route("/buscar/vivienda", name="search_fronted")
+     */
+    public function searchFronted(Request $request, PropertyRepository $propertyRepository): Response
+    {
+        $searchFronted = new SearchFronted();
+        $form = $this->createForm(SearchFrontedType::class, $searchFronted);
+        $form->handleRequest($request);
+
+        $queryBuilder = $propertyRepository
+            ->createQueryBuilder('p')
+            ->innerJoin('p.charge', 'c')
+            ->innerJoin('p.rateHousing', 'rh')
+            ->leftJoin('p.propertyReductions', 'pr')
+            ->leftJoin('p.proposals', 'pro')
+            ->addSelect('SUM(pr.price) as sumPropertyReduction')
+            ->addSelect('COUNT(pro.contract) as countPropertyContract')
+            ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
+            ->groupBy('p.id')
+        ;
+        $properties = $queryBuilder->getQuery()->getResult();
+
+        dump($form->get('sellOrRent')->getData());
+        dump($searchFronted);
+        return $this->render('fronted/default/search-fronted.html.twig', [
+            'properties' => $properties,
+            'form' => $form->createView(),
         ]);
     }
 }

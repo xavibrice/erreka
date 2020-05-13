@@ -2,6 +2,8 @@
     <div class="col-md-12 mb-4">
         <a class="btn btn-primary {% if app.request.get('_route') == 'client_sell_show' %}active{% endif %}" href="{{ path('client_sell_show', {'id': client.id}) }}">Detalles</a>
         <a class="btn btn-primary b-4 {% if app.request.get('_route') == 'client_possible_sell_visits' %}active{% endif %}" href="{{ path('client_possible_sell_visits', {'id': client.id}) }}">Encargos</a>
-        <a class="btn btn-primary {% if app.request.get('_route') == 'client_visit_index' %}active{% endif %}" href="{{ path('client_visit_index', {'id': client.id}) }}">Visitas</a>
+        <a class="btn btn-primary {% if app.request.get('_route') == 'client_visit_sell_index' %}active{% endif %}" href="{{ path('client_visit_sell_index', {'id': client.id}) }}">Visitas</a>
+        <a class="btn btn-primary {% if app.request.get('_route') == 'client_proposal_sell_index' %}active{% endif %}" href="{{ path('client_proposal_sell_index', {'id': client.id}) }}">Propuestas</a>
+
     </div>
 </div>

@@ -1,0 +1,75 @@
+{% extends 'fronted/fronted.html.twig' %}
+
+{% block title %}Buscar Producto{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center m-5">Viviendas</h1>
+
+        {{ form_start(form) }}
+        <div class="form-row">
+            <div class="form-group col">
+                {{ form_row(form.sellOrRent) }}
+            </div>
+            <div class="form-group col">
+                {{ form_row(form.bedrooms) }}
+            </div>
+            <div class="form-group col">
+                {{ form_row(form.price) }}
+            </div>
+            <div class="form-group col">
+                {{ form_row(form.typeProperty) }}
+            </div>
+            <div class="col mt-1">
+
+            <button class="btn btn-success form-control mt-4">
+                Buscar
+            </button>
+            </div>
+        </div>
+
+
+        {{ form_end(form) }}
+
+
+
+
+    <div class="row mb-5">
+        {% for property in properties %}
+            <div class="col-md-6 col-lg-4 mb-4">
+                <a href="" class="prop-entry d-block">
+                    <figure>
+                        <img src="{{ asset('img/hero_bg_2.jpg') }}" alt="Image" class="img-fluid">
+                    </figure>
+                    <div class="prop-text">
+                        <div class="inner">
+                            <span class="price rounded">{{ property[0].price|number_format }}€</span>
+                            <h3 class="title">{{ property[0].street.name }}</h3>
+                            <p class="location">{{ property[0].street.zone.name }}</p>
+                        </div>
+                        <div class="prop-more-info">
+                            <div class="inner d-flex">
+                                <div class="col">
+                                    <span>Area:</span>
+                                    <strong>{{ property[0].rateHousing.realMeters }}m<sup>2</sup></strong>
+                                </div>
+                                <div class="col">
+                                    <span>Dormitorios:</span>
+                                    <strong>{{ property[0].rateHousing.bedrooms }}</strong>
+                                </div>
+                                <div class="col">
+                                    <span>Baños:</span>
+                                    <strong>{{ property[0].rateHousing.bathrooms }}</strong>
+                                </div>
+                                <div class="col">
+                                    <span>Garaje:</span>
+                                    <strong>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
