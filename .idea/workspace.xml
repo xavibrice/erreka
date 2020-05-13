@@ -3,6 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/possible-visits.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/possible_visits.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/client/visit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/visit_sell.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/layout.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/layout.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -160,7 +163,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/client" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -177,19 +180,19 @@
     <property name="ts.external.directory.path" value="C:\Users\HP\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\192.6817.20\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/assets/fronted/js" />
-      <recent name="$PROJECT_DIR$/assets/fronted/css" />
-      <recent name="$PROJECT_DIR$/templates/admin/property" />
-      <recent name="$PROJECT_DIR$/templates/admin/visit" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/assets/fronted/css" />
       <recent name="$PROJECT_DIR$/assets/fronted" />
       <recent name="$PROJECT_DIR$/templates/fronted" />
       <recent name="$PROJECT_DIR$/assets" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/admin/client" />
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/assets/fronted/js" />
+      <recent name="$PROJECT_DIR$/assets/fronted/css" />
+      <recent name="$PROJECT_DIR$/templates/admin/property" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -440,7 +443,7 @@
       <workItem from="1588788938116" duration="146000" />
       <workItem from="1588886043955" duration="6695000" />
       <workItem from="1589180007517" duration="12710000" />
-      <workItem from="1589361040216" duration="1442000" />
+      <workItem from="1589361040216" duration="1913000" />
     </task>
     <servers />
   </component>
