@@ -609,7 +609,7 @@ class ClientController extends AbstractController
 
 
     /**
-     * @Route("/posibles/visitas/alquiler/{id}", name="client_possible_rent_visits")
+     * @Route("/posibles/visitas/alquiler/c/{id}", name="client_possible_rent_visits")
      */
     public function possibleRentVisits(Request $request, Client $client)
     {
