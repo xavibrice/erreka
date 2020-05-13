@@ -702,6 +702,7 @@ class ClientController extends AbstractController
         if ($client->getVisits()) {
             $client->getVisits()->first();
         }
+*/
 
         if ($client->getZoneOne()) {
             $queryBuilder
@@ -732,7 +733,6 @@ class ClientController extends AbstractController
                 ;
             }
         }
-*/
 
         if ($client->getBedrooms()) {
             if ($client->getBedrooms()->getName() === "1 - 2") {
