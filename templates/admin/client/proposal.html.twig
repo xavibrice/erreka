@@ -4,7 +4,11 @@
 
 {% block content %}
 
-    {{ include('admin/client/_tab_sell.html.twig') }}
+    {% if client.sellOrRent == true %}
+        {{ include('admin/client/_tab_sell.html.twig') }}
+    {% else %}
+        {{ include('admin/client/_tab_rent.html.twig') }}
+    {% endif %}
 
     <div class="row">
         <div class="col-md-12 mb-4">
