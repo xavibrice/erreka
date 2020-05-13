@@ -627,7 +627,7 @@ class ClientController extends AbstractController
             ->setParameter('enabled', true)
         ;
 
-        if ($client->getHeating()) {
+/*        if ($client->getHeating()) {
             $queryBuilder
                 ->innerJoin('rh.heating', 'h')
                 ->andWhere('h.name = :heating')
@@ -762,7 +762,7 @@ class ClientController extends AbstractController
                 ->andWhere('rh.pets = :pets')
                 ->setParameter('pets', $client->getPets())
             ;
-        }
+        }*/
 
         $possibleVisits = $queryBuilder->getQuery()->getResult();
         return $this->render('admin/client/possible_visits_rent.html.twig', [
