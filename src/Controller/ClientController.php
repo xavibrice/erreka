@@ -637,7 +637,7 @@ class ClientController extends AbstractController
 
         if ($client->getPrice()) {
             $queryBuilder
-                ->andWhere('p.price <= :price')
+                ->andWhere('rh.price <= :price')
                 ->setParameter('price', $client->getPrice())
             ;
         }
@@ -655,6 +655,76 @@ class ClientController extends AbstractController
                 ->andWhere('rh.elevator = :elevator')
                 ->setParameter('elevator', $client->getElevator())
             ;
+        }
+
+        if ($client->getBuildingStructure()) {
+            $queryBuilder
+                ->innerJoin('rh.buildingStructure', 'bs')
+                ->andWhere('bs.name = :buildingStructure')
+                ->setParameter('buildingStructure', $client->getBuildingStructure()->getName())
+            ;
+        }
+
+        if ($client->getBalcony()) {
+            $queryBuilder
+                ->andWhere('rh.balcony = :balcony')
+                ->setParameter('balcony', $client->getBalcony())
+            ;
+        }
+
+        if ($client->getStorageRoom()) {
+            $queryBuilder
+                ->andWhere('rh.storage_room = :storage_room')
+                ->setParameter('storage_room', $client->getStorageRoom())
+            ;
+        }
+
+        if ($client->getDirectGarage()) {
+            $queryBuilder
+                ->andWhere('rh.direct_garage = :direct_garage')
+                ->setParameter('direct_garage', $client->getDirectGarage())
+            ;
+        }
+
+        if ($client->getZeroDimension()) {
+            $queryBuilder
+                ->andWhere('rh.zero_dimension = :zero_dimension')
+                ->setParameter('zero_dimension', $client->getZeroDimension())
+            ;
+        }
+
+        if ($client->getDisabledAccess()) {
+            $queryBuilder
+                ->andWhere('rh.disabled_access = :disabled_access')
+                ->setParameter('disabled_access', $client->getDisabledAccess())
+            ;
+        }
+
+        if ($client->getVisits()) {
+            $client->getVisits()->first();
+        }
+
+        if ($client->getBedrooms()) {
+            if ($client->getBedrooms()->getName() === "1 - 2") {
+                $queryBuilder
+                    ->andWhere('(rh.bedrooms >= :start AND rh.bedrooms <= :end)')
+                    ->setParameter('start', 1)
+                    ->setParameter('end', 2)
+                ;
+            }
+            if ($client->getBedrooms()->getName() === "2 - 3") {
+                $queryBuilder
+                    ->andWhere('rh.bedrooms >= :start AND rh.bedrooms <= :end')
+                    ->setParameter('start', 2)
+                    ->setParameter('end', 3)
+                ;
+            }
+            if ($client->getBedrooms()->getName() === "+3") {
+                $queryBuilder
+                    ->andWhere('rh.bedrooms >= :start')
+                    ->setParameter('start', 3)
+                ;
+            }
         }
 
         if ($client->getZoneOne()) {
