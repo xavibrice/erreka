@@ -35,10 +35,29 @@
                             <a class="nav-link" href="{{ path('default') }}">Inicio <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('services') }}">Servicios</a>
+                            <a class="nav-link" href="{{ path('search_fronted') }}">Propiedades</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('search_fronted') }}">Propiedades</a>
+                            <a class="nav-link" href="{{ path('to_sell') }}">¿Quieres vender?</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('guaranteed_rental') }}">Alquiler garantizado</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('services') }}">Servicios</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Servicios
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Abogados</a>
+                                <a class="dropdown-item" href="#">Asesoría Fiscal</a>
+                                <a class="dropdown-item" href="#">Seguros</a>
+                                <a class="dropdown-item" href="#">Reformas</a>
+                                <a class="dropdown-item" href="#">Financiación</a>
+                                <a class="dropdown-item" href="#">Certificado Energético</a>
+                            </div>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ path('about_us') }}">Nosotros</a>

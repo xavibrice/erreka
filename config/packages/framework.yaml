@@ -7,6 +7,7 @@ framework:
     # Remove or comment this section to explicitly disable session support.
     session:
         handler_id: ~
+        cookie_lifetime: 7200
         cookie_secure: auto
         cookie_samesite: lax
 

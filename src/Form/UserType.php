@@ -98,10 +98,9 @@ class UserType extends AbstractType
                 'label' => ' ',
                 'choices' => [
                     'Admin' => 'ROLE_ADMIN',
-                    'Agencia' => 'ROLE_AGENCY',
                     'Comercial' => 'ROLE_COMMERCIAL'
                 ],
-                'expanded' => true,
+                'expanded' => false,
                 'multiple' => true,
                 'attr' => [
                     'placeholder' => 'Selecciona un rol'

@@ -411,6 +411,8 @@ class PropertyController extends AbstractController
         $queryBuilder = $clientRepository
             ->createQueryBuilder('c')
             ->innerJoin('c.bedrooms', 'b')
+            ->andWhere('c.clientStatus = :clientStatus')
+            ->setParameter('clientStatus', null)
         ;
 
         if ($property->getReason()->getName() === 'Alquiler') {

@@ -39,7 +39,7 @@ class PropertyType extends AbstractType
         $roles = $options['role'];
         $role = implode(',', $roles);
 
-        if ($role == 'ROLE_ADMIN') {
+        if ($role === 'ROLE_ADMIN') {
             $builder
                 ->add('commercial', EntityType::class, [
                     'placeholder' => 'Selecciona un agente',

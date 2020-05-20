@@ -1,4 +1,3 @@
-
 import { Calendar } from "@fullcalendar/core";
 import interactionPlugin from "@fullcalendar/interaction";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -14,12 +13,10 @@ import "@fullcalendar/timegrid/main.css";
 
 import "./index.css";
 
-
 const routes = require('../../../public/js/fos_js_routes');
 import Routing from '../../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min';
 
 Routing.setRoutingData(routes);
-
 
 $(document).ready(function(){
 

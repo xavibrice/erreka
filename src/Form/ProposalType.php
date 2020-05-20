@@ -6,6 +6,7 @@ use App\Entity\Client;
 use App\Entity\Property;
 use App\Entity\Proposal;
 use App\Form\Type\DatePickerType;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -31,6 +32,10 @@ class ProposalType extends AbstractType
             ->add('client', EntityType::class, [
                 'label' => 'Cliente',
                 'class' => Client::class,
+                'query_builder' => function(EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.full_name', 'ASC');
+                },
                 'placeholder' => 'Selecciona cliente'
             ])
             ->add('price', MoneyType::class, [

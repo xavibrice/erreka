@@ -22,7 +22,22 @@ class DefaultController extends AbstractController
     public function index()
     {
 
-        return $this->render('fronted/default/homepage.htm.twig');
+        return $this->render('fronted/default/homepage.html.twig');
+    }
+
+    /**
+     * @Route("/quieres-vender", name="to_sell")
+     */
+    public function toSell()
+    {
+        return $this->render('fronted/default/to_sell.html.twig');
+    }
+    /**
+     * @Route("/alquiler-garantizado", name="guaranteed_rental")
+     */
+    public function guaranteedRental()
+    {
+        return $this->render('fronted/default/guaranteed_rental.html.twig');
     }
 
     /**

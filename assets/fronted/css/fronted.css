@@ -128,7 +128,7 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#cc000000',GradientType=0 ); }
 .prop-entry .prop-text .prop-more-info {
     font-size: 12px;
-    background: #f89d13;
+    background: #3DBEC9;
     position: relative;
     z-index: 4;
     padding-top: 5px;
@@ -142,7 +142,7 @@
 .prop-entry .prop-text .prop-more-info span {
     display: block; }
 .prop-entry .prop-text .price {
-    background: #f89d13;
+    background: #3DBEC9;
     color: #fff;
     padding: 4px 10px;
     display: inline-block;
