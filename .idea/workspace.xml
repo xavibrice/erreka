@@ -1,28 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/js/calendar/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/calendar/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/framework.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/framework.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/BookingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/BookingType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/PropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ProposalType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ProposalType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/UserType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/UserType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/VisitType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/VisitType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/booking/calendar.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/booking/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/booking/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show_rent.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show_rent.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/homepage.htm.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/homepage.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -465,7 +444,7 @@
       <workItem from="1589816479401" duration="2589000" />
       <workItem from="1589907762166" duration="724000" />
       <workItem from="1589909619012" duration="40000" />
-      <workItem from="1589963335000" duration="6164000" />
+      <workItem from="1589963335000" duration="6292000" />
     </task>
     <servers />
   </component>
