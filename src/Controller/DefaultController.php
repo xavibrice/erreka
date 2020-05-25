@@ -32,6 +32,7 @@ class DefaultController extends AbstractController
     {
         return $this->render('fronted/default/to_sell.html.twig');
     }
+
     /**
      * @Route("/alquiler-garantizado", name="guaranteed_rental")
      */
@@ -41,11 +42,56 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/servicios", name="services")
+     * @Route("/servicios/abogados", name="services_lawyers")
      */
-    public function services()
+    public function servicesLawyers()
     {
-        return $this->render('fronted/default/service.html.twig');
+        return $this->render('fronted/default/services/lawyers.html.twig');
+    }
+
+    /**
+     *
+     * @Route("/servicios/asesoria-fiscal", name="services_tax_advice")
+     */
+    public function servicesTaxAdvice()
+    {
+        return $this->render('fronted/default/services/tax_advice.html.twig');
+    }
+
+    /**
+     *
+     * @Route("/servicios/seguros", name="services_insurance")
+     */
+    public function servicesInsurance()
+    {
+        return $this->render('fronted/default/services/insurance.html.twig');
+    }
+
+    /**
+     *
+     * @Route("/servicios/reformas", name="services_reforms")
+     */
+    public function servicesReforms()
+    {
+        return $this->render('fronted/default/services/reforms.html.twig');
+    }
+
+    /**
+     *
+     * @Route("/servicios/financiacion", name="services_financing")
+     */
+    public function servicesFinancing()
+    {
+        return $this->render('fronted/default/services/financing.html.twig');
+    }
+
+    /**
+     *
+     * @Route("/servicios/certificado-energetico", name="services_energy_certificate")
+     */
+    public function servicesEnergyCertificate()
+    {
+        return $this->render('fronted/default/services/energy_certificate.html.twig');
     }
 
     /**

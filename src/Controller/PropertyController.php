@@ -22,9 +22,6 @@ use App\Repository\PropertyRepository;
 use App\Repository\ProposalRepository;
 use App\Repository\VisitRepository;
 use App\Service\UploaderHelper;
-use Imagine\Gd\Imagine;
-use Imagine\Image\Box;
-use Ramsey\Uuid\Uuid;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -293,7 +290,6 @@ class PropertyController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/encargo/visitas/{id}/{idChargeType}", name="property_charge_visit", methods={"GET", "POST"})
      */
@@ -398,7 +394,6 @@ class PropertyController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/encargo/client/{id}/{idChargeType}", name="property_charge_client", methods={"GET", "POST"})
      */
@@ -406,7 +401,6 @@ class PropertyController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
         $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
-
 
         $queryBuilder = $clientRepository
             ->createQueryBuilder('c')
@@ -478,7 +472,6 @@ class PropertyController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/valoracion/encargo/editar/{id}/{idProperty}", name="property_charge_edit", methods={"GET", "POST"})
      */
@@ -531,7 +524,6 @@ class PropertyController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-
 
     /**
      * @Route("/api/autocomplete/property", name="api_property_autocomplete", methods={"GET"})
@@ -607,7 +599,6 @@ class PropertyController extends AbstractController
 //            'idTypeProperty' => $idTypeProperty,
 //        ]);
 //    }
-
 
 //    /**
 //     * @Route("/{id}/edit", name="property_edit", methods={"GET","POST"})
