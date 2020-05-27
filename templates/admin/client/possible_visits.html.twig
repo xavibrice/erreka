@@ -56,7 +56,7 @@
                                 <td>{{ possibleVisit[0].commercial.agency.name }}</td>
                                 <td>{{ possibleVisit[0].street.zone.name }}</td>
                                 <td>{{ possibleVisit[0].street.name }}, Nº {{ possibleVisit[0].portal }}</td>
-                                <td>{{ possibleVisit[0].charge.price|number_format(0, ',', '.') }}€</td>
+                                <td>{{ (possibleVisit[0].charge.price - possibleVisit.sumPropertyReduction)|number_format(0, ',', '.') }}€</td>
                                 <td>{{ possibleVisit[0].rateHousing.bedrooms }}</td>
                                 <td>{{ possibleVisit[0].rateHousing.bathrooms }}</td>
                                 <td>{{ possibleVisit[0].rateHousing.realMeters }}</td>
