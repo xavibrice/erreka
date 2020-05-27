@@ -405,6 +405,9 @@ class PropertyController extends AbstractController
         $queryBuilder = $clientRepository
             ->createQueryBuilder('c')
             ->innerJoin('c.bedrooms', 'b')
+            ->leftJoin('c.clientStatus', 'cs')
+            ->having('COUNT(cs.id) = 0')
+            ->groupBy('c.id')
         ;
 
         if ($property->getReason()->getName() === 'Alquiler') {
