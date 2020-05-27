@@ -56,7 +56,7 @@
                     <tbody>
                     {% for possibleVisit in possibleVisits %}
                     {% for proposal in possibleVisit.proposals %}
-                        {% if proposal.contract is empty or proposal.scriptures is empty %}
+                        {% if proposal.contract is not defined %}
                         <tr>
                             <td>{{ possibleVisit.reference }}</td>
                             <td>{{ possibleVisit.reason.name }}</td>
@@ -121,6 +121,8 @@
                                 </div>
                             </td>
                         </tr>
+                            {% else %}
+                            no null
                         {% endif %}
                     {% endfor %}
                     {% endfor %}
