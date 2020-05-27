@@ -255,7 +255,6 @@ class DefaultController extends AbstractController
             ->groupBy('p.id')
         ;
 
-
         if ($form->get('bedrooms')->getData()) {
             $queryBuilder
                 ->andWhere('rh.bedrooms = :bedrooms')
