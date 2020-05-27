@@ -148,7 +148,7 @@ class ClientController extends AbstractController
         $queryBuilder = $em
             ->getRepository(Property::class)
             ->createQueryBuilder('p')
-            ->innerJoin('p.proposals', 'pro')
+            ->leftJoin('p.proposals', 'pro')
             ->innerJoin('p.rateHousing', 'rh')
             ->innerJoin('p.charge', 'c')
             ->innerJoin('p.reason', 'r')
