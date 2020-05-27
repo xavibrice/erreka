@@ -157,7 +157,7 @@ class ClientController extends AbstractController
             ->andWhere('prop.contract = :contract')
             ->andWhere('p.enabled = :enabled')
             ->andWhere('r.name = :reason')
-            ->setParameter('contract', null)
+            ->setParameter('contract', '')
             ->setParameter('reason', 'Venta')
             ->setParameter('enabled', true)
         ;
