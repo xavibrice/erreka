@@ -277,27 +277,31 @@ class DefaultController extends AbstractController
             ;
         }
 
-/*        if ($form->get('sellOrRent')->getData() == 0) {
-            $queryBuilder
-                ->andWhere('s.name = :situation')
-                ->andWhere('r.name = :reason')
-                ->setParameter('situation', 'Noticia')
-                ->setParameter('reason', 'Venta')
-            ;
+
+        if ($form->get('sellOrRent')->getData() != null) {
+            if ($form->get('sellOrRent')->getData() == 0) {
+               $queryBuilder
+                   ->andWhere('s.name = :situation')
+                   ->andWhere('r.name = :reason')
+                   ->setParameter('situation', 'Noticia')
+                   ->setParameter('reason', 'Venta')
+               ;
+           }
+
+           if ($form->get('sellOrRent')->getData() == 1) {
+               $queryBuilder
+                   ->andWhere('s.name = :situation')
+                   ->andWhere('r.name = :reason')
+                   ->setParameter('situation', 'Noticia')
+                   ->setParameter('reason', 'Alquiler')
+               ;
+           }
         }
 
-        if ($form->get('sellOrRent')->getData() == 1) {
-            $queryBuilder
-                ->andWhere('s.name = :situation')
-                ->andWhere('r.name = :reason')
-                ->setParameter('situation', 'Noticia')
-                ->setParameter('reason', 'Alquiler')
-            ;
-        }*/
 
         $properties = $queryBuilder->getQuery()->getResult();
 
-        //dump($form->get('sellOrRent')->getData());
+        //dd($form->get('sellOrRent')->getData());
         //dd($searchFronted);
         return $this->render('fronted/default/search-fronted.html.twig', [
             'properties' => $properties,
