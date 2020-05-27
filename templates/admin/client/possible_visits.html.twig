@@ -26,8 +26,10 @@
         <div class="card-body">
             {% for possibleVisit in possibleVisits %}
                 {% for proposal in possibleVisit.proposals %}
-                    {% if proposal.contract or proposal.scriptures %}
-
+                    {% if proposal.contract is empty or proposal.scriptures is empty %}
+                         vacio
+                        {% else %}
+                        no vacio
                     {% endif %}
                 {% endfor %}
             {% endfor %}
@@ -56,8 +58,8 @@
                     <tbody>
                     {% for possibleVisit in possibleVisits %}
                     {% for proposal in possibleVisit.proposals %}
-                        {% if proposal.contract|date is empty %}
-                        <tr>
+                        {% if proposal.contract is empty %}
+                            <tr>
                             <td>{{ possibleVisit.reference }}</td>
                             <td>{{ possibleVisit.reason.name }}</td>
                             <td>{{ possibleVisit.charge.chargeType.name }}</td>
@@ -121,8 +123,6 @@
                                 </div>
                             </td>
                         </tr>
-                            {% else %}
-                            no null
                         {% endif %}
                     {% endfor %}
                     {% endfor %}
