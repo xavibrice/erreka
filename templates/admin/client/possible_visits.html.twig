@@ -26,11 +26,7 @@
         <div class="card-body">
             {% for possibleVisit in possibleVisits %}
                 {% for proposal in possibleVisit.proposals %}
-                    {% if proposal.contract is empty or proposal.scriptures is empty %}
-                         vacio
-                        {% else %}
-                        no vacio
-                    {% endif %}
+                    {{ dump(proposal) }}
                 {% endfor %}
             {% endfor %}
             <div class="table-responsive">
