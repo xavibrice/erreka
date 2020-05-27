@@ -7,7 +7,6 @@ use App\Form\ContactType;
 use App\Form\SearchFrontedType;
 use App\Repository\ClientRepository;
 use App\Repository\NoteCommercialRepository;
-use App\Repository\NoteNewRepository;
 use App\Repository\PropertyRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -245,6 +244,7 @@ class DefaultController extends AbstractController
         $queryBuilder = $propertyRepository
             ->createQueryBuilder('p')
             ->innerJoin('p.charge', 'c')
+            ->innerJoin('p.typeProperty', 'tp')
             ->innerJoin('p.rateHousing', 'rh')
             ->leftJoin('p.propertyReductions', 'pr')
             ->leftJoin('p.proposals', 'pro')
@@ -253,10 +253,34 @@ class DefaultController extends AbstractController
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
             ->groupBy('p.id')
         ;
+
+
+        if ($form->get('bedrooms')->getData()) {
+            $queryBuilder
+                ->andWhere('rh.bedrooms = :bedrooms')
+                ->setParameter('bedrooms', $form->get('bedrooms')->getData())
+                ;
+        }
+
+        if ($form->get('price')->getData()) {
+            $queryBuilder
+                ->andWhere('c.price <= :price')
+                ->setParameter('price', $form->get('price')->getData())
+            ;
+        }
+
+        if ($form->get('typeProperty')->getData()) {
+            //dd($form->get('typeProperty')->getData()->getId());
+            $queryBuilder
+                ->andWhere('tp.id = :typeProperty')
+                ->setParameter('typeProperty', $form->get('typeProperty')->getData())
+            ;
+        }
+
         $properties = $queryBuilder->getQuery()->getResult();
 
-        dump($form->get('sellOrRent')->getData());
-        dump($searchFronted);
+        //dump($form->get('sellOrRent')->getData());
+        //dd($searchFronted);
         return $this->render('fronted/default/search-fronted.html.twig', [
             'properties' => $properties,
             'form' => $form->createView(),

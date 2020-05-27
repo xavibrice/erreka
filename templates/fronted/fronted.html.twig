@@ -19,7 +19,11 @@
             }
 
             .nav-link:focus {
-                color: green !important;
+                color: #3DBEC9 !important;
+            }
+
+            .active {
+                border-bottom: 1px solid #3DBEC9 !important;
             }
 
 
@@ -47,26 +51,26 @@
                             <li class="nav-item ml-2 {% if app.request.get('_route') == 'to_sell' %}active{% endif %}">
                                 <a class="nav-link" href="{{ path('to_sell') }}">¿Quieres vender?</a>
                             </li>
-                            <li class="nav-item {% if app.request.get('_route') == 'guaranteed_rental' %}active{% endif %}">
+                            <li class="nav-item ml-2 {% if app.request.get('_route') == 'guaranteed_rental' %}active{% endif %}">
                                 <a class="nav-link" href="{{ path('guaranteed_rental') }}">Alquiler Garantizado</a>
                             </li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item ml-2 dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Servicios
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item {% if app.request.get('_route') == 'services_lawyers' %}active{% endif %}" href="{{ path('services_lawyers') }}">Abogados</a>
-                                    <a class="dropdown-item {% if app.request.get('_route') == 'services_tax_advice' %}active{% endif %}" href="{{ path('services_tax_advice') }}">Asesoría Fiscal</a>
+                                    <a class="dropdown-item {% if app.request.get('_route') == 'services_tax_advice' %}active{% endif %}" href="{{ path('services_tax_advice') }}">Asesoría</a>
                                     <a class="dropdown-item {% if app.request.get('_route') == 'services_insurance' %}active{% endif %}" href="{{ path('services_insurance') }}">Seguros</a>
                                     <a class="dropdown-item {% if app.request.get('_route') == 'services_reforms' %}active{% endif %}" href="{{ path('services_reforms') }}">Reformas</a>
                                     <a class="dropdown-item {% if app.request.get('_route') == 'services_financing' %}active{% endif %}" href="{{ path('services_financing') }}">Financiación</a>
                                     <a class="dropdown-item {% if app.request.get('_route') == 'services_energy_certificate' %}active{% endif %}" href="{{ path('services_energy_certificate') }}">Certificado Energético</a>
                                 </div>
                             </li>
-                            <li class="nav-item {% if app.request.get('_route') == 'about_us' %}active{% endif %}">
+                            <li class="nav-item ml-2 {% if app.request.get('_route') == 'about_us' %}active{% endif %}">
                                 <a class="nav-link" href="{{ path('about_us') }}">Nosotros</a>
                             </li>
-                            <li class="nav-item {% if app.request.get('_route') == 'contact' %}active{% endif %}">
+                            <li class="nav-item ml-2 {% if app.request.get('_route') == 'contact' %}active{% endif %}">
                                 <a class="nav-link" href="{{ path('contact') }}">Contacto</a>
                             </li>
                         </ul>

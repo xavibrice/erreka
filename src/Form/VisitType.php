@@ -39,8 +39,10 @@ class VisitType extends AbstractType
                 'label' => 'Cliente',
                 'query_builder' => function(EntityRepository $er) {
                     return $er->createQueryBuilder('c')
+                        ->andWhere('c.sellOrRent = :sellOrRent')
                         ->leftJoin('c.clientStatus', 'cs')
                         ->having('COUNT(cs.id) = 0')
+                        ->setParameter('sellOrRent', 1 )
                         ->groupBy('c.id')
                         ->orderBy('c.full_name', 'ASC');
                 },

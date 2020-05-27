@@ -1,14 +1,15 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
-/* CUSTOMIZE THE CAROUSEL
--------------------------------------------------- */
-
 /* Carousel base class */
 /*.carousel {
     margin-bottom: 4rem;
 }*/
 /* Since positioning the image, we need to help out the caption */
+
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+/* Carousel base class */
 .carousel-caption {
     bottom: 3rem;
     z-index: 10;
@@ -25,7 +26,6 @@
     min-width: 100%;
     height: 40rem;
 }
-
 
 /* MARKETING CONTENT
 -------------------------------------------------- */
@@ -80,6 +80,7 @@
         margin-top: 7rem;
     }
 }
+
 
 .bd-placeholder-img {
     font-size: 1.125rem;
