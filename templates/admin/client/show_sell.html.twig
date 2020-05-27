@@ -31,6 +31,14 @@
                                         {{ client.typeProperty.name }}
                                     {% endif %}
                                 </td>
+                                <th class="text-right">Estado cliente</th>
+                                <td>
+                                    {% if client.clientStatus %}
+                                        {{ client.clientStatus.name }}
+                                    {% else %}
+                                        Activo
+                                    {% endif %}
+                                </td>
                             </tr>
                             <tr>
                                 <th class="text-right">Cliente</th>
