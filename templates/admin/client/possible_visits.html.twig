@@ -56,7 +56,7 @@
                     <tbody>
                     {% for possibleVisit in possibleVisits %}
                     {% for proposal in possibleVisit.proposals %}
-                        {% if proposal.contract is not defined or proposal.scriptures is not defined %}
+                        {% if proposal.contract is null or proposal.scriptures is null %}
                         <tr>
                             <td>{{ possibleVisit.reference }}</td>
                             <td>{{ possibleVisit.reason.name }}</td>
