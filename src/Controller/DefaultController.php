@@ -277,7 +277,7 @@ class DefaultController extends AbstractController
             ;
         }
 
-        if ($form->get('sellOrRent')->getData() == 0) {
+/*        if ($form->get('sellOrRent')->getData() == 0) {
             $queryBuilder
                 ->andWhere('s.name = :situation')
                 ->andWhere('r.name = :reason')
@@ -293,7 +293,7 @@ class DefaultController extends AbstractController
                 ->setParameter('situation', 'Noticia')
                 ->setParameter('reason', 'Alquiler')
             ;
-        }
+        }*/
 
         $properties = $queryBuilder->getQuery()->getResult();
 
