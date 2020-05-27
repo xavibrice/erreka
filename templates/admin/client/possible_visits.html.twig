@@ -24,11 +24,6 @@
             <h6 class="m-0 font-weight-bold text-center">Cliente: {{ client.fullName }} - Móvil: {{ client.mobile }} - Dormitorios: {{ client.bedrooms }} - Precio Máximo: {{ client.price|number_format(0, ',', '.') }}€</h6>
         </div>
         <div class="card-body">
-            {% for possibleVisit in possibleVisits %}
-{#                {% for proposal in possibleVisit.proposals %}#}
-                    {{ dump(possibleVisit.proposals) }}
-{#                {% endfor %}#}
-            {% endfor %}
             <div class="table-responsive">
                 <table class="table table-striped table-sm table-hover dataTable" id="dataTableEmpty" width="100%" cellpadding="0">
                     <thead>
@@ -53,71 +48,72 @@
                     </thead>
                     <tbody>
                     {% for possibleVisit in possibleVisits %}
-
+                        {% if possibleVisit.countPropertyContract == 0 %}
                             <tr>
-                            <td>{{ possibleVisit.reference }}</td>
-                            <td>{{ possibleVisit.reason.name }}</td>
-                            <td>{{ possibleVisit.charge.chargeType.name }}</td>
-                            <td>{{ possibleVisit.commercial.agency.name }}</td>
-                            <td>{{ possibleVisit.street.zone.name }}</td>
-                            <td>{{ possibleVisit.street.name }}, Nº {{ possibleVisit.portal }}</td>
-                            <td>{{ possibleVisit.charge.price|number_format(0, ',', '.') }}€</td>
-                            <td>{{ possibleVisit.rateHousing.bedrooms }}</td>
-                            <td>{{ possibleVisit.rateHousing.bathrooms }}</td>
-                            <td>{{ possibleVisit.rateHousing.realMeters }}</td>
-                            {#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
-                            <td>{{ possibleVisit.rateHousing.elevator ? 'Si' : 'No' }}</td>
-                            {#                            <td>
-                                                            {% if possibleVisit.offereds is not empty %}
-                            #}{#                                    <a class="btn btn-success" href="{{ path('offered_delete', {'id': possibleVisit.offereds.first.id, 'idClient': client.id }) }}">Si</a>#}{#
-                                                                {% for offerp in possibleVisit.offereds %}
-                                                                    {% for offerc in client.offereds %}
-                                                                        {% if offerc.client.id == client.id and offerp.property.id == possibleVisit.id %}
-                                                                            <a class="btn btn-success" href="">Si</a>
-                                                                        {% endif %}
+                                <td>{{ possibleVisit[0].reference }}</td>
+                                <td>{{ possibleVisit[0].reason.name }}</td>
+                                <td>{{ possibleVisit[0].charge.chargeType.name }}</td>
+                                <td>{{ possibleVisit[0].commercial.agency.name }}</td>
+                                <td>{{ possibleVisit[0].street.zone.name }}</td>
+                                <td>{{ possibleVisit[0].street.name }}, Nº {{ possibleVisit[0].portal }}</td>
+                                <td>{{ possibleVisit[0].charge.price|number_format(0, ',', '.') }}€</td>
+                                <td>{{ possibleVisit[0].rateHousing.bedrooms }}</td>
+                                <td>{{ possibleVisit[0].rateHousing.bathrooms }}</td>
+                                <td>{{ possibleVisit[0].rateHousing.realMeters }}</td>
+                                {#                            <td>{{ possibleVisit.rateHousing.heating ? 'Si' : 'No' }}</td>#}
+                                <td>{{ possibleVisit[0].rateHousing.elevator ? 'Si' : 'No' }}</td>
+                                {#                            <td>
+                                                                {% if possibleVisit.offereds is not empty %}
+                                #}{#                                    <a class="btn btn-success" href="{{ path('offered_delete', {'id': possibleVisit.offereds.first.id, 'idClient': client.id }) }}">Si</a>#}{#
+                                                                    {% for offerp in possibleVisit.offereds %}
+                                                                        {% for offerc in client.offereds %}
+                                                                            {% if offerc.client.id == client.id and offerp.property.id == possibleVisit.id %}
+                                                                                <a class="btn btn-success" href="">Si</a>
+                                                                            {% endif %}
+                                                                        {% endfor %}
                                                                     {% endfor %}
-                                                                {% endfor %}
-                                                            {% else %}
-                                                                <a class="btn btn-danger" href="{{ path('offered_new', {'idClient': client.id, 'idProperty': possibleVisit.id }) }}">No</a>
-                                                            {% endif %}
-                            #}{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}{#
-                                                        </td>#}
-                            <td>
+                                                                {% else %}
+                                                                    <a class="btn btn-danger" href="{{ path('offered_new', {'idClient': client.id, 'idProperty': possibleVisit.id }) }}">No</a>
+                                                                {% endif %}
+                                #}{#                                {{ possibleVisit.offereds ? 'Si' : 'No' }}#}{#
+                                                            </td>#}
+                                <td>
 
 
-{#                                {{ possibleVisit.visits ? possibleVisit.visits.count }}#}
+                                    {#                                {{ possibleVisit.visits ? possibleVisit.visits.count }}#}
 
 
-                                {% set totalVisits = 0 %}
+                                    {% set totalVisits = 0 %}
 
-                                {% for visit in possibleVisit.visits %}
-                                    {% if visit.client == client %}
-                                        {% set totalVisits = totalVisits + 1 %}
-                                    {% endif %}
-                                {% endfor %}
-
-                                {{ totalVisits }}
-
-                            </td>
-                            <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit.rateHousing.comment }}">{{ possibleVisit.rateHousing.comment|slice(0, 25)  }}</td>
-                            <td>
-                                {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}
-
-
-
-                                <div class="compact-gallery">
-                                    <div class="row">
-                                        {% if possibleVisit.rateHousing %}
-                                            {% for image in possibleVisit.rateHousing.image %}
-                                                <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
-                                                    <img class="img-profile" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_super_small') }}" alt="">
-                                                </a>
-                                            {% endfor %}
+                                    {% for visit in possibleVisit[0].visits %}
+                                        {% if visit.client == client %}
+                                            {% set totalVisits = totalVisits + 1 %}
                                         {% endif %}
+                                    {% endfor %}
+
+                                    {{ totalVisits }}
+
+                                </td>
+                                <td data-toggle="tooltip" data-placement="top" title="{{ possibleVisit[0].rateHousing.comment }}">{{ possibleVisit[0].rateHousing.comment|slice(0, 25)  }}</td>
+                                <td>
+                                    {#                            {{ possibleVisit.rateHousing.image ? 'Si' : 'No' }}#}
+
+
+
+                                    <div class="compact-gallery">
+                                        <div class="row">
+                                            {% if possibleVisit[0].rateHousing %}
+                                                {% for image in possibleVisit[0].rateHousing.image %}
+                                                    <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                                        <img class="img-profile" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_super_small') }}" alt="">
+                                                    </a>
+                                                {% endfor %}
+                                            {% endif %}
+                                        </div>
                                     </div>
-                                </div>
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
+                        {% endif %}
 
                     {% endfor %}
                     </tbody>
