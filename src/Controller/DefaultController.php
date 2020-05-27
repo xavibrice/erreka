@@ -20,7 +20,6 @@ class DefaultController extends AbstractController
      */
     public function index()
     {
-
         return $this->render('fronted/default/homepage.html.twig');
     }
 
@@ -244,6 +243,8 @@ class DefaultController extends AbstractController
         $queryBuilder = $propertyRepository
             ->createQueryBuilder('p')
             ->innerJoin('p.charge', 'c')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
             ->innerJoin('p.typeProperty', 'tp')
             ->innerJoin('p.rateHousing', 'rh')
             ->leftJoin('p.propertyReductions', 'pr')
@@ -274,6 +275,24 @@ class DefaultController extends AbstractController
             $queryBuilder
                 ->andWhere('tp.id = :typeProperty')
                 ->setParameter('typeProperty', $form->get('typeProperty')->getData())
+            ;
+        }
+
+        if ($form->get('sellOrRent')->getData() == 0) {
+            $queryBuilder
+                ->andWhere('s.name = :situation')
+                ->andWhere('r.name = :reason')
+                ->setParameter('situation', 'Noticia')
+                ->setParameter('reason', 'Venta')
+            ;
+        }
+
+        if ($form->get('sellOrRent')->getData() == 1) {
+            $queryBuilder
+                ->andWhere('s.name = :situation')
+                ->andWhere('r.name = :reason')
+                ->setParameter('situation', 'Noticia')
+                ->setParameter('reason', 'Alquiler')
             ;
         }
 
