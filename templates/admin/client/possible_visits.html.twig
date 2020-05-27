@@ -25,9 +25,9 @@
         </div>
         <div class="card-body">
             {% for possibleVisit in possibleVisits %}
-                {% for proposal in possibleVisit.proposals %}
-                    {{ dump(proposal) }}
-                {% endfor %}
+{#                {% for proposal in possibleVisit.proposals %}#}
+                    {{ dump(possibleVisit.proposals) }}
+{#                {% endfor %}#}
             {% endfor %}
             <div class="table-responsive">
                 <table class="table table-striped table-sm table-hover dataTable" id="dataTableEmpty" width="100%" cellpadding="0">
