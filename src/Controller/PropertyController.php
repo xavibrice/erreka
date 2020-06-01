@@ -299,7 +299,7 @@ class PropertyController extends AbstractController
 
         $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
 
-        $sellOrRent = null;
+        $sellOrRent = '';
         if ($property->getReason()->getSituation()->getName() == 'Noticia' && $property->getReason()->getName() == 'Alquiler') {
             $sellOrRent = 1;
         }
