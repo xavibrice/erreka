@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/js/fronted.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/js/fronted.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/liip_imagine.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/liip_imagine.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RateHousingType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RateHousingType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -462,7 +454,7 @@
       <workItem from="1590397181614" duration="8828000" />
       <workItem from="1590567854969" duration="9114000" />
       <workItem from="1590741486061" duration="6935000" />
-      <workItem from="1591003453402" duration="4038000" />
+      <workItem from="1591003453402" duration="4707000" />
     </task>
     <servers />
   </component>
