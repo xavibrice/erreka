@@ -17,6 +17,9 @@ class VisitType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $visit = $options['data'] ?? null;
+        $isEdit = $visit && $visit->getId();
+
         $builder
             ->add('visited', DatePickerType::class, [
                 'required' => true,
@@ -37,12 +40,12 @@ class VisitType extends AbstractType
             ->add('client', EntityType::class, [
                 'class' => Client::class,
                 'label' => 'Cliente',
-                'query_builder' => function(EntityRepository $er) {
+                'query_builder' => function(EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('c')
                         ->andWhere('c.sellOrRent = :sellOrRent')
                         ->leftJoin('c.clientStatus', 'cs')
                         ->having('COUNT(cs.id) = 0')
-                        ->setParameter('sellOrRent', 1 )
+                        ->setParameter('sellOrRent', $options['sellOrRent'])
                         ->groupBy('c.id')
                         ->orderBy('c.full_name', 'ASC');
                 },

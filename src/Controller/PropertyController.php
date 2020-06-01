@@ -299,8 +299,19 @@ class PropertyController extends AbstractController
 
         $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
 
+        $sellOrRent = null;
+        if ($property->getReason()->getSituation()->getName() == 'Noticia' && $property->getReason()->getName() == 'Alquiler') {
+            $sellOrRent = 1;
+        }
+
+        if ($property->getReason()->getSituation()->getName() == 'Noticia' && $property->getReason()->getName() == 'Venta') {
+            $sellOrRent = 0;
+        }
+
         $visit = new Visit();
-        $formVisit = $this->createForm(VisitType::class, $visit);
+        $formVisit = $this->createForm(VisitType::class, $visit, [
+            'sellOrRent' => $sellOrRent
+        ]);
         $formVisit->handleRequest($request);
 
         if ($formVisit->isSubmitted() && $formVisit->isValid()) {
