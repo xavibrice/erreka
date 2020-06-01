@@ -33,44 +33,47 @@
 
         <div class="row mb-5">
         {% for property in properties %}
-            <div class="col-md-6 col-lg-4 mb-4">
-                <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="prop-entry d-block">
-                    <figure>
-                        {% if property[0].rateHousing.image.first  %}
-                            <img class="img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
-                        {% else %}
-                            <img src="{{ asset('img/hero_bg_2.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Image" class="img-fluid">
-                        {% endif %}
-                    </figure>
-                    <div class="prop-text">
-                        <div class="inner">
-                            <span class="price rounded">{{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}€</span>
-                            <h3 class="title">{{ property[0].street.name }}</h3>
-                            <p class="location">{{ property[0].street.zone.name }}</p>
-                        </div>
-                        <div class="prop-more-info">
-                            <div class="inner d-flex">
-                                <div class="col">
-                                    <span>Area:</span>
-                                    <strong>{{ property[0].rateHousing.realMeters }}m<sup>2</sup></strong>
-                                </div>
-                                <div class="col">
-                                    <span>Dormitorios:</span>
-                                    <strong>{{ property[0].rateHousing.bedrooms }}</strong>
-                                </div>
-                                <div class="col">
-                                    <span>Baños:</span>
-                                    <strong>{{ property[0].rateHousing.bathrooms }}</strong>
-                                </div>
-                                <div class="col">
-                                    <span>Garaje:</span>
-                                    <strong>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</strong>
+            {% if property.countPropertyContract == 0 %}
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="prop-entry d-block">
+                        <figure>
+                            {% if property[0].rateHousing.image.first  %}
+                                <img class="img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
+                            {% else %}
+                                <img src="{{ asset('img/hero_bg_2.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Image" class="img-fluid">
+                            {% endif %}
+                        </figure>
+                        <div class="prop-text">
+                            <div class="inner">
+                                <span class="price rounded">{{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}€</span>
+                                <h3 class="title">{{ property[0].street.name }}</h3>
+                                <p class="location">{{ property[0].street.zone.name }}</p>
+                            </div>
+                            <div class="prop-more-info">
+                                <div class="inner d-flex">
+                                    <div class="col">
+                                        <span>Area:</span>
+                                        <strong>{{ property[0].rateHousing.realMeters }}m<sup>2</sup></strong>
+                                    </div>
+                                    <div class="col">
+                                        <span>Dormitorios:</span>
+                                        <strong>{{ property[0].rateHousing.bedrooms }}</strong>
+                                    </div>
+                                    <div class="col">
+                                        <span>Baños:</span>
+                                        <strong>{{ property[0].rateHousing.bathrooms }}</strong>
+                                    </div>
+                                    <div class="col">
+                                        <span>Garaje:</span>
+                                        <strong>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</strong>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </a>
-            </div>
+                    </a>
+                </div>
+            {% endif %}
+
         {% endfor %}
     </div>
     </div>

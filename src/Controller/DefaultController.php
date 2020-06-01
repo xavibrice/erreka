@@ -278,7 +278,6 @@ class DefaultController extends AbstractController
             ;
         }
 
-
         if ($form->get('sellOrRent')->getData()) {
             if ($form->get('sellOrRent')->getData() == 0) {
                $queryBuilder
