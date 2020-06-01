@@ -11,7 +11,7 @@
                 <!-- Title -->
                 <h1 class="mt-4">
                     {% if property.charge %}
-                        {{ property.charge.price|number_format(0, ',', '.') }} €
+                        {{ property.charge.price|number_format(0, ',', '.') }} € - rebajas
                     {% endif %}
                 </h1>
 
@@ -57,11 +57,11 @@
             <div class="col-md-4 mt-5">
 
                 <!-- DISTRIBUCIÓN -->
-                <div class="card border-info my-4">
+                <div class="card border-info mt-5">
                     <h5 class="card-header bg-info text-white border-info">Distribución</h5>
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Habitaciones
+                            Dormitorios
                             <span class="">{{ property.rateHousing.bedrooms }}</span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-center">
