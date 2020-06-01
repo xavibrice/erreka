@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Property;
 use App\Entity\SearchFronted;
 use App\Form\ContactType;
 use App\Form\SearchFrontedType;
@@ -306,6 +307,16 @@ class DefaultController extends AbstractController
         return $this->render('fronted/default/search-fronted.html.twig', [
             'properties' => $properties,
             'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/buscar/vivienda/detalles/{reference}", name="search_details")
+     */
+    public function searchDetails(Request $request, Property $property)
+    {
+        return $this->render('fronted/default/search_details.html.twig', [
+           'property' => $property
         ]);
     }
 }

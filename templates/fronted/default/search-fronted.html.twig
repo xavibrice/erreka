@@ -1,6 +1,6 @@
 {% extends 'fronted/fronted.html.twig' %}
 
-{% block title %}Buscar Producto{% endblock %}
+{% block title %}Buscar Propiedad{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -34,9 +34,13 @@
         <div class="row mb-5">
         {% for property in properties %}
             <div class="col-md-6 col-lg-4 mb-4">
-                <a href="" class="prop-entry d-block">
+                <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="prop-entry d-block">
                     <figure>
-                        <img src="{{ asset('img/hero_bg_2.jpg') }}" alt="Image" class="img-fluid">
+                        {% if property[0].rateHousing.image.first  %}
+                            <img class="img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
+                        {% else %}
+                            <img src="{{ asset('img/hero_bg_2.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Image" class="img-fluid">
+                        {% endif %}
                     </figure>
                     <div class="prop-text">
                         <div class="inner">

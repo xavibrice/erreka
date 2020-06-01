@@ -6772,6 +6772,11 @@ util-deprecate@^1.0.1, util-deprecate@~1.0.1:
   resolved "https://registry.yarnpkg.com/util-deprecate/-/util-deprecate-1.0.2.tgz#450d4dc9fa70de732762fbd2d4a28981419a0ccf"
   integrity sha1-RQ1Nyfpw3nMnYvvS1KKJgUGaDM8=
 
+util.js@^0.0.0:
+  version "0.0.0"
+  resolved "https://registry.yarnpkg.com/util.js/-/util.js-0.0.0.tgz#1f72103442befdcb08a13356f5742a35992dd163"
+  integrity sha1-H3IQNEK+/csIoTNW9XQqNZkt0WM=
+
 util.promisify@~1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/util.promisify/-/util.promisify-1.0.1.tgz#6baf7774b80eeb0f7520d8b81d07982a59abbaee"
@@ -6805,6 +6810,11 @@ utils-merge@1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
+
+utils.js@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/utils.js/-/utils.js-1.0.1.tgz#91567b9f8fe70de1ddec68aab0246930e6364b40"
+  integrity sha1-kVZ7n4/nDeHd7GiqsCRpMOY2S0A=
 
 uuid@^3.0.1, uuid@^3.3.2:
   version "3.4.0"

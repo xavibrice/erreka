@@ -254,7 +254,6 @@ class RateHousingType extends AbstractType
             ->add('energyCertificate', EntityType::class, [
                 'label' => 'Certificado Energético',
                 'class' => EnergyCertificate::class,
-                'required' => false,
                 'placeholder' => 'Selecciona Certificado Energético',
             ])
             ->add('energyConsumption', NumberType::class, [

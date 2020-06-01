@@ -7,8 +7,11 @@
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // import  $ from 'jquery';
-require('bootstrap');
-
 const $ = require('jquery');
+
+require('bootstrap');
+require('popper.js');
+
+
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/fronted.css');
