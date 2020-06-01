@@ -62,6 +62,7 @@ class VisitType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Visit::class,
+            'sellOrRent' => null,
         ]);
     }
 }
