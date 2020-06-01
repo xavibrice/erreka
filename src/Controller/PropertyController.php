@@ -301,11 +301,11 @@ class PropertyController extends AbstractController
 
         $sellOrRent = '';
         if ($property->getReason()->getSituation()->getName() == 'Noticia' && $property->getReason()->getName() == 'Alquiler') {
-            $sellOrRent = 1;
+            $sellOrRent = false;
         }
 
         if ($property->getReason()->getSituation()->getName() == 'Noticia' && $property->getReason()->getName() == 'Venta') {
-            $sellOrRent = 0;
+            $sellOrRent = true;
         }
 
         $visit = new Visit();
