@@ -32,7 +32,7 @@
                     </thead>
                     <tbody>
                     {% for client in clients %}
-                        {% if client.clientStatus is not defined %}
+                        {% if client.clientStatus is defined %}
                             <tr class="clickable-row" data-href="{{ path('client_rent_show', {'id': client.id}) }}">
                                 <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
                                 <td>{{ client.commercial.fullName }}</td>
