@@ -28,7 +28,6 @@
                     {% for proposal in proposals %}
                         {{ dump(proposal.property.reason.name) }}
                             {% if proposal.contract is not empty and proposal.scriptures is empty %}
-                                {% if proposal.contract is not empty and proposal.property.reason.name == 'venta' %}
                                 <tr>
                                     <td>{{ proposal.property.reference }}</td>
                                     <td>{{ proposal.property.commercial.fullName }}</td>
@@ -43,8 +42,6 @@
                                         <a class="btn btn-info" href="{{ path('property_charge', {'id': proposal.property.id, 'idChargeType': proposal.property.typeProperty.id}) }}">Ver</a>
                                     </td>
                                 </tr>
-
-                            {% endif %}
                         {% endif %}
                     {% endfor %}
                     </tbody>
