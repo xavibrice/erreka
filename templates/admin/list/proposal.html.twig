@@ -27,7 +27,7 @@
                     <tbody>
                     {% for proposal in proposals %}
                             {% if proposal.contract is not empty and proposal.scriptures is empty %}
-                                {% if proposal.property.reason.name == 'alquiler' and proposal.contract is not empty %}
+                                {% if proposal.property.reason.name != 'alquiler' and proposal.contract is empty %}
 
                                 <tr>
                                     <td>{{ proposal.property.reference }}</td>
