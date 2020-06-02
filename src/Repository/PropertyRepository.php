@@ -297,10 +297,13 @@ class PropertyRepository extends ServiceEntityRepository
             ->innerJoin('p.commercial', 'c')
             ->innerJoin('p.reason', 'r')
             ->innerJoin('c.agency', 'a')
+            ->leftJoin('p.proposals', 'pro')
+            ->addSelect('COUNT(pro.contract) as countPropertyContract')
             ->andWhere('a.name = :agency')
             ->andWhere('r.name = :reason')
             ->setParameter('agency', $getAgency)
             ->setParameter('reason', 'alquilado')
+            ->groupBy('p.id')
             ->getQuery()
             ->getResult()
             ;

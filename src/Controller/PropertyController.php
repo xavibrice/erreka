@@ -379,11 +379,22 @@ class PropertyController extends AbstractController
     {
         $em = $this->getDoctrine()->getManager();
 
+        $sellOrRent = '';
+        if ($property->getReason()->getSituation()->getName() == 'Noticia' && $property->getReason()->getName() == 'Alquiler') {
+            $sellOrRent = false;
+        }
+
+        if ($property->getReason()->getSituation()->getName() == 'Noticia' && $property->getReason()->getName() == 'Venta') {
+            $sellOrRent = true;
+        }
+
         $sumPropertyReduction = $em->getRepository(PropertyReduction::class)->sumPropertyReduction($property->getId());
 
         $proposal = new Proposal();
         $proposal->setProperty($property);
-        $formProposal = $this->createForm(ProposalType::class, $proposal);
+        $formProposal = $this->createForm(ProposalType::class, $proposal, [
+            'sellOrRent' => $sellOrRent
+        ]);
         $formProposal->handleRequest($request);
 
         if ($formProposal->isSubmitted() && $formProposal->isValid()) {

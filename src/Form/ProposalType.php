@@ -32,8 +32,10 @@ class ProposalType extends AbstractType
             ->add('client', EntityType::class, [
                 'label' => 'Cliente',
                 'class' => Client::class,
-                'query_builder' => function(EntityRepository $er) {
+                'query_builder' => function(EntityRepository $er) use ($options) {
                     return $er->createQueryBuilder('c')
+                        ->andWhere('c.sellOrRent = :sellOrRent')
+                        ->setParameter('sellOrRent', $options['sellOrRent'])
                         ->orderBy('c.full_name', 'ASC');
                 },
                 'placeholder' => 'Selecciona cliente'
@@ -66,6 +68,7 @@ class ProposalType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Proposal::class,
-        ]);
+            'sellOrRent' => null,
+         ]);
     }
 }
