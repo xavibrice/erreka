@@ -28,20 +28,22 @@
                     {% for proposal in proposals %}
                         {{ dump(proposal.property.reason.name) }}
                             {% if proposal.contract is not empty and proposal.scriptures is empty %}
-                                <tr>
-                                    <td>{{ proposal.property.reference }}</td>
-                                    <td>{{ proposal.property.commercial.fullName }}</td>
-                                    <td>{{ proposal.property.street.name }}, N {{ proposal.property.portal }} - {{ proposal.property.floor }}</td>
-                                    <td>{{ proposal.property.fullName }}</td>
-                                    <td>{{ proposal.property.mobile }}</td>
-                                    <td>{{ proposal.client ? proposal.client.fullName : '' }}</td>
-                                    <td>{{ proposal.client ? proposal.client.mobile : '' }}</td>
-                                    <td>{{ proposal.client.created|date('d/m/Y')}}</td>
-                                    <td>{{ proposal.price|number_format(0, ',', '.') }}</td>
-                                    <td>
-                                        <a class="btn btn-info" href="{{ path('property_charge', {'id': proposal.property.id, 'idChargeType': proposal.property.typeProperty.id}) }}">Ver</a>
-                                    </td>
-                                </tr>
+                                {% if proposal.property.reason.name != 'alquilado' %}
+                                    <tr>
+                                        <td>{{ proposal.property.reference }}</td>
+                                        <td>{{ proposal.property.commercial.fullName }}</td>
+                                        <td>{{ proposal.property.street.name }}, N {{ proposal.property.portal }} - {{ proposal.property.floor }}</td>
+                                        <td>{{ proposal.property.fullName }}</td>
+                                        <td>{{ proposal.property.mobile }}</td>
+                                        <td>{{ proposal.client ? proposal.client.fullName : '' }}</td>
+                                        <td>{{ proposal.client ? proposal.client.mobile : '' }}</td>
+                                        <td>{{ proposal.client.created|date('d/m/Y')}}</td>
+                                        <td>{{ proposal.price|number_format(0, ',', '.') }}</td>
+                                        <td>
+                                            <a class="btn btn-info" href="{{ path('property_charge', {'id': proposal.property.id, 'idChargeType': proposal.property.typeProperty.id}) }}">Ver</a>
+                                        </td>
+                                    </tr>
+                                {% endif %}
                         {% endif %}
                     {% endfor %}
                     </tbody>
