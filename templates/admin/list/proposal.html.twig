@@ -26,9 +26,9 @@
                     </thead>
                     <tbody>
                     {% for proposal in proposals %}
+                        {{ dump(proposal.property.reason.name) }}
                             {% if proposal.contract is not empty and proposal.scriptures is empty %}
-                                {% if proposal.property.reason.name != 'alquiler' and proposal.contract is not empty %}
-
+                                {% if proposal.property.reason.name != 'alquiler' and proposal.contract is empty %}
                                 <tr>
                                     <td>{{ proposal.property.reference }}</td>
                                     <td>{{ proposal.property.commercial.fullName }}</td>
