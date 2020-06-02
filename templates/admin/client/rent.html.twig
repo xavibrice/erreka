@@ -32,44 +32,46 @@
                     </thead>
                     <tbody>
                     {% for client in clients %}
-                        <tr class="clickable-row" data-href="{{ path('client_rent_show', {'id': client.id}) }}">
-                            <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
-                            <td>{{ client.commercial.fullName }}</td>
-                            <td>{{ client.fullName }}</td>
-                            <td>{{ client.mobile }}</td>
-                            {% if client.zoneOne %}
-                                <td>{{ client.zoneOne.name }}</td>
-                            {% else %}
-                                <td></td>
-                            {% endif %}
+                        {% if client.clientStatus is not defined %}
+                            <tr class="clickable-row" data-href="{{ path('client_rent_show', {'id': client.id}) }}">
+                                <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
+                                <td>{{ client.commercial.fullName }}</td>
+                                <td>{{ client.fullName }}</td>
+                                <td>{{ client.mobile }}</td>
+                                {% if client.zoneOne %}
+                                    <td>{{ client.zoneOne.name }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
 
-                            {% if client.zoneTwo %}
-                                <td>{{ client.zoneTwo.name }}</td>
-                            {% else %}
-                                <td></td>
-                            {% endif %}
+                                {% if client.zoneTwo %}
+                                    <td>{{ client.zoneTwo.name }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
 
-                            {% if client.zoneThree %}
-                                <td>{{ client.zoneThree.name }}</td>
-                            {% else %}
-                                <td></td>
-                            {% endif %}
-                            {% if client.zoneFour %}
-                                <td>{{ client.zoneFour.name }}</td>
-                            {% else %}
-                                <td></td>
-                            {% endif %}
-                            <td>{{ client.price|number_format(0, ',', '.') }} € </td>
-                            <td>{{ client.bedrooms }} </td>
-                            <td>{{ client.visits ? client.visits.count }}</td>
-                            <td data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ client.comment }}</b>">
-                                {{ client.comment|slice(0, 25) }}
-                            </td>
-                            {#                <td>#}
-                            {#                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>#}
-                            {#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}
-                            {#                </td>#}
-                        </tr>
+                                {% if client.zoneThree %}
+                                    <td>{{ client.zoneThree.name }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                                {% if client.zoneFour %}
+                                    <td>{{ client.zoneFour.name }}</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                                <td>{{ client.price|number_format(0, ',', '.') }} € </td>
+                                <td>{{ client.bedrooms }} </td>
+                                <td>{{ client.visits ? client.visits.count }}</td>
+                                <td data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ client.comment }}</b>">
+                                    {{ client.comment|slice(0, 25) }}
+                                </td>
+                                {#                <td>#}
+                                {#                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>#}
+                                {#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}
+                                {#                </td>#}
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                     </tbody>
                 </table>
