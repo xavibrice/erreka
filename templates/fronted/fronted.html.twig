@@ -25,10 +25,8 @@
             .active {
                 border-bottom: 1px solid #3DBEC9 !important;
             }
-
-
-
         </style>
+        {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
     {% endblock %}
 </head>
 <body>
@@ -130,9 +128,12 @@
                 </div>
             </div>
         </footer>
-
         <!-- Footer -->
     {% endblock %}
+    {% if chcookieconsent_isCookieConsentSavedByUser() == true %}
+        {{ render_esi(path('ch_cookie_consent.show', { 'locale' : 'en' })) }}
+        {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set', { 'locale' : app.request.locale })) }}
+    {% endif %}
     {% block javascripts %}
         {{ encore_entry_script_tags('fronted') }}
     {% endblock %}

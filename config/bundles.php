@@ -20,4 +20,5 @@ return [
     Liip\ImagineBundle\LiipImagineBundle::class => ['all' => true],
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
     CalendarBundle\CalendarBundle::class => ['all' => true],
+    ConnectHolland\CookieConsentBundle\CHCookieConsentBundle::class => ['all' => true],
 ];

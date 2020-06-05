@@ -164,8 +164,7 @@ class ClientController extends AbstractController
             ->setParameter('reason', 'Venta')
             ->setParameter('enabled', true)
         ;
-
-
+        
         if ($client->getTypeProperty()) {
             $queryBuilder
                 ->andWhere('p.typeProperty = :typeProperty')

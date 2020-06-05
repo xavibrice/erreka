@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "fbf8f9cfc358f035a864dc9b234c0c62",
+    "content-hash": "9be18624940f2edeb15d9966581a25f4",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -49,6 +49,59 @@
                 "transliterator"
             ],
             "time": "2017-04-04T11:38:05+00:00"
+        },
+        {
+            "name": "connectholland/cookie-consent-bundle",
+            "version": "0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ConnectHolland/cookie-consent-bundle.git",
+                "reference": "378161a817e089bd6ed5b18412da546fc333d126"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ConnectHolland/cookie-consent-bundle/zipball/378161a817e089bd6ed5b18412da546fc333d126",
+                "reference": "378161a817e089bd6ed5b18412da546fc333d126",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/annotations": "^1.6",
+                "doctrine/doctrine-bundle": "^1.10 || ^2.0",
+                "doctrine/orm": "^2.5",
+                "php": "^7.2",
+                "symfony/asset": "^3.4 || ^4.2 || ^5.0",
+                "symfony/dependency-injection": "^3.4 || ^4.2 || ^5.0",
+                "symfony/doctrine-bridge": "^3.4 || ^4.2 || ^5.0",
+                "symfony/expression-language": "^3.4 || ^4.2 || ^5.0",
+                "symfony/form": "^3.4 || ^4.2 || ^5.0",
+                "symfony/framework-bundle": "^3.4 || ^4.2 || ^5.0",
+                "symfony/http-foundation": "^3.4 || ^4.2 || ^5.0",
+                "symfony/templating": "^3.4 || ^4.2 || ^5.0",
+                "symfony/translation": "^3.4 || ^4.2 || ^5.0",
+                "symfony/twig-bridge": "^3.4 || ^4.2 || ^5.0",
+                "symfony/twig-bundle": "^3.4 || ^4.2 || ^5.0",
+                "twig/twig": "^2.6 || ^3.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "phpunit/phpunit": "^7.5",
+                "symfony/yaml": "^3.4 || ^4.2 || ^5.0"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ],
+                "psr-4": {
+                    "ConnectHolland\\CookieConsentBundle\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Symfony bundle for implementing Cookie Consent to comply to AVG/GDPR.",
+            "time": "2020-05-01T10:54:07+00:00"
         },
         {
             "name": "doctrine/annotations",
@@ -7531,5 +7584,6 @@
         "ext-ctype": "*",
         "ext-iconv": "*"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "1.1.0"
 }
