@@ -15,6 +15,11 @@
             {#            {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
 {#            <a class="btn btn-info" href="{{ path('property_show', {'id': rateHousing.property.id }) }}">Ver noticia</a>#}
 {#            <a class="btn btn-info" href="{{ path('property_rate_housing_new_show', {'id': rateHousing.property.id }) }}">Ver valoración</a>#}
+            <div class="d-flex float-right">
+                <form action="{{ path('delete_back_to_notice', {'id': idProperty}) }}" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este elemento?');">
+                    <button type="submit" class="btn btn-danger">Eliminar Encargo</button>
+                </form>
+            </div>
         </div>
     </div>
 {% endblock %}

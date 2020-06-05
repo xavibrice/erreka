@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/authorization_charge/edit_authorization_charge.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/authorization_charge/edit_authorization_charge.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -455,7 +459,10 @@
       <workItem from="1590567854969" duration="9114000" />
       <workItem from="1590741486061" duration="6935000" />
       <workItem from="1591003453402" duration="7103000" />
-      <workItem from="1591089381074" duration="4541000" />
+      <workItem from="1591089381074" duration="4830000" />
+      <workItem from="1591095048589" duration="2568000" />
+      <workItem from="1591285922702" duration="4000" />
+      <workItem from="1591348073230" duration="1726000" />
     </task>
     <servers />
   </component>
@@ -485,6 +492,10 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="496" y="208" key="#Plugins" timestamp="1591095091383">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="496" y="208" key="#Plugins/0.0.1792.1120@0.0.1792.1120" timestamp="1591095091383" />
     <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589908676702">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

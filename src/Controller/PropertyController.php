@@ -524,6 +524,48 @@ class PropertyController extends AbstractController
     }
 
     /**
+     * @Route("/encargo/eliminar/volver/noticia/{id}", name="delete_back_to_notice")
+     */
+    public function deleteCharge(Request $request, Property $property)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $charge = $entityManager->getRepository(Charge::class)->findBy(['property' => $property]);
+        $visit = $entityManager->getRepository(Visit::class)->findBy(['property' => $property]);
+        $proposal = $entityManager->getRepository(Proposal::class)->findBy(['property' => $property]);
+        $reduction = $entityManager->getRepository(PropertyReduction::class)->findBy(['property' => $property]);
+
+        if ($charge) {
+            foreach ($charge as $c) {
+                $entityManager->remove($c);
+            }
+            $entityManager->flush();
+        }
+        if ($visit) {
+            foreach ($visit as $v) {
+                $entityManager->remove($v);
+            }
+            $entityManager->flush();
+        }
+        if ($proposal) {
+            foreach ($proposal as $p) {
+                $entityManager->remove($p);
+            }
+            $entityManager->flush();
+        }
+        if ($reduction) {
+            foreach ($reduction as $r) {
+                $entityManager->remove($r);
+            }
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('property_show', [
+            'id' => $property->getId(),
+        ]);
+    }
+
+    /**
      * @Route("/{id}/editar", name="property_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Property $property): Response
