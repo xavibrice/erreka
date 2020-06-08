@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,19 +179,19 @@
     <property name="ts.external.directory.path" value="C:\Users\HP\AppData\Local\JetBrains\Toolbox\apps\PhpStorm\ch-0\192.6817.20\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/fronted/default/services" />
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/assets/fronted/css" />
-      <recent name="$PROJECT_DIR$/assets/fronted" />
-      <recent name="$PROJECT_DIR$/templates/fronted" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/fronted/default" />
       <recent name="$PROJECT_DIR$/public/img/agent" />
       <recent name="$PROJECT_DIR$/templates/admin/client" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/assets/fronted/js" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/img/sell" />
+      <recent name="$PROJECT_DIR$/templates/fronted/default/services" />
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/assets/fronted/css" />
+      <recent name="$PROJECT_DIR$/assets/fronted" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -462,7 +461,7 @@
       <workItem from="1591095048589" duration="2568000" />
       <workItem from="1591285922702" duration="4000" />
       <workItem from="1591348073230" duration="4363000" />
-      <workItem from="1591607380350" duration="1469000" />
+      <workItem from="1591607380350" duration="2332000" />
     </task>
     <servers />
   </component>

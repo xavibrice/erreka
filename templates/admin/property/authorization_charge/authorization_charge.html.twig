@@ -93,7 +93,7 @@
                                         <th class="text-right">Fecha Encargo</th>
                                         <td>{{ property.charge.startDate|date('d-m-Y') }}</td>
                                         <th class="text-right">Fecha Fín</th>
-                                        <td>{{ property.charge.endDate|date('d-m-Y') }}</td>
+                                        <td>{{ property.charge.endDate ? property.charge.endDate|date('d-m-Y') }}</td>
                                         <th class="text-right">LLaves</th>
                                         <td>
                                             {% if property.charge.stateKeys %}
