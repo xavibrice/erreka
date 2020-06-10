@@ -109,23 +109,6 @@
                     </div>
                 </div>
             </li>
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVisit" aria-expanded="true" aria-controls="collapseVisit">
-                    <i class="fas fa-users"></i>
-                    <span>Visitas</span>
-                </a>
-                <div id="collapseVisit" class="collapse
-                {% if
-                    app.request.get('_route') == 'visit_sell_index' or
-                    app.request.get('_route') == 'visit_rent_index'
-                %}show{% endif %}" aria-labelledby="headingVisit" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header"></h6>
-                        <a class="collapse-item {% if app.request.get('_route') == 'visit_sell_index' %}active{% endif %}" href="{{ path('visit_sell_index') }}">Visitas Comprar</a>
-                        <a class="collapse-item {% if app.request.get('_route') == 'visit_rent_index' %}active{% endif %}" href="{{ path('visit_rent_index') }}">Visitas Alquiler</a>
-                    </div>
-                </div>
-            </li>
             <li class="nav-item {% if app.request.get('_route') == 'list_rented_index' %}active{% endif %}">
                 <a class="nav-link" href="{{ path('list_rented_index') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -209,6 +192,23 @@
                     </div>
                 </li>
 
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseVisit" aria-expanded="true" aria-controls="collapseVisit">
+                        <i class="fas fa-users"></i>
+                        <span>Visitas</span>
+                    </a>
+                    <div id="collapseVisit" class="collapse
+                {% if
+                        app.request.get('_route') == 'visit_sell_index' or
+                        app.request.get('_route') == 'visit_rent_index'
+                    %}show{% endif %}" aria-labelledby="headingVisit" data-parent="#accordionSidebar">
+                        <div class="bg-white py-2 collapse-inner rounded">
+                            <h6 class="collapse-header"></h6>
+                            <a class="collapse-item {% if app.request.get('_route') == 'visit_sell_index' %}active{% endif %}" href="{{ path('visit_sell_index') }}">Visitas Comprar</a>
+                            <a class="collapse-item {% if app.request.get('_route') == 'visit_rent_index' %}active{% endif %}" href="{{ path('visit_rent_index') }}">Visitas Alquiler</a>
+                        </div>
+                    </div>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" href="">
