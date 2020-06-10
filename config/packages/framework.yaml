@@ -10,7 +10,6 @@ framework:
         cookie_lifetime: 0
         cookie_secure: auto
         cookie_samesite: lax
-        auto_start: true
 
     #esi: true
     #fragments: true
