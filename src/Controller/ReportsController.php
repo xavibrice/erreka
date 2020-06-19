@@ -209,6 +209,20 @@ class ReportsController extends AbstractController
             ->getResult()
         ;
 
+        $scriptures = $proposalRepository->createQueryBuilder('pro')
+            ->innerJoin('pro.property', 'p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('pro.scriptures BETWEEN :start AND :end')
+            ->andWhere('s.name = :situation')
+            ->andWhere('r.name = :reason')
+            ->setParameter('reason', 'Venta')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('start', $form->get('start')->getData())
+            ->setParameter('end', $form->get('end')->getData())
+            ->getQuery()
+            ->getResult()
+        ;
 
         return $this->render('admin/reports/index.html.twig', [
             'noticies' => $noticies,
@@ -224,6 +238,7 @@ class ReportsController extends AbstractController
             'contractSell' => $contractSell,
             'reductionSell' => $reductionSell,
             'reductionRent' => $reductionRent,
+            'scriptures' => $scriptures,
             'form' => $form->createView(),
         ]);
     }
