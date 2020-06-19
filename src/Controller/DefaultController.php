@@ -298,11 +298,8 @@ class DefaultController extends AbstractController
            }
         }
 
-
         $properties = $queryBuilder->getQuery()->getResult();
 
-        //dd($form->get('sellOrRent')->getData());
-        //dd($searchFronted);
         return $this->render('fronted/default/search-fronted.html.twig', [
             'properties' => $properties,
             'form' => $form->createView(),
@@ -318,4 +315,5 @@ class DefaultController extends AbstractController
            'property' => $property
         ]);
     }
+
 }
