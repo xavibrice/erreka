@@ -5,6 +5,7 @@ use App\Entity\SearchReports;
 use App\Form\SearchReportsType;
 use App\Repository\ChargeRepository;
 use App\Repository\PropertyRepository;
+use App\Repository\VisitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,7 +16,7 @@ class ReportsController extends AbstractController
     /**
      * @Route("/admin/reportes", name="reports_index")
      */
-    public function index(Request $request, PropertyRepository $propertyRepository, ChargeRepository $chargeRepository): Response
+    public function index(Request $request, PropertyRepository $propertyRepository, ChargeRepository $chargeRepository, VisitRepository $visitRepository): Response
     {
         $searchReports = new SearchReports();
         $form = $this->createForm(SearchReportsType::class, $searchReports);
@@ -32,7 +33,6 @@ class ReportsController extends AbstractController
             ->getQuery()
             ->getResult()
         ;
-
 
         $valorations = $propertyRepository->createQueryBuilder('p')
             ->innerJoin('p.reason', 'r')
@@ -87,6 +87,35 @@ class ReportsController extends AbstractController
             ->getResult()
         ;
 
+        $visitSell = $visitRepository->createQueryBuilder('v')
+            ->innerJoin('v.property', 'p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('v.visited BETWEEN :start AND :end')
+            ->andWhere('s.name = :situation')
+            ->andWhere('r.name = :reason')
+            ->setParameter('reason', 'Venta')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('start', $form->get('start')->getData())
+            ->setParameter('end', $form->get('end')->getData())
+            ->getQuery()
+            ->getResult()
+        ;
+
+        $visitRent = $visitRepository->createQueryBuilder('v')
+            ->innerJoin('v.property', 'p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('v.visited BETWEEN :start AND :end')
+            ->andWhere('s.name = :situation')
+            ->andWhere('r.name = :reason')
+            ->setParameter('reason', 'Alquiler')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('start', $form->get('start')->getData())
+            ->setParameter('end', $form->get('end')->getData())
+            ->getQuery()
+            ->getResult()
+        ;
 
         return $this->render('admin/reports/index.html.twig', [
             'noticies' => $noticies,
@@ -94,6 +123,8 @@ class ReportsController extends AbstractController
             'valorations' => $valorations,
             'chargesRent' => $chargeRent,
             'chargesSell' => $chargeSell,
+            'visitsRent' => $visitRent,
+            'visitsSell' => $visitSell,
             'form' => $form->createView(),
         ]);
     }
