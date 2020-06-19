@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/ReportsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReportsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/admin/reports/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/reports/index.html.twig" afterDir="false" />
     </list>
@@ -468,7 +469,7 @@
       <workItem from="1592233536679" duration="1486000" />
       <workItem from="1592308863511" duration="7985000" />
       <workItem from="1592333838381" duration="2538000" />
-      <workItem from="1592468954357" duration="2792000" />
+      <workItem from="1592468954357" duration="3343000" />
     </task>
     <servers />
   </component>
