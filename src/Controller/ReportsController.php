@@ -118,7 +118,7 @@ class ReportsController extends AbstractController
             ->getResult()
         ;
 
-        $proposalRent = $visitRepository->createQueryBuilder('pro')
+        $proposalRent = $proposalRepository->createQueryBuilder('pro')
             ->innerJoin('pro.property', 'p')
             ->innerJoin('p.reason', 'r')
             ->innerJoin('r.situation', 's')
@@ -133,7 +133,7 @@ class ReportsController extends AbstractController
             ->getResult()
         ;
 
-        $proposalSell = $visitRepository->createQueryBuilder('pro')
+        $proposalSell = $proposalRepository->createQueryBuilder('pro')
             ->innerJoin('pro.property', 'p')
             ->innerJoin('p.reason', 'r')
             ->innerJoin('r.situation', 's')
