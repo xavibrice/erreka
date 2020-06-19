@@ -5,6 +5,7 @@ use App\Entity\SearchReports;
 use App\Form\SearchReportsType;
 use App\Repository\ChargeRepository;
 use App\Repository\PropertyRepository;
+use App\Repository\ProposalRepository;
 use App\Repository\VisitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,7 +17,7 @@ class ReportsController extends AbstractController
     /**
      * @Route("/admin/reportes", name="reports_index")
      */
-    public function index(Request $request, PropertyRepository $propertyRepository, ChargeRepository $chargeRepository, VisitRepository $visitRepository): Response
+    public function index(Request $request, PropertyRepository $propertyRepository, ChargeRepository $chargeRepository, VisitRepository $visitRepository, ProposalRepository $proposalRepository): Response
     {
         $searchReports = new SearchReports();
         $form = $this->createForm(SearchReportsType::class, $searchReports);
@@ -117,6 +118,36 @@ class ReportsController extends AbstractController
             ->getResult()
         ;
 
+        $proposalRent = $visitRepository->createQueryBuilder('pro')
+            ->innerJoin('pro.property', 'p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('pro.visited BETWEEN :start AND :end')
+            ->andWhere('s.name = :situation')
+            ->andWhere('r.name = :reason')
+            ->setParameter('reason', 'Alquiler')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('start', $form->get('start')->getData())
+            ->setParameter('end', $form->get('end')->getData())
+            ->getQuery()
+            ->getResult()
+        ;
+
+        $proposalSell = $visitRepository->createQueryBuilder('pro')
+            ->innerJoin('pro.property', 'p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('pro.visited BETWEEN :start AND :end')
+            ->andWhere('s.name = :situation')
+            ->andWhere('r.name = :reason')
+            ->setParameter('reason', 'Venta')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('start', $form->get('start')->getData())
+            ->setParameter('end', $form->get('end')->getData())
+            ->getQuery()
+            ->getResult()
+        ;
+
         return $this->render('admin/reports/index.html.twig', [
             'noticies' => $noticies,
             'noticiesToDeveloper' => $noticiesToDevelopers,
@@ -125,6 +156,8 @@ class ReportsController extends AbstractController
             'chargesSell' => $chargeSell,
             'visitsRent' => $visitRent,
             'visitsSell' => $visitSell,
+            'proposalRent' => $proposalRent,
+            'proposalSell' => $proposalSell,
             'form' => $form->createView(),
         ]);
     }
