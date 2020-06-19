@@ -148,6 +148,36 @@ class ReportsController extends AbstractController
             ->getResult()
         ;
 
+        $contractRent = $proposalRepository->createQueryBuilder('pro')
+            ->innerJoin('pro.property', 'p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('pro.contract BETWEEN :start AND :end')
+            ->andWhere('s.name = :situation')
+            ->andWhere('r.name = :reason')
+            ->setParameter('reason', 'Alquiler')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('start', $form->get('start')->getData())
+            ->setParameter('end', $form->get('end')->getData())
+            ->getQuery()
+            ->getResult()
+        ;
+
+        $contractSell = $proposalRepository->createQueryBuilder('pro')
+            ->innerJoin('pro.property', 'p')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->andWhere('pro.contract BETWEEN :start AND :end')
+            ->andWhere('s.name = :situation')
+            ->andWhere('r.name = :reason')
+            ->setParameter('reason', 'Venta')
+            ->setParameter('situation', 'Noticia')
+            ->setParameter('start', $form->get('start')->getData())
+            ->setParameter('end', $form->get('end')->getData())
+            ->getQuery()
+            ->getResult()
+        ;
+
         return $this->render('admin/reports/index.html.twig', [
             'noticies' => $noticies,
             'noticiesToDeveloper' => $noticiesToDevelopers,
@@ -158,6 +188,8 @@ class ReportsController extends AbstractController
             'visitsSell' => $visitSell,
             'proposalRent' => $proposalRent,
             'proposalSell' => $proposalSell,
+            'contractRent' => $contractRent,
+            'contractSell' => $contractSell,
             'form' => $form->createView(),
         ]);
     }
