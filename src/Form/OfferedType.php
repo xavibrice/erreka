@@ -6,6 +6,7 @@ use App\Entity\Charge;
 use App\Entity\Offered;
 use App\Entity\Property;
 use App\Form\Type\DatePickerType;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -26,6 +27,10 @@ class OfferedType extends AbstractType
             ->add('charge', EntityType::class, [
                 'label' => 'Encargo',
                 'class' => Charge::class,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('c')
+                        ->orderBy('c.property', 'ASC');
+                },
                 'choice_label' => 'property',
                 'placeholder' => 'Selecciona Encargo',
             ])
