@@ -26,7 +26,6 @@
                     <thead>
                     <tr class="">
                         <th>Nombre cliente</th>
-                        <th>Ofrecido</th>
                         <th>Móvil</th>
                         <th>Precio</th>
                         <th>Dormitorios</th>
@@ -37,10 +36,8 @@
                     </thead>
                     <tbody>
                     {% for client in possibleClients %}
-                        {% for offered in client.offereds %}
                             <tr>
                                 <td>{{ client.fullName }}</td>
-                                <td>{{ offered.id }}</td>
                                 <td>{{ client.mobile }}</td>
                                 <td>{{ client.price|number_format(0, ',', '.') }}€</td>
                                 <td>{{ client.bedrooms }}</td>
@@ -54,7 +51,6 @@
                                     {% endif %}
                                 </td>
                             </tr>
-                        {% endfor %}
                     {% endfor %}
                     </tbody>
                 </table>

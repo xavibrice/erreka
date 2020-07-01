@@ -3,48 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/calidad-lineal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/casa-lineal-info.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/casa-lineal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/casa-relleno-info.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/casa-relleno.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/contrato-lineal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/contrato-relleno.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/equipo-lineal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/equipo-relleno.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/erreka-inmo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/hero_bg_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/hero_bg_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/hero_bg_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/logo-erreka.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/propiedad-tiempo-lineal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/propiedad-tiempo-relleno.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/reloj-lineal.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/reloj-relleno.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/informacion.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Charge.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Charge.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Offered.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Offered.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/OfferedType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/OfferedType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/possible-clients.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/possible-clients.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/energy_certificate.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/energy_certificate.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/financing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/financing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/insurance.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/insurance.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/reforms.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/reforms.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -511,7 +469,7 @@
       <workItem from="1592333838381" duration="2538000" />
       <workItem from="1592468954357" duration="4532000" />
       <workItem from="1592898976207" duration="17735000" />
-      <workItem from="1593419887736" duration="4515000" />
+      <workItem from="1593419887736" duration="4899000" />
     </task>
     <servers />
   </component>
