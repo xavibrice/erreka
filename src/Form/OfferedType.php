@@ -29,7 +29,9 @@ class OfferedType extends AbstractType
                 'class' => Charge::class,
                 'query_builder' => function (EntityRepository $er) {
                     return $er->createQueryBuilder('c')
-                        ->orderBy('c.property', 'ASC');
+                        ->innerJoin('c.property', 'p')
+                        ->innerJoin('p.street', 's')
+                        ->orderBy('s.name', 'ASC');
                 },
                 'choice_label' => 'property',
                 'placeholder' => 'Selecciona Encargo',
