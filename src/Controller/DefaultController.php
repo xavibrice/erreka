@@ -6,6 +6,7 @@ use App\Entity\Property;
 use App\Entity\SearchFronted;
 use App\Form\ContactType;
 use App\Form\SearchFrontedType;
+use App\Repository\ChargeRepository;
 use App\Repository\ClientRepository;
 use App\Repository\NoteCommercialRepository;
 use App\Repository\PropertyRepository;
@@ -19,9 +20,11 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="default")
      */
-    public function index()
+    public function index(PropertyRepository $propertyRepository)
     {
-        return $this->render('fronted/default/homepage.html.twig');
+        return $this->render('fronted/default/homepage.html.twig', [
+            'properties' => $propertyRepository->onlyChargesWithoutAgency()
+        ]);
     }
 
     /**
@@ -314,6 +317,22 @@ class DefaultController extends AbstractController
         return $this->render('fronted/default/search_details.html.twig', [
            'property' => $property
         ]);
+    }
+
+    /**
+     * @Route("/politica-de-privacidad", name="privacy_police")
+     */
+    public function privacyPolice(Request $request)
+    {
+        return $this->render('fronted/default/legal/privacy_police.html.twig');
+    }
+
+    /**
+     * @Route("/aviso-legal", name="legal_warning")
+     */
+    public function legalWarning(Request $request)
+    {
+        return $this->render('fronted/default/legal/legal_warning.html.twig');
     }
 
 }

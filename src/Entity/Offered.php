@@ -27,9 +27,9 @@ class Offered
     private $client;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Property", inversedBy="offereds", cascade={"persist"})
+     * @ORM\ManyToOne(targetEntity="App\Entity\Charge", inversedBy="offereds")
      */
-    private $property;
+    private $charge;
 
     public function getId(): ?int
     {
@@ -60,14 +60,14 @@ class Offered
         return $this;
     }
 
-    public function getProperty(): ?Property
+    public function getCharge(): ?Charge
     {
-        return $this->property;
+        return $this->charge;
     }
 
-    public function setProperty(?Property $property): self
+    public function setCharge(?Charge $charge): self
     {
-        $this->property = $property;
+        $this->charge = $charge;
 
         return $this;
     }

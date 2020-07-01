@@ -152,6 +152,20 @@ class PropertyRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function onlyChargesWithoutAgency() {
+        return $this->createQueryBuilder('p')
+            ->innerJoin('p.charge', 'c')
+            ->leftJoin('p.propertyReductions', 'pr')
+            ->leftJoin('p.proposals', 'pro')
+            ->addSelect('SUM(pr.price) as sumPropertyReduction')
+            ->addSelect('COUNT(pro.contract) as countPropertyContract')
+            ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
+            ->groupBy('p.id')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult();
+    }
+
     public function onlyExclusives($getAgency)
     {
         return $this->createQueryBuilder('p')

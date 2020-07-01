@@ -4,17 +4,15 @@ namespace App\Controller;
 
 use App\Entity\Client;
 use App\Entity\NoteClient;
-use App\Entity\NoteNew;
+use App\Entity\Offered;
 use App\Entity\Property;
-use App\Entity\PropertyReduction;
-use App\Entity\RateHousing;
+use App\Entity\Proposal;
 use App\Entity\Visit;
 use App\Form\ClientRentType;
 use App\Form\ClientSellType;
-use App\Form\ClientType;
 use App\Form\NoteClientType;
+use App\Form\OfferedType;
 use App\Form\VisitNewType;
-use App\Form\VisitType;
 use App\Repository\ClientRepository;
 use App\Repository\ProposalRepository;
 use App\Repository\VisitRepository;
@@ -333,7 +331,6 @@ class ClientController extends AbstractController
         $formVisit->handleRequest($request);
 
         if ($formVisit->isSubmitted() && $formVisit->isValid()) {
-//            $client->setPrice(1000);
             $em->persist($visit);
             $em->flush();
 
@@ -381,22 +378,27 @@ class ClientController extends AbstractController
         ]);
         $formNoteClient->handleRequest($request);
 
-/*        if ($formNoteClient->isSubmitted() && $formNoteClient->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->persist($noteClient);
-            $entityManager->flush();
+        $offered = new Offered();
+        $offered->setClient($client);
+        $formOffered = $this->createForm(OfferedType::class, $offered);
+        $formOffered->handleRequest($request);
 
-            $this->addFlash('success', 'Comentario creado correctamente');
+        if ($formOffered->isSubmitted() && $formOffered->isValid()) {
+            $em->persist($offered);
+            $em->flush();
+
+            $this->addFlash('success', 'Ofrecido creado correctamente');
 
             return $this->redirectToRoute($request->attributes->get('_route'), [
                 'id' => $client->getId()
             ]);
-        }*/
+        }
 
         return $this->render('admin/client/show_sell.html.twig', [
             'client' => $client,
             'formVisit' => $formVisit->createView(),
-            'formNoteClient' => $formNoteClient->createView()
+            'formNoteClient' => $formNoteClient->createView(),
+            'formOffered' => $formOffered->createView(),
         ]);
     }
 

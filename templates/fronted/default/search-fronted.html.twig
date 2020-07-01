@@ -40,7 +40,7 @@
                             {% if property[0].rateHousing.image.first  %}
                                 <img class="img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
                             {% else %}
-                                <img src="{{ asset('img/hero_bg_2.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Image" class="img-fluid">
+                                <img src="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}" alt="Image" class="img-fluid">
                             {% endif %}
                         </figure>
                         <div class="prop-text">

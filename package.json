@@ -1,6 +1,6 @@
 {
     "devDependencies": {
-        "@fortawesome/fontawesome-free": "^5.11.2",
+        "@fortawesome/fontawesome-free": "^5.13.1",
         "@symfony/webpack-encore": "^0.27.0",
         "bootstrap": "^4.3.1",
         "core-js": "^3.2.1",
@@ -27,6 +27,7 @@
         "autocomplete.js": "^0.37.0",
         "datatables.net": "^1.10.19",
         "eonasdan-bootstrap-datetimepicker-bootstrap4beta": "^4.17.47-a",
+        "font-awesome": "^4.7.0",
         "fullcalendar": "^3.10.1",
         "fullcalendar-scheduler": "^1.10.0",
         "jquery": "^3.4.1",

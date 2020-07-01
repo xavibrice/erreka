@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Erreka Inmobiliaria{% endblock %}</title>
-    <link rel="icon" href="{{ asset('img/logo-erreka.jpg') }}">
+    <link rel="icon" href="{{ asset('img/logo-erreka.png') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('fronted') }}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
@@ -88,41 +88,34 @@
                         <small class="d-block mb-3 text-muted text-center">© 2020</small>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>Features</h5>
+                        <h5>Oficina Erreka</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Cool stuff</a></li>
-                            <li><a class="text-muted" href="#">Random feature</a></li>
-                            <li><a class="text-muted" href="#">Team feature</a></li>
-                            <li><a class="text-muted" href="#">Stuff for developers</a></li>
-                            <li><a class="text-muted" href="#">Another one</a></li>
-                            <li><a class="text-muted" href="#">Last time</a></li>
+                            <li><a class="text-muted" href="#">Zamakola Kalea, 65</a></li>
+                            <li><a class="text-muted" href="#">944 79 09 08</a></li>
+                            <li><a class="text-muted" href="#">info@errekainmobiliaria.com</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>Resources</h5>
+                        <h5>Oficina Erreka Garrido</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Resource</a></li>
-                            <li><a class="text-muted" href="#">Resource name</a></li>
-                            <li><a class="text-muted" href="#">Another resource</a></li>
-                            <li><a class="text-muted" href="#">Final resource</a></li>
+                            <li><a class="text-muted" href="#">Zamakola Kalea, 65</a></li>
+                            <li><a class="text-muted" href="#">944 79 09 08</a></li>
+                            <li><a class="text-muted" href="#">info@errekainmobiliaria.com</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>Resources</h5>
+                        <h5>Redes Sociales</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Business</a></li>
-                            <li><a class="text-muted" href="#">Education</a></li>
-                            <li><a class="text-muted" href="#">Government</a></li>
-                            <li><a class="text-muted" href="#">Gaming</a></li>
+                            <li><a class="text-muted" href="#">Instagram</a></li>
+                            <li><a class="text-muted" href="#">Facebook</a></li>
                         </ul>
                     </div>
                     <div class="col-6 col-md">
-                        <h5>About</h5>
+                        <h5>Legal</h5>
                         <ul class="list-unstyled text-small">
-                            <li><a class="text-muted" href="#">Team</a></li>
-                            <li><a class="text-muted" href="#">Locations</a></li>
-                            <li><a class="text-muted" href="#">Privacy</a></li>
-                            <li><a class="text-muted" href="#">Terms</a></li>
+                            <li><a class="btn btn-link" href="{{ path('legal_warning') }}">Aviso Legal</a></li>
+                            <li><a class="btn btn-link" href="{{ path('privacy_police') }}">Política Privacidad</a></li>
+                            <li><a class="text-muted" href="#">Protección Datos</a></li>
                         </ul>
                     </div>
                 </div>

@@ -176,51 +176,51 @@
         </div>
         <div class="col-md-8 mb-4">
             <div class="overflow-auto p-3 mb-3 mb-md-0 mr-md-3 bg-light" style="max-height: 350px;">
-                    <div class="col-md-12 mb-4">
-                        <div class="card border-left-info shadow h-100 py-2">
-                            <div class="card-body">
-                                <div class="row no-gutters align-items-center">
-                                    <div class="table-responsive">
-                                        <table class="table table-sm table-borderless">
-                                            <thead>
+                <div class="col-md-12 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-borderless">
+                                        <thead>
+                                        <tr>
+                                            <th>Fecha </th>
+                                            <th>Comentario</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for noteclient in client.noteClients|reverse %}
                                             <tr>
-                                                <th>Fecha </th>
-                                                <th>Comentario</th>
+                                                <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
+                                                <td data-toggle="tooltip" data-placement="top" title="{{ noteclient.comment }}">
+                                                    {{ noteclient.comment|slice(0, 100) }}
+                                                </td>
                                             </tr>
-                                            </thead>
-                                            <tbody>
-                                            {% for noteclient in client.noteClients|reverse %}
-                                                <tr>
-                                                    <td>{{ noteclient.created ? noteclient.created|date('d/m/Y') : '' }}</td>
-                                                    <td data-toggle="tooltip" data-placement="top" title="{{ noteclient.comment }}">
-                                                        {{ noteclient.comment|slice(0, 100) }}
-                                                    </td>
-                                                </tr>
-                                            {% endfor %}
-                                            </tbody>
-                                        </table>
-                                    </div>
+                                        {% endfor %}
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
                     </div>
+                </div>
             </div>
         </div>
     </div>
 
-{#    <div class="row">
+    <div class="row">
         <div class="col-md-4 mb-4">
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Visitas</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Ofrecido</h6>
                 </div>
                 <div class="card-body">
                     <div class="m-2">
-                        #}{#                        {{ include('admin/_form.html.twig', {'form': formVisit}) }}#}{#
+                        {{ include('admin/_form.html.twig', {'form': formOffered}) }}{#
                         {{ form_start(formVisit) }}
                         {{ form_widget(formVisit) }}
                         <button class="btn btn-success">{{ button_label|default('Guardar') }}</button>
-                        {{ form_end(formVisit) }}
+                        {{ form_end(formVisit) }}#}
                     </div>
                 </div>
             </div>
@@ -235,21 +235,15 @@
                                         <table class="table table-sm table-borderless">
                                             <thead>
                                             <tr>
-                                                <th>Fecha visita</th>
+                                                <th>Fecha Ofrecido</th>
                                                 <th>Dirección</th>
-                                                <th>Precio</th>
-                                                <th>Comentario</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {% for visit in client.visits|reverse %}
+                                            {% for offered in client.offereds|reverse %}
                                                 <tr>
-                                                    <td>{{ visit.visited|date('d/m/Y')}}</td>
-                                                    <td>{{ visit.property.street.name }} {{ visit.property.portal }}, {{ visit.property.floor }}</td>
-                                                    <td>{{ visit.price|number_format(0, ',', '.') }}€</td>
-                                                    <td data-toggle="tooltip" data-placement="top" title="{{ visit.comment }}">
-                                                        {{ visit.comment|slice(0, 50) }}
-                                                    </td>
+                                                    <td>{{ offered.created|date('d/m/Y')}}</td>
+                                                    <td>{{ offered.charge.property.street.name }} {{ offered.charge.property.portal }}, {{ offered.charge.property.floor }}</td>
                                                 </tr>
                                             {% endfor %}
                                             </tbody>
@@ -261,7 +255,7 @@
                     </div>
             </div>
         </div>
-    </div>#}
+    </div>
 
 {#    <a href="{{ path('client_index') }}">back to list</a>#}
 {#    {{ include('admin/client/_delete_form.html.twig') }}#}

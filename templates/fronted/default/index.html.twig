@@ -7,10 +7,11 @@
         <ol class="carousel-indicators">
             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
             <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
         </ol>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <img class="bd-placeholder-img" src="{{ asset('img/bilbao.png') }}" alt="">
+                <img class="bd-placeholder-img" src="{{ asset('img/propiedad-uno.jpg') }}" alt="">
                 <div class="container">
                     <div class="carousel-caption rounded-top text-right">
                         <h1>Erreka</h1>
@@ -20,7 +21,17 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <img class="bd-placeholder-img" src="{{ asset('img/san-anton.jpg') }}" alt="">
+                <img class="bd-placeholder-img" src="{{ asset('img/propiedad-dos.jpg') }}" alt="">
+                <div class="container">
+                    <div class="carousel-caption text-right">
+                        <h1>Erreka Garrido</h1>
+                        <p>Estamos en casco viejo</p>
+                        <p><a class="btn btn-primary" href="{{ path('about_us') }}" role="button">Ver más</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <img class="bd-placeholder-img" src="{{ asset('img/propiedad-tres.jpg') }}" alt="">
                 <div class="container">
                     <div class="carousel-caption text-right">
                         <h1>Erreka Garrido</h1>
@@ -80,29 +91,29 @@
     <div class="container marketing mt-3">
         <div class="row text-center mt-5">
             <div class="col-lg-6 col-md-6 mb-4">
-            <div class="card h-100 border-0">
-                <img class="card-img-top m-auto" style="width: 100px !important;" src="{{ asset('img/casa-lineal.png') }}" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Vendemos tu vivienda en 90 días</h4>
-                    <p class="card-text">¿Quiéres conoces más de nuestro método exclusivo?</p>
-                    <p class="text-center mt-3">
-                        <a href="{{ path('to_sell') }}" class="btn btn-secondary">Más información</a>
-                    </p>
+                <div class="card h-100 border-0">
+                    <i class="fas fa-home fa-5x"></i>
+                    <div class="card-body">
+                        <h4 class="card-title">Vendemos tu vivienda en 90 días</h4>
+                        <p class="card-text">¿Quiéres conoces más de nuestro método exclusivo?</p>
+                        <p class="text-center mt-3">
+                            <a href="{{ path('to_sell') }}" class="btn btn-info">Más información</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
             <div class="col-lg-6 col-md-6 mb-4">
-            <div class="card h-100 border-0">
-                <img class="card-img-top m-auto" style="width: 100px !important;" src="{{ asset('img/propiedad-tiempo-lineal.png') }}" alt="">
-                <div class="card-body">
-                    <h4 class="card-title">Alquiler garantizado</h4>
-                    <p class="card-text">Tu seguridad es nuestro objetivo</p>
-                    <p class="text-center mt-3">
-                        <a href="{{ path('guaranteed_rental') }}" class="btn btn-secondary">Más información</a>
-                    </p>
+                <div class="card h-100 border-0">
+                    <i class="fas fa-house-user fa-5x"></i>
+                    <div class="card-body">
+                        <h4 class="card-title">Alquiler garantizado</h4>
+                        <p class="card-text">Tu seguridad es nuestro objetivo</p>
+                        <p class="text-center mt-3">
+                            <a href="{{ path('guaranteed_rental') }}" class="btn btn-info">Más información</a>
+                        </p>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 
@@ -110,150 +121,85 @@
         <div class="container mt-5">
             <h2 class="text-center pt-5">Viviendas Destacadas</h2>
             <div class="row mt-5 pb-5">
-
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <a href="" class="prop-entry d-block">
-                            <figure>
-                                <img src="{{ asset('img/hero_bg_2.jpg') }}" alt="Image" class="img-fluid">
-                            </figure>
-                            <div class="prop-text">
-                                <div class="inner">
-                                    <span class="price rounded">100.000€</span>
-                                    <h3 class="title">Zamakola</h3>
-                                    <p class="location">La peña</p>
-                                </div>
-                                <div class="prop-more-info">
-                                    <div class="inner d-flex">
-                                        <div class="col">
-                                            <span>Area:</span>
-                                            <strong>278m<sup>2</sup></strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Dormitorios:</span>
-                                            <strong>3</strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Baños:</span>
-                                            <strong>1</strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Garaje:</span>
-                                            <strong>Si</strong>
+                {% for property in properties %}
+                    {% if property.countPropertyContract == 0 %}
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="prop-entry d-block">
+                                <figure>
+                                    {% if property[0].rateHousing.image.first  %}
+                                        <img class="img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
+                                    {% else %}
+                                        <img src="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}" alt="Image" class="img-fluid">
+                                    {% endif %}
+                                </figure>
+                                <div class="prop-text">
+                                    <div class="inner">
+                                        <span class="price rounded">{{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}€</span>
+                                        <h3 class="title">{{ property[0].street.name }}</h3>
+                                        <p class="location">{{ property[0].street.zone.name }}</p>
+                                    </div>
+                                    <div class="prop-more-info">
+                                        <div class="inner d-flex">
+                                            <div class="col">
+                                                <span>Area:</span>
+                                                <strong>{{ property[0].rateHousing.realMeters }}m<sup>2</sup></strong>
+                                            </div>
+                                            <div class="col">
+                                                <span>Dormitorios:</span>
+                                                <strong>{{ property[0].rateHousing.bedrooms }}</strong>
+                                            </div>
+                                            <div class="col">
+                                                <span>Baños:</span>
+                                                <strong>{{ property[0].rateHousing.bathrooms }}</strong>
+                                            </div>
+                                            <div class="col">
+                                                <span>Garaje:</span>
+                                                <strong>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</strong>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <a href="" class="prop-entry d-block">
-                            <figure>
-                                <img src="{{ asset('img/hero_bg_2.jpg') }}" alt="Image" class="img-fluid">
-                            </figure>
-                            <div class="prop-text">
-                                <div class="inner">
-                                    <span class="price rounded">100.000€</span>
-                                    <h3 class="title">Zamakola</h3>
-                                    <p class="location">La peña</p>
-                                </div>
-                                <div class="prop-more-info">
-                                    <div class="inner d-flex">
-                                        <div class="col">
-                                            <span>Area:</span>
-                                            <strong>278m<sup>2</sup></strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Dormitorios:</span>
-                                            <strong>3</strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Baños:</span>
-                                            <strong>1</strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Garaje:</span>
-                                            <strong>Si</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-4">
-                        <a href="" class="prop-entry d-block">
-                            <figure>
-                                <img src="{{ asset('img/hero_bg_2.jpg') }}" alt="Image" class="img-fluid">
-                            </figure>
-                            <div class="prop-text">
-                                <div class="inner">
-                                    <span class="price rounded">100.000€</span>
-                                    <h3 class="title">Zamakola</h3>
-                                    <p class="location">La peña</p>
-                                </div>
-                                <div class="prop-more-info">
-                                    <div class="inner d-flex">
-                                        <div class="col">
-                                            <span>Area:</span>
-                                            <strong>278m<sup>2</sup></strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Dormitorios:</span>
-                                            <strong>3</strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Baños:</span>
-                                            <strong>1</strong>
-                                        </div>
-                                        <div class="col">
-                                            <span>Garaje:</span>
-                                            <strong>Si</strong>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                            </a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
-
         </div>
     </div>
 
     <div class="container marketing mt-3">
             <h1 class="text-center">Más servicios</h1>
             {#           <p class="mb-3 text-center">Nuestros servicios</p>#}
-
-            <!-- Three columns of text below the carousel -->
             <div class="row text-center mt-5">
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div class="card h-100 border-0">
-                        <img class="card-img-top m-auto" style="width: 100px !important;" src="{{ asset('img/casa-lineal.png') }}" alt="">
+                        <i class="fas fa-gavel fa-5x"></i>
                         <div class="card-body">
                             <h4 class="card-title">Despacho Abogados</h4>
                             <p class="card-text">Vendemos al mayor precio en el menor tiempo.</p>
-                            <p class="card-text">Vendemos al mayor precio en el menor tiempo.</p>
-                            <a href="{{ path('services_lawyers') }}" class="btn btn-primary">Más información</a>
+                            <a href="{{ path('services_lawyers') }}" class="btn btn-info">Más información</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div class="card h-100 border-0">
-                        <img class="card-img-top m-auto" style="width: 100px !important;" src="{{ asset('img/propiedad-tiempo-lineal.png') }}" alt="">
+                        <i class="fas fa-file-signature fa-5x"></i>
                         <div class="card-body">
                             <h4 class="card-title">Asesoría Fiscal</h4>
                             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.</p>
-                            <a href="{{ path('services_tax_advice') }}" class="btn btn-primary">Más información</a>
+                            <a href="{{ path('services_tax_advice') }}" class="btn btn-info">Más información</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div class="card h-100 border-0">
-                        <img class="card-img-top m-auto" style="width: 100px !important;" src="{{ asset('img/calidad-lineal.png') }}" alt="">
+                        <i class="fas fa-user-secret fa-5x"></i>
                         <div class="card-body">
                             <h4 class="card-title">Seguros</h4>
-                            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-                            <a href="{{ path('services_insurance') }}" class="btn btn-primary">Más información</a>
+                            <p class="card-text">Garrido Correduría de seguros ubicada en Bilbao con amplia experiencia y dedicación de más de 30 años en el sector asegurador.</p>
+                            <a href="{{ path('services_insurance') }}" class="btn btn-info">Más información</a>
                         </div>
                     </div>
                 </div>
@@ -261,33 +207,33 @@
             <div class="row text-center mt-5">
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div class="card h-100 border-0">
-                        <img class="card-img-top m-auto" style="width: 100px !important;" src="{{ asset('img/casa-lineal-info.png') }}" alt="">
+                        <i class="fas fa-paint-brush fa-5x"></i>
                         <div class="card-body">
                             <h4 class="card-title">Reformas</h4>
                             <p class="card-text">Proyecto de rehabilitación integral de la vivienda.</p>
-                            <a href="{{ path('services_reforms') }}" class="btn btn-primary">Más información</a>
+                            <a href="{{ path('services_reforms') }}" class="btn btn-info">Más información</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div class="card h-100 border-0">
-                        <img class="card-img-top m-auto" style="width: 100px !important;" src="{{ asset('img/contrato-lineal.png') }}" alt="">
+                        <i class="fas fa-hand-holding-usd fa-5x"></i>
                         <div class="card-body">
                             <h4 class="card-title">Financiación</h4>
                             <p class="card-text">Hasta el 100% del precio de la vivienda.</p>
-                            <a href="{{ path('services_financing') }}" class="btn btn-primary">Más información</a>
+                            <a href="{{ path('services_financing') }}" class="btn btn-info">Más información</a>
                         </div>
                     </div>
                 </div>
 
                 <div class="col-lg-4 col-md-4 mb-4">
                     <div class="card h-100 border-0">
-                        <img class="card-img-top m-auto" style="width: 100px !important;" src="{{ asset('img/equipo-lineal.png') }}" alt="">
+                        <i class="fas fa-lightbulb fa-5x"></i>
                         <div class="card-body">
                             <h4 class="card-title">Certificado Energético</h4>
                             <p>Obligatorio tanto para la venta como para el alquiler.</p>
-                            <a href="{{ path('services_energy_certificate') }}" class="btn btn-primary">Más información</a>
+                            <a href="{{ path('services_energy_certificate') }}" class="btn btn-info">Más información</a>
                         </div>
                     </div>
                 </div>
@@ -295,38 +241,5 @@
             <p class="text-center mt-3">
             </p>
         </div>
-
-    {#<div class="container-fluid">
-            <h3 class="my-5 text-center">Galería</h3>
-            <div class="row text-center mb-4">
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ asset('img/hero_bg_1.jpg') }}" alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ asset('img/hero_bg_1.jpg') }}" alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ asset('img/hero_bg_1.jpg') }}" alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ asset('img/hero_bg_1.jpg') }}" alt="">
-                </div>
-            </div>
-            <div class="row text-center">
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ asset('img/hero_bg_2.jpg') }}" alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ asset('img/hero_bg_2.jpg') }}" alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ asset('img/hero_bg_2.jpg') }}" alt="">
-                </div>
-                <div class="col-md-3">
-                    <img class="img-fluid" src="{{ asset('img/hero_bg_2.jpg') }}" alt="">
-                </div>
-            </div>
-        </div>#}
-
     <hr class="featurette-divider">
 {% endblock %}

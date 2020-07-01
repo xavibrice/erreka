@@ -59,6 +59,16 @@ class Charge
      */
     private $stateKeys;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Offered", mappedBy="charge")
+     */
+    private $offereds;
+
+    public function __construct()
+    {
+        $this->offereds = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -162,6 +172,37 @@ class Charge
     {
         // TODO: Implement __toString() method.
         return (string)$this->price;
+    }
+
+    /**
+     * @return Collection|Offered[]
+     */
+    public function getOffereds(): Collection
+    {
+        return $this->offereds;
+    }
+
+    public function addOffered(Offered $offered): self
+    {
+        if (!$this->offereds->contains($offered)) {
+            $this->offereds[] = $offered;
+            $offered->setCharge($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffered(Offered $offered): self
+    {
+        if ($this->offereds->contains($offered)) {
+            $this->offereds->removeElement($offered);
+            // set the owning side to null (unless already changed)
+            if ($offered->getCharge() === $this) {
+                $offered->setCharge(null);
+            }
+        }
+
+        return $this;
     }
 
 }
