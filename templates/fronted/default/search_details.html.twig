@@ -10,8 +10,14 @@
             <div class="col-md-8">
                 <!-- Title -->
                 <h1 class="mt-4">
+
+                    {% set sum = 0 %}
+                    {% for reduction in property.propertyReductions %}
+                        {% set sum = sum + reduction.price %}
+                    {% endfor %}
+
                     {% if property.charge %}
-                        {{ property.charge.price|number_format(0, ',', '.') }} € - rebajas
+                        {{ (property.charge.price - sum)|number_format(0, ',', '.') }} €
                     {% endif %}
                 </h1>
 
