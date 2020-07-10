@@ -22,7 +22,7 @@ class DefaultController extends AbstractController
      */
     public function index(PropertyRepository $propertyRepository)
     {
-        return $this->render('fronted/default/homepage.html.twig', [
+        return $this->render('fronted/default/index.html.twig', [
             'properties' => $propertyRepository->onlyChargesWithoutAgency()
         ]);
     }
