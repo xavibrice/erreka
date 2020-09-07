@@ -46,8 +46,8 @@
                 %}show{% endif %}" aria-labelledby="headingNotice" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header"></h6>
-                        <a class="collapse-item {% if app.request.get('_route') == 'property_index' %}active{% endif %}" href="{{ path('property_index') }}">Noticias</a>
                         <a class="collapse-item {% if app.request.get('_route') == 'property_to_developer_index' %}active{% endif %}" href="{{ path('property_to_developer_index') }}">Noticias a Desarrollar</a>
+                        <a class="collapse-item {% if app.request.get('_route') == 'property_index' %}active{% endif %}" href="{{ path('property_index') }}">Noticias</a>
                     </div>
                 </div>
             </li>

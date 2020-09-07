@@ -236,6 +236,8 @@
                                             <thead>
                                             <tr>
                                                 <th>Fecha Ofrecido</th>
+                                                <th>Cliente</th>
+                                                <th>Propietario</th>
                                                 <th>Dirección</th>
                                             </tr>
                                             </thead>
@@ -243,6 +245,8 @@
                                             {% for offered in client.offereds|reverse %}
                                                 <tr>
                                                     <td>{{ offered.created|date('d/m/Y')}}</td>
+                                                    <td>{{ offered.client.fullName }}</td>
+                                                    <td>{{ offered.charge.property.fullName }}</td>
                                                     <td>{{ offered.charge.property.street.name }} {{ offered.charge.property.portal }}, {{ offered.charge.property.floor }}</td>
                                                 </tr>
                                             {% endfor %}

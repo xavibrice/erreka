@@ -53,7 +53,7 @@ class RateHousingType extends AbstractType
                 ],
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Comentario Vivienda',
+                'label' => 'Comentario Vivienda / WEB',
                 'required' => false,
                 'attr' => [
                     'rows' => 2,

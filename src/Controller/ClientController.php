@@ -384,6 +384,13 @@ class ClientController extends AbstractController
         $formOffered->handleRequest($request);
 
         if ($formOffered->isSubmitted() && $formOffered->isValid()) {
+            if ($offeredExist = $em->getRepository(Offered::class)->findBy(['client' => $client->getId(), 'charge' => $formOffered->get('charge')->getData()])) {
+                $this->addFlash('success', 'Ofrecido ya existe');
+                return $this->redirectToRoute($request->attributes->get('_route'), [
+                    'id' => $client->getId()
+                ]);
+            }
+
             $em->persist($offered);
             $em->flush();
 
