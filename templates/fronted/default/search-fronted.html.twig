@@ -32,7 +32,7 @@
         {{ form_end(form) }}
 
         <div class="row mb-5">
-        {% for property in properties|reverse %}
+        {% for property in properties %}
             {% if property.countPropertyContract == 0 %}
                 <div class="col-md-6 col-lg-4 mb-4">
                     <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="prop-entry d-block">
