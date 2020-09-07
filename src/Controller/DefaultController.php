@@ -257,7 +257,7 @@ class DefaultController extends AbstractController
             ->addSelect('COUNT(pro.contract) as countPropertyContract')
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
             ->groupBy('p.id')
-            ->orderBy('p.created', 'DESC')
+            ->orderBy('p.created', 'ASC')
         ;
 
         if ($form->get('bedrooms')->getData()) {
