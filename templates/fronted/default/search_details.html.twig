@@ -6,7 +6,7 @@
 
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
-    <meta property="og:title" content="{{ property.street.zone.name }} - {{ property.street.name }}">
+    <meta property="og:title" content="{{ property.typeProperty.name }} de {{ property.rateHousing.realMeters }}m² en {{ property.street.zone.name }} - {{ property.street.name }}">
     <meta property="og:description" content="{{ property.street.zone.name }} - {{ property.street.name }}">
     {% if property.rateHousing.image.first  %}
         <meta property="og:image" content="{{ uploaded_asset(property.rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_small') }}">
