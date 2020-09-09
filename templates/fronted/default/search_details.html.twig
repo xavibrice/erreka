@@ -1,5 +1,21 @@
 {% extends 'fronted/fronted.html.twig' %}
 
+{% block metadata %}
+    <meta name="title" content="{{ property.street.zone.name }} - {{ property.street.name }}">
+    <meta name="description" content="{{ property.typeProperty.name }} de {{ property.rateHousing.realMeters }}m² en {{ property.street.zone.name }} - {{ property.street.name }}">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+    <meta property="og:title" content="{{ property.street.zone.name }} - {{ property.street.name }}">
+    <meta property="og:description" content="{{ property.street.zone.name }} - {{ property.street.name }}">
+    {% if property.rateHousing.image.first  %}
+        <meta property="og:image" content="{{ uploaded_asset(property.rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_small') }}">
+    {% else %}
+        <meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
+    {% endif %}
+
+{% endblock %}
+
 {% block title %}{{ property.street.zone.name }} - {{ property.street.name }}{% endblock %}
 
 {% block body %}
@@ -10,6 +26,7 @@
             <div class="col-md-8">
                 <!-- Title -->
                 <h1 class="mt-4">
+
 
                     {% set sum = 0 %}
                     {% for reduction in property.propertyReductions %}

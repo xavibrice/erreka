@@ -1,6 +1,18 @@
 {% extends 'fronted/fronted.html.twig' %}
 
-{% block title %}Inmobiliaria Erreka{% endblock %}
+{% block metadata %}
+<meta name="title" content="Inmobiliaria Erreka - Inicio">
+<meta name="description" content="Erreka Inmobiliaria ubicada en la Peña con mas de 16 años en el sector inmobiliarion en el barrio La Peña, tanto en venta como en alquiler.">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+<meta property="og:title" content="Inmobiliaria Erreka - Inicio">
+<meta property="og:description" content="Erreka Inmobiliaria ubicada en la Peña con mas de 16 años en el sector inmobiliarion en el barrio La Peña, tanto en venta como en alquiler.">
+<meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
+
+{% endblock %}
+
+{% block title %}Inmobiliaria Erreka - Inicio{% endblock %}
 
 {% block body %}
     <div id="myCarousel" class="carousel slide" data-ride="carousel">

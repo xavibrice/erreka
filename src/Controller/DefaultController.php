@@ -321,7 +321,7 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/politica-de-privacidad", name="privacy_police")
+     * @Route("/privacy-statement", name="privacy_police")
      */
     public function privacyPolice(Request $request)
     {

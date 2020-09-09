@@ -2,11 +2,12 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% block metadata %}{% endblock %}
     <title>{% block title %}Erreka Inmobiliaria{% endblock %}</title>
     <link rel="icon" href="{{ asset('img/logo-erreka.png') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('fronted') }}
-        {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,700,900|Roboto+Mono:300,400,500">
         <style>
             body {
@@ -23,6 +24,8 @@
                 border-bottom: 1px solid #3DBEC9 !important;
             }
         </style>
+        {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
+
     {% endblock %}
 </head>
 <body>
@@ -74,6 +77,10 @@
             </nav>
         </header>
     {% endblock %}
+    {% if chcookieconsent_isCookieConsentSavedByUser() == false %}
+        {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set', { 'locale' : app.request.locale })) }}
+    {% endif %}
+
     {% block body %}{% endblock %}
     {% block footer %}
         <!-- FOOTER -->
