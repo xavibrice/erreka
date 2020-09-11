@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -476,7 +481,8 @@
       <workItem from="1595242757399" duration="2107000" />
       <workItem from="1596987523845" duration="3588000" />
       <workItem from="1599466449604" duration="330000" />
-      <workItem from="1599469500200" duration="10815000" />
+      <workItem from="1599469500200" duration="15777000" />
+      <workItem from="1599813174539" duration="4739000" />
     </task>
     <servers />
   </component>
@@ -510,10 +516,6 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="496" y="208" key="#Plugins/0.0.1792.1120@0.0.1792.1120" timestamp="1594026690214" />
-    <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1589908676702">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="360" y="222" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1589908676702" />
     <state x="714" y="222" key="#com.intellij.ide.util.MemberChooser" timestamp="1592320746032">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -526,10 +528,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="643" y="293" key="NewPhpClassDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1591956152121" />
-    <state width="500" height="445" key="SwitcherDM" timestamp="1588588150587">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1599649951696">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="500" height="445" key="SwitcherDM/0.0.1792.1120@0.0.1792.1120" timestamp="1588588150587" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1599649951696" />
     <state x="1961" y="239" width="718" height="706" key="search.everywhere.popup" timestamp="1596988532082">
       <screen x="1792" y="0" width="1920" height="1080" />
     </state>

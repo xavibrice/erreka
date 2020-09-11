@@ -12,6 +12,27 @@
 
 {% endblock %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .carousel-caption {
+            bottom: 3rem;
+            z-index: 10;
+        }
+
+        .carousel-item {
+            height: 50rem;
+        }
+        .carousel-item > img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            height: auto;
+        }
+    </style>
+{% endblock %}
+
 {% block title %}Inmobiliaria Erreka - Inicio{% endblock %}
 
 {% block body %}
