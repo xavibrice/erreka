@@ -153,7 +153,7 @@
             <h2 class="text-center pt-5">Viviendas Destacadas</h2>
             <div class="row mt-5 pb-5">
                 {% for property in properties %}
-                    {% if property.countPropertyContract == 0 or property.countPropertyContract is empty %}
+                    {% if property.countPropertyContract == 0 %}
                         <div class="col-md-6 col-lg-4 mb-4">
                             <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="prop-entry d-block">
                                 <figure>
