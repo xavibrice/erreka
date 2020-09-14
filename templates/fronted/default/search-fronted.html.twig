@@ -45,8 +45,8 @@
                         </figure>
                         <div class="prop-text">
                             <div class="inner">
-                                <span class="price rounded">{{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}€</span>
-                                <h3 class="title">{{ property[0].street.name }}</h3>
+                                <span class="price rounded">{{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}€ - {{ property[0].typeProperty.name }}</span>
+                                <h3 class="title d-flex">{{ property[0].street.name }} - <b class="text-info">{{ property[0].reason.name }}</b></h3>
                                 <p class="location">{{ property[0].street.zone.name }}</p>
                             </div>
                             <div class="prop-more-info">
