@@ -282,11 +282,10 @@ class DefaultController extends AbstractController
             ;
         }
 
-        if ($form->get('sellOrRent')->getData()) {
+        if ($form->get('sellOrRent')->getData() !== null) {
+
             if ($form->get('sellOrRent')->getData() == 0) {
-                dd($form->get('sellOrRent')->getData());
-                die();
-               $queryBuilder
+                $queryBuilder
                    ->andWhere('s.name = :situation')
                    ->andWhere('r.name = :reason')
                    ->setParameter('situation', 'Noticia')
