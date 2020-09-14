@@ -18,21 +18,21 @@ class SearchFrontedType extends AbstractType
     {
         $builder
             ->add('sellOrRent', ChoiceType::class, [
-                'label' => 'Venta/Alquiler',
+                'label' => 'Venta / Alquiler:',
                 'choices' => $this->getChoices(),
                 'mapped' => false,
                 'placeholder' => 'Selecciona Motivo'
             ])
             ->add('bedrooms', IntegerType::class, [
-                'label' => 'Dormitorios',
+                'label' => 'Dormitorios:',
                 'required' => false,
             ])
             ->add('price', MoneyType::class, [
-                'label' => 'Precio',
+                'label' => 'Precio Hasta:',
                 'required' => false,
             ])
             ->add('typeProperty', EntityType::class, [
-                'label' => 'Tipo propiedad',
+                'label' => 'Tipo Propiedad:',
                 'class' => TypeProperty::class,
                 'placeholder' => 'Selecciona propiedad',
                 'required' => false,
