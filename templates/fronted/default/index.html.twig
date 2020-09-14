@@ -1,7 +1,7 @@
 {% extends 'fronted/fronted.html.twig' %}
 
 {% block metadata %}
-<meta name="title" content="Inmobiliaria Erreka - Inicio">
+<meta name="title" content="Erreka Inmobiliaria - Inicio">
 <meta name="description" content="Erreka Inmobiliaria ubicada en la Peña con mas de 16 años en el sector inmobiliarion en el barrio La Peña, tanto en venta como en alquiler.">
 
 <meta property="og:type" content="website">
@@ -84,7 +84,7 @@
 
     <div class="bg-light pt-3 px-3 pt-md-0 px-md-5 text-center overflow-hidden">
         <div class="bg-white shadow-sm mx-auto p-5 mb-auto" style="width: 80%; height: auto; border-radius: 21px 21px 0 0;">
-            <form class="pl-5 pr-5" method="get" action="{{ path('search_fronted') }}">
+            <form class="pl-5 pr-5" method="get" name="search_fronted" action="{{ path('search_fronted') }}">
                 <div class="form-row">
                     <div class="form-group col-md-3">
                         <label for="search_fronted_sellOrRent">Venta/Alquiler</label>
