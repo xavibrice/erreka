@@ -5,11 +5,37 @@
 {% endblock %}
 
 {% block body %}
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Abogados</h1>
+                            <span class="color-text-a">Contamos con un equipo de profesionales expertos en distintas materias y con aplicación de las nuevas tecnologías que se adapten a sus necesidades.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Abogados
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Intro Single-->
+    </main>
+
     <div class="container mt-5">
         <div class="text-center">
-            <h2>Abogados</h2>
-            <p>Contamos con un equipo de profesionales expertos en distintas materias y con aplicación de las nuevas tecnologías que se adapten a sus necesidades.</p>
-
             <div class="row">
                 <div class="col-md-6">
                     <img src="{{ asset('img/abogados.png') }}" class="card-img-top" alt="Abogados">

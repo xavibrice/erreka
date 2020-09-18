@@ -5,11 +5,38 @@
 {% endblock %}
 
 {% block body %}
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Seguros</h1>
+                            <span class="color-text-a">
+                                Garrido Correduría de seguros ubicada en Bilbao con amplia experiencia y dedicación de más de 30 años en el sector asegurador, tiene como principal objetivo ofrecer los mejores servicios, siempre adaptados a las necesidades de los clientes.
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Seguros
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Intro Single-->
+    </main>
+
     <div class="container mt-5 mb-5">
-        <div class="text-center">
-            <h1>Seguros</h1>
-            <p>Garrido Correduría de seguros ubicada en Bilbao con amplia experiencia y dedicación de más de 30 años en el sector asegurador, tiene como principal objetivo ofrecer los mejores servicios, siempre adaptados a las necesidades de los clientes.</p>
-        </div>
         <div class="row featurette mt-5">
             <div class="col-md-7">
                 <h2 class="featurette-heading">Los seguros más seguros a tráves de un corredor. <span class="text-muted">¿Por qué? </span></h2>
@@ -48,5 +75,4 @@
 
     </div>
 
-    <hr class="featurette-divider">
 {% endblock %}

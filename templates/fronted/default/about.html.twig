@@ -3,147 +3,137 @@
 {% block title %}Sobre nosotros{% endblock %}
 
 {% block body %}
-    <div class="container mt-5 mb-5">
-        <div class="text-center">
-            <h2>Nuestras agencias</h2>
-            <p>
-                Confíe su vivienda a Erreka Inmobiliaria. Su agencia del barrio.
-            </p>
-        </div>
-
-        <!-- START THE FEATURETTES -->
-        <div class="row featurette mt-5">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">Erreka <span class="text-muted">Inmobiliaria</span></h2>
-                <p class="lead">Con nuestra larga trayectoria de más de 16 años en el sector inmobiliario en el barrio de La Peña, tanto en venta como en alquiler, nos preocupamos por asumir una posición de vanguardia en el mercado inmobiliario, adquiriendo el mejor conocimiento, y ofreciendo una atención profesional y discreta, con calidez humana, que nos conduce a conseguir la mejor solución de las necesidades a nuestros clientes.</p>
-                <h5>Erreka Inmobiliaria</h5>
-                <ul class="list-unstyled text-small">
-                    <li>Zamakola 65, Bj (La Peña)</li>
-                    <li>675 602 296 - 944 790 908</li>
-                    <li><a class="text-muted" href="mailto:info@errekainmobiliaria.com">info@errekainmobiliaria.com</a></li>
-                </ul>
-            </div>
-            <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{ asset('img/offices/erreka.jpg') }}" alt="">
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">Asesoría <span class="text-muted">Garrido</span></h2>
-                <p class="lead">Garrido Correduría de segurosubicada en Bilbao y con amplia experiencia y dedicación de más de 30 años en el sector asegurador, tiene como principal objetivo ofrecer los mejores servicios, siempre daptados a las necesidades de los clientes.</p>
-                <ul class="list-unstyled text-small">
-                    <li>Zamakola 49, Bj (La Peña)</li>
-                    <li>688 823 351 - 944 169 854</li>
-                    <li><a class="text-muted" href="mailto:info@zamakolaabogados.com">info@zamakolaabogados.com</a></li>
-                </ul>
-            </div>
-            <div class="col-md-5 order-md-1">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{ asset('img/offices/garrido.jpg') }}" alt="">
-            </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette">
-            <div class="col-md-7">
-                <h2 class="featurette-heading">Erreka Garrido <span class="text-muted">Inmobiliaria</span></h2>
-                <p class="lead">Gracias a la fusión de dos empresas referentes en el barrio, hemos creado el Grupo Erreka Garrido para dar un servicio más completo a todos nuestros clientes.</p>
-                <ul class="list-unstyled text-small">
-                    <li>Bilbao La Vieja 1, Bj</li>
-                    <li>688 713 382 - 688 738 264</li>
-                    <li><a class="text-muted" href="mailto:info@errekagarrido.com">info@errekagarrido.com</a></li>
-                </ul>
-            </div>
-            <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" src="{{ asset('img/offices/erreka_garrido.jpg') }}" alt="">
-            </div>
-        </div>
-        {#
-                <hr class="featurette-divider">
-
-                <div class="text-center">
-                    <h2>Agentes</h2>
-                    <p>
-                        Erreka Inmobiliaria cuenta con un equipo de profesionales altamente
-                        cualificados, lo que nos permite cubrir una amplia gama de servicios y
-                        un conocimiento integral del sector Inmobiliario.
-                    </p>
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Nuestra agencias</h1>
+                            <span class="color-text-a">Confíe su vivienda a Erreka Inmobiliaria. Su agencia del barrio.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Nosotros
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agents/jon.jpeg') }}" alt="">
-                                <div class="card-body">
-                                    <h3 class="text-center">Jon De Castro</h3>
-                                    <p class="card-text">
-                                    </p>
-                                </div>
+            </div>
+        </section>
+        <!-- End Intro Single-->
+
+        <!-- ======= About Section ======= -->
+        <section class="section-about">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-5">
+                                <img src="{{ asset('build/img/offices/erreka.jpg') }}" alt="Oficina Erreka" class="img-fluid">
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agents/nekane.png') }}" alt="">
-                                <div class="card-body">
-                                    <h3 class="text-center">Nekane Bilbao</h3>
-                                    <p class="card-text">
-                                    </p>
+                            <div class="col-md-6 col-lg-5 section-md-t3">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">Inmobiliaria
+                                        <span class="color-d">Erreka</span>
+                                    </h3>
                                 </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agentes.png') }}" alt="">
-                                <div class="card-body">
-                                    <h3 class="text-center">Iñaki Elosua</h3>
-                                    <p class="card-text">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agents/zaida.jpeg') }}" alt="">
-                                <div class="card-body">
-                                    <h3 class="text-center">Zaina Garcia</h3>
-                                    <p class="card-text">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agentes.png') }}" alt="">
-                                <div class="card-body">
-                                    <h3 class="text-center">Jasmina Velasco</h3>
-                                    <p class="card-text">
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card mb-4 shadow-sm">
-                                <img class="bd-placeholder-img card-img-top" src="{{ asset('img/agentes.png') }}" alt="">
-                                <div class="card-body">
-                                    <h3 class="text-center">Iñigo Garrido</h3>
-                                    <p class="card-text">
-                                    </p>
-                                </div>
+                                <p class="color-text-a">
+                                    Con nuestra larga trayectoria de más de 16 años en el sector inmobiliario en el barrio de La Peña, tanto en venta como en alquiler, nos preocupamos por asumir una posición de vanguardia en el mercado inmobiliario, adquiriendo el mejor conocimiento, y ofreciendo una atención profesional y discreta, con calidez humana, que nos conduce a conseguir la mejor solución de las necesidades a nuestros clientes.
+                                </p>
+                                <ul class="list-unstyled">
+                                    <li class="color-a">
+                                        <span class="color-text-a">Dirección: </span><a target="_blank" href="https://goo.gl/maps/D6yGAVfyMhxKNPiK9">Zamakola 65, Bj, La Peña</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Móvil: </span><a href="tel:+34675602296">+34 675 602 296</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Teléfono: </span><a href="tel:+34944790908">944 790 908</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Correo: </span><a href="mailto:info@errekainmobiliaria.com">info@errekainmobiliaria.com</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>
-                </div>#}
-
-
-
-
-    </div>
-
-    <hr class="featurette-divider">
-
+                </div>
+                <div class="row section-t8">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-5 section-md-t3">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">Asesoría
+                                        <span class="color-d">Garrido</span>
+                                    </h3>
+                                </div>
+                                <p class="color-text-a">
+                                    Garrido Correduría de segurosubicada en Bilbao y con amplia experiencia y dedicación de más de 30 años en el sector asegurador, tiene como principal objetivo ofrecer los mejores servicios, siempre daptados a las necesidades de los clientes.
+                                </p>
+                                <ul class="list-unstyled">
+                                    <li class="color-a">
+                                        <span class="color-text-a">Dirección: </span><a target="_blank" href="https://goo.gl/maps/vHKHyGmpwK9gbgCZA">Zamakola 49 Bj, La Peña</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Móvil: </span><a href="tel:+34688823351">+34 688 823 351</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Teléfono: </span><a href="tel:+34944169854">944 169 854</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Correo: </span> <a href="mailto:info@zamakolaabogados.com">info@zamakolaabogados.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-md-6 col-lg-5">
+                                <img src="{{ asset('build/img/offices/garrido.jpg') }}" alt="Oficina Erreka" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row section-t8">
+                    <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-6 col-lg-5">
+                                <img src="{{ asset('build/img/offices/erreka_garrido.jpg') }}" alt="Oficina Erreka" class="img-fluid">
+                            </div>
+                            <div class="col-md-6 col-lg-5 section-md-t3">
+                                <div class="title-box-d">
+                                    <h3 class="title-d">Erreka Garrido
+                                        <span class="color-d">Inmobiliaria</span>
+                                    </h3>
+                                </div>
+                                <p class="color-text-a">
+                                    Gracias a la fusión de dos empresas referentes en el barrio, hemos creado el Grupo Erreka Garrido para dar un servicio más completo a todos nuestros clientes.
+                                </p>
+                                <ul class="list-unstyled">
+                                    <li class="color-a">
+                                        <span class="color-text-a">Dirección: </span><a target="_blank" href="https://goo.gl/maps/WYdAtMYmMVRB6gLp8">Bilbao La Vieja 1, Bj</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Móvil: </span><a href="tel:+34688713382">+34 688 713 382</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Móvil: </span><a href="tel:+34688738264">+34 688 738 264</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Correo: </span><a href="mailto:info@errekagarrido.com">info@errekagarrido.com</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 {% endblock %}

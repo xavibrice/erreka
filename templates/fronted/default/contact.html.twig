@@ -3,8 +3,135 @@
 {% block title %}Contacto{% endblock %}
 
 {% block body %}
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Contacto</h1>
+                            <span class="color-text-a">¿Qué dudas tienes?</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Contacto
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Intro Single-->
 
-    <div class="container mt-5">
+        <!-- ======= Contact Single ======= -->
+        <section class="contact">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-7">
+                                {{ form_start(form, {'attr': {'class': 'php-email-form'}}) }}
+                                {{ form_widget(form) }}
+                                <button class="btn btn-info btn-a">Enviar Mensaje</button>
+                                {{ form_end(form) }}
+                            </div>
+                            <div class="col-md-5 section-md-t3">
+                                <div class="icon-box section-b2">
+                                    <div class="icon-box-icon">
+                                        <span class="ion-ios-paper-plane"></span>
+                                    </div>
+                                    <div class="icon-box-content table-cell">
+                                        <div class="icon-box-title">
+                                            <h4 class="icon-title">Inmobiliaria <span class="color-b">Erreka</span></h4>
+                                        </div>
+                                        <div class="icon-box-content">
+                                            <p class="mb-1">Dirección:
+                                                <span class="color-a"><a target="_blank" href="https://goo.gl/maps/D6yGAVfyMhxKNPiK9">Zamakola 65, Bj, La Peña</a></span>
+                                            </p>
+                                            <p class="mb-1">Correo:
+                                                <span class="color-a"><a href="mailto:info@errekainmobiliaria.com">info@errekainmobiliaria.com</a></span>
+                                            </p>
+                                            <p class="mb-1">Móvil:
+                                                <span class="color-a"><a href="tel:+34675602296">+34 675 602 296</a></span>
+                                            </p>
+                                            <p class="mb-1">Teléfono:
+                                                <span class="color-a"><a href="tel:+34944790908">944 790 908</a></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="icon-box section-b2">
+                                    <div class="icon-box-icon">
+                                        <span class="ion-ios-pin"></span>
+                                    </div>
+                                    <div class="icon-box-content table-cell">
+                                        <div class="icon-box-title">
+                                            <h4 class="icon-title"><span class="color-b">Erreka Garrido</span> Inmobiliaria</h4>
+                                        </div>
+                                        <div class="icon-box-content">
+                                            <p class="mb-1">Dirección:
+                                                <span class="color-a"><a target="_blank" href="https://goo.gl/maps/WYdAtMYmMVRB6gLp8">Bilbao La Vieja 1, Bj</a></span>
+                                            </p>
+                                            <p class="mb-1">Correo:
+                                                <span class="color-a"><a href="mailto:info@errekagarrido.com">info@errekagarrido.com</a></span>
+                                            </p>
+                                            <p class="mb-1">Móvil:
+                                                <span class="color-a"><a href="tel:+34688713382">+34 688 713 382</a></span>
+                                            </p>
+                                            <p class="mb-1">Móvil:
+                                                <span class="color-a"><a href="tel:+34688738264">+34 688 738 264</a></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="icon-box">
+                                    <div class="icon-box-icon">
+                                        <span class="ion-ios-redo"></span>
+                                    </div>
+                                    <div class="icon-box-content table-cell">
+                                        <div class="icon-box-title">
+                                            <h4 class="icon-title">Asesoría <span class="color-b">Garrido</span></h4>
+                                        </div>
+                                        <div class="icon-box-content">
+                                            <p class="mb-1">Dirección:
+                                                <span class="color-a"><a target="_blank" href="https://goo.gl/maps/vHKHyGmpwK9gbgCZA">Zamakola 49 Bj, La Peña</a></span>
+                                            </p>
+                                            <p class="mb-1">Correo:
+                                                <span class="color-a"><a href="mailto:info@zamakolaabogados.com">info@zamakolaabogados.com</a></span>
+                                            </p>
+                                            <p class="mb-1">Móvil:
+                                                <span class="color-a"><a href="tel:+34688823351">+34 688 823 351</a></span>
+                                            </p>
+                                            <p class="mb-1">Teléfono:
+                                                <span class="color-a"><a href="tel:+34944169854">944 169 854</a></span>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 section-t8">
+                        <div class="contact-map box">
+                            <div id="map" class="contact-map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!4v1600350693334!6m8!1m7!1suGmN6Sd9E9lIVPYtKKKcYg!2m2!1d43.24115113193842!2d-2.922552287561262!3f349.0368341484008!4f-2.895186649099614!5f0.7820865974627469" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Contact Single-->
+    </main>
+
+{#    <div class="container mt-5">
         <div class="row">
             <div class="col-md-8">
                 <div class="card">
@@ -42,8 +169,5 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <hr class="featurette-divider">
-
+    </div>#}
 {% endblock %}

@@ -3,13 +3,37 @@
 {% block title %}Alquiler Garantizado{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <div class="text-center">
-            <h1>Alquiler garantizado</h1>
-            <p>Tu seguridad es nuestro objetivo.</p>
-            <p>¿Quieres alquilar tu vivienda pero temes que no te paguen?</p>
-        </div>
 
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Alquiler garantizado</h1>
+                            <span class="color-text-a">Tu seguridad es nuestro objetivo. ¿Quieres alquilar tu vivienda pero temes que no te paguen?</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Alquiler garantizado
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Intro Single-->
+    </main>
+
+    <div class="container mt-5">
         <div class="row mt-5">
             <div class="col-md-6">
                 <div class="card border-0">

@@ -6,14 +6,36 @@
 
 {% block body %}
 
-    <div class="container mt-5 mb-5">
-        <div class="text-center">
-            <h2>Asesoría integral de empresas y autónomos</h2>
-            <p>
-                Nuestra Asesoría ofrece a nuestros clientes todos los servicios que necesita, adaptándonos a sus necesidades, bien como empresa o como autónomo para que logren cumplir con sus obligaciones fiscales de la manera más eficiente posible.
-            </p>
-        </div>
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Asesoría integral de empresas y autónomos</h1>
+                            <span class="color-text-a">Nuestra Asesoría ofrece a nuestros clientes todos los servicios que necesita, adaptándonos a sus necesidades, bien como empresa o como autónomo para que logren cumplir con sus obligaciones fiscales de la manera más eficiente posible.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Asesoría Fiscal
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Intro Single-->
+    </main>
 
+    <div class="container mt-5 mb-5">
         <!-- START THE FEATURETTES -->
         <div class="row featurette mt-5">
             <div class="col-md-7">
@@ -69,6 +91,4 @@
         </div>
         <!-- /END THE FEATURETTES -->
     </div>
-
-    <hr class="featurette-divider">
 {% endblock %}

@@ -3,131 +3,229 @@
 {% block title %}¿Quieres vender?{% endblock %}
 
 {% block body %}
-    <div class="container mt-5">
-        <div class="text-center">
-            <h1>¡Vendemos tu vivienda antes de 90 días!</h1>
-        </div>
-    </div>
-
-    <hr class="featurette-divider">
-
-    <!-- START THE FEATURETTES -->
-    <div class="container-fluid bg-light">
-        <div class="container">
-            <div class="row featurette">
-                <div class="col-md-7">
-                    <h2 class="featurette-heading">3 <span class="text-muted">AGENCIAS</span></h2>
-                    <p class="lead">Distribuidas en zonas cercanas y estratégicas para hacer una mayor sinergia entre ellas y obtener un mayor beneficio para el cliente. </p>
-                    <p>Somos tres agencias cada una profesional en su sector</p>
-
-                    <h5><a href="{{ path('about_us') }}">Erreka <span class="text-muted">Inmobiliaria</span></a></h5>
-                    <h5><a href="{{ path('about_us') }}">Erreka Garrido <span class="text-muted">Inmobiliaria</span></a></h5>
-                    <h5><a href="{{ path('about_us') }}">Asesoría <span class="text-muted">Garrido</span></a></h5>
-
-                </div>
-                <div class="col-md-5 mt-5">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400px" height="400px" src="{{ asset('img/sell/agencias.png') }}" alt="">
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">¡Vendemos tu vivienda antes de 90 días!</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    ¿Quieres vender?
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+        <!-- End Intro Single-->
 
-    <div class="container-fluid bg-white">
-        <div class="container">
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                    <h2 class="featurette-heading">VALORACIÓN <span class="text-muted">REAL Y EXACTA</span></h2>
-                    <p class="lead">Valoración mas exacta de su vivienda gracias a las ventas realizadas en la zona de similares características en los últimos meses.</p>
-                    <p><strong>¡Cuanto más deprisa vendas, mejor!</strong></p>
-                    <p>Las estadísticas dicen que las casa que se venden mas deprisa son las que tienen el precio adecuado desde el primer día. Yo te daré la información que te ayudara a poner tu casa el precio exacto.</p>
+        <!-- ======= Agent Single ======= -->
+        <section class="agent-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="agent-avatar-box">
+                                    <img src="{{ asset('build/img/sell/agencias.png') }}" alt="Agencias" class="agent-avatar img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-md-5 section-md-t3">
+                                <div class="agent-info-box">
+                                    <div class="agent-title">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">3
+                                                <br> Agencias</h3>
+                                        </div>
+                                    </div>
+                                    <div class="agent-content mb-3">
+                                        <p class="content-d color-text-a">
+                                            Distribuidas en zonas cercanas y estratégicas para hacer una mayor sinergia entre ellas y obtener un mayor beneficio para el cliente.
+                                        </p>
+                                        <p class="content-d color-text-a">
+                                            Somos tres agencias cada una profesional en su sector.
+                                        </p>
+                                        <div class="info-agents color-a">
+                                            <h5><a href="{{ path('about_us') }}">Erreka <span class="text-muted">Inmobiliaria</span></a></h5>
+                                            <h5><a href="{{ path('about_us') }}">Erreka Garrido <span class="text-muted">Inmobiliaria</span></a></h5>
+                                            <h5><a href="{{ path('about_us') }}">Asesoría <span class="text-muted">Garrido</span></a></h5>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-5 order-md-1">
-                    <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400px" height="400px" src="{{ asset('img/sell/valoracion.png') }}" alt="">
+                <div class="row section-t3">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="agent-info-box">
+                                    <div class="agent-title">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Valoración
+                                                <br>real y exacta</h3>
+                                        </div>
+                                    </div>
+                                    <div class="agent-content mb-3">
+                                        <p class="content-d color-text-a">
+                                            Valoración mas exacta de su vivienda gracias a las ventas realizadas en la zona de similares características en los últimos meses.
+                                        </p>
+                                        <p class="content-d color-text-a"><strong>¡Cuanto más deprisa vendas, mejor!</strong></p>
+                                        <p class="content-d color-text-a">Las estadísticas dicen que las casa que se venden mas deprisa son las que tienen el precio adecuado desde el primer día. Yo te daré la información que te ayudara a poner tu casa el precio exacto.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 section-md-t3">
+                                <div class="agent-avatar-box">
+                                    <img src="{{ asset('build/img/sell/valoracion.png') }}" alt="Valoración" class="agent-avatar img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row section-t3">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="agent-avatar-box">
+                                    <img src="{{ asset('build/img/sell/reforma.png') }}" alt="Reforma" class="agent-avatar img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-md-5 section-md-t3">
+                                <div class="agent-info-box">
+                                    <div class="agent-title">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Acondicionar
+                                                <br> su vivienda para la venta</h3>
+                                        </div>
+                                    </div>
+                                    <div class="agent-content mb-3">
+                                        <p class="content-d color-text-a">
+                                            Reportaje fotográfico profesional incluyendo un tour virtual de su vivienda.
+                                        </p>
+                                        <p class="content-d color-text-a"><strong>¡La primera impresión es muy importante!</strong></p>
+                                        <p class="content-d color-text-a">Decoración (Home Staging) y preparación de la vivienda para que los compradores se vean viviendo en ella.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row section-t3">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="agent-info-box">
+                                    <div class="agent-title">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Llegar al mayor número
+                                                <br>de compradores</h3>
+                                        </div>
+                                    </div>
+                                    <div class="agent-content mb-3">
+                                        <p class="content-d color-text-a">Potente plan de marketing que permite una privilegiada visibilidad de su vivienda respecto a otros inmuebles ofertados en el ismo mercado.</p>
+                                        <p class="content-d color-text-a">Mas de 15 portales inmobiliarios incluyendo los principales que son Idealista y Fotocasa, además de nuestra página web.</p>
+                                        <p class="content-d color-text-a"><strong>Tirada de 15.000 flyers buzoneados mensualmente en los barrios donde estamos.</strong></p>
+                                        <p class="content-d color-text-a">Cruce con potenciales compradores de nuestra amplia base de datos.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 section-md-t3">
+                                <div class="agent-avatar-box">
+                                    <img src="{{ asset('build/img/sell/buscarcompradores.jpg') }}" alt="Buscar Compradores" class="agent-avatar img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row section-t3">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="agent-avatar-box">
+                                    <img src="{{ asset('build/img/sell/informacion.png') }}" alt="Información al propietario" class="agent-avatar img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-md-5 section-md-t3">
+                                <div class="agent-info-box">
+                                    <div class="agent-title">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Información
+                                                <br> constante al propietario</h3>
+                                        </div>
+                                    </div>
+                                    <div class="agent-content mb-3">
+                                        <p class="content-d color-text-a">Reuniones personales con cada propietario y contacto telefónico frecuento de las gestiones referentes a su vivienda. Informes del trabajo realizado.</p>
+                                        <p class="content-d color-text-a"><strong>Información de las visitas tanto antes como después de las mismas.</strong></p>                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row section-t3">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="agent-info-box">
+                                    <div class="agent-title">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Gestionar
+                                                <br>toda la documentación</h3>
+                                        </div>
+                                    </div>
+                                    <div class="agent-content mb-3">
+                                        <p class="content-d color-text-a">Resolver al comprador todas las dudas referentes a la compra de la vivienda. Acuerdo con entidades bancarias para la financiación de los compradores que tuvieran dificultades para la concesión de la hipoteca.</p>
+                                        <p class="content-d color-text-a"><strong>Gestionar toda la documentación para ir a la notaria con las mejores garantías.</strong></p>
+                                        <p class="content-d color-text-a">Ofertas de compradores por escrito para una mayor tranquilidad.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 section-md-t3">
+                                <div class="agent-avatar-box">
+                                    <img src="{{ asset('build/img/sell/gestionar.jpg') }}" alt="Gestionar" class="agent-avatar img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row section-t3">
+                    <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="agent-avatar-box">
+                                    <img src="{{ asset('build/img/sell/personalshopper.jpg') }}" alt="Personal Shopper" class="agent-avatar img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-md-5 section-md-t3">
+                                <div class="agent-info-box">
+                                    <div class="agent-title">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Personal
+                                                <br> shopper</h3>
+                                        </div>
+                                    </div>
+                                    <div class="agent-content mb-3">
+                                        <p class="content-d color-text-a">Agente exclusivo con un máximo de 10 viviendas en cartera el cual le representa en todo momento, defendiendo sus intereses y gestionando sus ofertas.</p>
+                                        <p class="content-d color-text-a"><strong>Nuestra área de trabajo es el barrio de la Peña, la zona de Bilbao la Vieja y Casco Viejo.</strong></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
-    <div class="container-fluid bg-light">
-        <div class="container">
-            <div class="row featurette">
-                <div class="col-md-7">
-                <h2 class="featurette-heading">ACONDICIONAR <span class="text-muted">SU VIVIENDA PARA LA VENTA</span></h2>
-                <p class="lead">Reportaje fotográfico profesional incluyendo un tour virtual de su vivienda. </p>
-                <p><strong>¡La primera impresión es muy importante!</strong></p>
-                <p>Decoración (Home Staging) y preparación de la vivienda para que los compradores se vean viviendo en ella.</p>
-            </div>
-                <div class="col-md-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400px" height="400px" src="{{ asset('img/reforma.png') }}" alt="">
-            </div>
-            </div>
-        </div>
-    </div>
-
-
-    <div class="container-fluid bg-white">
-        <div class="container">
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-                <h2 class="featurette-heading">LLEGAR <span class="text-muted">AL MAYOR NÚMERO DE COMPRADORES</span></h2>
-                <p class="lead">Potente plan de marketing que permite una privilegiada visibilidad de su vivienda respecto a otros inmuebles ofertados en el ismo mercado.</p>
-                <p>Mas de 15 portales inmobiliarios incluyendo los principales que son Idealista y Fotocasa, además de nuestra página web.</p>
-                <p><strong>Tirada de 15.000 flyers buzoneados mensualmente en los barrios donde estamos.</strong></p>
-                <p>Cruce con potenciales compradores de nuestra amplia base de datos.</p>
-            </div>
-                <div class="col-md-5 mt-5">
-                <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="400px" height="400px" src="{{ asset('img/sell/buscarcompradores.jpg') }}" alt="">
-            </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid bg-light">
-        <div class="container">
-            <div class="row featurette">
-                <div class="col-md-7">
-            <h2 class="featurette-heading">INFORMACIÓN <span class="text-muted">CONSTANTE AL PROPIETARIO</span></h2>
-            <p class="lead">Reuniones personales con cada propietario y contacto telefónico frecuento de las gestiones referentes a su vivienda. Informes del trabajo realizado.</p>
-            <p><strong>Información de las visitas tanto antes como después de las mismas.</strong></p>
-        </div>
-                <div class="col-md-5">
-            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500px" height="500px" src="{{ asset('img/sell/informacion.png') }}" alt="">
-        </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid bg-white">
-        <div class="container">
-            <div class="row featurette">
-                <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">GESTIONAR <span class="text-muted">TODA LA DOCUMENTACIÓN</span></h2>
-            <p class="lead">Resolver al comprador todas las dudas referentes a la compra de la vivienda. Acuerdo con entidades bancarias para la financiación de los compradores que tuvieran dificultades para la concesión de la hipoteca.</p>
-            <p><strong>Gestionar toda la documentación para ir a la notaria con las mejores garantías.</strong></p>
-            <p>Ofertas de compradores por escrito para una mayor tranquilidad.</p>
-        </div>
-                <div class="col-md-5 order-md-1 my-5">
-            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500px" height="500px" src="{{ asset('img/sell/gestionar.jpg') }}" alt="">
-        </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container-fluid bg-light">
-        <div class="container">
-            <div class="row featurette">
-                <div class="col-md-7">
-            <h2 class="featurette-heading">PERSONAL <span class="text-muted">SHOPPER</span></h2>
-            <p class="lead">Agente exclusivo con un máximo de 10 viviendas en cartera el cual le representa en todo momento, defendiendo sus intereses y gestionando sus ofertas.</p>
-            <p><strong>Nuestra área de trabajo es el barrio de la Peña, la zona de Bilbao la Vieja y Casco Viejo.</strong></p>
-        </div>
-                <div class="col-md-5">
-            <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500px" height="500px" src="{{ asset('img/sell/personalshopper.jpg') }}" alt="">
-        </div>
-            </div>
-        </div>
-    </div>
-
-    <hr class="featurette-divider">
-
+        </section>
+    </main>
 {% endblock %}

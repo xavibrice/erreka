@@ -20,172 +20,208 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css" />
 {% endblock %}
 
-{% block title %}{{ property.street.zone.name }} - {{ property.street.name }}{% endblock %}
+{% block title %}{{ property.commercial.agency.name }} | {{ property.typeProperty.name }} de {{ property.rateHousing.realMeters }}m² en {{ property.street.zone.name }} - {{ property.street.name }}{% endblock %}
 
 {% block body %}
-    <!-- Page Content -->
-    <div class="container mt-5">
-        <div class="row">
-            <!-- Post Content Column -->
-            <div class="col-md-8">
-                <!-- Title -->
-                <h1 class="mt-4">
-                    {% set sum = 0 %}
-                    {% for reduction in property.propertyReductions %}
-                        {% set sum = sum + reduction.price %}
-                    {% endfor %}
-
-                    {% if property.charge %}
-                        {{ (property.charge.price - sum)|number_format(0, ',', '.') }} €
-                    {% endif %}
-                </h1>
-
-                <!-- Author -->
-                <p class="lead">
-                    {{ property.street.zone.name }} - {{ property.street.name }}
-                </p>
-
-                <hr>
-
-                <!-- Preview Image -->
-                <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="false">
-                    <div class="carousel-inner">
-                        {% set isFirst = true %}
-
-                        <div class="compact-gallery">
-                            {% for image in property.rateHousing.image if image.rateHousing.id == property.rateHousing.id %}
-
-                                {% if isFirst == true %}
-                                    <div class="carousel-item active">
-                                {% else %}
-                                    <div class="carousel-item">
-                                {% endif %}
-                                        <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
-                                            <img class="img-fluid" src="{{ uploaded_asset(image.imagePath) }}" alt="{{ uploaded_asset(image.nameImage) }}">
-                                        </a>
-                                </div>
-                                {% set isFirst = false %}
-                            {% endfor %}
+    {% set sum = 0 %}
+    {% for reduction in property.propertyReductions %}
+        {% set sum = sum + reduction.price %}
+    {% endfor %}
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">
+                                {{ property.typeProperty.name }} en {{ property.street.name }}
+                            </h1>
+                            <span class="color-text-a">
+                                {{ property.reason.name }}
+                            </span>
                         </div>
-
-                        {% if property.rateHousing.image.count != 1 %}
-                            <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
-                            </a>
-                        {% endif %}
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                  <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                  <a href="{{ path('search_fronted') }}">Propiedades</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    {{ property.street.name }}
+                                </li>
+                            </ol>
+                        </nav>
                     </div>
                 </div>
+          </div>
+        </section>
+        <!-- End Intro Single-->
 
-                <hr>
-                <!-- Post Content -->
-                <p class="lead">{{ property.rateHousing.comment }}</p>
-                <hr>
+        <!-- ======= Property Single ======= -->
+        <section class="property-single nav-arrow-b">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="compact-gallery">
+                            <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+
+                                {% for image in property.rateHousing.image if image.rateHousing.id == property.rateHousing.id %}
+                                    <div class="carousel-item-b">
+                                        <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                            <img src="{{ uploaded_asset(image.imagePath) }}" alt="{{ uploaded_asset(image.nameImage) }}">
+                                        </a>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                        <div class="row justify-content-between">
+                            <div class="col-md-5 col-lg-4">
+                                <div class="property-price d-flex justify-content-center foo">
+                                    <div class="card-header-c d-flex">
+                                        <div class="card-box-ico">
+                                            <span class="ion-money">€</span>
+                                        </div>
+                                        <div class="card-title-c align-self-center">
+                                            <h5 class="title-c">
+                                            {% if property.charge %}
+                                                {{ (property.charge.price - sum)|number_format(0, ',', '.') }} €
+                                            {% endif %}
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="property-summary">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <div class="title-box-d section-t4">
+                                                <h3 class="title-d">Distribución</h3>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="summary-list">
+                                        <ul class="list">
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Tipo Propiedad:</strong>
+                                                <span>{{ property.typeProperty.name }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Estado:</strong>
+                                                <span>{{ property.reason.name }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Area:</strong>
+                                                <span>{{ property.rateHousing.realMeters }}m
+                                                    <sup>2</sup>
+                                                </span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Dormitorios:</strong>
+                                                <span>{{ property.rateHousing.bedrooms }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Baños:</strong>
+                                                <span>{{ property.rateHousing.bathrooms }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>C. Energético:</strong>
+                                                <span>{{ property.rateHousing.energyCertificate ? property.rateHousing.energyCertificate.name }}</span>
+                                            </li>
+                                            <li class="d-flex justify-content-between">
+                                                <strong>Calefacción:</strong>
+                                                <span>{{ property.rateHousing.heating ? property.rateHousing.heating.name : 'Por definir' }}</span>
+                                            </li>
+                                        </ul>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="col-md-7 col-lg-7 section-md-t3">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Descripción Propiedad</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="property-description">
+                                    <p class="description color-text-a">{{ property.rateHousing.comment }}</p>
+                                </div>
+                                <div class="row section-t3">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Extras</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="amenities-list color-text-a">
+                                     <ul class="list-a no-margin">
+                                        <li><strong>Cota Cero: </strong><span>{{ property.rateHousing.zeroDimension ? 'Si' : 'No' }}</span></li>
+                                        <li><strong>Balcón: </strong><span>{{ property.rateHousing.balcony ? 'Si' : 'No' }}</span></li>
+                                        <li><strong>Garaje Directo: </strong><span>{{ property.rateHousing.directGarage ? 'Si' : 'No' }}</span></li>
+                                        <li><strong>Trastero: </strong><span>{{ property.rateHousing.storageRoom ? 'Si' : 'No' }}</span></li>
+                                     </ul>
+                                </div>
+                                <div class="row section-t3">
+                                    <div class="col-sm-12">
+                                        <div class="title-box-d">
+                                            <h3 class="title-d">Edificio</h3>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="amenities-list color-text-a">
+                                     <ul class="list-a no-margin">
+                                        <li><strong>Ascensor: </strong><span>{{ property.rateHousing.elevator ? 'Si' : 'No' }}</span></li>
+                                        <li><strong>Antigüedad: </strong><span>{{ property.rateHousing.antiquity ? 'Si' : 'No' }}</span></li>
+                                        <li><strong>Estructura Edificio: </strong><span>{{ property.rateHousing.buildingStructure ? property.rateHousing.buildingStructure.name : 'Por definir' }}</span></li>
+                                        <li><strong>Gasto Comunidad: </strong><span>{{ property.rateHousing.communityExpenses|number_format(0, ',', '.') }}€</span></li>
+                                     </ul>
+                                </div>
+                          </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                    <div class="row section-t3">
+                        <div class="col-sm-12">
+                            <div class="title-box-d">
+                                <h3 class="title-d">Contacto Agente</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6 col-lg-4">
+                        <img src="{{ asset('img/agentes.png') }}" alt="Agentes" class="img-fluid">
+                      </div>
+                      <div class="col-md-6 col-lg-4">
+                        <div class="property-agent">
+                          <h4 class="title-agent">{{ property.commercial.fullName }}</h4>
+                          {#<p class="color-text-a">
+                            descripcion agente
+                          </p>#}
+                          {% set message = 'Hola, quería más información de esta propiedad. ' %}
+                          <ul class="list-unstyled">
+                            <li class="d-flex justify-content-between">
+                              <strong>WhatsApp:</strong>
+                              <span class="color-text-a"><a target="_blank" href="https://wa.me/{{ 34 ~ property.commercial.mobile }}?text={{ message }}{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}"><i class="fab fa-whatsapp text-success"></i> {{ property.commercial.mobile }}</a></span>
+                            </li>
+                            <li class="d-flex justify-content-between">
+                              <strong>Agencia:</strong>
+                              <span class="color-text-a">{{ property.commercial.agency }}</span>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    </div>
+                </div>
             </div>
+        </section>
 
-            <!-- Sidebar Widgets Column -->
-            <div class="col-md-4 mt-5">
-
-                <div class="card border-info mt-5">
-                    <h5 class="card-header bg-info text-white border-info">Contacta</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Agente
-                            <span class="">{{ property.commercial.fullName }}</span>
-                        </li>
-
-                        {% set message = 'Hola, quería más información de esta propiedad. ' %}
-
-
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            <span>WhatsApp</span>
-                            <span class=""><a target="_blank" href="https://wa.me/{{ 34 ~ property.commercial.mobile }}?text={{ message }}{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}"><i class="fab fa-whatsapp text-success"></i> {{ property.commercial.mobile }}</a></span>
-                        </li>
-                    </ul>
-                </div>
-                <!-- DISTRIBUCIÓN -->
-                <div class="card border-info my-4">
-                    <h5 class="card-header bg-info text-white border-info">Distribución</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Dormitorios
-                            <span>{{ property.rateHousing.bedrooms }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Baños
-                            <span>{{ property.rateHousing.bathrooms }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Metros
-                            <span>{{ property.rateHousing.realMeters }}m<sup>2</sup></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            C. Energético
-                            <span>{{ property.rateHousing.energyCertificate ? property.rateHousing.energyCertificate.name }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Calefacción
-                            <span>{{ property.rateHousing.heating ? property.rateHousing.heating.name }}</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- EXTRAS -->
-                <div class="card border-info my-4">
-                    <h5 class="card-header bg-info text-white border-info">Extras</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Cota Cero
-                            <span>{{ property.rateHousing.zeroDimension ? 'Si' : 'No' }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Balcón
-                            <span>{{ property.rateHousing.balcony ? 'Si' : 'No' }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Garaje Directo
-                            <span>{{ property.rateHousing.directGarage ? 'Si' : 'No' }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Trastero
-                            <span>{{ property.rateHousing.storageRoom ? 'Si' : 'No' }}</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- EDIFICIO -->
-                <div class="card border-info my-4">
-                    <h5 class="card-header bg-info text-white border-info">Edificio</h5>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Ascensor
-                            <span>{{ property.rateHousing.elevator ? 'Si' : 'No' }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Antigüedad
-                            <span>{{ property.rateHousing.antiquity ? 'Si' : 'No' }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Estructura Edificio
-                            <span>{{ property.rateHousing.buildingStructure ? property.rateHousing.buildingStructure.name }}</span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Gastos Comunidad
-                            <span>{{ property.rateHousing.communityExpenses|number_format(0, ',', '.') }}</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-        </div>
-        <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
+    </main>
 {% endblock %}
 
 {% block javascripts %}

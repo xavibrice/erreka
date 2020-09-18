@@ -21,21 +21,33 @@ class SearchFrontedType extends AbstractType
                 'label' => 'Venta / Alquiler:',
                 'choices' => $this->getChoices(),
                 'mapped' => false,
-                'placeholder' => 'Selecciona Motivo'
+                'placeholder' => 'Selecciona Motivo',
+                'attr' => [
+                    'class' => 'form-control-lg form-control-a'
+                ]
             ])
             ->add('bedrooms', IntegerType::class, [
                 'label' => 'Dormitorios:',
                 'required' => false,
+                'attr' => [
+                    'class' => 'form-control-lg form-control-a'
+                ]
             ])
             ->add('price', MoneyType::class, [
                 'label' => 'Precio Hasta:',
                 'required' => false,
+                'attr' => [
+                    'class' => 'form-control-lg form-control-a'
+                ]
             ])
             ->add('typeProperty', EntityType::class, [
                 'label' => 'Tipo Propiedad:',
                 'class' => TypeProperty::class,
                 'placeholder' => 'Selecciona propiedad',
                 'required' => false,
+                'attr' => [
+                    'class' => 'form-control-lg form-control-a'
+                ]
             ])
         ;
     }
