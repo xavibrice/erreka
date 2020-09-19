@@ -42,7 +42,7 @@ class DefaultController extends AbstractController
         $properties = $queryBuilder->getQuery()->getResult();
 
 
-        return $this->render('fronted/default/index.html.twig', [
+        return $this->render('fronted/default/homepage.html.twig', [
             //'properties' => $propertyRepository->onlyChargesWithoutAgency()
             'properties' => $properties,
         ]);
