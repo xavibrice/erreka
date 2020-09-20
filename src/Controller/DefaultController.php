@@ -22,29 +22,8 @@ class DefaultController extends AbstractController
      */
     public function index(Request $request, PropertyRepository $propertyRepository): Response
     {
-        $queryBuilder = $propertyRepository
-            ->createQueryBuilder('p')
-            ->innerJoin('p.charge', 'c')
-            ->innerJoin('p.reason', 'r')
-            ->innerJoin('r.situation', 's')
-            ->innerJoin('p.typeProperty', 'tp')
-            ->innerJoin('p.rateHousing', 'rh')
-            ->leftJoin('p.propertyReductions', 'pr')
-            ->leftJoin('p.proposals', 'pro')
-            ->addSelect('SUM(pr.price) as sumPropertyReduction')
-            ->addSelect('COUNT(pro.contract) as countPropertyContract')
-            ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
-            ->groupBy('p.id')
-            ->orderBy('p.created', 'ASC')
-            ->setMaxResults(3)
-        ;
-
-        $properties = $queryBuilder->getQuery()->getResult();
-
-
         return $this->render('fronted/default/index.html.twig', [
-            //'properties' => $propertyRepository->onlyChargesWithoutAgency()
-            'properties' => $properties,
+            'properties' => $propertyRepository->onlyChargesWithoutAgency()
         ]);
     }
 
