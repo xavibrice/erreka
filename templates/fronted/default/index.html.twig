@@ -177,7 +177,7 @@
                                 {% if property[0].rateHousing.image.first  %}
                                     <img class="img-a img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
                                 {% else %}
-                                    <img class="img-a img-fluid" src="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}" alt="Image">
+                                    <img class="img-a img-fluid" src="{{ asset('img/not-available.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Foto no disponible">
                                 {% endif %}
                             </div>
                             <div class="card-overlay">
