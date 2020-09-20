@@ -6,7 +6,6 @@ use App\Entity\Property;
 use App\Entity\SearchFronted;
 use App\Form\ContactType;
 use App\Form\SearchFrontedType;
-use App\Repository\ChargeRepository;
 use App\Repository\ClientRepository;
 use App\Repository\NoteCommercialRepository;
 use App\Repository\PropertyRepository;

@@ -69,13 +69,20 @@
                     <div class="col-sm-12">
                         <div class="compact-gallery">
                             <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
-
                                 {% for image in property.rateHousing.image if image.rateHousing.id == property.rateHousing.id %}
-                                    <div class="carousel-item-b">
-                                        <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
-                                            <img src="{{ uploaded_asset(image.imagePath) }}" alt="{{ uploaded_asset(image.nameImage) }}">
-                                        </a>
-                                    </div>
+                                    {% if property.rateHousing.image.count > 0 %}
+                                        <div class="carousel-item-b">
+                                            <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                                <img src="{{ uploaded_asset(image.imagePath) }}" alt="{{ uploaded_asset(image.nameImage) }}">
+                                            </a>
+                                        </div>
+                                    {% else %}
+                                        <div class="carousel-item-b">
+                                            <a class="btn btn-link" href="{{ asset('img/not-available.jpg') }}">
+                                                <img class="img-a img-fluid" src="{{ asset('img/not-available.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Image" />
+                                            </a>
+                                        </div>
+                                    {% endif %}
                                 {% endfor %}
                             </div>
                         </div>
