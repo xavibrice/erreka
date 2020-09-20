@@ -20,7 +20,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/", name="default")
      */
-    public function index(PropertyRepository $propertyRepository)
+    public function index(Request $request, PropertyRepository $propertyRepository): Response
     {
         $queryBuilder = $propertyRepository
             ->createQueryBuilder('p')
