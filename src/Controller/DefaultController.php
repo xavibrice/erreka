@@ -36,6 +36,7 @@ class DefaultController extends AbstractController
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
             ->groupBy('c.id')
             ->orderBy('c.start_date', 'DESC')
+            ->setMaxResults(3)
         ;
 
         $properties = $queryBuilder->getQuery()->getResult();
@@ -278,7 +279,6 @@ class DefaultController extends AbstractController
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
             ->groupBy('c.id')
             ->orderBy('c.start_date', 'DESC')
-            ->setMaxResults(3)
         ;
 
         if ($form->get('bedrooms')->getData()) {
