@@ -9,6 +9,7 @@ use App\Form\SearchFrontedType;
 use App\Repository\ClientRepository;
 use App\Repository\NoteCommercialRepository;
 use App\Repository\PropertyRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,8 +22,28 @@ class DefaultController extends AbstractController
      */
     public function index(Request $request, PropertyRepository $propertyRepository): Response
     {
+        $queryBuilder = $propertyRepository
+            ->createQueryBuilder('p')
+            ->innerJoin('p.charge', 'c')
+            ->innerJoin('p.reason', 'r')
+            ->innerJoin('r.situation', 's')
+            ->innerJoin('p.typeProperty', 'tp')
+            ->innerJoin('p.rateHousing', 'rh')
+            ->leftJoin('p.propertyReductions', 'pr')
+            ->leftJoin('p.proposals', 'pro')
+            ->addSelect('SUM(pr.price) as sumPropertyReduction')
+            ->addSelect('COUNT(pro.contract) as countPropertyContract')
+            ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
+            ->groupBy('c.id')
+            ->orderBy('c.start_date', 'DESC')
+        ;
+
+        $properties = $queryBuilder->getQuery()->getResult();
+
+
         return $this->render('fronted/default/index.html.twig', [
-            'properties' => $propertyRepository->onlyChargesWithoutAgency()
+            //'properties' => $propertyRepository->onlyChargesWithoutAgency()
+            'properties' => $properties
         ]);
     }
 
@@ -255,8 +276,8 @@ class DefaultController extends AbstractController
             ->addSelect('SUM(pr.price) as sumPropertyReduction')
             ->addSelect('COUNT(pro.contract) as countPropertyContract')
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
-            ->groupBy('p.id')
-            ->orderBy('p.created', 'ASC')
+            ->groupBy('c.id')
+            ->orderBy('c.start_date', 'DESC')
         ;
 
         if ($form->get('bedrooms')->getData()) {
