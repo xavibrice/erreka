@@ -3,10 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/legal/legal_warning.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/legal/legal_warning.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/legal/privacy_police.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/legal/privacy_police.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/energy_certificate.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/energy_certificate.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/financing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/financing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/insurance.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/insurance.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/lawyers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/lawyers.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/reforms.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/reforms.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/tax_advice.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/tax_advice.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -492,7 +504,8 @@
       <workItem from="1600295212621" duration="115000" />
       <workItem from="1600295485836" duration="18528000" />
       <workItem from="1600414730992" duration="18932000" />
-      <workItem from="1600632911796" duration="1439000" />
+      <workItem from="1600632911796" duration="2096000" />
+      <workItem from="1600675919385" duration="5443000" />
     </task>
     <servers />
   </component>
@@ -550,18 +563,14 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1600295189013" />
-    <state x="643" y="293" key="NewPhpClassDialog" timestamp="1591956152121">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="643" y="293" key="NewPhpClassDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1591956152121" />
     <state x="397" y="199" key="SettingsEditor" timestamp="1600187841730">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1600187841730" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1600444877575">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1600681871878">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1600444877575" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1600681871878" />
     <state x="115" y="265" key="run.anything.popup" timestamp="1600179640476">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

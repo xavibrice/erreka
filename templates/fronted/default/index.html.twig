@@ -1,7 +1,7 @@
 {% extends 'fronted/fronted.html.twig' %}
 
 {% block metadata %}
-<meta name="title" content="Erreka Inmobiliaria - Inicio">
+<meta name="title" content="Inicio | Erreka Inmobiliaria (La Peña)">
 <meta name="description" content="Erreka Inmobiliaria ubicada en la Peña con mas de 16 años en el sector inmobiliarion en el barrio La Peña, tanto en venta como en alquiler.">
 
 <meta property="og:type" content="website">
@@ -12,7 +12,7 @@
 
 {% endblock %}
 
-{% block title %}Inmobiliaria Erreka - Inicio{% endblock %}
+{% block title %}Erreka Inmobiliaria (La Peña)- Inicio{% endblock %}
 
 {% block body %}
     <!-- ======= Intro Section ======= -->
@@ -157,7 +157,7 @@
                     <div class="col-md-12">
                         <div class="title-wrap d-flex justify-content-between">
                             <div class="title-box">
-                                <h2 class="title-a">Últimas Propiedas</h2>
+                                <h2 class="title-a">Últimas Propiedas ({{ properties|length }})</h2>
                             </div>
                             <div class="title-link">
                                 <a href="{{ path('search_fronted') }}">Todas las propiedades
@@ -169,57 +169,58 @@
                 </div>
                 <div id="property-carousel" class="owl-carousel owl-theme">
                     {% for property in properties %}
-                    {% if property.countPropertyContract == 0 %}
-                    <div class="carousel-item-b">
-                        <div class="card-box-a card-shadow">
-                            <div class="img-box-a">
-                                {% if property[0].rateHousing.image.first  %}
-                                    <img class="img-a img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
-                                {% else %}
-                                    <img class="img-a img-fluid" src="{{ asset('img/not-available.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Foto no disponible">
-                                {% endif %}
-                            </div>
-                            <div class="card-overlay">
-                                <div class="card-overlay-a-content">
-                                    <div class="card-header-a">
-                                        <h2 class="card-title-a">
-                                            <a href="{{ path('search_details', {'reference': property[0].reference}) }}">{{ property[0].street.name }}
-                                                <br /> {{ property[0].street.zone.name }}</a>
-                                        </h2>
+                        {% if property.countPropertyContract == 0 %}
+                            {{ property[0].street.zone.name }}
+                            <div class="carousel-item-b">
+                                <div class="card-box-a card-shadow">
+                                    <div class="img-box-a">
+                                        {% if property[0].rateHousing.image.first %}
+                                            <img class="img-a img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
+                                        {% else %}
+                                            <img class="img-a img-fluid" src="{{ asset('img/not-available.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Foto no disponible">
+                                        {% endif %}
                                     </div>
-                                    <div class="card-body-a">
-                                        <div class="price-box d-flex">
-                                            <span class="price-a"><span class="color-b">{{ property[0].reason.name }}</span> | {{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}€</span>
+                                    <div class="card-overlay">
+                                        <div class="card-overlay-a-content">
+                                            <div class="card-header-a">
+                                                <h2 class="card-title-a">
+                                                    <a href="{{ path('search_details', {'reference': property[0].reference}) }}">{{ property[0].street.name }}
+                                                        <br /> {{ property[0].street.zone.name }}</a>
+                                                </h2>
+                                            </div>
+                                            <div class="card-body-a">
+                                                <div class="price-box d-flex">
+                                                    <span class="price-a"><span class="color-b">{{ property[0].reason.name }}</span> | {{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}€</span>
+                                                </div>
+                                                <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="link-a">Haga clic aquí para ver
+                                                    <span class="fas fa-angle-right"></span>
+                                                </a>
+                                            </div>
+                                            <div class="card-footer-a">
+                                                <ul class="card-info d-flex justify-content-around">
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-ruler-combined"></i> Área</h4>
+                                                        <span>{{ property[0].rateHousing.realMeters }}m<sup>2</sup></span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-bed"></i> Dormitorios</h4>
+                                                        <span>{{ property[0].rateHousing.bedrooms }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-bath"></i> Baños</h4>
+                                                        <span>{{ property[0].rateHousing.bathrooms }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-car-side"></i> Garaje</h4>
+                                                        <span>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</span>
+                                                    </li>
+                                                </ul>
+                                            </div>
                                         </div>
-                                        <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="link-a">Haga clic aquí para ver
-                                            <span class="fas fa-angle-right"></span>
-                                        </a>
-                                    </div>
-                                    <div class="card-footer-a">
-                                        <ul class="card-info d-flex justify-content-around">
-                                            <li>
-                                                <h4 class="card-info-title">Area</h4>
-                                                <span>{{ property[0].rateHousing.realMeters }}m<sup>2</sup></span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Dormitorios</h4>
-                                                <span>{{ property[0].rateHousing.bedrooms }}</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Baños</h4>
-                                                <span>{{ property[0].rateHousing.bathrooms }}</span>
-                                            </li>
-                                            <li>
-                                                <h4 class="card-info-title">Garaje</h4>
-                                                <span>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</span>
-                                            </li>
-                                        </ul>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                    {% endif %}
+                        {% endif %}
                     {% endfor %}
                 </div>
             </div>
@@ -306,7 +307,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-5">
+                <div class="row mt-2">
                     <div class="col-md-4">
                         <div class="card-box-c foo">
                             <div class="card-header-c d-flex">

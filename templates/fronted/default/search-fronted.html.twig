@@ -1,6 +1,6 @@
 {% extends 'fronted/fronted.html.twig' %}
 
-{% block title %}Buscar Propiedad{% endblock %}
+{% block title %}Buscar Propiedad | Erreka Inmobiliaria (La Peña){% endblock %}
 
 {% block body %}
 
@@ -95,19 +95,19 @@
                                         <div class="card-footer-a">
                                             <ul class="card-info d-flex justify-content-around">
                                                 <li>
-                                                    <h4 class="card-info-title">Area</h4>
+                                                    <h4 class="card-info-title"><i class="fas fa-ruler-combined"></i> Área</h4>
                                                     <span>{{ property[0].rateHousing.realMeters }}m<sup>2</sup></span>
                                                 </li>
                                                 <li>
-                                                    <h4 class="card-info-title">Dormitorios</h4>
+                                                    <h4 class="card-info-title"><i class="fas fa-bed"></i> Dorm.</h4>
                                                     <span>{{ property[0].rateHousing.bedrooms }}</span>
                                                 </li>
                                                 <li>
-                                                    <h4 class="card-info-title">Baños</h4>
+                                                    <h4 class="card-info-title"><i class="fas fa-bath"></i> Baños</h4>
                                                     <span>{{ property[0].rateHousing.bathrooms }}</span>
                                                 </li>
                                                 <li>
-                                                    <h4 class="card-info-title">Garaje</h4>
+                                                    <h4 class="card-info-title"><i class="fas fa-car-side"></i> Garaje</h4>
                                                     <span>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</span>
                                                 </li>
                                             </ul>

@@ -20,7 +20,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.11.1/baguetteBox.min.css" />
 {% endblock %}
 
-{% block title %}{{ property.commercial.agency.name }} | {{ property.typeProperty.name }} de {{ property.rateHousing.realMeters }}m² en {{ property.street.zone.name }} - {{ property.street.name }}{% endblock %}
+{% block title %}{{ property.typeProperty.name }} de {{ property.rateHousing.realMeters }}m² en {{ property.street.zone.name }} - {{ property.street.name }} | Erreka Inmobiliaria (La Peña){% endblock %}
 
 {% block body %}
     {% set sum = 0 %}
@@ -206,20 +206,43 @@
                       <div class="col-md-6 col-lg-4">
                         <div class="property-agent">
                           <h4 class="title-agent">{{ property.commercial.fullName }}</h4>
-                          {#<p class="color-text-a">
-                            descripcion agente
-                          </p>#}
+                          <p class="color-text-a">
+                              Contacta con nuestro agente a través de WhatsApp o llamada.
+                          </p>
                           {% set message = 'Hola, quería más información de esta propiedad. ' %}
                           <ul class="list-unstyled">
-                            <li class="d-flex justify-content-between">
-                              <strong>WhatsApp:</strong>
-                              <span class="color-text-a"><a target="_blank" href="https://wa.me/{{ 34 ~ property.commercial.mobile }}?text={{ message }}{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}"><i class="fab fa-whatsapp text-success"></i> {{ property.commercial.mobile }}</a></span>
-                            </li>
-                            <li class="d-flex justify-content-between">
-                              <strong>Agencia:</strong>
-                              <span class="color-text-a">{{ property.commercial.agency }}</span>
-                            </li>
+                              <li class="d-flex justify-content-between">
+                                  <strong>WhatsApp:</strong>
+                                  <span class="color-text-a"><a target="_blank" href="https://wa.me/{{ 34 ~ property.commercial.mobile }}?text={{ message }}{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}"><i class="fab fa-whatsapp text-success"></i> {{ property.commercial.mobile }}</a></span>
+                              </li>
+                              <li class="d-flex justify-content-between">
+                                  <strong>Agencia:</strong>
+                                  <span class="color-text-a">{{ property.commercial.agency }}</span>
+                              </li>
+                              <li class="d-flex justify-content-between">
+                                  <strong>Correo:</strong>
+                                  <span class="color-text-a">info@errekainmobiliaria.com</span>
+                              </li>
                           </ul>
+                            <div class="socials-a">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <a target="_blank" href="https://www.facebook.com/ErrekaInmobiliaria">
+                                            <i class="fab fa-facebook-square" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a target="_blank" href="https://www.instagram.com/errekainmo">
+                                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <a target="_blank" href="https://g.page/ErrekaInmobiliaria">
+                                            <i class="fab fa-google" aria-hidden="true"></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                       </div>
                     </div>
