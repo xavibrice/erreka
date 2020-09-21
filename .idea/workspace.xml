@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -490,7 +489,7 @@
       <workItem from="1600295485836" duration="18528000" />
       <workItem from="1600414730992" duration="18932000" />
       <workItem from="1600632911796" duration="2096000" />
-      <workItem from="1600675919385" duration="12023000" />
+      <workItem from="1600675919385" duration="12377000" />
     </task>
     <servers />
   </component>
@@ -532,22 +531,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1593592742868" />
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom" timestamp="1600686953007">
+    <state width="1750" height="318" key="GridCell.Tab.0.bottom" timestamp="1600700578142">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1600686953007" />
-    <state width="1750" height="318" key="GridCell.Tab.0.center" timestamp="1600686953006">
+    <state width="1750" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578142" />
+    <state width="1750" height="318" key="GridCell.Tab.0.center" timestamp="1600700578140">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1600686953006" />
-    <state width="1750" height="318" key="GridCell.Tab.0.left" timestamp="1600686953006">
+    <state width="1750" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578140" />
+    <state width="1750" height="318" key="GridCell.Tab.0.left" timestamp="1600700578139">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1600686953006" />
-    <state width="1750" height="318" key="GridCell.Tab.0.right" timestamp="1600686953007">
+    <state width="1750" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578139" />
+    <state width="1750" height="318" key="GridCell.Tab.0.right" timestamp="1600700578141">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1600686953007" />
+    <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578141" />
     <state x="397" y="199" key="SettingsEditor" timestamp="1600187841730">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
