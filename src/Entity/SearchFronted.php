@@ -5,8 +5,8 @@ namespace App\Entity;
 class SearchFronted
 {
     const SELL_OR_RENT = [
-        0 => 'Venta',
-        1 => 'Alquiler',
+        0 => 'Compra',
+        1 => 'Alquilar',
     ];
 
     /**
