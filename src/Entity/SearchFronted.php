@@ -6,7 +6,7 @@ class SearchFronted
 {
     const SELL_OR_RENT = [
         0 => 'Compra',
-        1 => 'Alquilar',
+        1 => 'Alquiler',
     ];
 
     /**
