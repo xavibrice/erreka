@@ -3,7 +3,6 @@
 {% block title %}Buscar Propiedad | Erreka Inmobiliaria (La Peña){% endblock %}
 
 {% block body %}
-
     <main id="main">
         <!-- ======= Intro Single ======= -->
         <section class="intro-single">
@@ -28,7 +27,8 @@
                     </div>
                 </div>
             </div>
-        </section><!-- End Intro Single-->
+        </section>
+        <!-- End Intro Single-->
     </main>
 
     <div class="container">
@@ -54,7 +54,6 @@
                         {{ form_row(form.typeProperty) }}
                     </div>
                 </div>
-
                 <div class="col-md-12 text-center mb-3">
                     <button type="submit" class="btn btn-a btn-info">Buscar Propiedad</button>
                 </div>
@@ -96,7 +95,7 @@
                                             <ul class="card-info d-flex justify-content-around">
                                                 <li>
                                                     <h4 class="card-info-title"><i class="fas fa-ruler-combined"></i> Área</h4>
-                                                    <span>{{ property[0].rateHousing.realMeters }}m<sup>2</sup></span>
+                                                    <span>{{ property[0].rateHousing.realMeters }} m<sup>2</sup></span>
                                                 </li>
                                                 <li>
                                                     <h4 class="card-info-title"><i class="fas fa-bed"></i> Dorm.</h4>
@@ -121,5 +120,4 @@
             </div>
         </div>
     </section>
-
 {% endblock %}

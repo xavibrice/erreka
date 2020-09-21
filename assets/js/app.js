@@ -11,6 +11,7 @@ import moment from "moment";
 
 require('bootstrap');
 require('datatables.net');
+require('datatables.net-bs4');
 require('moment');
 
 // require('datatables.net-bs4');

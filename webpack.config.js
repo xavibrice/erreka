@@ -26,7 +26,6 @@ Encore
      */
     // .addStyleEntry('dataTableCss', './assets/css/dataTables.bootstrap4.min.css')
     .addEntry('app', './assets/js/app.js')
-    .addEntry('dataTableJs', './assets/js/dataTables.bootstrap4.min.js')
     .addEntry('calendar', './assets/js/calendar/index.js')
     .addEntry('fronted', './assets/fronted/js/fronted.js')
     //.addEntry('page1', './assets/js/page1.js')

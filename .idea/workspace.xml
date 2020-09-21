@@ -3,22 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/property.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/property.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/legal/legal_warning.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/legal/legal_warning.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/legal/privacy_police.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/legal/privacy_police.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/energy_certificate.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/energy_certificate.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/financing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/financing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/insurance.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/insurance.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/lawyers.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/lawyers.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/reforms.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/reforms.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/services/tax_advice.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/services/tax_advice.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -505,7 +497,7 @@
       <workItem from="1600295485836" duration="18528000" />
       <workItem from="1600414730992" duration="18932000" />
       <workItem from="1600632911796" duration="2096000" />
-      <workItem from="1600675919385" duration="5443000" />
+      <workItem from="1600675919385" duration="8286000" />
     </task>
     <servers />
   </component>
@@ -547,22 +539,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1593592742868" />
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom" timestamp="1600295189013">
+    <state width="1750" height="318" key="GridCell.Tab.0.bottom" timestamp="1600686953007">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1600295189013" />
-    <state width="1750" height="318" key="GridCell.Tab.0.center" timestamp="1600295189012">
+    <state width="1750" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1600686953007" />
+    <state width="1750" height="318" key="GridCell.Tab.0.center" timestamp="1600686953006">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1600295189012" />
-    <state width="1750" height="318" key="GridCell.Tab.0.left" timestamp="1600295189012">
+    <state width="1750" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1600686953006" />
+    <state width="1750" height="318" key="GridCell.Tab.0.left" timestamp="1600686953006">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1600295189012" />
-    <state width="1750" height="318" key="GridCell.Tab.0.right" timestamp="1600295189013">
+    <state width="1750" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1600686953006" />
+    <state width="1750" height="318" key="GridCell.Tab.0.right" timestamp="1600686953007">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1600295189013" />
+    <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1600686953007" />
     <state x="397" y="199" key="SettingsEditor" timestamp="1600187841730">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
