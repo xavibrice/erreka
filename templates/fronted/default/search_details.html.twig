@@ -201,7 +201,11 @@
                     </div>
                     <div class="row">
                       <div class="col-md-6 col-lg-4">
-                        <img src="{{ asset('img/agentes.png') }}" alt="Agentes" class="img-fluid">
+                          {% if property.commercial.imageFilename is empty %}
+                              <img class="img-fluid" src="{{ asset('img/agentes.png') }}" alt="Agentes">
+                          {% else %}
+                              <img class="img-fluid" src="{{ uploaded_asset(property.commercial.imagePath) }}" alt="{{ uploaded_asset(property.commercial.imagePath) }}">
+                          {% endif %}
                       </div>
                       <div class="col-md-6 col-lg-4">
                         <div class="property-agent">
