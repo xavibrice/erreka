@@ -8,11 +8,23 @@
     <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
     <meta property="og:title" content="{{ property.typeProperty.name }} de {{ property.rateHousing.realMeters }}m² en {{ property.street.zone.name }} - {{ property.street.name }}">
     <meta property="og:description" content="{{ property.street.zone.name }} - {{ property.street.name }}">
-    {% if property.rateHousing.image.first  %}
+    {% if property.rateHousing.image.count > 0  %}
         <meta property="og:image" content="{{ uploaded_asset(property.rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_small') }}">
     {% else %}
-        <meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
+        <meta property="og:image" content="{{ asset('img/not-available.jpg')|imagine_filter('squared_thumbnail_large') }}">
     {% endif %}
+
+
+
+    <meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
+    <meta property="og:type"               content="article" />
+    <meta property="og:title"              content="When Great Minds Don’t Think Alike" />
+    <meta property="og:description"        content="How much does culture influence creative thinking?" />
+    <meta property="og:image"              content="http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg" />
+
+
+
+
 {% endblock %}
 
 {% block stylesheets %}

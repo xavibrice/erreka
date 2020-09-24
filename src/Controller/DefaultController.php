@@ -257,9 +257,9 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/buscar/vivienda", name="search_fronted")
+     * @Route("/buscar/vivienda", defaults={"page": "1", "limit": "9"}, name="search_fronted")
      */
-    public function searchFronted(Request $request, PropertyRepository $propertyRepository): Response
+    public function searchFronted(Request $request, PropertyRepository $propertyRepository, int $page, int $limit): Response
     {
         $searchFronted = new SearchFronted();
         $form = $this->createForm(SearchFrontedType::class, $searchFronted);
@@ -326,7 +326,9 @@ class DefaultController extends AbstractController
 
         $properties = $queryBuilder->getQuery()->getResult();
 
+
         return $this->render('fronted/default/search-fronted.html.twig', [
+            //'properties' => $properties,
             'properties' => $properties,
             'form' => $form->createView(),
         ]);

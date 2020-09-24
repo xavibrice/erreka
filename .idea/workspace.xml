@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/ch_cookie_consent.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/ch_cookie_consent.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -492,7 +497,7 @@
       <workItem from="1600632911796" duration="2096000" />
       <workItem from="1600675919385" duration="12377000" />
       <workItem from="1600701205419" duration="440000" />
-      <workItem from="1600777742445" duration="2322000" />
+      <workItem from="1600777742445" duration="14566000" />
     </task>
     <servers />
   </component>
@@ -550,6 +555,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578141" />
+    <state x="643" y="293" key="NewPhpClassDialog" timestamp="1600859467339">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="643" y="293" key="NewPhpClassDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1600859467339" />
     <state x="397" y="199" key="SettingsEditor" timestamp="1600187841730">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

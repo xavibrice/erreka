@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    {% block metadata %}{% endblock %}
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-    <title>{% block title %}Inmobiliaria Erreka{% endblock %}</title>
+    <title>{% block title %}Inmobiliaria Erreka - La Peña{% endblock %}</title>
     <link rel="icon" href="{{ asset('img/logo-erreka.png') }}">
     {% block stylesheets %}
         {{ encore_entry_link_tags('fronted') }}
+        {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
     {% endblock %}
 </head>
 <body>
@@ -178,7 +180,7 @@
                             </div>
                             <div class="w-body-a">
                                 <p class="w-text-a color-text-a">
-                                    Con nuestra larga trayectoria de más de 16 años en el sector inmobiliario en el barrio de La Peña, tanto en venta como en alquiler.
+                                    Con una larga trayectoria de más de 16 años, tanto en ventas como en alquileres, en el barrio de La Peña.
                                 </p>
                             </div>
                             <div class="w-footer-a">
@@ -316,8 +318,13 @@
                     </div>
                 </div>
             </div>
-        </footer><!-- End  Footer -->
+        </footer>
+        <!-- End  Footer -->
     {% endblock %}
+
+{#    {% if chcookieconsent_isCookieConsentSavedByUser() == false %}
+        {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set', { 'locale' : 'es' })) }}
+    {% endif %}#}
 
     <div id="preloader"></div>
     {% block javascripts %}

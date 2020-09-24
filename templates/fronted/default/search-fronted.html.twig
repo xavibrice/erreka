@@ -32,7 +32,7 @@
     </main>
 
     <div class="container">
-        {{ form_start(form) }}
+        {{ form_start(form, {'attr': {'class': 'php-email-form'}}) }}
             <div class="row">
                 <div class="col-md-3 mb-3">
                     <div class="form-group">
@@ -79,8 +79,10 @@
                                     <div class="card-overlay-a-content">
                                         <div class="card-header-a">
                                             <h2 class="card-title-a">
-                                                <a href="{{ path('search_details', {'reference': property[0].reference}) }}">{{ property[0].street.name }}
-                                                    <br /> {{ property[0].street.zone.name }}</a>
+                                                <a class="text-white" href="{{ path('search_details', {'reference': property[0].reference}) }}">
+                                                    {{ property[0].street.name }}
+                                                    <br> <span class="color-b">{{ property[0].street.zone.name }}</span>
+                                                </a>
                                             </h2>
                                         </div>
                                         <div class="card-body-a">
