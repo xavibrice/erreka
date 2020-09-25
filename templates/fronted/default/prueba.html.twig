@@ -1,0 +1,77 @@
+{% extends 'fronted/fronted.html.twig' %}
+
+{% block title %}
+    Prueba
+{% endblock %}
+
+{% block body %}
+    <main id="main">
+        <!-- ======= Intro Single ======= -->
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Prueba</h1>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('prueba') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Prueba
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- End Intro Single-->
+    </main>
+    <div class="container">
+
+        {% for pro in properties %}
+            {{ pro.fullName }} ,
+        {% endfor %}
+
+
+
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <nav class="pagination-a">
+                        {% if maxPages > 1 %}
+                            <ul class="pagination justify-content-end">
+                                {%if thisPage > 1 %}
+                                    <li class="page-item">
+                                        <a class="page-link" href="{{ path('prueba', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">
+                                            <span class="fa fa-angle-left"></span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                                {# Render each page number #}
+                                {% for i in 1..maxPages %}
+                                    <li class="page-item {% if i == thisPage %}active{% endif%} ">
+                                        <a class="page-link" href="{{ path('prueba', {page: i}) }}">{{ i }}</a>
+                                    </li>
+                                {% endfor %}
+
+                                {# `»` arrow #}
+                                {%if thisPage < maxPages %}
+                                    <li class="page-item next">
+                                        <a class="page-link" href="{{ path('prueba', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">
+                                            <span class="fa fa-angle-right"></span>
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
+                    </nav>
+                </div>
+            </div>
+    </div>
+{% endblock %}

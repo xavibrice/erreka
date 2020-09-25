@@ -17,6 +17,36 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
+
+    /**
+     * @Route("/prueba", name="prueba", methods={"GET"})
+     */
+    public function prueba(Request $request, PropertyRepository $propertyRepository, int $limit = 3): Response
+    {
+        $currentPage = $request->query->getInt('page') ?: 1;
+
+
+        $dql = $propertyRepository->createQueryBuilder('p')
+            ->getQuery()
+            ->setFirstResult($limit * ($currentPage - 1)) // Offset
+            ->setMaxResults($limit)
+        ;
+
+
+        $paginator = new Paginator($dql, $fetchJoinCollection = true);
+
+        $maxPages = ceil($paginator->count() / $limit);
+
+
+        return $this->render('fronted/default/prueba.html.twig', [
+            'properties' => $paginator,
+            'maxPages' => $maxPages,
+            'thisPage' => $currentPage,
+            'all_items' => $paginator->count()
+        ]);
+    }
+
+
     /**
      * @Route("/", name="default")
      */
@@ -257,10 +287,12 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/buscar/vivienda", defaults={"page": "1", "limit": "9"}, name="search_fronted")
+     * @Route("/buscar/vivienda", name="search_fronted", methods={"GET"})
      */
-    public function searchFronted(Request $request, PropertyRepository $propertyRepository, int $page, int $limit): Response
+    public function searchFronted(Request $request, PropertyRepository $propertyRepository, int $limit = 2): Response
     {
+        $currentPage = $request->query->getInt('page') ?: 1;
+
         $searchFronted = new SearchFronted();
         $form = $this->createForm(SearchFrontedType::class, $searchFronted);
         $form->handleRequest($request);
@@ -279,6 +311,8 @@ class DefaultController extends AbstractController
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
             ->groupBy('c.id')
             ->orderBy('c.start_date', 'DESC')
+            ->setFirstResult($limit * ($currentPage - 1))
+            ->setMaxResults($limit)
         ;
 
         if ($form->get('bedrooms')->getData()) {
@@ -324,12 +358,18 @@ class DefaultController extends AbstractController
            }
         }
 
-        $properties = $queryBuilder->getQuery()->getResult();
+
+        $paginator = new Paginator($queryBuilder, $fetchJoinCollection = false);
+
+        $maxPages = ceil($paginator->count() / $limit);
+
 
 
         return $this->render('fronted/default/search-fronted.html.twig', [
             //'properties' => $properties,
-            'properties' => $properties,
+            'properties' => $paginator,
+            'maxPages' => $maxPages,
+            'thisPage' => $currentPage,
             'form' => $form->createView(),
         ]);
     }
