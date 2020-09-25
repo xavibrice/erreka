@@ -289,7 +289,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/buscar/vivienda", name="search_fronted", methods={"GET"})
      */
-    public function searchFronted(Request $request, PropertyRepository $propertyRepository, int $limit = 2): Response
+    public function searchFronted(Request $request, PropertyRepository $propertyRepository, int $limit = 9): Response
     {
         $currentPage = $request->query->getInt('page') ?: 1;
 
