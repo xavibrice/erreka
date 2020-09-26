@@ -358,16 +358,17 @@ class DefaultController extends AbstractController
            }
         }
 
-        $properties = $queryBuilder->getQuery()->getResult();
+        //$properties = $queryBuilder->getQuery()->getResult();
+        $properties = $queryBuilder->getQuery();
 
-        //$paginator = new Paginator($queryBuilder, $fetchJoinCollection = false);
+        $paginator = new Paginator($properties->setFirstResult($limit * ($currentPage - 1))->setMaxResults($limit), $fetchJoinCollection = false);
 
-        //$maxPages = ceil($paginator->count() / $limit);
+        $maxPages = ceil($paginator->count() / $limit);
 
         return $this->render('fronted/default/search-fronted.html.twig', [
-            'properties' => $properties,
+            'properties' => $paginator,
             //'properties' => $paginator,
-            //'maxPages' => $maxPages,
+            'maxPages' => $maxPages,
             'thisPage' => $currentPage,
             'form' => $form->createView(),
         ]);
