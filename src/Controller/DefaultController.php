@@ -308,7 +308,7 @@ class DefaultController extends AbstractController
             ->leftJoin('p.propertyReductions', 'pr')
             ->leftJoin('p.proposals', 'pro')
             ->addSelect('SUM(pr.price) as sumPropertyReduction')
-            ->addSelect('COUNT(DISTINCT pro.contract) as countPropertyContract')
+            ->addSelect('COUNT(pro.contract) as countPropertyContract')
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
             ->groupBy('c.id')
             ->orderBy('c.start_date', 'DESC')
@@ -368,14 +368,14 @@ class DefaultController extends AbstractController
         $pagination = $paginator->paginate(
             $queryBuilder->getQuery(),
             $request->query->getInt('page', 1),
-            9
+            2
         );
 
         return $this->render('fronted/default/search-fronted.html.twig', [
             //'properties' => $properties,
             'properties' => $pagination,
             //'maxPages' => $maxPages,
-            'thisPage' => $currentPage,
+            'totalProperties' => count($pagination),
             'form' => $form->createView(),
         ]);
     }
