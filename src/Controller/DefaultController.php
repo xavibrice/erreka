@@ -312,8 +312,6 @@ class DefaultController extends AbstractController
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
             ->groupBy('c.id')
             ->orderBy('c.start_date', 'DESC')
-            //->setFirstResult($limit * ($currentPage - 1))
-            //->setMaxResults($limit)
         ;
 
         if ($form->get('bedrooms')->getData()) {
@@ -359,23 +357,18 @@ class DefaultController extends AbstractController
            }
         }
 
-        //$properties = $queryBuilder->getQuery()->getResult();
-        //$properties = $queryBuilder->getQuery();
+        $properties = $queryBuilder->getQuery()->getResult();
 
-        //$paginator = new Paginator($properties, $fetchJoinCollection = false);
-
-        //$maxPages = ceil($paginator->count() / $limit);
-        $pagination = $paginator->paginate(
+/*        $pagination = $paginator->paginate(
             $queryBuilder->getQuery(),
             $request->query->getInt('page', 1),
             9
-        );
+        );*/
 
         return $this->render('fronted/default/search-fronted.html.twig', [
             //'properties' => $properties,
-            'properties' => $pagination,
+            'properties' => $properties,
             //'maxPages' => $maxPages,
-            'totalProperties' => count($pagination),
             'form' => $form->createView(),
         ]);
     }
