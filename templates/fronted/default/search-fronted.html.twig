@@ -66,7 +66,7 @@
             <div class="row mb-5">
                 {% for property in properties %}
                     {% if property.countPropertyContract == 0 %}
-                        <div class="col-md-4">
+                        <div class="col-md-6 col-lg-4">
                             <div class="card-box-a card-shadow">
                                 <div class="img-box-a">
                                     {% if property[0].rateHousing.image.first %}
@@ -154,6 +154,9 @@
                     </nav>
                 </div>
             </div>#}
+
+            {{ knp_pagination_render(properties) }}
+
         </div>
     </section>
 {% endblock %}

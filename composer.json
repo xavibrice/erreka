@@ -8,6 +8,7 @@
         "connectholland/cookie-consent-bundle": "^0.9.1",
         "friendsofsymfony/jsrouting-bundle": "^2.5",
         "gedmo/doctrine-extensions": "^2.4",
+        "knplabs/knp-paginator-bundle": "v4.1.1",
         "liip/imagine-bundle": "^2.1",
         "ramsey/uuid": "^3.9",
         "sensio/framework-extra-bundle": "^5.1",

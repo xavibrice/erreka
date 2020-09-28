@@ -10,6 +10,7 @@ use App\Repository\ClientRepository;
 use App\Repository\NoteCommercialRepository;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -289,7 +290,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/buscar/vivienda", name="search_fronted", methods={"GET"})
      */
-    public function searchFronted(Request $request, PropertyRepository $propertyRepository, int $limit = 9): Response
+    public function searchFronted(Request $request, PropertyRepository $propertyRepository, PaginatorInterface $paginator): Response
     {
         $currentPage = $request->query->getInt('page') ?: 1;
 
@@ -364,10 +365,16 @@ class DefaultController extends AbstractController
         //$paginator = new Paginator($properties, $fetchJoinCollection = false);
 
         //$maxPages = ceil($paginator->count() / $limit);
+        $pagination = $paginator->paginate(
+            $queryBuilder->getQuery(),
+            $request->query->getInt('page', 1),
+            9
+        );
+
 
         return $this->render('fronted/default/search-fronted.html.twig', [
-            'properties' => $properties,
-            //'properties' => $paginator,
+            //'properties' => $properties,
+            'properties' => $pagination,
             //'maxPages' => $maxPages,
             'thisPage' => $currentPage,
             'form' => $form->createView(),
