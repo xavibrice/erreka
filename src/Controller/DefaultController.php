@@ -368,7 +368,7 @@ class DefaultController extends AbstractController
         $pagination = $paginator->paginate(
             $queryBuilder->getQuery(),
             $request->query->getInt('page', 1),
-            2
+            9
         );
 
         return $this->render('fronted/default/search-fronted.html.twig', [
