@@ -144,8 +144,7 @@
                         app.request.get('_route') == 'owner_index' or
                         app.request.get('_route') == 'zone_index' or
                         app.request.get('_route') == 'reason_index' or
-                        app.request.get('_route') == 'situation_index' or
-                        app.request.get('_route') == 'type_property_index'
+                        app.request.get('_route') == 'situation_index'
                     %}show{% endif %}" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <h6 class="collapse-header">Custom Components:</h6>
@@ -155,7 +154,7 @@
                             <a class="collapse-item {% if app.request.get('_route') == 'zone_index' %}active{% endif %}" href="{{ path('zone_index') }}">Zonas</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'situation_index' %}active{% endif %}" href="{{ path('situation_index') }}">Situaciones</a>
                             <a class="collapse-item {% if app.request.get('_route') == 'reason_index' %}active{% endif %}" href="{{ path('reason_index') }}">Motivo</a>
-                            <a class="collapse-item {% if app.request.get('_route') == 'type_property_index' %}active{% endif %}" href="{{ path('type_property_index') }}">Tipo Propiedad</a>
+{#                            <a class="collapse-item {% if app.request.get('_route') == 'type_property_index' %}active{% endif %}" href="{{ path('type_property_index') }}">Tipo Propiedad</a>#}
                         </div>
                     </div>
                 </li>
