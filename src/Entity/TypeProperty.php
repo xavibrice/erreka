@@ -29,14 +29,14 @@ class TypeProperty
     private $property;
 
     /**
-     * @ORM\Column(type="boolean")
-     */
-    private $is_property;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Client", mappedBy="typeProperty")
      */
     private $clients;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $name_slug;
 
     public function __construct()
     {
@@ -98,18 +98,6 @@ class TypeProperty
         return (string)$this->name;
     }
 
-    public function getIsProperty(): ?bool
-    {
-        return $this->is_property;
-    }
-
-    public function setIsProperty(bool $is_property): self
-    {
-        $this->is_property = $is_property;
-
-        return $this;
-    }
-
     /**
      * @return Collection|Client[]
      */
@@ -137,6 +125,18 @@ class TypeProperty
                 $client->setTypeProperty(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNameSlug(): ?string
+    {
+        return $this->name_slug;
+    }
+
+    public function setNameSlug(string $name_slug): self
+    {
+        $this->name_slug = $name_slug;
 
         return $this;
     }

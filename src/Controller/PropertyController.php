@@ -15,6 +15,7 @@ use App\Form\Collection\PropertyReductionType;
 use App\Form\NoteNewType;
 use App\Form\PropertyType;
 use App\Form\ProposalType;
+use App\Form\RateHousingLocalType;
 use App\Form\RateHousingType;
 use App\Form\VisitType;
 use App\Repository\ClientRepository;
@@ -191,12 +192,23 @@ class PropertyController extends AbstractController
 
         $typeCharges = $em->getRepository(\App\Entity\ChargeType::class)->findAll();
 
+        $routeTemplate = null;
         $rateHousing = new RateHousing();
-        $form = $this->createForm(RateHousingType::class, $rateHousing);
+        if ($property->getTypeProperty()->getNameSlug() === "vivienda" ||
+            $property->getTypeProperty()->getNameSlug() === "atico" ||
+            $property->getTypeProperty()->getNameSlug() === "apartamento" ||
+            $property->getTypeProperty()->getNameSlug() === "casa-/-chalet" ||
+            $property->getTypeProperty()->getNameSlug() === "duplex") {
+            $form = $this->createForm(RateHousingType::class, $rateHousing);
+            $routeTemplate = 'rate_housing';
+        } elseif ($property->getTypeProperty()->getNameSlug() === "local") {
+            $form = $this->createForm(RateHousingLocalType::class, $rateHousing);
+            $routeTemplate = 'rate_housing_local';
+        }
+
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $files = $request->files->get("rate_housing")["image"];
-
+            $files = $request->files->get($routeTemplate)["image"];
             foreach ($files as $file) {
                 $image = new Images();
                 $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
@@ -212,7 +224,7 @@ class PropertyController extends AbstractController
             return $this->redirectToRoute('property_rate_housing_new_show', ['id' => $property->getId()]);
         }
 
-        return $this->render('admin/property/rate_housing/rate_housing.html.twig', [
+        return $this->render('admin/property/rate_housing/'.$routeTemplate.'.html.twig', [
             'property' => $property,
             'form' => $form->createView(),
             'typeCharges' => $typeCharges
@@ -225,18 +237,34 @@ class PropertyController extends AbstractController
     public function rateHousingEdit(Request $request, RateHousing $rateHousing, UploaderHelper $uploaderHelper): Response
     {
         $em = $this->getDoctrine()->getManager();
-        $form = $this->createForm(RateHousingType::class, $rateHousing);
+
+        $routeTemplate = null;
+        $imageNameInput = null;
+        if ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "vivienda" ||
+            $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "atico" ||
+            $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "apartamento" ||
+            $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "casa-/-chalet" ||
+            $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "duplex") {
+            $form = $this->createForm(RateHousingType::class, $rateHousing);
+            $routeTemplate = '_form_rate_housing';
+            $imageNameInput = 'rate_housing';
+        } elseif ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "local") {
+            $form = $this->createForm(RateHousingLocalType::class, $rateHousing);
+            $routeTemplate = '_form_rate_housing_local';
+            $imageNameInput = 'rate_housing_local';
+        }
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $files = $request->files->get("rate_housing")["image"];
+            $files = $request->files->get($imageNameInput)["image"];
+                foreach ($files as $file) {
+                    $image = new Images();
+                    $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
 
-            foreach ($files as $file) {
-                $image = new Images();
-                $image->setNameImage($uploaderHelper->uploadPropertyImage($file));
+                    $rateHousing->addImage($image);
+                }
 
-                $rateHousing->addImage($image);
-            }
             $em->flush();
 
             $this->addFlash('success', 'Valoración Editada Correctamente');
@@ -248,7 +276,8 @@ class PropertyController extends AbstractController
 
         return $this->render('admin/property/rate_housing/edit_rate_housing.html.twig', [
             'form' => $form->createView(),
-            'rateHousing' => $rateHousing
+            'rateHousing' => $rateHousing,
+            'routeTemplate' => $routeTemplate
         ]);
     }
 

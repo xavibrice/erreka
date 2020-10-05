@@ -54,22 +54,22 @@ class RateHousing
     private $real_meters;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $storage_room;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $direct_garage;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $disabled_access;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $zero_dimension;
 
@@ -189,7 +189,7 @@ class RateHousing
     private $energy_certificate;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $pets;
 
@@ -209,7 +209,7 @@ class RateHousing
     private $exterior_bathrooms;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\Column(type="boolean", nullable=true)
      */
     private $exterior_cooking;
 
@@ -248,6 +248,71 @@ class RateHousing
      * @ORM\ManyToOne(targetEntity="App\Entity\BuildingStructure", inversedBy="building_structure")
      */
     private $buildingStructure;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $shop_windows;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $plants;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeLocal", inversedBy="rateHousings")
+     */
+    private $type_local;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Stays", inversedBy="rateHousings")
+     */
+    private $stays;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\LocalGarageLocation", inversedBy="rateHousings")
+     */
+    private $local_garage_location;
+
+    /**
+     * @ORM\Column(type="decimal", precision=10, scale=0, nullable=true)
+     */
+    private $height;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $smoke_outlet;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $security_door;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $warehouse;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $equipped_kitchen;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $corner;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $closed_security_circuit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Size", inversedBy="rateHousings")
+     */
+    private $size;
 
     public function __construct()
     {
@@ -852,6 +917,162 @@ class RateHousing
     public function setBuildingStructure(?BuildingStructure $buildingStructure): self
     {
         $this->buildingStructure = $buildingStructure;
+
+        return $this;
+    }
+
+    public function getShopWindows(): ?int
+    {
+        return $this->shop_windows;
+    }
+
+    public function setShopWindows(?int $shop_windows): self
+    {
+        $this->shop_windows = $shop_windows;
+
+        return $this;
+    }
+
+    public function getPlants(): ?int
+    {
+        return $this->plants;
+    }
+
+    public function setPlants(?int $plants): self
+    {
+        $this->plants = $plants;
+
+        return $this;
+    }
+
+    public function getTypeLocal(): ?TypeLocal
+    {
+        return $this->type_local;
+    }
+
+    public function setTypeLocal(?TypeLocal $type_local): self
+    {
+        $this->type_local = $type_local;
+
+        return $this;
+    }
+
+    public function getStays(): ?Stays
+    {
+        return $this->stays;
+    }
+
+    public function setStays(?Stays $stays): self
+    {
+        $this->stays = $stays;
+
+        return $this;
+    }
+
+    public function getLocalGarageLocation(): ?LocalGarageLocation
+    {
+        return $this->local_garage_location;
+    }
+
+    public function setLocalGarageLocation(?LocalGarageLocation $local_garage_location): self
+    {
+        $this->local_garage_location = $local_garage_location;
+
+        return $this;
+    }
+
+    public function getHeight()
+    {
+        return $this->height;
+    }
+
+    public function setHeight($height): self
+    {
+        $this->height = $height;
+
+        return $this;
+    }
+
+    public function getSmokeOutlet(): ?bool
+    {
+        return $this->smoke_outlet;
+    }
+
+    public function setSmokeOutlet(?bool $smoke_outlet): self
+    {
+        $this->smoke_outlet = $smoke_outlet;
+
+        return $this;
+    }
+
+    public function getSecurityDoor(): ?bool
+    {
+        return $this->security_door;
+    }
+
+    public function setSecurityDoor(?bool $security_door): self
+    {
+        $this->security_door = $security_door;
+
+        return $this;
+    }
+
+    public function getWarehouse(): ?bool
+    {
+        return $this->warehouse;
+    }
+
+    public function setWarehouse(?bool $warehouse): self
+    {
+        $this->warehouse = $warehouse;
+
+        return $this;
+    }
+
+    public function getEquippedKitchen(): ?bool
+    {
+        return $this->equipped_kitchen;
+    }
+
+    public function setEquippedKitchen(?bool $equipped_kitchen): self
+    {
+        $this->equipped_kitchen = $equipped_kitchen;
+
+        return $this;
+    }
+
+    public function getCorner(): ?bool
+    {
+        return $this->corner;
+    }
+
+    public function setCorner(?bool $corner): self
+    {
+        $this->corner = $corner;
+
+        return $this;
+    }
+
+    public function getClosedSecurityCircuit(): ?bool
+    {
+        return $this->closed_security_circuit;
+    }
+
+    public function setClosedSecurityCircuit(?bool $closed_security_circuit): self
+    {
+        $this->closed_security_circuit = $closed_security_circuit;
+
+        return $this;
+    }
+
+    public function getSize(): ?Size
+    {
+        return $this->size;
+    }
+
+    public function setSize(?Size $size): self
+    {
+        $this->size = $size;
 
         return $this;
     }

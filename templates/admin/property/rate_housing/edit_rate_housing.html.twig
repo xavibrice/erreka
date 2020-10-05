@@ -9,7 +9,7 @@
             <div class="col-md-12 text-center">
                 <strong>{{ rateHousing.property.first.fullName }} / {{ rateHousing.property.first.street.name }}, Nº {{ rateHousing.property.first.portal }}, {{ rateHousing.property.first.floor }}</strong>
             </div>
-            {{ include('admin/property/_form_rate_housing.html.twig', {'button_label': 'Actualizar'}) }}
+            {{ include('admin/property/'~ routeTemplate ~ '.html.twig', {'button_label': 'Actualizar'}) }}
         </div>
         <div class="card-footer">
 {#            {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}

@@ -17,10 +17,6 @@ class TypePropertyType extends AbstractType
             ->add('name', TextType::class, [
                 'label' => 'Tipo de Propiedad'
             ])
-            ->add('is_property', CheckboxType::class, [
-                'label' => '¿Es vivienda?',
-                'required' => false
-            ])
         ;
     }
 

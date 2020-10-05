@@ -3,8 +3,19 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TypePropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TypePropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/RateHousing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RateHousing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/TypeProperty.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TypeProperty.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/RateHousingLocalType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RateHousingLocalType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/TypePropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TypePropertyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/edit_rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/edit_rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/type_property/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/type_property/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -168,7 +179,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/property" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -186,19 +197,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/assets/fronted/img/sell" />
-      <recent name="$PROJECT_DIR$/assets/fronted/img" />
-      <recent name="$PROJECT_DIR$/assets/fronted/img/logos" />
-      <recent name="$PROJECT_DIR$/assets/fronted/img/homepage" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/img/offices" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/public/bundles" />
       <recent name="$PROJECT_DIR$/public/img/tax-advice" />
       <recent name="$PROJECT_DIR$/public/img/sell" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/admin/property" />
+      <recent name="$PROJECT_DIR$/templates/admin/property/rate_housing" />
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/assets/fronted/img/sell" />
+      <recent name="$PROJECT_DIR$/assets/fronted/img" />
     </key>
   </component>
   <component name="RunManager">
@@ -504,7 +515,8 @@
       <workItem from="1600675919385" duration="12377000" />
       <workItem from="1600701205419" duration="440000" />
       <workItem from="1600777742445" duration="31631000" />
-      <workItem from="1601243950889" duration="6155000" />
+      <workItem from="1601243950889" duration="7564000" />
+      <workItem from="1601373657779" duration="19140000" />
     </task>
     <servers />
   </component>
@@ -538,6 +550,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="496" y="208" key="#Plugins/0.0.1792.1120@0.0.1792.1120" timestamp="1594026690214" />
+    <state x="360" y="222" width="1071" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601550232901">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="360" y="222" width="1071" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1601550232901" />
     <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593592742868">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -574,18 +590,18 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1600187841730" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1600681871878">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1601892332665">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1600681871878" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1601892332665" />
     <state x="115" y="265" key="run.anything.popup" timestamp="1600179640476">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="115" y="265" key="run.anything.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1600179640476" />
-    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup" timestamp="1600687195072">
+    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup" timestamp="1601809585037">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1600687195072" />
+    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1601809585037" />
     <state x="1961" y="239" width="718" height="706" key="search.everywhere.popup/1792.0.1920.1080/0.0.1792.1120@1792.0.1920.1080" timestamp="1596988532082" />
   </component>
 </project>

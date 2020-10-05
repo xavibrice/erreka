@@ -2,19 +2,14 @@
 
 namespace App\Form;
 
-use App\Entity\BuildingStructure;
-use App\Entity\Door;
 use App\Entity\EnergyCertificate;
-use App\Entity\Ground;
 use App\Entity\Heating;
+use App\Entity\LocalGarageLocation;
 use App\Entity\Orientation;
 use App\Entity\RateHousing;
-use App\Entity\StateKeys;
-use App\Entity\ValuationStatus;
-use App\Entity\Wall;
-use App\Entity\Window;
+use App\Entity\Stays;
+use App\Entity\TypeLocal;
 use App\Form\Type\DatePickerType;
-use App\Form\Type\DateTimePickerType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -50,25 +45,40 @@ class RateHousingLocalType extends AbstractType
                 ],
             ])
             ->add('comment', TextareaType::class, [
-                'label' => 'Comentario Vivienda',
+                'label' => 'Comentario Local / Negocio',
                 'required' => false,
                 'attr' => [
                     'rows' => 2,
                 ]
             ])
             ->add('min_price', MoneyType::class, [
-                'label' => 'Precio Mínimo',
+                'label' => 'Precio',
                 'required' => false
             ])
-            ->add('max_price', MoneyType::class, [
-                'label' => 'Precio Máximo',
-                'required' => false
+            ->add('typeLocal', EntityType::class, [
+                'required' => false,
+                'label' => 'Tipo Local',
+                'placeholder' => 'Selecciona Tipo Local / Negocio',
+                'class' => TypeLocal::class
+            ])
+            ->add('stays', EntityType::class, [
+                'required' => false,
+                'label' => 'Estancias',
+                'placeholder' => 'Selecciona Estancia',
+                'class' => Stays::class
+            ])
+            ->add('localGarageLocation', EntityType::class, [
+                'required' => false,
+                'label' => 'Ubicación Local / Negocio',
+                'placeholder' => 'Selecciona Ubicación Local / Negocio',
+                'class' => LocalGarageLocation::class
             ])
             ->add('bathrooms', IntegerType::class, [
                 'label' => 'Baños',
                 'required' => false,
                 'attr' => [
-                    'min' => 0
+                    'min' => 0,
+                    'max' => 5
                 ]
             ])
             ->add('real_meters', IntegerType::class, [
@@ -78,22 +88,59 @@ class RateHousingLocalType extends AbstractType
                     'min' => 0
                 ]
             ])
-
+            ->add('plants', IntegerType::class, [
+                'label' => 'Nº de plantas',
+                'attr' => [
+                    'min' => 0,
+                    'max' => 3
+                ]
+            ])
             ->add('airConditioning', CheckboxType::class, [
                 'label' => 'Aire Acondicionado',
+                'required' => false
+            ])
+            ->add('smokeOutlet', CheckboxType::class, [
+                'label' => 'Salida Humos',
+                'required' => false
+            ])
+            ->add('alarmSystem', CheckboxType::class, [
+                'label' => 'Sistema de Alarma',
+                'required' => false
+            ])
+            ->add('equippedKitchen', CheckboxType::class, [
+                'label' => 'Cocina Equipada',
+                'required' => false
+            ])
+            ->add('corner', CheckboxType::class, [
+                'label' => '¿Hace Esquina?',
+                'required' => false
+            ])
+            ->add('closedSecurityCircuit', CheckboxType::class, [
+                'label' => 'Circuito Cerrado Seguridad',
+                'required' => false
+            ])
+            ->add('securityDoor', CheckboxType::class, [
+                'label' => 'Puerta de Seguridad',
+                'required' => false
+            ])
+            ->add('warehouse', CheckboxType::class, [
+                'label' => 'Trastero',
                 'required' => false
             ])
             ->add('heating', EntityType::class, [
                 'required' => false,
                 'label' => 'Tipo Calefacción',
                 'placeholder' => 'Selecciona Tipo Calefacción',
-                'class' => Heating::class
+                'class' => Heating::class,
             ])
             ->add('orientation', EntityType::class, [
                 'label' => 'Orientación',
                 'class' => Orientation::class,
                 'placeholder' => 'Selecciona Orientación',
-                'required' => false
+                'required' => false,
+            ])
+            ->add('shopWindows', IntegerType::class, [
+                'label' => 'Nº Escaparates',
             ])
             ->add('antiquity', IntegerType::class, [
                 'label' => 'Antigüedad',
@@ -132,10 +179,6 @@ class RateHousingLocalType extends AbstractType
                 'label' => 'Móvil/Teléfono',
                 'required' => false
             ])
-            ->add('exteriorCooking', CheckboxType::class, [
-                'label' => 'Cocina exterior',
-                'required' => false
-            ])
             ->add('energyCertificate', EntityType::class, [
                 'label' => 'Certificado Energético',
                 'class' => EnergyCertificate::class,
@@ -144,6 +187,10 @@ class RateHousingLocalType extends AbstractType
             ])
             ->add('energyConsumption', NumberType::class, [
                 'label' => 'Consumo de energía',
+                'required' => false
+            ])
+            ->add('height', NumberType::class, [
+                'label' => 'Altura',
                 'required' => false
             ])
             ->add('image', FileType::class, [
@@ -155,9 +202,6 @@ class RateHousingLocalType extends AbstractType
                     'accept' => 'image/*'
                 ]
             ])
-
-
-
         ;
     }
 

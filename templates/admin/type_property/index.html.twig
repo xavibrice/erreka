@@ -11,8 +11,7 @@
                 <th>Id</th>
                 <th>Name</th>
                 <th>Noticias</th>
-                <th>Is_property</th>
-                <th>actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -21,10 +20,9 @@
                 <td>{{ type_property.id }}</td>
                 <td>{{ type_property.name }}</td>
                 <td>{{ type_property.property.count }}</td>
-                <td>{{ type_property.isProperty ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('type_property_show', {'id': type_property.id}) }}">show</a>
-                    <a href="{{ path('type_property_edit', {'id': type_property.id}) }}">edit</a>
+                    <a href="{{ path('type_property_show', {'id': type_property.id}) }}">Ver</a>
+                    <a href="{{ path('type_property_edit', {'id': type_property.id}) }}">Editar</a>
                 </td>
             </tr>
         {% else %}

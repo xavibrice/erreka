@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\TypeProperty;
 use App\Form\TypePropertyType;
 use App\Repository\TypePropertyRepository;
+use App\Utils\Slugger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,13 +29,15 @@ class TypePropertyController extends AbstractController
     /**
      * @Route("/new", name="type_property_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request, Slugger $slugger): Response
     {
         $typeProperty = new TypeProperty();
         $form = $this->createForm(TypePropertyType::class, $typeProperty);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $slugger->slugify($typeProperty->getName());
+            $typeProperty->setNameSlug($slug);
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($typeProperty);
             $entityManager->flush();
@@ -61,12 +64,14 @@ class TypePropertyController extends AbstractController
     /**
      * @Route("/{id}/edit", name="type_property_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, TypeProperty $typeProperty): Response
+    public function edit(Request $request, TypeProperty $typeProperty, Slugger $slugger): Response
     {
         $form = $this->createForm(TypePropertyType::class, $typeProperty);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $slugger->slugify($typeProperty->getName());
+            $typeProperty->setNameSlug($slug);
             $this->getDoctrine()->getManager()->flush();
 
             return $this->redirectToRoute('type_property_index', [
