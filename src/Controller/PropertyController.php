@@ -197,11 +197,11 @@ class PropertyController extends AbstractController
         if ($property->getTypeProperty()->getNameSlug() === "vivienda" ||
             $property->getTypeProperty()->getNameSlug() === "atico" ||
             $property->getTypeProperty()->getNameSlug() === "apartamento" ||
-            $property->getTypeProperty()->getNameSlug() === "casa-/-chalet" ||
+            $property->getTypeProperty()->getNameSlug() === "casa-chalet" ||
             $property->getTypeProperty()->getNameSlug() === "duplex") {
             $form = $this->createForm(RateHousingType::class, $rateHousing);
             $routeTemplate = 'rate_housing';
-        } elseif ($property->getTypeProperty()->getNameSlug() === "local") {
+        } elseif ($property->getTypeProperty()->getNameSlug() === "local-negocio") {
             $form = $this->createForm(RateHousingLocalType::class, $rateHousing);
             $routeTemplate = 'rate_housing_local';
         }
@@ -243,12 +243,12 @@ class PropertyController extends AbstractController
         if ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "vivienda" ||
             $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "atico" ||
             $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "apartamento" ||
-            $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "casa-/-chalet" ||
+            $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "casa-chalet" ||
             $rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "duplex") {
             $form = $this->createForm(RateHousingType::class, $rateHousing);
             $routeTemplate = '_form_rate_housing';
             $imageNameInput = 'rate_housing';
-        } elseif ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "local") {
+        } elseif ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "local-negocio") {
             $form = $this->createForm(RateHousingLocalType::class, $rateHousing);
             $routeTemplate = '_form_rate_housing_local';
             $imageNameInput = 'rate_housing_local';

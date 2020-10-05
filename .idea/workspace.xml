@@ -3,19 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/services.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/services.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TypePropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TypePropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/RateHousing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RateHousing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TypeProperty.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TypeProperty.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/RateHousingLocalType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/RateHousingLocalType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/TypePropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/TypePropertyType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/edit_rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/edit_rate_housing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/type_property/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/type_property/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -516,7 +504,7 @@
       <workItem from="1600701205419" duration="440000" />
       <workItem from="1600777742445" duration="31631000" />
       <workItem from="1601243950889" duration="7564000" />
-      <workItem from="1601373657779" duration="19140000" />
+      <workItem from="1601373657779" duration="19661000" />
     </task>
     <servers />
   </component>
