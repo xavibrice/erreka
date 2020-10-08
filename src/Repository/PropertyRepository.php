@@ -316,7 +316,7 @@ class PropertyRepository extends ServiceEntityRepository
             ->andWhere('a.name = :agency')
             ->andWhere('r.name = :reason')
             ->setParameter('agency', $getAgency)
-            ->setParameter('reason', 'alquilado')
+            ->setParameter('reason', 'Alquilado')
             ->groupBy('p.id')
             ->getQuery()
             ->getResult()
