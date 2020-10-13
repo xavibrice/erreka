@@ -99,17 +99,19 @@
                                                     <h4 class="card-info-title"><i class="fas fa-ruler-combined"></i> Área</h4>
                                                     <span>{{ property[0].rateHousing.realMeters }} m<sup>2</sup></span>
                                                 </li>
-                                                <li>
-                                                    <h4 class="card-info-title"><i class="fas fa-bed"></i> Dorm.</h4>
-                                                    <span>{{ property[0].rateHousing.bedrooms }}</span>
-                                                </li>
+                                                {% if property[0].typeProperty.nameSlug in ['vivienda', 'atico', 'casa-chalet', 'duplex'] %}
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-bed"></i> Dorm.</h4>
+                                                        <span>{{ property[0].rateHousing.bedrooms }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-car-side"></i> Garaje</h4>
+                                                        <span>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</span>
+                                                    </li>
+                                                {% endif %}
                                                 <li>
                                                     <h4 class="card-info-title"><i class="fas fa-bath"></i> Baños</h4>
                                                     <span>{{ property[0].rateHousing.bathrooms }}</span>
-                                                </li>
-                                                <li>
-                                                    <h4 class="card-info-title"><i class="fas fa-car-side"></i> Garaje</h4>
-                                                    <span>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</span>
                                                 </li>
                                             </ul>
                                         </div>

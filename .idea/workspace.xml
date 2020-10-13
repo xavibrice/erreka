@@ -3,12 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/RateHousing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RateHousing.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Size.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Size.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing_local.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing_local.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -517,6 +512,7 @@
       <workItem from="1602416177458" duration="517000" />
       <workItem from="1602418140754" duration="34000" />
       <workItem from="1602562880028" duration="5609000" />
+      <workItem from="1602625878493" duration="646000" />
     </task>
     <servers />
   </component>
