@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/RateHousing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RateHousing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Size.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Size.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing_local.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/rate_housing/rate_housing_local.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -182,19 +190,19 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates/admin/property" />
+      <recent name="$PROJECT_DIR$/templates/admin/property/rate_housing" />
+      <recent name="$PROJECT_DIR$/src/Form" />
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/assets/fronted/img/sell" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/img/offices" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/public/bundles" />
       <recent name="$PROJECT_DIR$/public/img/tax-advice" />
       <recent name="$PROJECT_DIR$/public/img/sell" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/templates/admin/property" />
-      <recent name="$PROJECT_DIR$/templates/admin/property/rate_housing" />
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/assets/fronted/img/sell" />
-      <recent name="$PROJECT_DIR$/assets/fronted/img" />
     </key>
   </component>
   <component name="RunManager">
@@ -503,7 +511,12 @@
       <workItem from="1601243950889" duration="7564000" />
       <workItem from="1601373657779" duration="21695000" />
       <workItem from="1602004046212" duration="556000" />
-      <workItem from="1602145787325" duration="646000" />
+      <workItem from="1602145787325" duration="4653000" />
+      <workItem from="1602258812842" duration="208000" />
+      <workItem from="1602332960749" duration="691000" />
+      <workItem from="1602416177458" duration="517000" />
+      <workItem from="1602418140754" duration="34000" />
+      <workItem from="1602562880028" duration="5609000" />
     </task>
     <servers />
   </component>
@@ -577,10 +590,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1600187841730" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1601892332665">
+    <state width="600" height="428" key="javadoc.popup" timestamp="1602151022005">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1601892332665" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1602151022005" />
     <state x="115" y="265" key="run.anything.popup" timestamp="1600179640476">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

@@ -314,6 +314,11 @@ class RateHousing
      */
     private $size;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeGarage", inversedBy="rateHousings")
+     */
+    private $type_garage;
+
     public function __construct()
     {
         $this->property = new ArrayCollection();
@@ -1073,6 +1078,18 @@ class RateHousing
     public function setSize(?Size $size): self
     {
         $this->size = $size;
+
+        return $this;
+    }
+
+    public function getTypeGarage(): ?TypeGarage
+    {
+        return $this->type_garage;
+    }
+
+    public function setTypeGarage(?TypeGarage $type_garage): self
+    {
+        $this->type_garage = $type_garage;
 
         return $this;
     }

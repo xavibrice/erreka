@@ -15,6 +15,7 @@ use App\Form\Collection\PropertyReductionType;
 use App\Form\NoteNewType;
 use App\Form\PropertyType;
 use App\Form\ProposalType;
+use App\Form\RateHousingGarageType;
 use App\Form\RateHousingLocalType;
 use App\Form\RateHousingType;
 use App\Form\VisitType;
@@ -204,6 +205,9 @@ class PropertyController extends AbstractController
         } elseif ($property->getTypeProperty()->getNameSlug() === "local-negocio") {
             $form = $this->createForm(RateHousingLocalType::class, $rateHousing);
             $routeTemplate = 'rate_housing_local';
+        } elseif ($property->getTypeProperty()->getNameSlug() === "garaje") {
+            $form = $this->createForm(RateHousingGarageType::class, $rateHousing);
+            $routeTemplate = 'rate_housing_garage';
         }
 
         $form->handleRequest($request);
@@ -252,6 +256,10 @@ class PropertyController extends AbstractController
             $form = $this->createForm(RateHousingLocalType::class, $rateHousing);
             $routeTemplate = '_form_rate_housing_local';
             $imageNameInput = 'rate_housing_local';
+        } elseif ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "garaje") {
+            $form = $this->createForm(RateHousingGarageType::class, $rateHousing);
+            $routeTemplate = '_form_rate_housing_garaje';
+            $imageNameInput = 'rate_housing_garaje';
         }
 
         $form->handleRequest($request);

@@ -76,19 +76,19 @@
                                                 <img src="{{ uploaded_asset(image.imagePath) }}" alt="{{ uploaded_asset(image.nameImage) }}">
                                             </a>
                                         </div>
-                                    {% else %}
-                                        <div class="carousel-item-b">
-                                            <a class="btn btn-link" href="{{ asset('img/not-available.jpg') }}">
-                                                <img class="img-a img-fluid" src="{{ asset('img/not-available.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Image" />
-                                            </a>
-                                        </div>
                                     {% endif %}
+                                {% else %}
+                                    <div class="carousel-item-b">
+                                        <a class="btn btn-link" href="{{ asset('img/not-available.jpg') }}">
+                                            <img class="img-a img-fluid" src="{{ asset('img/not-available.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Image" />
+                                        </a>
+                                    </div>
                                 {% endfor %}
                             </div>
                         </div>
 
                         <div class="row justify-content-between">
-                            <div class="col-md-5 col-lg-4">
+                            <div class="col-md-4 col-lg-4">
                                 <div class="property-price d-flex justify-content-center foo">
                                     <div class="card-header-c d-flex">
                                         <div class="card-box-ico">
@@ -97,7 +97,7 @@
                                         <div class="card-title-c align-self-center">
                                             <h5 class="title-c">
                                             {% if property.charge %}
-                                                {{ (property.charge.price - sum)|number_format(0, ',', '.') }} €
+                                                {{ (property.charge.price - sum)|number_format(0, ',', '.') }}
                                             {% endif %}
                                             </h5>
                                         </div>
@@ -127,27 +127,37 @@
                                                     <sup>2</sup>
                                                 </span>
                                             </li>
-                                            <li class="d-flex justify-content-between">
-                                                <strong>Dormitorios:</strong>
-                                                <span>{{ property.rateHousing.bedrooms }}</span>
-                                            </li>
-                                            <li class="d-flex justify-content-between">
-                                                <strong>Baños:</strong>
-                                                <span>{{ property.rateHousing.bathrooms }}</span>
-                                            </li>
-                                            <li class="d-flex justify-content-between">
-                                                <strong>C. Energético:</strong>
-                                                <span>{{ property.rateHousing.energyCertificate ? property.rateHousing.energyCertificate.name }}</span>
-                                            </li>
-                                            <li class="d-flex justify-content-between">
-                                                <strong>Calefacción:</strong>
-                                                <span>{{ property.rateHousing.heating ? property.rateHousing.heating.name : 'Por definir' }}</span>
-                                            </li>
+                                            {% if property.typeProperty.nameSlug in ['vivienda', 'atico', 'casa-chalet', 'duplex'] %}
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>Dormitorios:</strong>
+                                                    <span>{{ property.rateHousing.bedrooms }}</span>
+                                                </li>
+                                            {% endif %}
+                                            {% if property.typeProperty.nameSlug in ['vivienda', 'atico', 'casa-chalet', 'duplex', 'local-negocio'] %}
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>Baños:</strong>
+                                                    <span>{{ property.rateHousing.bathrooms }}</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>C. Energético:</strong>
+                                                    <span>{{ property.rateHousing.energyCertificate ? property.rateHousing.energyCertificate.name }}</span>
+                                                </li>
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>Calefacción:</strong>
+                                                    <span>{{ property.rateHousing.heating ? property.rateHousing.heating.name : 'Por definir' }}</span>
+                                                </li>
+                                            {% endif %}
+                                            {% if property.typeProperty.nameSlug in ['garaje', 'trastero', 'local-negocio'] %}
+                                                <li class="d-flex justify-content-between">
+                                                    <strong>Altura:</strong>
+                                                    <span>{{ property.rateHousing.height ? property.rateHousing.height ~ ' Metros' : 'Por definir' }}</span>
+                                                </li>
+                                            {% endif %}
                                         </ul>
                                   </div>
                                 </div>
                             </div>
-                            <div class="col-md-7 col-lg-7 section-md-t3">
+                            <div class="col-md-8 col-lg-8 section-md-t3">
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <div class="title-box-d">
@@ -167,10 +177,28 @@
                                 </div>
                                 <div class="amenities-list color-text-a">
                                      <ul class="list-a no-margin">
-                                        <li><strong>Cota Cero: </strong><span>{{ property.rateHousing.zeroDimension ? 'Si' : 'No' }}</span></li>
-                                        <li><strong>Balcón: </strong><span>{{ property.rateHousing.balcony ? 'Si' : 'No' }}</span></li>
-                                        <li><strong>Garaje Directo: </strong><span>{{ property.rateHousing.directGarage ? 'Si' : 'No' }}</span></li>
-                                        <li><strong>Trastero: </strong><span>{{ property.rateHousing.storageRoom ? 'Si' : 'No' }}</span></li>
+                                         {% if property.typeProperty.nameSlug in ['vivienda', 'atico', 'casa-chalet', 'duplex'] %}
+                                             <li><strong>Cota Cero: </strong><span>{{ property.rateHousing.zeroDimension ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Balcón: </strong><span>{{ property.rateHousing.balcony ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Garaje Directo: </strong><span>{{ property.rateHousing.directGarage ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Trastero: </strong><span>{{ property.rateHousing.storageRoom ? 'Si' : 'No' }}</span></li>
+                                         {% endif %}
+
+                                         {% if property.typeProperty.nameSlug in ['local-negocio'] %}
+                                             <li><strong>Aire Acondicionado: </strong><span>{{ property.rateHousing.airConditioning ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Salida de Humos: </strong><span>{{ property.rateHousing.smokeOutlet ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Sistema de Alarma: </strong><span>{{ property.rateHousing.alarmSystem ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Puerta de Seguridad: </strong><span>{{ property.rateHousing.securityDoor ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Almacén: </strong><span>{{ property.rateHousing.warehouse ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Cocina Equipada: </strong><span>{{ property.rateHousing.equippedKitchen ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Hace Esquina: </strong><span>{{ property.rateHousing.corner ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Circuito Cerrado Seguridad: </strong><span>{{ property.rateHousing.closedSecurityCircuit ? 'Si' : 'No' }}</span></li>
+                                         {% endif %}
+
+                                         {% if property.typeProperty.nameSlug in ['garaje'] %}
+                                             <li><strong>Sistema Alarma: </strong><span>{{ property.rateHousing.alarmSystem ? 'Si' : 'No' }}</span></li>
+                                             <li><strong>Puerta Automática: </strong><span>{{ property.rateHousing.automaticDoor ? 'Si' : 'No' }}</span></li>
+                                         {% endif %}
                                      </ul>
                                 </div>
                                 <div class="row section-t3">

@@ -43,90 +43,29 @@
                                     <td>{{ property.rateHousing.minPrice|number_format(0, ',', '.') }} €</td>
                                 </tr>
                                 <tr>
-                                    <th class="text-right">Tipo Local</th>
-                                    <td>{{ property.rateHousing.typeLocal }}</td>
+                                    <th class="text-right">Tipo Garaje</th>
+                                    <td>{{ property.rateHousing.typeGarage }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="text-right">Baños</th>
-                                    <td>{{ property.rateHousing.bathrooms }}</td>
-                                    <th class="text-right">Estancias</th>
-                                    <td>{{ property.rateHousing.stays }}</td>
                                     <th class="text-right">Ubicación</th>
                                     <td>{{ property.rateHousing.localGarageLocation.name }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="text-right">Plantas</th>
-                                    <td>{{ property.rateHousing.plants }}</td>
-                                    <th class="text-right">Escaparates</th>
-                                    <td>{{ property.rateHousing.shopWindows }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-right">Tipo Calefacción</th>
-                                    <td>
-                                        {% if property.rateHousing.heating is not empty %}
-                                            {{ property.rateHousing.heating.name }}
-                                        {% endif %}
-                                    </td>
-                                    <th class="text-right">Orientación</th>
-                                    <td>
-                                        {% if property.rateHousing.orientation is not empty %}
-                                            {{ property.rateHousing.orientation.name }}
-                                        {% endif %}
-                                    </td>
                                     <th class="text-right">Altura</th>
                                     <td>
                                         {{ property.rateHousing.height }}
                                     </td>
-                                </tr>
-                                <tr>
                                     <th class="text-right">M² útiles</th>
                                     <td>{{ property.rateHousing.realMeters }}</td>
                                 </tr>
                                 <tr>
-                                    <th class="text-right">Orientación</th>
-                                    <td>
-                                        {% if property.rateHousing.orientation is not empty %}
-                                            {{ property.rateHousing.orientation.name }}
-                                        {% endif %}
-                                    </td>
-                                    <th class="text-right">Calefacción</th>
-                                    <td>
-                                        {% if property.rateHousing.heating is not empty %}
-                                            {{ property.rateHousing.heating.name }}
-                                        {% endif %}
-                                    </td>
-                                    <th class="text-right">Certificado Energético</th>
-                                    <td>
-                                        {% if property.rateHousing.energyCertificate is not empty %}
-                                            {{ property.rateHousing.energyCertificate.name }}
-                                        {% endif %}
-                                    </td>
-                                    <th class="text-right">Consumo Energético</th>
-                                    <td>{{ property.rateHousing.energyConsumption|number_format(2, ',', '.') }} </td>
-                                </tr>
-
-                                <tr>
                                     <th class="text-center bg-light" colspan="8">EXTRAS</th>
                                 </tr>
                                 <tr>
-                                    <th class="text-right">Aire Acondicionado</th>
-                                    <td>{{ property.rateHousing.airConditioning ? 'Si' : 'No' }}</td>
-                                    <th class="text-right">Salida de Humos</th>
-                                    <td>{{ property.rateHousing.smokeOutlet ? 'Si' : 'No' }}</td>
-                                    <th class="text-right">Puerta de Seguridad</th>
+                                    <th class="text-right">Puerta Automática</th>
                                     <td>{{ property.rateHousing.securityDoor ? 'Si' : 'No'}}</td>
                                     <th class="text-right">Sistema de Alarma</th>
                                     <td>{{ property.rateHousing.alarmSystem ? 'Si' : 'No' }}</td>
-                                </tr>
-                                <tr>
-                                    <th class="text-right">Cocina Equipada</th>
-                                    <td>{{ property.rateHousing.equippedKitchen ? 'Si' : 'No'}}</td>
-                                    <th class="text-right">¿Hace esquina?</th>
-                                    <td>{{ property.rateHousing.corner ? 'Si' : 'No'}}</td>
-                                    <th class="text-right">Circuito Cerrado Seguridad</th>
-                                    <td>{{ property.rateHousing.closedSecurityCircuit ? 'Si' : 'No'}}</td>
-                                    <th class="text-right">Trastero</th>
-                                    <td>{{ property.rateHousing.warehouse ? 'Si' : 'No'}}</td>
                                 </tr>
                                 <tr>
                                     <th class="text-center bg-light" colspan="8">EDIFICIO</th>
@@ -172,7 +111,7 @@
                             <strong>{{ property.fullName }} / {{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</strong>
                         </div>
 
-                        {{ include('admin/property/_form_rate_housing_local.html.twig') }}
+                        {{ include('admin/property/_form_rate_housing_garage.html.twig') }}
                     {% endif %}
 
 

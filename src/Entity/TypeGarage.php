@@ -7,9 +7,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\SizeRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\TypeGarageRepository")
  */
-class Size
+class TypeGarage
 {
     /**
      * @ORM\Id()
@@ -24,7 +24,7 @@ class Size
     private $name;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\RateHousing", mappedBy="size")
+     * @ORM\OneToMany(targetEntity="App\Entity\RateHousing", mappedBy="type_garage")
      */
     private $rateHousings;
 
@@ -62,7 +62,7 @@ class Size
     {
         if (!$this->rateHousings->contains($rateHousing)) {
             $this->rateHousings[] = $rateHousing;
-            $rateHousing->setSize($this);
+            $rateHousing->setTypeGarage($this);
         }
 
         return $this;
@@ -73,8 +73,8 @@ class Size
         if ($this->rateHousings->contains($rateHousing)) {
             $this->rateHousings->removeElement($rateHousing);
             // set the owning side to null (unless already changed)
-            if ($rateHousing->getSize() === $this) {
-                $rateHousing->setSize(null);
+            if ($rateHousing->getTypeGarage() === $this) {
+                $rateHousing->setTypeGarage(null);
             }
         }
 
