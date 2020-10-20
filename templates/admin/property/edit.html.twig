@@ -18,8 +18,11 @@
                 <div class="col-md-auto">{{ form_row(form.created) }}</div>
                 <div class="col-md-auto">{{ form_row(form.situation) }}</div>
                 <div class="col-md-auto">{{ form_row(form.reason) }}</div>
-                <div class="col-md-auto">{{ form_row(form.typeProperty, { 'attr':{'disabled':'disabled'}}) }}</div>
-{#                <div class="col-md-auto">{{ form_row(form.historical) }}</div>#}
+                <div class="col-md-auto">
+                    <label for="">Tipo Propiedad</label>
+                    <div class="mt-2">{{ property.typeProperty.name }}</div>
+                </div>
+{#                <div class="col-md-auto">{{ form_row(form.typeProperty) }}</div>#}
             </div>
             <div class="form-group row">
                 <div class="col-md-auto">{{ form_row(form.zone) }}</div>

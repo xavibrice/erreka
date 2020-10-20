@@ -49,7 +49,7 @@
                                                 {% if exclusive[0].rateHousing.image is defined %}
                                                     {% for image in exclusive[0].rateHousing.image %}
                                                         <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
-                                                            <img class="img-profile" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_super_small') }}" alt="">
+                                                            <img class="img-profile" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_super_small') }}" alt="Fotos Propiedades">
                                                         </a>
                                                     {% endfor %}
                                                 {% endif %}
@@ -82,6 +82,7 @@
     <script>
         baguetteBox.run('.compact-gallery', {
             animation: 'fadeIn',
+            buttons: true,
         });
     </script>
 {% endblock %}

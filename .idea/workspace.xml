@@ -3,7 +3,16 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/RateHousing.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/RateHousing.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/PropertyType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/PropertyType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/list/exclusive.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/property/edit.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -180,24 +189,24 @@
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
-    <property name="settings.editor.selected.configurable" value="Symfony2.SettingsForm" />
+    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php.composer" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/img" />
+      <recent name="$PROJECT_DIR$/public/img/offices" />
+      <recent name="$PROJECT_DIR$/public/bundles" />
+      <recent name="$PROJECT_DIR$/public/img/tax-advice" />
+      <recent name="$PROJECT_DIR$/public/img/sell" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates/admin/property" />
       <recent name="$PROJECT_DIR$/templates/admin/property/rate_housing" />
       <recent name="$PROJECT_DIR$/src/Form" />
       <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/assets/fronted/img/sell" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/img/offices" />
-      <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/public/bundles" />
-      <recent name="$PROJECT_DIR$/public/img/tax-advice" />
-      <recent name="$PROJECT_DIR$/public/img/sell" />
     </key>
   </component>
   <component name="RunManager">
@@ -512,7 +521,9 @@
       <workItem from="1602416177458" duration="517000" />
       <workItem from="1602418140754" duration="34000" />
       <workItem from="1602562880028" duration="5609000" />
-      <workItem from="1602625878493" duration="646000" />
+      <workItem from="1602625878493" duration="8495000" />
+      <workItem from="1602930748484" duration="4296000" />
+      <workItem from="1603188462665" duration="940000" />
     </task>
     <servers />
   </component>
@@ -542,22 +553,22 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="496" y="208" key="#Plugins" timestamp="1594026690214">
+    <state x="496" y="208" key="#Plugins" timestamp="1602930854211">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="496" y="208" key="#Plugins/0.0.1792.1120@0.0.1792.1120" timestamp="1594026690214" />
-    <state x="360" y="222" width="1071" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1601550232901">
+    <state x="496" y="208" key="#Plugins/0.0.1792.1120@0.0.1792.1120" timestamp="1602930854211" />
+    <state x="360" y="222" width="1071" height="752" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603187627564">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="360" y="222" width="1071" height="714" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1601550232901" />
-    <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1593592742868">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="644" y="297" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1593592742868" />
+    <state x="360" y="222" width="1071" height="752" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1603187627564" />
     <state x="650" y="479" width="491" height="249" key="ComposerInitDialogKey" timestamp="1601244478534">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="650" y="479" width="491" height="249" key="ComposerInitDialogKey/0.0.1792.1120@0.0.1792.1120" timestamp="1601244478534" />
+    <state x="745" y="472" key="ComposerValidateDialog" timestamp="1603189106562">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="745" y="472" key="ComposerValidateDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1603189106562" />
     <state x="324" y="0" key="FileDocumentManager.FileCacheConflict" timestamp="1601244673943">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -582,10 +593,10 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="643" y="293" key="NewPhpClassDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1600859467339" />
-    <state x="397" y="199" key="SettingsEditor" timestamp="1600187841730">
+    <state x="397" y="199" key="SettingsEditor" timestamp="1603187665684">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1600187841730" />
+    <state x="397" y="199" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1603187665684" />
     <state width="600" height="428" key="javadoc.popup" timestamp="1602151022005">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -599,5 +610,9 @@
     </state>
     <state x="158" y="248" width="670" height="732" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1601809585037" />
     <state x="1961" y="239" width="718" height="706" key="search.everywhere.popup/1792.0.1920.1080/0.0.1792.1120@1792.0.1920.1080" timestamp="1596988532082" />
+    <state x="626" y="479" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603188066771">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="626" y="479" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1603188066771" />
   </component>
 </project>

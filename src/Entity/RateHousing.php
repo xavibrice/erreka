@@ -319,6 +319,26 @@ class RateHousing
      */
     private $type_garage;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeStorageRoom", inversedBy="rateHousings")
+     */
+    private $type_storage_room;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $accesible_twenty_four_hours;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $loading_unloading_area;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\StorageRoomLocation", inversedBy="rateHousings")
+     */
+    private $storage_room_location;
+
     public function __construct()
     {
         $this->property = new ArrayCollection();
@@ -1090,6 +1110,54 @@ class RateHousing
     public function setTypeGarage(?TypeGarage $type_garage): self
     {
         $this->type_garage = $type_garage;
+
+        return $this;
+    }
+
+    public function getTypeStorageRoom(): ?TypeStorageRoom
+    {
+        return $this->type_storage_room;
+    }
+
+    public function setTypeStorageRoom(?TypeStorageRoom $type_storage_room): self
+    {
+        $this->type_storage_room = $type_storage_room;
+
+        return $this;
+    }
+
+    public function getAccesibleTwentyFourHours(): ?bool
+    {
+        return $this->accesible_twenty_four_hours;
+    }
+
+    public function setAccesibleTwentyFourHours(?bool $accesible_twenty_four_hours): self
+    {
+        $this->accesible_twenty_four_hours = $accesible_twenty_four_hours;
+
+        return $this;
+    }
+
+    public function getLoadingUnloadingArea(): ?bool
+    {
+        return $this->loading_unloading_area;
+    }
+
+    public function setLoadingUnloadingArea(?bool $loading_unloading_area): self
+    {
+        $this->loading_unloading_area = $loading_unloading_area;
+
+        return $this;
+    }
+
+    public function getStorageRoomLocation(): ?StorageRoomLocation
+    {
+        return $this->storage_room_location;
+    }
+
+    public function setStorageRoomLocation(?StorageRoomLocation $storage_room_location): self
+    {
+        $this->storage_room_location = $storage_room_location;
 
         return $this;
     }

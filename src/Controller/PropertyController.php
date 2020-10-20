@@ -17,6 +17,7 @@ use App\Form\PropertyType;
 use App\Form\ProposalType;
 use App\Form\RateHousingGarageType;
 use App\Form\RateHousingLocalType;
+use App\Form\RateHousingStorageRoomType;
 use App\Form\RateHousingType;
 use App\Form\VisitType;
 use App\Repository\ClientRepository;
@@ -208,6 +209,9 @@ class PropertyController extends AbstractController
         } elseif ($property->getTypeProperty()->getNameSlug() === "garaje") {
             $form = $this->createForm(RateHousingGarageType::class, $rateHousing);
             $routeTemplate = 'rate_housing_garage';
+        } elseif ($property->getTypeProperty()->getNameSlug() === "trastero") {
+            $form = $this->createForm(RateHousingStorageRoomType::class, $rateHousing);
+            $routeTemplate = 'rate_housing_storage_room';
         }
 
         $form->handleRequest($request);
@@ -260,6 +264,9 @@ class PropertyController extends AbstractController
             $form = $this->createForm(RateHousingGarageType::class, $rateHousing);
             $routeTemplate = '_form_rate_housing_garaje';
             $imageNameInput = 'rate_housing_garaje';
+        } elseif ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "trastero") {
+            $form = $this->createForm(RateHousingStorageRoomType::class, $rateHousing);
+            $routeTemplate = 'rate_housing_storage_room';
         }
 
         $form->handleRequest($request);

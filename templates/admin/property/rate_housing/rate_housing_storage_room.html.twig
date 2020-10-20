@@ -1,0 +1,174 @@
+{% extends 'admin/layout.html.twig' %}
+
+{% block title %}Valoración{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css" />
+{% endblock %}
+
+{% block content %}
+
+
+    {{ include('admin/property/type_property/_tab.html.twig') }}
+
+    <div class="row">
+        <div class="col-12 mb-4">
+            <div class="card shadow mb-4">
+{#                <div class="card-header py-3">#}
+{#                    <h6 class="m-0 font-weight-bold text-primary">Valoración</h6>#}
+{#                </div>#}
+                <div class="card-body">
+                    {% if property.rateHousing %}
+                        <div class="table-responsive">
+                            <table class="table table-borderless">
+                                <tbody>
+                                <tr>
+                                    <th class="text-center bg-light text-dark" colspan="8">VALORACIÓN {{ property.typeProperty.name|upper }}</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Propietario / Piso</th>
+                                    <td colspan="7">{{ property.fullName }} / {{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Comentario Vivienda / WEB</th>
+                                    <td colspan="7">{{ property.rateHousing.comment }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center bg-light text-dark" colspan="8">INFORME - Fecha Visita {{ property.rateHousing.visited|date('d/m/Y') }}</th>
+                                </tr>
+                                <tr>
+{#                                    <th class="text-right">Fecha Visita</th>#}
+{#                                    <td>{{ property.rateHousing.visited|date('d/m/Y') }}</td>#}
+                                    <th class="text-right">Precio</th>
+                                    <td>{{ property.rateHousing.minPrice|number_format(0, ',', '.') }} €</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Tipo Garaje</th>
+                                    <td>{{ property.rateHousing.typeGarage }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Ubicación</th>
+                                    <td>{{ property.rateHousing.localGarageLocation.name }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Altura</th>
+                                    <td>
+                                        {{ property.rateHousing.height }}
+                                    </td>
+                                    <th class="text-right">M² útiles</th>
+                                    <td>{{ property.rateHousing.realMeters }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center bg-light" colspan="8">EXTRAS</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Puerta Automática</th>
+                                    <td>{{ property.rateHousing.securityDoor ? 'Si' : 'No'}}</td>
+                                    <th class="text-right">Sistema de Alarma</th>
+                                    <td>{{ property.rateHousing.alarmSystem ? 'Si' : 'No' }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center bg-light" colspan="8">EDIFICIO</th>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Ascensor</th>
+                                    <td>{{ property.rateHousing.elevator ? 'Si' : 'No'}}</td>
+                                    <th class="text-right">Antigüedad</th>
+                                    <td>{{ property.rateHousing.antiquity }} Años</td>
+                                    <th class="text-right">Estructura Edificio</th>
+                                    <td>{{ property.rateHousing.buildingStructure }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Gastos Mensuales Comunidad</th>
+                                    <td>{{ property.rateHousing.communityExpenses|number_format(0, ',', '.') }} €</td>
+                                    <th class="text-right">Derrama Pendiente</th>
+                                    <td title="{{ property.rateHousing.pendingSpills }}">{{ property.rateHousing.pendingSpills|slice(0, 40) }}</td>
+                                    <th class="text-right">Importe derrama Pendiente</th>
+                                    <td>{{ property.rateHousing.amountPendingSpills|number_format(0, ',', '.') }} €</td>
+                                    <th class="text-right">Derrama Futura</th>
+                                    <td title="{{ property.rateHousing.spillsFuture }}">{{ property.rateHousing.spillsFuture|slice(0, 40) }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-right">Administrador Comunidad</th>
+                                    <td>{{ property.rateHousing.administrator }}</td>
+                                    <th class="text-right">Teléfono</th>
+                                    <td>{{ property.rateHousing.mobileAdministrator }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-center bg-light" colspan="8">FOTOS</th>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+{#                        Sistema de Alarma: {{ property.rateHousing.alarmSystem}}#}
+{#                        Puerta Automática: {{ property.rateHousing.automaticDoor}}#}
+{#                        Aire Acondicionado: {{ property.rateHousing.airConditioning}}#}
+
+                    {% else %}
+{#                        {{ include('admin/rate_housing/_form_rate_housing.html.twig', {'form': formRate}) }}#}
+                        <div class="col-md-12 text-center">
+                            <strong>{{ property.fullName }} / {{ property.street.name }}, Nº {{ property.portal }}, {{ property.floor }}</strong>
+                        </div>
+
+                        {{ include('admin/property/_form_rate_housing_storage_room.html.twig') }}
+                    {% endif %}
+
+
+                    <div class="compact-gallery">
+                        <div class="row">
+                            {% if property.rateHousing %}
+                                {% for image in property.rateHousing.image %}
+                                    <div class="col-2">
+                                        <div class="card-body">
+                                            <a class="btn btn-link" href="{{ asset(uploaded_asset(image.imagePath)) }}">
+                                                <img class="img-fluid" src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_small') }}" alt="">
+                                            </a>
+                                        </div>
+                                        <div class="card-footer text-center">
+                                            {{ include('admin/_delete_form.html.twig', {'route': 'image_delete', 'entity': image, 'count': 0}) }}
+                                        </div>
+                                    </div>
+                                {% endfor %}
+
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                <div class="card-footer">
+{#                    {{ include('admin/_back_link.html.twig', {'route': 'property_index'}) }}#}
+                    {% if property.rateHousing %}
+                        {{ include('admin/_edit_link.html.twig', {'route': 'property_rate_housing_edit', 'id': property.rateHousing.id, 'button_label': 'Editar'}) }}
+                        {% else %}
+                            <a class="btn btn-info" href="{{ path('property_show', {'id': property.id }) }}">Ver noticia</a>
+                    {% endif %}
+
+                    {% if property.rateHousing.id is defined %}
+
+
+                    {% if property.charge is defined %}
+                        {% if property.charge is not empty %}
+                            <a class="btn btn-primary" href="{{ path('property_charge', {'id': property.id, 'idChargeType': property.charge.chargeType.id }) }}">{{ property.charge.chargeType.name }}</a>
+                        {% else %}
+                            {% for typeCharge in typeCharges %}
+                                <a class="btn btn-primary" href="{{ path('property_charge', {'id': property.id, 'idChargeType': typeCharge.id }) }}">{{ typeCharge.name }}</a>
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+
+                    {% endif %}
+{#                    <a href="{{ path('property_rate_housing_edit') }}"></a>#}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script>
+        baguetteBox.run('.compact-gallery', { animation: 'slideIn'});
+    </script>
+{% endblock %}

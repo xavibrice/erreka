@@ -141,7 +141,8 @@ class PropertyType extends AbstractType
             );
         } else {
             $date = 'js-datepicker';
-            $builder->add('reason', EntityType::class, [
+            $builder
+                ->add('reason', EntityType::class, [
                 'label' => 'Motivo',
                 'class' => Reason::class,
                 'placeholder' => 'Selecciona un motivo',
@@ -152,6 +153,17 @@ class PropertyType extends AbstractType
                         ->setParameter('name', 'noticia')
                          ;
                     }
+                ])
+                ->add('typeProperty', EntityType::class, [
+                    'label' => 'Tipo de propiedad',
+                    'placeholder' => 'Selecciona Tipo Propiedad',
+                    'class' => TypeProperty::class,
+//                'query_builder' => function(EntityRepository $er) {
+//                    return $er->createQueryBuilder('tp')
+//                        ->where('tp.is_property = :property')
+//                        ->setParameter('property', true)
+//                        ;
+//                }
                 ])
             ;
         }
@@ -207,17 +219,6 @@ class PropertyType extends AbstractType
 //                'class' => Historical::class,
 //                'required' => false
 //            ])
-            ->add('typeProperty', EntityType::class, [
-                'label' => 'Tipo de propiedad',
-                'placeholder' => 'Selecciona Tipo Propiedad',
-                'class' => TypeProperty::class,
-//                'query_builder' => function(EntityRepository $er) {
-//                    return $er->createQueryBuilder('tp')
-//                        ->where('tp.is_property = :property')
-//                        ->setParameter('property', true)
-//                        ;
-//                }
-            ])
         ;
 
         $builder->add('zone', EntityType::class, [

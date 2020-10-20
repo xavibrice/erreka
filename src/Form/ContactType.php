@@ -41,8 +41,9 @@ class ContactType extends AbstractType
             ->add('comment', TextareaType::class, [
                 'label' => ' ',
                 'attr' => [
-                    'class' => 'form-control-a',
+                    'class' => 'form-control',
                     'placeholder' => 'Comentario',
+                    'rows' => 8,
                 ]
             ])
 
