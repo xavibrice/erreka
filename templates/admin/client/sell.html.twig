@@ -31,7 +31,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    {% for client in clients %}
+                    {#{% for client in clients %}
                         {% if client.clientStatus is null %}
                             <tr class="clickable-row" data-href="{{ path('client_sell_show', {'id': client.id}) }}">
                                 <td>{{ client.created ? client.created|date('d/m/Y') : '' }}</td>
@@ -66,13 +66,13 @@
                                 <td data-toggle="tooltip" data-placement="top" data-html="true" title="<b>{{ client.comment }}</b>">
                                     {{ client.comment|slice(0, 25) }}
                                 </td>
-                                {#                <td>#}
-                                {#                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>#}
-                                {#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}
-                                {#                </td>#}
+                                #}{#                <td>#}{#
+                                #}{#                    <a href="{{ path('client_show', {'id': client.id}) }}">show</a>#}{#
+                                #}{#                    <a href="{{ path('client_edit', {'id': client.id}) }}">edit</a>#}{#
+                                #}{#                </td>#}{#
                             </tr>
                         {% endif %}
-                    {% endfor %}
+                    {% endfor %}#}
                     </tbody>
                 </table>
             </div>
