@@ -193,6 +193,71 @@ class Client
      */
     private $clientStatus;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=TypeLocal::class, inversedBy="clients")
+     */
+    private $type_local;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Stays::class, inversedBy="clients")
+     */
+    private $stays;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=LocalGarageLocation::class, inversedBy="clients")
+     */
+    private $local_garage_location;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $air_conditioning;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $smoke_outlet;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $security_door;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $alarm_system;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $equipped_kitchen;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $corner;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $closed_security_circuit;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TypeStorageRoom::class, inversedBy="clients")
+     */
+    private $type_storage_room;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=StorageRoomLocation::class, inversedBy="clients")
+     */
+    private $storage_room_location;
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $automatic_door;
+
     public function __construct()
     {
         $this->visits = new ArrayCollection();
@@ -692,6 +757,162 @@ class Client
     public function setClientStatus(?ClientStatus $clientStatus): self
     {
         $this->clientStatus = $clientStatus;
+
+        return $this;
+    }
+
+    public function getTypeLocal(): ?TypeLocal
+    {
+        return $this->type_local;
+    }
+
+    public function setTypeLocal(?TypeLocal $type_local): self
+    {
+        $this->type_local = $type_local;
+
+        return $this;
+    }
+
+    public function getStays(): ?Stays
+    {
+        return $this->stays;
+    }
+
+    public function setStays(?Stays $stays): self
+    {
+        $this->stays = $stays;
+
+        return $this;
+    }
+
+    public function getLocalGarageLocation(): ?LocalGarageLocation
+    {
+        return $this->local_garage_location;
+    }
+
+    public function setLocalGarageLocation(?LocalGarageLocation $local_garage_location): self
+    {
+        $this->local_garage_location = $local_garage_location;
+
+        return $this;
+    }
+
+    public function getAirConditioning(): ?bool
+    {
+        return $this->air_conditioning;
+    }
+
+    public function setAirConditioning(?bool $air_conditioning): self
+    {
+        $this->air_conditioning = $air_conditioning;
+
+        return $this;
+    }
+
+    public function getSmokeOutlet(): ?bool
+    {
+        return $this->smoke_outlet;
+    }
+
+    public function setSmokeOutlet(?bool $smoke_outlet): self
+    {
+        $this->smoke_outlet = $smoke_outlet;
+
+        return $this;
+    }
+
+    public function getSecurityDoor(): ?bool
+    {
+        return $this->security_door;
+    }
+
+    public function setSecurityDoor(?bool $security_door): self
+    {
+        $this->security_door = $security_door;
+
+        return $this;
+    }
+
+    public function getAlarmSystem(): ?bool
+    {
+        return $this->alarm_system;
+    }
+
+    public function setAlarmSystem(?bool $alarm_system): self
+    {
+        $this->alarm_system = $alarm_system;
+
+        return $this;
+    }
+
+    public function getEquippedKitchen(): ?bool
+    {
+        return $this->equipped_kitchen;
+    }
+
+    public function setEquippedKitchen(?bool $equipped_kitchen): self
+    {
+        $this->equipped_kitchen = $equipped_kitchen;
+
+        return $this;
+    }
+
+    public function getCorner(): ?bool
+    {
+        return $this->corner;
+    }
+
+    public function setCorner(?bool $corner): self
+    {
+        $this->corner = $corner;
+
+        return $this;
+    }
+
+    public function getClosedSecurityCircuit(): ?bool
+    {
+        return $this->closed_security_circuit;
+    }
+
+    public function setClosedSecurityCircuit(?bool $closed_security_circuit): self
+    {
+        $this->closed_security_circuit = $closed_security_circuit;
+
+        return $this;
+    }
+
+    public function getTypeStorageRoom(): ?TypeStorageRoom
+    {
+        return $this->type_storage_room;
+    }
+
+    public function setTypeStorageRoom(?TypeStorageRoom $type_storage_room): self
+    {
+        $this->type_storage_room = $type_storage_room;
+
+        return $this;
+    }
+
+    public function getStorageRoomLocation(): ?StorageRoomLocation
+    {
+        return $this->storage_room_location;
+    }
+
+    public function setStorageRoomLocation(?StorageRoomLocation $storage_room_location): self
+    {
+        $this->storage_room_location = $storage_room_location;
+
+        return $this;
+    }
+
+    public function getAutomaticDoor(): ?bool
+    {
+        return $this->automatic_door;
+    }
+
+    public function setAutomaticDoor(?bool $automatic_door): self
+    {
+        $this->automatic_door = $automatic_door;
 
         return $this;
     }

@@ -28,9 +28,15 @@ class Stays
      */
     private $rateHousings;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Client::class, mappedBy="stays")
+     */
+    private $clients;
+
     public function __construct()
     {
         $this->rateHousings = new ArrayCollection();
+        $this->clients = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -84,5 +90,36 @@ class Stays
     public function __toString()
     {
         return $this->name;
+    }
+
+    /**
+     * @return Collection|Client[]
+     */
+    public function getClients(): Collection
+    {
+        return $this->clients;
+    }
+
+    public function addClient(Client $client): self
+    {
+        if (!$this->clients->contains($client)) {
+            $this->clients[] = $client;
+            $client->setStays($this);
+        }
+
+        return $this;
+    }
+
+    public function removeClient(Client $client): self
+    {
+        if ($this->clients->contains($client)) {
+            $this->clients->removeElement($client);
+            // set the owning side to null (unless already changed)
+            if ($client->getStays() === $this) {
+                $client->setStays(null);
+            }
+        }
+
+        return $this;
     }
 }

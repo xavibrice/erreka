@@ -18,7 +18,7 @@
     <!-- ======= Intro Section ======= -->
     <div class="intro intro-carousel">
         <div id="carousel" class="owl-carousel owl-theme">
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url('{{ asset('img/propiedad-uno.jpg') }}')">
+            <div class="carousel-item-a intro-item bg-image" style="background-image: url('{{ asset('img/propiedad-uno-min.jpg') }}')">
                 <div class="overlay overlay-a"></div>
                 <div class="intro-content display-table">
                     <div class="table-cell">
@@ -26,10 +26,12 @@
                             <div class="row">
                                 <div class="col-lg-8">
                                     <div class="intro-body">
-                                        <p class="intro-title-top">Zamakola 65, Bj (La Peña)</p>
                                         <h1 class="intro-title mb-4">
-                                            <span class="color-b">Inmobiliaria </span> Erreka
+                                            <span class="color-b">Inmobiliaria </span> En Bilbao
                                         </h1>
+                                        <p class="intro-subtitle intro-price">
+                                            Grupo Erreka ofrece servicios de inmobiliaria para la venta y alquier de pisos e inmuebles en Bilbao.
+                                        </p>
                                         <p class="intro-subtitle intro-price">
                                             <a href="{{ path('about_us') }}"><span class="price-a">Más Información</span></a>
                                         </p>
@@ -40,7 +42,7 @@
                     </div>
                 </div>
             </div>
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url('{{ asset('img/propiedad-dos.jpg') }}')">
+{#            <div class="carousel-item-a intro-item bg-image" style="background-image: url('{{ asset('img/propiedad-dos.jpg') }}')">
                 <div class="overlay overlay-a"></div>
                 <div class="intro-content display-table">
                     <div class="table-cell">
@@ -82,7 +84,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>#}
         </div>
     </div>
     <!-- End Intro Section -->
@@ -91,7 +93,7 @@
         <!-- ======= Servicios Destacados ======= -->
         <section class="section-services section-t8">
             <div class="container">
-                <div class="row">
+                {#<div class="row">
                     <div class="col-md-12">
                         <div class="title-wrap d-flex justify-content-between">
                             <div class="title-box">
@@ -99,7 +101,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>#}
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card-box-c foo">
@@ -108,15 +110,16 @@
                                     <span class="fa fa-gavel fa-3x"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Vendemos tu vivienda en 90 días</h2>
+                                    <h2 class="title-c">Vivienda en venta en 90 días</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
                                 <p class="content-c">
-                                    ¿Quiéres conoces más de nuestro método exclusivo?
+                                    <b>Vender tu Inmueble es fácil.</b> <br>
+                                    En Grupo Erreka contamos con un potente plan de marketing para vender tu vivienda en las mejores condiciones y al mejor precio.
                                 </p>
                             </div>
-                            <div class="card-footer-c">
+                            <div class="card-footer-c text-right">
                                 <a href="{{ path('to_sell') }}" class="link-c link-icon">Más Información
                                     <span class="fa fa-angle-right"></span>
                                 </a>
@@ -130,15 +133,16 @@
                                     <span class="fas fa-file-signature fa-3x"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Alquiler garantizado</h2>
+                                    <h2 class="title-c">Pisos con alquiler garantizado</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
                                 <p class="content-c">
-                                    Tu seguridad es nuestro objetivo
+                                    <b>¿Temes que tus inquilinos no te paguen?</b> <br>
+                                    Grupo Erreka te garantiza los pagos del alquiler de tu vivienda el día 8 de cada mes, se transfiere directamente a tu cuenta bancaria.
                                 </p>
                             </div>
-                            <div class="card-footer-c">
+                            <div class="card-footer-c text-right">
                                 <a href="{{ path('guaranteed_rental') }}" class="link-c link-icon">Más Información
                                     <span class="fa fa-angle-right"></span>
                                 </a>
@@ -245,8 +249,8 @@
                                 <div class="card-box-ico text-info">
                                     <span class="fa fa-gavel fa-3x"></span>
                                 </div>
-                                <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Despacho Abogados</h2>
+                                <div class="card-title-a align-self-center">
+                                    <h2 class="title-2 ml-1">Despacho Abogados</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
@@ -268,7 +272,7 @@
                                     <span class="fas fa-file-signature fa-3x"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Asesoría Fiscal</h2>
+                                    <h2 class="title-2 ml-1">Asesoría Fiscal</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
@@ -290,7 +294,7 @@
                                     <span class="fas fa-user-secret fa-3x"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Seguros</h2>
+                                    <h2 class="title-2 ml-1">Seguros</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
@@ -314,7 +318,7 @@
                                     <span class="fas fa-paint-brush fa-3x"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Reformas</h2>
+                                    <h2 class="title-2 ml-1">Reformas</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
@@ -336,7 +340,7 @@
                                     <span class="fas fa-hand-holding-usd fa-3x"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Financiación</h2>
+                                    <h2 class="title-2 ml-1">Financiación</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
@@ -358,7 +362,7 @@
                                     <span class="fas fa-lightbulb fa-3x"></span>
                                 </div>
                                 <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Certificado Energético</h2>
+                                    <h2 class="title-2 ml-1">Certificado Energético</h2>
                                 </div>
                             </div>
                             <div class="card-body-c">
@@ -396,7 +400,7 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="testimonial-img">
-                                        <img src="{{ asset('img/offices/erreka.jpg') }}" alt="Oficina Erreka" class="img-fluid">
+                                        <img src="{{ asset('img/offices/erreka-min.jpg') }}" alt="Oficina Erreka" class="img-fluid">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
@@ -423,7 +427,7 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="testimonial-img">
-                                        <img src="{{ asset('img/offices/erreka_garrido.jpg') }}" alt="Oficina Erreka Garrido" class="img-fluid">
+                                        <img src="{{ asset('img/offices/erreka_garrido-min.jpg') }}" alt="Oficina Erreka Garrido" class="img-fluid">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">
@@ -448,7 +452,7 @@
                             <div class="row">
                                 <div class="col-sm-12 col-md-6">
                                     <div class="testimonial-img">
-                                        <img src="{{ asset('img/offices/garrido.jpg') }}" alt="Oficina Asesoría Garrido" class="img-fluid">
+                                        <img src="{{ asset('img/offices/garrido-min.jpg') }}" alt="Oficina Asesoría Garrido" class="img-fluid">
                                     </div>
                                 </div>
                                 <div class="col-sm-12 col-md-6">

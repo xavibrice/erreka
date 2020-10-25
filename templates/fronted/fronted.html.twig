@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta name="robots" content=”noindex,nofollow”>
     {% block metadata %}{% endblock %}
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
     <title>{% block title %}Inmobiliaria Erreka - La Peña{% endblock %}</title>
@@ -300,10 +301,10 @@
                         <nav class="nav-footer">
                             <ul class="list-inline">
                                 <li class="list-inline-item">
-                                    <a href="{{ path('legal_warning') }}">Aviso Legal</a>
+                                    <a rel="nofollow, noindex" href="{{ path('legal_warning') }}">Aviso Legal</a>
                                 </li>
                                 <li class="list-inline-item">
-                                    <a href="{{ path('privacy_police') }}">Política Privacidad</a>
+                                    <a rel="nofollow, noindex" href="{{ path('privacy_police') }}">Política Privacidad</a>
                                 </li>
                             </ul>
                         </nav>

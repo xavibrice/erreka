@@ -262,8 +262,8 @@ class PropertyController extends AbstractController
             $imageNameInput = 'rate_housing_local';
         } elseif ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "garaje") {
             $form = $this->createForm(RateHousingGarageType::class, $rateHousing);
-            $routeTemplate = '_form_rate_housing_garaje';
-            $imageNameInput = 'rate_housing_garaje';
+            $routeTemplate = '_form_rate_housing_garage';
+            $imageNameInput = 'rate_housing_garage';
         } elseif ($rateHousing->getProperty()->getValues()[0]->getTypeProperty()->getNameSlug() === "trastero") {
             $form = $this->createForm(RateHousingStorageRoomType::class, $rateHousing);
             $routeTemplate = 'rate_housing_storage_room';

@@ -7,9 +7,14 @@ use App\Entity\BuildingStructure;
 use App\Entity\Client;
 use App\Entity\ClientStatus;
 use App\Entity\Heating;
+use App\Entity\LocalGarageLocation;
 use App\Entity\Orientation;
 use App\Entity\Reason;
+use App\Entity\Stays;
+use App\Entity\StorageRoomLocation;
+use App\Entity\TypeLocal;
 use App\Entity\TypeProperty;
+use App\Entity\TypeStorageRoom;
 use App\Entity\User;
 use App\Entity\Zone;
 use App\Form\Type\DatePickerType;
@@ -43,7 +48,142 @@ class ClientSellType extends AbstractType
                     'class' => ClientStatus::class,
                     'placeholder' => 'Selecciona estado cliente',
                     'required' => false,
-                ]);
+                ])
+                ;
+            //Aquí verificamos si es vivienda, local, etc
+            if ($client->getTypeProperty()->getNameSlug() === 'vivienda' or
+                $client->getTypeProperty()->getNameSlug() === 'atico' or
+                $client->getTypeProperty()->getNameSlug() === 'duplex' or
+                $client->getTypeProperty()->getNameSlug() === 'apartamento' or
+                $client->getTypeProperty()->getNameSlug() === 'casa-chalet') {
+                $builder
+                    ->add('bedrooms', EntityType::class, [
+                        'label' => 'Habitaciones',
+                        'class' => Bedrooms::class,
+                        'required' => false,
+                        'placeholder' => 'Selecciona Habitación',
+                    ])
+                    ->add('heating', EntityType::class, [
+                        'class' => Heating::class,
+                        'label' => 'Calefacción',
+                        'placeholder' => 'Selecciona Calefacción',
+                        'required' => false,
+                    ])
+                    ->add('orientation', EntityType::class, [
+                        'class' => Orientation::class,
+                        'label' => 'Orientación',
+                        'placeholder' => 'Selecciona Orientación',
+                        'required' => false,
+                    ])
+                    ->add('elevator', CheckboxType::class, [
+                        'label' => 'Ascensor',
+                        'required' => false,
+                    ])
+                    ->add('buildingStructure', EntityType::class, [
+                        'required' => false,
+                        'label' => 'Estructura',
+                        'class' => BuildingStructure::class,
+                        'placeholder' => 'Selecciona Estructura',
+                    ])
+                    ->add('terrace', CheckboxType::class, [
+                        'label' => 'Terraza',
+                        'required' => false,
+                    ])
+                    ->add('balcony', CheckboxType::class, [
+                        'label' => 'Balcón',
+                        'required' => false,
+                    ])
+                    ->add('storage_room', CheckboxType::class, [
+                        'label' => 'Trastero',
+                        'required' => false,
+                    ])
+                    ->add('direct_garage', CheckboxType::class, [
+                        'label' => 'Garaje Directo',
+                        'required' => false,
+                    ])
+                    ->add('zero_dimension', CheckboxType::class, [
+                        'label' => 'Cota Cero',
+                        'required' => false,
+                    ])
+                    ->add('disabled_access', CheckboxType::class, [
+                        'label' => 'Acceso Minusválidos',
+                        'required' => false,
+                    ])
+                ;
+            } elseif ($client->getTypeProperty()->getNameSlug() === 'local-negocio') {
+                $builder
+                    ->add('typeLocal', EntityType::class, [
+                        'class' => TypeLocal::class,
+                        'label' => 'Tipo Local',
+                        'placeholder' => 'Selecciona Tipo Local',
+                        'required' => false,
+                    ])
+                    ->add('stays', EntityType::class, [
+                        'class' => Stays::class,
+                        'label' => 'Estancias',
+                        'placeholder' => 'Selecciona Estancia',
+                        'required' => false,
+                    ])
+                    ->add('localGarageLocation', EntityType::class, [
+                        'class' => LocalGarageLocation::class,
+                        'label' => 'Ubicación Local',
+                        'placeholder' => 'Selecciona Ubicación Local',
+                        'required' => false,
+                    ])
+                    ->add('airConditioning', CheckboxType::class, [
+                        'label' => 'Aire Acondicionado',
+                        'required' => false,
+                    ])
+                    ->add('smokeOutlet', CheckboxType::class, [
+                        'label' => 'Salida de Humos',
+                        'required' => false,
+                    ])
+                    ->add('alarmSystem', CheckboxType::class, [
+                        'label' => 'Sistema de Alarma',
+                        'required' => false,
+                    ])
+                    ->add('equippedKitchen', CheckboxType::class, [
+                        'label' => 'Cocina Equipada',
+                        'required' => false,
+                    ])
+                    ->add('corner', CheckboxType::class, [
+                        'label' => '¿Hace esquina?',
+                        'required' => false,
+                    ])
+                    ->add('closedSecurityCircuit', CheckboxType::class, [
+                        'label' => 'Circuito Cerrado Seguridad',
+                        'required' => false,
+                    ])
+                    ->add('storage_room', CheckboxType::class, [
+                        'label' => 'Trastero',
+                        'required' => false,
+                    ])
+                ;
+            } elseif ($client->getTypeProperty()->getNameSlug() === 'trastero') {
+                $builder
+                    ->add('typeStorageRoom', EntityType::class, [
+                        'class' => TypeStorageRoom::class,
+                        'label' => 'Tipo Trastero',
+                        'placeholder' => 'Selecciona Tipo Trastero',
+                        'required' => false,
+                    ])
+                    ->add('storageRoomLocation', EntityType::class, [
+                        'class' => StorageRoomLocation::class,
+                        'label' => 'Ubicación Trastero',
+                        'placeholder' => 'Selecciona Ubicación Trastero',
+                        'required' => false,
+                    ])
+                    ->add('alarmSystem', CheckboxType::class, [
+                        'label' => 'Sistema de Alarma',
+                        'required' => false,
+                    ])
+                    ->add('automaticDoor', CheckboxType::class, [
+                        'label' => 'Puerta Automática',
+                        'required' => false,
+                    ])
+
+                ;
+            }
         }
 
         $builder
@@ -57,10 +197,6 @@ class ClientSellType extends AbstractType
             ])
             ->add('full_name', TextType::class, [
                 'label' => 'Nombre Cliente',
-            ])
-            ->add('price', MoneyType::class, [
-                'label' => 'Precio',
-                'required' => false,
             ])
             ->add('mobile', TelType::class, [
                 'label' => 'Móvil',
@@ -78,44 +214,26 @@ class ClientSellType extends AbstractType
                 'label' => 'Comentario',
                 'required' => false,
             ])
-            ->add('heating', EntityType::class, [
-                'class' => Heating::class,
-                'label' => 'Calefacción',
-                'placeholder' => 'Selecciona Calefacción',
-                'required' => false,
+            ->add('commercial', EntityType::class, [
+                'required' => true,
+                'label' => 'Agente',
+                'class' => User::class,
+                'placeholder' => 'Selecciona un comercial',
+                'query_builder' => function(EntityRepository $er) use ($options) {
+                    return $er->createQueryBuilder('u')
+                        ->andWhere('u.agency = :agency')
+                        ->setParameter('agency', $options['agency'])
+                        ;
+                }
             ])
-            ->add('orientation', EntityType::class, [
-                'class' => Orientation::class,
-                'label' => 'Orientación',
-                'placeholder' => 'Selecciona Orientación',
-                'required' => false,
+            ->add('typeProperty', EntityType::class, [
+                'label' => 'Tipo Propiedad',
+                'required' => true,
+                'class' => TypeProperty::class,
+                'placeholder' => 'Selecciona Tipo Propiedad',
             ])
-            ->add('terrace', CheckboxType::class, [
-                'label' => 'Terraza',
-                'required' => false,
-            ])
-            ->add('balcony', CheckboxType::class, [
-                'label' => 'Balcón',
-                'required' => false,
-            ])
-            ->add('storage_room', CheckboxType::class, [
-                'label' => 'Trastero',
-                'required' => false,
-            ])
-            ->add('direct_garage', CheckboxType::class, [
-                'label' => 'Garaje Directo',
-                'required' => false,
-            ])
-            ->add('disabled_access', CheckboxType::class, [
-                'label' => 'Acceso Minusválidos',
-                'required' => false,
-            ])
-            ->add('zero_dimension', CheckboxType::class, [
-                'label' => 'Cota Cero',
-                'required' => false,
-            ])
-            ->add('elevator', CheckboxType::class, [
-                'label' => 'Ascensor',
+            ->add('price', MoneyType::class, [
+                'label' => 'Precio',
                 'required' => false,
             ])
             ->add('zoneOne', EntityType::class, [
@@ -141,36 +259,6 @@ class ClientSellType extends AbstractType
                 'required' => false,
                 'class' => Zone::class,
                 'placeholder' => 'Selecciona Zona 4',
-            ])
-            ->add('commercial', EntityType::class, [
-                'required' => true,
-                'label' => 'Agente',
-                'class' => User::class,
-                'placeholder' => 'Selecciona un comercial',
-                'query_builder' => function(EntityRepository $er) use ($options) {
-                    return $er->createQueryBuilder('u')
-                        ->andWhere('u.agency = :agency')
-                        ->setParameter('agency', $options['agency'])
-                        ;
-                }
-            ])
-            ->add('typeProperty', EntityType::class, [
-                'label' => 'Tipo Propiedad',
-                'required' => true,
-                'class' => TypeProperty::class,
-                'placeholder' => 'Selecciona Tipo Propiedad',
-            ])
-            ->add('bedrooms', EntityType::class, [
-                'label' => 'Habitaciones',
-                'class' => Bedrooms::class,
-                'required' => false,
-                'placeholder' => 'Selecciona Habitación',
-            ])
-            ->add('buildingStructure', EntityType::class, [
-                'required' => false,
-                'label' => 'Estructura',
-                'class' => BuildingStructure::class,
-                'placeholder' => 'Selecciona Estructura',
             ])
         ;
     }

@@ -112,7 +112,7 @@ class ClientController extends AbstractController
             $entityManager->persist($client);
             $entityManager->flush();
 
-            return $this->redirectToRoute('client_sell_show', [
+            return $this->redirectToRoute('client_sell_edit', [
                 'id' => $client->getId()
             ]);
         }
@@ -340,7 +340,6 @@ class ClientController extends AbstractController
                 'id' => $client->getId()
             ]);
         }
-
 
         $nextCall = $request->get('note_client')['nextCall'];
         $comment = $request->get('note_client')['comment'];
