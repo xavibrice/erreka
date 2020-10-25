@@ -31,6 +31,7 @@ class ClientController extends AbstractController
      */
     public function sell(ClientRepository $clientRepository): Response
     {
+        dd('ok');
         return $this->render('admin/client/sell.html.twig', [
             'clients' => $clientRepository->findClienteForAgencyAndSell($this->getUser()->getAgency()),
         ]);
