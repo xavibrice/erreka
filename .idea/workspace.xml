@@ -2,77 +2,49 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/erreka.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/erreka.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/symfony2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/symfony2.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/doctrine_migrations.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/routes.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ClientController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ClientController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PropertyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PropertyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Client.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Client.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/LocalGarageLocation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/LocalGarageLocation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Stays.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Stays.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/StorageRoomLocation.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/StorageRoomLocation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TypeLocal.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TypeLocal.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/TypeStorageRoom.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/TypeStorageRoom.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ClientSellType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ClientSellType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/AgencyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AgencyRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BedroomsRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BedroomsRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BookingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BookingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/BuildingStructureRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/BuildingStructureRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ChargeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ChargeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ChargeTypeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ChargeTypeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClientRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ClientStatusRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ClientStatusRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/DoorRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/DoorRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/EnergyCertificateRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/EnergyCertificateRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/GroundRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/GroundRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/HeatingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/HeatingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/HistoricalRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/HistoricalRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ImagesRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ImagesRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LocalGarageLocationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LocalGarageLocationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/LocationBookingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/LocationBookingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/NoteClientRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoteClientRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/NoteCommercialRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoteCommercialRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/NoteNewRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/NoteNewRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/OfferedRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OfferedRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/OrientationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/OrientationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyReductionRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyReductionRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PropertyRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ProposalRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ProposalRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/RateHousingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/RateHousingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ReasonRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ReasonRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/SituationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SituationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/SizeRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/SizeRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/StateKeysRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/StateKeysRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/StaysRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/StaysRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/StorageRoomLocationRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/StorageRoomLocationRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/StreetRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/StreetRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TitleBookingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TitleBookingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TypeGarageRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TypeGarageRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TypeLocalRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TypeLocalRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TypePropertyRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TypePropertyRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TypeStateRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TypeStateRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/TypeStorageRoomRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/TypeStorageRoomRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ValuationStatusRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ValuationStatusRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/VisitRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/VisitRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/WallRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WallRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/WindowRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WindowRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/ZoneRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/ZoneRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/_new_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/_new_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/edit_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/edit_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/client/show_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/admin/default/notices.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/EnergyCertificate.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/EnergyCertificate.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200221174816.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200225100526.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200226190705.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200226191317.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200227004703.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200227004858.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200227005020.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200228150245.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200228150332.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200303173317.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200307131412.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200307131925.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200308191225.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200311091548.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200312095936.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200312100341.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200312112041.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200325122641.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200325123214.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200325123658.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200327132032.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200328114153.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200417121346.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200605111730.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20200701091858.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201002111519.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201002112643.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201002145413.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201002145859.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201004104046.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201004104127.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201005095458.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201008095616.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201008095748.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201015094921.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201015095738.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201023103659.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201023104747.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201023173621.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Migrations/Version20201023175125.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -588,6 +560,8 @@
       <workItem from="1603633317085" duration="239000" />
       <workItem from="1603634074730" duration="489000" />
       <workItem from="1603634577449" duration="871000" />
+      <workItem from="1603656522964" duration="454000" />
+      <workItem from="1603659350333" duration="938000" />
     </task>
     <servers />
   </component>
