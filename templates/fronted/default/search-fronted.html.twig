@@ -4,7 +4,6 @@
 
 {% block body %}
     <main id="main">
-        <!-- ======= Intro Single ======= -->
         <section class="intro-single">
             <div class="container">
                 <div class="row">
@@ -28,7 +27,6 @@
                 </div>
             </div>
         </section>
-        <!-- End Intro Single-->
     </main>
 
     <div class="container">
@@ -122,47 +120,6 @@
                     {% endif %}
                 {% endfor %}
             </div>
-
-            {#<div class="row">
-                <div class="col-sm-12">
-                    <nav class="pagination-a">
-                        {% if maxPages > 1 %}
-                            <ul class="pagination justify-content-end">
-                                {%if thisPage > 1 %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ path('search_fronted', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">
-                                            <span class="fa fa-angle-left"></span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                                #}{# Render each page number #}{#
-                                {% for i in 1..maxPages %}
-                                    <li class="page-item {% if i == thisPage %}active{% endif%} ">
-                                        <a class="page-link" href="{{ path('search_fronted', {page: i}) }}">{{ i }}</a>
-                                    </li>
-                                {% endfor %}
-
-                                #}{# `»` arrow #}{#
-                                {%if thisPage < maxPages %}
-                                    <li class="page-item next">
-                                        <a class="page-link" href="{{ path('search_fronted', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">
-                                            <span class="fa fa-angle-right"></span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        {% endif %}
-
-                    </nav>
-                </div>
-            </div>#}
-{#
-            <div class="row">
-                <div class="col-sm-12">
-                    {{ knp_pagination_render(properties) }}
-                </div>
-            </div>#}
-
         </div>
     </section>
 {% endblock %}
