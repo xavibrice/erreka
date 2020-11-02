@@ -12,6 +12,23 @@
         {{ encore_entry_link_tags('fronted') }}
         {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
     {% endblock %}
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '962130807529950');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=962130807529950&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Facebook Pixel Code -->
 </head>
 <body>
 <!-- Load Facebook SDK for JavaScript -->
@@ -145,7 +162,7 @@
                     <span></span>
                     <span></span>
                 </button>
-                <a class="navbar-brand text-brand" href="{{ path('default') }}"><img class="img-fluid" width="125px" src="{{ asset('img/logo-erreka.png') }}" alt="Logo"></a>
+                <a class="navbar-brand text-brand" href="{{ path('default') }}"><img class="img-fluid" width="125px" src="{{ asset('img/logo-erreka.png') }}" alt="Logo Erreka"></a>
                 {#<button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
                     <span class="fa fa-search" aria-hidden="true"></span>
                 </button>#}
@@ -155,8 +172,17 @@
                             <a class="nav-link {% if app.request.get('_route') == 'default' %}active{% endif %}" href="{{ path('default') }}">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link {% if app.request.get('_route') == 'search_fronted' %}active{% endif %}" href="{{ path('search_fronted') }}">Propiedades</a>
+                            <a class="nav-link {% if app.request.get('_route') == 'search_fronted' %}active{% endif %}" href="{{ path('search_fronted') }}">Inmuebles</a>
                         </li>
+                        {#<li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInmuebles" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Inmuebles
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdownInmuebles">
+                                <a class="dropdown-item {% if app.request.get('_route') == 'property_sell' %}active{% endif %}" href="{{ path('property_sell') }}">Comprar</a>
+                                <a class="dropdown-item {% if app.request.get('_route') == 'services_tax_advice' %}active{% endif %}" href="{{ path('services_tax_advice') }}">Alquilar</a>
+                            </div>
+                        </li>#}
                         <li class="nav-item">
                             <a class="nav-link {% if app.request.get('_route') == 'to_sell' %}active{% endif %}" href="{{ path('to_sell') }}">¿Vendes?</a>
                         </li>
@@ -202,13 +228,24 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-4">
                         <div class="widget-a">
+                            <div class="w-header-a mb-4">
+                                <img src="{{ asset('img/logo-erreka.png') }}" alt="Logo Erreka">
+                            </div>
                             <div class="w-header-a">
-                                <h3 class="w-title-a text-brand">Erreka <span class="color-b">Inmobiliaria</span></h3>
+                                <h3 class="w-title-a text-brand">Sobre <span class="color-b">Nosotros</span></h3>
                             </div>
                             <div class="w-body-a">
                                 <p class="w-text-a color-text-a">
-                                    Con una larga trayectoria de más de 16 años, tanto en ventas como en alquileres, en el barrio de La Peña.
+                                    Con una larga trayectoria de más de 16 años, tanto en ventas como en alquileres en Bilbao y alrededores.
                                 </p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-4 section-md-t3">
+                        <div class="widget-a">
+                            <div class="w-header-a">
+                                <h3 class="w-title-a text-brand">Nuestras <span class="color-b">Oficinas</span></h3>
                             </div>
                             <div class="w-footer-a">
                                 <ul class="list-unstyled">
@@ -218,27 +255,13 @@
                                     <li class="color-a">
                                         <span class="color-text-a">Móvil: </span><a href="tel:+34675602296">+34 675 602 296</a>
                                     </li>
-                                    <li class="color-a">
+                                    {#<li class="color-a">
                                         <span class="color-text-a">Teléfono: </span><a href="tel:+34944790908">944 790 908</a>
-                                    </li>
+                                    </li>#}
                                     <li class="color-a">
                                         <span class="color-text-a">Correo: </span><a href="mailto:info@errekainmobiliaria.com">info@errekainmobiliaria.com</a>
                                     </li>
                                 </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-4 section-md-t3">
-                        <div class="widget-a">
-                            <div class="w-header-a">
-                                <h3 class="w-title-a text-brand">Erreka Garrido <span class="color-b">Inmobiliaria</span></h3>
-                            </div>
-                            <div class="w-body-a">
-                                <div class="w-body-a">
-                                    <p class="w-text-a color-text-a">
-                                        Gracias a la fusión de dos empresas referentes en el barrio, hemos creado el Grupo Erreka Garrido para dar un servicio más completo a todos nuestros clientes.
-                                    </p>
-                                </div>
                             </div>
                             <div class="w-footer-a">
                                 <ul class="list-unstyled">
@@ -248,12 +271,31 @@
                                     <li class="color-a">
                                         <span class="color-text-a">Móvil: </span><a href="tel:+34688713382">+34 688 713 382</a>
                                     </li>
-                                    <li class="color-a">
+                                    {#<li class="color-a">
                                         <span class="color-text-a">Móvil: </span><a href="tel:+34688738264">+34 688 738 264</a>
-                                    </li>
+                                    </li>#}
                                     <li class="color-a">
                                         <span class="color-text-a">Correo: </span><a href="mailto:info@errekagarrido.com">info@errekagarrido.com</a>
                                     </li>
+                                </ul>
+                            </div>
+                            <div class="w-footer-a">
+                                <ul class="list-unstyled">
+                                    <li class="color-a">
+                                        <span class="color-text-a">Dirección: </span><a target="_blank" href="https://goo.gl/maps/vHKHyGmpwK9gbgCZA">Zamakola 49 Bj, La Peña</a>
+                                    </li>
+                                    <li class="color-a">
+                                        <span class="color-text-a">Móvil: </span><a href="tel:+34688823351">+34 688 823 351</a>
+                                    </li>
+                                    {#<li class="color-a">
+                                        <span class="color-text-a">Teléfono: </span><a href="tel:+34944169854">944 169 854</a>
+                                    </li>#}
+                                    <li class="color-a">
+                                        <span class="color-text-a">Correo: </span> <a href="mailto:info@zamakolaabogados.com">info@zamakolaabogados.com</a>
+                                    </li>
+                                    {#<li class="color-a">
+                                        <span class="color-text-a">Correo: </span> <a href="mailto:info@segurosgarrido.com">info@segurosgarrido.com</a>
+                                    </li>#}
                                 </ul>
                             </div>
                         </div>
@@ -264,28 +306,24 @@
                                 <h3 class="w-title-a text-brand">Asesoría y Correduría <span class="color-b">Garrido</span></h3>
                             </div>
                             <div class="w-body-a">
-                                <div class="w-body-a">
-                                    <p class="w-text-a color-text-a">
-                                        Correduría de seguros ubicada en Bilbao y con amplia experiencia y dedicación de más de 30 años en el sector asegurador.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="w-footer-a">
                                 <ul class="list-unstyled">
-                                    <li class="color-a">
-                                        <span class="color-text-a">Dirección: </span><a target="_blank" href="https://goo.gl/maps/vHKHyGmpwK9gbgCZA">Zamakola 49 Bj, La Peña</a>
+                                    <li class="item-list-a">
+                                        <i class="fa fa-angle-right"></i> <a href="{{ path('default') }}">Inicio</a>
                                     </li>
-                                    <li class="color-a">
-                                        <span class="color-text-a">Móvil: </span><a href="tel:+34688823351">+34 688 823 351</a>
+                                    <li class="item-list-a">
+                                        <i class="fa fa-angle-right"></i> <a href="{{ path('search_fronted') }}">Propiedades</a>
                                     </li>
-                                    <li class="color-a">
-                                        <span class="color-text-a">Teléfono: </span><a href="tel:+34944169854">944 169 854</a>
+                                    <li class="item-list-a">
+                                        <i class="fa fa-angle-right"></i> <a href="{{ path('to_sell') }}">¿Vendes?</a>
                                     </li>
-                                    <li class="color-a">
-                                        <span class="color-text-a">Correo: </span> <a href="mailto:info@zamakolaabogados.com">info@zamakolaabogados.com</a>
+                                    <li class="item-list-a">
+                                        <i class="fa fa-angle-right"></i> <a href="{{ path('guaranteed_rental') }}">Alquiler Garantizado</a>
                                     </li>
-                                    <li class="color-a">
-                                        <span class="color-text-a">Correo: </span> <a href="mailto:info@segurosgarrido.com">info@segurosgarrido.com</a>
+                                    <li class="item-list-a">
+                                        <i class="fa fa-angle-right"></i> <a href="{{ path('about_us') }}">Nosotros</a>
+                                    </li>
+                                    <li class="item-list-a">
+                                        <i class="fa fa-angle-right"></i> <a href="{{ path('contact') }}">Contacto</a>
                                     </li>
                                 </ul>
                             </div>

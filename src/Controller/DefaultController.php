@@ -374,6 +374,16 @@ class DefaultController extends AbstractController
     }
 
     /**
+     * @Route("/comprar", name="property_sell", methods={"GET"})
+     */
+    public function propertySell(): Response
+    {
+        return $this->render('fronted/default/property_sell.html.twig', [
+        ]);
+    }
+
+
+    /**
      * @Route("/buscar/vivienda/detalles/{reference}", name="search_details")
      */
     public function searchDetails(Request $request, Property $property)

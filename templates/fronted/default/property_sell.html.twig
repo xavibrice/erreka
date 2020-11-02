@@ -1,0 +1,140 @@
+{% extends 'fronted/fronted.html.twig' %}
+
+{% block title %}Comprar pisos o inmuebles en Bilbao | Erreka Inmobiliaria{% endblock %}
+
+{% block metadata %}
+    <meta name="title" content="Comprar pisos o inmuebles en Bilbao | Erreka Inmobiliaria">
+    <meta name="description" content="Amplia oferta de pisos nuevos y baratos en Bilbao. Encuentra tu vivienda, duplex e inmueble al mejor precio en Bilbao: La Peña, Zabala, Casco Viejo, Santa Isabel, Atxuri, Rekalde, Bilbao La Vieja, Santutxu, Bilborock.">
+    <meta name="keywords" content="comprar pisos en bilbao, comprar pisos baratos, comprar pisos nuevos, pisos en venta, comprar vivienda en bilbao, inmuebles en venta en bilbao">
+    <meta name="author" content="errekainmobiliaria.com">
+    <meta name="copyright" content="Erreka Inmobiliaria" />
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+    <meta property="og:title" content="Comprar pisos o inmuebles en Bilbao | Erreka Inmobiliaria">
+    <meta property="og:description" content="Amplia oferta de pisos nuevos y baratos en Bilbao. Encuentra tu vivienda, duplex e inmueble al mejor precio en Bilbao: La Peña, Zabala, Casco Viejo, Santa Isabel, Atxuri, Rekalde, Bilbao La Vieja, Santutxu, Bilborock.">
+    <meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
+{% endblock %}
+
+{% block body %}
+    <main id="main">
+        <section class="intro-single">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-lg-8">
+                        <div class="title-single-box">
+                            <h1 class="title-single">Viviendas en venta</h1>
+                            <span class="color-text-a">Aprovecha la oportunidad de comprar tu inmueble al mejor precio.</span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-4">
+                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{{ path('default') }}">Inicio</a>
+                                </li>
+                                <li class="breadcrumb-item active" aria-current="page">
+                                    Comprar
+                                </li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+{#    <div class="container">
+        {{ form_start(form, {'attr': {'class': 'php-email-form'}}) }}
+        <div class="row">
+            <div class="col-md-3 mb-3">
+                <div class="form-group">
+                    {{ form_row(form.sellOrRent) }}
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="form-group">
+                    {{ form_row(form.bedrooms) }}
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="form-group">
+                    {{ form_row(form.price) }}
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="form-group">
+                    {{ form_row(form.typeProperty) }}
+                </div>
+            </div>
+            <div class="col-md-12 text-center mb-3">
+                <button type="submit" class="btn btn-b btn-info">Buscar Propiedad</button>
+            </div>
+        </div>
+        {{ form_end(form) }}
+    </div>
+
+    <section class="property-grid grid">
+        <div class="container">
+            <div class="row mb-5">
+                {% for property in properties %}
+                    {% if property.countPropertyContract == 0 %}
+                        <div class="col-md-6 col-lg-4">
+                            <div class="card-box-a card-shadow">
+                                <div class="img-box-a">
+                                    {% if property[0].rateHousing.image.first %}
+                                        <img class="img-a img-fluid" src="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}" alt="">
+                                    {% else %}
+                                        <img class="img-a img-fluid" src="{{ asset('img/not-available.jpg')|imagine_filter('squared_thumbnail_large') }}" alt="Image" />
+                                    {% endif %}
+                                </div>
+                                <div class="card-overlay">
+                                    <div class="card-overlay-a-content">
+                                        <div class="card-header-a">
+                                            <h2 class="card-title-a">
+                                                <a class="text-white" href="{{ path('search_details', {'reference': property[0].reference}) }}">
+                                                    {{ property[0].street.name }}
+                                                    <br> <span class="color-b">{{ property[0].street.zone.name }}</span>
+                                                </a>
+                                            </h2>
+                                        </div>
+                                        <div class="card-body-a">
+                                            <div class="price-box d-flex">
+                                                <span class="price-a"><span class="color-b">{{ property[0].reason.name }}</span> | {{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}€</span>
+                                            </div>
+                                            <a href="{{ path('search_details', {'reference': property[0].reference}) }}" class="link-a">Haga clic aquí para ver
+                                                <span class="fas fa-angle-right"></span>
+                                            </a>
+                                        </div>
+                                        <div class="card-footer-a">
+                                            <ul class="card-info d-flex justify-content-around">
+                                                <li>
+                                                    <h4 class="card-info-title"><i class="fas fa-ruler-combined"></i> Área</h4>
+                                                    <span>{{ property[0].rateHousing.realMeters }} m<sup>2</sup></span>
+                                                </li>
+                                                {% if property[0].typeProperty.nameSlug in ['vivienda', 'atico', 'casa-chalet', 'duplex'] %}
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-bed"></i> Dorm.</h4>
+                                                        <span>{{ property[0].rateHousing.bedrooms }}</span>
+                                                    </li>
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-car-side"></i> Garaje</h4>
+                                                        <span>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</span>
+                                                    </li>
+                                                {% endif %}
+                                                <li>
+                                                    <h4 class="card-info-title"><i class="fas fa-bath"></i> Baños</h4>
+                                                    <span>{{ property[0].rateHousing.bathrooms }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </section>#}
+{% endblock %}
