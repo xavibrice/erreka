@@ -1,6 +1,18 @@
 {% extends 'fronted/fronted.html.twig' %}
 
-{% block title %}Sobre nosotros | Erreka Inmobiliaria (La Peña){% endblock %}
+{% block metadata %}
+    <meta name="title" content="Sobre nosotros | Erreka Inmobiliaria - La Peña">
+    <meta name="description" content="Con más de 16 años en el sector Inmobiliario en Bilbao, hemos asumido el compromiso de satisfacer la gestión de compra, venta y alquiler de pisos e inmuebles de nuestros clientes.">
+    <meta name="author" content="errekainmobiliaria.com">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+    <meta property="og:title" content="Sobre nosotros | Erreka Inmobiliaria - La Peña">
+    <meta property="og:description" content="Con más de 16 años en el sector Inmobiliario en Bilbao, hemos asumido el compromiso de satisfacer la gestión de compra, venta y alquiler de pisos e inmuebles de nuestros clientes.">
+    <meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
+{% endblock %}
+
+{% block title %}Sobre nosotros | Erreka Inmobiliaria - La Peña {% endblock %}
 
 {% block body %}
     <main id="main">
@@ -9,15 +21,15 @@
                 <div class="row">
                     <div class="col-md-12 col-lg-8">
                         <div class="title-single-box">
-                            <h1 class="title-single">Nuestra agencias</h1>
-                            <span class="color-text-a">Confíe su vivienda a Erreka Inmobiliaria. Su agencia del barrio.</span>
+                            <h1 class="title-single">Grupo Erreka Garrido</h1>
+                            <span class="color-text-a">3 Agencias en Bilbao como eje de crecimiento en el sector inmobiliario.</span>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
                         <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ path('default') }}">Inicio</a>
+                                    <a href="{{ path('homepage') }}">Inicio</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Nosotros
@@ -39,9 +51,9 @@
                             </div>
                             <div class="col-md-6 col-lg-5 section-md-t3">
                                 <div class="title-box-d">
-                                    <h3 class="title-d">Erreka
-                                        <span class="color-d">Inmobiliaria</span>
-                                    </h3>
+                                    <h2 class="title-d">Erreka
+                                        <span class="color-b">Inmobiliaria</span>
+                                    </h2>
                                 </div>
                                 <p class="color-text-a">
                                     Con una larga experiencia de más de 16 años en el sector inmobiliario en el barrio de La Peña, tanto en venta como en alquiler, nos preocupamos por asumir una posición de vanguardia en el mercado inmobiliario, adquiriendo el mejor conocimiento, y ofreciendo una atención profesional y discreta, con calidez humana, que nos conduce a conseguir la mejor solución de las necesidades a nuestros clientes.
@@ -69,9 +81,9 @@
                         <div class="row">
                             <div class="col-md-6 col-lg-5 section-md-t3">
                                 <div class="title-box-d">
-                                    <h3 class="title-d">Asesoría y Correduría
-                                        <span class="color-d">Garrido</span>
-                                    </h3>
+                                    <h2 class="title-d">Asesoría y Correduría
+                                        <span class="color-b">Garrido</span>
+                                    </h2>
                                 </div>
                                 <p class="color-text-a">
                                     Correduría de seguros ubicada en Bilbao y con amplia experiencia y dedicación de más de 30 años en el sector asegurador, tiene como principal objetivo ofrecer los mejores servicios, siempre adaptados a las necesidades de los clientes.
@@ -108,9 +120,9 @@
                             </div>
                             <div class="col-md-6 col-lg-5 section-md-t3">
                                 <div class="title-box-d">
-                                    <h3 class="title-d">Erreka Garrido
-                                        <span class="color-d">Inmobiliaria</span>
-                                    </h3>
+                                    <h2 class="title-d">Erreka Garrido
+                                        <span class="color-b">Inmobiliaria</span>
+                                    </h2>
                                 </div>
                                 <p class="color-text-a">
                                     Gracias a la fusión de dos empresas referentes en el barrio, hemos creado el Grupo Erreka Garrido para dar un servicio más completo a todos nuestros clientes.

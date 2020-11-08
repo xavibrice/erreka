@@ -3,10 +3,24 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/js/fronted.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/js/fronted.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/ch_cookie_consent.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/ch_cookie_consent.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/prueba.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/prueba.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/sell.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +183,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/admin/property" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/img" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -188,17 +202,17 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/public/img/offices" />
+      <recent name="$PROJECT_DIR$/assets/front/js" />
+      <recent name="$PROJECT_DIR$/assets/front/css" />
+      <recent name="$PROJECT_DIR$/assets/front" />
       <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/public/bundles" />
-      <recent name="$PROJECT_DIR$/public/img/tax-advice" />
-      <recent name="$PROJECT_DIR$/public/img/sell" />
+      <recent name="$PROJECT_DIR$/assets/fronted/img/logos" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/templates/admin/property" />
       <recent name="$PROJECT_DIR$/templates/admin/property/rate_housing" />
       <recent name="$PROJECT_DIR$/src/Form" />
-      <recent name="$PROJECT_DIR$/public/img" />
       <recent name="$PROJECT_DIR$/assets/fronted/img/sell" />
     </key>
   </component>
@@ -525,7 +539,7 @@
       <workItem from="1603656522964" duration="454000" />
       <workItem from="1603659350333" duration="2367000" />
       <workItem from="1603662626023" duration="1087000" />
-      <workItem from="1603705051320" duration="8251000" />
+      <workItem from="1603705051320" duration="50056000" />
     </task>
     <servers />
   </component>
@@ -563,6 +577,14 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="360" y="222" width="1071" height="752" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1603187627564" />
+    <state x="1008" y="340" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604745374900">
+      <screen x="0" y="23" width="1792" height="1017" />
+    </state>
+    <state x="1008" y="340" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1017@0.23.1792.1017" timestamp="1604745374900" />
+    <state x="634" y="322" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604322438771">
+      <screen x="0" y="0" width="1792" height="1120" />
+    </state>
+    <state x="634" y="322" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1604322438771" />
     <state x="650" y="479" width="491" height="249" key="ComposerInitDialogKey" timestamp="1601244478534">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>

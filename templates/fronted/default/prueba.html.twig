@@ -1,77 +1,143 @@
-{% extends 'fronted/fronted.html.twig' %}
+{% extends 'fronted/layout.html.twig' %}
+
+{#{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}#}
 
 {% block title %}
     Prueba
 {% endblock %}
 
 {% block body %}
-    <main id="main">
-        <!-- ======= Intro Single ======= -->
-        <section class="intro-single">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-lg-8">
-                        <div class="title-single-box">
-                            <h1 class="title-single">Prueba</h1>
+    <!-- Hero Section Begin -->
+    <section class="hero-section">
+        <div class="hero-items owl-carousel">
+            <div class="single-hero-item set-bg" data-setbg="{{ asset('img/propiedad-uno-min.jpg') }}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="hero-text">
+                                <p class="room-location"><i class="icon_pin"></i> Erreka Inmobiliaria</p>
+                                <h2>Inmobiliaria en <span class="color-b">Bilbao</span> </h2>
+                                <div class="room-price">
+                                    <span>Erreka ofrece servicios de inmobiliaria para la venta y alquiler de pisos e inmuebles en Bilbao.</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-md-12 col-lg-4">
-                        <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item">
-                                    <a href="{{ path('prueba') }}">Inicio</a>
-                                </li>
-                                <li class="breadcrumb-item active" aria-current="page">
-                                    Prueba
-                                </li>
-                            </ol>
-                        </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Hero Section End -->
+
+    <!-- Search Form Section Begin -->
+    <div class="search-form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="search-form-text">
+                        <div class="search-text">
+                            <i class="fa fa-search"></i>
+                            Find Your Home
+                        </div>
+                        <div class="home-text">
+                            <i class="fa fa-home"></i>
+                            House For Sell
+                        </div>
+                    </div>
+
+                    <hr>
+                    {{ form_start(form, {'attr': {'class': 'php-email-form'}}) }}
+                    <div class="row">
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                {{ form_row(form.sellOrRent) }}
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                {{ form_row(form.bedrooms) }}
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                {{ form_row(form.price) }}
+                            </div>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <div class="form-group">
+                                {{ form_row(form.typeProperty) }}
+                            </div>
+                        </div>
+                        <div class="col-md-12 text-center mb-3">
+                            <button type="submit" class="btn btn-b btn-info">Buscar Propiedad</button>
+                        </div>
+                    </div>
+                    {{ form_end(form) }}
+                    <hr>
+
+                    <form action="#" class="filter-form">
+                        <div class="first-row">
+                            <select>
+                                <option value="">¿Comprar o alquilar? </option>
+                                <option value="">Comprar</option>
+                                <option value="">Alquiler</option>
+                            </select>
+                            <select>
+                                <option value="">Selecciona tipo propiedad</option>
+                                <option value="">Vivienda</option>
+                                <option value="">Piso</option>
+                            </select>
+                            <select class="mr-4">
+                                <option value="">Selecciona zona</option>
+                                <option value="">Peña</option>
+                                <option value="">Casco</option>
+                            </select>
+                        </div>
+                        <div class="second-row">
+                            <button type="button" class="search-btn">Buscar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Search Form Section End -->
+
+    <!-- How It Works Section Begin -->
+    <section class="howit-works spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Encuentra la casa de tus sueños</span>
+                        <h2>Como funciona</h2>
                     </div>
                 </div>
             </div>
-        </section>
-        <!-- End Intro Single-->
-    </main>
-    <div class="container">
-
-        {% for pro in properties %}
-            {{ pro.fullName }} ,
-        {% endfor %}
-
-
-
-
             <div class="row">
-                <div class="col-sm-12">
-                    <nav class="pagination-a">
-                        {% if maxPages > 1 %}
-                            <ul class="pagination justify-content-end">
-                                {%if thisPage > 1 %}
-                                    <li class="page-item">
-                                        <a class="page-link" href="{{ path('prueba', {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">
-                                            <span class="fa fa-angle-left"></span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                                {# Render each page number #}
-                                {% for i in 1..maxPages %}
-                                    <li class="page-item {% if i == thisPage %}active{% endif%} ">
-                                        <a class="page-link" href="{{ path('prueba', {page: i}) }}">{{ i }}</a>
-                                    </li>
-                                {% endfor %}
-
-                                {# `»` arrow #}
-                                {%if thisPage < maxPages %}
-                                    <li class="page-item next">
-                                        <a class="page-link" href="{{ path('prueba', {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">
-                                            <span class="fa fa-angle-right"></span>
-                                        </a>
-                                    </li>
-                                {% endif %}
-                            </ul>
-                        {% endif %}
-                    </nav>
+                <div class="col-lg-4">
+                    <div class="single-howit-works">
+                        <img src="{{ asset('img/howit-works/howit-works-1.png') }}" alt="">
+                        <h4>Buscar y encontrar inmuebles</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-howit-works">
+                        <img src="{{ asset('img/howit-works/howit-works-2.png') }}" alt="">
+                        <h4>Encuentra tu vivienda</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="single-howit-works">
+                        <img src="{{ asset('img/howit-works/howit-works-3.png') }}" alt="">
+                        <h4>Habla con un agente</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                    </div>
                 </div>
             </div>
-    </div>
+        </div>
+    </section>
+    <!-- How It Works Section End -->
 {% endblock %}

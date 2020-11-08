@@ -1,6 +1,18 @@
 {% extends 'fronted/fronted.html.twig' %}
 
-{% block title %}Contacto | Erreka Inmobiliaria {% endblock %}
+{% block metadata %}
+    <meta name="title" content="Contacto Oficinas | Erreka Inmobiliaria - La Peña">
+    <meta name="description" content="Puedes contactarnos o dejar tus datos y uno de nuestros agentes inmobiliarios se contactará contigo para resolver cualquier duda.">
+    <meta name="author" content="errekainmobiliaria.com">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+    <meta property="og:title" content="Contacto Oficinas | Erreka Inmobiliaria - La Peña">
+    <meta property="og:description" content="Puedes contactarnos o dejar tus datos y uno de nuestros agentes inmobiliarios se contactará contigo para resolver cualquier duda.">
+    <meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
+{% endblock %}
+
+{% block title %}Contacto Oficinas | Erreka Inmobiliaria - La Peña{% endblock %}
 
 {% block body %}
     <main id="main">
@@ -17,7 +29,7 @@
                         <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ path('default') }}">Inicio</a>
+                                    <a href="{{ path('homepage') }}">Inicio</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Contacto

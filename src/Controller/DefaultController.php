@@ -22,34 +22,23 @@ class DefaultController extends AbstractController
     /**
      * @Route("/prueba", name="prueba", methods={"GET"})
      */
-    public function prueba(Request $request, PropertyRepository $propertyRepository, int $limit = 3): Response
+    public function prueba(Request $request): Response
     {
-        $currentPage = $request->query->getInt('page') ?: 1;
+        $client = new SearchFronted();
+        $form = $this->createForm(SearchFrontedType::class, $client);
 
-
-        $dql = $propertyRepository->createQueryBuilder('p')
-            ->getQuery()
-            ->setFirstResult($limit * ($currentPage - 1)) // Offset
-            ->setMaxResults($limit)
-        ;
-
-
-        $paginator = new Paginator($dql, $fetchJoinCollection = true);
-
-        $maxPages = ceil($paginator->count() / $limit);
-
+        if ($request->isMethod('POST')) {
+            dd($request->getMethod());
+        }
 
         return $this->render('fronted/default/prueba.html.twig', [
-            'properties' => $paginator,
-            'maxPages' => $maxPages,
-            'thisPage' => $currentPage,
-            'all_items' => $paginator->count()
+            'form' => $form->createView()
         ]);
     }
 
 
     /**
-     * @Route("/", name="default")
+     * @Route("/", name="homepage", methods={"GET", "POST"})
      */
     public function index(Request $request, PropertyRepository $propertyRepository): Response
     {
@@ -62,9 +51,11 @@ class DefaultController extends AbstractController
             ->innerJoin('p.rateHousing', 'rh')
             ->leftJoin('p.propertyReductions', 'pr')
             ->leftJoin('p.proposals', 'pro')
+            ->andWhere('tp.name = :typePropertyName')
             ->addSelect('SUM(pr.price) as sumPropertyReduction')
             ->addSelect('COUNT(pro.contract) as countPropertyContract')
             ->addSelect('COUNT(pro.scriptures) as countPropertyScriptures')
+            ->setParameter('typePropertyName', 'Vivienda')
             ->groupBy('c.id')
             ->orderBy('c.start_date', 'DESC')
             ->setMaxResults(3)
@@ -72,6 +63,10 @@ class DefaultController extends AbstractController
 
         $properties = $queryBuilder->getQuery()->getResult();
 
+        if ($request->isMethod('POST')) {
+            dd($request->getMethod());
+
+        }
 
         return $this->render('fronted/default/index.html.twig', [
             //'properties' => $propertyRepository->onlyChargesWithoutAgency()
@@ -79,12 +74,22 @@ class DefaultController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/quieres-vender", name="to_sell")
-     */
-    public function toSell()
+    public function searchHome(Request $request): Response
     {
-        return $this->render('fronted/default/to_sell.html.twig');
+        $client = new SearchFronted();
+        $form = $this->createForm(SearchFrontedType::class, $client);
+
+        return $this->render('fronted/default/_search_home.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
+    /**
+     * @Route("/vender-piso", name="sell")
+     */
+    public function sell()
+    {
+        return $this->render('fronted/default/sell.html.twig');
     }
 
     /**

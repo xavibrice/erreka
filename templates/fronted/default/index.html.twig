@@ -1,18 +1,19 @@
 {% extends 'fronted/fronted.html.twig' %}
 
 {% block metadata %}
-<meta name="title" content="Inicio | Erreka Inmobiliaria (La Peña)">
-<meta name="description" content="Erreka Inmobiliaria ubicada en la Peña con mas de 16 años en el sector inmobiliarion en el barrio La Peña, tanto en venta como en alquiler.">
+    <meta name="title" content="Inicio | Erreka Inmobiliaria - La Peña">
+    <meta name="description" content="Erreka Inmobiliaria ubicada en la Peña con mas de 16 años en el sector inmobiliarion en el barrio La Peña, tanto en venta como en alquiler.">
+    <meta name="keywords" content="Erreka inmobiliaria, inmobiliaria en bilbao, inmobiliaria en la peña">
+    <meta name="author" content="errekainmobiliaria.com">
 
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
-<meta property="og:title" content="Inmobiliaria Erreka - Inicio">
-<meta property="og:description" content="Erreka Inmobiliaria ubicada en la Peña con mas de 16 años en el sector inmobiliarion en el barrio La Peña, tanto en venta como en alquiler.">
-<meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
-
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+    <meta property="og:title" content="Inicio | Erreka Inmobiliaria - La Peña">
+    <meta property="og:description" content="Erreka Inmobiliaria ubicada en la Peña con mas de 16 años en el sector inmobiliarion en el barrio La Peña, tanto en venta como en alquiler.">
+    <meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
 {% endblock %}
 
-{% block title %}Inicio | Erreka Inmobiliaria (La Peña){% endblock %}
+{% block title %} Inicio | Erreka Inmobiliaria - La Peña {% endblock %}
 
 {% block body %}
     <div class="intro intro-carousel">
@@ -41,116 +42,81 @@
                     </div>
                 </div>
             </div>
-{#            <div class="carousel-item-a intro-item bg-image" style="background-image: url('{{ asset('img/propiedad-dos.jpg') }}')">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="intro-body">
-                                        <p class="intro-title-top">Bilbao La Vieja 1, Bj</p>
-                                        <h1 class="intro-title mb-4">
-                                            <span class="color-b">Erreka Garrido </span> Inmobiliaria
-                                        </h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a href="{{ path('about_us') }}"><span class="price-a">Más Información</span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url('{{ asset('img/propiedad-tres.jpg') }}')">
-                <div class="overlay overlay-a"></div>
-                <div class="intro-content display-table">
-                    <div class="table-cell">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col-lg-8">
-                                    <div class="intro-body">
-                                        <p class="intro-title-top">Zamakola 49, Bj (La Peña)</p>
-                                        <h1 class="intro-title mb-4">
-                                            <span class="color-b">Asesoría </span> Garrido</h1>
-                                        <p class="intro-subtitle intro-price">
-                                            <a href="{{ path('about_us') }}"><span class="price-a">Más Información</span></a>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>#}
         </div>
     </div>
 
     <main id="main">
-        <section class="section-services section-t8">
+{#        <section class="section-services section-t3">
             <div class="container">
-                {#<div class="row">
-                    <div class="col-md-12">
-                        <div class="title-wrap d-flex justify-content-between">
-                            <div class="title-box">
-                                <h2 class="title-a">Servicios Destacados</h2>
-                            </div>
-                        </div>
-                    </div>
-                </div>#}
                 <div class="row">
-                    <div class="col-md-6">
-                        <div class="card-box-c foo">
-                            <div class="card-header-c d-flex">
-                                <div class="card-box-ico text-info">
-                                    <span class="fa fa-gavel fa-3x"></span>
-                                </div>
-                                <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Vivienda en venta en 90 días</h2>
-                                </div>
-                            </div>
-                            <div class="card-body-c">
-                                <p class="content-c">
-                                    <b>Vender tu Inmueble es fácil.</b> <br>
-                                    En Grupo Erreka contamos con un potente plan de marketing para vender tu vivienda en las mejores condiciones y al mejor precio.
-                                </p>
-                            </div>
-                            <div class="card-footer-c text-right">
-                                <a href="{{ path('to_sell') }}" class="link-c link-icon">Más Información
-                                    <span class="fa fa-angle-right"></span>
-                                </a>
-                            </div>
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <span>Encuentra la casa de tus sueños</span>
+                            <h2>Buscar Inmuebles</h2>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="card-box-c foo">
-                            <div class="card-header-c d-flex">
-                                <div class="card-box-ico text-info">
-                                    <span class="fas fa-file-signature fa-3x"></span>
-                                </div>
-                                <div class="card-title-c align-self-center">
-                                    <h2 class="title-c">Pisos con alquiler garantizado</h2>
-                                </div>
-                            </div>
-                            <div class="card-body-c">
-                                <p class="content-c">
-                                    <b>¿Temes que tus inquilinos no te paguen?</b> <br>
-                                    Grupo Erreka te garantiza los pagos del alquiler de tu vivienda el día 8 de cada mes, se transfiere directamente a tu cuenta bancaria.
-                                </p>
-                            </div>
-                            <div class="card-footer-c text-right">
-                                <a href="{{ path('guaranteed_rental') }}" class="link-c link-icon">Más Información
-                                    <span class="fa fa-angle-right"></span>
-                                </a>
-                            </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        {{ render_esi(controller('App\\Controller\\DefaultController::searchHome')) }}
+                    </div>
+                </div>
+            </div>
+        </section>#}
+
+        <!-- How It Works Section Begin -->
+        <section class="howit-works section-t3">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title">
+                            <h2>Como funciona</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="single-howit-works">
+                            <a href="{{ path('guaranteed_rental') }}">
+                                <img src="{{ asset('img/howit-works/howit-works-1.png') }}" alt="">
+                                <h4>Alquiler garantizado</h4>
+                            </a>
+                            <p class="content-c">
+                                <b>¿Temes que tus inquilinos no te paguen?</b> <br>
+                                Grupo Erreka te garantiza los pagos del alquiler de tu vivienda el día 8 de cada mes, se transfiere directamente a tu cuenta bancaria.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-howit-works">
+                            <a href="{{ path('sell') }}">
+                                <img src="{{ asset('img/howit-works/howit-works-2.png') }}" alt="">
+                                <h4>Vende tu vivienda en 90 días</h4>
+                            </a>
+                            <p class="content-c">
+                                <b>Vender tu Inmueble es fácil.</b> <br>
+                                En Grupo Erreka contamos con un potente plan de marketing para vender tu vivienda en las mejores condiciones y al mejor precio.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="single-howit-works">
+                            <a href="{{ path('contact') }}">
+                                <img src="{{ asset('img/howit-works/howit-works-3.png') }}" alt="">
+                                <h4>Personal Shopper</h4>
+                            </a>
+                            <p class="content-c">
+                                <b>¿Tienes dudas?</b> <br>
+                                Un asesor inmobiliario te asesorará durante todo el proceso de la compra o alquiler de tu inmueble.
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        <!-- How It Works Section End -->
 
-        <section class="section-property section-t8">
+        <section class="section-property section-t3">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -229,7 +195,7 @@
             </div>
         </section>
 
-        <section class="section-services section-t8">
+        <section class="section-services section-t3">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

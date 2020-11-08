@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="robots" content=”noindex,nofollow”>
+    {% block metadata %}{% endblock %}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <title>{% block title %}Inmobiliaria Erreka - La Peña{% endblock %}</title>
+    <link rel="icon" href="{{ asset('img/icon.png') }}">
+
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('main') }}
+    {% endblock %}
+    <!-- Facebook Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+            n.queue=[];t=b.createElement(e);t.async=!0;
+            t.src=v;s=b.getElementsByTagName(e)[0];
+            s.parentNode.insertBefore(t,s)}(window, document,'script',
+            'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '962130807529950');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+                   src="https://www.facebook.com/tr?id=962130807529950&ev=PageView&noscript=1"
+        /></noscript>
+    <!-- End Facebook Pixel Code -->
+</head>
+<body>
+<!-- Page Preloder -->
+<div id="preloder">
+    <div class="loader"></div>
+</div>
+
+<!-- Load Facebook SDK for JavaScript -->
+<div id="fb-root"></div>
+<script>
+    window.fbAsyncInit = function() {
+        FB.init({
+            xfbml            : true,
+            version          : 'v8.0'
+        });
+    };
+
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = 'https://connect.facebook.net/es_ES/sdk/xfbml.customerchat.js';
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your Chat Plugin code -->
+<div class="fb-customerchat"
+     attribution=setup_tool
+     page_id="908632909254336"
+     theme_color="#0084ff"
+     logged_in_greeting="¡Hola! ¿Cómo podemos ayudarte?"
+     logged_out_greeting="¡Hola! ¿Cómo podemos ayudarte?">
+</div>
+
+{% block header %}
+    <!-- Offcanvas Menu Section Begin -->
+    <div class="offcanvas-menu-overlay"></div>
+    <div class="canvas-open">
+        <i class="icon_menu"></i>
+    </div>
+    <div class="offcanvas-menu-wrapper">
+        <div class="canvas-close">
+            <i class="icon_close"></i>
+        </div>
+        <div class="language-bar">
+            <div class="property-btn">
+                <a href="#" class="property-sub">Submit Property 1</a>
+            </div>
+        </div>
+        <nav class="main-menu">
+            <ul>
+                <li><a href="{{ path('prueba') }}">Home</a></li>
+                <li><a href="./property.html">Property</a></li>
+                <li><a href="./about-us.html">Agets</a></li>
+                <li><a href="./blog.html">News</a></li>
+                <li><a href="./property-details.html">Pages</a></li>
+                <li><a href="{{ path('contact') }}">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="nav-logo-right">
+            <ul>
+                <li>
+                    <i class="icon_phone"></i>
+                    <div class="info-text">
+                        <span>Teléfono:</span>
+                        <p>+34 675 602 296</p>
+                    </div>
+                </li>
+                <li>
+                    <i class="icon_pin_alt"></i>
+                    <div class="info-text">
+                        <span>Dirección:</span>
+                        <p>Zamakola 65, Bj <span>La Peña</span></p>
+                    </div>
+                </li>
+                <li>
+                    <i class="icon_mail"></i>
+                    <div class="info-text">
+                        <span>Correo:</span>
+                        <p>info@errekainmobiliaria.com</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- Offcanvas Menu Section End -->
+
+    <!-- Header Section Begin -->
+    <header class="header-section">
+        <div class="top-nav">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-7">
+                        <nav class="main-menu">
+                            <ul>
+                                <li class="active"><a href="./index.html">Home</a></li>
+                                <li><a href="./property.html">Property</a></li>
+                                <li><a href="./about-us.html">Agets</a></li>
+                                <li><a href="./blog.html">News</a></li>
+                                <li><a href="./property-details.html">Pages</a></li>
+                                <li><a href="{{ path('contact') }}">Contacto</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="top-right">
+                            <a href="#" class="property-sub">Submit Property 2</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="nav-logo">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="logo">
+                            <a href="{{ path('prueba') }}"><img src="{{ asset('img/logo-erreka.png') }}" alt=""></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-10">
+                        <div class="nav-logo-right">
+                            <ul>
+                                <li>
+                                    <i class="icon_phone"></i>
+                                    <div class="info-text">
+                                        <span>Teléfono:</span>
+                                        <p>675 602 296</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="icon_pin"></i>
+                                    <div class="info-text">
+                                        <span>Dirección:</span>
+                                        <p>Zamakola 65 Bj <span>La Peña</span></p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <i class="icon_mail"></i>
+                                    <div class="info-text">
+                                        <span>Correo:</span>
+                                        <p>info@errekainmobiliaria.com</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Header End -->
+{% endblock %}
+
+{% block body %}{% endblock %}
+
+{% block footer %}
+    <!-- Footer Section Begin -->
+    <footer class="footer-section set-bg" data-setbg="{{ asset('img/footer-bg.jpg') }}">
+        <div class="container">
+            <div class="footer-text">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="footer-logo">
+                            <div class="logo">
+                                <a class="w-50" href="{{ path('homepage') }}"><img src="{{ asset('img/logo-erreka.png') }}" alt=""></a>
+                            </div>
+                            <p>Con una larga trayectoria de más de 16 años, tanto en ventas como en alquileres en Bilbao y alrededores.</p>
+                            <p>Suscríbase a nuestro boletín para recibir notificaciones sobre nuevas actualizaciones.</p>
+                            <form action="#" class="newslatter-form">
+                                <input type="text" placeholder="Introduce tu correo...">
+                                <button type="submit"><i class="fa fa-location-arrow"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="footer-widget">
+                            <h4>Zonas</h4>
+                            <ul class="contact-option">
+                                <li><i class="fa fa-caret-right"></i> <a href="#">Inicio</a></li>
+                                <li><i class="fa fa-caret-right"></i> <a href="#">Propiedades</a></li>
+                                <li><i class="fa fa-caret-right"></i> <a href="#">¿Vendes?</a></li>
+                                <li><i class="fa fa-caret-right"></i> <a href="#">Alquiler Garantizado</a></li>
+                                <li><i class="fa fa-caret-right"></i> <a href="#">Nosotros</a></li>
+                                <li><i class="fa fa-caret-right"></i> <a href="#">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="footer-widget">
+                            <h4>Redes Sociales</h4>
+                            <ul class="contact-option">
+                                <li><i class="fab fa-facebook-f"></i> <a href="#">Facebook</a></li>
+                                <li><i class="fab fa-instagram"></i> <a href="#">Instagram</a></li>
+                                <li><i class="fab fa-google"></i> <a href="#">Google+</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="footer-widget">
+                            <h4>Contacto</h4>
+                            <ul class="contact-option">
+                                <li><i class="fas fa-map-marker"></i> Zamakola 65, Bj - La Peña </li>
+                                <li><i class="fas fa-phone"></i> +34 675 602 296 </li>
+                                <li><i class="fas fa-envelope"></i> info@errekainmobiliaria.com </li>
+                                <li><i class="fas fa-clock"></i> Lunes - Viernes <br> 10 AM - 13:30 PM, 16 PM - 19 PM</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright-text">
+                <p><p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="ti-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>.
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p></p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer Section End -->
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('main') }}
+{% endblock %}
+</body>
+</html>

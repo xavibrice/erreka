@@ -1,6 +1,21 @@
 {% extends 'fronted/fronted.html.twig' %}
 
-{% block title %}¿Quieres vender? | Erreka Inmobiliaria (La Peña){% endblock %}
+{% block metadata %}
+    <meta name="title" content="Vendemos tu piso antes de 90 días | Erreka Inmobiliaria - La Peña">
+    <meta name="description" content="¡Vende tu inmueble al mejor precio y en poco tiempo! Tasamos tu vivienda, gestionar visitas, negociar su precio según tus intereses y te asesoramos legalmente durante todo el proceso de compra.">
+    <meta name="keywords" content="Vender pisos Bilbao, Vender mi piso en Bilbao, Inmobiliaria en Bilbao.">
+    <meta name="author" content="errekainmobiliaria.com">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ app.request.schemeAndHttpHost ~ app.request.requestUri }}">
+    <meta property="og:title" content="Vendemos tu piso antes de 90 días | Erreka Inmobiliaria - La Peña">
+    <meta property="og:description" content="¡Vende tu inmueble al mejor precio y en poco tiempo! Tasamos tu vivienda, gestionar visitas, negociar su precio según tus intereses y te asesoramos legalmente durante todo el proceso de compra.">
+    <meta property="og:image" content="{{ asset('img/logo-erreka.png')|imagine_filter('squared_thumbnail_large') }}">
+{% endblock %}
+
+{% block title %} Vendemos tu piso antes de 90 días | Erreka Inmobiliaria - La Peña {% endblock %}
+
+
 
 {% block body %}
     <main id="main">
@@ -10,13 +25,14 @@
                     <div class="col-md-12 col-lg-8">
                         <div class="title-single-box">
                             <h1 class="title-single">¡Vendemos tu vivienda antes de 90 días!</h1>
+                            <span class="color-text-a">Garantizamos la venta de tu inmueble en poco tiempo y al mejor precio </span>
                         </div>
                     </div>
                     <div class="col-md-12 col-lg-4">
                         <nav aria-label="breadcrumb" class="breadcrumb-box d-flex justify-content-lg-end">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="{{ path('default') }}">Inicio</a>
+                                    <a href="{{ path('homepage') }}">Inicio</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     ¿Quieres vender?
@@ -35,15 +51,15 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="agent-avatar-box">
-                                    <img src="{{ asset('img/sell/agencias.png') }}" alt="Agencias" class="agent-avatar img-fluid">
+                                    <img src="{{ asset('img/sell/agencias-min.png') }}" alt="3 Agencias" class="agent-avatar img-fluid">
                                 </div>
                             </div>
-                            <div class="col-md-5 section-md-t3">
+                            <div class="col-md-5 section-t3">
                                 <div class="agent-info-box">
                                     <div class="agent-title">
                                         <div class="title-box-d">
-                                            <h3 class="title-d">3
-                                                <br> Agencias</h3>
+                                            <h3 class="title-d">3 agencias
+                                                <br> en Bilbao</h3>
                                         </div>
                                     </div>
                                     <div class="agent-content mb-3">
@@ -63,11 +79,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row section-t3">
                     <div class="col-sm-12">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5 section-t3">
                                 <div class="agent-info-box">
                                     <div class="agent-title">
                                         <div class="title-box-d">
@@ -84,23 +98,21 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6 section-md-t3">
+                            <div class="col-md-6">
                                 <div class="agent-avatar-box">
-                                    <img src="{{ asset('img/sell/valoracion.jpg') }}" alt="Valoración" class="agent-avatar img-fluid">
+                                    <img src="{{ asset('img/sell/valoracion-vivienda-min.png') }}" alt="Valoración vivienda" class="agent-avatar img-fluid">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row section-t3">
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="agent-avatar-box">
-                                    <img src="{{ asset('img/reforma.png') }}" alt="Reforma" class="agent-avatar img-fluid">
+                                    <img src="{{ asset('img/sell/acondicionar-min.png') }}" alt="Acondicionar su vivienda para la venta" class="agent-avatar img-fluid">
                                 </div>
                             </div>
-                            <div class="col-md-5 section-md-t3">
+                            <div class="col-md-5 section-t4">
                                 <div class="agent-info-box">
                                     <div class="agent-title">
                                         <div class="title-box-d">
@@ -119,11 +131,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row section-t3">
                     <div class="col-sm-12">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5 section-t4">
                                 <div class="agent-info-box">
                                     <div class="agent-title">
                                         <div class="title-box-d">
@@ -141,21 +151,19 @@
                             </div>
                             <div class="col-md-6 section-md-t3">
                                 <div class="agent-avatar-box">
-                                    <img src="{{ asset('img/sell/buscarcompradores.jpg') }}" alt="Buscar Compradores" class="agent-avatar img-fluid">
+                                    <img src="{{ asset('img/sell/buscar-compradores-min.png') }}" alt="Buscar Compradores" class="agent-avatar img-fluid">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row section-t3">
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="agent-avatar-box">
-                                    <img src="{{ asset('img/sell/informacion.png') }}" alt="Información al propietario" class="agent-avatar img-fluid">
+                                    <img src="{{ asset('img/sell/informacion-al-cliente-min.png') }}" alt="Información al propietario" class="agent-avatar img-fluid">
                                 </div>
                             </div>
-                            <div class="col-md-5 section-md-t3">
+                            <div class="col-md-5 section-t4">
                                 <div class="agent-info-box">
                                     <div class="agent-title">
                                         <div class="title-box-d">
@@ -170,11 +178,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row section-t3">
                     <div class="col-sm-12">
                         <div class="row">
-                            <div class="col-md-5">
+                            <div class="col-md-5 section-t3">
                                 <div class="agent-info-box">
                                     <div class="agent-title">
                                         <div class="title-box-d">
@@ -191,13 +197,11 @@
                             </div>
                             <div class="col-md-6 section-md-t3">
                                 <div class="agent-avatar-box">
-                                    <img src="{{ asset('img/sell/gestionar.jpg') }}" alt="Gestionar" class="agent-avatar img-fluid">
+                                    <img src="{{ asset('img/sell/gestionar-documentacion-min.png') }}" alt="Gestionar" class="agent-avatar img-fluid">
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row section-t3">
                     <div class="col-sm-12">
                         <div class="row">
                             <div class="col-md-6">
@@ -205,7 +209,7 @@
                                     <img src="{{ asset('img/sell/personalshopper.jpg') }}" alt="Personal Shopper" class="agent-avatar img-fluid">
                                 </div>
                             </div>
-                            <div class="col-md-5 section-md-t3">
+                            <div class="col-md-5">
                                 <div class="agent-info-box">
                                     <div class="agent-title">
                                         <div class="title-box-d">

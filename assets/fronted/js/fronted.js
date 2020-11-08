@@ -34,7 +34,9 @@ $('#carousel').owlCarousel({
     navText: ['<i class="fas fa-angle-left"></i>', '<i class="fas fa-angle-right" aria-hidden="true"></i>'],
     autoplay: true,
     autoplayTimeout: 3000,
-    autoplayHoverPause: true
+    autoHeight: false,
+    autoPlay: false,
+    // autoplayHoverPause: true
 });
 
 /*--/ Animate Carousel /--*/

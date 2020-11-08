@@ -1,0 +1,27 @@
+{{ form_start(form, {'attr': {'action': path('homepage'), 'method': 'POST', 'class': 'php-email-form'}}) }}
+<div class="row">
+    <div class="col-md-3 mb-3">
+        <div class="form-group">
+            {{ form_row(form.sellOrRent) }}
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="form-group">
+            {{ form_row(form.bedrooms) }}
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="form-group">
+            {{ form_row(form.price) }}
+        </div>
+    </div>
+    <div class="col-md-3 mb-3">
+        <div class="form-group">
+            {{ form_row(form.typeProperty) }}
+        </div>
+    </div>
+    <div class="col-md-12 text-center mb-3">
+        <button type="submit" class="btn btn-b btn-info">Buscar Inmuebles</button>
+    </div>
+</div>
+{{ form_end(form) }}

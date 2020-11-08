@@ -3,11 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="robots" content=”noindex,nofollow”>
     {% block metadata %}{% endblock %}
-    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+{#    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">#}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
     <title>{% block title %}Inmobiliaria Erreka - La Peña{% endblock %}</title>
     <link rel="icon" href="{{ asset('img/icon.png') }}">
+
     {% block stylesheets %}
         {{ encore_entry_link_tags('fronted') }}
         {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
@@ -162,14 +166,14 @@
                     <span></span>
                     <span></span>
                 </button>
-                <a class="navbar-brand text-brand" href="{{ path('default') }}"><img class="img-fluid" width="125px" src="{{ asset('img/logo-erreka.png') }}" alt="Logo Erreka"></a>
+                <a class="navbar-brand text-brand" href="{{ path('homepage') }}"><img class="img-fluid" width="125px" src="{{ asset('img/logo-erreka.png') }}" alt="Logo Erreka"></a>
                 {#<button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-expanded="false">
                     <span class="fa fa-search" aria-hidden="true"></span>
                 </button>#}
                 <div class="navbar-collapse collapse justify-content-center" id="navbarDefault">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link {% if app.request.get('_route') == 'default' %}active{% endif %}" href="{{ path('default') }}">Inicio</a>
+                            <a class="nav-link {% if app.request.get('_route') == 'homepage' %}active{% endif %}" href="{{ path('homepage') }}">Inicio</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if app.request.get('_route') == 'search_fronted' %}active{% endif %}" href="{{ path('search_fronted') }}">Inmuebles</a>
@@ -184,7 +188,7 @@
                             </div>
                         </li>#}
                         <li class="nav-item">
-                            <a class="nav-link {% if app.request.get('_route') == 'to_sell' %}active{% endif %}" href="{{ path('to_sell') }}">¿Vendes?</a>
+                            <a class="nav-link {% if app.request.get('_route') == 'sell' %}active{% endif %}" href="{{ path('sell') }}">¿Vendes?</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if app.request.get('_route') == 'guaranteed_rental' %}active{% endif %}" href="{{ path('guaranteed_rental') }}">Alquiler Garantizado</a>
@@ -303,18 +307,18 @@
                     <div class="col-sm-12 col-md-4 section-md-t3">
                         <div class="widget-a">
                             <div class="w-header-a">
-                                <h3 class="w-title-a text-brand">Asesoría y Correduría <span class="color-b">Garrido</span></h3>
+                                <h3 class="w-title-a text-brand">Enlaces de <span class="color-b">Interés</span></h3>
                             </div>
                             <div class="w-body-a">
                                 <ul class="list-unstyled">
                                     <li class="item-list-a">
-                                        <i class="fa fa-angle-right"></i> <a href="{{ path('default') }}">Inicio</a>
+                                        <i class="fa fa-angle-right"></i> <a href="{{ path('homepage') }}">Inicio</a>
                                     </li>
                                     <li class="item-list-a">
                                         <i class="fa fa-angle-right"></i> <a href="{{ path('search_fronted') }}">Propiedades</a>
                                     </li>
                                     <li class="item-list-a">
-                                        <i class="fa fa-angle-right"></i> <a href="{{ path('to_sell') }}">¿Vendes?</a>
+                                        <i class="fa fa-angle-right"></i> <a href="{{ path('sell') }}">¿Vendes?</a>
                                     </li>
                                     <li class="item-list-a">
                                         <i class="fa fa-angle-right"></i> <a href="{{ path('guaranteed_rental') }}">Alquiler Garantizado</a>
