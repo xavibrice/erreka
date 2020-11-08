@@ -3,24 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/js/fronted.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/js/fronted.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/ch_cookie_consent.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/ch_cookie_consent.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/prueba.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/prueba.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/to_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -539,7 +523,7 @@
       <workItem from="1603656522964" duration="454000" />
       <workItem from="1603659350333" duration="2367000" />
       <workItem from="1603662626023" duration="1087000" />
-      <workItem from="1603705051320" duration="50056000" />
+      <workItem from="1603705051320" duration="50788000" />
     </task>
     <servers />
   </component>
