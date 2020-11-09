@@ -7,6 +7,8 @@
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 // import  $ from 'jquery';
+const $ = require('jquery');
+
 import moment from "moment";
 
 require('bootstrap');
@@ -17,7 +19,6 @@ require('moment');
 // require('datatables.net-bs4');
 // require('bootstrap-datepicker');
 
-const $ = require('jquery');
 // any CSS you require will output into a single css file (app.css in this case)
 require('../css/app.css');
 

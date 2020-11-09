@@ -3,14 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/js/fronted.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/js/fronted.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/js/main.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.config.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -529,7 +522,7 @@
       <workItem from="1603656522964" duration="454000" />
       <workItem from="1603659350333" duration="2367000" />
       <workItem from="1603662626023" duration="1087000" />
-      <workItem from="1603705051320" duration="62062000" />
+      <workItem from="1603705051320" duration="62720000" />
     </task>
     <servers />
   </component>
@@ -587,22 +580,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="324" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1792.1120@0.0.1792.1120" timestamp="1601244673943" />
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom" timestamp="1600700578142">
+    <state width="868" height="318" key="GridCell.Tab.0.bottom" timestamp="1604965193015">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578142" />
-    <state width="1750" height="318" key="GridCell.Tab.0.center" timestamp="1600700578140">
+    <state width="868" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1604965193015" />
+    <state width="868" height="318" key="GridCell.Tab.0.center" timestamp="1604965193014">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578140" />
-    <state width="1750" height="318" key="GridCell.Tab.0.left" timestamp="1600700578139">
+    <state width="868" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1604965193014" />
+    <state width="868" height="318" key="GridCell.Tab.0.left" timestamp="1604965193014">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578139" />
-    <state width="1750" height="318" key="GridCell.Tab.0.right" timestamp="1600700578141">
+    <state width="868" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1604965193014" />
+    <state width="868" height="318" key="GridCell.Tab.0.right" timestamp="1604965193015">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="1750" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1600700578141" />
+    <state width="868" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1604965193015" />
     <state x="484" y="310" key="IDE.errors.dialog" timestamp="1603190363708">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
