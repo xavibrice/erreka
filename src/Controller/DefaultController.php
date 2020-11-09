@@ -58,7 +58,7 @@ class DefaultController extends AbstractController
             ->setParameter('typePropertyName', 'Vivienda')
             ->groupBy('c.id')
             ->orderBy('c.start_date', 'DESC')
-            ->setMaxResults(3)
+            ->setMaxResults(6)
         ;
 
         $properties = $queryBuilder->getQuery()->getResult();

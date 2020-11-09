@@ -10,8 +10,8 @@
 import moment from "moment";
 
 require('bootstrap');
-require('datatables.net');
-require('datatables.net-bs4');
+require('datatables.net/js/jquery.dataTables.min');
+require('datatables.net-bs4/js/dataTables.bootstrap4.min');
 require('moment');
 
 // require('datatables.net-bs4');

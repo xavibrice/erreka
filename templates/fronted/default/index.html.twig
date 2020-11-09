@@ -67,13 +67,13 @@
         <!-- How It Works Section Begin -->
         <section class="howit-works section-t3">
             <div class="container">
-                <div class="row">
+                {#<div class="row">
                     <div class="col-lg-12">
                         <div class="section-title">
                             <h2>Como funciona</h2>
                         </div>
                     </div>
-                </div>
+                </div>#}
                 <div class="row">
                     <div class="col-lg-4">
                         <div class="single-howit-works">
@@ -116,7 +116,89 @@
         </section>
         <!-- How It Works Section End -->
 
-        <section class="section-property section-t3">
+        <!-- Feature Section Begin -->
+        <div class="top-properties-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="properties-title">
+                            <div class="section-title">
+                                <span>Propiedades destacadas</span>
+                                <h2>Nuevas Propiedades</h2>
+                            </div>
+                            <a href="#" class="top-property-all">Ver Propiedades</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <section class="feature-section">
+            <div class="container">
+                <div class="row">
+                    <div class="feature-carousel owl-carousel">
+                        {% for property in properties %}
+                            {% if property.countPropertyContract == 0 %}
+                                <div class="col-lg-4">
+                                    <a href="{{ path('search_details', {'reference': property[0].reference}) }}">
+                                    <div class="feature-item">
+                                        {% if property[0].rateHousing.image.first %}
+                                        <div class="fi-pic set-bg" data-setbg="{{ uploaded_asset(property[0].rateHousing.image.first.imagePath)|imagine_filter('squared_thumbnail_large') }}">
+                                        {% else %}
+                                        <div class="fi-pic set-bg" data-setbg="{{ asset('img/not-available.jpg') }}">
+                                        {% endif %}
+                                            <div class="pic-tag">
+{#                                                <div class="f-text">feauture</div>#}
+                                                <div class="s-text">{{ property[0].reason.name() }}</div>
+                                            </div>
+                                            {#<div class="feature-author">
+                                                <div class="fa-pic">
+                                                    <img src="{{ asset('img/icon.png') }}" alt="">
+                                                </div>
+                                                <div class="fa-text bg-gradient-dark">
+                                                    <span>Nombre comercial</span>
+                                                </div>
+                                            </div>#}
+                                        </div>
+                                        <div class="fi-text">
+                                            <div class="inside-text">
+                                                <h4>{{ property[0].street.zone.name }} - {{ property[0].typeProperty.name }}</h4>
+                                                <ul>
+                                                    <li><i class="fa fa-map-marker color-b"></i> {{ property[0].street.name }} </li>
+{#                                                    <li><i class="fa fa-tag color-b"></i> {{ property[0].typeProperty.name }}</li>#}
+                                                </ul>
+                                                <h5 class="price">{{ (property[0].charge.price - property.sumPropertyReduction)|number_format  }}<span>€</span></h5>
+                                            </div>
+                                            <ul class="room-features">
+                                                <li>
+                                                    <i class="fa fa-arrows-alt color-b"></i>
+                                                    <p>{{ property[0].rateHousing.realMeters }} m<sup>2</sup></p>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-bed color-b"></i>
+                                                    <p>{{ property[0].rateHousing.bedrooms }}</p>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-bath color-b"></i>
+                                                    <p>{{ property[0].rateHousing.bathrooms }}</p>
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-car color-b"></i>
+                                                    <p>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</p>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Feature Section End -->
+
+        {#<section class="section-property section-t3">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -193,7 +275,7 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section>#}
 
         <section class="section-services section-t3">
             <div class="container">
