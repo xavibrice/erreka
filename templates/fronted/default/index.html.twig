@@ -18,7 +18,7 @@
 {% block body %}
     <div class="intro intro-carousel">
         <div id="carousel" class="owl-carousel owl-theme">
-            <div class="carousel-item-a intro-item bg-image" style="background-image: url('{{ asset('img/propiedad-uno-min.jpg') }}')">
+            <div class="carousel-item-a intro-item bg-image" style="background-image: url('{{ asset('img/oficina-banner.jpg') }}')">
                 <div class="overlay overlay-a"></div>
                 <div class="intro-content display-table">
                     <div class="table-cell">
@@ -147,8 +147,8 @@
                                         <div class="fi-pic set-bg" data-setbg="{{ asset('img/not-available.jpg') }}">
                                         {% endif %}
                                             <div class="pic-tag">
-{#                                                <div class="f-text">feauture</div>#}
-                                                <div class="s-text">{{ property[0].reason.name() }}</div>
+                                                <div class="f-text">{{ property[0].typeProperty.name }}</div>
+                                                <div class="s-text">{{ property[0].reason.name }}</div>
                                             </div>
                                             {#<div class="feature-author">
                                                 <div class="fa-pic">
@@ -161,7 +161,7 @@
                                         </div>
                                         <div class="fi-text">
                                             <div class="inside-text">
-                                                <h4>{{ property[0].street.zone.name }} - {{ property[0].typeProperty.name }}</h4>
+                                                <h4>{{ property[0].street.zone.name }}</h4>
                                                 <ul>
                                                     <li><i class="fa fa-map-marker color-b"></i> {{ property[0].street.name }} </li>
 {#                                                    <li><i class="fa fa-tag color-b"></i> {{ property[0].typeProperty.name }}</li>#}

@@ -32,7 +32,6 @@ class ContactType extends AbstractType
             ])
             ->add('email', EmailType::class, [
                 'label' => ' ',
-                'required' => false,
                 'attr' => [
                     'class' => 'form-control-a',
                     'placeholder' => 'Correo'
@@ -43,13 +42,13 @@ class ContactType extends AbstractType
                 'attr' => [
                     'class' => 'form-control',
                     'placeholder' => 'Comentario',
-                    'rows' => 8,
+                    'rows' => 4,
                 ]
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'label' => 'Aceptar Términos',
                 'mapped' => false,
-                'help' => '<a target="_blank" href="/privacy-statement">Leer más</a>',
+                'help' => '<a target="_blank" href="/politica-de-privacidad">Leer más</a>',
                 'help_html' => true,
             ])
 

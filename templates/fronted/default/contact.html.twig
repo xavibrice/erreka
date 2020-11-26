@@ -51,6 +51,8 @@
                                 {{ form_widget(form) }}
                                 <button class="btn btn-info btn-b float-right">Enviar Mensaje</button>
                                 {{ form_end(form) }}
+
+                                {{ include('admin/_flash_messages.html.twig') }}
                             </div>
                             <div class="col-md-5 section-md-t3">
                                 <div class="icon-box section-b2">

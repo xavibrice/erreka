@@ -21,4 +21,5 @@ return [
     CalendarBundle\CalendarBundle::class => ['all' => true],
     ConnectHolland\CookieConsentBundle\CHCookieConsentBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
+    Shapecode\Bundle\CookieConsentBundle\ShapecodeCookieConsentBundle::class => ['all' => true],
 ];

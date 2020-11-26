@@ -16,21 +16,35 @@
         {{ encore_entry_link_tags('fronted') }}
         {% include "@CHCookieConsent/cookie_consent_styling.html.twig" %}
     {% endblock %}
+
     <!-- Facebook Pixel Code -->
     <script>
+
         !function(f,b,e,v,n,t,s)
+
         {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+
             n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+
             if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+
             n.queue=[];t=b.createElement(e);t.async=!0;
+
             t.src=v;s=b.getElementsByTagName(e)[0];
+
             s.parentNode.insertBefore(t,s)}(window, document,'script',
+
             'https://connect.facebook.net/en_US/fbevents.js');
-        fbq('init', '962130807529950');
+
+        fbq('init', '642611849618492');
+
         fbq('track', 'PageView');
+
     </script>
     <noscript><img height="1" width="1" style="display:none"
-                   src="https://www.facebook.com/tr?id=962130807529950&ev=PageView&noscript=1"
+
+                   src="https://www.facebook.com/tr?id=642611849618492&ev=PageView&noscript=1"
+
         /></noscript>
     <!-- End Facebook Pixel Code -->
 </head>
@@ -61,102 +75,6 @@
      logged_in_greeting="¡Hola! ¿Cómo podemos ayudarte?"
      logged_out_greeting="¡Hola! ¿Cómo podemos ayudarte?">
 </div>
-    {% block search_property %}
-        <!-- ======= Property Search Section ======= -->
-        <div class="click-closed"></div>
-        <!--/ Form Search Star /-->
-        <div class="box-collapse">
-            <div class="title-box-d">
-                <h3 class="title-d">Search Property</h3>
-            </div>
-            <span class="close-box-collapse right-boxed fas fa-times"></span>
-            <div class="box-collapse-wrap form">
-                <form class="form-a">
-                    <div class="row">
-                        <div class="col-md-12 mb-2">
-                            <div class="form-group">
-                                <label for="Type">Keyword</label>
-                                <input type="text" class="form-control form-control-lg form-control-a" placeholder="Keyword">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <div class="form-group">
-                                <label for="Type">Type</label>
-                                <select class="form-control form-control-lg form-control-a" id="Type">
-                                    <option>All Type</option>
-                                    <option>For Rent</option>
-                                    <option>For Sale</option>
-                                    <option>Open House</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <div class="form-group">
-                                <label for="city">City</label>
-                                <select class="form-control form-control-lg form-control-a" id="city">
-                                    <option>All City</option>
-                                    <option>Alabama</option>
-                                    <option>Arizona</option>
-                                    <option>California</option>
-                                    <option>Colorado</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <div class="form-group">
-                                <label for="bedrooms">Bedrooms</label>
-                                <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                                    <option>Any</option>
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <div class="form-group">
-                                <label for="garages">Garages</label>
-                                <select class="form-control form-control-lg form-control-a" id="garages">
-                                    <option>Any</option>
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                    <option>04</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <div class="form-group">
-                                <label for="bathrooms">Bathrooms</label>
-                                <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                                    <option>Any</option>
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6 mb-2">
-                            <div class="form-group">
-                                <label for="price">Min Price</label>
-                                <select class="form-control form-control-lg form-control-a" id="price">
-                                    <option>Unlimite</option>
-                                    <option>$50,000</option>
-                                    <option>$100,000</option>
-                                    <option>$150,000</option>
-                                    <option>$200,000</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <button type="submit" class="btn btn-b">Search Property</button>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <!-- End Property Search Section -->
-    {% endblock %}
 
     {% block navbar %}
         <nav class="navbar navbar-default navbar-trans navbar-expand-lg fixed-top">
@@ -394,6 +312,8 @@
 {#    {% if chcookieconsent_isCookieConsentSavedByUser() == false %}
         {{ render_esi(path('ch_cookie_consent.show_if_cookie_consent_not_set', { 'locale' : 'es' })) }}
     {% endif %}#}
+
+{#{{ cookie_consent() }}#}
 
     <div id="preloader"></div>
     {% block javascripts %}

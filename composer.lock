@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "22d79d64dc5ad16d77b0874f4c7bfd22",
+    "content-hash": "27692bdea38afecc20ee57a0a89df555",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -2908,6 +2908,71 @@
                 "source": "https://github.com/sensiolabs/SensioFrameworkExtraBundle/tree/v5.5.3"
             },
             "time": "2019-12-27T08:57:19+00:00"
+        },
+        {
+            "name": "shapecode/cookie-consent-bundle",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/shapecode/cookie-consent-bundle.git",
+                "reference": "8e48f31d68070eaf2309aa0e9b74521a2227b732"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/shapecode/cookie-consent-bundle/zipball/8e48f31d68070eaf2309aa0e9b74521a2227b732",
+                "reference": "8e48f31d68070eaf2309aa0e9b74521a2227b732",
+                "shasum": ""
+            },
+            "require": {
+                "php": "~5.6|~7.0",
+                "symfony/config": "~2.8|~3.0|~4.0",
+                "symfony/dependency-injection": "~2.8|~3.0|~4.0",
+                "symfony/framework-bundle": "~2.8|~3.0|~4.0",
+                "symfony/http-kernel": "~2.8|~3.0|~4.0",
+                "symfony/translation": "~2.8|~3.0|~4.0",
+                "symfony/twig-bundle": "~2.8|~3.0|~4.0",
+                "twig/twig": "~1.34|~2.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Shapecode\\Bundle\\CookieConsentBundle\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Loges",
+                    "email": "software@nikita-loges.de",
+                    "homepage": "https://loges.software"
+                }
+            ],
+            "description": "Symfony Bundle for the Cookie Consent Plugin.",
+            "homepage": "https://github.com/shapecode/cookie-consent-bundle",
+            "keywords": [
+                "Policy",
+                "bundle",
+                "consent",
+                "cookie",
+                "insites",
+                "shapecode",
+                "symfony"
+            ],
+            "support": {
+                "email": "support@shapeocode.de",
+                "issues": "https://github.com/shapecode/cookie-consent-bundle/issues",
+                "source": "https://github.com/shapecode/cookie-consent-bundle/releases",
+                "wiki": "https://github.com/shapecode/cookie-consent-bundle/wiki"
+            },
+            "time": "2019-04-03T14:42:05+00:00"
         },
         {
             "name": "stof/doctrine-extensions-bundle",

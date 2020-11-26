@@ -87,17 +87,88 @@ class DefaultController extends AbstractController
     /**
      * @Route("/vender-piso", name="sell")
      */
-    public function sell()
+    public function sell(Request $request, \Swift_Mailer $mailer)
     {
-        return $this->render('fronted/default/sell.html.twig');
+        $form = $this->createForm(ContactType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $formData = $form->getData();
+
+            $messageTo = (new \Swift_Message('Vender Piso: ' . $formData['fullName']))
+                ->setFrom($formData['email'])
+                ->setTo('info@loyaltylabel.es')
+                ->setBody(
+                    $this->renderView(
+                    // templates/emails/registration.html.twig
+                        'fronted/email/contact.twig',
+                        [
+                            'fullName' => $formData['fullName'],
+                            'mobile' => $formData['mobile'],
+                            'comment' => $formData['comment'],
+                        ]
+                    ),
+                    'text/html'
+                )
+            ;
+
+            $messageFrom = (new \Swift_Message('Vender Piso: ' . $formData['fullName']))
+                ->setFrom('noreply@errekainmobiliaria.com')
+                ->setTo($formData['email'])
+                ->setBody('Has enviado un mensaje a la inmo bla bla')
+            ;
+
+            $mailer->send($messageTo);
+            $mailer->send($messageFrom);
+
+            $this->addFlash('success', 'Mensaje enviado correctamente');
+
+            return $this->redirectToRoute('sell');
+        }
+
+        return $this->render('fronted/default/sell.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
      * @Route("/alquiler-garantizado", name="guaranteed_rental")
      */
-    public function guaranteedRental()
+    public function guaranteedRental(Request $request, \Swift_Mailer $mailer)
     {
-        return $this->render('fronted/default/guaranteed_rental.html.twig');
+        $form = $this->createForm(ContactType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid())
+        {
+            $formData = $form->getData();
+
+            $message = (new \Swift_Message('Alquiler Garantizado: ' . $formData['fullName']))
+                ->setFrom($formData['email'])
+                ->setTo('info@loyaltylabel.es')
+                ->setBody(
+                    $this->renderView(
+                        'fronted/email/contact.twig',
+                        [
+                            'fullName' => $formData['fullName'],
+                            'mobile' => $formData['mobile'],
+                            'comment' => $formData['comment'],
+                        ]
+                    ),
+                    'text/html'
+                )
+            ;
+
+            $mailer->send($message);
+            $this->addFlash('success', 'Mensaje enviado correctamente');
+
+            return $this->redirectToRoute('guaranteed_rental');
+        }
+
+        return $this->render('fronted/default/guaranteed_rental.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
 
     /**
@@ -173,20 +244,11 @@ class DefaultController extends AbstractController
         {
             $formData = $form->getData();
 
-            $email = null;
-
-            if ($formData['email'] === null) {
-                $email = 'noreply@errekainmobiliaria.com';
-            } else {
-                $email = $formData['email'];
-            }
-
             $message = (new \Swift_Message('Mensaje de: ' . $formData['fullName']))
-                ->setFrom($email)
-                ->setTo('info@errekainmobiliaria.com')
+                ->setFrom($formData['email'])
+                ->setTo('info@loyaltylabel.es')
                 ->setBody(
                     $this->renderView(
-                    // templates/emails/registration.html.twig
                         'fronted/email/contact.twig',
                         [
                             'fullName' => $formData['fullName'],
@@ -387,7 +449,6 @@ class DefaultController extends AbstractController
         ]);
     }
 
-
     /**
      * @Route("/buscar/vivienda/detalles/{reference}", name="search_details")
      */
@@ -399,7 +460,7 @@ class DefaultController extends AbstractController
     }
 
     /**
-     * @Route("/privacy-statement", name="privacy_police")
+     * @Route("/politica-de-privacidad", name="privacy_police")
      */
     public function privacyPolice(Request $request)
     {

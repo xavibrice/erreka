@@ -2,7 +2,55 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/public/img/sell/oficinas.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/erreka.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/erreka.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/homepage/propiedad-dos.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/homepage/propiedad-tres.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/homepage/propiedad-uno.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/logos/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/offices/erreka.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/offices/erreka_garrido.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/offices/garrido.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/agencias.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/buscarcompradores.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/gestionar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/informacion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/personalshopper.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/reforma.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/valoracion.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/valoracion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/acondicionar-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/agencias-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/agencias.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/buscar-compradores-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/buscarcompradores.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/gestionar-documentacion-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/gestionar.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/informacion-al-cliente-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/informacion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/personal-shopper-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/personalshopper.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/valoracion-vivienda-min.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/valoracion.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/sell/valoracion.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/img/sell/valoracion.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/prueba.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/prueba.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/default/sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/sell.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/email/contact.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/email/contact.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/layout.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,6 +199,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher" />
       <path value="$PROJECT_DIR$/vendor/symfony/inflector" />
       <path value="$PROJECT_DIR$/vendor/symfony/phpunit-bridge" />
+      <path value="$PROJECT_DIR$/vendor/shapecode/cookie-consent-bundle" />
     </include_path>
   </component>
   <component name="ProjectId" id="1QxBSoq0BrBlN2YV1mE0XLHbtUN" />
@@ -184,18 +233,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public/img/sell" />
       <recent name="$PROJECT_DIR$/assets/front/js" />
       <recent name="$PROJECT_DIR$/assets/front/css" />
       <recent name="$PROJECT_DIR$/assets/front" />
       <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/assets/fronted/img/logos" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public/img" />
-      <recent name="$PROJECT_DIR$/templates/admin/property" />
-      <recent name="$PROJECT_DIR$/templates/admin/property/rate_housing" />
-      <recent name="$PROJECT_DIR$/src/Form" />
+      <recent name="$PROJECT_DIR$/public/img/sell" />
       <recent name="$PROJECT_DIR$/assets/fronted/img/sell" />
+      <recent name="$PROJECT_DIR$/translations" />
+      <recent name="$PROJECT_DIR$/templates/admin/property" />
     </key>
   </component>
   <component name="RunManager">
@@ -521,7 +570,10 @@
       <workItem from="1603656522964" duration="454000" />
       <workItem from="1603659350333" duration="2367000" />
       <workItem from="1603662626023" duration="1087000" />
-      <workItem from="1603705051320" duration="63211000" />
+      <workItem from="1603705051320" duration="68492000" />
+      <workItem from="1605599092341" duration="7708000" />
+      <workItem from="1605734046759" duration="13312000" />
+      <workItem from="1606224111077" duration="5346000" />
     </task>
     <servers />
   </component>
@@ -579,22 +631,22 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="324" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1792.1120@0.0.1792.1120" timestamp="1601244673943" />
-    <state width="868" height="318" key="GridCell.Tab.0.bottom" timestamp="1604965193015">
+    <state width="868" height="318" key="GridCell.Tab.0.bottom" timestamp="1605291310338">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="868" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1604965193015" />
-    <state width="868" height="318" key="GridCell.Tab.0.center" timestamp="1604965193014">
+    <state width="868" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1605291310338" />
+    <state width="868" height="318" key="GridCell.Tab.0.center" timestamp="1605291310337">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="868" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1604965193014" />
-    <state width="868" height="318" key="GridCell.Tab.0.left" timestamp="1604965193014">
+    <state width="868" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1605291310337" />
+    <state width="868" height="318" key="GridCell.Tab.0.left" timestamp="1605291310337">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="868" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1604965193014" />
-    <state width="868" height="318" key="GridCell.Tab.0.right" timestamp="1604965193015">
+    <state width="868" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1605291310337" />
+    <state width="868" height="318" key="GridCell.Tab.0.right" timestamp="1605291310337">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="868" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1604965193015" />
+    <state width="868" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1605291310337" />
     <state x="484" y="310" key="IDE.errors.dialog" timestamp="1603190363708">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -603,14 +655,14 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="643" y="293" key="NewPhpClassDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1600859467339" />
-    <state x="395" y="164" key="SettingsEditor" timestamp="1603662490901">
+    <state x="395" y="164" key="SettingsEditor" timestamp="1606334842887">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state x="395" y="164" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1603662490901" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1602151022005">
+    <state x="395" y="164" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1606334842887" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1605600189309">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1602151022005" />
+    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1605600189309" />
     <state x="115" y="265" key="run.anything.popup" timestamp="1600179640476">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
@@ -619,7 +671,6 @@
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
     <state x="158" y="248" width="670" height="732" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1601809585037" />
-    <state x="1961" y="239" width="718" height="706" key="search.everywhere.popup/1792.0.1920.1080/0.0.1792.1120@1792.0.1920.1080" timestamp="1596988532082" />
     <state x="626" y="479" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603188066771">
       <screen x="0" y="0" width="1792" height="1120" />
     </state>
