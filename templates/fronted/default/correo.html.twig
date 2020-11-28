@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title '¿Vendes?' %}
+
+{% block body %}
+    <div class="container bg-gray-100">
+        <div class="row mb-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center mt-5">
+                <img class="img-fluid" src="{{ asset('img/logo-erreka.png') }}" alt="Logo Erreka Inmobiliaria">
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 bg-light">
+                <div class="card">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h1 class="card-title">¡Gracias {{ fullName }} por contactarnos!</h1>
+                            <p class="card-text">Uno de nuestros agentes contactará contigo en menos de 24 horas en días laborables.</p>
+                            <a class="btn btn-info" href="{{ path('sell') }}">Volver al sitio web</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row mb-5">
+            <div class="col-md-3"></div>
+            <div class="col-md-6 text-center">
+                <footer class="mb-5">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <nav class="nav-footer">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a rel="nofollow, noindex" href="{{ path('legal_warning') }}">Aviso Legal</a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a rel="nofollow, noindex" href="{{ path('privacy_police') }}">Política Privacidad</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                                <div class="socials-a">
+                                    <ul class="list-inline">
+                                        <li class="list-inline-item">
+                                            <a target="_blank" href="https://www.facebook.com/ErrekaInmobiliaria/">
+                                                <i class="fab fa-2x fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a target="_blank" href="https://www.instagram.com/errekainmobiliaria/">
+                                                <i class="fab fa-2x fa-instagram" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="list-inline-item">
+                                            <a target="_blank" href="https://g.page/ErrekaInmobiliaria">
+                                                <i class="fab fa-2x fa-google" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="copyright-footer">
+                                    <p class="copyright color-text-a">
+                                        &copy; Copyright
+                                        <span class="color-a">Inmobiliaria Erreka</span> Todos los derechos reservados.
+                                    </p>
+                                </div>
+                                <div class="credits">
+                                    <span class="color-text-a">Móvil: </span><a href="tel:+34675602296">+34 675 602 296</a>
+                                    <span class="color-text-a">Correo: </span><a href="mailto:info@errekainmobiliaria.com">info@errekainmobiliaria.com</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div>
+{% endblock %}

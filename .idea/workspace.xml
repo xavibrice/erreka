@@ -2,55 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/img/sell/oficinas.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/erreka.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/erreka.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/homepage/propiedad-dos.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/homepage/propiedad-tres.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/homepage/propiedad-uno.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/logos/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/offices/erreka.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/offices/erreka_garrido.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/offices/garrido.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/agencias.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/buscarcompradores.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/gestionar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/informacion.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/personalshopper.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/reforma.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/valoracion.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/img/sell/valoracion.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/acondicionar-min.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/agencias-min.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/agencias.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/buscar-compradores-min.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/buscarcompradores.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/gestionar-documentacion-min.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/gestionar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/informacion-al-cliente-min.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/informacion.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/personal-shopper-min.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/personalshopper.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/valoracion-vivienda-min.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/valoracion.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/public/img/sell/valoracion.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/sell/valoracion.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Form/ContactType.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Form/ContactType.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/about.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/contact.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/guaranteed_rental.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/prueba.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/prueba.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/email/contact.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/email/contact.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/layout.html.twig" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -573,7 +527,8 @@
       <workItem from="1603705051320" duration="68492000" />
       <workItem from="1605599092341" duration="7708000" />
       <workItem from="1605734046759" duration="13312000" />
-      <workItem from="1606224111077" duration="5346000" />
+      <workItem from="1606224111077" duration="7140000" />
+      <workItem from="1606468219696" duration="5684000" />
     </task>
     <servers />
   </component>

@@ -36,6 +36,15 @@ class DefaultController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/correo", name="correo")
+     */
+    public function correo(Request $request): Response
+    {
+        return $this->render('fronted/default/correo.html.twig', [
+        ]);
+    }
+
 
     /**
      * @Route("/", name="homepage", methods={"GET", "POST"})
@@ -96,31 +105,39 @@ class DefaultController extends AbstractController
         {
             $formData = $form->getData();
 
-            $messageTo = (new \Swift_Message('Vender Piso: ' . $formData['fullName']))
-                ->setFrom($formData['email'])
-                ->setTo('info@loyaltylabel.es')
+            $messageClient = (new \Swift_Message('¡Vendemos tu vivienda antes de 90 días!'))
+                ->setFrom('info@loyaltylabel.es')
+                ->setTo($formData['email'])
                 ->setBody(
                     $this->renderView(
-                    // templates/emails/registration.html.twig
-                        'fronted/email/contact.twig',
+                        'fronted/email/email_client_sell.html.twig',
                         [
                             'fullName' => $formData['fullName'],
-                            'mobile' => $formData['mobile'],
-                            'comment' => $formData['comment'],
                         ]
                     ),
                     'text/html'
                 )
             ;
 
-            $messageFrom = (new \Swift_Message('Vender Piso: ' . $formData['fullName']))
+            $messageAgency = (new \Swift_Message($formData['fullName'] . ' ¡Vendemos tu vivienda antes de 90 días!'))
                 ->setFrom('noreply@errekainmobiliaria.com')
-                ->setTo($formData['email'])
-                ->setBody('Has enviado un mensaje a la inmo bla bla')
+                ->setTo('info@loyaltylabel.es')
+                ->setBody(
+                    $this->renderView(
+                        'fronted/email/email_agency_sell.html.twig',
+                        [
+                            'fullName' => $formData['fullName'],
+                            'mobile' => $formData['mobile'],
+                            'email' => $formData['email'],
+                            'message' => $formData['comment'],
+                        ]
+                    ),
+                    'text/html'
+                )
             ;
 
-            $mailer->send($messageTo);
-            $mailer->send($messageFrom);
+            $mailer->send($messageClient);
+            $mailer->send($messageAgency);
 
             $this->addFlash('success', 'Mensaje enviado correctamente');
 
