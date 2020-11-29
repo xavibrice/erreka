@@ -17,7 +17,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Address;
 use Symfony\Component\Mime\NamedAddress;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -109,9 +108,8 @@ class DefaultController extends AbstractController
         {
             $formData = $form->getData();
 
-
             $emailClient = (new TemplatedEmail())
-                ->from(new NamedAddress('info@loyaltylabel.es', 'Erreka Inmobiliaria'))
+                ->from(new NamedAddress('info@errekainmobiliaria.com', 'Erreka Inmobiliaria'))
                 ->to(new NamedAddress($formData['email'], $formData['fullName']))
                 ->subject('¡Vendemos tu vivienda antes de 90 días!')
                 ->htmlTemplate('fronted/email/email_client_sell.html.twig')
@@ -121,8 +119,8 @@ class DefaultController extends AbstractController
             ;
 
             $emailAgency = (new TemplatedEmail())
-                ->from(new NamedAddress($formData['email'], $formData['fullName']))
-                ->to(new NamedAddress('info@loyaltylabel.es', 'Erreka Inmobiliaria'))
+                ->from(new NamedAddress('noreply@errekainmobiliaria.com', $formData['fullName']))
+                ->to(new NamedAddress('info@errekainmobiliaria.com', 'Erreka Inmobiliaria'))
                 ->subject($formData['fullName'] . ' necesita información de venta de su piso.')
                 ->htmlTemplate('fronted/email/email_agency_sell.html.twig')
                 ->context([
@@ -137,15 +135,11 @@ class DefaultController extends AbstractController
                 $mailer->send($emailClient);
                 $mailer->send($emailAgency);
             } catch (TransportExceptionInterface $e) {
-                // some error prevented the email sending; display an
-                // error message or try to resend the message
-                die($e);
+                $this->addFlash('danger', 'Error: Mensaje no enviado.');
             }
 
 
-
-
-            $this->addFlash('success', 'Mensaje enviado correctamente');
+            $this->addFlash('success', 'Mensaje enviado correctamente.');
 
             return $this->redirectToRoute('sell');
         }
@@ -158,7 +152,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/alquiler-garantizado", name="guaranteed_rental")
      */
-    public function guaranteedRental(Request $request, \Swift_Mailer $mailer)
+    public function guaranteedRental(Request $request, MailerInterface $mailer)
     {
         $form = $this->createForm(ContactType::class);
 
@@ -167,23 +161,36 @@ class DefaultController extends AbstractController
         {
             $formData = $form->getData();
 
-            $message = (new \Swift_Message('Alquiler Garantizado: ' . $formData['fullName']))
-                ->setFrom($formData['email'])
-                ->setTo('info@loyaltylabel.es')
-                ->setBody(
-                    $this->renderView(
-                        'fronted/email/contact.twig',
-                        [
-                            'fullName' => $formData['fullName'],
-                            'mobile' => $formData['mobile'],
-                            'comment' => $formData['comment'],
-                        ]
-                    ),
-                    'text/html'
-                )
+            $emailClient = (new TemplatedEmail())
+                ->from(new NamedAddress('info@errekainmobiliaria.com', 'Erreka Inmobiliaria'))
+                ->to(new NamedAddress($formData['email'], $formData['fullName']))
+                ->subject('¡Alquiler Garantizado!')
+                ->htmlTemplate('fronted/email/email_client_rent.html.twig')
+                ->context([
+                    'fullName' => $formData['fullName'],
+                ])
             ;
 
-            $mailer->send($message);
+            $emailAgency = (new TemplatedEmail())
+                ->from(new NamedAddress('noreply@errekainmobiliaria.com', $formData['fullName']))
+                ->to(new NamedAddress('info@errekainmobiliaria.com', 'Erreka Inmobiliaria'))
+                ->subject($formData['fullName'] . ' necesita información alquiler garantizado.')
+                ->htmlTemplate('fronted/email/email_agency_rent.html.twig')
+                ->context([
+                    'fullName' => $formData['fullName'],
+                    'mobile' => $formData['mobile'],
+                    'correo' => $formData['email'],
+                    'message' => $formData['comment'],
+                ])
+            ;
+
+            try {
+                $mailer->send($emailClient);
+                $mailer->send($emailAgency);
+            } catch (TransportExceptionInterface $e) {
+                $this->addFlash('danger', 'Error: Mensaje no enviado.');
+            }
+
             $this->addFlash('success', 'Mensaje enviado correctamente');
 
             return $this->redirectToRoute('guaranteed_rental');

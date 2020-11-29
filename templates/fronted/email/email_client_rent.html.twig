@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
@@ -110,7 +110,6 @@
         }
 
     </style>
-
 
     <style>
 
@@ -342,10 +341,9 @@
                         <tr>
                             <td>
                                 <div class="text" style="padding: 0 2.5em; text-align: center;">
-                                    <h2> necesita información sobre la venta de su piso.</h2>
-                                    <p>Móvil / Teléfono: </p>
-                                    <p>Correo: </p>
-                                    <p>Mensaje: </p>
+                                    <h2>¡Gracias {{ fullName }} por contactarnos!</h2>
+                                    <p>Uno de nuestros agentes contactará contigo en menos de 24 horas en días laborables.</p>
+                                    <a class="btn btn-primary" href="{{ url('sell') }}">Volver al sitio web</a>
                                 </div>
                             </td>
                         </tr>
@@ -375,10 +373,8 @@
                                     <tr>
                                         <td style="text-align: left; padding-left: 5px; padding-right: 5px;">
                                             <h3 class="heading">Contacto</h3>
-                                            <ul>
-                                                <li><span class="text"><a href="mailto:info@errekainmobiliaria.com">info@errekainmobiliaria.com</a></span></li>
-                                                <li><span class="text"><a href="tel:+34675602296">+34 675 602 296</a></span></li>
-                                            </ul>
+                                            <p><a href="mailto:info@errekainmobiliaria.com">info@errekainmobiliaria.com</a></p>
+                                            <p><a href="tel:+34675602296">+34 675 602 296</a></p>
                                         </td>
                                     </tr>
                                 </table>
@@ -387,22 +383,9 @@
                     </table>
                 </td>
             </tr>
-            <tr>
-                <td class="bg_light" style="text-align: center;">
-                    <p>No longer want to receive these email? You can <a href="#" style="color: rgba(0,0,0,.8);">Unsubscribe here</a></p>
-                </td>
-            </tr>
+
         </table>
     </div>
 </center>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'UA-23581568-13');
-</script>
 </body>
 </html>
