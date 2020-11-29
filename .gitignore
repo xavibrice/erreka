@@ -1,4 +1,4 @@
-
+symfony.lock
 ###> symfony/framework-bundle ###
 .env
 .idea/workspace.xml

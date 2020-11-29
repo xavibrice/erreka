@@ -1,18 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/erreka.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/erreka.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/DefaultController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/DefaultController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/correo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/correo.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/email/email_agency_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/email/email_agency_sell.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/email/email_client_sell.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/email/email_client_sell.html.twig" afterDir="false" />
-    </list>
+    <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -536,7 +525,7 @@
       <workItem from="1605599092341" duration="7708000" />
       <workItem from="1605734046759" duration="13312000" />
       <workItem from="1606224111077" duration="7140000" />
-      <workItem from="1606468219696" duration="12049000" />
+      <workItem from="1606468219696" duration="12340000" />
     </task>
     <servers />
   </component>
