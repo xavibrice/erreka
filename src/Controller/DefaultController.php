@@ -18,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Address;
+use Symfony\Component\Mime\NamedAddress;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -110,8 +111,8 @@ class DefaultController extends AbstractController
 
 
             $emailClient = (new TemplatedEmail())
-                ->from(new Address('info@loyaltylabel.es', 'Erreka Inmobiliaria'))
-                ->to($formData['email'])
+                ->from(new NamedAddress('info@loyaltylabel.es', 'Erreka Inmobiliaria'))
+                ->to(new NamedAddress($formData['email'], $formData['fullName']))
                 ->subject('¡Vendemos tu vivienda antes de 90 días!')
                 ->htmlTemplate('fronted/email/email_client_sell.html.twig')
                 ->context([
@@ -120,8 +121,8 @@ class DefaultController extends AbstractController
             ;
 
             $emailAgency = (new TemplatedEmail())
-                ->from(new Address($formData['email'], $formData['fullName']))
-                ->to('info@loyaltylabel.es')
+                ->from(new NamedAddress($formData['email'], $formData['fullName']))
+                ->to(new NamedAddress('info@loyaltylabel.es', 'Erreka Inmobiliaria'))
                 ->subject($formData['fullName'] . ' necesita información de venta de su piso.')
                 ->htmlTemplate('fronted/email/email_agency_sell.html.twig')
                 ->context([
