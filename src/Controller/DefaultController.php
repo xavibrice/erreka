@@ -11,9 +11,13 @@ use App\Repository\NoteCommercialRepository;
 use App\Repository\PropertyRepository;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Knp\Component\Pager\PaginatorInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
@@ -44,7 +48,6 @@ class DefaultController extends AbstractController
         return $this->render('fronted/default/correo.html.twig', [
         ]);
     }
-
 
     /**
      * @Route("/", name="homepage", methods={"GET", "POST"})
@@ -96,7 +99,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/vender-piso", name="sell")
      */
-    public function sell(Request $request, \Swift_Mailer $mailer)
+    public function sell(Request $request, MailerInterface $mailer)
     {
         $form = $this->createForm(ContactType::class);
 
@@ -105,39 +108,41 @@ class DefaultController extends AbstractController
         {
             $formData = $form->getData();
 
-            $messageClient = (new \Swift_Message('¡Vendemos tu vivienda antes de 90 días!'))
-                ->setFrom('info@loyaltylabel.es')
-                ->setTo($formData['email'])
-                ->setBody(
-                    $this->renderView(
-                        'fronted/email/email_client_sell.html.twig',
-                        [
-                            'fullName' => $formData['fullName'],
-                        ]
-                    ),
-                    'text/html'
-                )
+
+            $emailClient = (new TemplatedEmail())
+                ->from(new Address('info@loyaltylabel.es', 'Erreka Inmobiliaria'))
+                ->to($formData['email'])
+                ->subject('¡Vendemos tu vivienda antes de 90 días!')
+                ->htmlTemplate('fronted/email/email_client_sell.html.twig')
+                ->context([
+                    'fullName' => $formData['fullName'],
+                ])
             ;
 
-            $messageAgency = (new \Swift_Message($formData['fullName'] . ' ¡Vendemos tu vivienda antes de 90 días!'))
-                ->setFrom('noreply@errekainmobiliaria.com')
-                ->setTo('info@loyaltylabel.es')
-                ->setBody(
-                    $this->renderView(
-                        'fronted/email/email_agency_sell.html.twig',
-                        [
-                            'fullName' => $formData['fullName'],
-                            'mobile' => $formData['mobile'],
-                            'email' => $formData['email'],
-                            'message' => $formData['comment'],
-                        ]
-                    ),
-                    'text/html'
-                )
+            $emailAgency = (new TemplatedEmail())
+                ->from(new Address($formData['email'], $formData['fullName']))
+                ->to('info@loyaltylabel.es')
+                ->subject($formData['fullName'] . ' necesita información de venta de su piso.')
+                ->htmlTemplate('fronted/email/email_agency_sell.html.twig')
+                ->context([
+                    'fullName' => $formData['fullName'],
+                    'mobile' => $formData['mobile'],
+                    'correo' => $formData['email'],
+                    'message' => $formData['comment'],
+                ])
             ;
 
-            $mailer->send($messageClient);
-            $mailer->send($messageAgency);
+            try {
+                $mailer->send($emailClient);
+                $mailer->send($emailAgency);
+            } catch (TransportExceptionInterface $e) {
+                // some error prevented the email sending; display an
+                // error message or try to resend the message
+                die($e);
+            }
+
+
+
 
             $this->addFlash('success', 'Mensaje enviado correctamente');
 
