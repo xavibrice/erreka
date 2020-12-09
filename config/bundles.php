@@ -22,4 +22,5 @@ return [
     ConnectHolland\CookieConsentBundle\CHCookieConsentBundle::class => ['all' => true],
     Knp\Bundle\PaginatorBundle\KnpPaginatorBundle::class => ['all' => true],
     Shapecode\Bundle\CookieConsentBundle\ShapecodeCookieConsentBundle::class => ['all' => true],
+    Twig\Extra\TwigExtraBundle\TwigExtraBundle::class => ['all' => true],
 ];

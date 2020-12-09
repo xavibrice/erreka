@@ -265,7 +265,7 @@ class DefaultController extends AbstractController
     /**
      * @Route("/contacto", name="contact")
      */
-    public function contact(Request $request, \Swift_Mailer $mailer)
+    public function contact(Request $request, MailerInterface $mailer)
     {
         $form = $this->createForm(ContactType::class);
 

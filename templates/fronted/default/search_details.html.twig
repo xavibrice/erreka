@@ -164,7 +164,11 @@
                                     </div>
                                 </div>
                                 <div class="property-description">
-                                    <p class="description color-text-a">{{ property.rateHousing.comment }}</p>
+                                    <p class="description color-text-a">
+                                        {% if property.rateHousing.comment is defined and property.rateHousing.comment is not null %}
+                                            {{ property.rateHousing.comment|markdown_to_html }}
+                                        {% endif %}
+                                    </p>
                                 </div>
                                 <div class="row section-t3">
                                     <div class="col-sm-12">

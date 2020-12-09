@@ -127,6 +127,9 @@
     "egulias/email-validator": {
         "version": "2.1.9"
     },
+    "erusev/parsedown": {
+        "version": "1.7.4"
+    },
     "fig/link-util": {
         "version": "1.0.0"
     },
@@ -157,6 +160,9 @@
     "knplabs/knp-paginator-bundle": {
         "version": "v3.0.0"
     },
+    "league/uri-parser": {
+        "version": "1.4.1"
+    },
     "liip/imagine-bundle": {
         "version": "1.8",
         "recipe": {
@@ -169,6 +175,12 @@
             "./config/packages/liip_imagine.yaml",
             "./config/routes/liip_imagine.yaml"
         ]
+    },
+    "lorenzo/pinky": {
+        "version": "1.0.5"
+    },
+    "masterminds/html5": {
+        "version": "2.7.4"
     },
     "monolog/monolog": {
         "version": "1.24.0"
@@ -654,6 +666,15 @@
             "./config/routes/calendar.yaml"
         ]
     },
+    "tgalopin/html-sanitizer": {
+        "version": "1.4.0"
+    },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.3"
+    },
+    "twig/cssinliner-extra": {
+        "version": "v3.1.1"
+    },
     "twig/extensions": {
         "version": "1.0",
         "recipe": {
@@ -665,6 +686,18 @@
         "files": [
             "./config/packages/twig_extensions.yaml"
         ]
+    },
+    "twig/extra-bundle": {
+        "version": "v3.1.1"
+    },
+    "twig/inky-extra": {
+        "version": "v3.1.1"
+    },
+    "twig/intl-extra": {
+        "version": "v3.1.1"
+    },
+    "twig/markdown-extra": {
+        "version": "v3.1.1"
     },
     "twig/twig": {
         "version": "v2.11.3"
