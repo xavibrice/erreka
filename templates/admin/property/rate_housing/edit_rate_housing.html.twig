@@ -9,7 +9,6 @@
             <div class="col-md-12 text-center">
                 <strong>{{ rateHousing.property.first.fullName }} / {{ rateHousing.property.first.street.name }}, Nº {{ rateHousing.property.first.portal }}, {{ rateHousing.property.first.floor }}</strong>
             </div>
-            {{ dump(routeTemplate) }}
             {{ include('admin/property/'~ routeTemplate ~ '.html.twig', {'button_label': 'Actualizar'}) }}
         </div>
         <div class="card-footer">
