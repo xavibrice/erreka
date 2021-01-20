@@ -106,11 +106,11 @@
                                                         <h4 class="card-info-title"><i class="fas fa-car-side"></i> Garaje</h4>
                                                         <span>{{ property[0].rateHousing.directGarage ? 'Si' : 'No' }}</span>
                                                     </li>
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas fa-bath"></i> Baños</h4>
+                                                        <span>{{ property[0].rateHousing.bathrooms }}</span>
+                                                    </li>
                                                 {% endif %}
-                                                <li>
-                                                    <h4 class="card-info-title"><i class="fas fa-bath"></i> Baños</h4>
-                                                    <span>{{ property[0].rateHousing.bathrooms }}</span>
-                                                </li>
                                                 {% if property[0].typeProperty.nameSlug in ['trastero'] %}
                                                     <li>
                                                         <h4 class="card-info-title"><i class="fas arrow-to-top"></i> Altura</h4>
