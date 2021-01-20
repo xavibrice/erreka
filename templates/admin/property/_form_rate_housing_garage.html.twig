@@ -92,7 +92,7 @@
     <div class="form-group row">
         <div class="col-md-auto">
             {% for image in form.vars.data.image %}
-                <img src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_small') }}">
+                <img src="{{ uploaded_asset(image.imagePath)|imagine_filter('squared_thumbnail_large') }}">
             {% endfor %}
         </div>
     </div>

@@ -111,6 +111,12 @@
                                                     <h4 class="card-info-title"><i class="fas fa-bath"></i> Baños</h4>
                                                     <span>{{ property[0].rateHousing.bathrooms }}</span>
                                                 </li>
+                                                {% if property[0].typeProperty.nameSlug in ['trastero'] %}
+                                                    <li>
+                                                        <h4 class="card-info-title"><i class="fas arrow-to-top"></i> Altura</h4>
+                                                        <span>{{ property[0].rateHousing.height }}</span>
+                                                    </li>
+                                                {% endif %}
                                             </ul>
                                         </div>
                                     </div>
