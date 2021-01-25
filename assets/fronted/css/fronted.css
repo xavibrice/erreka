@@ -3,6 +3,25 @@
 @import "~animate.css/animate.min.css";
 @import "~@fortawesome/fontawesome-free/css/all.min.css";
 
+#app-whatsapp{
+    position: fixed;
+    left: 15px;
+    bottom: 25px;
+    width: 60px;
+    z-index: 1000;
+    display: none;
+}
+#app-whatsapp{
+    bottom: 25px;
+    display: block;
+}
+
+@media screen and (max-width: 766px){
+    #app-messenger{
+        display: block;
+    }
+}
+
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/

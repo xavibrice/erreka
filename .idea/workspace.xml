@@ -3,8 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search-fronted.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -562,7 +563,15 @@
       <workItem from="1609667284883" duration="2421000" />
       <workItem from="1610102628189" duration="3219000" />
       <workItem from="1610356910366" duration="1513000" />
-      <workItem from="1611144427416" duration="1268000" />
+      <workItem from="1611144427416" duration="3269000" />
+      <workItem from="1611233527541" duration="2303000" />
+      <workItem from="1611244254266" duration="234000" />
+      <workItem from="1611244707218" duration="4000" />
+      <workItem from="1611320116828" duration="10000" />
+      <workItem from="1611342135438" duration="732000" />
+      <workItem from="1611354235413" duration="43000" />
+      <workItem from="1611354341328" duration="1255000" />
+      <workItem from="1611573940260" duration="7000" />
     </task>
     <servers />
   </component>
@@ -590,79 +599,5 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="496" y="208" key="#Plugins" timestamp="1602930854211">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="496" y="208" key="#Plugins/0.0.1792.1120@0.0.1792.1120" timestamp="1602930854211" />
-    <state x="360" y="222" width="1071" height="752" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1603187627564">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="360" y="222" width="1071" height="752" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1603187627564" />
-    <state x="1008" y="340" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604745374900">
-      <screen x="0" y="23" width="1792" height="1017" />
-    </state>
-    <state x="1008" y="340" key="#com.intellij.fileTypes.FileTypeChooser/0.23.1792.1017@0.23.1792.1017" timestamp="1604745374900" />
-    <state x="634" y="322" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1604322438771">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="634" y="322" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1604322438771" />
-    <state x="650" y="479" width="491" height="249" key="ComposerInitDialogKey" timestamp="1601244478534">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="650" y="479" width="491" height="249" key="ComposerInitDialogKey/0.0.1792.1120@0.0.1792.1120" timestamp="1601244478534" />
-    <state x="745" y="472" key="ComposerValidateDialog" timestamp="1603189106562">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="745" y="472" key="ComposerValidateDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1603189106562" />
-    <state x="324" y="0" key="FileDocumentManager.FileCacheConflict" timestamp="1601244673943">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="324" y="0" key="FileDocumentManager.FileCacheConflict/0.0.1792.1120@0.0.1792.1120" timestamp="1601244673943" />
-    <state width="868" height="318" key="GridCell.Tab.0.bottom" timestamp="1605291310338">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="868" height="318" key="GridCell.Tab.0.bottom/0.0.1792.1120@0.0.1792.1120" timestamp="1605291310338" />
-    <state width="868" height="318" key="GridCell.Tab.0.center" timestamp="1605291310337">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="868" height="318" key="GridCell.Tab.0.center/0.0.1792.1120@0.0.1792.1120" timestamp="1605291310337" />
-    <state width="868" height="318" key="GridCell.Tab.0.left" timestamp="1605291310337">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="868" height="318" key="GridCell.Tab.0.left/0.0.1792.1120@0.0.1792.1120" timestamp="1605291310337" />
-    <state width="868" height="318" key="GridCell.Tab.0.right" timestamp="1605291310337">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="868" height="318" key="GridCell.Tab.0.right/0.0.1792.1120@0.0.1792.1120" timestamp="1605291310337" />
-    <state x="484" y="310" key="IDE.errors.dialog" timestamp="1603190363708">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="484" y="310" key="IDE.errors.dialog/0.0.1792.1120@0.0.1792.1120" timestamp="1603190363708" />
-    <state x="643" y="293" key="NewPhpClassDialog" timestamp="1600859467339">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="643" y="293" key="NewPhpClassDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1600859467339" />
-    <state x="395" y="164" key="SettingsEditor" timestamp="1606334842887">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="395" y="164" key="SettingsEditor/0.0.1792.1120@0.0.1792.1120" timestamp="1606334842887" />
-    <state width="600" height="428" key="javadoc.popup" timestamp="1605600189309">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state width="600" height="428" key="javadoc.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1605600189309" />
-    <state x="115" y="265" key="run.anything.popup" timestamp="1600179640476">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="115" y="265" key="run.anything.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1600179640476" />
-    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup" timestamp="1601809585037">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="158" y="248" width="670" height="732" key="search.everywhere.popup/0.0.1792.1120@0.0.1792.1120" timestamp="1601809585037" />
-    <state x="626" y="479" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1603188066771">
-      <screen x="0" y="0" width="1792" height="1120" />
-    </state>
-    <state x="626" y="479" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1792.1120@0.0.1792.1120" timestamp="1603188066771" />
   </component>
 </project>
