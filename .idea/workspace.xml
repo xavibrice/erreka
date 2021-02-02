@@ -3,9 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/fronted/css/fronted.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/fronted/css/fronted.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/index.html.twig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/fronted.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -572,6 +569,13 @@
       <workItem from="1611354235413" duration="43000" />
       <workItem from="1611354341328" duration="1255000" />
       <workItem from="1611573940260" duration="7000" />
+      <workItem from="1611573960781" duration="93000" />
+      <workItem from="1611588169527" duration="615000" />
+      <workItem from="1611599228168" duration="18000" />
+      <workItem from="1611778935670" duration="48000" />
+      <workItem from="1611779187987" duration="6000" />
+      <workItem from="1611781562075" duration="627000" />
+      <workItem from="1611833113228" duration="1109000" />
     </task>
     <servers />
   </component>

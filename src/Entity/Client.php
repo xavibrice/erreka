@@ -164,7 +164,7 @@ class Client
     private $offereds;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\NoteClient", mappedBy="client")
+     * @ORM\OneToMany(targetEntity="App\Entity\NoteClient", mappedBy="client", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $noteClients;
 
