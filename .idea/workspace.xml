@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="952f2681-34fb-440c-a8fd-307258afbced" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fronted/default/search_details.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -583,7 +582,12 @@
       <workItem from="1613500698961" duration="353000" />
       <workItem from="1614461842000" duration="197000" />
       <workItem from="1614545096006" duration="30000" />
-      <workItem from="1614591516498" duration="529000" />
+      <workItem from="1614591516498" duration="1274000" />
+      <workItem from="1614612396930" duration="1489000" />
+      <workItem from="1615336621392" duration="742000" />
+      <workItem from="1615671366257" duration="1541000" />
+      <workItem from="1615835562039" duration="721000" />
+      <workItem from="1615920092638" duration="353000" />
     </task>
     <servers />
   </component>
