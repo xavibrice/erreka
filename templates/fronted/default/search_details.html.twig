@@ -198,7 +198,7 @@
                                 <div class="amenities-list color-text-a">
                                      <ul class="list-a no-margin">
                                         <li><strong>Ascensor: </strong><span>{{ property.rateHousing.elevator ? 'Si' : 'No' }}</span></li>
-                                        <li><strong>Antigüedad: </strong><span>{{ property.rateHousing.antiquity ? 'Si' : 'No' }}</span></li>
+                                        <li><strong>Antigüedad: </strong><span>{{ property.rateHousing.antiquity ? property.rateHousing.antiquity : '' }}</span></li>
                                         <li><strong>Estructura Edificio: </strong><span>{{ property.rateHousing.buildingStructure ? property.rateHousing.buildingStructure.name : 'Por definir' }}</span></li>
                                         <li><strong>Gasto Comunidad: </strong><span>{{ property.rateHousing.communityExpenses|number_format(0, ',', '.') }}€</span></li>
                                      </ul>
