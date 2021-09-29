@@ -29,7 +29,7 @@
         "animate": "^1.0.0",
         "animate.css": "^4.1.1",
         "autocomplete.js": "^0.37.0",
-        "datatables.net": "^1.10.22",
+        "datatables.net": "^1.11.3",
         "datatables.net-bs4": "^1.10.22",
         "elegant-icons": "0.0.1",
         "eonasdan-bootstrap-datetimepicker-bootstrap4beta": "^4.17.47-a",
